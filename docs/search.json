@@ -1,19 +1,5 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "ITWS-4500: Advanced Web & Agentic AI Development",
-    "section": "",
-    "text": "Welcome to ITWS-4500: Web Science Systems Development, an advanced course focusing on the design and implementation of modern, production-quality web applications as integrated systems. This course examines architectural and design patterns underlying contemporary web platforms, with emphasis on system decomposition, data flow, scalability, reliability, and security.\n\n\n\n\n\n\nNoteSpring 2026 | RPI Lally School of Management\n\n\n\nLocation: Lally 102 Times: Tuesday/Friday 12:00-1:50 PM (Section 01) | 2:00-3:50 PM (Section 02) Instructor: Jason Kuruzovich"
-  },
-  {
     "objectID": "schedule.html",
     "href": "schedule.html",
     "title": "Course Schedule",
@@ -861,60 +847,235 @@
     "text": "Resources\n\nDocker Documentation\nDocker Compose Overview\n12-Factor App Methodology"
   },
   {
-    "objectID": "labs/lab03-backend-patterns.html",
-    "href": "labs/lab03-backend-patterns.html",
-    "title": "Lab 3: Backend Architecture Patterns",
+    "objectID": "labs/lab10-deployment.html",
+    "href": "labs/lab10-deployment.html",
+    "title": "Lab 10: Deployment",
     "section": "",
-    "text": "NoteComing Soon\n\n\n\nThis lab will be available on February 10, 2026."
+    "text": "NoteComing Soon\n\n\n\nThis lab will be available on April 17, 2026."
   },
   {
-    "objectID": "labs/lab03-backend-patterns.html#overview",
-    "href": "labs/lab03-backend-patterns.html#overview",
-    "title": "Lab 3: Backend Architecture Patterns",
+    "objectID": "labs/lab10-deployment.html#overview",
+    "href": "labs/lab10-deployment.html#overview",
+    "title": "Lab 10: Deployment",
     "section": "Overview",
-    "text": "Overview\nThis lab covers backend architectural patterns including service layers, middleware, and API design."
+    "text": "Overview\nThis lab covers deploying containerized applications to cloud platforms with caching and scaling."
   },
   {
-    "objectID": "labs/lab03-backend-patterns.html#learning-objectives",
-    "href": "labs/lab03-backend-patterns.html#learning-objectives",
-    "title": "Lab 3: Backend Architecture Patterns",
+    "objectID": "labs/lab10-deployment.html#learning-objectives",
+    "href": "labs/lab10-deployment.html#learning-objectives",
+    "title": "Lab 10: Deployment",
     "section": "Learning Objectives",
-    "text": "Learning Objectives\n\nImplement service layer patterns\nDesign RESTful APIs\nCreate middleware pipelines\nHandle errors consistently"
+    "text": "Learning Objectives\n\nDeploy to cloud platforms\nImplement caching strategies\nConfigure horizontal scaling\nMonitor application performance"
   },
   {
-    "objectID": "labs/lab03-backend-patterns.html#due-date",
-    "href": "labs/lab03-backend-patterns.html#due-date",
-    "title": "Lab 3: Backend Architecture Patterns",
+    "objectID": "labs/lab10-deployment.html#due-date",
+    "href": "labs/lab10-deployment.html#due-date",
+    "title": "Lab 10: Deployment",
     "section": "Due Date",
-    "text": "Due Date\nTuesday, February 17, 2026"
+    "text": "Due Date\nFriday, April 24, 2026"
   },
   {
-    "objectID": "labs/lab05-auth-mobile.html",
-    "href": "labs/lab05-auth-mobile.html",
-    "title": "Lab 5: Authentication & Mobile",
+    "objectID": "labs/lab02-component-state.html",
+    "href": "labs/lab02-component-state.html",
+    "title": "Lab 2: Component and State Management",
     "section": "",
-    "text": "NoteComing Soon\n\n\n\nThis lab will be available on March 13, 2026."
+    "text": "NoteComing Soon\n\n\n\nThis lab will be available on February 3, 2026."
   },
   {
-    "objectID": "labs/lab05-auth-mobile.html#overview",
-    "href": "labs/lab05-auth-mobile.html#overview",
-    "title": "Lab 5: Authentication & Mobile",
+    "objectID": "labs/lab02-component-state.html#overview",
+    "href": "labs/lab02-component-state.html#overview",
+    "title": "Lab 2: Component and State Management",
     "section": "Overview",
-    "text": "Overview\nThis lab covers authentication patterns and mobile-friendly application architecture."
+    "text": "Overview\nThis lab focuses on frontend architecture patterns, including component design and state management strategies."
   },
   {
-    "objectID": "labs/lab05-auth-mobile.html#learning-objectives",
-    "href": "labs/lab05-auth-mobile.html#learning-objectives",
-    "title": "Lab 5: Authentication & Mobile",
+    "objectID": "labs/lab02-component-state.html#learning-objectives",
+    "href": "labs/lab02-component-state.html#learning-objectives",
+    "title": "Lab 2: Component and State Management",
     "section": "Learning Objectives",
-    "text": "Learning Objectives\n\nImplement JWT-based authentication\nHandle OAuth flows\nDesign mobile-responsive interfaces\nSecure API endpoints"
+    "text": "Learning Objectives\n\nDesign reusable component hierarchies\nImplement state management (Context API, Redux, etc.)\nApply React/Angular best practices\nHandle complex UI state"
   },
   {
-    "objectID": "labs/lab05-auth-mobile.html#due-date",
-    "href": "labs/lab05-auth-mobile.html#due-date",
-    "title": "Lab 5: Authentication & Mobile",
+    "objectID": "labs/lab02-component-state.html#due-date",
+    "href": "labs/lab02-component-state.html#due-date",
+    "title": "Lab 2: Component and State Management",
     "section": "Due Date",
-    "text": "Due Date\nFriday, March 20, 2026"
+    "text": "Due Date\nTuesday, February 10, 2026"
+  },
+  {
+    "objectID": "labs/lab11-capstone-extension.html",
+    "href": "labs/lab11-capstone-extension.html",
+    "title": "Lab 11: Capstone Extension",
+    "section": "",
+    "text": "NoteComing Soon\n\n\n\nThis lab will be available on April 24, 2026."
+  },
+  {
+    "objectID": "labs/lab11-capstone-extension.html#overview",
+    "href": "labs/lab11-capstone-extension.html#overview",
+    "title": "Lab 11: Capstone Extension",
+    "section": "Overview",
+    "text": "Overview\nThis final lab provides time for project hardening and architectural experimentation."
+  },
+  {
+    "objectID": "labs/lab11-capstone-extension.html#learning-objectives",
+    "href": "labs/lab11-capstone-extension.html#learning-objectives",
+    "title": "Lab 11: Capstone Extension",
+    "section": "Learning Objectives",
+    "text": "Learning Objectives\n\nApply advanced patterns to your project\nHarden application for production\nConduct security review\nOptimize performance"
+  },
+  {
+    "objectID": "labs/lab11-capstone-extension.html#due-date",
+    "href": "labs/lab11-capstone-extension.html#due-date",
+    "title": "Lab 11: Capstone Extension",
+    "section": "Due Date",
+    "text": "Due Date\nTuesday, April 28, 2026"
+  },
+  {
+    "objectID": "labs/lab01-layered-architecture.html",
+    "href": "labs/lab01-layered-architecture.html",
+    "title": "Lab 1: Layered Client-Server Architecture",
+    "section": "",
+    "text": "NoteComing Soon\n\n\n\nThis lab will be available on January 27, 2026."
+  },
+  {
+    "objectID": "labs/lab01-layered-architecture.html#overview",
+    "href": "labs/lab01-layered-architecture.html#overview",
+    "title": "Lab 1: Layered Client-Server Architecture",
+    "section": "Overview",
+    "text": "Overview\nIn this lab, you will refactor your Lab 0 MERN application to implement proper layered architecture with clear separation of concerns."
+  },
+  {
+    "objectID": "labs/lab01-layered-architecture.html#learning-objectives",
+    "href": "labs/lab01-layered-architecture.html#learning-objectives",
+    "title": "Lab 1: Layered Client-Server Architecture",
+    "section": "Learning Objectives",
+    "text": "Learning Objectives\n\nImplement presentation, application, domain, and infrastructure layers\nApply dependency inversion principles\nCreate clean interfaces between layers\nWrite testable, maintainable code"
+  },
+  {
+    "objectID": "labs/lab01-layered-architecture.html#prerequisites",
+    "href": "labs/lab01-layered-architecture.html#prerequisites",
+    "title": "Lab 1: Layered Client-Server Architecture",
+    "section": "Prerequisites",
+    "text": "Prerequisites\n\nCompleted Lab 0\nUnderstanding of layered architecture patterns"
+  },
+  {
+    "objectID": "labs/lab01-layered-architecture.html#due-date",
+    "href": "labs/lab01-layered-architecture.html#due-date",
+    "title": "Lab 1: Layered Client-Server Architecture",
+    "section": "Due Date",
+    "text": "Due Date\nTuesday, February 3, 2026"
+  },
+  {
+    "objectID": "labs/lab08-ci-pipelines.html",
+    "href": "labs/lab08-ci-pipelines.html",
+    "title": "Lab 8: CI Pipelines",
+    "section": "",
+    "text": "NoteComing Soon\n\n\n\nThis lab will be available on April 3, 2026."
+  },
+  {
+    "objectID": "labs/lab08-ci-pipelines.html#overview",
+    "href": "labs/lab08-ci-pipelines.html#overview",
+    "title": "Lab 8: CI Pipelines",
+    "section": "Overview",
+    "text": "Overview\nThis lab focuses on building CI/CD pipelines and implementing automated testing strategies."
+  },
+  {
+    "objectID": "labs/lab08-ci-pipelines.html#learning-objectives",
+    "href": "labs/lab08-ci-pipelines.html#learning-objectives",
+    "title": "Lab 8: CI Pipelines",
+    "section": "Learning Objectives",
+    "text": "Learning Objectives\n\nConfigure GitHub Actions workflows\nImplement automated testing\nSet up deployment pipelines\nCreate quality gates"
+  },
+  {
+    "objectID": "labs/lab08-ci-pipelines.html#due-date",
+    "href": "labs/lab08-ci-pipelines.html#due-date",
+    "title": "Lab 8: CI Pipelines",
+    "section": "Due Date",
+    "text": "Due Date\nFriday, April 10, 2026"
+  },
+  {
+    "objectID": "labs/lab09-ai-assisted-coding.html",
+    "href": "labs/lab09-ai-assisted-coding.html",
+    "title": "Lab 9: AI-Assisted Coding",
+    "section": "",
+    "text": "NoteComing Soon\n\n\n\nThis lab will be available on April 10, 2026."
+  },
+  {
+    "objectID": "labs/lab09-ai-assisted-coding.html#overview",
+    "href": "labs/lab09-ai-assisted-coding.html#overview",
+    "title": "Lab 9: AI-Assisted Coding",
+    "section": "Overview",
+    "text": "Overview\nThis lab explores using AI assistants for coding, testing, and documentation."
+  },
+  {
+    "objectID": "labs/lab09-ai-assisted-coding.html#learning-objectives",
+    "href": "labs/lab09-ai-assisted-coding.html#learning-objectives",
+    "title": "Lab 9: AI-Assisted Coding",
+    "section": "Learning Objectives",
+    "text": "Learning Objectives\n\nUse AI coding assistants effectively\nGenerate tests with AI\nCreate documentation with AI\nEvaluate AI-generated code"
+  },
+  {
+    "objectID": "labs/lab09-ai-assisted-coding.html#due-date",
+    "href": "labs/lab09-ai-assisted-coding.html#due-date",
+    "title": "Lab 9: AI-Assisted Coding",
+    "section": "Due Date",
+    "text": "Due Date\nFriday, April 17, 2026"
+  },
+  {
+    "objectID": "labs/lab06-agentic-workflows.html",
+    "href": "labs/lab06-agentic-workflows.html",
+    "title": "Lab 6: Agentic Workflows",
+    "section": "",
+    "text": "NoteComing Soon\n\n\n\nThis lab will be available on March 20, 2026."
+  },
+  {
+    "objectID": "labs/lab06-agentic-workflows.html#overview",
+    "href": "labs/lab06-agentic-workflows.html#overview",
+    "title": "Lab 6: Agentic Workflows",
+    "section": "Overview",
+    "text": "Overview\nThis lab introduces agentic AI patterns and workflow systems integration with web applications."
+  },
+  {
+    "objectID": "labs/lab06-agentic-workflows.html#learning-objectives",
+    "href": "labs/lab06-agentic-workflows.html#learning-objectives",
+    "title": "Lab 6: Agentic Workflows",
+    "section": "Learning Objectives",
+    "text": "Learning Objectives\n\nDesign agent-based workflows\nImplement basic AI agents\nIntegrate LangChain/similar frameworks\nHandle agent-human interaction"
+  },
+  {
+    "objectID": "labs/lab06-agentic-workflows.html#due-date",
+    "href": "labs/lab06-agentic-workflows.html#due-date",
+    "title": "Lab 6: Agentic Workflows",
+    "section": "Due Date",
+    "text": "Due Date\nFriday, March 27, 2026"
+  },
+  {
+    "objectID": "labs/lab04-polyglot-persistence.html",
+    "href": "labs/lab04-polyglot-persistence.html",
+    "title": "Lab 4: Polyglot Persistence",
+    "section": "",
+    "text": "NoteComing Soon\n\n\n\nThis lab will be available on February 17, 2026."
+  },
+  {
+    "objectID": "labs/lab04-polyglot-persistence.html#overview",
+    "href": "labs/lab04-polyglot-persistence.html#overview",
+    "title": "Lab 4: Polyglot Persistence",
+    "section": "Overview",
+    "text": "Overview\nThis lab explores using multiple databases for different use cases within the same application."
+  },
+  {
+    "objectID": "labs/lab04-polyglot-persistence.html#learning-objectives",
+    "href": "labs/lab04-polyglot-persistence.html#learning-objectives",
+    "title": "Lab 4: Polyglot Persistence",
+    "section": "Learning Objectives",
+    "text": "Learning Objectives\n\nChoose appropriate databases for different data types\nImplement MongoDB for document storage\nImplement PostgreSQL for relational data\nHandle data consistency across stores"
+  },
+  {
+    "objectID": "labs/lab04-polyglot-persistence.html#due-date",
+    "href": "labs/lab04-polyglot-persistence.html#due-date",
+    "title": "Lab 4: Polyglot Persistence",
+    "section": "Due Date",
+    "text": "Due Date\nTuesday, February 24, 2026"
   },
   {
     "objectID": "labs/lab00-infrastructure-as-code.html",
@@ -1001,95 +1162,95 @@
     "text": "Getting Help\n\nOffice Hours: Tuesday 9-11 AM, Pitt 2206\nPiazza: Post questions with lab0 tag\nTA Sessions: Check LMS for schedule\n\n\n\n\n\n\n\nTipPro Tips\n\n\n\n\nStart early - Docker can have unexpected setup issues\nRead error messages carefully - they usually tell you what’s wrong\nUse docker compose logs -f service_name to debug specific services\nCheck that ports aren’t already in use on your machine\nIf stuck, try docker compose down -v and rebuild"
   },
   {
-    "objectID": "labs/lab04-polyglot-persistence.html",
-    "href": "labs/lab04-polyglot-persistence.html",
-    "title": "Lab 4: Polyglot Persistence",
+    "objectID": "labs/lab07-agent-orchestration.html",
+    "href": "labs/lab07-agent-orchestration.html",
+    "title": "Lab 7: Agent Orchestration",
     "section": "",
-    "text": "NoteComing Soon\n\n\n\nThis lab will be available on February 17, 2026."
+    "text": "NoteComing Soon\n\n\n\nThis lab will be available on March 27, 2026."
   },
   {
-    "objectID": "labs/lab04-polyglot-persistence.html#overview",
-    "href": "labs/lab04-polyglot-persistence.html#overview",
-    "title": "Lab 4: Polyglot Persistence",
+    "objectID": "labs/lab07-agent-orchestration.html#overview",
+    "href": "labs/lab07-agent-orchestration.html#overview",
+    "title": "Lab 7: Agent Orchestration",
     "section": "Overview",
-    "text": "Overview\nThis lab explores using multiple databases for different use cases within the same application."
+    "text": "Overview\nThis lab covers advanced agent orchestration, memory systems, and tool integration."
   },
   {
-    "objectID": "labs/lab04-polyglot-persistence.html#learning-objectives",
-    "href": "labs/lab04-polyglot-persistence.html#learning-objectives",
-    "title": "Lab 4: Polyglot Persistence",
+    "objectID": "labs/lab07-agent-orchestration.html#learning-objectives",
+    "href": "labs/lab07-agent-orchestration.html#learning-objectives",
+    "title": "Lab 7: Agent Orchestration",
     "section": "Learning Objectives",
-    "text": "Learning Objectives\n\nChoose appropriate databases for different data types\nImplement MongoDB for document storage\nImplement PostgreSQL for relational data\nHandle data consistency across stores"
+    "text": "Learning Objectives\n\nOrchestrate multiple agents\nImplement agent memory\nCreate custom tools for agents\nApply governance patterns"
   },
   {
-    "objectID": "labs/lab04-polyglot-persistence.html#due-date",
-    "href": "labs/lab04-polyglot-persistence.html#due-date",
-    "title": "Lab 4: Polyglot Persistence",
+    "objectID": "labs/lab07-agent-orchestration.html#due-date",
+    "href": "labs/lab07-agent-orchestration.html#due-date",
+    "title": "Lab 7: Agent Orchestration",
     "section": "Due Date",
-    "text": "Due Date\nTuesday, February 24, 2026"
+    "text": "Due Date\nFriday, April 3, 2026"
   },
   {
-    "objectID": "labs/lab01-layered-architecture.html",
-    "href": "labs/lab01-layered-architecture.html",
-    "title": "Lab 1: Layered Client-Server Architecture",
+    "objectID": "labs/lab05-auth-mobile.html",
+    "href": "labs/lab05-auth-mobile.html",
+    "title": "Lab 5: Authentication & Mobile",
     "section": "",
-    "text": "NoteComing Soon\n\n\n\nThis lab will be available on January 27, 2026."
+    "text": "NoteComing Soon\n\n\n\nThis lab will be available on March 13, 2026."
   },
   {
-    "objectID": "labs/lab01-layered-architecture.html#overview",
-    "href": "labs/lab01-layered-architecture.html#overview",
-    "title": "Lab 1: Layered Client-Server Architecture",
+    "objectID": "labs/lab05-auth-mobile.html#overview",
+    "href": "labs/lab05-auth-mobile.html#overview",
+    "title": "Lab 5: Authentication & Mobile",
     "section": "Overview",
-    "text": "Overview\nIn this lab, you will refactor your Lab 0 MERN application to implement proper layered architecture with clear separation of concerns."
+    "text": "Overview\nThis lab covers authentication patterns and mobile-friendly application architecture."
   },
   {
-    "objectID": "labs/lab01-layered-architecture.html#learning-objectives",
-    "href": "labs/lab01-layered-architecture.html#learning-objectives",
-    "title": "Lab 1: Layered Client-Server Architecture",
+    "objectID": "labs/lab05-auth-mobile.html#learning-objectives",
+    "href": "labs/lab05-auth-mobile.html#learning-objectives",
+    "title": "Lab 5: Authentication & Mobile",
     "section": "Learning Objectives",
-    "text": "Learning Objectives\n\nImplement presentation, application, domain, and infrastructure layers\nApply dependency inversion principles\nCreate clean interfaces between layers\nWrite testable, maintainable code"
+    "text": "Learning Objectives\n\nImplement JWT-based authentication\nHandle OAuth flows\nDesign mobile-responsive interfaces\nSecure API endpoints"
   },
   {
-    "objectID": "labs/lab01-layered-architecture.html#prerequisites",
-    "href": "labs/lab01-layered-architecture.html#prerequisites",
-    "title": "Lab 1: Layered Client-Server Architecture",
-    "section": "Prerequisites",
-    "text": "Prerequisites\n\nCompleted Lab 0\nUnderstanding of layered architecture patterns"
-  },
-  {
-    "objectID": "labs/lab01-layered-architecture.html#due-date",
-    "href": "labs/lab01-layered-architecture.html#due-date",
-    "title": "Lab 1: Layered Client-Server Architecture",
+    "objectID": "labs/lab05-auth-mobile.html#due-date",
+    "href": "labs/lab05-auth-mobile.html#due-date",
+    "title": "Lab 5: Authentication & Mobile",
     "section": "Due Date",
-    "text": "Due Date\nTuesday, February 3, 2026"
+    "text": "Due Date\nFriday, March 20, 2026"
   },
   {
-    "objectID": "labs/lab02-component-state.html",
-    "href": "labs/lab02-component-state.html",
-    "title": "Lab 2: Component and State Management",
+    "objectID": "labs/lab03-backend-patterns.html",
+    "href": "labs/lab03-backend-patterns.html",
+    "title": "Lab 3: Backend Architecture Patterns",
     "section": "",
-    "text": "NoteComing Soon\n\n\n\nThis lab will be available on February 3, 2026."
+    "text": "NoteComing Soon\n\n\n\nThis lab will be available on February 10, 2026."
   },
   {
-    "objectID": "labs/lab02-component-state.html#overview",
-    "href": "labs/lab02-component-state.html#overview",
-    "title": "Lab 2: Component and State Management",
+    "objectID": "labs/lab03-backend-patterns.html#overview",
+    "href": "labs/lab03-backend-patterns.html#overview",
+    "title": "Lab 3: Backend Architecture Patterns",
     "section": "Overview",
-    "text": "Overview\nThis lab focuses on frontend architecture patterns, including component design and state management strategies."
+    "text": "Overview\nThis lab covers backend architectural patterns including service layers, middleware, and API design."
   },
   {
-    "objectID": "labs/lab02-component-state.html#learning-objectives",
-    "href": "labs/lab02-component-state.html#learning-objectives",
-    "title": "Lab 2: Component and State Management",
+    "objectID": "labs/lab03-backend-patterns.html#learning-objectives",
+    "href": "labs/lab03-backend-patterns.html#learning-objectives",
+    "title": "Lab 3: Backend Architecture Patterns",
     "section": "Learning Objectives",
-    "text": "Learning Objectives\n\nDesign reusable component hierarchies\nImplement state management (Context API, Redux, etc.)\nApply React/Angular best practices\nHandle complex UI state"
+    "text": "Learning Objectives\n\nImplement service layer patterns\nDesign RESTful APIs\nCreate middleware pipelines\nHandle errors consistently"
   },
   {
-    "objectID": "labs/lab02-component-state.html#due-date",
-    "href": "labs/lab02-component-state.html#due-date",
-    "title": "Lab 2: Component and State Management",
+    "objectID": "labs/lab03-backend-patterns.html#due-date",
+    "href": "labs/lab03-backend-patterns.html#due-date",
+    "title": "Lab 3: Backend Architecture Patterns",
     "section": "Due Date",
-    "text": "Due Date\nTuesday, February 10, 2026"
+    "text": "Due Date\nTuesday, February 17, 2026"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "ITWS-4500: Advanced Web & Agentic AI Development",
+    "section": "",
+    "text": "Welcome to ITWS-4500: Web Science Systems Development, an advanced course focusing on the design and implementation of modern, production-quality web applications as integrated systems. This course examines architectural and design patterns underlying contemporary web platforms, with emphasis on system decomposition, data flow, scalability, reliability, and security.\n\n\n\n\n\n\nNoteSpring 2026 | RPI Lally School of Management\n\n\n\nLocation: Lally 102 Times: Tuesday/Friday 12:00-1:50 PM (Section 01) | 2:00-3:50 PM (Section 02) Instructor: Jason Kuruzovich"
   },
   {
     "objectID": "index.html#course-overview",
@@ -1993,173 +2154,5 @@
     "title": "Course Syllabus",
     "section": "Other Course Policies",
     "text": "Other Course Policies\nStudents must follow all institute safety and health protocols at all times throughout the semester. There will be no exception to these requirements at any time."
-  },
-  {
-    "objectID": "labs/lab10-deployment.html",
-    "href": "labs/lab10-deployment.html",
-    "title": "Lab 10: Deployment",
-    "section": "",
-    "text": "NoteComing Soon\n\n\n\nThis lab will be available on April 17, 2026."
-  },
-  {
-    "objectID": "labs/lab10-deployment.html#overview",
-    "href": "labs/lab10-deployment.html#overview",
-    "title": "Lab 10: Deployment",
-    "section": "Overview",
-    "text": "Overview\nThis lab covers deploying containerized applications to cloud platforms with caching and scaling."
-  },
-  {
-    "objectID": "labs/lab10-deployment.html#learning-objectives",
-    "href": "labs/lab10-deployment.html#learning-objectives",
-    "title": "Lab 10: Deployment",
-    "section": "Learning Objectives",
-    "text": "Learning Objectives\n\nDeploy to cloud platforms\nImplement caching strategies\nConfigure horizontal scaling\nMonitor application performance"
-  },
-  {
-    "objectID": "labs/lab10-deployment.html#due-date",
-    "href": "labs/lab10-deployment.html#due-date",
-    "title": "Lab 10: Deployment",
-    "section": "Due Date",
-    "text": "Due Date\nFriday, April 24, 2026"
-  },
-  {
-    "objectID": "labs/lab07-agent-orchestration.html",
-    "href": "labs/lab07-agent-orchestration.html",
-    "title": "Lab 7: Agent Orchestration",
-    "section": "",
-    "text": "NoteComing Soon\n\n\n\nThis lab will be available on March 27, 2026."
-  },
-  {
-    "objectID": "labs/lab07-agent-orchestration.html#overview",
-    "href": "labs/lab07-agent-orchestration.html#overview",
-    "title": "Lab 7: Agent Orchestration",
-    "section": "Overview",
-    "text": "Overview\nThis lab covers advanced agent orchestration, memory systems, and tool integration."
-  },
-  {
-    "objectID": "labs/lab07-agent-orchestration.html#learning-objectives",
-    "href": "labs/lab07-agent-orchestration.html#learning-objectives",
-    "title": "Lab 7: Agent Orchestration",
-    "section": "Learning Objectives",
-    "text": "Learning Objectives\n\nOrchestrate multiple agents\nImplement agent memory\nCreate custom tools for agents\nApply governance patterns"
-  },
-  {
-    "objectID": "labs/lab07-agent-orchestration.html#due-date",
-    "href": "labs/lab07-agent-orchestration.html#due-date",
-    "title": "Lab 7: Agent Orchestration",
-    "section": "Due Date",
-    "text": "Due Date\nFriday, April 3, 2026"
-  },
-  {
-    "objectID": "labs/lab09-ai-assisted-coding.html",
-    "href": "labs/lab09-ai-assisted-coding.html",
-    "title": "Lab 9: AI-Assisted Coding",
-    "section": "",
-    "text": "NoteComing Soon\n\n\n\nThis lab will be available on April 10, 2026."
-  },
-  {
-    "objectID": "labs/lab09-ai-assisted-coding.html#overview",
-    "href": "labs/lab09-ai-assisted-coding.html#overview",
-    "title": "Lab 9: AI-Assisted Coding",
-    "section": "Overview",
-    "text": "Overview\nThis lab explores using AI assistants for coding, testing, and documentation."
-  },
-  {
-    "objectID": "labs/lab09-ai-assisted-coding.html#learning-objectives",
-    "href": "labs/lab09-ai-assisted-coding.html#learning-objectives",
-    "title": "Lab 9: AI-Assisted Coding",
-    "section": "Learning Objectives",
-    "text": "Learning Objectives\n\nUse AI coding assistants effectively\nGenerate tests with AI\nCreate documentation with AI\nEvaluate AI-generated code"
-  },
-  {
-    "objectID": "labs/lab09-ai-assisted-coding.html#due-date",
-    "href": "labs/lab09-ai-assisted-coding.html#due-date",
-    "title": "Lab 9: AI-Assisted Coding",
-    "section": "Due Date",
-    "text": "Due Date\nFriday, April 17, 2026"
-  },
-  {
-    "objectID": "labs/lab06-agentic-workflows.html",
-    "href": "labs/lab06-agentic-workflows.html",
-    "title": "Lab 6: Agentic Workflows",
-    "section": "",
-    "text": "NoteComing Soon\n\n\n\nThis lab will be available on March 20, 2026."
-  },
-  {
-    "objectID": "labs/lab06-agentic-workflows.html#overview",
-    "href": "labs/lab06-agentic-workflows.html#overview",
-    "title": "Lab 6: Agentic Workflows",
-    "section": "Overview",
-    "text": "Overview\nThis lab introduces agentic AI patterns and workflow systems integration with web applications."
-  },
-  {
-    "objectID": "labs/lab06-agentic-workflows.html#learning-objectives",
-    "href": "labs/lab06-agentic-workflows.html#learning-objectives",
-    "title": "Lab 6: Agentic Workflows",
-    "section": "Learning Objectives",
-    "text": "Learning Objectives\n\nDesign agent-based workflows\nImplement basic AI agents\nIntegrate LangChain/similar frameworks\nHandle agent-human interaction"
-  },
-  {
-    "objectID": "labs/lab06-agentic-workflows.html#due-date",
-    "href": "labs/lab06-agentic-workflows.html#due-date",
-    "title": "Lab 6: Agentic Workflows",
-    "section": "Due Date",
-    "text": "Due Date\nFriday, March 27, 2026"
-  },
-  {
-    "objectID": "labs/lab08-ci-pipelines.html",
-    "href": "labs/lab08-ci-pipelines.html",
-    "title": "Lab 8: CI Pipelines",
-    "section": "",
-    "text": "NoteComing Soon\n\n\n\nThis lab will be available on April 3, 2026."
-  },
-  {
-    "objectID": "labs/lab08-ci-pipelines.html#overview",
-    "href": "labs/lab08-ci-pipelines.html#overview",
-    "title": "Lab 8: CI Pipelines",
-    "section": "Overview",
-    "text": "Overview\nThis lab focuses on building CI/CD pipelines and implementing automated testing strategies."
-  },
-  {
-    "objectID": "labs/lab08-ci-pipelines.html#learning-objectives",
-    "href": "labs/lab08-ci-pipelines.html#learning-objectives",
-    "title": "Lab 8: CI Pipelines",
-    "section": "Learning Objectives",
-    "text": "Learning Objectives\n\nConfigure GitHub Actions workflows\nImplement automated testing\nSet up deployment pipelines\nCreate quality gates"
-  },
-  {
-    "objectID": "labs/lab08-ci-pipelines.html#due-date",
-    "href": "labs/lab08-ci-pipelines.html#due-date",
-    "title": "Lab 8: CI Pipelines",
-    "section": "Due Date",
-    "text": "Due Date\nFriday, April 10, 2026"
-  },
-  {
-    "objectID": "labs/lab11-capstone-extension.html",
-    "href": "labs/lab11-capstone-extension.html",
-    "title": "Lab 11: Capstone Extension",
-    "section": "",
-    "text": "NoteComing Soon\n\n\n\nThis lab will be available on April 24, 2026."
-  },
-  {
-    "objectID": "labs/lab11-capstone-extension.html#overview",
-    "href": "labs/lab11-capstone-extension.html#overview",
-    "title": "Lab 11: Capstone Extension",
-    "section": "Overview",
-    "text": "Overview\nThis final lab provides time for project hardening and architectural experimentation."
-  },
-  {
-    "objectID": "labs/lab11-capstone-extension.html#learning-objectives",
-    "href": "labs/lab11-capstone-extension.html#learning-objectives",
-    "title": "Lab 11: Capstone Extension",
-    "section": "Learning Objectives",
-    "text": "Learning Objectives\n\nApply advanced patterns to your project\nHarden application for production\nConduct security review\nOptimize performance"
-  },
-  {
-    "objectID": "labs/lab11-capstone-extension.html#due-date",
-    "href": "labs/lab11-capstone-extension.html#due-date",
-    "title": "Lab 11: Capstone Extension",
-    "section": "Due Date",
-    "text": "Due Date\nTuesday, April 28, 2026"
   }
 ]
