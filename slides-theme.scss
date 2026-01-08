@@ -261,3 +261,20 @@ $code-color: $rpi-dark-red;
     margin-bottom: 0;
   }
 }
+
+/* Make mermaid diagrams behave nicely in Reveal slides */
+.reveal section .mermaid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.4rem 0.8rem;   /* adds breathing room */
+  overflow: visible;        /* key: avoid clipping */
+}
+
+
+
+.reveal section .mermaid svg {
+  overflow: visible;        /* key */
+  padding: 0.4rem 0.8rem;   /* adds breathing room */
+  
+}

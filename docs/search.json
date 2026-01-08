@@ -2154,5 +2154,383 @@
     "title": "Course Syllabus",
     "section": "Other Course Policies",
     "text": "Other Course Policies\nStudents must follow all institute safety and health protocols at all times throughout the semester. There will be no exception to these requirements at any time."
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction.html#why-this-course",
+    "href": "slides/week01/01-course-introduction.html#why-this-course",
+    "title": "Course Introduction",
+    "section": "Why This Course?",
+    "text": "Why This Course?\n\nBuild production-quality applications as integrated systems.\n\n\nThis is not only about writing code. We’ll focus on:\n\nArchitecture — how systems are structured and why\nPatterns — reusable solutions to common problems\nTrade-offs — choosing “good defaults” and knowing when to change them\nIntegration — making components work together\nOperations — deploying, monitoring, and evolving systems"
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction.html#big-idea-patterns-outlast-tools",
+    "href": "slides/week01/01-course-introduction.html#big-idea-patterns-outlast-tools",
+    "title": "Course Introduction",
+    "section": "Big Idea: Patterns Outlast Tools",
+    "text": "Big Idea: Patterns Outlast Tools\nTools and frameworks change quickly.\n\nPatterns stick around: - Client ↔︎ server communication - Authentication and sessions - Data modeling and persistence - Scaling and reliability - Dev workflows and deployment"
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction.html#the-full-stack-view",
+    "href": "slides/week01/01-course-introduction.html#the-full-stack-view",
+    "title": "Course Introduction",
+    "section": "The Full-Stack View",
+    "text": "The Full-Stack View\n\n\n\n\n\nflowchart LR\n    Client[\"Clients\"] --&gt; API[\"API\"] --&gt; Services[\"Services\"] --&gt; Data[\"Data\"]\n\n\n\n\n\n\n\nWe’ll revisit this diagram all semester and add details as your systems grow."
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction.html#web-applications",
+    "href": "slides/week01/01-course-introduction.html#web-applications",
+    "title": "Course Introduction",
+    "section": "Web Applications",
+    "text": "Web Applications\nCommon pattern: - Browser UI (React, Vue, etc.) - Communicates over HTTP/HTTPS - Mostly stateless requests\nTypical concerns: - Routing - Authentication - State management - Performance (latency, bundle size)"
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction.html#mobile-applications",
+    "href": "slides/week01/01-course-introduction.html#mobile-applications",
+    "title": "Course Introduction",
+    "section": "Mobile Applications",
+    "text": "Mobile Applications\nCommon pattern: - Native or cross-platform app - Often the same backend as the web app - More constraints (battery, offline use, flaky networks)\n\nKey takeaway: Web and mobile usually share the same backend."
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction.html#api-centered-design",
+    "href": "slides/week01/01-course-introduction.html#api-centered-design",
+    "title": "Course Introduction",
+    "section": "API-Centered Design",
+    "text": "API-Centered Design\nMost systems revolve around APIs: - REST (common default) - GraphQL (when it fits)\nTypical responsibilities: - Authentication & authorization - Business logic - Validation & error handling"
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction.html#service-organization",
+    "href": "slides/week01/01-course-introduction.html#service-organization",
+    "title": "Course Introduction",
+    "section": "Service Organization",
+    "text": "Service Organization\nYou’ll commonly see: - Monolith — everything in one deployable - Modular monolith — one deployable, clean internal boundaries - Microservices — multiple deployables, more coordination\n\nRule of thumb: Start simple; add distribution when you have clear reasons."
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction.html#databases-common-choices",
+    "href": "slides/week01/01-course-introduction.html#databases-common-choices",
+    "title": "Course Introduction",
+    "section": "Databases (Common Choices)",
+    "text": "Databases (Common Choices)\n\nRelational: PostgreSQL, MySQL\nDocument: MongoDB"
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction.html#what-matters-more-than-the-brand",
+    "href": "slides/week01/01-course-introduction.html#what-matters-more-than-the-brand",
+    "title": "Course Introduction",
+    "section": "What Matters More Than the Brand",
+    "text": "What Matters More Than the Brand\n\nData modeling (entities, relationships, constraints)\nIndexing and query patterns\nSecurity (least privilege, injection prevention)\nMigrations and change management"
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction.html#data-access-pattern",
+    "href": "slides/week01/01-course-introduction.html#data-access-pattern",
+    "title": "Course Introduction",
+    "section": "Data Access Pattern",
+    "text": "Data Access Pattern\nApplication → Data access layer → Database"
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction.html#from-laptop-to-cloud",
+    "href": "slides/week01/01-course-introduction.html#from-laptop-to-cloud",
+    "title": "Course Introduction",
+    "section": "From Laptop to Cloud",
+    "text": "From Laptop to Cloud\nA common progression: 1. Local development 2. Containers (Docker) 3. Cloud deployment"
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction.html#infrastructure-as-code",
+    "href": "slides/week01/01-course-introduction.html#infrastructure-as-code",
+    "title": "Course Introduction",
+    "section": "Infrastructure as Code",
+    "text": "Infrastructure as Code\nInstead of manual setup: - Configuration files - Repeatable environments - Version-controlled deployments\n\nIf it can’t be reproduced, it’s not done."
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction.html#the-new-reality",
+    "href": "slides/week01/01-course-introduction.html#the-new-reality",
+    "title": "Course Introduction",
+    "section": "The New Reality",
+    "text": "The New Reality\nModern developers use AI to: - Generate boilerplate - Explore unfamiliar stacks - Debug and refactor faster"
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction.html#the-catch",
+    "href": "slides/week01/01-course-introduction.html#the-catch",
+    "title": "Course Introduction",
+    "section": "The Catch",
+    "text": "The Catch\n\nAI is most useful when you understand the underlying patterns.\n\nThis course will help you ask better questions and evaluate AI output critically."
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction.html#patterns-tools-systems",
+    "href": "slides/week01/01-course-introduction.html#patterns-tools-systems",
+    "title": "Course Introduction",
+    "section": "Patterns → Tools → Systems",
+    "text": "Patterns → Tools → Systems\nWe will move from: - Concepts and patterns - To implementation and integration - To deployment and operations"
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction.html#coming-up",
+    "href": "slides/week01/01-course-introduction.html#coming-up",
+    "title": "Course Introduction",
+    "section": "Coming Up",
+    "text": "Coming Up\n\nWeb & API architectures\nDatabases and persistence\nDocker and deployment\nMulti-service systems"
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction.html#next-class",
+    "href": "slides/week01/01-course-introduction.html#next-class",
+    "title": "Course Introduction",
+    "section": "Next Class",
+    "text": "Next Class\nDocker and Infrastructure as Code"
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction_old.html#what-this-course-is-about",
+    "href": "slides/week01/01-course-introduction_old.html#what-this-course-is-about",
+    "title": "Course Introduction",
+    "section": "What This Course Is About",
+    "text": "What This Course Is About\n\nBuilding production-quality web applications as integrated systems\n\n\nThis is NOT just another coding course. We focus on:\n\nArchitecture - How systems are structured and why\nPatterns - Proven solutions to common problems\nTrade-offs - Understanding design decisions\nIntegration - Making components work together\nOperations - Running systems in the real world"
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction_old.html#the-full-stack-perspective",
+    "href": "slides/week01/01-course-introduction_old.html#the-full-stack-perspective",
+    "title": "Course Introduction",
+    "section": "The Full-Stack Perspective",
+    "text": "The Full-Stack Perspective\n\n\n\n\n\nflowchart TB\n    subgraph Client[\"Client Layer\"]\n        Web[Web Browser]\n        Mobile[Mobile App]\n        Desktop[Desktop App]\n    end\n\n    subgraph Gateway[\"API Layer\"]\n        API[API Gateway]\n        Auth[Authentication]\n        Rate[Rate Limiting]\n    end\n\n    subgraph Services[\"Service Layer\"]\n        UserSvc[User Service]\n        DataSvc[Data Service]\n        AgentSvc[Agent Service]\n    end\n\n    subgraph Data[\"Data Layer\"]\n        SQL[(PostgreSQL)]\n        NoSQL[(MongoDB)]\n        Cache[(Redis)]\n        Queue[Message Queue]\n    end\n\n    Client --&gt; Gateway\n    Gateway --&gt; Services\n    Services --&gt; Data"
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction_old.html#course-learning-outcomes",
+    "href": "slides/week01/01-course-introduction_old.html#course-learning-outcomes",
+    "title": "Course Introduction",
+    "section": "Course Learning Outcomes",
+    "text": "Course Learning Outcomes\n\nArchitectural Theory - Patterns, decomposition, trade-offs\nFull-Stack Integration - Frontend, backend, databases, APIs\nDesign & UX - State management, performance, usability\nIntelligent Systems - AI-assisted development, agents\nDeployment & Operations - Containers, CI/CD, cloud\nTechnical Communication - Documenting decisions\nCollaborative Development - Version control, testing, teamwork"
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction_old.html#assessment-structure",
+    "href": "slides/week01/01-course-introduction_old.html#assessment-structure",
+    "title": "Course Introduction",
+    "section": "Assessment Structure",
+    "text": "Assessment Structure\n\n\n\nComponent\nWeight\nDescription\n\n\n\n\nLabs\n30%\nWeekly hands-on exercises\n\n\nQuizzes\n30%\nTwo comprehensive assessments\n\n\nProject\n30%\nSemester-long team application\n\n\nParticipation\n10%\nEngagement and discussion\n\n\n\n\n\nAttendance Policy: More than 2 unexcused absences = 5% penalty per additional absence"
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction_old.html#the-semester-journey",
+    "href": "slides/week01/01-course-introduction_old.html#the-semester-journey",
+    "title": "Course Introduction",
+    "section": "The Semester Journey",
+    "text": "The Semester Journey\n\n\n\n\n\ntimeline\n    title ITWS-4500 Spring 2026\n    section Foundations\n        Week 1-2 : Infrastructure as Code\n                 : Docker & Architecture\n    section Core Stack\n        Week 3-5 : Frontend Patterns\n                 : Backend Patterns\n                 : Data Architecture\n    section Assessment\n        Week 6-7 : Quiz 1\n                 : Midterm Presentations\n    section Advanced\n        Week 8-10 : Authentication\n                  : Agentic AI\n                  : Orchestration\n    section DevOps\n        Week 11-12 : CI/CD\n                   : AI-Assisted Dev\n    section Final\n        Week 13-15 : Deployment\n                   : Quiz 2\n                   : Final Presentations"
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction_old.html#what-is-software-architecture",
+    "href": "slides/week01/01-course-introduction_old.html#what-is-software-architecture",
+    "title": "Course Introduction",
+    "section": "What is Software Architecture?",
+    "text": "What is Software Architecture?\n\n“Software architecture is the set of design decisions which, if made incorrectly, may cause your project to be cancelled.”\n— Eoin Woods\n\n\nArchitecture addresses:\n\nStructure - How components are organized\nBehavior - How components interact\nQuality Attributes - Performance, security, scalability\nConstraints - Technology, budget, timeline, team"
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction_old.html#the-architecture-iceberg",
+    "href": "slides/week01/01-course-introduction_old.html#the-architecture-iceberg",
+    "title": "Course Introduction",
+    "section": "The Architecture Iceberg",
+    "text": "The Architecture Iceberg\n         What users see\n    ┌─────────────────────────┐\n    │         UI/UX           │  ← 10% visible\n    └─────────────────────────┘\n    ════════════════════════════  Water line\n    ┌─────────────────────────┐\n    │    Application Logic    │\n    ├─────────────────────────┤\n    │    Service Boundaries   │\n    ├─────────────────────────┤\n    │    Data Architecture    │  ← 90% hidden\n    ├─────────────────────────┤\n    │    Infrastructure       │\n    ├─────────────────────────┤\n    │    Security & Auth      │\n    └─────────────────────────┘"
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction_old.html#why-architecture-matters",
+    "href": "slides/week01/01-course-introduction_old.html#why-architecture-matters",
+    "title": "Course Introduction",
+    "section": "Why Architecture Matters",
+    "text": "Why Architecture Matters\n\n\nWithout Good Architecture\n\nDifficult to change\nHard to scale\nSecurity vulnerabilities\nPerformance issues\nTeam conflicts\nTechnical debt\nProject failure\n\n\nWith Good Architecture\n\nAdaptable to change\nScalable by design\nSecurity built-in\nPredictable performance\nClear team boundaries\nManageable complexity\nSustainable delivery"
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction_old.html#architecture-vs.-design",
+    "href": "slides/week01/01-course-introduction_old.html#architecture-vs.-design",
+    "title": "Course Introduction",
+    "section": "Architecture vs. Design",
+    "text": "Architecture vs. Design\n\n\n\nArchitecture\nDesign\n\n\n\n\nStrategic decisions\nTactical decisions\n\n\nHard to change\nEasier to change\n\n\nSystem-wide impact\nLocal impact\n\n\nAddresses quality attributes\nAddresses functionality\n\n\n“What” and “Why”\n“How”\n\n\n\n\nExample: - Architecture: “We’ll use microservices with async messaging” - Design: “This service will use the Strategy pattern for payment processing”"
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction_old.html#pattern-the-evolution-of-web-architecture",
+    "href": "slides/week01/01-course-introduction_old.html#pattern-the-evolution-of-web-architecture",
+    "title": "Course Introduction",
+    "section": "Pattern: The Evolution of Web Architecture",
+    "text": "Pattern: The Evolution of Web Architecture\n\n\n\n\n\nflowchart LR\n    subgraph 1990s[\"1990s: Static\"]\n        HTML[HTML Files]\n        Server1[Web Server]\n        HTML --&gt; Server1\n    end\n\n    subgraph 2000s[\"2000s: Dynamic\"]\n        CGI[CGI/PHP/ASP]\n        DB1[(Database)]\n        CGI --&gt; DB1\n    end\n\n    subgraph 2010s[\"2010s: SPA + API\"]\n        SPA[Single Page App]\n        REST[REST API]\n        DB2[(Database)]\n        SPA --&gt; REST --&gt; DB2\n    end\n\n    subgraph 2020s[\"2020s+: Distributed\"]\n        App[Client Apps]\n        Gateway[API Gateway]\n        Svcs[Microservices]\n        Data[(Polyglot Data)]\n        AI[AI Services]\n        App --&gt; Gateway --&gt; Svcs --&gt; Data\n        Svcs --&gt; AI\n    end"
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction_old.html#pattern-monolithic-architecture",
+    "href": "slides/week01/01-course-introduction_old.html#pattern-monolithic-architecture",
+    "title": "Course Introduction",
+    "section": "Pattern: Monolithic Architecture",
+    "text": "Pattern: Monolithic Architecture\n┌──────────────────────────────────────────────────────────┐\n│                    Monolithic Application                │\n│  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐        │\n│  │     UI      │ │   Business  │ │    Data     │        │\n│  │   Layer     │ │    Logic    │ │   Access    │        │\n│  └─────────────┘ └─────────────┘ └─────────────┘        │\n│                                                          │\n│  Single deployable unit, single database                 │\n└──────────────────────────────────────────────────────────┘\n                            │\n                    ┌───────▼───────┐\n                    │   Database    │\n                    └───────────────┘\n\nPros: Simple, easy to develop, single deployment Cons: Scaling challenges, tight coupling, large codebase"
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction_old.html#pattern-layered-architecture",
+    "href": "slides/week01/01-course-introduction_old.html#pattern-layered-architecture",
+    "title": "Course Introduction",
+    "section": "Pattern: Layered Architecture",
+    "text": "Pattern: Layered Architecture\n┌───────────────────────────────────────────────────────┐\n│              Presentation Layer (UI)                   │\n│   React, Angular, Vue, Mobile Apps                     │\n└───────────────────────────────┬───────────────────────┘\n                                │\n┌───────────────────────────────▼───────────────────────┐\n│              Application Layer (API)                   │\n│   Controllers, Routes, Request Handling                │\n└───────────────────────────────┬───────────────────────┘\n                                │\n┌───────────────────────────────▼───────────────────────┐\n│              Business Logic Layer                      │\n│   Services, Domain Models, Rules                       │\n└───────────────────────────────┬───────────────────────┘\n                                │\n┌───────────────────────────────▼───────────────────────┐\n│              Data Access Layer                         │\n│   Repositories, ORM, Query Builders                    │\n└───────────────────────────────┬───────────────────────┘\n                                │\n                        ┌───────▼───────┐\n                        │   Database    │\n                        └───────────────┘"
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction_old.html#pattern-client-server-architecture",
+    "href": "slides/week01/01-course-introduction_old.html#pattern-client-server-architecture",
+    "title": "Course Introduction",
+    "section": "Pattern: Client-Server Architecture",
+    "text": "Pattern: Client-Server Architecture\n\n\n\n\n\nflowchart LR\n    subgraph Clients[\"Client Tier\"]\n        Browser[Web Browser]\n        Mobile[Mobile App]\n        CLI[CLI Tool]\n    end\n\n    subgraph Server[\"Server Tier\"]\n        API[API Server]\n        Worker[Background Workers]\n    end\n\n    subgraph Data[\"Data Tier\"]\n        DB[(Database)]\n        Cache[(Cache)]\n        Storage[File Storage]\n    end\n\n    Clients --&gt; |HTTP/WebSocket| Server\n    Server --&gt; Data\n\n\n\n\n\n\nKey Principle: Separation of concerns between tiers"
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction_old.html#pattern-microservices-architecture",
+    "href": "slides/week01/01-course-introduction_old.html#pattern-microservices-architecture",
+    "title": "Course Introduction",
+    "section": "Pattern: Microservices Architecture",
+    "text": "Pattern: Microservices Architecture\n\n\n\n\n\nflowchart TB\n    Client[Client Applications]\n    Gateway[API Gateway]\n\n    subgraph Services[\"Independent Services\"]\n        Auth[Auth Service]\n        Users[User Service]\n        Products[Product Service]\n        Orders[Order Service]\n        Agents[Agent Service]\n    end\n\n    subgraph Data[\"Each Service Owns Its Data\"]\n        AuthDB[(Auth DB)]\n        UserDB[(User DB)]\n        ProductDB[(Product DB)]\n        OrderDB[(Order DB)]\n        AgentDB[(Agent DB)]\n    end\n\n    Client --&gt; Gateway\n    Gateway --&gt; Services\n    Auth --&gt; AuthDB\n    Users --&gt; UserDB\n    Products --&gt; ProductDB\n    Orders --&gt; OrderDB\n    Agents --&gt; AgentDB"
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction_old.html#microservices-trade-offs",
+    "href": "slides/week01/01-course-introduction_old.html#microservices-trade-offs",
+    "title": "Course Introduction",
+    "section": "Microservices: Trade-offs",
+    "text": "Microservices: Trade-offs\n\n\nBenefits\n\nIndependent deployment\nTechnology diversity\nTeam autonomy\nFault isolation\nScalability per service\nEasier to understand (per service)\n\n\nChallenges\n\nDistributed system complexity\nNetwork latency\nData consistency\nOperational overhead\nTesting complexity\nService discovery\n\n\n\n\nCourse Approach: We’ll build systems that can evolve from monolith to microservices, learning patterns applicable to both."
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction_old.html#pattern-event-driven-architecture",
+    "href": "slides/week01/01-course-introduction_old.html#pattern-event-driven-architecture",
+    "title": "Course Introduction",
+    "section": "Pattern: Event-Driven Architecture",
+    "text": "Pattern: Event-Driven Architecture\n\n\n\n\n\nflowchart LR\n    Producer1[Order Service]\n    Producer2[User Service]\n\n    subgraph MessageBus[\"Message Bus / Event Stream\"]\n        Queue[Event Queue]\n    end\n\n    Consumer1[Email Service]\n    Consumer2[Analytics Service]\n    Consumer3[Agent Service]\n\n    Producer1 --&gt; |order.created| Queue\n    Producer2 --&gt; |user.registered| Queue\n    Queue --&gt; Consumer1\n    Queue --&gt; Consumer2\n    Queue --&gt; Consumer3\n\n\n\n\n\n\nKey Concepts: - Producers emit events, don’t know consumers - Consumers subscribe to relevant events - Loose coupling, high scalability"
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction_old.html#what-is-mern",
+    "href": "slides/week01/01-course-introduction_old.html#what-is-mern",
+    "title": "Course Introduction",
+    "section": "What is MERN?",
+    "text": "What is MERN?\n\n\nM - MongoDB\nDocument database - Flexible schemas - JSON-like data - Horizontal scaling\n\nE - Express.js\nWeb framework - HTTP routing - Middleware - API development\n\nR - React\nUI library - Component-based - Virtual DOM - Declarative\n\nN - Node.js\nRuntime environment - JavaScript on server - Event-driven - npm ecosystem"
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction_old.html#mern-architecture-overview",
+    "href": "slides/week01/01-course-introduction_old.html#mern-architecture-overview",
+    "title": "Course Introduction",
+    "section": "MERN Architecture Overview",
+    "text": "MERN Architecture Overview\n┌─────────────────────────────────────────────────────────────────┐\n│                         Client (React)                          │\n│  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐           │\n│  │Components│ │  State   │ │  Router  │ │   API    │           │\n│  │          │ │Management│ │          │ │  Client  │           │\n│  └──────────┘ └──────────┘ └──────────┘ └──────────┘           │\n└─────────────────────────────────┬───────────────────────────────┘\n                                  │ HTTP/REST\n┌─────────────────────────────────▼───────────────────────────────┐\n│                      Server (Node + Express)                     │\n│  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐           │\n│  │  Routes  │ │Middleware│ │Controllers│ │ Models   │           │\n│  │          │ │ (Auth)   │ │          │ │(Mongoose)│           │\n│  └──────────┘ └──────────┘ └──────────┘ └──────────┘           │\n└─────────────────────────────────┬───────────────────────────────┘\n                                  │\n                          ┌───────▼───────┐\n                          │   MongoDB     │\n                          │  (Database)   │\n                          └───────────────┘"
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction_old.html#why-mern-for-this-course",
+    "href": "slides/week01/01-course-introduction_old.html#why-mern-for-this-course",
+    "title": "Course Introduction",
+    "section": "Why MERN for This Course?",
+    "text": "Why MERN for This Course?\n\nJavaScript Everywhere - Same language client & server\nJSON Native - Data flows naturally through the stack\nLarge Ecosystem - npm has packages for everything\nIndustry Relevant - Widely used in production\nPattern-Rich - Demonstrates many architectural concepts\nAI Integration - Strong support for AI/ML libraries\n\n\n\nWe’ll extend MERN with PostgreSQL, Redis, and AI agent services to explore polyglot persistence and intelligent systems."
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction_old.html#a-simple-mern-request-flow",
+    "href": "slides/week01/01-course-introduction_old.html#a-simple-mern-request-flow",
+    "title": "Course Introduction",
+    "section": "A Simple MERN Request Flow",
+    "text": "A Simple MERN Request Flow\n\n\n\n\n\nsequenceDiagram\n    participant User\n    participant React as React (Client)\n    participant Express as Express (Server)\n    participant Mongoose as Mongoose (ODM)\n    participant MongoDB as MongoDB (Database)\n\n    User-&gt;&gt;React: Click \"Load Users\"\n    React-&gt;&gt;Express: GET /api/users\n    Express-&gt;&gt;Mongoose: User.find()\n    Mongoose-&gt;&gt;MongoDB: db.users.find()\n    MongoDB--&gt;&gt;Mongoose: [documents]\n    Mongoose--&gt;&gt;Express: [User objects]\n    Express--&gt;&gt;React: JSON response\n    React--&gt;&gt;User: Render user list"
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction_old.html#the--ilities-quality-attributes",
+    "href": "slides/week01/01-course-introduction_old.html#the--ilities-quality-attributes",
+    "title": "Course Introduction",
+    "section": "The -ilities: Quality Attributes",
+    "text": "The -ilities: Quality Attributes\nEvery architectural decision affects these qualities:\n\n\n\nScalability - Handle growth\nReliability - Work correctly\nAvailability - Stay operational\nPerformance - Respond quickly\nSecurity - Protect data\nMaintainability - Easy to change\n\n\n\nTestability - Verify behavior\nDeployability - Release safely\nObservability - Understand state\nPortability - Run anywhere\nUsability - User experience\nCost - Resource efficiency"
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction_old.html#trade-off-analysis",
+    "href": "slides/week01/01-course-introduction_old.html#trade-off-analysis",
+    "title": "Course Introduction",
+    "section": "Trade-off Analysis",
+    "text": "Trade-off Analysis\nEvery decision involves trade-offs:\n\n\n\n\n\n\n\n\nDecision\nImproves\nCosts\n\n\n\n\nAdd caching\nPerformance\nComplexity, consistency\n\n\nUse microservices\nScalability, team autonomy\nOperational complexity\n\n\nStrong typing\nReliability, maintainability\nDevelopment speed\n\n\nComprehensive logging\nObservability\nStorage, performance\n\n\nClient-side rendering\nInteractivity\nInitial load, SEO\n\n\n\n\nKey Skill: Articulating trade-offs and making informed decisions"
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction_old.html#the-cap-theorem",
+    "href": "slides/week01/01-course-introduction_old.html#the-cap-theorem",
+    "title": "Course Introduction",
+    "section": "The CAP Theorem",
+    "text": "The CAP Theorem\nIn distributed systems, you can only guarantee two of three:\n                    Consistency\n                        ▲\n                       /│\\\n                      / │ \\\n                     /  │  \\\n                    /   │   \\\n                   /    │    \\\n                  /     │     \\\n                 ▼      │      ▼\n        Availability ───┴─── Partition Tolerance\n\nCA - Single-node databases\nCP - Distributed databases (may reject writes)\nAP - Eventually consistent systems (may return stale data)"
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction_old.html#twelve-factor-app-principles",
+    "href": "slides/week01/01-course-introduction_old.html#twelve-factor-app-principles",
+    "title": "Course Introduction",
+    "section": "Twelve-Factor App Principles",
+    "text": "Twelve-Factor App Principles\nModern application design principles:\n\nCodebase - One codebase in version control\nDependencies - Explicitly declare dependencies\nConfig - Store config in environment\nBacking Services - Treat as attached resources\nBuild, Release, Run - Strict separation\nProcesses - Execute as stateless processes\n\n\n\nPort Binding - Export services via port\nConcurrency - Scale via process model\nDisposability - Fast startup, graceful shutdown\nDev/Prod Parity - Keep environments similar\nLogs - Treat as event streams\nAdmin Processes - Run as one-off processes"
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction_old.html#our-core-technology-stack",
+    "href": "slides/week01/01-course-introduction_old.html#our-core-technology-stack",
+    "title": "Course Introduction",
+    "section": "Our Core Technology Stack",
+    "text": "Our Core Technology Stack\n\n\n\n\n\nmindmap\n  root((ITWS-4500 Stack))\n    Frontend\n      React\n      TypeScript\n      CSS/SCSS\n      State Management\n    Backend\n      Node.js\n      Express.js\n      REST APIs\n      GraphQL\n    Data\n      MongoDB\n      PostgreSQL\n      Redis\n      Mongoose/Prisma\n    Infrastructure\n      Docker\n      Docker Compose\n      GitHub Actions\n      Cloud Platforms\n    AI/Agents\n      LangChain\n      OpenAI API\n      Agent Frameworks\n      RAG Systems"
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction_old.html#container-based-development",
+    "href": "slides/week01/01-course-introduction_old.html#container-based-development",
+    "title": "Course Introduction",
+    "section": "Container-Based Development",
+    "text": "Container-Based Development\n# Example: Node.js Dockerfile\nFROM node:20-alpine\n\nWORKDIR /app\n\n# Dependencies first (caching)\nCOPY package*.json ./\nRUN npm ci --only=production\n\n# Application code\nCOPY . .\n\n# Non-root user\nUSER node\n\nEXPOSE 3000\nCMD [\"node\", \"server.js\"]\nWe’ll use Docker Compose to orchestrate multiple services."
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction_old.html#version-control-collaboration",
+    "href": "slides/week01/01-course-introduction_old.html#version-control-collaboration",
+    "title": "Course Introduction",
+    "section": "Version Control & Collaboration",
+    "text": "Version Control & Collaboration\n\n\n\n\n\ngitGraph\n    commit id: \"Initial\"\n    branch develop\n    checkout develop\n    commit id: \"Feature setup\"\n    branch feature/auth\n    checkout feature/auth\n    commit id: \"Add login\"\n    commit id: \"Add JWT\"\n    checkout develop\n    merge feature/auth\n    branch feature/api\n    checkout feature/api\n    commit id: \"Add endpoints\"\n    checkout develop\n    merge feature/api\n    checkout main\n    merge develop tag: \"v1.0\"\n\n\n\n\n\n\nGit workflow is essential for team collaboration."
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction_old.html#semester-project-overview",
+    "href": "slides/week01/01-course-introduction_old.html#semester-project-overview",
+    "title": "Course Introduction",
+    "section": "Semester Project Overview",
+    "text": "Semester Project Overview\nYour team will design, build, and deploy a full-stack web application that:\n\nSolves a real problem or provides value\nDemonstrates architectural patterns from the course\nIncludes frontend, backend, and data layers\nIncorporates at least one AI/agent capability\nIs deployed and accessible online"
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction_old.html#project-timeline",
+    "href": "slides/week01/01-course-introduction_old.html#project-timeline",
+    "title": "Course Introduction",
+    "section": "Project Timeline",
+    "text": "Project Timeline\n\n\n\nMilestone\nDate\nDeliverable\n\n\n\n\nGroup Formation\nJan 16\nTeam of 3-4 members\n\n\nProposal\nJan 30\nProblem, scope, architecture\n\n\nMidterm\nFeb 24\nMVP with core features\n\n\nFinal\nApr 28\nComplete, deployed system"
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction_old.html#what-makes-a-good-project",
+    "href": "slides/week01/01-course-introduction_old.html#what-makes-a-good-project",
+    "title": "Course Introduction",
+    "section": "What Makes a Good Project?",
+    "text": "What Makes a Good Project?\n\n\nStrong Projects\n\nClear problem/value proposition\nWell-defined scope\nInteresting architectural decisions\nAI integration that makes sense\nTeam can explain trade-offs\n\n\nWeak Projects\n\nVague or too broad scope\nJust a CRUD app\nAI bolted on artificially\nNo architectural thinking\nCan’t justify decisions"
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction_old.html#project-ideas-to-consider",
+    "href": "slides/week01/01-course-introduction_old.html#project-ideas-to-consider",
+    "title": "Course Introduction",
+    "section": "Project Ideas to Consider",
+    "text": "Project Ideas to Consider\n\nAI-Enhanced Learning Platform - Personalized study with agents\nSmart Inventory System - Prediction and automation\nCollaborative Research Tool - AI-assisted analysis\nHealth & Wellness App - Tracking with intelligent insights\nLocal Business Platform - Connecting community services\nEvent Management System - Smart scheduling and coordination\n\n\nYour own ideas are welcome! Bring problems you care about."
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction_old.html#team-composition-15-minutes",
+    "href": "slides/week01/01-course-introduction_old.html#team-composition-15-minutes",
+    "title": "Course Introduction",
+    "section": "Team Composition (15 minutes)",
+    "text": "Team Composition (15 minutes)\nForm teams of 3-4 members\nConsider: - Complementary skills (frontend, backend, design, data) - Schedule compatibility for meetings - Communication preferences - Interest alignment\nActivity: Find your teammates, exchange contact info, create a group chat."
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction_old.html#team-introductions-20-minutes",
+    "href": "slides/week01/01-course-introduction_old.html#team-introductions-20-minutes",
+    "title": "Course Introduction",
+    "section": "Team Introductions (20 minutes)",
+    "text": "Team Introductions (20 minutes)\nEach team will briefly introduce:\n\nTeam members and their backgrounds\nInitial areas of interest for the project\nAny specific technologies you’re excited to explore"
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction_old.html#next-class-friday-january-16",
+    "href": "slides/week01/01-course-introduction_old.html#next-class-friday-january-16",
+    "title": "Course Introduction",
+    "section": "Next Class: Friday, January 16",
+    "text": "Next Class: Friday, January 16\nInfrastructure as Code: Containers, Docker, and Docker Compose\n\n\nBefore Class\n\nInstall Docker Desktop\nInstall VS Code\nWatch: Docker in 100 Seconds\nRead: Docker Overview\n\n\nWe’ll Cover\n\nContainer fundamentals\nDockerfile creation\nDocker Compose for multi-service apps\nDevelopment environment setup"
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction_old.html#week-2-preview",
+    "href": "slides/week01/01-course-introduction_old.html#week-2-preview",
+    "title": "Course Introduction",
+    "section": "Week 2 Preview",
+    "text": "Week 2 Preview\nTuesday 1/20: Lab 0 - Infrastructure as Code with Docker Compose\n\nBuild a complete MERN development environment\nUnderstand service orchestration\nFirst hands-on lab assignment\n\nFriday 1/23: Architectural Theory\n\nDeeper dive into patterns\nSystem decomposition strategies\nProject scoping techniques"
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction_old.html#summary",
+    "href": "slides/week01/01-course-introduction_old.html#summary",
+    "title": "Course Introduction",
+    "section": "Summary",
+    "text": "Summary\nToday we covered:\n\n✅ Course structure and expectations\n✅ Architectural thinking vs. just coding\n✅ Common architectural patterns\n✅ The MERN stack and why we use it\n✅ Quality attributes and trade-offs\n✅ Project overview and group formation"
+  },
+  {
+    "objectID": "slides/week01/01-course-introduction_old.html#questions",
+    "href": "slides/week01/01-course-introduction_old.html#questions",
+    "title": "Course Introduction",
+    "section": "Questions?",
+    "text": "Questions?\n\nOffice Hours: Tuesday 9-11 AM, Pitt 2206\nEmail: kuruzj@rpi.edu\nAppointments: bit.ly/jason-rpi"
   }
 ]
