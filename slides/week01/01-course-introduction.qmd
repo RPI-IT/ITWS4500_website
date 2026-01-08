@@ -1,0 +1,880 @@
+---
+title: "Course Introduction"
+subtitle: "Web Applications as Architectural Patterns"
+author: "Jason Kuruzovich"
+date: "January 13, 2026"
+format:
+  revealjs:
+    theme: [default, ../../slides-theme.scss]
+    logo: ../../static/logos/RPI_Logo_Binary_1_White.png
+    footer: "ITWS-4500 | Week 1, Day 1"
+    slide-number: true
+    transition: slide
+    width: 1600
+    height: 900
+    chalkboard: true
+    code-line-numbers: true
+    highlight-style: github
+    pdf-separate-fragments: false
+---
+
+# Welcome to ITWS-4500 {.section-slide background-color="#d6001c"}
+
+Advanced Web Systems Development
+
+## Today's Agenda
+
+::: {.learning-objectives}
+#### Learning Objectives
+
+1. Understand the course structure, expectations, and assessments
+2. View web applications through an **architectural lens**
+3. Recognize common **patterns** in modern web systems
+4. Explore the evolution from monolith to distributed systems
+5. Form project groups and begin scoping ideas
+:::
+
+## About Your Instructor
+
+:::: {.columns}
+
+::: {.column width="30%"}
+**Jason Kuruzovich**
+
+Associate Professor
+Lally School of Management
+:::
+
+::: {.column width="70%"}
+- Research: AI/ML applications, digital platforms, entrepreneurship
+- Industry: Enterprise software, startups, consulting
+- Teaching: Web systems, data science, analytics
+
+**Contact:**
+- Email: kuruzj@rpi.edu
+- Office: Pitt 2206
+- Hours: Tuesday 9-11 AM or by appointment
+- Book: [bit.ly/jason-rpi](https://bit.ly/jason-rpi)
+:::
+
+::::
+
+# Course Overview {.section-slide background-color="#d6001c"}
+
+## What This Course Is About
+
+> Building **production-quality** web applications as **integrated systems**
+
+. . .
+
+This is NOT just another coding course. We focus on:
+
+- **Architecture** - How systems are structured and why
+- **Patterns** - Proven solutions to common problems
+- **Trade-offs** - Understanding design decisions
+- **Integration** - Making components work together
+- **Operations** - Running systems in the real world
+
+## The Full-Stack Perspective
+
+```{mermaid}
+%%| fig-width: 14
+flowchart TB
+    subgraph Client["Client Layer"]
+        Web[Web Browser]
+        Mobile[Mobile App]
+        Desktop[Desktop App]
+    end
+
+    subgraph Gateway["API Layer"]
+        API[API Gateway]
+        Auth[Authentication]
+        Rate[Rate Limiting]
+    end
+
+    subgraph Services["Service Layer"]
+        UserSvc[User Service]
+        DataSvc[Data Service]
+        AgentSvc[Agent Service]
+    end
+
+    subgraph Data["Data Layer"]
+        SQL[(PostgreSQL)]
+        NoSQL[(MongoDB)]
+        Cache[(Redis)]
+        Queue[Message Queue]
+    end
+
+    Client --> Gateway
+    Gateway --> Services
+    Services --> Data
+```
+
+## Course Learning Outcomes
+
+1. **Architectural Theory** - Patterns, decomposition, trade-offs
+2. **Full-Stack Integration** - Frontend, backend, databases, APIs
+3. **Design & UX** - State management, performance, usability
+4. **Intelligent Systems** - AI-assisted development, agents
+5. **Deployment & Operations** - Containers, CI/CD, cloud
+6. **Technical Communication** - Documenting decisions
+7. **Collaborative Development** - Version control, testing, teamwork
+
+## Assessment Structure
+
+| Component | Weight | Description |
+|-----------|--------|-------------|
+| Labs | 30% | Weekly hands-on exercises |
+| Quizzes | 30% | Two comprehensive assessments |
+| Project | 30% | Semester-long team application |
+| Participation | 10% | Engagement and discussion |
+
+. . .
+
+::: {.callout-box .warning}
+**Attendance Policy:** More than 2 unexcused absences = 5% penalty per additional absence
+:::
+
+## The Semester Journey
+
+```{mermaid}
+%%| fig-width: 14
+timeline
+    title ITWS-4500 Spring 2026
+    section Foundations
+        Week 1-2 : Infrastructure as Code
+                 : Docker & Architecture
+    section Core Stack
+        Week 3-5 : Frontend Patterns
+                 : Backend Patterns
+                 : Data Architecture
+    section Assessment
+        Week 6-7 : Quiz 1
+                 : Midterm Presentations
+    section Advanced
+        Week 8-10 : Authentication
+                  : Agentic AI
+                  : Orchestration
+    section DevOps
+        Week 11-12 : CI/CD
+                   : AI-Assisted Dev
+    section Final
+        Week 13-15 : Deployment
+                   : Quiz 2
+                   : Final Presentations
+```
+
+# Thinking Architecturally {.section-slide background-color="#d6001c"}
+
+## What is Software Architecture?
+
+> "Software architecture is the set of **design decisions** which, if made incorrectly, may cause your project to be **cancelled**."
+>
+> — Eoin Woods
+
+. . .
+
+Architecture addresses:
+
+- **Structure** - How components are organized
+- **Behavior** - How components interact
+- **Quality Attributes** - Performance, security, scalability
+- **Constraints** - Technology, budget, timeline, team
+
+## The Architecture Iceberg
+
+```
+         What users see
+    ┌─────────────────────────┐
+    │         UI/UX           │  ← 10% visible
+    └─────────────────────────┘
+    ════════════════════════════  Water line
+    ┌─────────────────────────┐
+    │    Application Logic    │
+    ├─────────────────────────┤
+    │    Service Boundaries   │
+    ├─────────────────────────┤
+    │    Data Architecture    │  ← 90% hidden
+    ├─────────────────────────┤
+    │    Infrastructure       │
+    ├─────────────────────────┤
+    │    Security & Auth      │
+    └─────────────────────────┘
+```
+
+## Why Architecture Matters
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Without Good Architecture
+
+- Difficult to change
+- Hard to scale
+- Security vulnerabilities
+- Performance issues
+- Team conflicts
+- Technical debt
+- Project failure
+:::
+
+::: {.column width="50%"}
+### With Good Architecture
+
+- Adaptable to change
+- Scalable by design
+- Security built-in
+- Predictable performance
+- Clear team boundaries
+- Manageable complexity
+- Sustainable delivery
+:::
+
+::::
+
+## Architecture vs. Design
+
+| Architecture | Design |
+|--------------|--------|
+| Strategic decisions | Tactical decisions |
+| Hard to change | Easier to change |
+| System-wide impact | Local impact |
+| Addresses quality attributes | Addresses functionality |
+| "What" and "Why" | "How" |
+
+. . .
+
+**Example:**
+- Architecture: "We'll use microservices with async messaging"
+- Design: "This service will use the Strategy pattern for payment processing"
+
+# Architectural Patterns {.section-slide background-color="#d6001c"}
+
+## Pattern: The Evolution of Web Architecture
+
+```{mermaid}
+%%| fig-width: 14
+flowchart LR
+    subgraph 1990s["1990s: Static"]
+        HTML[HTML Files]
+        Server1[Web Server]
+        HTML --> Server1
+    end
+
+    subgraph 2000s["2000s: Dynamic"]
+        CGI[CGI/PHP/ASP]
+        DB1[(Database)]
+        CGI --> DB1
+    end
+
+    subgraph 2010s["2010s: SPA + API"]
+        SPA[Single Page App]
+        REST[REST API]
+        DB2[(Database)]
+        SPA --> REST --> DB2
+    end
+
+    subgraph 2020s["2020s+: Distributed"]
+        App[Client Apps]
+        Gateway[API Gateway]
+        Svcs[Microservices]
+        Data[(Polyglot Data)]
+        AI[AI Services]
+        App --> Gateway --> Svcs --> Data
+        Svcs --> AI
+    end
+```
+
+## Pattern: Monolithic Architecture
+
+```
+┌──────────────────────────────────────────────────────────┐
+│                    Monolithic Application                │
+│  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐        │
+│  │     UI      │ │   Business  │ │    Data     │        │
+│  │   Layer     │ │    Logic    │ │   Access    │        │
+│  └─────────────┘ └─────────────┘ └─────────────┘        │
+│                                                          │
+│  Single deployable unit, single database                 │
+└──────────────────────────────────────────────────────────┘
+                            │
+                    ┌───────▼───────┐
+                    │   Database    │
+                    └───────────────┘
+```
+
+. . .
+
+**Pros:** Simple, easy to develop, single deployment
+**Cons:** Scaling challenges, tight coupling, large codebase
+
+## Pattern: Layered Architecture
+
+```
+┌───────────────────────────────────────────────────────┐
+│              Presentation Layer (UI)                   │
+│   React, Angular, Vue, Mobile Apps                     │
+└───────────────────────────────┬───────────────────────┘
+                                │
+┌───────────────────────────────▼───────────────────────┐
+│              Application Layer (API)                   │
+│   Controllers, Routes, Request Handling                │
+└───────────────────────────────┬───────────────────────┘
+                                │
+┌───────────────────────────────▼───────────────────────┐
+│              Business Logic Layer                      │
+│   Services, Domain Models, Rules                       │
+└───────────────────────────────┬───────────────────────┘
+                                │
+┌───────────────────────────────▼───────────────────────┐
+│              Data Access Layer                         │
+│   Repositories, ORM, Query Builders                    │
+└───────────────────────────────┬───────────────────────┘
+                                │
+                        ┌───────▼───────┐
+                        │   Database    │
+                        └───────────────┘
+```
+
+## Pattern: Client-Server Architecture
+
+```{mermaid}
+%%| fig-width: 12
+flowchart LR
+    subgraph Clients["Client Tier"]
+        Browser[Web Browser]
+        Mobile[Mobile App]
+        CLI[CLI Tool]
+    end
+
+    subgraph Server["Server Tier"]
+        API[API Server]
+        Worker[Background Workers]
+    end
+
+    subgraph Data["Data Tier"]
+        DB[(Database)]
+        Cache[(Cache)]
+        Storage[File Storage]
+    end
+
+    Clients --> |HTTP/WebSocket| Server
+    Server --> Data
+```
+
+**Key Principle:** Separation of concerns between tiers
+
+## Pattern: Microservices Architecture
+
+```{mermaid}
+%%| fig-width: 14
+flowchart TB
+    Client[Client Applications]
+    Gateway[API Gateway]
+
+    subgraph Services["Independent Services"]
+        Auth[Auth Service]
+        Users[User Service]
+        Products[Product Service]
+        Orders[Order Service]
+        Agents[Agent Service]
+    end
+
+    subgraph Data["Each Service Owns Its Data"]
+        AuthDB[(Auth DB)]
+        UserDB[(User DB)]
+        ProductDB[(Product DB)]
+        OrderDB[(Order DB)]
+        AgentDB[(Agent DB)]
+    end
+
+    Client --> Gateway
+    Gateway --> Services
+    Auth --> AuthDB
+    Users --> UserDB
+    Products --> ProductDB
+    Orders --> OrderDB
+    Agents --> AgentDB
+```
+
+## Microservices: Trade-offs
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Benefits
+
+- Independent deployment
+- Technology diversity
+- Team autonomy
+- Fault isolation
+- Scalability per service
+- Easier to understand (per service)
+:::
+
+::: {.column width="50%"}
+### Challenges
+
+- Distributed system complexity
+- Network latency
+- Data consistency
+- Operational overhead
+- Testing complexity
+- Service discovery
+:::
+
+::::
+
+. . .
+
+::: {.callout-box .info}
+**Course Approach:** We'll build systems that can evolve from monolith to microservices, learning patterns applicable to both.
+:::
+
+## Pattern: Event-Driven Architecture
+
+```{mermaid}
+%%| fig-width: 14
+flowchart LR
+    Producer1[Order Service]
+    Producer2[User Service]
+
+    subgraph MessageBus["Message Bus / Event Stream"]
+        Queue[Event Queue]
+    end
+
+    Consumer1[Email Service]
+    Consumer2[Analytics Service]
+    Consumer3[Agent Service]
+
+    Producer1 --> |order.created| Queue
+    Producer2 --> |user.registered| Queue
+    Queue --> Consumer1
+    Queue --> Consumer2
+    Queue --> Consumer3
+```
+
+**Key Concepts:**
+- Producers emit events, don't know consumers
+- Consumers subscribe to relevant events
+- Loose coupling, high scalability
+
+# The MERN Stack {.section-slide background-color="#d6001c"}
+
+## What is MERN?
+
+:::: {.columns}
+
+::: {.column width="25%"}
+### M - MongoDB
+Document database
+- Flexible schemas
+- JSON-like data
+- Horizontal scaling
+:::
+
+::: {.column width="25%"}
+### E - Express.js
+Web framework
+- HTTP routing
+- Middleware
+- API development
+:::
+
+::: {.column width="25%"}
+### R - React
+UI library
+- Component-based
+- Virtual DOM
+- Declarative
+:::
+
+::: {.column width="25%"}
+### N - Node.js
+Runtime environment
+- JavaScript on server
+- Event-driven
+- npm ecosystem
+:::
+
+::::
+
+## MERN Architecture Overview
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                         Client (React)                          │
+│  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐           │
+│  │Components│ │  State   │ │  Router  │ │   API    │           │
+│  │          │ │Management│ │          │ │  Client  │           │
+│  └──────────┘ └──────────┘ └──────────┘ └──────────┘           │
+└─────────────────────────────────┬───────────────────────────────┘
+                                  │ HTTP/REST
+┌─────────────────────────────────▼───────────────────────────────┐
+│                      Server (Node + Express)                     │
+│  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐           │
+│  │  Routes  │ │Middleware│ │Controllers│ │ Models   │           │
+│  │          │ │ (Auth)   │ │          │ │(Mongoose)│           │
+│  └──────────┘ └──────────┘ └──────────┘ └──────────┘           │
+└─────────────────────────────────┬───────────────────────────────┘
+                                  │
+                          ┌───────▼───────┐
+                          │   MongoDB     │
+                          │  (Database)   │
+                          └───────────────┘
+```
+
+## Why MERN for This Course?
+
+1. **JavaScript Everywhere** - Same language client & server
+2. **JSON Native** - Data flows naturally through the stack
+3. **Large Ecosystem** - npm has packages for everything
+4. **Industry Relevant** - Widely used in production
+5. **Pattern-Rich** - Demonstrates many architectural concepts
+6. **AI Integration** - Strong support for AI/ML libraries
+
+. . .
+
+::: {.callout-box}
+We'll extend MERN with PostgreSQL, Redis, and AI agent services to explore polyglot persistence and intelligent systems.
+:::
+
+## A Simple MERN Request Flow
+
+```{mermaid}
+%%| fig-width: 14
+sequenceDiagram
+    participant User
+    participant React as React (Client)
+    participant Express as Express (Server)
+    participant Mongoose as Mongoose (ODM)
+    participant MongoDB as MongoDB (Database)
+
+    User->>React: Click "Load Users"
+    React->>Express: GET /api/users
+    Express->>Mongoose: User.find()
+    Mongoose->>MongoDB: db.users.find()
+    MongoDB-->>Mongoose: [documents]
+    Mongoose-->>Express: [User objects]
+    Express-->>React: JSON response
+    React-->>User: Render user list
+```
+
+# System Design Thinking {.section-slide background-color="#d6001c"}
+
+## The -ilities: Quality Attributes
+
+Every architectural decision affects these qualities:
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- **Scalability** - Handle growth
+- **Reliability** - Work correctly
+- **Availability** - Stay operational
+- **Performance** - Respond quickly
+- **Security** - Protect data
+- **Maintainability** - Easy to change
+:::
+
+::: {.column width="50%"}
+- **Testability** - Verify behavior
+- **Deployability** - Release safely
+- **Observability** - Understand state
+- **Portability** - Run anywhere
+- **Usability** - User experience
+- **Cost** - Resource efficiency
+:::
+
+::::
+
+## Trade-off Analysis
+
+Every decision involves trade-offs:
+
+| Decision | Improves | Costs |
+|----------|----------|-------|
+| Add caching | Performance | Complexity, consistency |
+| Use microservices | Scalability, team autonomy | Operational complexity |
+| Strong typing | Reliability, maintainability | Development speed |
+| Comprehensive logging | Observability | Storage, performance |
+| Client-side rendering | Interactivity | Initial load, SEO |
+
+. . .
+
+**Key Skill:** Articulating trade-offs and making informed decisions
+
+## The CAP Theorem
+
+In distributed systems, you can only guarantee two of three:
+
+```
+                    Consistency
+                        ▲
+                       /│\
+                      / │ \
+                     /  │  \
+                    /   │   \
+                   /    │    \
+                  /     │     \
+                 ▼      │      ▼
+        Availability ───┴─── Partition Tolerance
+```
+
+- **CA** - Single-node databases
+- **CP** - Distributed databases (may reject writes)
+- **AP** - Eventually consistent systems (may return stale data)
+
+## Twelve-Factor App Principles
+
+Modern application design principles:
+
+1. **Codebase** - One codebase in version control
+2. **Dependencies** - Explicitly declare dependencies
+3. **Config** - Store config in environment
+4. **Backing Services** - Treat as attached resources
+5. **Build, Release, Run** - Strict separation
+6. **Processes** - Execute as stateless processes
+
+. . .
+
+7. **Port Binding** - Export services via port
+8. **Concurrency** - Scale via process model
+9. **Disposability** - Fast startup, graceful shutdown
+10. **Dev/Prod Parity** - Keep environments similar
+11. **Logs** - Treat as event streams
+12. **Admin Processes** - Run as one-off processes
+
+# Technology Deep Dive {.section-slide background-color="#d6001c"}
+
+## Our Core Technology Stack
+
+```{mermaid}
+%%| fig-width: 14
+mindmap
+  root((ITWS-4500 Stack))
+    Frontend
+      React
+      TypeScript
+      CSS/SCSS
+      State Management
+    Backend
+      Node.js
+      Express.js
+      REST APIs
+      GraphQL
+    Data
+      MongoDB
+      PostgreSQL
+      Redis
+      Mongoose/Prisma
+    Infrastructure
+      Docker
+      Docker Compose
+      GitHub Actions
+      Cloud Platforms
+    AI/Agents
+      LangChain
+      OpenAI API
+      Agent Frameworks
+      RAG Systems
+```
+
+## Container-Based Development
+
+```dockerfile
+# Example: Node.js Dockerfile
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Dependencies first (caching)
+COPY package*.json ./
+RUN npm ci --only=production
+
+# Application code
+COPY . .
+
+# Non-root user
+USER node
+
+EXPOSE 3000
+CMD ["node", "server.js"]
+```
+
+We'll use Docker Compose to orchestrate multiple services.
+
+## Version Control & Collaboration
+
+```{mermaid}
+%%| fig-width: 14
+gitGraph
+    commit id: "Initial"
+    branch develop
+    checkout develop
+    commit id: "Feature setup"
+    branch feature/auth
+    checkout feature/auth
+    commit id: "Add login"
+    commit id: "Add JWT"
+    checkout develop
+    merge feature/auth
+    branch feature/api
+    checkout feature/api
+    commit id: "Add endpoints"
+    checkout develop
+    merge feature/api
+    checkout main
+    merge develop tag: "v1.0"
+```
+
+Git workflow is essential for team collaboration.
+
+# Project Introduction {.section-slide background-color="#d6001c"}
+
+## Semester Project Overview
+
+Your team will design, build, and deploy a **full-stack web application** that:
+
+- Solves a real problem or provides value
+- Demonstrates architectural patterns from the course
+- Includes frontend, backend, and data layers
+- Incorporates at least one AI/agent capability
+- Is deployed and accessible online
+
+## Project Timeline
+
+| Milestone | Date | Deliverable |
+|-----------|------|-------------|
+| Group Formation | Jan 16 | Team of 3-4 members |
+| Proposal | Jan 30 | Problem, scope, architecture |
+| Midterm | Feb 24 | MVP with core features |
+| Final | Apr 28 | Complete, deployed system |
+
+## What Makes a Good Project?
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Strong Projects
+
+- Clear problem/value proposition
+- Well-defined scope
+- Interesting architectural decisions
+- AI integration that makes sense
+- Team can explain trade-offs
+:::
+
+::: {.column width="50%"}
+### Weak Projects
+
+- Vague or too broad scope
+- Just a CRUD app
+- AI bolted on artificially
+- No architectural thinking
+- Can't justify decisions
+:::
+
+::::
+
+## Project Ideas to Consider
+
+- **AI-Enhanced Learning Platform** - Personalized study with agents
+- **Smart Inventory System** - Prediction and automation
+- **Collaborative Research Tool** - AI-assisted analysis
+- **Health & Wellness App** - Tracking with intelligent insights
+- **Local Business Platform** - Connecting community services
+- **Event Management System** - Smart scheduling and coordination
+
+. . .
+
+**Your own ideas are welcome!** Bring problems you care about.
+
+# Group Formation {.section-slide background-color="#d6001c"}
+
+## Team Composition (15 minutes)
+
+Form teams of **3-4 members**
+
+Consider:
+- Complementary skills (frontend, backend, design, data)
+- Schedule compatibility for meetings
+- Communication preferences
+- Interest alignment
+
+**Activity:** Find your teammates, exchange contact info, create a group chat.
+
+## Team Introductions (20 minutes)
+
+Each team will briefly introduce:
+
+1. Team members and their backgrounds
+2. Initial areas of interest for the project
+3. Any specific technologies you're excited to explore
+
+# Looking Ahead {.section-slide background-color="#d6001c"}
+
+## Next Class: Friday, January 16
+
+**Infrastructure as Code: Containers, Docker, and Docker Compose**
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Before Class
+
+- Install Docker Desktop
+- Install VS Code
+- Watch: [Docker in 100 Seconds](https://www.youtube.com/watch?v=Gjnup-PuquQ)
+- Read: [Docker Overview](https://docs.docker.com/get-started/overview/)
+:::
+
+::: {.column width="50%"}
+### We'll Cover
+
+- Container fundamentals
+- Dockerfile creation
+- Docker Compose for multi-service apps
+- Development environment setup
+:::
+
+::::
+
+## Week 2 Preview
+
+**Tuesday 1/20:** Lab 0 - Infrastructure as Code with Docker Compose
+
+- Build a complete MERN development environment
+- Understand service orchestration
+- First hands-on lab assignment
+
+**Friday 1/23:** Architectural Theory
+
+- Deeper dive into patterns
+- System decomposition strategies
+- Project scoping techniques
+
+## Summary
+
+Today we covered:
+
+1. ✅ Course structure and expectations
+2. ✅ Architectural thinking vs. just coding
+3. ✅ Common architectural patterns
+4. ✅ The MERN stack and why we use it
+5. ✅ Quality attributes and trade-offs
+6. ✅ Project overview and group formation
+
+## Questions?
+
+::: {.callout-box}
+**Office Hours:** Tuesday 9-11 AM, Pitt 2206
+
+**Email:** kuruzj@rpi.edu
+
+**Appointments:** [bit.ly/jason-rpi](https://bit.ly/jason-rpi)
+:::
+
+---
+
+Thank you! See you Friday for Docker and Infrastructure as Code.

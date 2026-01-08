@@ -1,0 +1,42 @@
+---
+title: "Week 6: Data Architecture & Quiz 1"
+subtitle: "Lab 4 & First Assessment"
+---
+
+## This Week's Sessions
+
+### Tuesday, February 17: Lab 4
+Polyglot Persistence (MongoDB & PostgreSQL)
+
+[Lab Assignment](../../labs/lab04-polyglot-persistence.qmd){.btn .btn-success}
+
+### Friday, February 20: Quiz 1
+Architectural Foundations and System Design
+
+## Learning Objectives
+
+By the end of this week, you will be able to:
+
+1. Implement polyglot persistence patterns
+2. Work with both MongoDB and PostgreSQL
+3. Demonstrate understanding of architectural foundations
+
+## Deliverables
+
+::: {.callout-important}
+**Lab 4 Due:** Tuesday, February 24, 2026
+
+**Quiz 1:** Friday, February 20 (in-class)
+:::
+
+## Quiz 1 Topics
+
+- Infrastructure as Code (Docker, Docker Compose)
+- Architectural Patterns (Layered, Client-Server, etc.)
+- Frontend Architecture
+- Backend Architecture
+- Data Architecture
+
+## Resources
+
+*Coming soon*

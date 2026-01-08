@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Course Syllabus – ITWS-4500: Advanced Web &amp; Agentic AI Development</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./static/logos/RPI_Logo_Binary_1.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-674b895ea931ffa4b4900794805962b3.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-e0dfd07c0e7a91a9a0c538eb51a6efe0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./static/logos/RPI_Logo_Binary_1_White.png" alt="" class="navbar-logo light-content">
+    <img src="./static/logos/RPI_Logo_Binary_1_White.png" alt="" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">ITWS-4500: Advanced Web &amp; Agentic AI Development</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./syllabus.html" aria-current="page"> 
+<span class="menu-text">Syllabus</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./schedule.html"> 
+<span class="menu-text">Schedule</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-slides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Slides</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-slides">    
+        <li>
+    <a class="dropdown-item" href="./slides/week01/index.html">
+ <span class="dropdown-text">Week 1: Introduction &amp; IaC</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./slides/week02/index.html">
+ <span class="dropdown-text">Week 2: Lab 0 &amp; Architecture</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./slides/week03/index.html">
+ <span class="dropdown-text">Week 3: Lab 1 &amp; Frontend</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./slides/week04/index.html">
+ <span class="dropdown-text">Week 4: Lab 2 &amp; Backend</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./slides/week05/index.html">
+ <span class="dropdown-text">Week 5: Lab 3 &amp; Data</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./slides/week06/index.html">
+ <span class="dropdown-text">Week 6: Lab 4 &amp; Quiz 1</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./slides/week07/index.html">
+ <span class="dropdown-text">Week 7: Midterm &amp; Project</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./slides/week08/index.html">
+ <span class="dropdown-text">Week 8: Auth &amp; Mobile</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./slides/week09/index.html">
+ <span class="dropdown-text">Week 9: Agentic AI I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./slides/week10/index.html">
+ <span class="dropdown-text">Week 10: Agentic AI II</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./slides/week11/index.html">
+ <span class="dropdown-text">Week 11: CI/CD</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./slides/week12/index.html">
+ <span class="dropdown-text">Week 12: AI-Assisted Dev</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./slides/week13/index.html">
+ <span class="dropdown-text">Week 13: Deployment</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./slides/week14/index.html">
+ <span class="dropdown-text">Week 14: Quiz 2 &amp; Capstone</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./slides/week15/index.html">
+ <span class="dropdown-text">Week 15: Final Presentations</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-labs" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Labs</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-labs">    
+        <li>
+    <a class="dropdown-item" href="./labs/lab00-infrastructure-as-code.html">
+ <span class="dropdown-text">Lab 0: Infrastructure as Code</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./labs/lab01-layered-architecture.html">
+ <span class="dropdown-text">Lab 1: Layered Architecture</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./labs/lab02-component-state.html">
+ <span class="dropdown-text">Lab 2: Component &amp; State</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./labs/lab03-backend-patterns.html">
+ <span class="dropdown-text">Lab 3: Backend Patterns</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./labs/lab04-polyglot-persistence.html">
+ <span class="dropdown-text">Lab 4: Polyglot Persistence</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./labs/lab05-auth-mobile.html">
+ <span class="dropdown-text">Lab 5: Auth &amp; Mobile</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./labs/lab06-agentic-workflows.qmd">
+ <span class="dropdown-text">Lab 6: Agentic Workflows</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./labs/lab07-agent-orchestration.qmd">
+ <span class="dropdown-text">Lab 7: Agent Orchestration</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./labs/lab08-ci-pipelines.qmd">
+ <span class="dropdown-text">Lab 8: CI Pipelines</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./labs/lab09-ai-assisted-coding.qmd">
+ <span class="dropdown-text">Lab 9: AI-Assisted Coding</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./labs/lab10-deployment.qmd">
+ <span class="dropdown-text">Lab 10: Deployment</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./labs/lab11-capstone-extension.qmd">
+ <span class="dropdown-text">Lab 11: Capstone Extension</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/rpi-techfundamentals"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://lms.rpi.edu"> 
+<span class="menu-text">LMS</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#course-information" id="toc-course-information" class="nav-link active" data-scroll-target="#course-information">Course Information</a></li>
+  <li><a href="#instructor" id="toc-instructor" class="nav-link" data-scroll-target="#instructor">Instructor</a></li>
+  <li><a href="#course-description" id="toc-course-description" class="nav-link" data-scroll-target="#course-description">Course Description</a></li>
+  <li><a href="#student-learning-outcomes" id="toc-student-learning-outcomes" class="nav-link" data-scroll-target="#student-learning-outcomes">Student Learning Outcomes</a>
+  <ul class="collapse">
+  <li><a href="#architectural-theory-and-systems-thinking" id="toc-architectural-theory-and-systems-thinking" class="nav-link" data-scroll-target="#architectural-theory-and-systems-thinking">1. Architectural Theory and Systems Thinking</a></li>
+  <li><a href="#full-stack-technology-integration" id="toc-full-stack-technology-integration" class="nav-link" data-scroll-target="#full-stack-technology-integration">2. Full-Stack Technology Integration</a></li>
+  <li><a href="#design-ux-and-data-considerations" id="toc-design-ux-and-data-considerations" class="nav-link" data-scroll-target="#design-ux-and-data-considerations">3. Design, UX, and Data Considerations</a></li>
+  <li><a href="#intelligent-and-automated-systems" id="toc-intelligent-and-automated-systems" class="nav-link" data-scroll-target="#intelligent-and-automated-systems">4. Intelligent and Automated Systems</a></li>
+  <li><a href="#deployment-scaling-and-operations" id="toc-deployment-scaling-and-operations" class="nav-link" data-scroll-target="#deployment-scaling-and-operations">5. Deployment, Scaling, and Operations</a></li>
+  <li><a href="#technical-communication-and-analysis" id="toc-technical-communication-and-analysis" class="nav-link" data-scroll-target="#technical-communication-and-analysis">6. Technical Communication and Analysis</a></li>
+  <li><a href="#collaborative-development-and-professional-practice" id="toc-collaborative-development-and-professional-practice" class="nav-link" data-scroll-target="#collaborative-development-and-professional-practice">7. Collaborative Development and Professional Practice</a></li>
+  </ul></li>
+  <li><a href="#required-materials" id="toc-required-materials" class="nav-link" data-scroll-target="#required-materials">Required Materials</a></li>
+  <li><a href="#course-assessment" id="toc-course-assessment" class="nav-link" data-scroll-target="#course-assessment">Course Assessment</a></li>
+  <li><a href="#grading-scale" id="toc-grading-scale" class="nav-link" data-scroll-target="#grading-scale">Grading Scale</a></li>
+  <li><a href="#attendance-policy" id="toc-attendance-policy" class="nav-link" data-scroll-target="#attendance-policy">Attendance Policy</a></li>
+  <li><a href="#academic-integrity" id="toc-academic-integrity" class="nav-link" data-scroll-target="#academic-integrity">Academic Integrity</a></li>
+  <li><a href="#academic-accommodations" id="toc-academic-accommodations" class="nav-link" data-scroll-target="#academic-accommodations">Academic Accommodations</a></li>
+  <li><a href="#other-course-policies" id="toc-other-course-policies" class="nav-link" data-scroll-target="#other-course-policies">Other Course Policies</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Course Syllabus</h1>
+<p class="subtitle lead">ITWS-4500: Advanced Web &amp; Agentic AI Development</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="course-information" class="level2">
+<h2 class="anchored" data-anchor-id="course-information">Course Information</h2>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td><strong>Course</strong></td>
+<td>ITWS-4500: Web Science Systems Development</td>
+</tr>
+<tr class="even">
+<td><strong>Term</strong></td>
+<td>Spring 2026</td>
+</tr>
+<tr class="odd">
+<td><strong>Location</strong></td>
+<td>Lally 102</td>
+</tr>
+<tr class="even">
+<td><strong>Section 01</strong></td>
+<td>Tuesday/Friday 12:00 PM - 1:50 PM</td>
+</tr>
+<tr class="odd">
+<td><strong>Section 02</strong></td>
+<td>Tuesday/Friday 2:00 PM - 3:50 PM</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="instructor" class="level2">
+<h2 class="anchored" data-anchor-id="instructor">Instructor</h2>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td><strong>Name</strong></td>
+<td>Jason Kuruzovich</td>
+</tr>
+<tr class="even">
+<td><strong>Email</strong></td>
+<td><a href="mailto:kuruzj@rpi.edu">kuruzj@rpi.edu</a></td>
+</tr>
+<tr class="odd">
+<td><strong>Office</strong></td>
+<td>Pitt 2206</td>
+</tr>
+<tr class="even">
+<td><strong>Phone</strong></td>
+<td>518-698-9910</td>
+</tr>
+<tr class="odd">
+<td><strong>Office Hours</strong></td>
+<td>Tuesday 9:00-11:00 AM (in person); Teams by appointment</td>
+</tr>
+<tr class="even">
+<td><strong>Appointments</strong></td>
+<td><a href="https://bit.ly/jason-rpi">Book Online</a></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="course-description" class="level2">
+<h2 class="anchored" data-anchor-id="course-description">Course Description</h2>
+<p>Building on the foundations established in Web Systems Development, this course focuses on the <strong>design and implementation of modern, production-quality web applications as integrated systems</strong>. Students will examine architectural and design patterns that underlie contemporary web platforms, emphasizing system decomposition, data flow, scalability, reliability, and security.</p>
+<p>The course adopts a <strong>full-stack perspective</strong>, integrating modern frontend frameworks, backend services, databases, and APIs into cohesive and maintainable applications. Core technologies include HTML5/CSS3, JavaScript-based frontend frameworks, Node.js, Express.js, MongoDB, and related tooling. Students will also explore user experience design, data modeling, and performance considerations that influence real-world application behavior.</p>
+<p>In addition, the course introduces <strong>intelligent and automated system components</strong>, including AI-assisted development workflows and agent-based automation, and examines how such capabilities can be safely and effectively incorporated into web applications. Emphasis is placed on testing, containerization, continuous integration and deployment, and cloud-based deployment and scaling using contemporary platforms and practices.</p>
+<p>The course is <strong>lab-intensive and project-driven</strong>, with students working collaboratively to design, build, deploy, and present a full-stack web application.</p>
+</section>
+<section id="student-learning-outcomes" class="level2">
+<h2 class="anchored" data-anchor-id="student-learning-outcomes">Student Learning Outcomes</h2>
+<p>Upon successful completion of this course, students will be able to:</p>
+<section id="architectural-theory-and-systems-thinking" class="level3">
+<h3 class="anchored" data-anchor-id="architectural-theory-and-systems-thinking">1. Architectural Theory and Systems Thinking</h3>
+<p>Students will demonstrate knowledge of the theoretical foundations of modern web application architecture, including architectural patterns, system decomposition, data flow, and trade-offs related to scalability, reliability, and security.</p>
+</section>
+<section id="full-stack-technology-integration" class="level3">
+<h3 class="anchored" data-anchor-id="full-stack-technology-integration">2. Full-Stack Technology Integration</h3>
+<p>Students will demonstrate the ability to design and implement full-stack web applications using a modern frontend, backend services, databases, and APIs, integrating multiple technologies into a coherent and maintainable system.</p>
+</section>
+<section id="design-ux-and-data-considerations" class="level3">
+<h3 class="anchored" data-anchor-id="design-ux-and-data-considerations">3. Design, UX, and Data Considerations</h3>
+<p>Students will demonstrate understanding of the technical, data, and user-experience considerations that influence the design of production-quality web applications, including state management, performance, usability, and data modeling.</p>
+</section>
+<section id="intelligent-and-automated-systems" class="level3">
+<h3 class="anchored" data-anchor-id="intelligent-and-automated-systems">4. Intelligent and Automated Systems</h3>
+<p>Students will demonstrate the ability to incorporate intelligent components into web applications, including AI-assisted development workflows and agent-based automation, while reasoning about correctness, reliability, and human oversight.</p>
+</section>
+<section id="deployment-scaling-and-operations" class="level3">
+<h3 class="anchored" data-anchor-id="deployment-scaling-and-operations">5. Deployment, Scaling, and Operations</h3>
+<p>Students will demonstrate the ability to deploy, test, and operate web applications in cloud environments, applying containerization, CI/CD pipelines, and scaling patterns to support real-world usage.</p>
+</section>
+<section id="technical-communication-and-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="technical-communication-and-analysis">6. Technical Communication and Analysis</h3>
+<p>Students will be able to investigate, analyze, and clearly communicate architectural and technical decisions, including trade-offs and alternatives, in a manner that enables others to understand and evaluate complex systems.</p>
+</section>
+<section id="collaborative-development-and-professional-practice" class="level3">
+<h3 class="anchored" data-anchor-id="collaborative-development-and-professional-practice">7. Collaborative Development and Professional Practice</h3>
+<p>Students will demonstrate effective collaboration and professional software development practices, including version control, testing, documentation, and team-based project execution.</p>
+</section>
+</section>
+<section id="required-materials" class="level2">
+<h2 class="anchored" data-anchor-id="required-materials">Required Materials</h2>
+<p>The reading materials will be tailored to provide the needed conceptual background for the various technologies examined. Links to the required readings will be available via the LMS.</p>
+<p><strong>Recommended tools (free):</strong></p>
+<ul>
+<li><a href="https://code.visualstudio.com/">Visual Studio Code</a> with recommended extensions</li>
+<li><a href="https://www.docker.com/products/docker-desktop/">Docker Desktop</a></li>
+<li><a href="https://git-scm.com/">Git</a> and <a href="https://github.com/">GitHub</a> account</li>
+<li><a href="https://nodejs.org/">Node.js LTS</a></li>
+<li><a href="https://www.mongodb.com/products/compass">MongoDB Compass</a></li>
+</ul>
+</section>
+<section id="course-assessment" class="level2">
+<h2 class="anchored" data-anchor-id="course-assessment">Course Assessment</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Assessment</th>
+<th>Weight</th>
+<th>Learning Outcomes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Lab Assignments</td>
+<td>30%</td>
+<td>1, 2, 3</td>
+</tr>
+<tr class="even">
+<td>Quizzes (2)</td>
+<td>30%</td>
+<td>1, 2, 3</td>
+</tr>
+<tr class="odd">
+<td>Semester Group Project</td>
+<td>30%</td>
+<td>1, 2, 3, 4, 5</td>
+</tr>
+<tr class="even">
+<td>- System Architecture &amp; Performance</td>
+<td>15%</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>- Individual Contribution &amp; Practice*</td>
+<td>15%</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Participation</td>
+<td>10%</td>
+<td>3, 4</td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td><strong>100%</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>*Individual contribution assessment incorporates peer feedback, project commits, instructor observation, and individual summary of contribution.</p>
+</section>
+<section id="grading-scale" class="level2">
+<h2 class="anchored" data-anchor-id="grading-scale">Grading Scale</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Grade</th>
+<th>Percentage</th>
+<th>Grade</th>
+<th>Percentage</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td>&gt; 93%</td>
+<td>C+</td>
+<td>77-79%</td>
+</tr>
+<tr class="even">
+<td>A-</td>
+<td>90-92%</td>
+<td>C</td>
+<td>73-76%</td>
+</tr>
+<tr class="odd">
+<td>B+</td>
+<td>87-89%</td>
+<td>C-</td>
+<td>70-72%</td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td>83-86%</td>
+<td>D</td>
+<td>66-69%</td>
+</tr>
+<tr class="odd">
+<td>B-</td>
+<td>80-82%</td>
+<td>F</td>
+<td>0-65%</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="attendance-policy" class="level2">
+<h2 class="anchored" data-anchor-id="attendance-policy">Attendance Policy</h2>
+<p>Active participation is essential in a project-based course, both for your learning and for the success of your team and client engagement. Attendance will be taken at all class sessions, workshops, and presentations.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Absence Policy
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>More than <strong>two unexcused absences</strong> will result in a <strong>5% reduction</strong> of your final grade for each additional unexcused absence.</p>
+</div>
+</div>
+<ul>
+<li><strong>Notification:</strong> If you must miss class, notify both the instructor and your teammates in advance whenever possible.</li>
+<li><strong>Making Up Missed Work:</strong> Students missing class should (a) provide an asynchronous update on project progress related to their group tasks, and (b) coordinate with teammates to confirm additional plans for the following week.</li>
+<li><strong>Excused Absences:</strong> Excused absences (e.g., illness, religious observance, professional obligation) must be communicated to the instructor in a timely manner and will not impact your grade.</li>
+</ul>
+</section>
+<section id="academic-integrity" class="level2">
+<h2 class="anchored" data-anchor-id="academic-integrity">Academic Integrity</h2>
+<p>Student-teacher relationships are built on trust. The Rensselaer Handbook of Student Rights and Responsibilities defines various forms of Academic Dishonesty, and you should make yourself familiar with these.</p>
+<p>In this class, all assignments that are turned in for a grade must represent the student’s own work. In cases where help was received, or teamwork was allowed, a notation on the assignment should indicate your collaboration.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Academic Penalties
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>First offense:</strong> Loss of a letter grade for the course</li>
+<li><strong>Second offense:</strong> Failure of the course (as noted in Lally’s Three Strikes Policy)</li>
+</ul>
+</div>
+</div>
+<p>Submission of any assignment that is in violation of this policy will result in (1) an academic (grade) penalty and (2) reporting to Lally’s Associate Dean of Academic Affairs and either the Dean of Students (for Undergraduates) or the Dean of Graduate Education (for Graduate students).</p>
+<p>If you have any questions concerning this policy before submitting an assignment, please ask for clarification.</p>
+</section>
+<section id="academic-accommodations" class="level2">
+<h2 class="anchored" data-anchor-id="academic-accommodations">Academic Accommodations</h2>
+<p>Rensselaer Polytechnic Institute strives to make all learning experiences as accessible as possible. If you anticipate or experience academic barriers based on a disability, please let me know immediately so that we can discuss your options.</p>
+<p>To establish reasonable accommodations, please register with <strong>The Office of Disability Services for Students</strong>:</p>
+<ul>
+<li><strong>Email:</strong> <a href="mailto:dss@rpi.edu">dss@rpi.edu</a></li>
+<li><strong>Phone:</strong> 518-276-8197</li>
+<li><strong>Location:</strong> 4226 Academy Hall</li>
+</ul>
+<p>After registration, make arrangements with me as soon as possible to discuss your accommodations so that they may be implemented in a timely fashion.</p>
+</section>
+<section id="other-course-policies" class="level2">
+<h2 class="anchored" data-anchor-id="other-course-policies">Other Course Policies</h2>
+<p>Students must follow all institute safety and health protocols at all times throughout the semester. There will be no exception to these requirements at any time.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>ITWS-4500 | Spring 2026 | RPI Lally School of Management</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Instructor: Jason Kuruzovich</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

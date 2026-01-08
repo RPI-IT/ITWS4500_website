@@ -1,0 +1,141 @@
+---
+title: "Course Syllabus"
+subtitle: "ITWS-4500: Advanced Web & Agentic AI Development"
+---
+
+## Course Information
+
+| | |
+|---|---|
+| **Course** | ITWS-4500: Web Science Systems Development |
+| **Term** | Spring 2026 |
+| **Location** | Lally 102 |
+| **Section 01** | Tuesday/Friday 12:00 PM - 1:50 PM |
+| **Section 02** | Tuesday/Friday 2:00 PM - 3:50 PM |
+
+## Instructor
+
+| | |
+|---|---|
+| **Name** | Jason Kuruzovich |
+| **Email** | [kuruzj@rpi.edu](mailto:kuruzj@rpi.edu) |
+| **Office** | Pitt 2206 |
+| **Phone** | 518-698-9910 |
+| **Office Hours** | Tuesday 9:00-11:00 AM (in person); Teams by appointment |
+| **Appointments** | [Book Online](https://bit.ly/jason-rpi) |
+
+## Course Description
+
+Building on the foundations established in Web Systems Development, this course focuses on the **design and implementation of modern, production-quality web applications as integrated systems**. Students will examine architectural and design patterns that underlie contemporary web platforms, emphasizing system decomposition, data flow, scalability, reliability, and security.
+
+The course adopts a **full-stack perspective**, integrating modern frontend frameworks, backend services, databases, and APIs into cohesive and maintainable applications. Core technologies include HTML5/CSS3, JavaScript-based frontend frameworks, Node.js, Express.js, MongoDB, and related tooling. Students will also explore user experience design, data modeling, and performance considerations that influence real-world application behavior.
+
+In addition, the course introduces **intelligent and automated system components**, including AI-assisted development workflows and agent-based automation, and examines how such capabilities can be safely and effectively incorporated into web applications. Emphasis is placed on testing, containerization, continuous integration and deployment, and cloud-based deployment and scaling using contemporary platforms and practices.
+
+The course is **lab-intensive and project-driven**, with students working collaboratively to design, build, deploy, and present a full-stack web application.
+
+## Student Learning Outcomes
+
+Upon successful completion of this course, students will be able to:
+
+### 1. Architectural Theory and Systems Thinking
+Students will demonstrate knowledge of the theoretical foundations of modern web application architecture, including architectural patterns, system decomposition, data flow, and trade-offs related to scalability, reliability, and security.
+
+### 2. Full-Stack Technology Integration
+Students will demonstrate the ability to design and implement full-stack web applications using a modern frontend, backend services, databases, and APIs, integrating multiple technologies into a coherent and maintainable system.
+
+### 3. Design, UX, and Data Considerations
+Students will demonstrate understanding of the technical, data, and user-experience considerations that influence the design of production-quality web applications, including state management, performance, usability, and data modeling.
+
+### 4. Intelligent and Automated Systems
+Students will demonstrate the ability to incorporate intelligent components into web applications, including AI-assisted development workflows and agent-based automation, while reasoning about correctness, reliability, and human oversight.
+
+### 5. Deployment, Scaling, and Operations
+Students will demonstrate the ability to deploy, test, and operate web applications in cloud environments, applying containerization, CI/CD pipelines, and scaling patterns to support real-world usage.
+
+### 6. Technical Communication and Analysis
+Students will be able to investigate, analyze, and clearly communicate architectural and technical decisions, including trade-offs and alternatives, in a manner that enables others to understand and evaluate complex systems.
+
+### 7. Collaborative Development and Professional Practice
+Students will demonstrate effective collaboration and professional software development practices, including version control, testing, documentation, and team-based project execution.
+
+## Required Materials
+
+The reading materials will be tailored to provide the needed conceptual background for the various technologies examined. Links to the required readings will be available via the LMS.
+
+**Recommended tools (free):**
+
+- [Visual Studio Code](https://code.visualstudio.com/) with recommended extensions
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+- [Git](https://git-scm.com/) and [GitHub](https://github.com/) account
+- [Node.js LTS](https://nodejs.org/)
+- [MongoDB Compass](https://www.mongodb.com/products/compass)
+
+## Course Assessment
+
+| Assessment | Weight | Learning Outcomes |
+|------------|--------|-------------------|
+| Lab Assignments | 30% | 1, 2, 3 |
+| Quizzes (2) | 30% | 1, 2, 3 |
+| Semester Group Project | 30% | 1, 2, 3, 4, 5 |
+| - System Architecture & Performance | 15% | |
+| - Individual Contribution & Practice* | 15% | |
+| Participation | 10% | 3, 4 |
+| **Total** | **100%** | |
+
+*Individual contribution assessment incorporates peer feedback, project commits, instructor observation, and individual summary of contribution.
+
+## Grading Scale
+
+| Grade | Percentage | Grade | Percentage |
+|-------|------------|-------|------------|
+| A | > 93% | C+ | 77-79% |
+| A- | 90-92% | C | 73-76% |
+| B+ | 87-89% | C- | 70-72% |
+| B | 83-86% | D | 66-69% |
+| B- | 80-82% | F | 0-65% |
+
+## Attendance Policy
+
+Active participation is essential in a project-based course, both for your learning and for the success of your team and client engagement. Attendance will be taken at all class sessions, workshops, and presentations.
+
+::: {.callout-warning}
+## Absence Policy
+More than **two unexcused absences** will result in a **5% reduction** of your final grade for each additional unexcused absence.
+:::
+
+- **Notification:** If you must miss class, notify both the instructor and your teammates in advance whenever possible.
+- **Making Up Missed Work:** Students missing class should (a) provide an asynchronous update on project progress related to their group tasks, and (b) coordinate with teammates to confirm additional plans for the following week.
+- **Excused Absences:** Excused absences (e.g., illness, religious observance, professional obligation) must be communicated to the instructor in a timely manner and will not impact your grade.
+
+## Academic Integrity
+
+Student-teacher relationships are built on trust. The Rensselaer Handbook of Student Rights and Responsibilities defines various forms of Academic Dishonesty, and you should make yourself familiar with these.
+
+In this class, all assignments that are turned in for a grade must represent the student's own work. In cases where help was received, or teamwork was allowed, a notation on the assignment should indicate your collaboration.
+
+::: {.callout-important}
+## Academic Penalties
+- **First offense:** Loss of a letter grade for the course
+- **Second offense:** Failure of the course (as noted in Lally's Three Strikes Policy)
+:::
+
+Submission of any assignment that is in violation of this policy will result in (1) an academic (grade) penalty and (2) reporting to Lally's Associate Dean of Academic Affairs and either the Dean of Students (for Undergraduates) or the Dean of Graduate Education (for Graduate students).
+
+If you have any questions concerning this policy before submitting an assignment, please ask for clarification.
+
+## Academic Accommodations
+
+Rensselaer Polytechnic Institute strives to make all learning experiences as accessible as possible. If you anticipate or experience academic barriers based on a disability, please let me know immediately so that we can discuss your options.
+
+To establish reasonable accommodations, please register with **The Office of Disability Services for Students**:
+
+- **Email:** [dss@rpi.edu](mailto:dss@rpi.edu)
+- **Phone:** 518-276-8197
+- **Location:** 4226 Academy Hall
+
+After registration, make arrangements with me as soon as possible to discuss your accommodations so that they may be implemented in a timely fashion.
+
+## Other Course Policies
+
+Students must follow all institute safety and health protocols at all times throughout the semester. There will be no exception to these requirements at any time.

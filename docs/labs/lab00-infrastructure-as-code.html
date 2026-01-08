@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Lab 0: Infrastructure as Code – ITWS-4500: Advanced Web &amp; Agentic AI Development</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../static/logos/RPI_Logo_Binary_1.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-674b895ea931ffa4b4900794805962b3.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-e0dfd07c0e7a91a9a0c538eb51a6efe0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../static/logos/RPI_Logo_Binary_1_White.png" alt="" class="navbar-logo light-content">
+    <img src="../static/logos/RPI_Logo_Binary_1_White.png" alt="" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">ITWS-4500: Advanced Web &amp; Agentic AI Development</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../syllabus.html"> 
+<span class="menu-text">Syllabus</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../schedule.html"> 
+<span class="menu-text">Schedule</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-slides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Slides</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-slides">    
+        <li>
+    <a class="dropdown-item" href="../slides/week01/index.html">
+ <span class="dropdown-text">Week 1: Introduction &amp; IaC</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../slides/week02/index.html">
+ <span class="dropdown-text">Week 2: Lab 0 &amp; Architecture</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../slides/week03/index.html">
+ <span class="dropdown-text">Week 3: Lab 1 &amp; Frontend</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../slides/week04/index.html">
+ <span class="dropdown-text">Week 4: Lab 2 &amp; Backend</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../slides/week05/index.html">
+ <span class="dropdown-text">Week 5: Lab 3 &amp; Data</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../slides/week06/index.html">
+ <span class="dropdown-text">Week 6: Lab 4 &amp; Quiz 1</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../slides/week07/index.html">
+ <span class="dropdown-text">Week 7: Midterm &amp; Project</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../slides/week08/index.html">
+ <span class="dropdown-text">Week 8: Auth &amp; Mobile</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../slides/week09/index.html">
+ <span class="dropdown-text">Week 9: Agentic AI I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../slides/week10/index.html">
+ <span class="dropdown-text">Week 10: Agentic AI II</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../slides/week11/index.html">
+ <span class="dropdown-text">Week 11: CI/CD</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../slides/week12/index.html">
+ <span class="dropdown-text">Week 12: AI-Assisted Dev</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../slides/week13/index.html">
+ <span class="dropdown-text">Week 13: Deployment</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../slides/week14/index.html">
+ <span class="dropdown-text">Week 14: Quiz 2 &amp; Capstone</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../slides/week15/index.html">
+ <span class="dropdown-text">Week 15: Final Presentations</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-labs" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Labs</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-labs">    
+        <li>
+    <a class="dropdown-item" href="../labs/lab00-infrastructure-as-code.html">
+ <span class="dropdown-text">Lab 0: Infrastructure as Code</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../labs/lab01-layered-architecture.html">
+ <span class="dropdown-text">Lab 1: Layered Architecture</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../labs/lab02-component-state.html">
+ <span class="dropdown-text">Lab 2: Component &amp; State</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../labs/lab03-backend-patterns.html">
+ <span class="dropdown-text">Lab 3: Backend Patterns</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../labs/lab04-polyglot-persistence.html">
+ <span class="dropdown-text">Lab 4: Polyglot Persistence</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../labs/lab05-auth-mobile.html">
+ <span class="dropdown-text">Lab 5: Auth &amp; Mobile</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../labs/lab06-agentic-workflows.qmd">
+ <span class="dropdown-text">Lab 6: Agentic Workflows</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../labs/lab07-agent-orchestration.qmd">
+ <span class="dropdown-text">Lab 7: Agent Orchestration</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../labs/lab08-ci-pipelines.qmd">
+ <span class="dropdown-text">Lab 8: CI Pipelines</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../labs/lab09-ai-assisted-coding.qmd">
+ <span class="dropdown-text">Lab 9: AI-Assisted Coding</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../labs/lab10-deployment.qmd">
+ <span class="dropdown-text">Lab 10: Deployment</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../labs/lab11-capstone-extension.qmd">
+ <span class="dropdown-text">Lab 11: Capstone Extension</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/rpi-techfundamentals"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://lms.rpi.edu"> 
+<span class="menu-text">LMS</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites">Prerequisites</a></li>
+  <li><a href="#requirements" id="toc-requirements" class="nav-link" data-scroll-target="#requirements">Requirements</a>
+  <ul class="collapse">
+  <li><a href="#project-structure-10-points" id="toc-project-structure-10-points" class="nav-link" data-scroll-target="#project-structure-10-points">Project Structure (10 points)</a></li>
+  <li><a href="#docker-compose-configuration-20-points" id="toc-docker-compose-configuration-20-points" class="nav-link" data-scroll-target="#docker-compose-configuration-20-points">Docker Compose Configuration (20 points)</a></li>
+  <li><a href="#api-implementation-20-points" id="toc-api-implementation-20-points" class="nav-link" data-scroll-target="#api-implementation-20-points">API Implementation (20 points)</a></li>
+  <li><a href="#frontend-implementation-20-points" id="toc-frontend-implementation-20-points" class="nav-link" data-scroll-target="#frontend-implementation-20-points">Frontend Implementation (20 points)</a></li>
+  <li><a href="#hot-reload-10-points" id="toc-hot-reload-10-points" class="nav-link" data-scroll-target="#hot-reload-10-points">Hot Reload (10 points)</a></li>
+  <li><a href="#data-persistence-10-points" id="toc-data-persistence-10-points" class="nav-link" data-scroll-target="#data-persistence-10-points">Data Persistence (10 points)</a></li>
+  <li><a href="#documentation-10-points" id="toc-documentation-10-points" class="nav-link" data-scroll-target="#documentation-10-points">Documentation (10 points)</a></li>
+  </ul></li>
+  <li><a href="#starter-code" id="toc-starter-code" class="nav-link" data-scroll-target="#starter-code">Starter Code</a>
+  <ul class="collapse">
+  <li><a href="#api-package.json" id="toc-api-package.json" class="nav-link" data-scroll-target="#api-package.json">API package.json</a></li>
+  <li><a href="#api-server.js-starter" id="toc-api-server.js-starter" class="nav-link" data-scroll-target="#api-server.js-starter">API server.js (starter)</a></li>
+  <li><a href="#api-dockerfile.dev" id="toc-api-dockerfile.dev" class="nav-link" data-scroll-target="#api-dockerfile.dev">API Dockerfile.dev</a></li>
+  <li><a href="#docker-compose.yml-starter" id="toc-docker-compose.yml-starter" class="nav-link" data-scroll-target="#docker-compose.yml-starter">docker-compose.yml (starter)</a></li>
+  </ul></li>
+  <li><a href="#testing-your-implementation" id="toc-testing-your-implementation" class="nav-link" data-scroll-target="#testing-your-implementation">Testing Your Implementation</a>
+  <ul class="collapse">
+  <li><a href="#start-the-stack" id="toc-start-the-stack" class="nav-link" data-scroll-target="#start-the-stack">1. Start the Stack</a></li>
+  <li><a href="#verify-services" id="toc-verify-services" class="nav-link" data-scroll-target="#verify-services">2. Verify Services</a></li>
+  <li><a href="#test-crud-operations" id="toc-test-crud-operations" class="nav-link" data-scroll-target="#test-crud-operations">3. Test CRUD Operations</a></li>
+  <li><a href="#test-hot-reload" id="toc-test-hot-reload" class="nav-link" data-scroll-target="#test-hot-reload">4. Test Hot Reload</a></li>
+  <li><a href="#test-persistence" id="toc-test-persistence" class="nav-link" data-scroll-target="#test-persistence">5. Test Persistence</a></li>
+  </ul></li>
+  <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a>
+  <ul class="collapse">
+  <li><a href="#submission-checklist" id="toc-submission-checklist" class="nav-link" data-scroll-target="#submission-checklist">Submission Checklist</a></li>
+  </ul></li>
+  <li><a href="#grading-rubric" id="toc-grading-rubric" class="nav-link" data-scroll-target="#grading-rubric">Grading Rubric</a>
+  <ul class="collapse">
+  <li><a href="#deductions" id="toc-deductions" class="nav-link" data-scroll-target="#deductions">Deductions</a></li>
+  </ul></li>
+  <li><a href="#stretch-goals-bonus-points" id="toc-stretch-goals-bonus-points" class="nav-link" data-scroll-target="#stretch-goals-bonus-points">Stretch Goals (Bonus Points)</a></li>
+  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
+  <li><a href="#getting-help" id="toc-getting-help" class="nav-link" data-scroll-target="#getting-help">Getting Help</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Lab 0: Infrastructure as Code</h1>
+<p class="subtitle lead">Building a MERN Stack with Docker Compose</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Lab Information
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Assigned:</strong> Tuesday, January 20, 2026 <strong>Due:</strong> Tuesday, January 27, 2026 (before class) <strong>Points:</strong> 100</p>
+</div>
+</div>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>In this lab, you will create a complete MERN (MongoDB, Express, React, Node.js) development environment using Docker and Docker Compose. This foundational setup will be used throughout the semester and demonstrates Infrastructure as Code principles.</p>
+</section>
+<section id="learning-objectives" class="level2">
+<h2 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
+<p>By completing this lab, you will:</p>
+<ol type="1">
+<li>Create production-ready <strong>Dockerfiles</strong> for Node.js applications</li>
+<li>Configure <strong>Docker Compose</strong> for multi-service orchestration</li>
+<li>Implement <strong>volume mounting</strong> for hot reload development</li>
+<li>Understand <strong>container networking</strong> and service discovery</li>
+<li>Practice <strong>Infrastructure as Code</strong> principles</li>
+</ol>
+</section>
+<section id="prerequisites" class="level2">
+<h2 class="anchored" data-anchor-id="prerequisites">Prerequisites</h2>
+<p>Before starting, ensure you have:</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Docker Desktop installed and running</label></li>
+<li><label><input type="checkbox">Visual Studio Code (or preferred editor)</label></li>
+<li><label><input type="checkbox">Git installed</label></li>
+<li><label><input type="checkbox">Basic understanding of JavaScript/Node.js</label></li>
+<li><label><input type="checkbox">GitHub account</label></li>
+</ul>
+<p>Verify your Docker installation:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> <span class="at">--version</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose version</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="requirements" class="level2">
+<h2 class="anchored" data-anchor-id="requirements">Requirements</h2>
+<section id="project-structure-10-points" class="level3">
+<h3 class="anchored" data-anchor-id="project-structure-10-points">Project Structure (10 points)</h3>
+<p>Create the following directory structure:</p>
+<pre><code>lab0-mern-stack/
+├── docker-compose.yml
+├── .env
+├── .env.example
+├── .gitignore
+├── README.md
+├── api/
+│   ├── Dockerfile
+│   ├── Dockerfile.dev
+│   ├── package.json
+│   ├── .dockerignore
+│   └── src/
+│       ├── server.js
+│       ├── routes/
+│       │   └── items.js
+│       └── models/
+│           └── Item.js
+└── frontend/
+    ├── Dockerfile
+    ├── Dockerfile.dev
+    ├── package.json
+    ├── .dockerignore
+    ├── vite.config.js (or equivalent)
+    └── src/
+        ├── App.jsx
+        ├── index.jsx
+        └── App.css</code></pre>
+</section>
+<section id="docker-compose-configuration-20-points" class="level3">
+<h3 class="anchored" data-anchor-id="docker-compose-configuration-20-points">Docker Compose Configuration (20 points)</h3>
+<p>Your <code>docker-compose.yml</code> must include:</p>
+<ol type="1">
+<li><strong>Frontend Service</strong> (React)
+<ul>
+<li>Built from <code>Dockerfile.dev</code></li>
+<li>Port 3000 exposed</li>
+<li>Source code mounted as volume</li>
+<li>Environment variable for API URL</li>
+</ul></li>
+<li><strong>API Service</strong> (Express)
+<ul>
+<li>Built from <code>Dockerfile.dev</code></li>
+<li>Port 4000 exposed</li>
+<li>Source code mounted as volume</li>
+<li>Environment variables for MongoDB connection</li>
+<li>Depends on MongoDB being healthy</li>
+</ul></li>
+<li><strong>MongoDB Service</strong>
+<ul>
+<li>Official MongoDB 7 image</li>
+<li>Named volume for data persistence</li>
+<li>Health check configured</li>
+</ul></li>
+<li><strong>Mongo Express Service</strong> (optional but recommended)
+<ul>
+<li>Official mongo-express image</li>
+<li>Port 8081 exposed</li>
+</ul></li>
+</ol>
+</section>
+<section id="api-implementation-20-points" class="level3">
+<h3 class="anchored" data-anchor-id="api-implementation-20-points">API Implementation (20 points)</h3>
+<p>The Express API must include:</p>
+<ol type="1">
+<li><strong>Health endpoint</strong> (<code>GET /health</code>)
+<ul>
+<li>Returns status, timestamp, and uptime</li>
+</ul></li>
+<li><strong>CRUD operations</strong> for Items (<code>/api/items</code>)
+<ul>
+<li><code>GET /</code> - List all items</li>
+<li><code>GET /:id</code> - Get single item</li>
+<li><code>POST /</code> - Create item</li>
+<li><code>PUT /:id</code> - Update item</li>
+<li><code>DELETE /:id</code> - Delete item</li>
+</ul></li>
+<li><strong>Item Model</strong> with fields:
+<ul>
+<li><code>name</code> (required, string)</li>
+<li><code>description</code> (optional, string)</li>
+<li><code>completed</code> (boolean, default false)</li>
+<li><code>timestamps</code> (automatic)</li>
+</ul></li>
+<li><strong>Error handling middleware</strong></li>
+</ol>
+</section>
+<section id="frontend-implementation-20-points" class="level3">
+<h3 class="anchored" data-anchor-id="frontend-implementation-20-points">Frontend Implementation (20 points)</h3>
+<p>The React frontend must:</p>
+<ol type="1">
+<li><strong>Display items</strong> from the API</li>
+<li><strong>Add new items</strong> via form</li>
+<li><strong>Toggle completion</strong> status</li>
+<li><strong>Delete items</strong></li>
+<li><strong>Handle loading states</strong> and errors</li>
+<li><strong>Style appropriately</strong> (basic CSS is fine)</li>
+</ol>
+</section>
+<section id="hot-reload-10-points" class="level3">
+<h3 class="anchored" data-anchor-id="hot-reload-10-points">Hot Reload (10 points)</h3>
+<p>Both services must support hot reload:</p>
+<ul>
+<li>API: Changes to <code>api/src/</code> automatically restart the server</li>
+<li>Frontend: Changes to <code>frontend/src/</code> automatically update the browser</li>
+</ul>
+</section>
+<section id="data-persistence-10-points" class="level3">
+<h3 class="anchored" data-anchor-id="data-persistence-10-points">Data Persistence (10 points)</h3>
+<p>MongoDB data must persist across container restarts:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test persistence</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose down</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose up <span class="at">-d</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Data should still be there</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="documentation-10-points" class="level3">
+<h3 class="anchored" data-anchor-id="documentation-10-points">Documentation (10 points)</h3>
+<p><code>README.md</code> must include:</p>
+<ol type="1">
+<li>Project description</li>
+<li>Prerequisites</li>
+<li>Setup instructions (step-by-step)</li>
+<li>Environment variables explanation</li>
+<li>How to run the project</li>
+<li>How to test the endpoints</li>
+<li>Screenshots of working application (at least 2)</li>
+<li>Troubleshooting common issues</li>
+</ol>
+</section>
+</section>
+<section id="starter-code" class="level2">
+<h2 class="anchored" data-anchor-id="starter-code">Starter Code</h2>
+<section id="api-package.json" class="level3">
+<h3 class="anchored" data-anchor-id="api-package.json">API package.json</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"mern-api"</span><span class="fu">,</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"version"</span><span class="fu">:</span> <span class="st">"1.0.0"</span><span class="fu">,</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"main"</span><span class="fu">:</span> <span class="st">"src/server.js"</span><span class="fu">,</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"scripts"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"start"</span><span class="fu">:</span> <span class="st">"node src/server.js"</span><span class="fu">,</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"dev"</span><span class="fu">:</span> <span class="st">"nodemon src/server.js"</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"dependencies"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"express"</span><span class="fu">:</span> <span class="st">"^4.18.2"</span><span class="fu">,</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"mongoose"</span><span class="fu">:</span> <span class="st">"^8.0.0"</span><span class="fu">,</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"cors"</span><span class="fu">:</span> <span class="st">"^2.8.5"</span><span class="fu">,</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"helmet"</span><span class="fu">:</span> <span class="st">"^7.1.0"</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"devDependencies"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"nodemon"</span><span class="fu">:</span> <span class="st">"^3.0.2"</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="api-server.js-starter" class="level3">
+<h3 class="anchored" data-anchor-id="api-server.js-starter">API server.js (starter)</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> express <span class="op">=</span> <span class="pp">require</span>(<span class="st">'express'</span>)<span class="op">;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> mongoose <span class="op">=</span> <span class="pp">require</span>(<span class="st">'mongoose'</span>)<span class="op">;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> cors <span class="op">=</span> <span class="pp">require</span>(<span class="st">'cors'</span>)<span class="op">;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> helmet <span class="op">=</span> <span class="pp">require</span>(<span class="st">'helmet'</span>)<span class="op">;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> app <span class="op">=</span> <span class="fu">express</span>()<span class="op">;</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> PORT <span class="op">=</span> <span class="bu">process</span><span class="op">.</span><span class="at">env</span><span class="op">.</span><span class="at">PORT</span> <span class="op">||</span> <span class="dv">4000</span><span class="op">;</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">// Middleware</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">use</span>(<span class="fu">helmet</span>())<span class="op">;</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">use</span>(<span class="fu">cors</span>())<span class="op">;</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">use</span>(express<span class="op">.</span><span class="fu">json</span>())<span class="op">;</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co">// Health check</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">get</span>(<span class="st">'/health'</span><span class="op">,</span> (req<span class="op">,</span> res) <span class="kw">=&gt;</span> {</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  res<span class="op">.</span><span class="fu">json</span>({</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="dt">status</span><span class="op">:</span> <span class="st">'healthy'</span><span class="op">,</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="dt">timestamp</span><span class="op">:</span> <span class="kw">new</span> <span class="bu">Date</span>()<span class="op">.</span><span class="fu">toISOString</span>()<span class="op">,</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    <span class="dt">uptime</span><span class="op">:</span> <span class="bu">process</span><span class="op">.</span><span class="fu">uptime</span>()</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="co">// </span><span class="al">TODO</span><span class="co">: Add routes</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="co">// </span><span class="al">TODO</span><span class="co">: Add error handling middleware</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="co">// Connect to MongoDB and start server</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>mongoose<span class="op">.</span><span class="fu">connect</span>(<span class="bu">process</span><span class="op">.</span><span class="at">env</span><span class="op">.</span><span class="at">MONGODB_URI</span>)</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">then</span>(() <span class="kw">=&gt;</span> {</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">'Connected to MongoDB'</span>)<span class="op">;</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>    app<span class="op">.</span><span class="fu">listen</span>(PORT<span class="op">,</span> <span class="st">'0.0.0.0'</span><span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>      <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="vs">`Server running on port </span><span class="sc">${</span>PORT<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">catch</span>(err <span class="kw">=&gt;</span> {</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">error</span>(<span class="st">'MongoDB connection error:'</span><span class="op">,</span> err)<span class="op">;</span></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>    <span class="bu">process</span><span class="op">.</span><span class="fu">exit</span>(<span class="dv">1</span>)<span class="op">;</span></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="api-dockerfile.dev" class="level3">
+<h3 class="anchored" data-anchor-id="api-dockerfile.dev">API Dockerfile.dev</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode dockerfile code-with-copy"><code class="sourceCode dockerfile"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> node:20-alpine</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WORKDIR</span> /app</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> package*.json ./</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="ex">npm</span> install</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="kw">EXPOSE</span> 4000</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="kw">CMD</span> [<span class="st">"npm"</span>, <span class="st">"run"</span>, <span class="st">"dev"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="docker-compose.yml-starter" class="level3">
+<h3 class="anchored" data-anchor-id="docker-compose.yml-starter">docker-compose.yml (starter)</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">services</span><span class="kw">:</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">frontend</span><span class="kw">:</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">build</span><span class="kw">:</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">context</span><span class="kw">:</span><span class="at"> ./frontend</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">dockerfile</span><span class="kw">:</span><span class="at"> Dockerfile.dev</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"3000:3000"</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ./frontend:/app</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> /app/node_modules</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">environment</span><span class="kw">:</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> VITE_API_URL=http://localhost:4000</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">depends_on</span><span class="kw">:</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> api</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">api</span><span class="kw">:</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co">    # </span><span class="al">TODO</span><span class="co">: Complete this service</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">mongo</span><span class="kw">:</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="co">    # </span><span class="al">TODO</span><span class="co">: Complete this service</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">mongo-data</span><span class="kw">:</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="testing-your-implementation" class="level2">
+<h2 class="anchored" data-anchor-id="testing-your-implementation">Testing Your Implementation</h2>
+<section id="start-the-stack" class="level3">
+<h3 class="anchored" data-anchor-id="start-the-stack">1. Start the Stack</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose up <span class="at">--build</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="verify-services" class="level3">
+<h3 class="anchored" data-anchor-id="verify-services">2. Verify Services</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check all containers are running</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose ps</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Check API health</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> http://localhost:4000/health</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Check frontend</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="ex">open</span> http://localhost:3000</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="test-crud-operations" class="level3">
+<h3 class="anchored" data-anchor-id="test-crud-operations">3. Test CRUD Operations</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create item</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-X</span> POST http://localhost:4000/api/items <span class="dt">\</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">-H</span> <span class="st">"Content-Type: application/json"</span> <span class="dt">\</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">-d</span> <span class="st">'{"name": "Test Item", "description": "A test item"}'</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># List items</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> http://localhost:4000/api/items</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Update item (replace {id} with actual ID)</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-X</span> PUT http://localhost:4000/api/items/{id} <span class="dt">\</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">-H</span> <span class="st">"Content-Type: application/json"</span> <span class="dt">\</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">-d</span> <span class="st">'{"completed": true}'</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Delete item</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-X</span> DELETE http://localhost:4000/api/items/{id}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="test-hot-reload" class="level3">
+<h3 class="anchored" data-anchor-id="test-hot-reload">4. Test Hot Reload</h3>
+<ol type="1">
+<li>Edit <code>api/src/server.js</code> - change a response message</li>
+<li>Save the file</li>
+<li>Verify the API restarts (check logs)</li>
+<li>Test the changed endpoint</li>
+</ol>
+</section>
+<section id="test-persistence" class="level3">
+<h3 class="anchored" data-anchor-id="test-persistence">5. Test Persistence</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add some items via the frontend</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Then restart the stack</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose down</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose up <span class="at">-d</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify items are still there</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="submission" class="level2">
+<h2 class="anchored" data-anchor-id="submission">Submission</h2>
+<ol type="1">
+<li>Push your code to a <strong>GitHub repository</strong></li>
+<li>Ensure <code>.env</code> is in <code>.gitignore</code> (do NOT commit secrets)</li>
+<li>Include <code>.env.example</code> with placeholder values</li>
+<li>Submit the <strong>repository URL</strong> to the LMS</li>
+</ol>
+<section id="submission-checklist" class="level3">
+<h3 class="anchored" data-anchor-id="submission-checklist">Submission Checklist</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">All files in correct structure</label></li>
+<li><label><input type="checkbox">docker-compose.yml works with <code>docker compose up --build</code></label></li>
+<li><label><input type="checkbox">API endpoints work correctly</label></li>
+<li><label><input type="checkbox">Frontend displays and manages items</label></li>
+<li><label><input type="checkbox">Hot reload works for both services</label></li>
+<li><label><input type="checkbox">Data persists after restart</label></li>
+<li><label><input type="checkbox">README.md is complete with screenshots</label></li>
+<li><label><input type="checkbox">No secrets committed (<code>.env</code> in <code>.gitignore</code>)</label></li>
+<li><label><input type="checkbox">Code is clean and well-organized</label></li>
+</ul>
+</section>
+</section>
+<section id="grading-rubric" class="level2">
+<h2 class="anchored" data-anchor-id="grading-rubric">Grading Rubric</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Criteria</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Project structure correct</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td>Docker Compose properly configured</td>
+<td>20</td>
+</tr>
+<tr class="odd">
+<td>API CRUD operations work</td>
+<td>20</td>
+</tr>
+<tr class="even">
+<td>Frontend displays and manages items</td>
+<td>20</td>
+</tr>
+<tr class="odd">
+<td>Hot reload works</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td>Data persistence works</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td>Documentation complete</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td><strong>Total</strong></td>
+<td><strong>100</strong></td>
+</tr>
+</tbody>
+</table>
+<section id="deductions" class="level3">
+<h3 class="anchored" data-anchor-id="deductions">Deductions</h3>
+<ul>
+<li>-5 points: Late submission (per day)</li>
+<li>-10 points: Committed secrets (.env file)</li>
+<li>-5 points: Missing screenshots in README</li>
+<li>-5 points: Incomplete error handling</li>
+</ul>
+</section>
+</section>
+<section id="stretch-goals-bonus-points" class="level2">
+<h2 class="anchored" data-anchor-id="stretch-goals-bonus-points">Stretch Goals (Bonus Points)</h2>
+<p>For extra credit (up to 15 points):</p>
+<ol type="1">
+<li><strong>Input Validation</strong> (+5) - Add validation to API endpoints</li>
+<li><strong>Production Dockerfiles</strong> (+5) - Create optimized production builds</li>
+<li><strong>Loading States</strong> (+3) - Add loading spinners/skeletons</li>
+<li><strong>Error Boundaries</strong> (+2) - Implement React error boundaries</li>
+</ol>
+</section>
+<section id="resources" class="level2">
+<h2 class="anchored" data-anchor-id="resources">Resources</h2>
+<ul>
+<li><a href="https://docs.docker.com/">Docker Documentation</a></li>
+<li><a href="https://docs.docker.com/compose/compose-file/">Docker Compose Reference</a></li>
+<li><a href="https://expressjs.com/en/guide/routing.html">Express.js Guide</a></li>
+<li><a href="https://mongoosejs.com/docs/">Mongoose Documentation</a></li>
+<li><a href="https://react.dev/">React Documentation</a></li>
+<li><a href="https://vitejs.dev/">Vite Documentation</a></li>
+</ul>
+</section>
+<section id="getting-help" class="level2">
+<h2 class="anchored" data-anchor-id="getting-help">Getting Help</h2>
+<ul>
+<li><strong>Office Hours:</strong> Tuesday 9-11 AM, Pitt 2206</li>
+<li><strong>Piazza:</strong> Post questions with <code>lab0</code> tag</li>
+<li><strong>TA Sessions:</strong> Check LMS for schedule</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Pro Tips
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Start early - Docker can have unexpected setup issues</li>
+<li>Read error messages carefully - they usually tell you what’s wrong</li>
+<li>Use <code>docker compose logs -f service_name</code> to debug specific services</li>
+<li>Check that ports aren’t already in use on your machine</li>
+<li>If stuck, try <code>docker compose down -v</code> and rebuild</li>
+</ol>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>ITWS-4500 | Spring 2026 | RPI Lally School of Management</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Instructor: Jason Kuruzovich</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

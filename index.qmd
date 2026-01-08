@@ -1,7 +1,119 @@
 ---
-title: "mgmt4500_website_temp"
+title: "ITWS-4500: Advanced Web & Agentic AI Development"
+subtitle: "Theory, Systems, and Practice in Full-Stack and Agentic AI Development"
 ---
 
-This is a Quarto website.
+## Course Overview
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+Welcome to **ITWS-4500: Web Science Systems Development**, an advanced course focusing on the design and implementation of modern, production-quality web applications as integrated systems. This course examines architectural and design patterns underlying contemporary web platforms, with emphasis on system decomposition, data flow, scalability, reliability, and security.
+
+::: {.callout-note}
+## Spring 2026 | RPI Lally School of Management
+**Location:** Lally 102
+**Times:** Tuesday/Friday 12:00-1:50 PM (Section 01) | 2:00-3:50 PM (Section 02)
+**Instructor:** [Jason Kuruzovich](mailto:kuruzj@rpi.edu)
+:::
+
+## What You'll Learn
+
+This course adopts a **full-stack perspective**, integrating modern frontend frameworks, backend services, databases, and APIs into cohesive and maintainable applications.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Technical Foundations
+- **Infrastructure as Code** with Docker & Docker Compose
+- **Frontend Architecture** with React/Angular
+- **Backend Services** with Node.js & Express
+- **Data Architecture** with MongoDB & PostgreSQL
+- **Authentication** and security patterns
+:::
+
+::: {.column width="50%"}
+### Advanced Topics
+- **Agentic AI Architecture** and workflows
+- **AI-Assisted Development** practices
+- **CI/CD Pipelines** and automated testing
+- **Cloud Deployment** and scaling
+- **System Integration** and performance
+:::
+
+::::
+
+## Course Structure
+
+The course is **lab-intensive and project-driven**, with students working collaboratively to design, build, deploy, and present a full-stack web application.
+
+| Component | Weight | Description |
+|-----------|--------|-------------|
+| Lab Assignments | 30% | Weekly hands-on technical exercises |
+| Semester Project | 30% | Group full-stack application |
+| Quizzes | 30% | Two comprehensive assessments |
+| Participation | 10% | Class engagement and discussion |
+
+## Quick Links
+
+::: {.grid}
+
+::: {.g-col-4}
+### [Syllabus](syllabus.qmd)
+Complete course information, policies, and learning outcomes.
+:::
+
+::: {.g-col-4}
+### [Schedule](schedule.qmd)
+Week-by-week topics, assignments, and due dates.
+:::
+
+::: {.g-col-4}
+### [LMS](https://lms.rpi.edu)
+Submit assignments and access course materials.
+:::
+
+:::
+
+## This Week
+
+::: {.callout-tip}
+## Week 1: January 13-16, 2026
+
+**Tuesday (1/13):** Course Introduction - Web Applications as Architectural Patterns
+[View Slides](slides/week01/01-course-introduction.qmd)
+
+**Friday (1/16):** Infrastructure as Code - Containers, Docker, and Docker Compose
+[View Slides](slides/week01/02-infrastructure-as-code.qmd)
+:::
+
+## Technology Stack
+
+Throughout this course, you'll work with a modern **MERN-style architecture**:
+
+```
+                    ┌─────────────────────────────────────────┐
+                    │           Client Applications           │
+                    │    (React / Angular / Mobile)          │
+                    └─────────────────────┬───────────────────┘
+                                          │
+                    ┌─────────────────────▼───────────────────┐
+                    │              API Gateway                │
+                    │         (Express.js / Node.js)         │
+                    └─────────────────────┬───────────────────┘
+                                          │
+          ┌───────────────┬───────────────┼───────────────┬───────────────┐
+          │               │               │               │               │
+    ┌─────▼─────┐   ┌─────▼─────┐   ┌─────▼─────┐   ┌─────▼─────┐   ┌─────▼─────┐
+    │  MongoDB  │   │PostgreSQL │   │   Redis   │   │   Auth    │   │ AI Agent  │
+    │(Documents)│   │(Relations)│   │  (Cache)  │   │ Service   │   │ Services  │
+    └───────────┘   └───────────┘   └───────────┘   └───────────┘   └───────────┘
+```
+
+## Contact & Office Hours
+
+**Instructor:** Jason Kuruzovich
+**Email:** [kuruzj@rpi.edu](mailto:kuruzj@rpi.edu)
+**Office:** Pitt 2206
+**Office Hours:** Tuesday 9:00-11:00 AM (in person) | [Book Online](https://bit.ly/jason-rpi)
+
+---
+
+*This course website is built with [Quarto](https://quarto.org) and hosted on GitHub Pages.*

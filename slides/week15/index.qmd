@@ -1,0 +1,54 @@
+---
+title: "Week 15: Final Presentations"
+subtitle: "Evaluation, Feedback, and Reflection"
+---
+
+## This Week's Sessions
+
+### Tuesday, April 28: Final Presentations
+Evaluation, Feedback, and Reflection
+
+## Presentation Requirements
+
+Each team will present their final project:
+
+- **Working deployed application** (demo)
+- **Architecture overview** and decisions
+- **Technical challenges** and solutions
+- **AI integration** demonstration
+- **Lessons learned** and reflections
+- **Q&A** session
+
+## Presentation Format
+
+- **Time:** 15-20 minutes per team
+- **Format:** Demo + slides
+- **Required attendees:** All team members
+
+## Final Deliverables
+
+::: {.callout-important}
+**Due by April 28:**
+
+- Working deployed application
+- Technical documentation
+- Architecture decision records
+- Individual contribution summary
+- Peer evaluations
+:::
+
+## Grading
+
+| Criteria | Weight |
+|----------|--------|
+| System functionality | 30% |
+| Architecture quality | 25% |
+| AI integration | 20% |
+| Presentation quality | 15% |
+| Documentation | 10% |
+
+## Congratulations!
+
+This week marks the culmination of your semester-long journey in advanced web and agentic AI development. You've built real systems, learned patterns, and developed skills that will serve you throughout your careers.
+
+Thank you for your hard work and dedication!

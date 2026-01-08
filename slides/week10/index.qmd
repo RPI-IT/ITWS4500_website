@@ -1,0 +1,33 @@
+---
+title: "Week 10: Agentic AI II"
+subtitle: "Orchestration, Memory, and Governance"
+---
+
+## This Week's Sessions
+
+### Tuesday, March 24: Agentic Architecture II
+Orchestration, Memory, and Governance
+
+### Friday, March 27: Lab 7
+Agent Orchestration and Tooling Patterns
+
+[Lab Assignment](../../labs/lab07-agent-orchestration.qmd){.btn .btn-success}
+
+## Learning Objectives
+
+By the end of this week, you will be able to:
+
+1. Implement multi-agent orchestration
+2. Design agent memory systems
+3. Apply governance patterns to AI agents
+4. Build tool-using agents
+
+## Deliverables
+
+::: {.callout-important}
+**Lab 7 Due:** Friday, April 3, 2026
+:::
+
+## Resources
+
+*Coming soon*

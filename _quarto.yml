@@ -1,22 +1,127 @@
 project:
   type: website
   output-dir: docs
+  resources:
+    - "static/**"
 
 website:
-  title: "mgmt4500_website_temp"
+  title: "ITWS-4500: Advanced Web & Agentic AI Development"
+  favicon: static/logos/RPI_Logo_Binary_1.png
   navbar:
+    logo: static/logos/RPI_Logo_Binary_1_White.png
+    background: "#d6001c"
+    foreground: "#ffffff"
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
+      - href: syllabus.qmd
+        text: Syllabus
+      - href: schedule.qmd
+        text: Schedule
+      - text: Slides
+        menu:
+          - text: "Week 1: Introduction & IaC"
+            href: slides/week01/index.qmd
+          - text: "Week 2: Lab 0 & Architecture"
+            href: slides/week02/index.qmd
+          - text: "Week 3: Lab 1 & Frontend"
+            href: slides/week03/index.qmd
+          - text: "Week 4: Lab 2 & Backend"
+            href: slides/week04/index.qmd
+          - text: "Week 5: Lab 3 & Data"
+            href: slides/week05/index.qmd
+          - text: "Week 6: Lab 4 & Quiz 1"
+            href: slides/week06/index.qmd
+          - text: "Week 7: Midterm & Project"
+            href: slides/week07/index.qmd
+          - text: "Week 8: Auth & Mobile"
+            href: slides/week08/index.qmd
+          - text: "Week 9: Agentic AI I"
+            href: slides/week09/index.qmd
+          - text: "Week 10: Agentic AI II"
+            href: slides/week10/index.qmd
+          - text: "Week 11: CI/CD"
+            href: slides/week11/index.qmd
+          - text: "Week 12: AI-Assisted Dev"
+            href: slides/week12/index.qmd
+          - text: "Week 13: Deployment"
+            href: slides/week13/index.qmd
+          - text: "Week 14: Quiz 2 & Capstone"
+            href: slides/week14/index.qmd
+          - text: "Week 15: Final Presentations"
+            href: slides/week15/index.qmd
+      - text: Labs
+        menu:
+          - text: "Lab 0: Infrastructure as Code"
+            href: labs/lab00-infrastructure-as-code.qmd
+          - text: "Lab 1: Layered Architecture"
+            href: labs/lab01-layered-architecture.qmd
+          - text: "Lab 2: Component & State"
+            href: labs/lab02-component-state.qmd
+          - text: "Lab 3: Backend Patterns"
+            href: labs/lab03-backend-patterns.qmd
+          - text: "Lab 4: Polyglot Persistence"
+            href: labs/lab04-polyglot-persistence.qmd
+          - text: "Lab 5: Auth & Mobile"
+            href: labs/lab05-auth-mobile.qmd
+          - text: "Lab 6: Agentic Workflows"
+            href: labs/lab06-agentic-workflows.qmd
+          - text: "Lab 7: Agent Orchestration"
+            href: labs/lab07-agent-orchestration.qmd
+          - text: "Lab 8: CI Pipelines"
+            href: labs/lab08-ci-pipelines.qmd
+          - text: "Lab 9: AI-Assisted Coding"
+            href: labs/lab09-ai-assisted-coding.qmd
+          - text: "Lab 10: Deployment"
+            href: labs/lab10-deployment.qmd
+          - text: "Lab 11: Capstone Extension"
+            href: labs/lab11-capstone-extension.qmd
+    right:
+      - icon: github
+        href: https://github.com/rpi-techfundamentals
+      - text: LMS
+        href: https://lms.rpi.edu
+
+  page-footer:
+    left: "ITWS-4500 | Spring 2026 | RPI Lally School of Management"
+    right: "Instructor: Jason Kuruzovich"
+
+  search: true
 
 format:
   html:
     theme:
-      - cosmo
-      - brand
+      light: [cosmo, theme-light.scss]
     css: styles.css
     toc: true
+    code-copy: true
+    code-overflow: wrap
 
+# Reveal.js presentation defaults
+revealjs-defaults:
+  theme: [default, slides-theme.scss]
+  logo: static/logos/RPI_Logo_Binary_1_White.png
+  footer: "ITWS-4500 | Advanced Web & Agentic AI Development"
+  slide-number: true
+  transition: slide
+  width: 1600
+  height: 900
+  margin: 0.1
+  center: false
+  hash: true
+  history: true
+  controls: true
+  progress: true
+  navigationMode: linear
+  touch: true
+  chalkboard: true
+  multiplex: false
+  pdf-separate-fragments: false
+  code-line-numbers: true
+  code-overflow: wrap
+  highlight-style: github
 
-
+# PDF export settings for presentations
+pdf:
+  documentclass: scrartcl
+  papersize: letter

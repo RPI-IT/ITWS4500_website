@@ -1,0 +1,43 @@
+---
+title: "Week 1: Course Foundation"
+subtitle: "Introduction & Infrastructure as Code"
+---
+
+## This Week's Sessions
+
+### Tuesday, January 13: Course Introduction
+Web Applications as Architectural Patterns; Group Formation
+
+[View Presentation](01-course-introduction.qmd){.btn .btn-primary}
+[Download PDF](01-course-introduction.pdf){.btn .btn-secondary}
+
+### Friday, January 16: Infrastructure as Code
+Containers, Docker, and Docker Compose (System Definition)
+
+[View Presentation](02-infrastructure-as-code.qmd){.btn .btn-primary}
+[Download PDF](02-infrastructure-as-code.pdf){.btn .btn-secondary}
+
+## Learning Objectives
+
+By the end of this week, you will be able to:
+
+1. Explain the architectural perspective on web application development
+2. Identify common patterns in modern web system design
+3. Understand the role of containers in modern development workflows
+4. Set up a Docker-based development environment
+5. Use Docker Compose to define multi-service applications
+
+## Preparation
+
+Before class, please:
+
+- Install [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+- Install [Visual Studio Code](https://code.visualstudio.com/)
+- Create a [GitHub](https://github.com/) account if you don't have one
+- Review the [course syllabus](../../syllabus.qmd)
+
+## Resources
+
+- [Docker Documentation](https://docs.docker.com/)
+- [Docker Compose Overview](https://docs.docker.com/compose/)
+- [12-Factor App Methodology](https://12factor.net/)

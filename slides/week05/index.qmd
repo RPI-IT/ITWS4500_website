@@ -1,0 +1,33 @@
+---
+title: "Week 5: Backend & Data"
+subtitle: "Lab 3 & Data Architecture"
+---
+
+## This Week's Sessions
+
+### Tuesday, February 10: Lab 3
+Backend Architecture Patterns (Node.js & Express)
+
+[Lab Assignment](../../labs/lab03-backend-patterns.qmd){.btn .btn-success}
+
+### Friday, February 13: Data Architecture
+Polyglot Persistence - Document vs Relational Trade-offs
+
+## Learning Objectives
+
+By the end of this week, you will be able to:
+
+1. Implement backend architectural patterns
+2. Design effective API endpoints
+3. Understand polyglot persistence
+4. Choose appropriate databases for different use cases
+
+## Deliverables
+
+::: {.callout-important}
+**Lab 3 Due:** Tuesday, February 17, 2026
+:::
+
+## Resources
+
+*Coming soon*

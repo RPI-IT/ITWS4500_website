@@ -1,0 +1,43 @@
+---
+title: "Week 2: Architecture Foundations"
+subtitle: "Lab 0 & Architectural Theory"
+---
+
+## This Week's Sessions
+
+### Tuesday, January 20: Lab 0
+Infrastructure as Code with Docker Compose (Baseline MERN System)
+
+[View Presentation](03-lab0-docker-compose.qmd){.btn .btn-primary}
+[Lab Assignment](../../labs/lab00-infrastructure-as-code.qmd){.btn .btn-success}
+
+### Friday, January 23: Architectural Theory
+Patterns, System Decomposition, and Project Scoping
+
+[View Presentation](04-architectural-theory.qmd){.btn .btn-primary}
+[Download PDF](04-architectural-theory.pdf){.btn .btn-secondary}
+
+## Learning Objectives
+
+By the end of this week, you will be able to:
+
+1. Build a complete MERN development environment with Docker Compose
+2. Understand service orchestration and container networking
+3. Apply architectural patterns to system design
+4. Decompose systems into well-defined components
+5. Scope and plan a semester project
+
+## Lab 0 Due
+
+::: {.callout-important}
+**Lab 0: Infrastructure as Code**
+Due: Tuesday, January 27, 2026 before class
+
+Submit via LMS with your GitHub repository link.
+:::
+
+## Resources
+
+- [Docker Compose Reference](https://docs.docker.com/compose/compose-file/)
+- [The Twelve-Factor App](https://12factor.net/)
+- [Patterns of Enterprise Application Architecture](https://martinfowler.com/eaaCatalog/)

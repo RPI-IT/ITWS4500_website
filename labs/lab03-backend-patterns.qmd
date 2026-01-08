@@ -1,0 +1,24 @@
+---
+title: "Lab 3: Backend Architecture Patterns"
+subtitle: "Node.js & Express"
+---
+
+::: {.callout-note}
+## Coming Soon
+This lab will be available on February 10, 2026.
+:::
+
+## Overview
+
+This lab covers backend architectural patterns including service layers, middleware, and API design.
+
+## Learning Objectives
+
+- Implement service layer patterns
+- Design RESTful APIs
+- Create middleware pipelines
+- Handle errors consistently
+
+## Due Date
+
+**Tuesday, February 17, 2026**

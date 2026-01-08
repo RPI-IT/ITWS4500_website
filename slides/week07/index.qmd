@@ -1,0 +1,41 @@
+---
+title: "Week 7: Midterm Review"
+subtitle: "Project Presentations & Work Day"
+---
+
+## This Week's Sessions
+
+### Tuesday, February 24: Midterm Presentations
+Architectural Decisions and Trade-offs
+
+### Friday, February 27: Project Work Day
+Refactoring and Architectural Improvement
+
+## Learning Objectives
+
+By the end of this week, you will be able to:
+
+1. Present architectural decisions effectively
+2. Receive and incorporate feedback
+3. Refactor code based on architectural principles
+
+## Deliverables
+
+::: {.callout-important}
+**Midterm Project Presentation:** Tuesday, February 24
+:::
+
+## Presentation Guidelines
+
+Each team will present:
+- Current system architecture
+- Key technical decisions and trade-offs
+- Demo of working features
+- Challenges and lessons learned
+- Next steps
+
+**Time:** 10-15 minutes per team
+
+## Resources
+
+*Coming soon*

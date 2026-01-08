@@ -1,0 +1,24 @@
+---
+title: "Lab 2: Component and State Management"
+subtitle: "React/Angular Architecture Patterns"
+---
+
+::: {.callout-note}
+## Coming Soon
+This lab will be available on February 3, 2026.
+:::
+
+## Overview
+
+This lab focuses on frontend architecture patterns, including component design and state management strategies.
+
+## Learning Objectives
+
+- Design reusable component hierarchies
+- Implement state management (Context API, Redux, etc.)
+- Apply React/Angular best practices
+- Handle complex UI state
+
+## Due Date
+
+**Tuesday, February 10, 2026**

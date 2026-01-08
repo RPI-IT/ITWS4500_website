@@ -1,0 +1,24 @@
+---
+title: "Lab 8: CI Pipelines"
+subtitle: "Continuous Integration and Automated Testing"
+---
+
+::: {.callout-note}
+## Coming Soon
+This lab will be available on April 3, 2026.
+:::
+
+## Overview
+
+This lab focuses on building CI/CD pipelines and implementing automated testing strategies.
+
+## Learning Objectives
+
+- Configure GitHub Actions workflows
+- Implement automated testing
+- Set up deployment pipelines
+- Create quality gates
+
+## Due Date
+
+**Friday, April 10, 2026**

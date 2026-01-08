@@ -1,0 +1,24 @@
+---
+title: "Lab 5: Authentication & Mobile"
+subtitle: "Identity and Mobile Architecture"
+---
+
+::: {.callout-note}
+## Coming Soon
+This lab will be available on March 13, 2026.
+:::
+
+## Overview
+
+This lab covers authentication patterns and mobile-friendly application architecture.
+
+## Learning Objectives
+
+- Implement JWT-based authentication
+- Handle OAuth flows
+- Design mobile-responsive interfaces
+- Secure API endpoints
+
+## Due Date
+
+**Friday, March 20, 2026**

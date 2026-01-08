@@ -1,0 +1,33 @@
+---
+title: "Week 9: Agentic AI I"
+subtitle: "Agents as Workflow Systems"
+---
+
+## This Week's Sessions
+
+### Tuesday, March 17: Agentic Architecture I
+Agentic Architecture Patterns: Agents as Workflow Systems
+
+### Friday, March 20: Lab 6
+Agentic Workflows
+
+[Lab Assignment](../../labs/lab06-agentic-workflows.qmd){.btn .btn-success}
+
+## Learning Objectives
+
+By the end of this week, you will be able to:
+
+1. Understand agentic AI architecture patterns
+2. Design agent-based workflows
+3. Implement basic agent capabilities
+4. Integrate AI agents with web applications
+
+## Deliverables
+
+::: {.callout-important}
+**Lab 6 Due:** Friday, March 27, 2026
+:::
+
+## Resources
+
+*Coming soon*

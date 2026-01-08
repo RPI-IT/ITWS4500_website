@@ -1,0 +1,719 @@
+---
+title: "Architectural Theory"
+subtitle: "Patterns, System Decomposition, and Project Scoping"
+author: "Jason Kuruzovich"
+date: "January 23, 2026"
+format:
+  revealjs:
+    theme: [default, ../../slides-theme.scss]
+    logo: ../../static/logos/RPI_Logo_Binary_1_White.png
+    footer: "ITWS-4500 | Week 2, Day 2"
+    slide-number: true
+    transition: slide
+    width: 1600
+    height: 900
+    chalkboard: true
+    code-line-numbers: true
+    highlight-style: github
+    pdf-separate-fragments: false
+---
+
+# Architectural Theory {.section-slide background-color="#d6001c"}
+
+From Patterns to Practice
+
+## Today's Agenda
+
+::: {.learning-objectives}
+#### Learning Objectives
+
+1. Master fundamental **architectural patterns** for web systems
+2. Learn techniques for **system decomposition**
+3. Understand **bounded contexts** and service boundaries
+4. Apply **quality attribute** analysis to design decisions
+5. Develop skills for **project scoping** and estimation
+6. Prepare effective **project proposals**
+:::
+
+## Why Architectural Theory?
+
+> "Good architecture allows decisions to be deferred."
+>
+> — Robert C. Martin
+
+. . .
+
+**The goal:**
+- Make systems that can **evolve** over time
+- Enable teams to work **independently**
+- Support changing **requirements**
+- Maintain **quality** as systems grow
+
+# Architectural Patterns Deep Dive {.section-slide background-color="#d6001c"}
+
+## Pattern Categories
+
+```{mermaid}
+%%| fig-width: 14
+mindmap
+  root((Architectural Patterns))
+    Structural
+      Layered
+      Client-Server
+      Microservices
+      Monolithic
+    Messaging
+      Event-Driven
+      Pub-Sub
+      Message Queue
+      CQRS
+    Data
+      Repository
+      Unit of Work
+      CQRS
+      Event Sourcing
+    Deployment
+      Containers
+      Serverless
+      Hybrid
+```
+
+## Pattern: Layered Architecture
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    Presentation Layer                            │
+│    Components, Views, User Interface Logic                       │
+├─────────────────────────────────────────────────────────────────┤
+│                    Application Layer                             │
+│    Use Cases, Application Services, DTOs                         │
+├─────────────────────────────────────────────────────────────────┤
+│                    Domain Layer                                  │
+│    Entities, Value Objects, Domain Services, Business Rules      │
+├─────────────────────────────────────────────────────────────────┤
+│                    Infrastructure Layer                          │
+│    Repositories, External Services, Database, File System        │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+**Key Rule:** Dependencies point downward only
+
+## Layered Architecture Example
+
+```javascript
+// Presentation Layer (Controller)
+class UserController {
+  async getUser(req, res) {
+    const user = await this.userService.findById(req.params.id);
+    res.json(UserDTO.fromDomain(user));
+  }
+}
+
+// Application Layer (Service)
+class UserService {
+  async findById(id) {
+    const user = await this.userRepository.findById(id);
+    if (!user) throw new NotFoundError('User');
+    return user;
+  }
+}
+
+// Domain Layer (Entity)
+class User {
+  constructor(id, email, name) {
+    this.id = id;
+    this.email = email;
+    this.name = name;
+  }
+
+  changeName(newName) {
+    if (!newName || newName.length < 2) {
+      throw new ValidationError('Name must be at least 2 characters');
+    }
+    this.name = newName;
+  }
+}
+
+// Infrastructure Layer (Repository)
+class MongoUserRepository {
+  async findById(id) {
+    const doc = await UserModel.findById(id);
+    return doc ? User.fromDocument(doc) : null;
+  }
+}
+```
+
+## Pattern: Hexagonal Architecture (Ports & Adapters)
+
+```
+                    ┌────────────────────────────────┐
+                    │                                │
+       ┌──────┐     │    ┌──────────────────┐       │     ┌──────┐
+       │ REST │─────┼───►│                  │       │     │ SQL  │
+       │ API  │     │    │                  │◄──────┼─────│  DB  │
+       └──────┘     │    │                  │       │     └──────┘
+                    │    │   Application    │       │
+       ┌──────┐     │    │      Core        │       │     ┌──────┐
+       │ CLI  │─────┼───►│                  │◄──────┼─────│ Msg  │
+       │      │     │    │  (Domain Logic)  │       │     │ Queue│
+       └──────┘     │    │                  │       │     └──────┘
+                    │    └──────────────────┘       │
+       ┌──────┐     │                               │     ┌──────┐
+       │ gRPC │─────┼───►          ◄────────────────┼─────│ Cache│
+       │      │     │                               │     │      │
+       └──────┘     └────────────────────────────────┘     └──────┘
+
+                    Ports (Interfaces)    Adapters (Implementations)
+```
+
+**Core Principle:** Business logic doesn't depend on external details
+
+## Pattern: Event-Driven Architecture
+
+```{mermaid}
+%%| fig-width: 14
+sequenceDiagram
+    participant Client
+    participant OrderService
+    participant EventBus
+    participant InventoryService
+    participant NotificationService
+    participant AnalyticsService
+
+    Client->>OrderService: Place Order
+    OrderService->>EventBus: Publish: OrderCreated
+
+    par Async Processing
+        EventBus->>InventoryService: OrderCreated
+        InventoryService->>EventBus: Publish: InventoryReserved
+    and
+        EventBus->>NotificationService: OrderCreated
+        NotificationService->>Client: Email Confirmation
+    and
+        EventBus->>AnalyticsService: OrderCreated
+        AnalyticsService->>AnalyticsService: Record Event
+    end
+
+    OrderService-->>Client: Order Confirmed
+```
+
+## Event-Driven Benefits & Challenges
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Benefits
+
+- **Loose Coupling** - Services don't know about each other
+- **Scalability** - Handle spikes with queuing
+- **Resilience** - Failures don't cascade
+- **Flexibility** - Add consumers without changing producers
+- **Audit Trail** - Events are a natural log
+:::
+
+::: {.column width="50%"}
+### Challenges
+
+- **Complexity** - Harder to understand flow
+- **Eventual Consistency** - Data may be stale
+- **Debugging** - Distributed tracing needed
+- **Ordering** - Events may arrive out of order
+- **Idempotency** - Must handle duplicate events
+:::
+
+::::
+
+## Pattern: CQRS (Command Query Responsibility Segregation)
+
+```
+                          Commands                    Queries
+                             │                           │
+                             ▼                           ▼
+                    ┌────────────────┐         ┌────────────────┐
+                    │ Command Handler│         │ Query Handler  │
+                    └───────┬────────┘         └───────┬────────┘
+                            │                          │
+                            ▼                          ▼
+                    ┌────────────────┐         ┌────────────────┐
+                    │  Write Model   │────────►│   Read Model   │
+                    │   (Primary)    │ Sync/   │  (Optimized)   │
+                    │                │ Events  │                │
+                    └───────┬────────┘         └───────┬────────┘
+                            │                          │
+                            ▼                          ▼
+                    ┌────────────────┐         ┌────────────────┐
+                    │  Normalized DB │         │ Denormalized DB│
+                    │  (PostgreSQL)  │         │   (MongoDB)    │
+                    └────────────────┘         └────────────────┘
+```
+
+**Use When:** Read and write patterns are significantly different
+
+## Pattern: API Gateway
+
+```{mermaid}
+%%| fig-width: 14
+flowchart TB
+    subgraph Clients
+        Web[Web App]
+        Mobile[Mobile App]
+        Partner[Partner API]
+    end
+
+    subgraph Gateway["API Gateway"]
+        Auth[Authentication]
+        Rate[Rate Limiting]
+        Cache[Response Cache]
+        Route[Request Routing]
+        Transform[Transform/Aggregate]
+    end
+
+    subgraph Services
+        Users[User Service]
+        Products[Product Service]
+        Orders[Order Service]
+        Search[Search Service]
+    end
+
+    Clients --> Gateway
+    Gateway --> Services
+```
+
+**Responsibilities:** Auth, rate limiting, routing, aggregation, protocol translation
+
+# System Decomposition {.section-slide background-color="#d6001c"}
+
+## The Art of Decomposition
+
+> "The key to controlling complexity is a good domain model."
+>
+> — Eric Evans
+
+**Goal:** Break systems into pieces that are:
+
+- **Cohesive** - Related things together
+- **Loosely Coupled** - Minimal dependencies
+- **Independently Deployable** - Change without coordination
+- **Team-Sized** - One team can own it
+
+## Decomposition Strategies
+
+### 1. By Business Capability
+
+```
+E-commerce Platform
+├── Catalog Management     (Product team)
+├── Order Processing       (Fulfillment team)
+├── Customer Management    (CRM team)
+├── Payment Processing     (Finance team)
+└── Shipping & Delivery    (Logistics team)
+```
+
+### 2. By Subdomain (Domain-Driven Design)
+
+```
+├── Core Domain          (Competitive advantage)
+├── Supporting Domain    (Necessary but not differentiating)
+└── Generic Domain       (Commodity, buy or use OSS)
+```
+
+## Bounded Contexts
+
+```{mermaid}
+%%| fig-width: 14
+flowchart TB
+    subgraph Sales["Sales Context"]
+        SCustomer[Customer]
+        SProduct[Product]
+        SOrder[Order]
+    end
+
+    subgraph Shipping["Shipping Context"]
+        ShCustomer[Recipient]
+        ShOrder[Shipment]
+        ShAddress[Address]
+    end
+
+    subgraph Billing["Billing Context"]
+        BCustomer[Account]
+        BInvoice[Invoice]
+        BPayment[Payment]
+    end
+
+    Sales -->|Customer ID| Shipping
+    Sales -->|Order ID| Billing
+    Shipping -->|Shipment Status| Sales
+```
+
+**Key Insight:** Same concept (Customer) has different meanings in different contexts
+
+## Context Mapping
+
+| Pattern | Description | Example |
+|---------|-------------|---------|
+| **Shared Kernel** | Teams share a subset of model | Common types library |
+| **Customer-Supplier** | Upstream serves downstream | Orders → Shipping |
+| **Conformist** | Downstream adopts upstream model | Using external API as-is |
+| **Anti-Corruption Layer** | Translation layer | Legacy system integration |
+| **Open Host Service** | Published interface | Public API |
+| **Published Language** | Shared standard | Industry standard format |
+
+## Service Boundaries Checklist
+
+When defining service boundaries, ask:
+
+- [ ] Does it have a **single responsibility**?
+- [ ] Can it be **deployed independently**?
+- [ ] Does it own its **data**?
+- [ ] Can one **team** own it end-to-end?
+- [ ] Is the **interface** stable and well-defined?
+- [ ] Can it **fail independently** without cascading?
+- [ ] Is it **right-sized** (not too big, not too small)?
+
+## The Two-Pizza Rule
+
+> "If you can't feed a team with two pizzas, it's too big."
+>
+> — Jeff Bezos
+
+**Applied to Services:**
+- If one team can't understand the whole service, it's too big
+- If there's nothing meaningful a service can do alone, it's too small
+- Aim for services that map to teams and business capabilities
+
+# Quality Attributes {.section-slide background-color="#d6001c"}
+
+## Quality Attribute Scenarios
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                   Quality Attribute Scenario                     │
+├──────────────┬──────────────────────────────────────────────────┤
+│ Source       │ Who/what causes the stimulus                      │
+│ Stimulus     │ The event or condition                            │
+│ Environment  │ System state when stimulus occurs                 │
+│ Artifact     │ What part of system is affected                   │
+│ Response     │ How the system responds                           │
+│ Measure      │ How we evaluate the response                      │
+└──────────────┴──────────────────────────────────────────────────┘
+```
+
+**Example:**
+- **Source:** 1000 concurrent users
+- **Stimulus:** Request product search
+- **Environment:** Normal operations
+- **Artifact:** Search service
+- **Response:** Return results
+- **Measure:** 95th percentile < 200ms
+
+## Key Quality Attributes for Web Systems
+
+| Attribute | Question | Metric Example |
+|-----------|----------|----------------|
+| **Performance** | How fast? | Response time < 200ms |
+| **Scalability** | How much growth? | 10x users without redesign |
+| **Availability** | How reliable? | 99.9% uptime (8.76 hrs/year down) |
+| **Security** | How protected? | Zero critical vulnerabilities |
+| **Maintainability** | How easy to change? | New feature in < 1 week |
+| **Testability** | How verifiable? | 80% code coverage |
+
+## Trade-off Analysis
+
+Every architectural decision involves trade-offs:
+
+```{mermaid}
+%%| fig-width: 12
+flowchart LR
+    subgraph Decision["Add Caching Layer"]
+        Improves["✅ Improves"]
+        Costs["❌ Costs"]
+    end
+
+    Improves --> Perf[Performance]
+    Improves --> Scale[Scalability]
+    Improves --> Avail[Availability]
+
+    Costs --> Complex[Complexity]
+    Costs --> Consist[Consistency]
+    Costs --> Cost[Infrastructure Cost]
+```
+
+## Architecture Decision Records (ADRs)
+
+Document important decisions:
+
+```markdown
+# ADR 001: Use MongoDB for Primary Data Store
+
+## Status
+Accepted
+
+## Context
+We need a database for our MERN application that supports:
+- Flexible schema for evolving data models
+- Horizontal scaling for growing data
+- JSON-native storage for API compatibility
+
+## Decision
+We will use MongoDB as our primary data store.
+
+## Consequences
+### Positive
+- Schema flexibility accelerates development
+- Native JSON support simplifies API layer
+- Horizontal scaling with sharding
+
+### Negative
+- No ACID transactions across documents (until MongoDB 4.0+)
+- Complex queries may be less efficient than SQL
+- Team needs MongoDB expertise
+```
+
+# Project Scoping {.section-slide background-color="#d6001c"}
+
+## What Makes a Good Project?
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Good Scope
+
+- Clear problem statement
+- Well-defined user stories
+- Achievable in semester
+- Demonstrates patterns
+- Meaningful AI integration
+- Clear success criteria
+:::
+
+::: {.column width="50%"}
+### Poor Scope
+
+- "We'll build the next Facebook"
+- Vague requirements
+- Feature creep built-in
+- No architectural depth
+- AI as afterthought
+- No measurable outcome
+:::
+
+::::
+
+## Scoping Techniques
+
+### 1. MoSCoW Prioritization
+
+```
+MUST have    - Core functionality (MVP)
+SHOULD have  - Important but not critical
+COULD have   - Nice to have if time permits
+WON'T have   - Out of scope (explicitly)
+```
+
+### 2. User Story Mapping
+
+```
+                     User Journey
+    ┌────────┬────────┬────────┬────────┬────────┐
+    │  Sign  │ Browse │  Add   │  Check │ Track  │
+    │   Up   │Products│to Cart │  Out   │ Order  │
+    ├────────┼────────┼────────┼────────┼────────┤
+MVP │  ✓     │   ✓    │   ✓    │   ✓    │        │
+    ├────────┼────────┼────────┼────────┼────────┤
+v1.1│        │   ✓    │   ✓    │   ✓    │   ✓    │
+    └────────┴────────┴────────┴────────┴────────┘
+```
+
+## Estimation Techniques
+
+### T-Shirt Sizing
+
+| Size | Complexity | Example |
+|------|------------|---------|
+| XS | Trivial | Add validation message |
+| S | Simple | CRUD endpoint |
+| M | Moderate | User authentication |
+| L | Complex | Search with filters |
+| XL | Very complex | AI recommendation engine |
+
+### Planning Poker
+
+Team estimates relative complexity, discusses outliers
+
+## Risk Assessment
+
+Identify and mitigate project risks:
+
+| Risk | Likelihood | Impact | Mitigation |
+|------|------------|--------|------------|
+| Team member drops | Medium | High | Document knowledge, pair program |
+| Technology unknown | High | Medium | Spike early, have backup |
+| Scope creep | High | High | Fixed scope, say no |
+| Integration issues | Medium | High | Early integration, mocks |
+| AI API costs | Medium | Medium | Budget limits, caching |
+
+# Project Proposal {.section-slide background-color="#d6001c"}
+
+## Proposal Requirements
+
+**Due: January 30, 2026** (Presentations in class)
+
+### Required Sections
+
+1. **Problem Statement** - What problem are you solving?
+2. **Target Users** - Who benefits from this?
+3. **Core Features** - What does the MVP include?
+4. **Architecture Overview** - High-level system design
+5. **Technology Stack** - What tools and frameworks?
+6. **AI Integration** - How will AI/agents be used?
+7. **Team & Roles** - Who is responsible for what?
+8. **Risks & Mitigations** - What could go wrong?
+
+## Example Proposal Outline
+
+```markdown
+# Project: Smart Study Buddy
+
+## Problem Statement
+Students struggle to effectively review course material
+and identify knowledge gaps for exams.
+
+## Target Users
+- University students preparing for exams
+- Study groups collaborating on material
+
+## Core Features (MVP)
+1. Upload course materials (PDFs, notes)
+2. AI-generated practice questions
+3. Spaced repetition flashcards
+4. Progress tracking dashboard
+5. Study session scheduling
+
+## Architecture
+[Diagram showing frontend, API, database, AI service]
+
+## Tech Stack
+- Frontend: React + TypeScript
+- Backend: Node.js + Express
+- Database: MongoDB + PostgreSQL
+- AI: OpenAI API + LangChain
+- Infrastructure: Docker + GitHub Actions
+
+## AI Integration
+- Question generation from uploaded content
+- Adaptive difficulty based on performance
+- Natural language Q&A for clarification
+
+## Team
+- Alice: Frontend lead
+- Bob: Backend lead
+- Carol: AI/ML integration
+- Dave: DevOps and infrastructure
+
+## Risks
+- AI response quality → Human review, prompt engineering
+- Cost of API calls → Caching, rate limiting, budgeting
+```
+
+## Presentation Format (5-7 minutes)
+
+1. **Problem & Users** (1 min)
+   - What problem? Who cares?
+
+2. **Solution Overview** (2 min)
+   - Key features, demo mockup
+
+3. **Architecture** (2 min)
+   - System diagram, tech choices, why
+
+4. **AI Integration** (1 min)
+   - Specific AI capabilities
+
+5. **Team & Timeline** (1 min)
+   - Roles, major milestones
+
+## Evaluation Criteria
+
+| Criteria | Weight |
+|----------|--------|
+| Problem clarity and relevance | 20% |
+| Technical feasibility | 20% |
+| Architectural thinking | 20% |
+| AI integration meaningfulness | 15% |
+| Presentation quality | 15% |
+| Team organization | 10% |
+
+# Activity: Project Ideation {.section-slide background-color="#d6001c"}
+
+## Brainstorming Session (20 minutes)
+
+In your teams:
+
+1. **Individual** (5 min): Each person writes 3 project ideas
+2. **Share** (5 min): Present ideas to team, no judgment
+3. **Vote** (3 min): Each person gets 3 votes
+4. **Discuss** (7 min): Top 2-3 ideas - feasibility, interest
+
+## Idea Evaluation Matrix
+
+| Criteria | Idea 1 | Idea 2 | Idea 3 |
+|----------|--------|--------|--------|
+| Problem clarity | 1-5 | 1-5 | 1-5 |
+| Technical feasibility | 1-5 | 1-5 | 1-5 |
+| Team interest | 1-5 | 1-5 | 1-5 |
+| AI integration fit | 1-5 | 1-5 | 1-5 |
+| Uniqueness | 1-5 | 1-5 | 1-5 |
+| **Total** | | | |
+
+## Report Out (15 minutes)
+
+Each team shares:
+
+1. Your top project idea
+2. Why you chose it
+3. Biggest risk or concern
+4. One question for the class
+
+# Summary {.section-slide background-color="#d6001c"}
+
+## Key Takeaways
+
+1. **Patterns** provide proven solutions - know when to apply them
+2. **Decomposition** is about finding the right boundaries
+3. **Quality attributes** drive architectural decisions
+4. **Trade-offs** are inevitable - document and justify them
+5. **Scoping** is crucial - be explicit about what's out
+6. **ADRs** capture why decisions were made
+
+## Looking Ahead
+
+### Lab 0 Due: Tuesday, January 27
+
+- Complete MERN Docker Compose setup
+- README with instructions
+- Working demo
+
+### Project Proposals: Friday, January 30
+
+- 5-7 minute presentation
+- Problem, solution, architecture, AI, team
+
+## Reading for Next Week
+
+- [Martin Fowler: Patterns of Enterprise Application Architecture](https://martinfowler.com/eaaCatalog/)
+- [The Twelve-Factor App](https://12factor.net/)
+- [Microsoft: Cloud Design Patterns](https://docs.microsoft.com/en-us/azure/architecture/patterns/)
+
+## Questions?
+
+::: {.callout-box}
+**Office Hours:** Tuesday 9-11 AM, Pitt 2206
+
+**Email:** kuruzj@rpi.edu
+
+**Appointments:** [bit.ly/jason-rpi](https://bit.ly/jason-rpi)
+:::
+
+---
+
+Good luck with Lab 0 and your project proposals!
