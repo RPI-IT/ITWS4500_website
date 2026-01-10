@@ -1,0 +1,24 @@
+---
+title: "Week 4: Component Architecture"
+subtitle: "State Management and Backend Patterns"
+---
+
+::: {.callout-note}
+## Reading Assignment
+Complete this reading before Week 5.
+:::
+
+## Overview
+
+*Content coming soon.*
+
+## Key Concepts
+
+- Component-based architecture
+- State management strategies (Context API, Redux)
+- Backend architecture patterns
+- Service layer design
+
+## Further Reading
+
+*Resources coming soon.*

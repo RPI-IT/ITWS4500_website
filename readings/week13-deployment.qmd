@@ -1,0 +1,24 @@
+---
+title: "Week 13: Deployment Architecture"
+subtitle: "Cloud Patterns, Caching, and Scaling"
+---
+
+::: {.callout-note}
+## Reading Assignment
+Complete this reading before Week 14.
+:::
+
+## Overview
+
+*Content coming soon.*
+
+## Key Concepts
+
+- Cloud deployment strategies
+- Caching patterns
+- Horizontal scaling
+- Cost optimization
+
+## Further Reading
+
+*Resources coming soon.*

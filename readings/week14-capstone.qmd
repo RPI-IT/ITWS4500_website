@@ -1,0 +1,24 @@
+---
+title: "Week 14: Capstone Preparation"
+subtitle: "Project Hardening and Final Review"
+---
+
+::: {.callout-note}
+## Reading Assignment
+Review this material for Quiz 2 and final project.
+:::
+
+## Overview
+
+*Content coming soon.*
+
+## Key Concepts
+
+- Production hardening
+- Security review checklist
+- Performance optimization
+- Comprehensive architecture review
+
+## Further Reading
+
+*Resources coming soon.*

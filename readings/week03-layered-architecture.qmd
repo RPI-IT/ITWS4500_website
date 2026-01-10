@@ -1,0 +1,24 @@
+---
+title: "Week 3: Layered Architecture"
+subtitle: "Separation of Concerns and Frontend Patterns"
+---
+
+::: {.callout-note}
+## Reading Assignment
+Complete this reading before Week 4.
+:::
+
+## Overview
+
+*Content coming soon.*
+
+## Key Concepts
+
+- Layered architecture principles
+- Presentation, application, domain, and infrastructure layers
+- Frontend architecture patterns
+- Dependency inversion
+
+## Further Reading
+
+*Resources coming soon.*

@@ -1,0 +1,24 @@
+---
+title: "Week 5: Backend & Data Patterns"
+subtitle: "APIs and Data Architecture"
+---
+
+::: {.callout-note}
+## Reading Assignment
+Complete this reading before Week 6.
+:::
+
+## Overview
+
+*Content coming soon.*
+
+## Key Concepts
+
+- RESTful API design
+- Middleware pipelines
+- Data architecture patterns
+- Polyglot persistence concepts
+
+## Further Reading
+
+*Resources coming soon.*

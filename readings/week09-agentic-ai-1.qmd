@@ -1,0 +1,24 @@
+---
+title: "Week 9: Agentic AI I"
+subtitle: "Agents as Workflow Systems"
+---
+
+::: {.callout-note}
+## Reading Assignment
+Complete this reading before Week 10.
+:::
+
+## Overview
+
+*Content coming soon.*
+
+## Key Concepts
+
+- Introduction to agentic AI
+- Agent-based workflows
+- LLM integration patterns
+- Agent-human interaction
+
+## Further Reading
+
+*Resources coming soon.*

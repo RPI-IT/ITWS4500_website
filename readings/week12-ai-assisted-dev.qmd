@@ -1,0 +1,24 @@
+---
+title: "Week 12: AI-Assisted Development"
+subtitle: "Human-AI Collaboration Patterns"
+---
+
+::: {.callout-note}
+## Reading Assignment
+Complete this reading before Week 13.
+:::
+
+## Overview
+
+*Content coming soon.*
+
+## Key Concepts
+
+- AI coding assistants
+- Prompt engineering for development
+- AI-generated testing
+- Evaluating AI-generated code
+
+## Further Reading
+
+*Resources coming soon.*

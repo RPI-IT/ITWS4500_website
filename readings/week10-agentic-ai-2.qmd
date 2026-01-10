@@ -1,0 +1,24 @@
+---
+title: "Week 10: Agentic AI II"
+subtitle: "Orchestration, Memory, and Governance"
+---
+
+::: {.callout-note}
+## Reading Assignment
+Complete this reading before Week 11.
+:::
+
+## Overview
+
+*Content coming soon.*
+
+## Key Concepts
+
+- Multi-agent orchestration
+- Agent memory systems
+- Tool integration
+- AI governance patterns
+
+## Further Reading
+
+*Resources coming soon.*

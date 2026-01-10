@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Week 1: Course Introduction &amp; Infrastructure as Code – ITWS-4500: Advanced Web &amp; Agentic AI Development</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../static/logos/RPI_Logo_Binary_1.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-674b895ea931ffa4b4900794805962b3.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-e0dfd07c0e7a91a9a0c538eb51a6efe0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../static/logos/RPI_Logo_Binary_1_White.png" alt="" class="navbar-logo light-content">
+    <img src="../static/logos/RPI_Logo_Binary_1_White.png" alt="" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">ITWS-4500: Advanced Web &amp; Agentic AI Development</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../syllabus.html"> 
+<span class="menu-text">Syllabus</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../schedule.html"> 
+<span class="menu-text">Schedule</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-slides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Slides</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-slides">    
+        <li>
+    <a class="dropdown-item" href="../slides/week01/index.html">
+ <span class="dropdown-text">Week 1: Introduction &amp; IaC</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../slides/week02/index.html">
+ <span class="dropdown-text">Week 2: Lab 1 &amp; Architecture</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../slides/week03/index.html">
+ <span class="dropdown-text">Week 3: Lab 2 &amp; Frontend</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../slides/week04/index.html">
+ <span class="dropdown-text">Week 4: Lab 3 &amp; Backend</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../slides/week05/index.html">
+ <span class="dropdown-text">Week 5: Lab 4 &amp; Data</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../slides/week06/index.html">
+ <span class="dropdown-text">Week 6: Lab 5 &amp; Quiz 1</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../slides/week07/index.html">
+ <span class="dropdown-text">Week 7: Midterm &amp; Project</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../slides/week08/index.html">
+ <span class="dropdown-text">Week 8: Auth &amp; Mobile</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../slides/week09/index.html">
+ <span class="dropdown-text">Week 9: Agentic AI I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../slides/week10/index.html">
+ <span class="dropdown-text">Week 10: Agentic AI II</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../slides/week11/index.html">
+ <span class="dropdown-text">Week 11: CI/CD</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../slides/week12/index.html">
+ <span class="dropdown-text">Week 12: AI-Assisted Dev</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../slides/week13/index.html">
+ <span class="dropdown-text">Week 13: Deployment</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../slides/week14/index.html">
+ <span class="dropdown-text">Week 14: Quiz 2 &amp; Capstone</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../slides/week15/index.html">
+ <span class="dropdown-text">Week 15: Final Presentations</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-readings" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Readings</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-readings">    
+        <li>
+    <a class="dropdown-item" href="../readings/week01-introduction.html">
+ <span class="dropdown-text">Week 1: Introduction &amp; IaC</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../readings/week02-architecture-foundations.html">
+ <span class="dropdown-text">Week 2: Architecture Foundations</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../readings/week03-layered-architecture.html">
+ <span class="dropdown-text">Week 3: Layered Architecture</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../readings/week04-component-architecture.html">
+ <span class="dropdown-text">Week 4: Component Architecture</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../readings/week05-backend-data.html">
+ <span class="dropdown-text">Week 5: Backend &amp; Data</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../readings/week06-data-architecture.html">
+ <span class="dropdown-text">Week 6: Data Architecture</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../readings/week07-midterm-review.html">
+ <span class="dropdown-text">Week 7: Midterm Review</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../readings/week08-auth-mobile.html">
+ <span class="dropdown-text">Week 8: Auth &amp; Mobile</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../readings/week09-agentic-ai-1.html">
+ <span class="dropdown-text">Week 9: Agentic AI I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../readings/week10-agentic-ai-2.html">
+ <span class="dropdown-text">Week 10: Agentic AI II</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../readings/week11-ci-cd.html">
+ <span class="dropdown-text">Week 11: CI/CD</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../readings/week12-ai-assisted-dev.html">
+ <span class="dropdown-text">Week 12: AI-Assisted Dev</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../readings/week13-deployment.html">
+ <span class="dropdown-text">Week 13: Deployment</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../readings/week14-capstone.html">
+ <span class="dropdown-text">Week 14: Capstone</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../readings/week15-final.html">
+ <span class="dropdown-text">Week 15: Final</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-labs" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Labs</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-labs">    
+        <li>
+    <a class="dropdown-item" href="../labs/lab01-infrastructure-as-code.html">
+ <span class="dropdown-text">Lab 1: Infrastructure as Code</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../labs/lab02-layered-architecture.html">
+ <span class="dropdown-text">Lab 2: Layered Architecture</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../labs/lab03-component-state.html">
+ <span class="dropdown-text">Lab 3: Component &amp; State</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../labs/lab04-backend-patterns.html">
+ <span class="dropdown-text">Lab 4: Backend Patterns</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../labs/lab05-polyglot-persistence.html">
+ <span class="dropdown-text">Lab 5: Polyglot Persistence</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../labs/lab06-auth-mobile.html">
+ <span class="dropdown-text">Lab 6: Auth &amp; Mobile</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../labs/lab07-agentic-workflows.html">
+ <span class="dropdown-text">Lab 7: Agentic Workflows</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../labs/lab08-agent-orchestration.html">
+ <span class="dropdown-text">Lab 8: Agent Orchestration</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../labs/lab09-ci-pipelines.html">
+ <span class="dropdown-text">Lab 9: CI Pipelines</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../labs/lab10-ai-assisted-coding.html">
+ <span class="dropdown-text">Lab 10: AI-Assisted Coding</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../labs/lab11-deployment.html">
+ <span class="dropdown-text">Lab 11: Deployment</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../labs/lab12-capstone-extension.html">
+ <span class="dropdown-text">Lab 12: Capstone Extension</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/rpi-techfundamentals"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://lms.rpi.edu"> 
+<span class="menu-text">LMS</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#the-evolution-of-application-architecture" id="toc-the-evolution-of-application-architecture" class="nav-link" data-scroll-target="#the-evolution-of-application-architecture">The Evolution of Application Architecture</a>
+  <ul class="collapse">
+  <li><a href="#from-monoliths-to-distributed-systems" id="toc-from-monoliths-to-distributed-systems" class="nav-link" data-scroll-target="#from-monoliths-to-distributed-systems">From Monoliths to Distributed Systems</a></li>
+  <li><a href="#the-mern-stack-as-reference-architecture" id="toc-the-mern-stack-as-reference-architecture" class="nav-link" data-scroll-target="#the-mern-stack-as-reference-architecture">The MERN Stack as Reference Architecture</a></li>
+  </ul></li>
+  <li><a href="#infrastructure-as-code" id="toc-infrastructure-as-code" class="nav-link" data-scroll-target="#infrastructure-as-code">Infrastructure as Code</a>
+  <ul class="collapse">
+  <li><a href="#the-works-on-my-machine-problem" id="toc-the-works-on-my-machine-problem" class="nav-link" data-scroll-target="#the-works-on-my-machine-problem">The “Works on My Machine” Problem</a></li>
+  <li><a href="#what-is-infrastructure-as-code" id="toc-what-is-infrastructure-as-code" class="nav-link" data-scroll-target="#what-is-infrastructure-as-code">What is Infrastructure as Code?</a></li>
+  <li><a href="#containers-the-building-blocks" id="toc-containers-the-building-blocks" class="nav-link" data-scroll-target="#containers-the-building-blocks">Containers: The Building Blocks</a></li>
+  </ul></li>
+  <li><a href="#docker-fundamentals" id="toc-docker-fundamentals" class="nav-link" data-scroll-target="#docker-fundamentals">Docker Fundamentals</a>
+  <ul class="collapse">
+  <li><a href="#images" id="toc-images" class="nav-link" data-scroll-target="#images">Images</a></li>
+  <li><a href="#containers" id="toc-containers" class="nav-link" data-scroll-target="#containers">Containers</a></li>
+  <li><a href="#registries" id="toc-registries" class="nav-link" data-scroll-target="#registries">Registries</a></li>
+  </ul></li>
+  <li><a href="#writing-effective-dockerfiles" id="toc-writing-effective-dockerfiles" class="nav-link" data-scroll-target="#writing-effective-dockerfiles">Writing Effective Dockerfiles</a>
+  <ul class="collapse">
+  <li><a href="#basic-structure" id="toc-basic-structure" class="nav-link" data-scroll-target="#basic-structure">Basic Structure</a></li>
+  <li><a href="#best-practices" id="toc-best-practices" class="nav-link" data-scroll-target="#best-practices">Best Practices</a></li>
+  <li><a href="#multi-stage-builds" id="toc-multi-stage-builds" class="nav-link" data-scroll-target="#multi-stage-builds">Multi-Stage Builds</a></li>
+  </ul></li>
+  <li><a href="#docker-compose-multi-service-orchestration" id="toc-docker-compose-multi-service-orchestration" class="nav-link" data-scroll-target="#docker-compose-multi-service-orchestration">Docker Compose: Multi-Service Orchestration</a>
+  <ul class="collapse">
+  <li><a href="#the-docker-compose.yml-file" id="toc-the-docker-compose.yml-file" class="nav-link" data-scroll-target="#the-docker-compose.yml-file">The docker-compose.yml File</a></li>
+  <li><a href="#key-concepts" id="toc-key-concepts" class="nav-link" data-scroll-target="#key-concepts">Key Concepts</a></li>
+  <li><a href="#development-workflow-with-docker-compose" id="toc-development-workflow-with-docker-compose" class="nav-link" data-scroll-target="#development-workflow-with-docker-compose">Development Workflow with Docker Compose</a></li>
+  <li><a href="#common-commands" id="toc-common-commands" class="nav-link" data-scroll-target="#common-commands">Common Commands</a></li>
+  </ul></li>
+  <li><a href="#environment-configuration" id="toc-environment-configuration" class="nav-link" data-scroll-target="#environment-configuration">Environment Configuration</a>
+  <ul class="collapse">
+  <li><a href="#environment-variables" id="toc-environment-variables" class="nav-link" data-scroll-target="#environment-variables">Environment Variables</a></li>
+  <li><a href="#multiple-compose-files" id="toc-multiple-compose-files" class="nav-link" data-scroll-target="#multiple-compose-files">Multiple Compose Files</a></li>
+  </ul></li>
+  <li><a href="#container-networking" id="toc-container-networking" class="nav-link" data-scroll-target="#container-networking">Container Networking</a>
+  <ul class="collapse">
+  <li><a href="#default-bridge-network" id="toc-default-bridge-network" class="nav-link" data-scroll-target="#default-bridge-network">Default Bridge Network</a></li>
+  <li><a href="#port-mapping" id="toc-port-mapping" class="nav-link" data-scroll-target="#port-mapping">Port Mapping</a></li>
+  </ul></li>
+  <li><a href="#data-persistence" id="toc-data-persistence" class="nav-link" data-scroll-target="#data-persistence">Data Persistence</a>
+  <ul class="collapse">
+  <li><a href="#volume-types" id="toc-volume-types" class="nav-link" data-scroll-target="#volume-types">Volume Types</a></li>
+  <li><a href="#when-to-use-each-type" id="toc-when-to-use-each-type" class="nav-link" data-scroll-target="#when-to-use-each-type">When to Use Each Type</a></li>
+  </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#key-terms" id="toc-key-terms" class="nav-link" data-scroll-target="#key-terms">Key Terms</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Week 1: Course Introduction &amp; Infrastructure as Code</h1>
+<p class="subtitle lead">Foundations of Modern Application Development</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Reading Assignment
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Complete this reading before Week 2. Estimated time: 45-60 minutes.</p>
+</div>
+</div>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Modern application development has evolved dramatically over the past decade. What was once a relatively straightforward process of writing code and deploying it to a server has become a complex orchestration of services, containers, cloud platforms, and automated pipelines. This course takes a <strong>pattern-first approach</strong> to understanding these systems, focusing on the architectural decisions that shape how we build, deploy, and maintain software.</p>
+<p>This first reading establishes two foundational concepts: understanding modern application architecture as a collection of patterns, and mastering Infrastructure as Code (IaC) as the foundation for reproducible, scalable systems.</p>
+</section>
+<section id="the-evolution-of-application-architecture" class="level2">
+<h2 class="anchored" data-anchor-id="the-evolution-of-application-architecture">The Evolution of Application Architecture</h2>
+<section id="from-monoliths-to-distributed-systems" class="level3">
+<h3 class="anchored" data-anchor-id="from-monoliths-to-distributed-systems">From Monoliths to Distributed Systems</h3>
+<p>Early web applications followed a simple pattern: a single application running on a single server, connecting to a single database. This <strong>monolithic architecture</strong> served well for many years and still has its place today. However, as applications grew in complexity and scale, limitations emerged:</p>
+<ul>
+<li><strong>Scaling challenges</strong>: The entire application must scale together, even if only one component needs more resources</li>
+<li><strong>Deployment risk</strong>: A small change requires redeploying the entire application</li>
+<li><strong>Technology lock-in</strong>: The entire application must use the same technology stack</li>
+<li><strong>Team coordination</strong>: Large teams working on a single codebase create coordination overhead</li>
+</ul>
+<p>Modern applications increasingly adopt <strong>distributed architectures</strong> where functionality is split across multiple services. This includes microservices, where each service handles a specific business capability, and the client-server model we’ll use in this course, where distinct frontend and backend applications communicate over APIs.</p>
+</section>
+<section id="the-mern-stack-as-reference-architecture" class="level3">
+<h3 class="anchored" data-anchor-id="the-mern-stack-as-reference-architecture">The MERN Stack as Reference Architecture</h3>
+<p>Throughout this course, we use the MERN stack (MongoDB, Express, React, Node.js) as our reference implementation. This isn’t because MERN is the only or best stack—it’s because it provides clear examples of architectural patterns that apply across technologies:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 28%">
+<col style="width: 15%">
+<col style="width: 55%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>Role</th>
+<th>Pattern Demonstrated</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>MongoDB</strong></td>
+<td>Document database</td>
+<td>Persistence layer, NoSQL patterns</td>
+</tr>
+<tr class="even">
+<td><strong>Express</strong></td>
+<td>Backend framework</td>
+<td>API design, middleware, routing</td>
+</tr>
+<tr class="odd">
+<td><strong>React</strong></td>
+<td>Frontend library</td>
+<td>Component architecture, state management</td>
+</tr>
+<tr class="even">
+<td><strong>Node.js</strong></td>
+<td>Runtime environment</td>
+<td>Event-driven architecture, JavaScript everywhere</td>
+</tr>
+</tbody>
+</table>
+<p>The patterns you learn with MERN—separation of concerns, API design, component architecture, state management—transfer directly to other stacks like Django/React, Spring Boot/Angular, or Rails/Vue.</p>
+</section>
+</section>
+<section id="infrastructure-as-code" class="level2">
+<h2 class="anchored" data-anchor-id="infrastructure-as-code">Infrastructure as Code</h2>
+<section id="the-works-on-my-machine-problem" class="level3">
+<h3 class="anchored" data-anchor-id="the-works-on-my-machine-problem">The “Works on My Machine” Problem</h3>
+<p>Consider this common scenario: A developer builds a feature that works perfectly on their laptop. They commit the code, and it passes tests in the CI pipeline. But when deployed to production, it fails. The culprit? A difference in environment—perhaps a different Node.js version, a missing environment variable, or a different database configuration.</p>
+<p>This <strong>environment drift</strong> has plagued software development for decades. Traditional solutions involved detailed setup documentation, configuration management tools, and significant DevOps effort. Containers offer a more elegant solution.</p>
+</section>
+<section id="what-is-infrastructure-as-code" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-infrastructure-as-code">What is Infrastructure as Code?</h3>
+<p><strong>Infrastructure as Code (IaC)</strong> is the practice of managing and provisioning computing infrastructure through machine-readable definition files rather than manual processes. Instead of clicking through a cloud console or SSH-ing into servers to install software, you write code that describes your infrastructure.</p>
+<p>Key principles of IaC include:</p>
+<ol type="1">
+<li><strong>Declarative definitions</strong>: You describe <em>what</em> you want, not <em>how</em> to achieve it</li>
+<li><strong>Version control</strong>: Infrastructure definitions are stored in Git alongside application code</li>
+<li><strong>Reproducibility</strong>: The same definition produces identical environments every time</li>
+<li><strong>Automation</strong>: Infrastructure changes are applied through automated processes</li>
+</ol>
+</section>
+<section id="containers-the-building-blocks" class="level3">
+<h3 class="anchored" data-anchor-id="containers-the-building-blocks">Containers: The Building Blocks</h3>
+<p>A <strong>container</strong> is a lightweight, standalone package that includes everything needed to run a piece of software: code, runtime, system tools, libraries, and settings. Containers solve the environment problem by packaging the environment with the application.</p>
+<section id="containers-vs.-virtual-machines" class="level4">
+<h4 class="anchored" data-anchor-id="containers-vs.-virtual-machines">Containers vs.&nbsp;Virtual Machines</h4>
+<p>Containers are often compared to virtual machines (VMs), but they operate at a different level:</p>
+<pre><code>┌─────────────────────────────────────────────────────────────┐
+│                    Virtual Machines                          │
+├─────────────────────────────────────────────────────────────┤
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐         │
+│  │    App A    │  │    App B    │  │    App C    │         │
+│  ├─────────────┤  ├─────────────┤  ├─────────────┤         │
+│  │   Bins/Libs │  │   Bins/Libs │  │   Bins/Libs │         │
+│  ├─────────────┤  ├─────────────┤  ├─────────────┤         │
+│  │  Guest OS   │  │  Guest OS   │  │  Guest OS   │         │
+│  └─────────────┘  └─────────────┘  └─────────────┘         │
+│  ┌─────────────────────────────────────────────────┐       │
+│  │                   Hypervisor                     │       │
+│  └─────────────────────────────────────────────────┘       │
+│  ┌─────────────────────────────────────────────────┐       │
+│  │                    Host OS                       │       │
+│  └─────────────────────────────────────────────────┘       │
+└─────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────┐
+│                       Containers                             │
+├─────────────────────────────────────────────────────────────┤
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐         │
+│  │    App A    │  │    App B    │  │    App C    │         │
+│  ├─────────────┤  ├─────────────┤  ├─────────────┤         │
+│  │   Bins/Libs │  │   Bins/Libs │  │   Bins/Libs │         │
+│  └─────────────┘  └─────────────┘  └─────────────┘         │
+│  ┌─────────────────────────────────────────────────┐       │
+│  │              Container Runtime (Docker)          │       │
+│  └─────────────────────────────────────────────────┘       │
+│  ┌─────────────────────────────────────────────────┐       │
+│  │                    Host OS                       │       │
+│  └─────────────────────────────────────────────────┘       │
+└─────────────────────────────────────────────────────────────┘</code></pre>
+<p>Key differences:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Aspect</th>
+<th>Virtual Machines</th>
+<th>Containers</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Size</strong></td>
+<td>Gigabytes</td>
+<td>Megabytes</td>
+</tr>
+<tr class="even">
+<td><strong>Startup time</strong></td>
+<td>Minutes</td>
+<td>Seconds</td>
+</tr>
+<tr class="odd">
+<td><strong>Resource usage</strong></td>
+<td>Heavy (full OS)</td>
+<td>Light (shared kernel)</td>
+</tr>
+<tr class="even">
+<td><strong>Isolation</strong></td>
+<td>Complete (hardware-level)</td>
+<td>Process-level</td>
+</tr>
+<tr class="odd">
+<td><strong>Portability</strong></td>
+<td>Limited</td>
+<td>High</td>
+</tr>
+</tbody>
+</table>
+<p>Containers share the host operating system’s kernel, making them dramatically lighter and faster than VMs while still providing isolation between applications.</p>
+</section>
+</section>
+</section>
+<section id="docker-fundamentals" class="level2">
+<h2 class="anchored" data-anchor-id="docker-fundamentals">Docker Fundamentals</h2>
+<p>Docker is the most widely used container platform. Understanding Docker requires grasping three core concepts: images, containers, and registries.</p>
+<section id="images" class="level3">
+<h3 class="anchored" data-anchor-id="images">Images</h3>
+<p>A <strong>Docker image</strong> is a read-only template containing instructions for creating a container. Think of it as a snapshot of a configured system. Images are built in layers, where each layer represents a set of filesystem changes.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode dockerfile code-with-copy"><code class="sourceCode dockerfile"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Each instruction creates a new layer</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> node:20-alpine          <span class="co"># Base layer: Node.js on Alpine Linux</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WORKDIR</span> /app                 <span class="co"># Create working directory</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> package*.json ./        <span class="co"># Copy dependency files</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="ex">npm</span> install              <span class="co"># Install dependencies (new layer)</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> . .                     <span class="co"># Copy application code (new layer)</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="kw">CMD</span> [<span class="st">"npm"</span>, <span class="st">"start"</span>]         <span class="co"># Default command (metadata, not a layer)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The layered architecture provides several benefits:</p>
+<ol type="1">
+<li><strong>Caching</strong>: Unchanged layers are cached and reused, speeding up builds</li>
+<li><strong>Sharing</strong>: Multiple images can share common base layers</li>
+<li><strong>Efficiency</strong>: Only changed layers need to be transferred or rebuilt</li>
+</ol>
+</section>
+<section id="containers" class="level3">
+<h3 class="anchored" data-anchor-id="containers">Containers</h3>
+<p>A <strong>container</strong> is a running instance of an image. You can run multiple containers from the same image, each with its own isolated filesystem, network, and process space.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run a container from an image</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-d</span> <span class="at">-p</span> 3000:3000 <span class="at">--name</span> my-app my-image</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Key flags:</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># -d          Run in background (detached)</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># -p 3000:3000  Map port 3000 on host to port 3000 in container</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># --name      Give the container a name</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Containers are <strong>ephemeral</strong> by design—they can be stopped, started, and destroyed without affecting the underlying image. Any data written inside a container is lost when the container is removed unless you use volumes.</p>
+</section>
+<section id="registries" class="level3">
+<h3 class="anchored" data-anchor-id="registries">Registries</h3>
+<p>A <strong>registry</strong> is a repository for Docker images. Docker Hub is the default public registry, but organizations often run private registries. Images are identified by their registry, name, and tag:</p>
+<pre><code>registry.example.com/my-org/my-app:v1.2.3
+└──────┬──────────┘ └──┬───┘ └─┬──┘ └─┬──┘
+    registry      organization  name   tag</code></pre>
+</section>
+</section>
+<section id="writing-effective-dockerfiles" class="level2">
+<h2 class="anchored" data-anchor-id="writing-effective-dockerfiles">Writing Effective Dockerfiles</h2>
+<p>A <strong>Dockerfile</strong> is a text file containing instructions to build an image. Writing effective Dockerfiles is a skill that improves with practice.</p>
+<section id="basic-structure" class="level3">
+<h3 class="anchored" data-anchor-id="basic-structure">Basic Structure</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode dockerfile code-with-copy"><code class="sourceCode dockerfile"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify base image</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> node:20-alpine</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Set working directory</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="kw">WORKDIR</span> /app</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy dependency files first (for better caching)</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> package*.json ./</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Install dependencies</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="ex">npm</span> ci <span class="at">--only</span><span class="op">=</span>production</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy application code</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> . .</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Expose port (documentation)</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="kw">EXPOSE</span> 3000</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the default command</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="kw">CMD</span> [<span class="st">"node"</span>, <span class="st">"server.js"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="best-practices" class="level3">
+<h3 class="anchored" data-anchor-id="best-practices">Best Practices</h3>
+<p><strong>1. Use specific base image tags</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode dockerfile code-with-copy"><code class="sourceCode dockerfile"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bad: Uses latest, which changes over time</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> node:latest</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Good: Pins to specific version</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> node:20.10-alpine</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>2. Minimize layers and combine commands</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode dockerfile code-with-copy"><code class="sourceCode dockerfile"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bad: Creates multiple layers</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="ex">apt-get</span> update</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="ex">apt-get</span> install <span class="at">-y</span> curl</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="ex">apt-get</span> clean</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Good: Single layer, includes cleanup</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="ex">apt-get</span> update <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">apt-get</span> install <span class="at">-y</span> curl <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="ex">apt-get</span> clean <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rm</span> <span class="at">-rf</span> /var/lib/apt/lists/<span class="pp">*</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>3. Order instructions from least to most frequently changed</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode dockerfile code-with-copy"><code class="sourceCode dockerfile"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dependencies change less often than code</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> package*.json ./</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="ex">npm</span> install</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Code changes frequently - this layer rebuilds often</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> . .</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>4. Use .dockerignore to exclude unnecessary files</strong></p>
+<pre><code># .dockerignore
+node_modules
+.git
+.env
+*.log
+README.md</code></pre>
+</section>
+<section id="multi-stage-builds" class="level3">
+<h3 class="anchored" data-anchor-id="multi-stage-builds">Multi-Stage Builds</h3>
+<p>Multi-stage builds allow you to use multiple FROM statements, copying only what you need from each stage. This produces smaller, more secure production images.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode dockerfile code-with-copy"><code class="sourceCode dockerfile"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Stage 1: Build</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> node:20-alpine <span class="kw">AS</span> builder</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WORKDIR</span> /app</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> package*.json ./</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="ex">npm</span> ci</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> . .</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="ex">npm</span> run build</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Stage 2: Production</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> node:20-alpine</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="kw">WORKDIR</span> /app</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy only production dependencies</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> package*.json ./</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="ex">npm</span> ci <span class="at">--only</span><span class="op">=</span>production</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy only built artifacts from builder</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> <span class="op">--from=builder</span> /app/dist ./dist</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="kw">USER</span> node</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="kw">CMD</span> [<span class="st">"node"</span>, <span class="st">"dist/server.js"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The final image contains only the production runtime—no build tools, source code, or development dependencies.</p>
+</section>
+</section>
+<section id="docker-compose-multi-service-orchestration" class="level2">
+<h2 class="anchored" data-anchor-id="docker-compose-multi-service-orchestration">Docker Compose: Multi-Service Orchestration</h2>
+<p>Real applications consist of multiple services: a frontend, backend API, database, cache, and more. <strong>Docker Compose</strong> is a tool for defining and running multi-container applications.</p>
+<section id="the-docker-compose.yml-file" class="level3">
+<h3 class="anchored" data-anchor-id="the-docker-compose.yml-file">The docker-compose.yml File</h3>
+<p>Docker Compose uses YAML files to define services, networks, and volumes:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">services</span><span class="kw">:</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">frontend</span><span class="kw">:</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">build</span><span class="kw">:</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">context</span><span class="kw">:</span><span class="at"> ./frontend</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">dockerfile</span><span class="kw">:</span><span class="at"> Dockerfile.dev</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"3000:3000"</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ./frontend:/app</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> /app/node_modules</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">environment</span><span class="kw">:</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> VITE_API_URL=http://localhost:4000</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">depends_on</span><span class="kw">:</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> api</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">api</span><span class="kw">:</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">build</span><span class="kw">:</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">context</span><span class="kw">:</span><span class="at"> ./api</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">dockerfile</span><span class="kw">:</span><span class="at"> Dockerfile.dev</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"4000:4000"</span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ./api:/app</span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> /app/node_modules</span></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">environment</span><span class="kw">:</span></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> NODE_ENV=development</span></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> MONGODB_URI=mongodb://mongo:27017/myapp</span></span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">depends_on</span><span class="kw">:</span></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">mongo</span><span class="kw">:</span></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">condition</span><span class="kw">:</span><span class="at"> service_healthy</span></span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">mongo</span><span class="kw">:</span></span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> mongo:7</span></span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"27017:27017"</span></span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> mongo-data:/data/db</span></span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">healthcheck</span><span class="kw">:</span></span>
+<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">test</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">"CMD"</span><span class="kw">,</span><span class="at"> </span><span class="st">"mongosh"</span><span class="kw">,</span><span class="at"> </span><span class="st">"--eval"</span><span class="kw">,</span><span class="at"> </span><span class="st">"db.adminCommand('ping')"</span><span class="kw">]</span></span>
+<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">interval</span><span class="kw">:</span><span class="at"> 10s</span></span>
+<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">timeout</span><span class="kw">:</span><span class="at"> 5s</span></span>
+<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">retries</span><span class="kw">:</span><span class="at"> </span><span class="dv">5</span></span>
+<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">mongo-data</span><span class="kw">:</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="key-concepts" class="level3">
+<h3 class="anchored" data-anchor-id="key-concepts">Key Concepts</h3>
+<p><strong>Services</strong> define the containers that make up your application. Each service can be built from a Dockerfile or use a pre-built image.</p>
+<p><strong>Networks</strong> enable communication between containers. Docker Compose creates a default network where services can reach each other by name (e.g., <code>api</code> can connect to <code>mongo</code> using the hostname <code>mongo</code>).</p>
+<p><strong>Volumes</strong> persist data beyond the container lifecycle. Named volumes (like <code>mongo-data</code>) are managed by Docker, while bind mounts (like <code>./api:/app</code>) map host directories into containers.</p>
+<p><strong>Dependencies</strong> define startup order. The <code>depends_on</code> key ensures services start in the right order, and <code>condition: service_healthy</code> waits for health checks to pass.</p>
+</section>
+<section id="development-workflow-with-docker-compose" class="level3">
+<h3 class="anchored" data-anchor-id="development-workflow-with-docker-compose">Development Workflow with Docker Compose</h3>
+<p>For development, we configure containers to support <strong>hot reloading</strong>—automatic restarts when code changes:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> ./api:/app</span><span class="co">          # Mount source code</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> /app/node_modules</span><span class="co">   # Preserve container's node_modules</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The bind mount makes host files available in the container, so changes are immediately visible. The anonymous volume for <code>node_modules</code> prevents the host’s <code>node_modules</code> (if any) from overwriting the container’s dependencies.</p>
+</section>
+<section id="common-commands" class="level3">
+<h3 class="anchored" data-anchor-id="common-commands">Common Commands</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Build and start all services</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose up <span class="at">--build</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Start in background</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose up <span class="at">-d</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View logs</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose logs <span class="at">-f</span> api</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Stop all services</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose down</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Stop and remove volumes (resets data)</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose down <span class="at">-v</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Rebuild a specific service</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose build api</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Execute command in running container</span></span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose exec api npm test</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="environment-configuration" class="level2">
+<h2 class="anchored" data-anchor-id="environment-configuration">Environment Configuration</h2>
+<p>Applications need different configurations for development, testing, and production. Docker supports this through environment variables and multiple compose files.</p>
+<section id="environment-variables" class="level3">
+<h3 class="anchored" data-anchor-id="environment-variables">Environment Variables</h3>
+<p>Environment variables configure applications without changing code:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">services</span><span class="kw">:</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">api</span><span class="kw">:</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">environment</span><span class="kw">:</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> NODE_ENV=development</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> PORT=4000</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> DATABASE_URL=mongodb://mongo:27017/myapp</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>For sensitive values, use a <code>.env</code> file (never committed to Git):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># .env</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="va">DATABASE_PASSWORD</span><span class="op">=</span>secretpassword</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="va">API_KEY</span><span class="op">=</span>sk-1234567890</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">services</span><span class="kw">:</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">api</span><span class="kw">:</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">environment</span><span class="kw">:</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> DATABASE_PASSWORD=${DATABASE_PASSWORD}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="multiple-compose-files" class="level3">
+<h3 class="anchored" data-anchor-id="multiple-compose-files">Multiple Compose Files</h3>
+<p>Use separate files for different environments:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Development (default)</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose up</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Production (override)</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose <span class="at">-f</span> docker-compose.yml <span class="at">-f</span> docker-compose.prod.yml up</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The production override might use production images, remove volume mounts, and add resource limits.</p>
+</section>
+</section>
+<section id="container-networking" class="level2">
+<h2 class="anchored" data-anchor-id="container-networking">Container Networking</h2>
+<p>Docker creates isolated networks for containers. Understanding networking is essential for debugging and security.</p>
+<section id="default-bridge-network" class="level3">
+<h3 class="anchored" data-anchor-id="default-bridge-network">Default Bridge Network</h3>
+<p>Docker Compose creates a default network where services can communicate:</p>
+<pre><code>┌─────────────────────────────────────────────────────────┐
+│                    Docker Network                        │
+│                                                          │
+│   ┌──────────┐    ┌──────────┐    ┌──────────┐         │
+│   │ frontend │────│   api    │────│  mongo   │         │
+│   │  :3000   │    │  :4000   │    │  :27017  │         │
+│   └──────────┘    └──────────┘    └──────────┘         │
+│                                                          │
+└─────────────────────────────────────────────────────────┘
+        │                  │
+        ▼                  ▼
+   localhost:3000    localhost:4000
+   (host access)     (host access)</code></pre>
+<ul>
+<li>Containers reach each other by service name: <code>api</code> connects to <code>mongodb://mongo:27017</code></li>
+<li>Only exposed ports are accessible from the host</li>
+<li>Container-to-container traffic stays within the Docker network</li>
+</ul>
+</section>
+<section id="port-mapping" class="level3">
+<h3 class="anchored" data-anchor-id="port-mapping">Port Mapping</h3>
+<p>The <code>-p</code> flag maps host ports to container ports:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ports</span><span class="kw">:</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="st">"3000:3000"</span><span class="co">     # host:container</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="st">"8080:80"</span><span class="co">       # Access container's port 80 via host's 8080</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="st">"4000"</span><span class="co">          # Random host port, container port 4000</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="data-persistence" class="level2">
+<h2 class="anchored" data-anchor-id="data-persistence">Data Persistence</h2>
+<p>Containers are ephemeral—when they’re removed, their data disappears. For persistent data, use volumes.</p>
+<section id="volume-types" class="level3">
+<h3 class="anchored" data-anchor-id="volume-types">Volume Types</h3>
+<p><strong>Named volumes</strong> are managed by Docker and persist across container restarts:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">mongo-data</span><span class="kw">:</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">services</span><span class="kw">:</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">mongo</span><span class="kw">:</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> mongo-data:/data/db</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Bind mounts</strong> map host directories into containers:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">services</span><span class="kw">:</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">api</span><span class="kw">:</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ./api:/app</span><span class="co">    # Host path : Container path</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>tmpfs mounts</strong> store data in memory (useful for sensitive data that shouldn’t be written to disk):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">services</span><span class="kw">:</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">api</span><span class="kw">:</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">tmpfs</span><span class="kw">:</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> /tmp</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="when-to-use-each-type" class="level3">
+<h3 class="anchored" data-anchor-id="when-to-use-each-type">When to Use Each Type</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Named volume</td>
+<td>Database storage, persistent application data</td>
+</tr>
+<tr class="even">
+<td>Bind mount</td>
+<td>Development (hot reload), configuration files</td>
+</tr>
+<tr class="odd">
+<td>tmpfs</td>
+<td>Sensitive temporary data, caches</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>This week introduced the foundational concepts for modern application development:</p>
+<ol type="1">
+<li><strong>Modern applications are distributed systems</strong> composed of multiple services working together</li>
+<li><strong>Infrastructure as Code</strong> makes environments reproducible and version-controlled</li>
+<li><strong>Docker containers</strong> package applications with their dependencies for consistent execution</li>
+<li><strong>Dockerfiles</strong> define how to build container images using a layered approach</li>
+<li><strong>Docker Compose</strong> orchestrates multi-container applications for development and deployment</li>
+<li><strong>Networking and volumes</strong> enable service communication and data persistence</li>
+</ol>
+<p>These concepts form the foundation for everything else in this course. In Lab 1, you’ll apply these concepts by building a complete MERN development environment using Docker Compose.</p>
+</section>
+<section id="key-terms" class="level2">
+<h2 class="anchored" data-anchor-id="key-terms">Key Terms</h2>
+<ul>
+<li><strong>Container</strong>: A lightweight, isolated environment for running applications</li>
+<li><strong>Image</strong>: A read-only template used to create containers</li>
+<li><strong>Dockerfile</strong>: Instructions for building a Docker image</li>
+<li><strong>Docker Compose</strong>: Tool for defining and running multi-container applications</li>
+<li><strong>Volume</strong>: Mechanism for persisting data beyond container lifecycle</li>
+<li><strong>Bind mount</strong>: Maps a host directory into a container</li>
+<li><strong>Infrastructure as Code (IaC)</strong>: Managing infrastructure through code rather than manual processes</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ul>
+<li><a href="https://docs.docker.com/get-started/">Docker Documentation: Get Started</a></li>
+<li><a href="https://docs.docker.com/compose/compose-file/">Docker Compose File Reference</a></li>
+<li><a href="https://12factor.net/">The Twelve-Factor App</a> - Methodology for building modern applications</li>
+<li><a href="https://www.mongodb.com/mern-stack">MERN Stack Tutorial</a> - MongoDB’s official MERN guide</li>
+<li><a href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/">Dockerfile Best Practices</a></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>ITWS-4500 | Spring 2026 | RPI Lally School of Management</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Instructor: Jason Kuruzovich</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

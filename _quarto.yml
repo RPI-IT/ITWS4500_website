@@ -50,6 +50,38 @@ website:
             href: slides/week14/index.qmd
           - text: "Week 15: Final Presentations"
             href: slides/week15/index.qmd
+      - text: Readings
+        menu:
+          - text: "Week 1: Introduction & IaC"
+            href: readings/week01-introduction.qmd
+          - text: "Week 2: Architecture Foundations"
+            href: readings/week02-architecture-foundations.qmd
+          - text: "Week 3: Layered Architecture"
+            href: readings/week03-layered-architecture.qmd
+          - text: "Week 4: Component Architecture"
+            href: readings/week04-component-architecture.qmd
+          - text: "Week 5: Backend & Data"
+            href: readings/week05-backend-data.qmd
+          - text: "Week 6: Data Architecture"
+            href: readings/week06-data-architecture.qmd
+          - text: "Week 7: Midterm Review"
+            href: readings/week07-midterm-review.qmd
+          - text: "Week 8: Auth & Mobile"
+            href: readings/week08-auth-mobile.qmd
+          - text: "Week 9: Agentic AI I"
+            href: readings/week09-agentic-ai-1.qmd
+          - text: "Week 10: Agentic AI II"
+            href: readings/week10-agentic-ai-2.qmd
+          - text: "Week 11: CI/CD"
+            href: readings/week11-ci-cd.qmd
+          - text: "Week 12: AI-Assisted Dev"
+            href: readings/week12-ai-assisted-dev.qmd
+          - text: "Week 13: Deployment"
+            href: readings/week13-deployment.qmd
+          - text: "Week 14: Capstone"
+            href: readings/week14-capstone.qmd
+          - text: "Week 15: Final"
+            href: readings/week15-final.qmd
       - text: Labs
         menu:
           - text: "Lab 1: Infrastructure as Code"

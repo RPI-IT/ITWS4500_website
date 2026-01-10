@@ -1,0 +1,24 @@
+---
+title: "Week 2: Architecture Foundations"
+subtitle: "Patterns, System Decomposition, and Project Scoping"
+---
+
+::: {.callout-note}
+## Reading Assignment
+Complete this reading before Week 3.
+:::
+
+## Overview
+
+*Content coming soon.*
+
+## Key Concepts
+
+- Architectural patterns overview
+- System decomposition strategies
+- Project scoping techniques
+- MERN stack architecture
+
+## Further Reading
+
+*Resources coming soon.*

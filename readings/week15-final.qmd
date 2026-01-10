@@ -1,0 +1,24 @@
+---
+title: "Week 15: Final Presentations"
+subtitle: "Project Showcase and Reflection"
+---
+
+::: {.callout-note}
+## Reading Assignment
+Review this material before final presentations.
+:::
+
+## Overview
+
+*Content coming soon.*
+
+## Key Concepts
+
+- Presentation best practices
+- Technical demonstration tips
+- Project documentation
+- Reflection and lessons learned
+
+## Further Reading
+
+*Resources coming soon.*

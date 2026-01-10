@@ -1,0 +1,533 @@
+---
+title: "Week 1: Course Introduction & Infrastructure as Code"
+subtitle: "Foundations of Modern Application Development"
+---
+
+::: {.callout-note}
+## Reading Assignment
+Complete this reading before Week 2. Estimated time: 45-60 minutes.
+:::
+
+## Introduction
+
+Modern application development has evolved dramatically over the past decade. What was once a relatively straightforward process of writing code and deploying it to a server has become a complex orchestration of services, containers, cloud platforms, and automated pipelines. This course takes a **pattern-first approach** to understanding these systems, focusing on the architectural decisions that shape how we build, deploy, and maintain software.
+
+This first reading establishes two foundational concepts: understanding modern application architecture as a collection of patterns, and mastering Infrastructure as Code (IaC) as the foundation for reproducible, scalable systems.
+
+## The Evolution of Application Architecture
+
+### From Monoliths to Distributed Systems
+
+Early web applications followed a simple pattern: a single application running on a single server, connecting to a single database. This **monolithic architecture** served well for many years and still has its place today. However, as applications grew in complexity and scale, limitations emerged:
+
+- **Scaling challenges**: The entire application must scale together, even if only one component needs more resources
+- **Deployment risk**: A small change requires redeploying the entire application
+- **Technology lock-in**: The entire application must use the same technology stack
+- **Team coordination**: Large teams working on a single codebase create coordination overhead
+
+Modern applications increasingly adopt **distributed architectures** where functionality is split across multiple services. This includes microservices, where each service handles a specific business capability, and the client-server model we'll use in this course, where distinct frontend and backend applications communicate over APIs.
+
+### The MERN Stack as Reference Architecture
+
+Throughout this course, we use the MERN stack (MongoDB, Express, React, Node.js) as our reference implementation. This isn't because MERN is the only or best stack—it's because it provides clear examples of architectural patterns that apply across technologies:
+
+| Component | Role | Pattern Demonstrated |
+|-----------|------|---------------------|
+| **MongoDB** | Document database | Persistence layer, NoSQL patterns |
+| **Express** | Backend framework | API design, middleware, routing |
+| **React** | Frontend library | Component architecture, state management |
+| **Node.js** | Runtime environment | Event-driven architecture, JavaScript everywhere |
+
+The patterns you learn with MERN—separation of concerns, API design, component architecture, state management—transfer directly to other stacks like Django/React, Spring Boot/Angular, or Rails/Vue.
+
+## Infrastructure as Code
+
+### The "Works on My Machine" Problem
+
+Consider this common scenario: A developer builds a feature that works perfectly on their laptop. They commit the code, and it passes tests in the CI pipeline. But when deployed to production, it fails. The culprit? A difference in environment—perhaps a different Node.js version, a missing environment variable, or a different database configuration.
+
+This **environment drift** has plagued software development for decades. Traditional solutions involved detailed setup documentation, configuration management tools, and significant DevOps effort. Containers offer a more elegant solution.
+
+### What is Infrastructure as Code?
+
+**Infrastructure as Code (IaC)** is the practice of managing and provisioning computing infrastructure through machine-readable definition files rather than manual processes. Instead of clicking through a cloud console or SSH-ing into servers to install software, you write code that describes your infrastructure.
+
+Key principles of IaC include:
+
+1. **Declarative definitions**: You describe *what* you want, not *how* to achieve it
+2. **Version control**: Infrastructure definitions are stored in Git alongside application code
+3. **Reproducibility**: The same definition produces identical environments every time
+4. **Automation**: Infrastructure changes are applied through automated processes
+
+### Containers: The Building Blocks
+
+A **container** is a lightweight, standalone package that includes everything needed to run a piece of software: code, runtime, system tools, libraries, and settings. Containers solve the environment problem by packaging the environment with the application.
+
+#### Containers vs. Virtual Machines
+
+Containers are often compared to virtual machines (VMs), but they operate at a different level:
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    Virtual Machines                          │
+├─────────────────────────────────────────────────────────────┤
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐         │
+│  │    App A    │  │    App B    │  │    App C    │         │
+│  ├─────────────┤  ├─────────────┤  ├─────────────┤         │
+│  │   Bins/Libs │  │   Bins/Libs │  │   Bins/Libs │         │
+│  ├─────────────┤  ├─────────────┤  ├─────────────┤         │
+│  │  Guest OS   │  │  Guest OS   │  │  Guest OS   │         │
+│  └─────────────┘  └─────────────┘  └─────────────┘         │
+│  ┌─────────────────────────────────────────────────┐       │
+│  │                   Hypervisor                     │       │
+│  └─────────────────────────────────────────────────┘       │
+│  ┌─────────────────────────────────────────────────┐       │
+│  │                    Host OS                       │       │
+│  └─────────────────────────────────────────────────┘       │
+└─────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────┐
+│                       Containers                             │
+├─────────────────────────────────────────────────────────────┤
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐         │
+│  │    App A    │  │    App B    │  │    App C    │         │
+│  ├─────────────┤  ├─────────────┤  ├─────────────┤         │
+│  │   Bins/Libs │  │   Bins/Libs │  │   Bins/Libs │         │
+│  └─────────────┘  └─────────────┘  └─────────────┘         │
+│  ┌─────────────────────────────────────────────────┐       │
+│  │              Container Runtime (Docker)          │       │
+│  └─────────────────────────────────────────────────┘       │
+│  ┌─────────────────────────────────────────────────┐       │
+│  │                    Host OS                       │       │
+│  └─────────────────────────────────────────────────┘       │
+└─────────────────────────────────────────────────────────────┘
+```
+
+Key differences:
+
+| Aspect | Virtual Machines | Containers |
+|--------|-----------------|------------|
+| **Size** | Gigabytes | Megabytes |
+| **Startup time** | Minutes | Seconds |
+| **Resource usage** | Heavy (full OS) | Light (shared kernel) |
+| **Isolation** | Complete (hardware-level) | Process-level |
+| **Portability** | Limited | High |
+
+Containers share the host operating system's kernel, making them dramatically lighter and faster than VMs while still providing isolation between applications.
+
+## Docker Fundamentals
+
+Docker is the most widely used container platform. Understanding Docker requires grasping three core concepts: images, containers, and registries.
+
+### Images
+
+A **Docker image** is a read-only template containing instructions for creating a container. Think of it as a snapshot of a configured system. Images are built in layers, where each layer represents a set of filesystem changes.
+
+```dockerfile
+# Each instruction creates a new layer
+FROM node:20-alpine          # Base layer: Node.js on Alpine Linux
+WORKDIR /app                 # Create working directory
+COPY package*.json ./        # Copy dependency files
+RUN npm install              # Install dependencies (new layer)
+COPY . .                     # Copy application code (new layer)
+CMD ["npm", "start"]         # Default command (metadata, not a layer)
+```
+
+The layered architecture provides several benefits:
+
+1. **Caching**: Unchanged layers are cached and reused, speeding up builds
+2. **Sharing**: Multiple images can share common base layers
+3. **Efficiency**: Only changed layers need to be transferred or rebuilt
+
+### Containers
+
+A **container** is a running instance of an image. You can run multiple containers from the same image, each with its own isolated filesystem, network, and process space.
+
+```bash
+# Run a container from an image
+docker run -d -p 3000:3000 --name my-app my-image
+
+# Key flags:
+# -d          Run in background (detached)
+# -p 3000:3000  Map port 3000 on host to port 3000 in container
+# --name      Give the container a name
+```
+
+Containers are **ephemeral** by design—they can be stopped, started, and destroyed without affecting the underlying image. Any data written inside a container is lost when the container is removed unless you use volumes.
+
+### Registries
+
+A **registry** is a repository for Docker images. Docker Hub is the default public registry, but organizations often run private registries. Images are identified by their registry, name, and tag:
+
+```
+registry.example.com/my-org/my-app:v1.2.3
+└──────┬──────────┘ └──┬───┘ └─┬──┘ └─┬──┘
+    registry      organization  name   tag
+```
+
+## Writing Effective Dockerfiles
+
+A **Dockerfile** is a text file containing instructions to build an image. Writing effective Dockerfiles is a skill that improves with practice.
+
+### Basic Structure
+
+```dockerfile
+# Specify base image
+FROM node:20-alpine
+
+# Set working directory
+WORKDIR /app
+
+# Copy dependency files first (for better caching)
+COPY package*.json ./
+
+# Install dependencies
+RUN npm ci --only=production
+
+# Copy application code
+COPY . .
+
+# Expose port (documentation)
+EXPOSE 3000
+
+# Set the default command
+CMD ["node", "server.js"]
+```
+
+### Best Practices
+
+**1. Use specific base image tags**
+
+```dockerfile
+# Bad: Uses latest, which changes over time
+FROM node:latest
+
+# Good: Pins to specific version
+FROM node:20.10-alpine
+```
+
+**2. Minimize layers and combine commands**
+
+```dockerfile
+# Bad: Creates multiple layers
+RUN apt-get update
+RUN apt-get install -y curl
+RUN apt-get clean
+
+# Good: Single layer, includes cleanup
+RUN apt-get update && \
+    apt-get install -y curl && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+```
+
+**3. Order instructions from least to most frequently changed**
+
+```dockerfile
+# Dependencies change less often than code
+COPY package*.json ./
+RUN npm install
+# Code changes frequently - this layer rebuilds often
+COPY . .
+```
+
+**4. Use .dockerignore to exclude unnecessary files**
+
+```
+# .dockerignore
+node_modules
+.git
+.env
+*.log
+README.md
+```
+
+### Multi-Stage Builds
+
+Multi-stage builds allow you to use multiple FROM statements, copying only what you need from each stage. This produces smaller, more secure production images.
+
+```dockerfile
+# Stage 1: Build
+FROM node:20-alpine AS builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
+
+# Stage 2: Production
+FROM node:20-alpine
+WORKDIR /app
+# Copy only production dependencies
+COPY package*.json ./
+RUN npm ci --only=production
+# Copy only built artifacts from builder
+COPY --from=builder /app/dist ./dist
+USER node
+CMD ["node", "dist/server.js"]
+```
+
+The final image contains only the production runtime—no build tools, source code, or development dependencies.
+
+## Docker Compose: Multi-Service Orchestration
+
+Real applications consist of multiple services: a frontend, backend API, database, cache, and more. **Docker Compose** is a tool for defining and running multi-container applications.
+
+### The docker-compose.yml File
+
+Docker Compose uses YAML files to define services, networks, and volumes:
+
+```yaml
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - VITE_API_URL=http://localhost:4000
+    depends_on:
+      - api
+
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile.dev
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./api:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - MONGODB_URI=mongodb://mongo:27017/myapp
+    depends_on:
+      mongo:
+        condition: service_healthy
+
+  mongo:
+    image: mongo:7
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  mongo-data:
+```
+
+### Key Concepts
+
+**Services** define the containers that make up your application. Each service can be built from a Dockerfile or use a pre-built image.
+
+**Networks** enable communication between containers. Docker Compose creates a default network where services can reach each other by name (e.g., `api` can connect to `mongo` using the hostname `mongo`).
+
+**Volumes** persist data beyond the container lifecycle. Named volumes (like `mongo-data`) are managed by Docker, while bind mounts (like `./api:/app`) map host directories into containers.
+
+**Dependencies** define startup order. The `depends_on` key ensures services start in the right order, and `condition: service_healthy` waits for health checks to pass.
+
+### Development Workflow with Docker Compose
+
+For development, we configure containers to support **hot reloading**—automatic restarts when code changes:
+
+```yaml
+volumes:
+  - ./api:/app          # Mount source code
+  - /app/node_modules   # Preserve container's node_modules
+```
+
+The bind mount makes host files available in the container, so changes are immediately visible. The anonymous volume for `node_modules` prevents the host's `node_modules` (if any) from overwriting the container's dependencies.
+
+### Common Commands
+
+```bash
+# Build and start all services
+docker compose up --build
+
+# Start in background
+docker compose up -d
+
+# View logs
+docker compose logs -f api
+
+# Stop all services
+docker compose down
+
+# Stop and remove volumes (resets data)
+docker compose down -v
+
+# Rebuild a specific service
+docker compose build api
+
+# Execute command in running container
+docker compose exec api npm test
+```
+
+## Environment Configuration
+
+Applications need different configurations for development, testing, and production. Docker supports this through environment variables and multiple compose files.
+
+### Environment Variables
+
+Environment variables configure applications without changing code:
+
+```yaml
+services:
+  api:
+    environment:
+      - NODE_ENV=development
+      - PORT=4000
+      - DATABASE_URL=mongodb://mongo:27017/myapp
+```
+
+For sensitive values, use a `.env` file (never committed to Git):
+
+```bash
+# .env
+DATABASE_PASSWORD=secretpassword
+API_KEY=sk-1234567890
+```
+
+```yaml
+services:
+  api:
+    environment:
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+```
+
+### Multiple Compose Files
+
+Use separate files for different environments:
+
+```bash
+# Development (default)
+docker compose up
+
+# Production (override)
+docker compose -f docker-compose.yml -f docker-compose.prod.yml up
+```
+
+The production override might use production images, remove volume mounts, and add resource limits.
+
+## Container Networking
+
+Docker creates isolated networks for containers. Understanding networking is essential for debugging and security.
+
+### Default Bridge Network
+
+Docker Compose creates a default network where services can communicate:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                    Docker Network                        │
+│                                                          │
+│   ┌──────────┐    ┌──────────┐    ┌──────────┐         │
+│   │ frontend │────│   api    │────│  mongo   │         │
+│   │  :3000   │    │  :4000   │    │  :27017  │         │
+│   └──────────┘    └──────────┘    └──────────┘         │
+│                                                          │
+└─────────────────────────────────────────────────────────┘
+        │                  │
+        ▼                  ▼
+   localhost:3000    localhost:4000
+   (host access)     (host access)
+```
+
+- Containers reach each other by service name: `api` connects to `mongodb://mongo:27017`
+- Only exposed ports are accessible from the host
+- Container-to-container traffic stays within the Docker network
+
+### Port Mapping
+
+The `-p` flag maps host ports to container ports:
+
+```yaml
+ports:
+  - "3000:3000"     # host:container
+  - "8080:80"       # Access container's port 80 via host's 8080
+  - "4000"          # Random host port, container port 4000
+```
+
+## Data Persistence
+
+Containers are ephemeral—when they're removed, their data disappears. For persistent data, use volumes.
+
+### Volume Types
+
+**Named volumes** are managed by Docker and persist across container restarts:
+
+```yaml
+volumes:
+  mongo-data:
+
+services:
+  mongo:
+    volumes:
+      - mongo-data:/data/db
+```
+
+**Bind mounts** map host directories into containers:
+
+```yaml
+services:
+  api:
+    volumes:
+      - ./api:/app    # Host path : Container path
+```
+
+**tmpfs mounts** store data in memory (useful for sensitive data that shouldn't be written to disk):
+
+```yaml
+services:
+  api:
+    tmpfs:
+      - /tmp
+```
+
+### When to Use Each Type
+
+| Type | Use Case |
+|------|----------|
+| Named volume | Database storage, persistent application data |
+| Bind mount | Development (hot reload), configuration files |
+| tmpfs | Sensitive temporary data, caches |
+
+## Summary
+
+This week introduced the foundational concepts for modern application development:
+
+1. **Modern applications are distributed systems** composed of multiple services working together
+2. **Infrastructure as Code** makes environments reproducible and version-controlled
+3. **Docker containers** package applications with their dependencies for consistent execution
+4. **Dockerfiles** define how to build container images using a layered approach
+5. **Docker Compose** orchestrates multi-container applications for development and deployment
+6. **Networking and volumes** enable service communication and data persistence
+
+These concepts form the foundation for everything else in this course. In Lab 1, you'll apply these concepts by building a complete MERN development environment using Docker Compose.
+
+## Key Terms
+
+- **Container**: A lightweight, isolated environment for running applications
+- **Image**: A read-only template used to create containers
+- **Dockerfile**: Instructions for building a Docker image
+- **Docker Compose**: Tool for defining and running multi-container applications
+- **Volume**: Mechanism for persisting data beyond container lifecycle
+- **Bind mount**: Maps a host directory into a container
+- **Infrastructure as Code (IaC)**: Managing infrastructure through code rather than manual processes
+
+## Further Reading
+
+- [Docker Documentation: Get Started](https://docs.docker.com/get-started/)
+- [Docker Compose File Reference](https://docs.docker.com/compose/compose-file/)
+- [The Twelve-Factor App](https://12factor.net/) - Methodology for building modern applications
+- [MERN Stack Tutorial](https://www.mongodb.com/mern-stack) - MongoDB's official MERN guide
+- [Dockerfile Best Practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
