@@ -8,10 +8,10 @@ subtitle: "Orchestration, Memory, and Governance"
 ### Tuesday, March 24: Agentic Architecture II
 Orchestration, Memory, and Governance
 
-### Friday, March 27: Lab 7
+### Friday, March 27: Lab 8
 Agent Orchestration and Tooling Patterns
 
-[Lab Assignment](../../labs/lab07-agent-orchestration.qmd){.btn .btn-success}
+[Lab Assignment](../../labs/lab08-agent-orchestration.qmd){.btn .btn-success}
 
 ## Learning Objectives
 
@@ -25,7 +25,7 @@ By the end of this week, you will be able to:
 ## Deliverables
 
 ::: {.callout-important}
-**Lab 7 Due:** Friday, April 3, 2026
+**Lab 8 Due:** Friday, April 3, 2026
 :::
 
 ## Resources

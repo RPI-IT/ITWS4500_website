@@ -1,0 +1,46 @@
+---
+title: "Lab 1: Infrastructure as Code"
+subtitle: "Building a MERN Stack with Docker Compose"
+---
+
+::: {.callout-important}
+## Lab Information
+**Assigned:** Tuesday, January 20, 2026
+**Due:** Tuesday, January 27, 2026 (before class)
+**Points:** 100
+:::
+
+## Overview
+
+In this lab, you will create a complete MERN (MongoDB, Express, React, Node.js) development environment using Docker and Docker Compose. This foundational setup will be used throughout the semester and demonstrates Infrastructure as Code principles.
+
+## Learning Objectives
+
+By completing this lab, you will:
+
+1. Create production-ready **Dockerfiles** for Node.js applications
+2. Configure **Docker Compose** for multi-service orchestration
+3. Implement **volume mounting** for hot reload development
+4. Understand **container networking** and service discovery
+5. Practice **Infrastructure as Code** principles
+
+## Getting Started
+
+Click the button below to accept the assignment and create your repository:
+
+[Accept Assignment on GitHub Classroom](https://classroom.github.com/a/KBx2aztW){.btn .btn-primary .btn-lg}
+
+## Prerequisites
+
+Before starting, ensure you have:
+
+- Docker Desktop installed and running
+- Visual Studio Code (or preferred editor)
+- Git installed
+- GitHub account
+
+## Getting Help
+
+- **Office Hours:** Tuesday 9-11 AM, Pitt 2206
+- **Piazza:** Post questions with `lab1` tag
+- **TA Sessions:** Check LMS for schedule

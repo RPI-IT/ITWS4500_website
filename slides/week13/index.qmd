@@ -8,10 +8,10 @@ subtitle: "Cloud Patterns & Scaling"
 ### Tuesday, April 14: Deployment
 Deployment & Runtime Architecture: Cloud Patterns, Caching, Scaling, and Cost
 
-### Friday, April 17: Lab 10
+### Friday, April 17: Lab 11
 Containerized Deployment, Caching, Scaling, and Reliability
 
-[Lab Assignment](../../labs/lab10-deployment.qmd){.btn .btn-success}
+[Lab Assignment](../../labs/lab11-deployment.qmd){.btn .btn-success}
 
 ## Learning Objectives
 
@@ -25,7 +25,7 @@ By the end of this week, you will be able to:
 ## Deliverables
 
 ::: {.callout-important}
-**Lab 10 Due:** Friday, April 24, 2026
+**Lab 11 Due:** Friday, April 24, 2026
 :::
 
 ## Resources

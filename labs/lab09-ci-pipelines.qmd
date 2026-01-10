@@ -1,0 +1,41 @@
+---
+title: "Lab 9: CI Pipelines"
+subtitle: "Continuous Integration and Automated Testing"
+---
+
+::: {.callout-important}
+## Lab Information
+**Assigned:** Friday, April 3, 2026
+**Due:** Friday, April 10, 2026 (before class)
+**Points:** 100
+:::
+
+## Overview
+
+This lab focuses on building CI/CD pipelines and implementing automated testing strategies.
+
+## Learning Objectives
+
+By completing this lab, you will:
+
+1. Configure **GitHub Actions workflows**
+2. Implement **automated testing**
+3. Set up **deployment pipelines**
+4. Create **quality gates**
+
+## Getting Started
+
+Click the button below to accept the assignment and create your repository:
+
+[Accept Assignment on GitHub Classroom](#){.btn .btn-primary .btn-lg}
+
+## Prerequisites
+
+- Completed Lab 8
+- Understanding of CI/CD concepts
+
+## Getting Help
+
+- **Office Hours:** Tuesday 9-11 AM, Pitt 2206
+- **Piazza:** Post questions with `lab9` tag
+- **TA Sessions:** Check LMS for schedule

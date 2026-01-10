@@ -97,12 +97,10 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-68955884e149780aaaadfd7d50a41611.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-528394e630f84168eb4429f22b8ed9d2.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
     .reveal div.sourceCode {
@@ -191,6 +189,7 @@
       margin-right: 0; 
     }
   </style>
+  <meta name="mermaid-theme" content="default">
   <script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
   <script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
   <link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
@@ -1209,8 +1208,8 @@ docker run -p 3000 myapp</code></pre>
 <h1>Looking Ahead</h1>
 
 </section>
-<section id="lab-0-next-week-january-20" class="slide level2">
-<h2>Lab 0: Next Week (January 20)</h2>
+<section id="lab-1-next-week-january-20" class="slide level2">
+<h2>Lab 1: Next Week (January 20)</h2>
 <p><strong>Infrastructure as Code with Docker Compose</strong></p>
 <p>You will:</p>
 <ul>
@@ -1221,8 +1220,8 @@ docker run -p 3000 myapp</code></pre>
 <li>Test the complete stack</li>
 </ul>
 </section>
-<section id="preparation-for-lab-0" class="slide level2">
-<h2>Preparation for Lab 0</h2>
+<section id="preparation-for-lab-1" class="slide level2">
+<h2>Preparation for Lab 1</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <h3 id="install">Install</h3>
@@ -1266,7 +1265,7 @@ docker run -p 3000 myapp</code></pre>
 </section>
 <section class="slide level2">
 
-<p>See you Tuesday for Lab 0!</p>
+<p>See you Tuesday for Lab 1!</p>
 
 
 </section></section>
@@ -1285,7 +1284,6 @@ docker run -p 3000 myapp</code></pre>
   <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="../../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
   <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -1307,8 +1305,7 @@ docker run -p 3000 myapp</code></pre>
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'jumpToSlide': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'chalkboard': {"buttons":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -1479,7 +1476,7 @@ docker run -p 3000 myapp</code></pre>
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
 
           RevealMath,
           RevealNotes,

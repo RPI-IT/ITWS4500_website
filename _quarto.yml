@@ -22,15 +22,15 @@ website:
         menu:
           - text: "Week 1: Introduction & IaC"
             href: slides/week01/index.qmd
-          - text: "Week 2: Lab 0 & Architecture"
+          - text: "Week 2: Lab 1 & Architecture"
             href: slides/week02/index.qmd
-          - text: "Week 3: Lab 1 & Frontend"
+          - text: "Week 3: Lab 2 & Frontend"
             href: slides/week03/index.qmd
-          - text: "Week 4: Lab 2 & Backend"
+          - text: "Week 4: Lab 3 & Backend"
             href: slides/week04/index.qmd
-          - text: "Week 5: Lab 3 & Data"
+          - text: "Week 5: Lab 4 & Data"
             href: slides/week05/index.qmd
-          - text: "Week 6: Lab 4 & Quiz 1"
+          - text: "Week 6: Lab 5 & Quiz 1"
             href: slides/week06/index.qmd
           - text: "Week 7: Midterm & Project"
             href: slides/week07/index.qmd
@@ -52,30 +52,30 @@ website:
             href: slides/week15/index.qmd
       - text: Labs
         menu:
-          - text: "Lab 0: Infrastructure as Code"
-            href: labs/lab00-infrastructure-as-code.qmd
-          - text: "Lab 1: Layered Architecture"
-            href: labs/lab01-layered-architecture.qmd
-          - text: "Lab 2: Component & State"
-            href: labs/lab02-component-state.qmd
-          - text: "Lab 3: Backend Patterns"
-            href: labs/lab03-backend-patterns.qmd
-          - text: "Lab 4: Polyglot Persistence"
-            href: labs/lab04-polyglot-persistence.qmd
-          - text: "Lab 5: Auth & Mobile"
-            href: labs/lab05-auth-mobile.qmd
-          - text: "Lab 6: Agentic Workflows"
-            href: labs/lab06-agentic-workflows.qmd
-          - text: "Lab 7: Agent Orchestration"
-            href: labs/lab07-agent-orchestration.qmd
-          - text: "Lab 8: CI Pipelines"
-            href: labs/lab08-ci-pipelines.qmd
-          - text: "Lab 9: AI-Assisted Coding"
-            href: labs/lab09-ai-assisted-coding.qmd
-          - text: "Lab 10: Deployment"
-            href: labs/lab10-deployment.qmd
-          - text: "Lab 11: Capstone Extension"
-            href: labs/lab11-capstone-extension.qmd
+          - text: "Lab 1: Infrastructure as Code"
+            href: labs/lab01-infrastructure-as-code.qmd
+          - text: "Lab 2: Layered Architecture"
+            href: labs/lab02-layered-architecture.qmd
+          - text: "Lab 3: Component & State"
+            href: labs/lab03-component-state.qmd
+          - text: "Lab 4: Backend Patterns"
+            href: labs/lab04-backend-patterns.qmd
+          - text: "Lab 5: Polyglot Persistence"
+            href: labs/lab05-polyglot-persistence.qmd
+          - text: "Lab 6: Auth & Mobile"
+            href: labs/lab06-auth-mobile.qmd
+          - text: "Lab 7: Agentic Workflows"
+            href: labs/lab07-agentic-workflows.qmd
+          - text: "Lab 8: Agent Orchestration"
+            href: labs/lab08-agent-orchestration.qmd
+          - text: "Lab 9: CI Pipelines"
+            href: labs/lab09-ci-pipelines.qmd
+          - text: "Lab 10: AI-Assisted Coding"
+            href: labs/lab10-ai-assisted-coding.qmd
+          - text: "Lab 11: Deployment"
+            href: labs/lab11-deployment.qmd
+          - text: "Lab 12: Capstone Extension"
+            href: labs/lab12-capstone-extension.qmd
     right:
       - icon: github
         href: https://github.com/rpi-techfundamentals

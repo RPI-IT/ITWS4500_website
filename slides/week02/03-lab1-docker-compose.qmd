@@ -1,5 +1,5 @@
 ---
-title: "Lab 0: Infrastructure as Code"
+title: "Lab 1: Infrastructure as Code"
 subtitle: "Building a MERN Stack with Docker Compose"
 author: "Jason Kuruzovich"
 date: "January 20, 2026"
@@ -7,7 +7,7 @@ format:
   revealjs:
     theme: [default, ../../slides-theme.scss]
     logo: ../../static/logos/RPI_Logo_Binary_1_White.png
-    footer: "ITWS-4500 | Week 2, Day 1 | Lab 0"
+    footer: "ITWS-4500 | Week 2, Day 1 | Lab 1"
     slide-number: true
     transition: slide
     width: 1600
@@ -18,7 +18,7 @@ format:
     pdf-separate-fragments: false
 ---
 
-# Lab 0 Overview {.section-slide background-color="#d6001c"}
+# Lab 1 Overview {.section-slide background-color="#d6001c"}
 
 Building Your Development Foundation
 
@@ -71,7 +71,7 @@ Building Your Development Foundation
 ## Final Directory Structure
 
 ```
-lab0-mern-stack/
+lab1-mern-stack/
 ├── docker-compose.yml           # Orchestration
 ├── docker-compose.prod.yml      # Production config
 ├── .env                         # Environment variables
@@ -105,8 +105,8 @@ lab0-mern-stack/
 
 ```bash
 # Create project directory
-mkdir lab0-mern-stack
-cd lab0-mern-stack
+mkdir lab1-mern-stack
+cd lab1-mern-stack
 
 # Initialize git
 git init
@@ -869,7 +869,7 @@ docker compose down -v --rmi all
 
 # Lab Assignment {.section-slide background-color="#d6001c"}
 
-## Lab 0 Requirements
+## Lab 1 Requirements
 
 Complete the following by **Tuesday, January 27**:
 
@@ -912,6 +912,192 @@ Complete the following by **Tuesday, January 27**:
 | Code quality and organization | 10 |
 | Documentation (README) | 10 |
 | **Total** | **100** |
+
+# Getting Started with GitHub Classroom {.section-slide background-color="#d6001c"}
+
+## Accept the Assignment
+
+### Step 1: Click the GitHub Classroom Link
+
+[https://classroom.github.com/a/KBx2aztW](https://classroom.github.com/a/KBx2aztW)
+
+. . .
+
+### Step 2: Authorize GitHub Classroom
+
+- Log in with your GitHub account
+- Authorize GitHub Classroom to access your account
+- Accept the assignment
+
+. . .
+
+### Step 3: Your Repository is Created
+
+- GitHub Classroom creates a **private repository** for you
+- Named: `lab1-infrastructure-as-code-<your-username>`
+- Contains starter files and instructions
+
+## Clone and Work Locally
+
+```bash
+# Clone your repository
+git clone https://github.com/rpi-techfundamentals/lab1-infrastructure-as-code-<your-username>.git
+
+# Navigate into the directory
+cd lab1-infrastructure-as-code-<your-username>
+
+# Open in VS Code (optional)
+code .
+```
+
+. . .
+
+**Important:** Replace `<your-username>` with your actual GitHub username.
+
+# Git Commit Workflow {.section-slide background-color="#d6001c"}
+
+## The Commit Process
+
+```{mermaid}
+%%| fig-width: 14
+flowchart LR
+    A[Working Directory] -->|git add| B[Staging Area]
+    B -->|git commit| C[Local Repository]
+    C -->|git push| D[Remote Repository]
+```
+
+Your changes flow through three stages before reaching GitHub.
+
+## Essential Git Commands
+
+```bash
+# Check what files have changed
+git status
+
+# Stage specific files for commit
+git add docker-compose.yml
+git add api/src/server.js
+
+# Or stage all changes
+git add .
+
+# Commit with a descriptive message
+git commit -m "Add API health endpoint and MongoDB connection"
+
+# Push to GitHub
+git push origin main
+```
+
+## Writing Good Commit Messages
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Good Messages
+
+```bash
+git commit -m "Add CRUD routes for items API"
+
+git commit -m "Fix MongoDB connection timeout issue"
+
+git commit -m "Implement hot reload for frontend"
+
+git commit -m "Add error handling middleware"
+```
+:::
+
+::: {.column width="50%"}
+### Avoid These
+
+```bash
+git commit -m "stuff"
+
+git commit -m "fixed it"
+
+git commit -m "asdfasdf"
+
+git commit -m "changes"
+```
+:::
+
+::::
+
+. . .
+
+**Rule of thumb:** Your message should complete the sentence "This commit will..."
+
+## Commit Early, Commit Often
+
+```bash
+# After each milestone, commit your progress:
+
+# 1. After setting up project structure
+git add .
+git commit -m "Initialize project structure with API and frontend directories"
+
+# 2. After creating Dockerfiles
+git add api/Dockerfile.dev frontend/Dockerfile.dev
+git commit -m "Add development Dockerfiles for API and frontend"
+
+# 3. After docker-compose works
+git add docker-compose.yml
+git commit -m "Configure Docker Compose with all services"
+
+# 4. After implementing API routes
+git add api/src/
+git commit -m "Implement CRUD endpoints for items"
+
+# 5. After frontend is working
+git add frontend/src/
+git commit -m "Add React frontend with item management"
+
+# Push all commits to GitHub
+git push origin main
+```
+
+## Viewing Your Progress
+
+```bash
+# See commit history
+git log --oneline
+
+# Example output:
+# a1b2c3d Add React frontend with item management
+# e4f5g6h Implement CRUD endpoints for items
+# i7j8k9l Configure Docker Compose with all services
+# m0n1o2p Add development Dockerfiles
+# q3r4s5t Initialize project structure
+```
+
+. . .
+
+**Your commits tell the story of how you built the lab!**
+
+## Common Git Issues & Solutions
+
+| Issue | Solution |
+|-------|----------|
+| "Please tell me who you are" | `git config --global user.email "you@example.com"` |
+| Forgot to commit before making changes | Commit now - your changes are still safe |
+| Committed wrong file | `git reset HEAD~1` to undo last commit |
+| Push rejected | `git pull` first, then `git push` |
+| Merge conflict | Open file, resolve conflicts manually, then commit |
+
+## Submission Checklist
+
+Before the deadline, ensure:
+
+- [ ] All code is committed and pushed to GitHub
+- [ ] `docker compose up --build` works in your repository
+- [ ] README.md includes setup instructions
+- [ ] No secrets committed (check `.gitignore`)
+- [ ] Fill out the `answers.yml` file
+
+. . .
+
+**GitHub Classroom automatically tracks your submission!**
+
+The TAs can see your commits and will clone your repository to grade it.
 
 # Summary {.section-slide background-color="#d6001c"}
 
@@ -964,4 +1150,4 @@ Complete the following by **Tuesday, January 27**:
 
 ---
 
-Good luck with Lab 0!
+Good luck with Lab 1!

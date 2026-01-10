@@ -8,10 +8,10 @@ subtitle: "Human-AI Collaboration"
 ### Tuesday, April 7: AI-Assisted Development
 Human-AI Collaboration Patterns
 
-### Friday, April 10: Lab 9
+### Friday, April 10: Lab 10
 AI-Assisted Coding and Testing
 
-[Lab Assignment](../../labs/lab09-ai-assisted-coding.qmd){.btn .btn-success}
+[Lab Assignment](../../labs/lab10-ai-assisted-coding.qmd){.btn .btn-success}
 
 ## Learning Objectives
 
@@ -25,7 +25,7 @@ By the end of this week, you will be able to:
 ## Deliverables
 
 ::: {.callout-important}
-**Lab 9 Due:** Friday, April 17, 2026
+**Lab 10 Due:** Friday, April 17, 2026
 :::
 
 ## Resources

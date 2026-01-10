@@ -8,10 +8,10 @@ subtitle: "CI/CD & Testing"
 ### Tuesday, March 31: CI/CD
 Continuous Integration and Testing as Architecture
 
-### Friday, April 3: Lab 8
+### Friday, April 3: Lab 9
 CI Pipelines and Automated Testing
 
-[Lab Assignment](../../labs/lab08-ci-pipelines.qmd){.btn .btn-success}
+[Lab Assignment](../../labs/lab09-ci-pipelines.qmd){.btn .btn-success}
 
 ## Learning Objectives
 
@@ -25,7 +25,7 @@ By the end of this week, you will be able to:
 ## Deliverables
 
 ::: {.callout-important}
-**Lab 8 Due:** Friday, April 10, 2026
+**Lab 9 Due:** Friday, April 10, 2026
 :::
 
 ## Resources

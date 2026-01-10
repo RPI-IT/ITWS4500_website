@@ -1,0 +1,41 @@
+---
+title: "Lab 10: AI-Assisted Coding"
+subtitle: "Human-AI Collaboration in Development"
+---
+
+::: {.callout-important}
+## Lab Information
+**Assigned:** Friday, April 10, 2026
+**Due:** Friday, April 17, 2026 (before class)
+**Points:** 100
+:::
+
+## Overview
+
+This lab explores using AI assistants for coding, testing, and documentation.
+
+## Learning Objectives
+
+By completing this lab, you will:
+
+1. Use **AI coding assistants** effectively
+2. **Generate tests** with AI
+3. Create **documentation** with AI
+4. **Evaluate AI-generated code**
+
+## Getting Started
+
+Click the button below to accept the assignment and create your repository:
+
+[Accept Assignment on GitHub Classroom](#){.btn .btn-primary .btn-lg}
+
+## Prerequisites
+
+- Completed Lab 9
+- Understanding of AI-assisted development tools
+
+## Getting Help
+
+- **Office Hours:** Tuesday 9-11 AM, Pitt 2206
+- **Piazza:** Post questions with `lab10` tag
+- **TA Sessions:** Check LMS for schedule

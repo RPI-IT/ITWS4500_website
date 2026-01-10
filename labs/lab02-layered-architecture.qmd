@@ -1,0 +1,41 @@
+---
+title: "Lab 2: Layered Client-Server Architecture"
+subtitle: "MERN as Reference Implementation"
+---
+
+::: {.callout-important}
+## Lab Information
+**Assigned:** Tuesday, January 27, 2026
+**Due:** Tuesday, February 3, 2026 (before class)
+**Points:** 100
+:::
+
+## Overview
+
+In this lab, you will refactor your Lab 1 MERN application to implement proper layered architecture with clear separation of concerns.
+
+## Learning Objectives
+
+By completing this lab, you will:
+
+1. Implement **presentation, application, domain, and infrastructure layers**
+2. Apply **dependency inversion** principles
+3. Create **clean interfaces** between layers
+4. Write **testable, maintainable** code
+
+## Getting Started
+
+Click the button below to accept the assignment and create your repository:
+
+[Accept Assignment on GitHub Classroom](#){.btn .btn-primary .btn-lg}
+
+## Prerequisites
+
+- Completed Lab 1
+- Understanding of layered architecture patterns
+
+## Getting Help
+
+- **Office Hours:** Tuesday 9-11 AM, Pitt 2206
+- **Piazza:** Post questions with `lab2` tag
+- **TA Sessions:** Check LMS for schedule

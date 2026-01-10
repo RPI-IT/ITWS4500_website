@@ -5,6 +5,9 @@ author: "Jason Kuruzovich"
 date: "January 16, 2026"
 format:
   revealjs:
+    navigation-mode: linear
+    mermaid:
+        theme: default
     theme: [default, ../../slides-theme.scss]
     logo: ../../static/logos/RPI_Logo_Binary_1_White.png
     footer: "ITWS-4500 | Week 1, Day 2"
@@ -12,7 +15,7 @@ format:
     transition: slide
     width: 1600
     height: 900
-    chalkboard: true
+    #chalkboard: true
     code-line-numbers: true
     highlight-style: github
     pdf-separate-fragments: false
@@ -994,7 +997,7 @@ docker compose down
 
 # Looking Ahead {.section-slide background-color="#d6001c"}
 
-## Lab 0: Next Week (January 20)
+## Lab 1: Next Week (January 20)
 
 **Infrastructure as Code with Docker Compose**
 
@@ -1006,7 +1009,7 @@ You will:
 - Implement volume mounting for development
 - Test the complete stack
 
-## Preparation for Lab 0
+## Preparation for Lab 1
 
 :::: {.columns}
 
@@ -1058,4 +1061,4 @@ Today we covered:
 
 ---
 
-See you Tuesday for Lab 0!
+See you Tuesday for Lab 1!

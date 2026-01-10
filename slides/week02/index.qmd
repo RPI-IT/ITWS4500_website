@@ -1,15 +1,16 @@
 ---
 title: "Week 2: Architecture Foundations"
-subtitle: "Lab 0 & Architectural Theory"
+subtitle: "Lab 1 & Architectural Theory"
 ---
 
 ## This Week's Sessions
 
-### Tuesday, January 20: Lab 0
+### Tuesday, January 20: Lab 1
 Infrastructure as Code with Docker Compose (Baseline MERN System)
 
-[View Presentation](03-lab0-docker-compose.qmd){.btn .btn-primary}
-[Lab Assignment](../../labs/lab00-infrastructure-as-code.qmd){.btn .btn-success}
+[View Presentation](03-lab1-docker-compose.qmd){.btn .btn-primary}
+[Lab Assignment](../../labs/lab01-infrastructure-as-code.qmd){.btn .btn-success}
+[Accept Lab via GitHub Classroom](https://classroom.github.com/a/KBx2aztW){.btn .btn-warning}
 
 ### Friday, January 23: Architectural Theory
 Patterns, System Decomposition, and Project Scoping
@@ -27,13 +28,13 @@ By the end of this week, you will be able to:
 4. Decompose systems into well-defined components
 5. Scope and plan a semester project
 
-## Lab 0 Due
+## Lab 1 Due
 
 ::: {.callout-important}
-**Lab 0: Infrastructure as Code**
+**Lab 1: Infrastructure as Code**
 Due: Tuesday, January 27, 2026 before class
 
-Submit via LMS with your GitHub repository link.
+Accept the assignment via [GitHub Classroom](https://classroom.github.com/a/KBx2aztW), complete the lab, and commit your work.
 :::
 
 ## Resources

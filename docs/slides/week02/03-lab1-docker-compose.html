@@ -12,7 +12,7 @@
 
   <meta name="author" content="Jason Kuruzovich">
   <meta name="dcterms.date" content="2026-01-20">
-  <title>ITWS-4500: Advanced Web &amp; Agentic AI Development – Lab 0: Infrastructure as Code</title>
+  <title>ITWS-4500: Advanced Web &amp; Agentic AI Development – Lab 1: Infrastructure as Code</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -97,7 +97,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-68955884e149780aaaadfd7d50a41611.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-528394e630f84168eb4429f22b8ed9d2.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -200,7 +200,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Lab 0: Infrastructure as Code</h1>
+  <h1 class="title">Lab 1: Infrastructure as Code</h1>
   <p class="subtitle">Building a MERN Stack with Docker Compose</p>
 
 <div class="quarto-title-authors">
@@ -214,8 +214,8 @@ Jason Kuruzovich
   <p class="date">2026-01-20</p>
 </section>
 <section>
-<section id="lab-0-overview" class="title-slide slide level1 section-slide center" data-background-color="#d6001c">
-<h1>Lab 0 Overview</h1>
+<section id="lab-1-overview" class="title-slide slide level1 section-slide center" data-background-color="#d6001c">
+<h1>Lab 1 Overview</h1>
 <p>Building Your Development Foundation</p>
 </section>
 <section id="todays-objectives" class="slide level2">
@@ -294,7 +294,7 @@ Jason Kuruzovich
 </section>
 <section id="final-directory-structure" class="slide level2">
 <h2>Final Directory Structure</h2>
-<pre><code>lab0-mern-stack/
+<pre><code>lab1-mern-stack/
 ├── docker-compose.yml           # Orchestration
 ├── docker-compose.prod.yml      # Production config
 ├── .env                         # Environment variables
@@ -326,8 +326,8 @@ Jason Kuruzovich
 <section id="step-1-initialize-project" class="slide level2">
 <h2>Step 1: Initialize Project</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a></a><span class="co"># Create project directory</span></span>
-<span id="cb3-2"><a></a><span class="fu">mkdir</span> lab0-mern-stack</span>
-<span id="cb3-3"><a></a><span class="bu">cd</span> lab0-mern-stack</span>
+<span id="cb3-2"><a></a><span class="fu">mkdir</span> lab1-mern-stack</span>
+<span id="cb3-3"><a></a><span class="bu">cd</span> lab1-mern-stack</span>
 <span id="cb3-4"><a></a></span>
 <span id="cb3-5"><a></a><span class="co"># Initialize git</span></span>
 <span id="cb3-6"><a></a><span class="fu">git</span> init</span>
@@ -1090,8 +1090,8 @@ mern-frontend  |   ➜  Local:   http://localhost:3000/</code></pre>
 <h1>Lab Assignment</h1>
 
 </section>
-<section id="lab-0-requirements" class="slide level2">
-<h2>Lab 0 Requirements</h2>
+<section id="lab-1-requirements" class="slide level2">
+<h2>Lab 1 Requirements</h2>
 <p>Complete the following by <strong>Tuesday, January 27</strong>:</p>
 <h3 id="core-requirements-80">Core Requirements (80%)</h3>
 <ol type="1">
@@ -1171,6 +1171,206 @@ mern-frontend  |   ➜  Local:   http://localhost:3000/</code></pre>
 </table>
 </section></section>
 <section>
+<section id="getting-started-with-github-classroom" class="title-slide slide level1 section-slide center" data-background-color="#d6001c">
+<h1>Getting Started with GitHub Classroom</h1>
+
+</section>
+<section id="accept-the-assignment" class="slide level2">
+<h2>Accept the Assignment</h2>
+<h3 id="step-1-click-the-github-classroom-link">Step 1: Click the GitHub Classroom Link</h3>
+<p><a href="https://classroom.github.com/a/KBx2aztW">https://classroom.github.com/a/KBx2aztW</a></p>
+<p>. . .</p>
+<h3 id="step-2-authorize-github-classroom">Step 2: Authorize GitHub Classroom</h3>
+<ul>
+<li>Log in with your GitHub account</li>
+<li>Authorize GitHub Classroom to access your account</li>
+<li>Accept the assignment</li>
+</ul>
+<p>. . .</p>
+<h3 id="step-3-your-repository-is-created">Step 3: Your Repository is Created</h3>
+<ul>
+<li>GitHub Classroom creates a <strong>private repository</strong> for you</li>
+<li>Named: <code>lab1-infrastructure-as-code-&lt;your-username&gt;</code></li>
+<li>Contains starter files and instructions</li>
+</ul>
+</section>
+<section id="clone-and-work-locally" class="slide level2">
+<h2>Clone and Work Locally</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a></a><span class="co"># Clone your repository</span></span>
+<span id="cb27-2"><a></a><span class="fu">git</span> clone https://github.com/rpi-techfundamentals/lab1-infrastructure-as-code-<span class="op">&lt;</span>your-username<span class="op">&gt;</span>.git</span>
+<span id="cb27-3"><a></a></span>
+<span id="cb27-4"><a></a><span class="co"># Navigate into the directory</span></span>
+<span id="cb27-5"><a></a><span class="bu">cd</span> lab1-infrastructure-as-code-<span class="op">&lt;</span>your-username<span class="op">&gt;</span></span>
+<span id="cb27-6"><a></a></span>
+<span id="cb27-7"><a></a><span class="co"># Open in VS Code (optional)</span></span>
+<span id="cb27-8"><a></a><span class="ex">code</span> .</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="fragment">
+<p><strong>Important:</strong> Replace <code>&lt;your-username&gt;</code> with your actual GitHub username.</p>
+</div>
+</section></section>
+<section>
+<section id="git-commit-workflow" class="title-slide slide level1 section-slide center" data-background-color="#d6001c">
+<h1>Git Commit Workflow</h1>
+
+</section>
+<section id="the-commit-process" class="slide level2">
+<h2>The Commit Process</h2>
+<div class="cell" data-reveal="true" data-fig-width="14" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+    A[Working Directory] --&gt;|git add| B[Staging Area]
+    B --&gt;|git commit| C[Local Repository]
+    C --&gt;|git push| D[Remote Repository]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Your changes flow through three stages before reaching GitHub.</p>
+</section>
+<section id="essential-git-commands" class="slide level2">
+<h2>Essential Git Commands</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a></a><span class="co"># Check what files have changed</span></span>
+<span id="cb28-2"><a></a><span class="fu">git</span> status</span>
+<span id="cb28-3"><a></a></span>
+<span id="cb28-4"><a></a><span class="co"># Stage specific files for commit</span></span>
+<span id="cb28-5"><a></a><span class="fu">git</span> add docker-compose.yml</span>
+<span id="cb28-6"><a></a><span class="fu">git</span> add api/src/server.js</span>
+<span id="cb28-7"><a></a></span>
+<span id="cb28-8"><a></a><span class="co"># Or stage all changes</span></span>
+<span id="cb28-9"><a></a><span class="fu">git</span> add .</span>
+<span id="cb28-10"><a></a></span>
+<span id="cb28-11"><a></a><span class="co"># Commit with a descriptive message</span></span>
+<span id="cb28-12"><a></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Add API health endpoint and MongoDB connection"</span></span>
+<span id="cb28-13"><a></a></span>
+<span id="cb28-14"><a></a><span class="co"># Push to GitHub</span></span>
+<span id="cb28-15"><a></a><span class="fu">git</span> push origin main</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="writing-good-commit-messages" class="slide level2">
+<h2>Writing Good Commit Messages</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="good-messages">Good Messages</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Add CRUD routes for items API"</span></span>
+<span id="cb29-2"><a></a></span>
+<span id="cb29-3"><a></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Fix MongoDB connection timeout issue"</span></span>
+<span id="cb29-4"><a></a></span>
+<span id="cb29-5"><a></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Implement hot reload for frontend"</span></span>
+<span id="cb29-6"><a></a></span>
+<span id="cb29-7"><a></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Add error handling middleware"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column" style="width:50%;">
+<h3 id="avoid-these">Avoid These</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"stuff"</span></span>
+<span id="cb30-2"><a></a></span>
+<span id="cb30-3"><a></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"fixed it"</span></span>
+<span id="cb30-4"><a></a></span>
+<span id="cb30-5"><a></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"asdfasdf"</span></span>
+<span id="cb30-6"><a></a></span>
+<span id="cb30-7"><a></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"changes"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></div>
+<div class="fragment">
+<p><strong>Rule of thumb:</strong> Your message should complete the sentence “This commit will…”</p>
+</div>
+</section>
+<section id="commit-early-commit-often" class="slide level2">
+<h2>Commit Early, Commit Often</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a></a><span class="co"># After each milestone, commit your progress:</span></span>
+<span id="cb31-2"><a></a></span>
+<span id="cb31-3"><a></a><span class="co"># 1. After setting up project structure</span></span>
+<span id="cb31-4"><a></a><span class="fu">git</span> add .</span>
+<span id="cb31-5"><a></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Initialize project structure with API and frontend directories"</span></span>
+<span id="cb31-6"><a></a></span>
+<span id="cb31-7"><a></a><span class="co"># 2. After creating Dockerfiles</span></span>
+<span id="cb31-8"><a></a><span class="fu">git</span> add api/Dockerfile.dev frontend/Dockerfile.dev</span>
+<span id="cb31-9"><a></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Add development Dockerfiles for API and frontend"</span></span>
+<span id="cb31-10"><a></a></span>
+<span id="cb31-11"><a></a><span class="co"># 3. After docker-compose works</span></span>
+<span id="cb31-12"><a></a><span class="fu">git</span> add docker-compose.yml</span>
+<span id="cb31-13"><a></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Configure Docker Compose with all services"</span></span>
+<span id="cb31-14"><a></a></span>
+<span id="cb31-15"><a></a><span class="co"># 4. After implementing API routes</span></span>
+<span id="cb31-16"><a></a><span class="fu">git</span> add api/src/</span>
+<span id="cb31-17"><a></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Implement CRUD endpoints for items"</span></span>
+<span id="cb31-18"><a></a></span>
+<span id="cb31-19"><a></a><span class="co"># 5. After frontend is working</span></span>
+<span id="cb31-20"><a></a><span class="fu">git</span> add frontend/src/</span>
+<span id="cb31-21"><a></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Add React frontend with item management"</span></span>
+<span id="cb31-22"><a></a></span>
+<span id="cb31-23"><a></a><span class="co"># Push all commits to GitHub</span></span>
+<span id="cb31-24"><a></a><span class="fu">git</span> push origin main</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="viewing-your-progress" class="slide level2">
+<h2>Viewing Your Progress</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a></a><span class="co"># See commit history</span></span>
+<span id="cb32-2"><a></a><span class="fu">git</span> log <span class="at">--oneline</span></span>
+<span id="cb32-3"><a></a></span>
+<span id="cb32-4"><a></a><span class="co"># Example output:</span></span>
+<span id="cb32-5"><a></a><span class="co"># a1b2c3d Add React frontend with item management</span></span>
+<span id="cb32-6"><a></a><span class="co"># e4f5g6h Implement CRUD endpoints for items</span></span>
+<span id="cb32-7"><a></a><span class="co"># i7j8k9l Configure Docker Compose with all services</span></span>
+<span id="cb32-8"><a></a><span class="co"># m0n1o2p Add development Dockerfiles</span></span>
+<span id="cb32-9"><a></a><span class="co"># q3r4s5t Initialize project structure</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="fragment">
+<p><strong>Your commits tell the story of how you built the lab!</strong></p>
+</div>
+</section>
+<section id="common-git-issues-solutions" class="slide level2">
+<h2>Common Git Issues &amp; Solutions</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 41%">
+<col style="width: 58%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Issue</th>
+<th>Solution</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>“Please tell me who you are”</td>
+<td><code>git config --global user.email "you@example.com"</code></td>
+</tr>
+<tr class="even">
+<td>Forgot to commit before making changes</td>
+<td>Commit now - your changes are still safe</td>
+</tr>
+<tr class="odd">
+<td>Committed wrong file</td>
+<td><code>git reset HEAD~1</code> to undo last commit</td>
+</tr>
+<tr class="even">
+<td>Push rejected</td>
+<td><code>git pull</code> first, then <code>git push</code></td>
+</tr>
+<tr class="odd">
+<td>Merge conflict</td>
+<td>Open file, resolve conflicts manually, then commit</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="submission-checklist" class="slide level2">
+<h2>Submission Checklist</h2>
+<p>Before the deadline, ensure:</p>
+<ul class="task-list">
+<li><label><input type="checkbox">All code is committed and pushed to GitHub</label></li>
+<li><label><input type="checkbox"><code>docker compose up --build</code> works in your repository</label></li>
+<li><label><input type="checkbox">README.md includes setup instructions</label></li>
+<li><label><input type="checkbox">No secrets committed (check <code>.gitignore</code>)</label></li>
+<li><label><input type="checkbox">Fill out the <code>answers.yml</code> file</label></li>
+</ul>
+<div class="fragment">
+<p><strong>GitHub Classroom automatically tracks your submission!</strong></p>
+<p>The TAs can see your commits and will clone your repository to grade it.</p>
+</div>
+</section></section>
+<section>
 <section id="summary" class="title-slide slide level1 section-slide center" data-background-color="#d6001c">
 <h1>Summary</h1>
 
@@ -1221,7 +1421,7 @@ mern-frontend  |   ➜  Local:   http://localhost:3000/</code></pre>
 </section>
 <section class="slide level2">
 
-<p>Good luck with Lab 0!</p>
+<p>Good luck with Lab 1!</p>
 
 
 </section></section>
@@ -1229,7 +1429,7 @@ mern-frontend  |   ➜  Local:   http://localhost:3000/</code></pre>
   <div class="quarto-auto-generated-content" style="display: none;">
 <p><img src="../../static/logos/RPI_Logo_Binary_1_White.png" class="slide-logo"></p>
 <div class="footer footer-default">
-<p>ITWS-4500 | Week 2, Day 1 | Lab 0</p>
+<p>ITWS-4500 | Week 2, Day 1 | Lab 1</p>
 </div>
 </div></div>
 

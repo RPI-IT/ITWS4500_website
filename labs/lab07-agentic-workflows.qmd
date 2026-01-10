@@ -1,0 +1,41 @@
+---
+title: "Lab 7: Agentic Workflows"
+subtitle: "Building AI Agent Systems"
+---
+
+::: {.callout-important}
+## Lab Information
+**Assigned:** Friday, March 20, 2026
+**Due:** Friday, March 27, 2026 (before class)
+**Points:** 100
+:::
+
+## Overview
+
+This lab introduces agentic AI patterns and workflow systems integration with web applications.
+
+## Learning Objectives
+
+By completing this lab, you will:
+
+1. Design **agent-based workflows**
+2. Implement **basic AI agents**
+3. Integrate **LangChain/similar frameworks**
+4. Handle **agent-human interaction**
+
+## Getting Started
+
+Click the button below to accept the assignment and create your repository:
+
+[Accept Assignment on GitHub Classroom](#){.btn .btn-primary .btn-lg}
+
+## Prerequisites
+
+- Completed Lab 6
+- Understanding of AI/ML fundamentals
+
+## Getting Help
+
+- **Office Hours:** Tuesday 9-11 AM, Pitt 2206
+- **Piazza:** Post questions with `lab7` tag
+- **TA Sessions:** Check LMS for schedule

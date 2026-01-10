@@ -8,10 +8,10 @@ subtitle: "Final Assessment & Project Hardening"
 ### Tuesday, April 21: Quiz 2
 Comprehensive Architectural and Systems Reasoning
 
-### Friday, April 24: Lab 11
+### Friday, April 24: Lab 12
 Capstone Extension - Architectural Experimentation / Project Hardening
 
-[Lab Assignment](../../labs/lab11-capstone-extension.qmd){.btn .btn-success}
+[Lab Assignment](../../labs/lab12-capstone-extension.qmd){.btn .btn-success}
 
 ## Learning Objectives
 
@@ -26,7 +26,7 @@ By the end of this week, you will be able to:
 ::: {.callout-important}
 **Quiz 2:** Tuesday, April 21 (in-class)
 
-**Lab 11 Due:** Tuesday, April 28, 2026
+**Lab 12 Due:** Tuesday, April 28, 2026
 :::
 
 ## Quiz 2 Topics

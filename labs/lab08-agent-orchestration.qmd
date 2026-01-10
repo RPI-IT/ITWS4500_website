@@ -1,0 +1,41 @@
+---
+title: "Lab 8: Agent Orchestration"
+subtitle: "Multi-Agent Systems and Tooling"
+---
+
+::: {.callout-important}
+## Lab Information
+**Assigned:** Friday, March 27, 2026
+**Due:** Friday, April 3, 2026 (before class)
+**Points:** 100
+:::
+
+## Overview
+
+This lab covers advanced agent orchestration, memory systems, and tool integration.
+
+## Learning Objectives
+
+By completing this lab, you will:
+
+1. **Orchestrate multiple agents**
+2. Implement **agent memory**
+3. Create **custom tools** for agents
+4. Apply **governance patterns**
+
+## Getting Started
+
+Click the button below to accept the assignment and create your repository:
+
+[Accept Assignment on GitHub Classroom](#){.btn .btn-primary .btn-lg}
+
+## Prerequisites
+
+- Completed Lab 7
+- Understanding of multi-agent systems
+
+## Getting Help
+
+- **Office Hours:** Tuesday 9-11 AM, Pitt 2206
+- **Piazza:** Post questions with `lab8` tag
+- **TA Sessions:** Check LMS for schedule

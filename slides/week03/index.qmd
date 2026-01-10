@@ -1,20 +1,17 @@
 ---
 title: "Week 3: Layered Architecture"
-subtitle: "Lab 1 & Frontend Patterns"
+subtitle: "Lab 2 & Frontend Patterns"
 ---
 
 ## This Week's Sessions
 
-### Tuesday, January 27: Lab 1
+### Tuesday, January 27: Lab 2
 Layered Client-Server Architecture (MERN as Reference)
 
-[View Presentation](05-lab1-layered-architecture.qmd){.btn .btn-primary}
-[Lab Assignment](../../labs/lab01-layered-architecture.qmd){.btn .btn-success}
+[Lab Assignment](../../labs/lab02-layered-architecture.qmd){.btn .btn-success}
 
 ### Friday, January 30: Frontend Architecture
 Frontend Architecture Patterns; Project Proposal Presentations
-
-[View Presentation](06-frontend-patterns.qmd){.btn .btn-primary}
 
 ## Learning Objectives
 
@@ -28,7 +25,7 @@ By the end of this week, you will be able to:
 ## Deliverables
 
 ::: {.callout-important}
-**Lab 1 Due:** Tuesday, February 3, 2026
+**Lab 2 Due:** Tuesday, February 3, 2026
 
 **Project Proposals:** Friday, January 30 (in-class presentations)
 :::

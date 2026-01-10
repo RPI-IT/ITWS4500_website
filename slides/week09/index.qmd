@@ -8,10 +8,10 @@ subtitle: "Agents as Workflow Systems"
 ### Tuesday, March 17: Agentic Architecture I
 Agentic Architecture Patterns: Agents as Workflow Systems
 
-### Friday, March 20: Lab 6
+### Friday, March 20: Lab 7
 Agentic Workflows
 
-[Lab Assignment](../../labs/lab06-agentic-workflows.qmd){.btn .btn-success}
+[Lab Assignment](../../labs/lab07-agentic-workflows.qmd){.btn .btn-success}
 
 ## Learning Objectives
 
@@ -25,7 +25,7 @@ By the end of this week, you will be able to:
 ## Deliverables
 
 ::: {.callout-important}
-**Lab 6 Due:** Friday, March 27, 2026
+**Lab 7 Due:** Friday, March 27, 2026
 :::
 
 ## Resources

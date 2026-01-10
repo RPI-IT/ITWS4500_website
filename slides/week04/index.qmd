@@ -1,14 +1,14 @@
 ---
 title: "Week 4: Component Architecture"
-subtitle: "Lab 2 & Backend Patterns"
+subtitle: "Lab 3 & Backend Patterns"
 ---
 
 ## This Week's Sessions
 
-### Tuesday, February 3: Lab 2
+### Tuesday, February 3: Lab 3
 Component and State Management Architecture (Angular/React)
 
-[Lab Assignment](../../labs/lab02-component-state.qmd){.btn .btn-success}
+[Lab Assignment](../../labs/lab03-component-state.qmd){.btn .btn-success}
 
 ### Friday, February 6: Backend Architecture
 Backend Architecture Patterns: Services, APIs, and Data Flow
@@ -25,7 +25,7 @@ By the end of this week, you will be able to:
 ## Deliverables
 
 ::: {.callout-important}
-**Lab 2 Due:** Tuesday, February 10, 2026
+**Lab 3 Due:** Tuesday, February 10, 2026
 :::
 
 ## Resources
