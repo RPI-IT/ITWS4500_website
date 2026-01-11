@@ -1,0 +1,1124 @@
+---
+title: "Backend Architecture Patterns"
+subtitle: "Services, APIs, and Data Flow"
+author: "Jason Kuruzovich"
+date: "February 6, 2026"
+format:
+  revealjs:
+    navigation-mode: linear
+    mermaid:
+        theme: default
+    theme: [default, ../../slides-theme.scss]
+    logo: ../../static/logos/RPI_Logo_Binary_1_White.png
+    footer: "ITWS-4500 | Week 4, Day 2"
+    slide-number: true
+    transition: slide
+    width: 1600
+    height: 900
+    #chalkboard: true
+    code-line-numbers: true
+    highlight-style: github
+    pdf-separate-fragments: false
+---
+
+# Backend Architecture {.section-slide background-color="#d6001c"}
+
+Building Scalable API Services
+
+## Today's Agenda
+
+::: {.learning-objectives}
+#### Learning Objectives
+
+1. Understand **layered backend architecture** principles
+2. Design effective **RESTful APIs**
+3. Implement **service layer patterns**
+4. Master **middleware** composition
+5. Apply proper **error handling** strategies
+6. Design for **testability** and **maintainability**
+:::
+
+## Why Backend Architecture Matters
+
+> "Any fool can write code that a computer can understand. Good programmers write code that humans can understand."
+>
+> — Martin Fowler
+
+. . .
+
+**Backend Challenges:**
+- Business logic complexity grows
+- Multiple consumers (web, mobile, third-party)
+- Data consistency requirements
+- Security at every layer
+
+# Layered Backend Architecture {.section-slide background-color="#d6001c"}
+
+## The Four Layers
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    Presentation Layer                        │
+│      Routes, Controllers, Request/Response Handling          │
+├─────────────────────────────────────────────────────────────┤
+│                    Application Layer                         │
+│           Services, Use Cases, Orchestration                 │
+├─────────────────────────────────────────────────────────────┤
+│                      Domain Layer                            │
+│      Entities, Business Rules, Domain Services               │
+├─────────────────────────────────────────────────────────────┤
+│                   Infrastructure Layer                       │
+│       Repositories, Database, External Services              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+**Key Rule:** Each layer only depends on layers below it
+
+## Project Structure
+
+```
+src/
+├── routes/              # Presentation Layer
+│   ├── index.js        # Route aggregation
+│   ├── users.routes.js
+│   └── products.routes.js
+│
+├── controllers/         # Presentation Layer
+│   ├── users.controller.js
+│   └── products.controller.js
+│
+├── services/            # Application Layer
+│   ├── users.service.js
+│   └── products.service.js
+│
+├── models/              # Domain Layer
+│   ├── User.js
+│   └── Product.js
+│
+├── repositories/        # Infrastructure Layer
+│   ├── users.repository.js
+│   └── products.repository.js
+│
+├── middleware/          # Cross-cutting concerns
+│   ├── auth.js
+│   ├── validation.js
+│   └── errorHandler.js
+│
+└── utils/               # Shared utilities
+    └── errors.js
+```
+
+## Request Flow
+
+```{mermaid}
+%%| fig-width: 14
+sequenceDiagram
+    participant Client
+    participant Router
+    participant Middleware
+    participant Controller
+    participant Service
+    participant Repository
+    participant Database
+
+    Client->>Router: HTTP Request
+    Router->>Middleware: Route Match
+    Middleware->>Middleware: Auth, Validation
+    Middleware->>Controller: Validated Request
+    Controller->>Service: Business Operation
+    Service->>Repository: Data Operation
+    Repository->>Database: Query
+    Database-->>Repository: Result
+    Repository-->>Service: Domain Object
+    Service-->>Controller: Result/Error
+    Controller-->>Client: HTTP Response
+```
+
+## Layer Responsibilities
+
+| Layer | Responsibility | Knows About |
+|-------|---------------|-------------|
+| **Routes** | URL mapping, HTTP methods | Controllers |
+| **Controllers** | Request parsing, response formatting | Services, DTOs |
+| **Services** | Business logic, orchestration | Repositories, Domain |
+| **Repositories** | Data persistence, queries | Database, Models |
+| **Models** | Data structure, validation | Nothing external |
+
+# RESTful API Design {.section-slide background-color="#d6001c"}
+
+## REST Principles
+
+**RE**presentational **S**tate **T**ransfer
+
+1. **Stateless** - Each request contains all needed information
+2. **Resource-Based** - URLs represent resources, not actions
+3. **HTTP Methods** - Use verbs appropriately
+4. **Uniform Interface** - Consistent patterns across endpoints
+
+## Resource Naming Conventions
+
+```
+# Good - Resources are nouns, plural
+GET    /api/users           # List users
+GET    /api/users/123       # Get user 123
+POST   /api/users           # Create user
+PUT    /api/users/123       # Update user 123
+DELETE /api/users/123       # Delete user 123
+
+# Good - Nested resources
+GET    /api/users/123/posts      # User's posts
+POST   /api/users/123/posts      # Create post for user
+GET    /api/posts/456/comments   # Post's comments
+
+# Bad - Verbs in URLs
+GET    /api/getUsers
+POST   /api/createUser
+POST   /api/users/123/delete
+
+# Bad - Action-based
+POST   /api/users/login
+POST   /api/sendEmail
+```
+
+## HTTP Methods
+
+| Method | Purpose | Idempotent | Safe |
+|--------|---------|------------|------|
+| **GET** | Retrieve resource | Yes | Yes |
+| **POST** | Create resource | No | No |
+| **PUT** | Replace resource | Yes | No |
+| **PATCH** | Partial update | No* | No |
+| **DELETE** | Remove resource | Yes | No |
+
+**Idempotent:** Same request multiple times = same result
+
+**Safe:** Doesn't modify server state
+
+## HTTP Status Codes
+
+```javascript
+// Success
+200 OK              // Successful GET, PUT, PATCH
+201 Created         // Successful POST (resource created)
+204 No Content      // Successful DELETE
+
+// Client Errors
+400 Bad Request     // Invalid request data
+401 Unauthorized    // Authentication required
+403 Forbidden       // Authenticated but not authorized
+404 Not Found       // Resource doesn't exist
+409 Conflict        // Resource conflict (duplicate)
+422 Unprocessable   // Validation failed
+
+// Server Errors
+500 Internal Error  // Unexpected server error
+502 Bad Gateway     // Upstream service error
+503 Service Unavailable // Temporarily unavailable
+```
+
+## Consistent Response Format
+
+```javascript
+// Success Response
+{
+  "success": true,
+  "data": {
+    "id": "123",
+    "name": "John Doe",
+    "email": "john@example.com"
+  },
+  "meta": {
+    "timestamp": "2026-02-06T10:30:00Z"
+  }
+}
+
+// Collection Response
+{
+  "success": true,
+  "data": [...],
+  "meta": {
+    "total": 100,
+    "page": 1,
+    "limit": 20,
+    "totalPages": 5
+  }
+}
+
+// Error Response
+{
+  "success": false,
+  "error": {
+    "code": "VALIDATION_ERROR",
+    "message": "Invalid request data",
+    "details": [
+      { "field": "email", "message": "Invalid email format" }
+    ]
+  }
+}
+```
+
+## Pagination Patterns
+
+```javascript
+// Offset-based (simple, common)
+GET /api/products?page=2&limit=20
+
+// Response includes pagination meta
+{
+  "data": [...],
+  "meta": {
+    "page": 2,
+    "limit": 20,
+    "total": 156,
+    "totalPages": 8
+  }
+}
+
+// Cursor-based (efficient for large datasets)
+GET /api/products?cursor=abc123&limit=20
+
+{
+  "data": [...],
+  "meta": {
+    "nextCursor": "def456",
+    "hasMore": true
+  }
+}
+```
+
+## Filtering and Sorting
+
+```javascript
+// Filtering
+GET /api/products?category=electronics&minPrice=100&maxPrice=500
+GET /api/products?status=active,pending
+GET /api/products?search=laptop
+
+// Sorting
+GET /api/products?sort=price          // Ascending
+GET /api/products?sort=-price         // Descending
+GET /api/products?sort=-createdAt,name // Multiple fields
+
+// Field selection
+GET /api/products?fields=id,name,price
+
+// Combined
+GET /api/products?category=electronics&sort=-price&page=1&limit=20
+```
+
+# Controllers {.section-slide background-color="#d6001c"}
+
+## Controller Responsibilities
+
+Controllers should:
+
+- ✅ Parse request parameters
+- ✅ Validate input format
+- ✅ Call appropriate service methods
+- ✅ Format response
+- ✅ Handle HTTP-specific concerns
+
+Controllers should NOT:
+
+- ❌ Contain business logic
+- ❌ Access database directly
+- ❌ Know about other controllers
+- ❌ Make decisions about data
+
+## Controller Example
+
+```javascript
+// controllers/products.controller.js
+
+class ProductsController {
+  constructor(productService) {
+    this.productService = productService;
+  }
+
+  async list(req, res, next) {
+    try {
+      const { page = 1, limit = 20, category, sort } = req.query;
+
+      const result = await this.productService.findAll({
+        page: parseInt(page),
+        limit: parseInt(limit),
+        category,
+        sort
+      });
+
+      res.json({
+        success: true,
+        data: result.products,
+        meta: {
+          page: result.page,
+          limit: result.limit,
+          total: result.total,
+          totalPages: result.totalPages
+        }
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async getById(req, res, next) {
+    try {
+      const product = await this.productService.findById(req.params.id);
+      res.json({ success: true, data: product });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async create(req, res, next) {
+    try {
+      const product = await this.productService.create(req.body);
+      res.status(201).json({ success: true, data: product });
+    } catch (error) {
+      next(error);
+    }
+  }
+}
+```
+
+## Route Setup
+
+```javascript
+// routes/products.routes.js
+import { Router } from 'express';
+import { ProductsController } from '../controllers/products.controller.js';
+import { ProductService } from '../services/products.service.js';
+import { validate } from '../middleware/validation.js';
+import { authenticate } from '../middleware/auth.js';
+import { productSchemas } from '../schemas/product.schemas.js';
+
+const router = Router();
+const controller = new ProductsController(new ProductService());
+
+// Public routes
+router.get('/', controller.list.bind(controller));
+router.get('/:id', controller.getById.bind(controller));
+
+// Protected routes
+router.post('/',
+  authenticate,
+  validate(productSchemas.create),
+  controller.create.bind(controller)
+);
+
+router.put('/:id',
+  authenticate,
+  validate(productSchemas.update),
+  controller.update.bind(controller)
+);
+
+router.delete('/:id',
+  authenticate,
+  controller.delete.bind(controller)
+);
+
+export default router;
+```
+
+# Service Layer {.section-slide background-color="#d6001c"}
+
+## Service Responsibilities
+
+The service layer contains **business logic**:
+
+- Enforce business rules
+- Coordinate multiple repositories
+- Handle transactions
+- Apply domain validation
+- Trigger side effects (emails, notifications)
+
+```
+Controller → Service → Repository
+  (HTTP)    (Business)   (Data)
+```
+
+## Service Example
+
+```javascript
+// services/products.service.js
+
+class ProductService {
+  constructor(productRepository, categoryRepository, eventEmitter) {
+    this.productRepo = productRepository;
+    this.categoryRepo = categoryRepository;
+    this.events = eventEmitter;
+  }
+
+  async findAll(options) {
+    const { page, limit, category, sort } = options;
+
+    const query = {};
+    if (category) {
+      query.category = category;
+    }
+
+    const [products, total] = await Promise.all([
+      this.productRepo.find(query, { page, limit, sort }),
+      this.productRepo.count(query)
+    ]);
+
+    return {
+      products,
+      page,
+      limit,
+      total,
+      totalPages: Math.ceil(total / limit)
+    };
+  }
+
+  async findById(id) {
+    const product = await this.productRepo.findById(id);
+    if (!product) {
+      throw new NotFoundError('Product not found');
+    }
+    return product;
+  }
+
+  async create(data) {
+    // Business rule: validate category exists
+    const category = await this.categoryRepo.findById(data.categoryId);
+    if (!category) {
+      throw new ValidationError('Invalid category');
+    }
+
+    // Business rule: ensure unique SKU
+    const existing = await this.productRepo.findBySku(data.sku);
+    if (existing) {
+      throw new ConflictError('SKU already exists');
+    }
+
+    const product = await this.productRepo.create(data);
+
+    // Side effect: notify other services
+    this.events.emit('product:created', product);
+
+    return product;
+  }
+}
+```
+
+## Service Coordination
+
+```javascript
+// Complex business operation spanning multiple repositories
+
+class OrderService {
+  constructor(orderRepo, productRepo, inventoryRepo, paymentService) {
+    this.orderRepo = orderRepo;
+    this.productRepo = productRepo;
+    this.inventoryRepo = inventoryRepo;
+    this.paymentService = paymentService;
+  }
+
+  async createOrder(userId, items, paymentDetails) {
+    // 1. Validate products exist and get prices
+    const products = await this.productRepo.findByIds(
+      items.map(i => i.productId)
+    );
+
+    if (products.length !== items.length) {
+      throw new ValidationError('Some products not found');
+    }
+
+    // 2. Check inventory
+    for (const item of items) {
+      const available = await this.inventoryRepo.checkAvailability(
+        item.productId,
+        item.quantity
+      );
+      if (!available) {
+        throw new ValidationError(`Insufficient stock for ${item.productId}`);
+      }
+    }
+
+    // 3. Calculate total
+    const total = items.reduce((sum, item) => {
+      const product = products.find(p => p.id === item.productId);
+      return sum + (product.price * item.quantity);
+    }, 0);
+
+    // 4. Process payment
+    const payment = await this.paymentService.charge(paymentDetails, total);
+
+    // 5. Create order
+    const order = await this.orderRepo.create({
+      userId,
+      items,
+      total,
+      paymentId: payment.id,
+      status: 'confirmed'
+    });
+
+    // 6. Reserve inventory
+    await this.inventoryRepo.reserve(items);
+
+    return order;
+  }
+}
+```
+
+# Middleware Patterns {.section-slide background-color="#d6001c"}
+
+## Express Middleware Flow
+
+```
+Request → [Middleware 1] → [Middleware 2] → [Middleware 3] → Route Handler
+                                                                    │
+Response ← [Middleware 3] ← [Middleware 2] ← [Middleware 1] ←───────┘
+```
+
+```javascript
+// Middleware signature
+function middleware(req, res, next) {
+  // Do something before
+  console.log('Before handler');
+
+  next(); // Call next middleware or handler
+
+  // Do something after (response phase)
+  console.log('After handler');
+}
+```
+
+## Common Middleware Types
+
+```{mermaid}
+%%| fig-width: 14
+flowchart LR
+    Request --> Logger
+    Logger --> CORS
+    CORS --> BodyParser
+    BodyParser --> Auth
+    Auth --> RateLimit
+    RateLimit --> Validation
+    Validation --> Handler
+    Handler --> ErrorHandler
+    ErrorHandler --> Response
+```
+
+## Authentication Middleware
+
+```javascript
+// middleware/auth.js
+import jwt from 'jsonwebtoken';
+import { UnauthorizedError } from '../utils/errors.js';
+
+export function authenticate(req, res, next) {
+  const authHeader = req.headers.authorization;
+
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    throw new UnauthorizedError('No token provided');
+  }
+
+  const token = authHeader.split(' ')[1];
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = decoded;
+    next();
+  } catch (error) {
+    throw new UnauthorizedError('Invalid token');
+  }
+}
+
+// Role-based authorization
+export function authorize(...roles) {
+  return (req, res, next) => {
+    if (!roles.includes(req.user.role)) {
+      throw new ForbiddenError('Insufficient permissions');
+    }
+    next();
+  };
+}
+
+// Usage
+router.delete('/users/:id',
+  authenticate,
+  authorize('admin'),
+  controller.delete
+);
+```
+
+## Validation Middleware
+
+```javascript
+// middleware/validation.js
+import Joi from 'joi';
+import { ValidationError } from '../utils/errors.js';
+
+export function validate(schema) {
+  return (req, res, next) => {
+    const { error, value } = schema.validate(req.body, {
+      abortEarly: false,
+      stripUnknown: true
+    });
+
+    if (error) {
+      const details = error.details.map(d => ({
+        field: d.path.join('.'),
+        message: d.message
+      }));
+      throw new ValidationError('Validation failed', details);
+    }
+
+    req.body = value; // Use validated/sanitized values
+    next();
+  };
+}
+
+// schemas/product.schemas.js
+export const productSchemas = {
+  create: Joi.object({
+    name: Joi.string().min(2).max(100).required(),
+    price: Joi.number().positive().required(),
+    description: Joi.string().max(1000),
+    categoryId: Joi.string().required(),
+    sku: Joi.string().pattern(/^[A-Z0-9-]+$/).required()
+  }),
+
+  update: Joi.object({
+    name: Joi.string().min(2).max(100),
+    price: Joi.number().positive(),
+    description: Joi.string().max(1000)
+  })
+};
+```
+
+## Error Handling Middleware
+
+```javascript
+// middleware/errorHandler.js
+
+export function errorHandler(err, req, res, next) {
+  // Log error for debugging
+  console.error('Error:', {
+    message: err.message,
+    stack: err.stack,
+    path: req.path,
+    method: req.method
+  });
+
+  // Determine status code
+  const statusCode = err.statusCode || 500;
+
+  // Don't leak internal errors in production
+  const message = statusCode === 500 && process.env.NODE_ENV === 'production'
+    ? 'Internal server error'
+    : err.message;
+
+  res.status(statusCode).json({
+    success: false,
+    error: {
+      code: err.code || 'INTERNAL_ERROR',
+      message,
+      ...(err.details && { details: err.details }),
+      ...(process.env.NODE_ENV === 'development' && { stack: err.stack })
+    }
+  });
+}
+
+// utils/errors.js
+export class AppError extends Error {
+  constructor(message, statusCode, code) {
+    super(message);
+    this.statusCode = statusCode;
+    this.code = code;
+  }
+}
+
+export class NotFoundError extends AppError {
+  constructor(message = 'Resource not found') {
+    super(message, 404, 'NOT_FOUND');
+  }
+}
+
+export class ValidationError extends AppError {
+  constructor(message, details = []) {
+    super(message, 400, 'VALIDATION_ERROR');
+    this.details = details;
+  }
+}
+```
+
+## Rate Limiting Middleware
+
+```javascript
+// middleware/rateLimit.js
+import rateLimit from 'express-rate-limit';
+import RedisStore from 'rate-limit-redis';
+import { redis } from '../config/redis.js';
+
+// General API rate limit
+export const apiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // 100 requests per window
+  message: {
+    success: false,
+    error: {
+      code: 'RATE_LIMIT_EXCEEDED',
+      message: 'Too many requests, please try again later'
+    }
+  },
+  standardHeaders: true,
+  legacyHeaders: false
+});
+
+// Stricter limit for auth endpoints
+export const authLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000, // 1 hour
+  max: 5, // 5 attempts
+  message: {
+    success: false,
+    error: {
+      code: 'TOO_MANY_ATTEMPTS',
+      message: 'Too many login attempts, please try again later'
+    }
+  }
+});
+
+// Usage
+app.use('/api', apiLimiter);
+app.use('/api/auth/login', authLimiter);
+```
+
+# Repository Pattern {.section-slide background-color="#d6001c"}
+
+## Repository Purpose
+
+The repository pattern:
+
+- **Abstracts** data persistence details
+- **Encapsulates** query logic
+- **Enables** easy testing via mocking
+- **Allows** switching databases
+
+```
+Service ──► Repository Interface ──► Concrete Repository ──► Database
+                                          │
+                                     MongoRepository
+                                     PostgresRepository
+                                     InMemoryRepository (tests)
+```
+
+## Repository Implementation
+
+```javascript
+// repositories/base.repository.js
+
+export class BaseRepository {
+  constructor(model) {
+    this.model = model;
+  }
+
+  async findAll(query = {}, options = {}) {
+    const { page = 1, limit = 20, sort = '-createdAt' } = options;
+    const skip = (page - 1) * limit;
+
+    return this.model
+      .find(query)
+      .sort(sort)
+      .skip(skip)
+      .limit(limit)
+      .lean();
+  }
+
+  async findById(id) {
+    return this.model.findById(id).lean();
+  }
+
+  async findOne(query) {
+    return this.model.findOne(query).lean();
+  }
+
+  async create(data) {
+    const doc = new this.model(data);
+    await doc.save();
+    return doc.toObject();
+  }
+
+  async update(id, data) {
+    return this.model
+      .findByIdAndUpdate(id, data, { new: true })
+      .lean();
+  }
+
+  async delete(id) {
+    return this.model.findByIdAndDelete(id);
+  }
+
+  async count(query = {}) {
+    return this.model.countDocuments(query);
+  }
+}
+```
+
+## Specialized Repository
+
+```javascript
+// repositories/products.repository.js
+
+import { BaseRepository } from './base.repository.js';
+import { Product } from '../models/Product.js';
+
+export class ProductRepository extends BaseRepository {
+  constructor() {
+    super(Product);
+  }
+
+  async findBySku(sku) {
+    return this.model.findOne({ sku }).lean();
+  }
+
+  async findByCategory(categoryId, options = {}) {
+    return this.findAll({ category: categoryId }, options);
+  }
+
+  async findInStock() {
+    return this.model.find({ stock: { $gt: 0 } }).lean();
+  }
+
+  async updateStock(id, quantity) {
+    return this.model.findByIdAndUpdate(
+      id,
+      { $inc: { stock: quantity } },
+      { new: true }
+    ).lean();
+  }
+
+  async searchByName(searchTerm, options = {}) {
+    const query = {
+      name: { $regex: searchTerm, $options: 'i' }
+    };
+    return this.findAll(query, options);
+  }
+
+  async aggregateByCategory() {
+    return this.model.aggregate([
+      { $group: {
+          _id: '$category',
+          count: { $sum: 1 },
+          avgPrice: { $avg: '$price' }
+        }
+      }
+    ]);
+  }
+}
+```
+
+# Testing Backend Code {.section-slide background-color="#d6001c"}
+
+## Testing Strategy
+
+| Layer | Test Type | Mock |
+|-------|-----------|------|
+| **Controllers** | Integration | Service |
+| **Services** | Unit | Repository |
+| **Repositories** | Integration | Database |
+| **Middleware** | Unit | Request/Response |
+
+## Testing Services
+
+```javascript
+// services/__tests__/products.service.test.js
+import { ProductService } from '../products.service.js';
+
+describe('ProductService', () => {
+  let service;
+  let mockProductRepo;
+  let mockCategoryRepo;
+
+  beforeEach(() => {
+    mockProductRepo = {
+      findById: jest.fn(),
+      create: jest.fn(),
+      findBySku: jest.fn()
+    };
+    mockCategoryRepo = {
+      findById: jest.fn()
+    };
+    service = new ProductService(mockProductRepo, mockCategoryRepo);
+  });
+
+  describe('findById', () => {
+    it('returns product when found', async () => {
+      const mockProduct = { id: '1', name: 'Test' };
+      mockProductRepo.findById.mockResolvedValue(mockProduct);
+
+      const result = await service.findById('1');
+
+      expect(result).toEqual(mockProduct);
+      expect(mockProductRepo.findById).toHaveBeenCalledWith('1');
+    });
+
+    it('throws NotFoundError when product not found', async () => {
+      mockProductRepo.findById.mockResolvedValue(null);
+
+      await expect(service.findById('999'))
+        .rejects.toThrow('Product not found');
+    });
+  });
+
+  describe('create', () => {
+    it('creates product when category exists and SKU is unique', async () => {
+      const productData = { name: 'New', categoryId: 'cat1', sku: 'NEW-001' };
+      mockCategoryRepo.findById.mockResolvedValue({ id: 'cat1' });
+      mockProductRepo.findBySku.mockResolvedValue(null);
+      mockProductRepo.create.mockResolvedValue({ id: '1', ...productData });
+
+      const result = await service.create(productData);
+
+      expect(result.id).toBe('1');
+      expect(mockProductRepo.create).toHaveBeenCalledWith(productData);
+    });
+
+    it('throws ValidationError when category not found', async () => {
+      mockCategoryRepo.findById.mockResolvedValue(null);
+
+      await expect(service.create({ categoryId: 'invalid' }))
+        .rejects.toThrow('Invalid category');
+    });
+  });
+});
+```
+
+## API Integration Tests
+
+```javascript
+// routes/__tests__/products.routes.test.js
+import request from 'supertest';
+import { app } from '../../app.js';
+import { Product } from '../../models/Product.js';
+import { createTestUser, generateToken } from '../helpers.js';
+
+describe('Products API', () => {
+  let authToken;
+
+  beforeAll(async () => {
+    const user = await createTestUser();
+    authToken = generateToken(user);
+  });
+
+  beforeEach(async () => {
+    await Product.deleteMany({});
+  });
+
+  describe('GET /api/products', () => {
+    it('returns list of products', async () => {
+      await Product.create([
+        { name: 'Product 1', price: 10, sku: 'P1' },
+        { name: 'Product 2', price: 20, sku: 'P2' }
+      ]);
+
+      const response = await request(app)
+        .get('/api/products')
+        .expect(200);
+
+      expect(response.body.success).toBe(true);
+      expect(response.body.data).toHaveLength(2);
+    });
+
+    it('supports pagination', async () => {
+      // Create 30 products
+      await Product.insertMany(
+        Array.from({ length: 30 }, (_, i) => ({
+          name: `Product ${i}`, price: 10, sku: `P${i}`
+        }))
+      );
+
+      const response = await request(app)
+        .get('/api/products?page=2&limit=10')
+        .expect(200);
+
+      expect(response.body.data).toHaveLength(10);
+      expect(response.body.meta.page).toBe(2);
+    });
+  });
+
+  describe('POST /api/products', () => {
+    it('creates product with valid data', async () => {
+      const response = await request(app)
+        .post('/api/products')
+        .set('Authorization', `Bearer ${authToken}`)
+        .send({ name: 'New Product', price: 29.99, sku: 'NEW-001' })
+        .expect(201);
+
+      expect(response.body.data.name).toBe('New Product');
+    });
+
+    it('returns 401 without auth token', async () => {
+      await request(app)
+        .post('/api/products')
+        .send({ name: 'Test', price: 10, sku: 'T1' })
+        .expect(401);
+    });
+  });
+});
+```
+
+# Summary {.section-slide background-color="#d6001c"}
+
+## Key Takeaways
+
+1. **Layered architecture** separates concerns (Route → Controller → Service → Repository)
+2. **RESTful design** uses resources and HTTP methods appropriately
+3. **Controllers** handle HTTP, **Services** contain business logic
+4. **Middleware** provides cross-cutting functionality
+5. **Repository pattern** abstracts data access
+6. **Testing strategy** varies by layer
+
+## Request Lifecycle
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│  1. Request arrives                                         │
+│  2. Global middleware (logging, CORS, body parsing)         │
+│  3. Route matching                                          │
+│  4. Route middleware (auth, validation)                     │
+│  5. Controller (parse request, call service)                │
+│  6. Service (business logic, coordinate repositories)       │
+│  7. Repository (database operations)                        │
+│  8. Response flows back up the stack                        │
+│  9. Error handler catches any errors                        │
+└─────────────────────────────────────────────────────────────┘
+```
+
+## Looking Ahead
+
+### Lab 3 Due: Tuesday, February 10
+
+- Implement layered backend architecture
+- Create RESTful API endpoints
+- Add authentication middleware
+- Write service layer tests
+
+### Next Week: Data Architecture
+
+- Polyglot persistence
+- MongoDB vs PostgreSQL trade-offs
+- Data modeling patterns
+
+## Resources
+
+- [Express.js Best Practices](https://expressjs.com/en/advanced/best-practice-performance.html)
+- [REST API Design Best Practices](https://docs.microsoft.com/en-us/azure/architecture/best-practices/api-design)
+- [Joi Validation](https://joi.dev/)
+- [Testing Express APIs](https://www.albertgao.xyz/2017/05/24/how-to-test-expressjs-with-jest-and-supertest/)
+
+## Questions?
+
+::: {.callout-box}
+**Office Hours:** Tuesday 9-11 AM, Pitt 2206
+
+**Email:** kuruzj@rpi.edu
+
+**Appointments:** [bit.ly/jason-rpi](https://bit.ly/jason-rpi)
+:::
+
+---
+
+Good luck with Lab 3!

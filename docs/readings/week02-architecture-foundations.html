@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -323,8 +358,48 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#key-concepts" id="toc-key-concepts" class="nav-link" data-scroll-target="#key-concepts">Key Concepts</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#what-is-software-architecture" id="toc-what-is-software-architecture" class="nav-link" data-scroll-target="#what-is-software-architecture">What is Software Architecture?</a>
+  <ul class="collapse">
+  <li><a href="#defining-architecture" id="toc-defining-architecture" class="nav-link" data-scroll-target="#defining-architecture">Defining Architecture</a></li>
+  <li><a href="#why-architecture-matters" id="toc-why-architecture-matters" class="nav-link" data-scroll-target="#why-architecture-matters">Why Architecture Matters</a></li>
+  <li><a href="#architecture-decision-records-adrs" id="toc-architecture-decision-records-adrs" class="nav-link" data-scroll-target="#architecture-decision-records-adrs">Architecture Decision Records (ADRs)</a></li>
+  </ul></li>
+  <li><a href="#foundational-architectural-patterns" id="toc-foundational-architectural-patterns" class="nav-link" data-scroll-target="#foundational-architectural-patterns">Foundational Architectural Patterns</a>
+  <ul class="collapse">
+  <li><a href="#client-server-pattern" id="toc-client-server-pattern" class="nav-link" data-scroll-target="#client-server-pattern">Client-Server Pattern</a></li>
+  <li><a href="#layered-architecture-pattern" id="toc-layered-architecture-pattern" class="nav-link" data-scroll-target="#layered-architecture-pattern">Layered Architecture Pattern</a></li>
+  <li><a href="#model-view-controller-mvc-pattern" id="toc-model-view-controller-mvc-pattern" class="nav-link" data-scroll-target="#model-view-controller-mvc-pattern">Model-View-Controller (MVC) Pattern</a></li>
+  <li><a href="#repository-pattern" id="toc-repository-pattern" class="nav-link" data-scroll-target="#repository-pattern">Repository Pattern</a></li>
+  <li><a href="#middleware-pattern" id="toc-middleware-pattern" class="nav-link" data-scroll-target="#middleware-pattern">Middleware Pattern</a></li>
+  </ul></li>
+  <li><a href="#system-decomposition" id="toc-system-decomposition" class="nav-link" data-scroll-target="#system-decomposition">System Decomposition</a>
+  <ul class="collapse">
+  <li><a href="#decomposition-strategies" id="toc-decomposition-strategies" class="nav-link" data-scroll-target="#decomposition-strategies">Decomposition Strategies</a></li>
+  <li><a href="#coupling-and-cohesion" id="toc-coupling-and-cohesion" class="nav-link" data-scroll-target="#coupling-and-cohesion">Coupling and Cohesion</a></li>
+  <li><a href="#defining-component-boundaries" id="toc-defining-component-boundaries" class="nav-link" data-scroll-target="#defining-component-boundaries">Defining Component Boundaries</a></li>
+  </ul></li>
+  <li><a href="#api-design-principles" id="toc-api-design-principles" class="nav-link" data-scroll-target="#api-design-principles">API Design Principles</a>
+  <ul class="collapse">
+  <li><a href="#restful-api-design" id="toc-restful-api-design" class="nav-link" data-scroll-target="#restful-api-design">RESTful API Design</a></li>
+  <li><a href="#request-and-response-design" id="toc-request-and-response-design" class="nav-link" data-scroll-target="#request-and-response-design">Request and Response Design</a></li>
+  <li><a href="#api-versioning" id="toc-api-versioning" class="nav-link" data-scroll-target="#api-versioning">API Versioning</a></li>
+  </ul></li>
+  <li><a href="#project-scoping" id="toc-project-scoping" class="nav-link" data-scroll-target="#project-scoping">Project Scoping</a>
+  <ul class="collapse">
+  <li><a href="#defining-project-scope" id="toc-defining-project-scope" class="nav-link" data-scroll-target="#defining-project-scope">Defining Project Scope</a></li>
+  <li><a href="#the-mvp-approach" id="toc-the-mvp-approach" class="nav-link" data-scroll-target="#the-mvp-approach">The MVP Approach</a></li>
+  <li><a href="#user-stories-and-requirements" id="toc-user-stories-and-requirements" class="nav-link" data-scroll-target="#user-stories-and-requirements">User Stories and Requirements</a></li>
+  <li><a href="#estimation-and-prioritization" id="toc-estimation-and-prioritization" class="nav-link" data-scroll-target="#estimation-and-prioritization">Estimation and Prioritization</a></li>
+  <li><a href="#risk-assessment" id="toc-risk-assessment" class="nav-link" data-scroll-target="#risk-assessment">Risk Assessment</a></li>
+  </ul></li>
+  <li><a href="#putting-it-all-together" id="toc-putting-it-all-together" class="nav-link" data-scroll-target="#putting-it-all-together">Putting It All Together</a>
+  <ul class="collapse">
+  <li><a href="#from-requirements-to-architecture" id="toc-from-requirements-to-architecture" class="nav-link" data-scroll-target="#from-requirements-to-architecture">From Requirements to Architecture</a></li>
+  <li><a href="#example-task-management-system" id="toc-example-task-management-system" class="nav-link" data-scroll-target="#example-task-management-system">Example: Task Management System</a></li>
+  </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#key-terms" id="toc-key-terms" class="nav-link" data-scroll-target="#key-terms">Key Terms</a></li>
   <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
   </ul>
 </nav>
@@ -362,25 +437,974 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Complete this reading before Week 3.</p>
+<p>Complete this reading before Week 3. Estimated time: 50-65 minutes.</p>
 </div>
 </div>
-<section id="overview" class="level2">
-<h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p><em>Content coming soon.</em></p>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Last week we established the technical foundation for containerized development. This week, we shift focus to <strong>architectural thinking</strong>—the skill of decomposing complex systems into well-defined components and making informed decisions about how those components interact.</p>
+<p>Architecture is not about following rigid rules or applying trendy patterns. It’s about understanding trade-offs and making decisions that serve your project’s specific needs. A well-architected system is easier to understand, test, modify, and scale. A poorly architected system becomes increasingly difficult to work with over time, accumulating what we call <strong>technical debt</strong>.</p>
+<p>This reading covers three interconnected topics: architectural patterns that have proven useful across many projects, strategies for decomposing systems into manageable components, and techniques for scoping projects effectively.</p>
 </section>
-<section id="key-concepts" class="level2">
-<h2 class="anchored" data-anchor-id="key-concepts">Key Concepts</h2>
+<section id="what-is-software-architecture" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-software-architecture">What is Software Architecture?</h2>
+<section id="defining-architecture" class="level3">
+<h3 class="anchored" data-anchor-id="defining-architecture">Defining Architecture</h3>
+<p>Software architecture refers to the fundamental structures of a software system and the discipline of creating such structures. It encompasses:</p>
 <ul>
-<li>Architectural patterns overview</li>
-<li>System decomposition strategies</li>
-<li>Project scoping techniques</li>
-<li>MERN stack architecture</li>
+<li><strong>High-level structure</strong>: How the system is divided into components</li>
+<li><strong>Component interactions</strong>: How those components communicate</li>
+<li><strong>Design decisions</strong>: The significant choices that shape the system</li>
+<li><strong>Quality attributes</strong>: The non-functional requirements like performance, security, and maintainability</li>
+</ul>
+<p>Architecture is distinct from design. While design focuses on the details of individual components, architecture focuses on the relationships between components and the overall system structure.</p>
+</section>
+<section id="why-architecture-matters" class="level3">
+<h3 class="anchored" data-anchor-id="why-architecture-matters">Why Architecture Matters</h3>
+<p>Consider two teams building similar applications. Team A jumps straight into coding, adding features as needed. Team B spends time upfront thinking about structure, defining clear boundaries between components, and documenting key decisions.</p>
+<p>Initially, Team A moves faster. But as the application grows:</p>
+<ul>
+<li>Team A struggles to add features without breaking existing functionality</li>
+<li>Team A’s codebase becomes difficult for new developers to understand</li>
+<li>Team A spends increasing time debugging unexpected interactions</li>
+<li>Team A finds it hard to scale specific components independently</li>
+</ul>
+<p>Meanwhile, Team B:</p>
+<ul>
+<li>Can add features by working within well-defined boundaries</li>
+<li>Onboards new developers quickly because the structure is clear</li>
+<li>Isolates bugs more easily due to clear component boundaries</li>
+<li>Can scale individual components based on demand</li>
+</ul>
+<p>The time invested in architecture pays dividends throughout the project lifecycle.</p>
+</section>
+<section id="architecture-decision-records-adrs" class="level3">
+<h3 class="anchored" data-anchor-id="architecture-decision-records-adrs">Architecture Decision Records (ADRs)</h3>
+<p>Experienced teams document significant architectural decisions using <strong>Architecture Decision Records (ADRs)</strong>. An ADR captures:</p>
+<ol type="1">
+<li><strong>Context</strong>: What situation prompted this decision?</li>
+<li><strong>Decision</strong>: What did we decide to do?</li>
+<li><strong>Consequences</strong>: What are the trade-offs of this decision?</li>
+</ol>
+<p>Example ADR:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># ADR 001: Use MongoDB for Primary Data Store</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## Context</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>We need to choose a database for our task management application.</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>The data model includes tasks with varying attributes depending on</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>task type. We expect frequent schema changes during development.</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">## Decision</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>We will use MongoDB as our primary data store.</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">## Consequences</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">### Positive</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Flexible schema accommodates varying task attributes</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Easy schema evolution during development</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Native JSON support simplifies API development</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Horizontal scaling through sharding when needed</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">### Negative</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>No enforced referential integrity</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Complex queries may require aggregation pipelines</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Team has less MongoDB experience than PostgreSQL</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Need to implement data validation in application layer</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>ADRs create a historical record that helps current and future team members understand <em>why</em> the system is structured as it is.</p>
+</section>
+</section>
+<section id="foundational-architectural-patterns" class="level2">
+<h2 class="anchored" data-anchor-id="foundational-architectural-patterns">Foundational Architectural Patterns</h2>
+<p>Patterns are reusable solutions to common problems. They provide a shared vocabulary for discussing architecture and help teams avoid reinventing solutions to solved problems.</p>
+<section id="client-server-pattern" class="level3">
+<h3 class="anchored" data-anchor-id="client-server-pattern">Client-Server Pattern</h3>
+<p>The <strong>client-server pattern</strong> separates concerns between service requesters (clients) and service providers (servers). This fundamental pattern underlies virtually all web applications.</p>
+<pre><code>┌─────────────────┐         HTTP/HTTPS        ┌─────────────────┐
+│                 │  ───────────────────────► │                 │
+│     Client      │                           │     Server      │
+│   (Browser)     │  ◄─────────────────────── │     (API)       │
+│                 │         Response          │                 │
+└─────────────────┘                           └─────────────────┘</code></pre>
+<p><strong>Characteristics:</strong> - Clients initiate requests; servers respond - Servers can serve multiple clients simultaneously - Clients and servers can evolve independently (given stable APIs) - Network communication introduces latency and failure modes</p>
+<p><strong>In our MERN stack:</strong> - React frontend = Client - Express API = Server - The browser makes HTTP requests to the API - The API processes requests and returns JSON responses</p>
+</section>
+<section id="layered-architecture-pattern" class="level3">
+<h3 class="anchored" data-anchor-id="layered-architecture-pattern">Layered Architecture Pattern</h3>
+<p>The <strong>layered architecture pattern</strong> organizes code into horizontal layers, each with a specific responsibility. Each layer only communicates with adjacent layers.</p>
+<pre><code>┌─────────────────────────────────────────────────────────────┐
+│                    Presentation Layer                        │
+│              (UI Components, Views, Controllers)             │
+├─────────────────────────────────────────────────────────────┤
+│                    Application Layer                         │
+│              (Use Cases, Application Logic)                  │
+├─────────────────────────────────────────────────────────────┤
+│                      Domain Layer                            │
+│              (Business Logic, Entities, Rules)               │
+├─────────────────────────────────────────────────────────────┤
+│                   Infrastructure Layer                       │
+│              (Database, External Services, I/O)              │
+└─────────────────────────────────────────────────────────────┘</code></pre>
+<p><strong>Layer Responsibilities:</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 36%">
+<col style="width: 46%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Layer</th>
+<th>Responsibility</th>
+<th>Example Components</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Presentation</strong></td>
+<td>Handle user interaction</td>
+<td>React components, Express routes</td>
+</tr>
+<tr class="even">
+<td><strong>Application</strong></td>
+<td>Orchestrate use cases</td>
+<td>Service classes, controllers</td>
+</tr>
+<tr class="odd">
+<td><strong>Domain</strong></td>
+<td>Business rules and logic</td>
+<td>Entity classes, validation rules</td>
+</tr>
+<tr class="even">
+<td><strong>Infrastructure</strong></td>
+<td>External system integration</td>
+<td>Database repositories, API clients</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key Rules:</strong> 1. Dependencies point downward (presentation depends on application, not vice versa) 2. Each layer only knows about the layer directly below it 3. The domain layer should have no external dependencies</p>
+<p><strong>Benefits:</strong> - <strong>Separation of concerns</strong>: Each layer has a clear purpose - <strong>Testability</strong>: Layers can be tested in isolation - <strong>Flexibility</strong>: Layers can be modified without affecting others - <strong>Reusability</strong>: Lower layers can be reused across applications</p>
+</section>
+<section id="model-view-controller-mvc-pattern" class="level3">
+<h3 class="anchored" data-anchor-id="model-view-controller-mvc-pattern">Model-View-Controller (MVC) Pattern</h3>
+<p><strong>MVC</strong> separates an application into three interconnected components:</p>
+<pre><code>         User Input
+              │
+              ▼
+        ┌───────────┐
+        │Controller │ ──────────────┐
+        └───────────┘               │
+              │                     │
+              │ Updates             │ Manipulates
+              ▼                     ▼
+        ┌───────────┐         ┌───────────┐
+        │   View    │ ◄────── │   Model   │
+        └───────────┘  Reads  └───────────┘
+              │
+              ▼
+         User Output</code></pre>
+<p><strong>Components:</strong></p>
+<ul>
+<li><strong>Model</strong>: Manages data, business logic, and rules</li>
+<li><strong>View</strong>: Presents data to the user</li>
+<li><strong>Controller</strong>: Handles user input and updates Model/View</li>
+</ul>
+<p><strong>In Express.js:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Model (models/Task.js)</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> taskSchema <span class="op">=</span> <span class="kw">new</span> mongoose<span class="op">.</span><span class="fu">Schema</span>({</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span><span class="op">:</span> { <span class="dt">type</span><span class="op">:</span> <span class="bu">String</span><span class="op">,</span> <span class="dt">required</span><span class="op">:</span> <span class="kw">true</span> }<span class="op">,</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">completed</span><span class="op">:</span> { <span class="dt">type</span><span class="op">:</span> <span class="bu">Boolean</span><span class="op">,</span> <span class="cf">default</span><span class="op">:</span> <span class="kw">false</span> }</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">// Controller (controllers/taskController.js)</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>exports<span class="op">.</span><span class="at">getTasks</span> <span class="op">=</span> <span class="kw">async</span> (req<span class="op">,</span> res) <span class="kw">=&gt;</span> {</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> tasks <span class="op">=</span> <span class="cf">await</span> Task<span class="op">.</span><span class="fu">find</span>()<span class="op">;</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  res<span class="op">.</span><span class="fu">json</span>(tasks)<span class="op">;</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co">// View/Route (routes/tasks.js)</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>router<span class="op">.</span><span class="fu">get</span>(<span class="st">'/'</span><span class="op">,</span> taskController<span class="op">.</span><span class="at">getTasks</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>In React:</strong> React modifies the traditional MVC pattern. Components combine View and Controller concerns, while state (local or global) serves as the Model.</p>
+</section>
+<section id="repository-pattern" class="level3">
+<h3 class="anchored" data-anchor-id="repository-pattern">Repository Pattern</h3>
+<p>The <strong>repository pattern</strong> abstracts data access behind a collection-like interface. This separates business logic from data access concerns.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Without Repository (business logic coupled to database)</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">completeTask</span>(taskId) {</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> task <span class="op">=</span> <span class="cf">await</span> mongoose<span class="op">.</span><span class="fu">model</span>(<span class="st">'Task'</span>)<span class="op">.</span><span class="fu">findById</span>(taskId)<span class="op">;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  task<span class="op">.</span><span class="at">completed</span> <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  task<span class="op">.</span><span class="at">completedAt</span> <span class="op">=</span> <span class="kw">new</span> <span class="bu">Date</span>()<span class="op">;</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">await</span> task<span class="op">.</span><span class="fu">save</span>()<span class="op">;</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> task<span class="op">;</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">// With Repository (business logic decoupled)</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TaskRepository {</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">async</span> <span class="fu">findById</span>(id) {</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="cf">await</span> Task<span class="op">.</span><span class="fu">findById</span>(id)<span class="op">;</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="kw">async</span> <span class="fu">save</span>(task) {</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="cf">await</span> task<span class="op">.</span><span class="fu">save</span>()<span class="op">;</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">completeTask</span>(taskId<span class="op">,</span> taskRepository) {</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> task <span class="op">=</span> <span class="cf">await</span> taskRepository<span class="op">.</span><span class="fu">findById</span>(taskId)<span class="op">;</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>  task<span class="op">.</span><span class="at">completed</span> <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>  task<span class="op">.</span><span class="at">completedAt</span> <span class="op">=</span> <span class="kw">new</span> <span class="bu">Date</span>()<span class="op">;</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="cf">await</span> taskRepository<span class="op">.</span><span class="fu">save</span>(task)<span class="op">;</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Benefits:</strong> - Business logic doesn’t know about MongoDB, making it testable - Database can be swapped without changing business logic - Data access logic is centralized and reusable</p>
+</section>
+<section id="middleware-pattern" class="level3">
+<h3 class="anchored" data-anchor-id="middleware-pattern">Middleware Pattern</h3>
+<p>The <strong>middleware pattern</strong> chains processing functions, where each function can modify the request/response or pass control to the next function.</p>
+<pre><code>Request ──► [Auth] ──► [Logging] ──► [Validation] ──► [Handler] ──► Response
+              │            │              │
+              ▼            ▼              ▼
+           Reject       Log data      Reject if
+          if invalid                   invalid</code></pre>
+<p><strong>Express middleware example:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Authentication middleware</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> authenticate <span class="op">=</span> (req<span class="op">,</span> res<span class="op">,</span> next) <span class="kw">=&gt;</span> {</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> token <span class="op">=</span> req<span class="op">.</span><span class="at">headers</span><span class="op">.</span><span class="at">authorization</span><span class="op">;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="op">!</span>token) {</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> res<span class="op">.</span><span class="fu">status</span>(<span class="dv">401</span>)<span class="op">.</span><span class="fu">json</span>({ <span class="dt">error</span><span class="op">:</span> <span class="st">'No token provided'</span> })<span class="op">;</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">try</span> {</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    req<span class="op">.</span><span class="at">user</span> <span class="op">=</span> <span class="fu">verifyToken</span>(token)<span class="op">;</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">next</span>()<span class="op">;</span> <span class="co">// Pass to next middleware</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">catch</span> (error) {</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    res<span class="op">.</span><span class="fu">status</span>(<span class="dv">401</span>)<span class="op">.</span><span class="fu">json</span>({ <span class="dt">error</span><span class="op">:</span> <span class="st">'Invalid token'</span> })<span class="op">;</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="co">// Logging middleware</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> logRequest <span class="op">=</span> (req<span class="op">,</span> res<span class="op">,</span> next) <span class="kw">=&gt;</span> {</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="vs">`</span><span class="sc">${</span>req<span class="op">.</span><span class="at">method</span><span class="sc">}</span><span class="vs"> </span><span class="sc">${</span>req<span class="op">.</span><span class="at">path</span><span class="sc">}</span><span class="vs"> at </span><span class="sc">${</span><span class="kw">new</span> <span class="bu">Date</span>()<span class="op">.</span><span class="fu">toISOString</span>()<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">next</span>()<span class="op">;</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="co">// Apply middleware</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">use</span>(logRequest)<span class="op">;</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">use</span>(<span class="st">'/api'</span><span class="op">,</span> authenticate)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Characteristics:</strong> - Each middleware has a single responsibility - Middleware can short-circuit the chain (e.g., authentication failure) - Order matters—middleware executes in registration order - Promotes code reuse across routes</p>
+</section>
+</section>
+<section id="system-decomposition" class="level2">
+<h2 class="anchored" data-anchor-id="system-decomposition">System Decomposition</h2>
+<p>Decomposition is the process of breaking a complex system into smaller, manageable parts. Good decomposition creates components that are:</p>
+<ul>
+<li><strong>Cohesive</strong>: Each component has a focused purpose</li>
+<li><strong>Loosely coupled</strong>: Components have minimal dependencies on each other</li>
+<li><strong>Well-encapsulated</strong>: Internal details are hidden behind interfaces</li>
+</ul>
+<section id="decomposition-strategies" class="level3">
+<h3 class="anchored" data-anchor-id="decomposition-strategies">Decomposition Strategies</h3>
+<section id="by-featuredomain" class="level4">
+<h4 class="anchored" data-anchor-id="by-featuredomain">By Feature/Domain</h4>
+<p>Organize code around business capabilities or features:</p>
+<pre><code>src/
+├── tasks/
+│   ├── taskController.js
+│   ├── taskService.js
+│   ├── taskRepository.js
+│   └── taskModel.js
+├── users/
+│   ├── userController.js
+│   ├── userService.js
+│   ├── userRepository.js
+│   └── userModel.js
+└── projects/
+    ├── projectController.js
+    ├── projectService.js
+    ├── projectRepository.js
+    └── projectModel.js</code></pre>
+<p><strong>Advantages:</strong> - Related code is co-located - Features can be developed independently - Easier to understand feature scope - Natural boundaries for team ownership</p>
+</section>
+<section id="by-layer" class="level4">
+<h4 class="anchored" data-anchor-id="by-layer">By Layer</h4>
+<p>Organize code by technical responsibility:</p>
+<pre><code>src/
+├── controllers/
+│   ├── taskController.js
+│   ├── userController.js
+│   └── projectController.js
+├── services/
+│   ├── taskService.js
+│   ├── userService.js
+│   └── projectService.js
+├── repositories/
+│   ├── taskRepository.js
+│   ├── userRepository.js
+│   └── projectRepository.js
+└── models/
+    ├── Task.js
+    ├── User.js
+    └── Project.js</code></pre>
+<p><strong>Advantages:</strong> - Clear separation of concerns - Easy to enforce layer rules - Familiar to developers from traditional architectures</p>
+</section>
+<section id="hybrid-approach" class="level4">
+<h4 class="anchored" data-anchor-id="hybrid-approach">Hybrid Approach</h4>
+<p>Many projects combine both strategies:</p>
+<pre><code>src/
+├── features/
+│   ├── tasks/
+│   │   ├── controller.js
+│   │   ├── service.js
+│   │   └── repository.js
+│   └── users/
+│       ├── controller.js
+│       ├── service.js
+│       └── repository.js
+├── shared/
+│   ├── middleware/
+│   ├── utils/
+│   └── errors/
+└── infrastructure/
+    ├── database/
+    └── external-apis/</code></pre>
+</section>
+</section>
+<section id="coupling-and-cohesion" class="level3">
+<h3 class="anchored" data-anchor-id="coupling-and-cohesion">Coupling and Cohesion</h3>
+<p><strong>Coupling</strong> measures how dependent components are on each other. Lower coupling is generally better.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 38%">
+<col style="width: 36%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Coupling Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Content</strong></td>
+<td>One component modifies another’s internals</td>
+<td>Directly accessing private variables</td>
+</tr>
+<tr class="even">
+<td><strong>Common</strong></td>
+<td>Components share global data</td>
+<td>Global configuration objects</td>
+</tr>
+<tr class="odd">
+<td><strong>Control</strong></td>
+<td>One component controls another’s flow</td>
+<td>Passing flags to control behavior</td>
+</tr>
+<tr class="even">
+<td><strong>Data</strong></td>
+<td>Components share data through parameters</td>
+<td>Function parameters, API payloads</td>
+</tr>
+<tr class="odd">
+<td><strong>Message</strong></td>
+<td>Components communicate through messages</td>
+<td>Event systems, message queues</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Cohesion</strong> measures how related the elements within a component are. Higher cohesion is generally better.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Cohesion Type</th>
+<th>Description</th>
+<th>Quality</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Functional</strong></td>
+<td>All elements contribute to a single task</td>
+<td>Best</td>
+</tr>
+<tr class="even">
+<td><strong>Sequential</strong></td>
+<td>Output of one element is input to next</td>
+<td>Good</td>
+</tr>
+<tr class="odd">
+<td><strong>Communicational</strong></td>
+<td>Elements operate on same data</td>
+<td>Acceptable</td>
+</tr>
+<tr class="even">
+<td><strong>Logical</strong></td>
+<td>Elements are related by category</td>
+<td>Poor</td>
+</tr>
+<tr class="odd">
+<td><strong>Coincidental</strong></td>
+<td>Elements are unrelated</td>
+<td>Worst</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example of improving cohesion:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Low cohesion: Utility class doing unrelated things</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Utils {</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">static</span> <span class="fu">formatDate</span>(date) { <span class="co">/* ... */</span> }</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">static</span> <span class="fu">validateEmail</span>(email) { <span class="co">/* ... */</span> }</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">static</span> <span class="fu">calculateTax</span>(amount) { <span class="co">/* ... */</span> }</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">static</span> <span class="fu">hashPassword</span>(password) { <span class="co">/* ... */</span> }</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co">// High cohesion: Focused classes</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> DateFormatter {</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  <span class="kw">static</span> <span class="fu">format</span>(date<span class="op">,</span> pattern) { <span class="co">/* ... */</span> }</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">static</span> <span class="fu">parse</span>(dateString<span class="op">,</span> pattern) { <span class="co">/* ... */</span> }</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> EmailValidator {</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>  <span class="kw">static</span> <span class="fu">isValid</span>(email) { <span class="co">/* ... */</span> }</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>  <span class="kw">static</span> <span class="fu">normalize</span>(email) { <span class="co">/* ... */</span> }</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TaxCalculator {</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>  <span class="kw">static</span> <span class="fu">calculate</span>(amount<span class="op">,</span> jurisdiction) { <span class="co">/* ... */</span> }</span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> PasswordHasher {</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>  <span class="kw">static</span> <span class="fu">hash</span>(password) { <span class="co">/* ... */</span> }</span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>  <span class="kw">static</span> <span class="fu">verify</span>(password<span class="op">,</span> hash) { <span class="co">/* ... */</span> }</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="defining-component-boundaries" class="level3">
+<h3 class="anchored" data-anchor-id="defining-component-boundaries">Defining Component Boundaries</h3>
+<p>Good boundaries make systems easier to understand and modify. Consider these guidelines:</p>
+<p><strong>1. Single Responsibility</strong> Each component should have one reason to change. If you find yourself saying “this component handles X <em>and</em> Y,” consider splitting it.</p>
+<p><strong>2. Information Hiding</strong> Components should expose only what’s necessary. Internal implementation details should be hidden.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Exposed: What it does</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TaskService {</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">async</span> <span class="fu">createTask</span>(data) { <span class="co">/* ... */</span> }</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">async</span> <span class="fu">completeTask</span>(id) { <span class="co">/* ... */</span> }</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">async</span> <span class="fu">getTasksByUser</span>(userId) { <span class="co">/* ... */</span> }</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co">// Hidden: How it does it</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co">// - Database queries</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="co">// - Caching strategies</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="co">// - Validation details</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="co">// - Event emission</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>3. Stable Interfaces</strong> Interfaces between components should change less frequently than implementations. Design interfaces around <em>what</em> needs to happen, not <em>how</em> it happens.</p>
+<p><strong>4. Dependency Direction</strong> Dependencies should point toward stability. Stable, core components should not depend on volatile, peripheral components.</p>
+<pre><code>┌─────────────────┐
+│   UI Components │  ← Changes frequently
+└────────┬────────┘
+         │ depends on
+         ▼
+┌─────────────────┐
+│    Services     │  ← Changes occasionally
+└────────┬────────┘
+         │ depends on
+         ▼
+┌─────────────────┐
+│  Domain Models  │  ← Changes rarely
+└─────────────────┘</code></pre>
+</section>
+</section>
+<section id="api-design-principles" class="level2">
+<h2 class="anchored" data-anchor-id="api-design-principles">API Design Principles</h2>
+<p>APIs (Application Programming Interfaces) define how components communicate. Well-designed APIs make systems easier to use, maintain, and evolve.</p>
+<section id="restful-api-design" class="level3">
+<h3 class="anchored" data-anchor-id="restful-api-design">RESTful API Design</h3>
+<p>REST (Representational State Transfer) is an architectural style for networked applications. RESTful APIs use HTTP methods and URLs to represent resources and actions.</p>
+<p><strong>Resource-Oriented URLs:</strong></p>
+<pre><code>GET    /api/tasks          # List all tasks
+GET    /api/tasks/123      # Get task 123
+POST   /api/tasks          # Create a new task
+PUT    /api/tasks/123      # Replace task 123
+PATCH  /api/tasks/123      # Update task 123 partially
+DELETE /api/tasks/123      # Delete task 123</code></pre>
+<p><strong>HTTP Methods and Their Meanings:</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>Purpose</th>
+<th>Idempotent</th>
+<th>Safe</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>GET</td>
+<td>Retrieve resource</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>POST</td>
+<td>Create resource</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>PUT</td>
+<td>Replace resource</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>PATCH</td>
+<td>Partial update</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>DELETE</td>
+<td>Remove resource</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p><em>Idempotent</em>: Multiple identical requests have the same effect as a single request. <em>Safe</em>: Request doesn’t modify server state.</p>
+<p><strong>Status Codes:</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 32%">
+<col style="width: 45%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Range</th>
+<th>Category</th>
+<th>Common Codes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2xx</td>
+<td>Success</td>
+<td>200 OK, 201 Created, 204 No Content</td>
+</tr>
+<tr class="even">
+<td>3xx</td>
+<td>Redirection</td>
+<td>301 Moved, 304 Not Modified</td>
+</tr>
+<tr class="odd">
+<td>4xx</td>
+<td>Client Error</td>
+<td>400 Bad Request, 401 Unauthorized, 404 Not Found</td>
+</tr>
+<tr class="even">
+<td>5xx</td>
+<td>Server Error</td>
+<td>500 Internal Error, 503 Service Unavailable</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Nested Resources:</strong></p>
+<pre><code>GET /api/projects/456/tasks        # Tasks in project 456
+POST /api/projects/456/tasks       # Create task in project 456
+GET /api/users/789/tasks           # Tasks assigned to user 789</code></pre>
+</section>
+<section id="request-and-response-design" class="level3">
+<h3 class="anchored" data-anchor-id="request-and-response-design">Request and Response Design</h3>
+<p><strong>Consistent Response Structure:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Success response</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"data"</span><span class="op">:</span> {</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"id"</span><span class="op">:</span> <span class="st">"123"</span><span class="op">,</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"title"</span><span class="op">:</span> <span class="st">"Complete reading"</span><span class="op">,</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"completed"</span><span class="op">:</span> <span class="kw">false</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"meta"</span><span class="op">:</span> {</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"timestamp"</span><span class="op">:</span> <span class="st">"2026-01-20T10:30:00Z"</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="co">// Error response</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>  <span class="st">"error"</span><span class="op">:</span> {</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"code"</span><span class="op">:</span> <span class="st">"VALIDATION_ERROR"</span><span class="op">,</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"message"</span><span class="op">:</span> <span class="st">"Title is required"</span><span class="op">,</span></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">"details"</span><span class="op">:</span> [</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>      { <span class="st">"field"</span><span class="op">:</span> <span class="st">"title"</span><span class="op">,</span> <span class="st">"message"</span><span class="op">:</span> <span class="st">"Cannot be empty"</span> }</span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a><span class="co">// List response with pagination</span></span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>  <span class="st">"data"</span><span class="op">:</span> [<span class="op">...</span>]<span class="op">,</span></span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>  <span class="st">"meta"</span><span class="op">:</span> {</span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">"total"</span><span class="op">:</span> <span class="dv">150</span><span class="op">,</span></span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a>    <span class="st">"page"</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span></span>
+<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a>    <span class="st">"pageSize"</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span></span>
+<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a>    <span class="st">"totalPages"</span><span class="op">:</span> <span class="dv">8</span></span>
+<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Query Parameters for Filtering and Pagination:</strong></p>
+<pre><code>GET /api/tasks?status=pending&amp;assignee=user123
+GET /api/tasks?page=2&amp;limit=20
+GET /api/tasks?sort=-createdAt    # Descending by createdAt
+GET /api/tasks?fields=id,title    # Sparse fieldsets</code></pre>
+</section>
+<section id="api-versioning" class="level3">
+<h3 class="anchored" data-anchor-id="api-versioning">API Versioning</h3>
+<p>APIs evolve over time. Versioning allows old clients to continue working while new clients use updated endpoints.</p>
+<p><strong>URL Path Versioning:</strong></p>
+<pre><code>GET /api/v1/tasks
+GET /api/v2/tasks</code></pre>
+<p><strong>Header Versioning:</strong></p>
+<pre><code>GET /api/tasks
+Accept: application/vnd.myapp.v2+json</code></pre>
+<p><strong>Query Parameter Versioning:</strong></p>
+<pre><code>GET /api/tasks?version=2</code></pre>
+<p>URL path versioning is most common because it’s explicit and easy to test in browsers.</p>
+</section>
+</section>
+<section id="project-scoping" class="level2">
+<h2 class="anchored" data-anchor-id="project-scoping">Project Scoping</h2>
+<p>Effective project scoping prevents scope creep, ensures feasibility, and sets clear expectations. For semester projects, scoping is especially important given the fixed timeline.</p>
+<section id="defining-project-scope" class="level3">
+<h3 class="anchored" data-anchor-id="defining-project-scope">Defining Project Scope</h3>
+<p><strong>Scope includes:</strong> - Features to be implemented - Quality attributes (performance, security requirements) - Technical constraints (must use specific technologies) - Deliverables (documentation, deployed application)</p>
+<p><strong>Scope excludes:</strong> - Features explicitly not included - Future enhancements - Out-of-scope integrations</p>
+</section>
+<section id="the-mvp-approach" class="level3">
+<h3 class="anchored" data-anchor-id="the-mvp-approach">The MVP Approach</h3>
+<p>A <strong>Minimum Viable Product (MVP)</strong> is the smallest version of a product that delivers value and enables learning. For course projects, think of MVP as the minimum needed to demonstrate your architectural concepts.</p>
+<p><strong>MVP Characteristics:</strong> - Solves a core problem end-to-end - Demonstrates key technical patterns - Is deployable and demonstrable - Provides a foundation for extensions</p>
+<p><strong>Example - Task Management App:</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>MVP Features</th>
+<th>Nice-to-Have</th>
+<th>Out of Scope</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Create/edit/delete tasks</td>
+<td>Task categories</td>
+<td>Mobile app</td>
+</tr>
+<tr class="even">
+<td>Mark tasks complete</td>
+<td>Due date reminders</td>
+<td>Calendar integration</td>
+</tr>
+<tr class="odd">
+<td>User authentication</td>
+<td>Task sharing</td>
+<td>AI task suggestions</td>
+</tr>
+<tr class="even">
+<td>Basic API with CRUD</td>
+<td>Search/filter</td>
+<td>Offline support</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="user-stories-and-requirements" class="level3">
+<h3 class="anchored" data-anchor-id="user-stories-and-requirements">User Stories and Requirements</h3>
+<p><strong>User stories</strong> express requirements from the user’s perspective:</p>
+<pre><code>As a [type of user]
+I want to [perform an action]
+So that [I achieve a goal]</code></pre>
+<p><strong>Examples:</strong></p>
+<pre><code>As a team member
+I want to create tasks with due dates
+So that I can track my deadlines
+
+As a project manager
+I want to see all tasks assigned to team members
+So that I can monitor project progress
+
+As a user
+I want to log in with my email
+So that my tasks are private and persistent</code></pre>
+<p><strong>Acceptance Criteria</strong> define when a story is complete:</p>
+<pre><code>Story: Create tasks with due dates
+
+Acceptance Criteria:
+- [ ] Task creation form includes optional due date field
+- [ ] Due date is displayed on task list
+- [ ] Tasks can be sorted by due date
+- [ ] Overdue tasks are visually highlighted
+- [ ] API validates that due date is not in the past</code></pre>
+</section>
+<section id="estimation-and-prioritization" class="level3">
+<h3 class="anchored" data-anchor-id="estimation-and-prioritization">Estimation and Prioritization</h3>
+<p><strong>T-Shirt Sizing</strong> provides quick relative estimates:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Size</th>
+<th>Relative Effort</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>XS</td>
+<td>Trivial</td>
+<td>Add a field to existing form</td>
+</tr>
+<tr class="even">
+<td>S</td>
+<td>Small</td>
+<td>New API endpoint with existing pattern</td>
+</tr>
+<tr class="odd">
+<td>M</td>
+<td>Medium</td>
+<td>New feature with UI and API work</td>
+</tr>
+<tr class="even">
+<td>L</td>
+<td>Large</td>
+<td>Major feature spanning multiple components</td>
+</tr>
+<tr class="odd">
+<td>XL</td>
+<td>Very Large</td>
+<td>Architectural change or complex integration</td>
+</tr>
+</tbody>
+</table>
+<p><strong>MoSCoW Prioritization:</strong></p>
+<ul>
+<li><strong>Must have</strong>: Core features required for MVP</li>
+<li><strong>Should have</strong>: Important but not critical</li>
+<li><strong>Could have</strong>: Nice to have if time permits</li>
+<li><strong>Won’t have</strong>: Explicitly out of scope (this time)</li>
+</ul>
+<p><strong>Example for semester project:</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th>Size</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>User authentication</td>
+<td>M</td>
+<td>Must</td>
+</tr>
+<tr class="even">
+<td>CRUD for main entity</td>
+<td>M</td>
+<td>Must</td>
+</tr>
+<tr class="odd">
+<td>Docker Compose setup</td>
+<td>S</td>
+<td>Must</td>
+</tr>
+<tr class="even">
+<td>Search functionality</td>
+<td>M</td>
+<td>Should</td>
+</tr>
+<tr class="odd">
+<td>Email notifications</td>
+<td>L</td>
+<td>Could</td>
+</tr>
+<tr class="even">
+<td>Mobile app</td>
+<td>XL</td>
+<td>Won’t</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="risk-assessment" class="level3">
+<h3 class="anchored" data-anchor-id="risk-assessment">Risk Assessment</h3>
+<p>Identify risks early and plan mitigation strategies:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 33%">
+<col style="width: 20%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Risk</th>
+<th>Probability</th>
+<th>Impact</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Team member unavailable</td>
+<td>Medium</td>
+<td>High</td>
+<td>Document knowledge, pair program</td>
+</tr>
+<tr class="even">
+<td>Technology learning curve</td>
+<td>High</td>
+<td>Medium</td>
+<td>Allocate extra time, use tutorials</td>
+</tr>
+<tr class="odd">
+<td>Scope creep</td>
+<td>High</td>
+<td>High</td>
+<td>Strict MVP definition, weekly scope reviews</td>
+</tr>
+<tr class="even">
+<td>Integration issues</td>
+<td>Medium</td>
+<td>Medium</td>
+<td>Early integration testing, mock APIs</td>
+</tr>
+<tr class="odd">
+<td>Deployment problems</td>
+<td>Medium</td>
+<td>Medium</td>
+<td>Deploy early and often</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="putting-it-all-together" class="level2">
+<h2 class="anchored" data-anchor-id="putting-it-all-together">Putting It All Together</h2>
+<section id="from-requirements-to-architecture" class="level3">
+<h3 class="anchored" data-anchor-id="from-requirements-to-architecture">From Requirements to Architecture</h3>
+<ol type="1">
+<li><strong>Understand the problem domain</strong>
+<ul>
+<li>What problem are we solving?</li>
+<li>Who are the users?</li>
+<li>What are the key workflows?</li>
+</ul></li>
+<li><strong>Identify major components</strong>
+<ul>
+<li>What are the main functional areas?</li>
+<li>What external systems do we integrate with?</li>
+<li>What data do we need to store?</li>
+</ul></li>
+<li><strong>Define component interactions</strong>
+<ul>
+<li>How do components communicate?</li>
+<li>What are the data flows?</li>
+<li>Where are the boundaries?</li>
+</ul></li>
+<li><strong>Make and document key decisions</strong>
+<ul>
+<li>Technology choices</li>
+<li>Patterns to apply</li>
+<li>Trade-offs accepted</li>
+</ul></li>
+<li><strong>Validate against requirements</strong>
+<ul>
+<li>Does the architecture support all features?</li>
+<li>Does it meet quality attributes?</li>
+<li>Is it feasible within constraints?</li>
+</ul></li>
+</ol>
+</section>
+<section id="example-task-management-system" class="level3">
+<h3 class="anchored" data-anchor-id="example-task-management-system">Example: Task Management System</h3>
+<p><strong>Requirements:</strong> - Users can create, view, update, and delete tasks - Tasks belong to projects - Users can be assigned to tasks - Basic authentication required - Must be deployable with Docker</p>
+<p><strong>Component Decomposition:</strong></p>
+<pre><code>┌─────────────────────────────────────────────────────────────┐
+│                         Clients                              │
+│  ┌─────────────────┐              ┌─────────────────┐       │
+│  │  Web Frontend   │              │  Future Mobile  │       │
+│  │    (React)      │              │      App        │       │
+│  └────────┬────────┘              └────────┬────────┘       │
+└───────────┼─────────────────────────────────┼───────────────┘
+            │              HTTP/JSON          │
+            └──────────────┬──────────────────┘
+                           ▼
+┌─────────────────────────────────────────────────────────────┐
+│                       API Server                             │
+│  ┌─────────────────────────────────────────────────────┐   │
+│  │                    Express.js                        │   │
+│  │  ┌──────────┐ ┌──────────┐ ┌──────────┐            │   │
+│  │  │   Auth   │ │   Task   │ │ Project  │            │   │
+│  │  │  Routes  │ │  Routes  │ │  Routes  │            │   │
+│  │  └────┬─────┘ └────┬─────┘ └────┬─────┘            │   │
+│  │       │            │            │                   │   │
+│  │  ┌────▼─────┐ ┌────▼─────┐ ┌────▼─────┐            │   │
+│  │  │   Auth   │ │   Task   │ │ Project  │            │   │
+│  │  │ Service  │ │ Service  │ │ Service  │            │   │
+│  │  └────┬─────┘ └────┬─────┘ └────┬─────┘            │   │
+│  │       │            │            │                   │   │
+│  │  ┌────▼─────────────▼────────────▼─────┐            │   │
+│  │  │           Repositories              │            │   │
+│  │  └────────────────┬────────────────────┘            │   │
+│  └───────────────────┼──────────────────────────────────┘   │
+└──────────────────────┼──────────────────────────────────────┘
+                       │
+                       ▼
+┌─────────────────────────────────────────────────────────────┐
+│                      Data Layer                              │
+│  ┌─────────────────┐                                        │
+│  │    MongoDB      │                                        │
+│  │  - users        │                                        │
+│  │  - tasks        │                                        │
+│  │  - projects     │                                        │
+│  └─────────────────┘                                        │
+└─────────────────────────────────────────────────────────────┘</code></pre>
+<p><strong>Key Architectural Decisions:</strong></p>
+<ol type="1">
+<li><strong>Monolithic API</strong>: Single Express server (appropriate for team size and project scope)</li>
+<li><strong>Feature-based organization</strong>: Code organized by domain (tasks, projects, users)</li>
+<li><strong>Repository pattern</strong>: Abstract database access for testability</li>
+<li><strong>JWT authentication</strong>: Stateless auth suitable for API</li>
+<li><strong>MongoDB</strong>: Flexible schema for rapid development</li>
+</ol>
+</section>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>This week covered the foundational concepts of software architecture:</p>
+<ol type="1">
+<li><strong>Architecture is about structure and decisions</strong> that shape how a system evolves</li>
+<li><strong>Patterns provide proven solutions</strong> to common problems (client-server, layered, MVC, repository, middleware)</li>
+<li><strong>Good decomposition creates cohesive, loosely-coupled components</strong> that are easier to maintain</li>
+<li><strong>API design follows conventions</strong> that make systems predictable and usable</li>
+<li><strong>Project scoping defines boundaries</strong> that make projects achievable</li>
+<li><strong>Document decisions</strong> using ADRs to preserve context for future developers</li>
+</ol>
+<p>These concepts will guide your work throughout the semester. In your project, you’ll apply these patterns and make architectural decisions that you’ll document and defend.</p>
+</section>
+<section id="key-terms" class="level2">
+<h2 class="anchored" data-anchor-id="key-terms">Key Terms</h2>
+<ul>
+<li><strong>Architecture</strong>: The fundamental structures of a software system</li>
+<li><strong>Pattern</strong>: A reusable solution to a common problem</li>
+<li><strong>Coupling</strong>: The degree of interdependence between components</li>
+<li><strong>Cohesion</strong>: The degree to which elements within a component belong together</li>
+<li><strong>ADR</strong>: Architecture Decision Record—documentation of significant decisions</li>
+<li><strong>MVP</strong>: Minimum Viable Product—smallest useful version of a product</li>
+<li><strong>REST</strong>: Representational State Transfer—architectural style for APIs</li>
 </ul>
 </section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<p><em>Resources coming soon.</em></p>
+<ul>
+<li><a href="https://martinfowler.com/books/eaa.html">Patterns of Enterprise Application Architecture</a> - Martin Fowler’s classic reference</li>
+<li><a href="https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html">Clean Architecture</a> - Robert C. Martin’s architecture principles</li>
+<li><a href="https://restfulapi.net/">REST API Design Best Practices</a> - Comprehensive REST guide</li>
+<li><a href="https://adr.github.io/">Architecture Decision Records</a> - ADR templates and tools</li>
+<li><a href="https://12factor.net/">The Twelve-Factor App</a> - Methodology for building SaaS applications</li>
+<li><a href="https://www.infoq.com/minibooks/domain-driven-design-quickly/">Domain-Driven Design Quickly</a> - Free introduction to DDD concepts</li>
+</ul>
 
 
 </section>

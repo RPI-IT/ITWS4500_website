@@ -5,20 +5,833 @@ subtitle: "Patterns, System Decomposition, and Project Scoping"
 
 ::: {.callout-note}
 ## Reading Assignment
-Complete this reading before Week 3.
+Complete this reading before Week 3. Estimated time: 50-65 minutes.
 :::
 
-## Overview
+## Introduction
 
-*Content coming soon.*
+Last week we established the technical foundation for containerized development. This week, we shift focus to **architectural thinking**—the skill of decomposing complex systems into well-defined components and making informed decisions about how those components interact.
 
-## Key Concepts
+Architecture is not about following rigid rules or applying trendy patterns. It's about understanding trade-offs and making decisions that serve your project's specific needs. A well-architected system is easier to understand, test, modify, and scale. A poorly architected system becomes increasingly difficult to work with over time, accumulating what we call **technical debt**.
 
-- Architectural patterns overview
-- System decomposition strategies
-- Project scoping techniques
-- MERN stack architecture
+This reading covers three interconnected topics: architectural patterns that have proven useful across many projects, strategies for decomposing systems into manageable components, and techniques for scoping projects effectively.
+
+## What is Software Architecture?
+
+### Defining Architecture
+
+Software architecture refers to the fundamental structures of a software system and the discipline of creating such structures. It encompasses:
+
+- **High-level structure**: How the system is divided into components
+- **Component interactions**: How those components communicate
+- **Design decisions**: The significant choices that shape the system
+- **Quality attributes**: The non-functional requirements like performance, security, and maintainability
+
+Architecture is distinct from design. While design focuses on the details of individual components, architecture focuses on the relationships between components and the overall system structure.
+
+### Why Architecture Matters
+
+Consider two teams building similar applications. Team A jumps straight into coding, adding features as needed. Team B spends time upfront thinking about structure, defining clear boundaries between components, and documenting key decisions.
+
+Initially, Team A moves faster. But as the application grows:
+
+- Team A struggles to add features without breaking existing functionality
+- Team A's codebase becomes difficult for new developers to understand
+- Team A spends increasing time debugging unexpected interactions
+- Team A finds it hard to scale specific components independently
+
+Meanwhile, Team B:
+
+- Can add features by working within well-defined boundaries
+- Onboards new developers quickly because the structure is clear
+- Isolates bugs more easily due to clear component boundaries
+- Can scale individual components based on demand
+
+The time invested in architecture pays dividends throughout the project lifecycle.
+
+### Architecture Decision Records (ADRs)
+
+Experienced teams document significant architectural decisions using **Architecture Decision Records (ADRs)**. An ADR captures:
+
+1. **Context**: What situation prompted this decision?
+2. **Decision**: What did we decide to do?
+3. **Consequences**: What are the trade-offs of this decision?
+
+Example ADR:
+
+```markdown
+# ADR 001: Use MongoDB for Primary Data Store
+
+## Context
+We need to choose a database for our task management application.
+The data model includes tasks with varying attributes depending on
+task type. We expect frequent schema changes during development.
+
+## Decision
+We will use MongoDB as our primary data store.
+
+## Consequences
+### Positive
+- Flexible schema accommodates varying task attributes
+- Easy schema evolution during development
+- Native JSON support simplifies API development
+- Horizontal scaling through sharding when needed
+
+### Negative
+- No enforced referential integrity
+- Complex queries may require aggregation pipelines
+- Team has less MongoDB experience than PostgreSQL
+- Need to implement data validation in application layer
+```
+
+ADRs create a historical record that helps current and future team members understand *why* the system is structured as it is.
+
+## Foundational Architectural Patterns
+
+Patterns are reusable solutions to common problems. They provide a shared vocabulary for discussing architecture and help teams avoid reinventing solutions to solved problems.
+
+### Client-Server Pattern
+
+The **client-server pattern** separates concerns between service requesters (clients) and service providers (servers). This fundamental pattern underlies virtually all web applications.
+
+```
+┌─────────────────┐         HTTP/HTTPS        ┌─────────────────┐
+│                 │  ───────────────────────► │                 │
+│     Client      │                           │     Server      │
+│   (Browser)     │  ◄─────────────────────── │     (API)       │
+│                 │         Response          │                 │
+└─────────────────┘                           └─────────────────┘
+```
+
+**Characteristics:**
+- Clients initiate requests; servers respond
+- Servers can serve multiple clients simultaneously
+- Clients and servers can evolve independently (given stable APIs)
+- Network communication introduces latency and failure modes
+
+**In our MERN stack:**
+- React frontend = Client
+- Express API = Server
+- The browser makes HTTP requests to the API
+- The API processes requests and returns JSON responses
+
+### Layered Architecture Pattern
+
+The **layered architecture pattern** organizes code into horizontal layers, each with a specific responsibility. Each layer only communicates with adjacent layers.
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    Presentation Layer                        │
+│              (UI Components, Views, Controllers)             │
+├─────────────────────────────────────────────────────────────┤
+│                    Application Layer                         │
+│              (Use Cases, Application Logic)                  │
+├─────────────────────────────────────────────────────────────┤
+│                      Domain Layer                            │
+│              (Business Logic, Entities, Rules)               │
+├─────────────────────────────────────────────────────────────┤
+│                   Infrastructure Layer                       │
+│              (Database, External Services, I/O)              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+**Layer Responsibilities:**
+
+| Layer | Responsibility | Example Components |
+|-------|---------------|-------------------|
+| **Presentation** | Handle user interaction | React components, Express routes |
+| **Application** | Orchestrate use cases | Service classes, controllers |
+| **Domain** | Business rules and logic | Entity classes, validation rules |
+| **Infrastructure** | External system integration | Database repositories, API clients |
+
+**Key Rules:**
+1. Dependencies point downward (presentation depends on application, not vice versa)
+2. Each layer only knows about the layer directly below it
+3. The domain layer should have no external dependencies
+
+**Benefits:**
+- **Separation of concerns**: Each layer has a clear purpose
+- **Testability**: Layers can be tested in isolation
+- **Flexibility**: Layers can be modified without affecting others
+- **Reusability**: Lower layers can be reused across applications
+
+### Model-View-Controller (MVC) Pattern
+
+**MVC** separates an application into three interconnected components:
+
+```
+         User Input
+              │
+              ▼
+        ┌───────────┐
+        │Controller │ ──────────────┐
+        └───────────┘               │
+              │                     │
+              │ Updates             │ Manipulates
+              ▼                     ▼
+        ┌───────────┐         ┌───────────┐
+        │   View    │ ◄────── │   Model   │
+        └───────────┘  Reads  └───────────┘
+              │
+              ▼
+         User Output
+```
+
+**Components:**
+
+- **Model**: Manages data, business logic, and rules
+- **View**: Presents data to the user
+- **Controller**: Handles user input and updates Model/View
+
+**In Express.js:**
+```javascript
+// Model (models/Task.js)
+const taskSchema = new mongoose.Schema({
+  title: { type: String, required: true },
+  completed: { type: Boolean, default: false }
+});
+
+// Controller (controllers/taskController.js)
+exports.getTasks = async (req, res) => {
+  const tasks = await Task.find();
+  res.json(tasks);
+};
+
+// View/Route (routes/tasks.js)
+router.get('/', taskController.getTasks);
+```
+
+**In React:**
+React modifies the traditional MVC pattern. Components combine View and Controller concerns, while state (local or global) serves as the Model.
+
+### Repository Pattern
+
+The **repository pattern** abstracts data access behind a collection-like interface. This separates business logic from data access concerns.
+
+```javascript
+// Without Repository (business logic coupled to database)
+async function completeTask(taskId) {
+  const task = await mongoose.model('Task').findById(taskId);
+  task.completed = true;
+  task.completedAt = new Date();
+  await task.save();
+  return task;
+}
+
+// With Repository (business logic decoupled)
+class TaskRepository {
+  async findById(id) {
+    return await Task.findById(id);
+  }
+
+  async save(task) {
+    return await task.save();
+  }
+}
+
+async function completeTask(taskId, taskRepository) {
+  const task = await taskRepository.findById(taskId);
+  task.completed = true;
+  task.completedAt = new Date();
+  return await taskRepository.save(task);
+}
+```
+
+**Benefits:**
+- Business logic doesn't know about MongoDB, making it testable
+- Database can be swapped without changing business logic
+- Data access logic is centralized and reusable
+
+### Middleware Pattern
+
+The **middleware pattern** chains processing functions, where each function can modify the request/response or pass control to the next function.
+
+```
+Request ──► [Auth] ──► [Logging] ──► [Validation] ──► [Handler] ──► Response
+              │            │              │
+              ▼            ▼              ▼
+           Reject       Log data      Reject if
+          if invalid                   invalid
+```
+
+**Express middleware example:**
+```javascript
+// Authentication middleware
+const authenticate = (req, res, next) => {
+  const token = req.headers.authorization;
+  if (!token) {
+    return res.status(401).json({ error: 'No token provided' });
+  }
+  try {
+    req.user = verifyToken(token);
+    next(); // Pass to next middleware
+  } catch (error) {
+    res.status(401).json({ error: 'Invalid token' });
+  }
+};
+
+// Logging middleware
+const logRequest = (req, res, next) => {
+  console.log(`${req.method} ${req.path} at ${new Date().toISOString()}`);
+  next();
+};
+
+// Apply middleware
+app.use(logRequest);
+app.use('/api', authenticate);
+```
+
+**Characteristics:**
+- Each middleware has a single responsibility
+- Middleware can short-circuit the chain (e.g., authentication failure)
+- Order matters—middleware executes in registration order
+- Promotes code reuse across routes
+
+## System Decomposition
+
+Decomposition is the process of breaking a complex system into smaller, manageable parts. Good decomposition creates components that are:
+
+- **Cohesive**: Each component has a focused purpose
+- **Loosely coupled**: Components have minimal dependencies on each other
+- **Well-encapsulated**: Internal details are hidden behind interfaces
+
+### Decomposition Strategies
+
+#### By Feature/Domain
+
+Organize code around business capabilities or features:
+
+```
+src/
+├── tasks/
+│   ├── taskController.js
+│   ├── taskService.js
+│   ├── taskRepository.js
+│   └── taskModel.js
+├── users/
+│   ├── userController.js
+│   ├── userService.js
+│   ├── userRepository.js
+│   └── userModel.js
+└── projects/
+    ├── projectController.js
+    ├── projectService.js
+    ├── projectRepository.js
+    └── projectModel.js
+```
+
+**Advantages:**
+- Related code is co-located
+- Features can be developed independently
+- Easier to understand feature scope
+- Natural boundaries for team ownership
+
+#### By Layer
+
+Organize code by technical responsibility:
+
+```
+src/
+├── controllers/
+│   ├── taskController.js
+│   ├── userController.js
+│   └── projectController.js
+├── services/
+│   ├── taskService.js
+│   ├── userService.js
+│   └── projectService.js
+├── repositories/
+│   ├── taskRepository.js
+│   ├── userRepository.js
+│   └── projectRepository.js
+└── models/
+    ├── Task.js
+    ├── User.js
+    └── Project.js
+```
+
+**Advantages:**
+- Clear separation of concerns
+- Easy to enforce layer rules
+- Familiar to developers from traditional architectures
+
+#### Hybrid Approach
+
+Many projects combine both strategies:
+
+```
+src/
+├── features/
+│   ├── tasks/
+│   │   ├── controller.js
+│   │   ├── service.js
+│   │   └── repository.js
+│   └── users/
+│       ├── controller.js
+│       ├── service.js
+│       └── repository.js
+├── shared/
+│   ├── middleware/
+│   ├── utils/
+│   └── errors/
+└── infrastructure/
+    ├── database/
+    └── external-apis/
+```
+
+### Coupling and Cohesion
+
+**Coupling** measures how dependent components are on each other. Lower coupling is generally better.
+
+| Coupling Type | Description | Example |
+|--------------|-------------|---------|
+| **Content** | One component modifies another's internals | Directly accessing private variables |
+| **Common** | Components share global data | Global configuration objects |
+| **Control** | One component controls another's flow | Passing flags to control behavior |
+| **Data** | Components share data through parameters | Function parameters, API payloads |
+| **Message** | Components communicate through messages | Event systems, message queues |
+
+**Cohesion** measures how related the elements within a component are. Higher cohesion is generally better.
+
+| Cohesion Type | Description | Quality |
+|--------------|-------------|---------|
+| **Functional** | All elements contribute to a single task | Best |
+| **Sequential** | Output of one element is input to next | Good |
+| **Communicational** | Elements operate on same data | Acceptable |
+| **Logical** | Elements are related by category | Poor |
+| **Coincidental** | Elements are unrelated | Worst |
+
+**Example of improving cohesion:**
+
+```javascript
+// Low cohesion: Utility class doing unrelated things
+class Utils {
+  static formatDate(date) { /* ... */ }
+  static validateEmail(email) { /* ... */ }
+  static calculateTax(amount) { /* ... */ }
+  static hashPassword(password) { /* ... */ }
+}
+
+// High cohesion: Focused classes
+class DateFormatter {
+  static format(date, pattern) { /* ... */ }
+  static parse(dateString, pattern) { /* ... */ }
+}
+
+class EmailValidator {
+  static isValid(email) { /* ... */ }
+  static normalize(email) { /* ... */ }
+}
+
+class TaxCalculator {
+  static calculate(amount, jurisdiction) { /* ... */ }
+}
+
+class PasswordHasher {
+  static hash(password) { /* ... */ }
+  static verify(password, hash) { /* ... */ }
+}
+```
+
+### Defining Component Boundaries
+
+Good boundaries make systems easier to understand and modify. Consider these guidelines:
+
+**1. Single Responsibility**
+Each component should have one reason to change. If you find yourself saying "this component handles X *and* Y," consider splitting it.
+
+**2. Information Hiding**
+Components should expose only what's necessary. Internal implementation details should be hidden.
+
+```javascript
+// Exposed: What it does
+class TaskService {
+  async createTask(data) { /* ... */ }
+  async completeTask(id) { /* ... */ }
+  async getTasksByUser(userId) { /* ... */ }
+}
+
+// Hidden: How it does it
+// - Database queries
+// - Caching strategies
+// - Validation details
+// - Event emission
+```
+
+**3. Stable Interfaces**
+Interfaces between components should change less frequently than implementations. Design interfaces around *what* needs to happen, not *how* it happens.
+
+**4. Dependency Direction**
+Dependencies should point toward stability. Stable, core components should not depend on volatile, peripheral components.
+
+```
+┌─────────────────┐
+│   UI Components │  ← Changes frequently
+└────────┬────────┘
+         │ depends on
+         ▼
+┌─────────────────┐
+│    Services     │  ← Changes occasionally
+└────────┬────────┘
+         │ depends on
+         ▼
+┌─────────────────┐
+│  Domain Models  │  ← Changes rarely
+└─────────────────┘
+```
+
+## API Design Principles
+
+APIs (Application Programming Interfaces) define how components communicate. Well-designed APIs make systems easier to use, maintain, and evolve.
+
+### RESTful API Design
+
+REST (Representational State Transfer) is an architectural style for networked applications. RESTful APIs use HTTP methods and URLs to represent resources and actions.
+
+**Resource-Oriented URLs:**
+```
+GET    /api/tasks          # List all tasks
+GET    /api/tasks/123      # Get task 123
+POST   /api/tasks          # Create a new task
+PUT    /api/tasks/123      # Replace task 123
+PATCH  /api/tasks/123      # Update task 123 partially
+DELETE /api/tasks/123      # Delete task 123
+```
+
+**HTTP Methods and Their Meanings:**
+
+| Method | Purpose | Idempotent | Safe |
+|--------|---------|------------|------|
+| GET | Retrieve resource | Yes | Yes |
+| POST | Create resource | No | No |
+| PUT | Replace resource | Yes | No |
+| PATCH | Partial update | No | No |
+| DELETE | Remove resource | Yes | No |
+
+*Idempotent*: Multiple identical requests have the same effect as a single request.
+*Safe*: Request doesn't modify server state.
+
+**Status Codes:**
+
+| Range | Category | Common Codes |
+|-------|----------|--------------|
+| 2xx | Success | 200 OK, 201 Created, 204 No Content |
+| 3xx | Redirection | 301 Moved, 304 Not Modified |
+| 4xx | Client Error | 400 Bad Request, 401 Unauthorized, 404 Not Found |
+| 5xx | Server Error | 500 Internal Error, 503 Service Unavailable |
+
+**Nested Resources:**
+```
+GET /api/projects/456/tasks        # Tasks in project 456
+POST /api/projects/456/tasks       # Create task in project 456
+GET /api/users/789/tasks           # Tasks assigned to user 789
+```
+
+### Request and Response Design
+
+**Consistent Response Structure:**
+```javascript
+// Success response
+{
+  "data": {
+    "id": "123",
+    "title": "Complete reading",
+    "completed": false
+  },
+  "meta": {
+    "timestamp": "2026-01-20T10:30:00Z"
+  }
+}
+
+// Error response
+{
+  "error": {
+    "code": "VALIDATION_ERROR",
+    "message": "Title is required",
+    "details": [
+      { "field": "title", "message": "Cannot be empty" }
+    ]
+  }
+}
+
+// List response with pagination
+{
+  "data": [...],
+  "meta": {
+    "total": 150,
+    "page": 1,
+    "pageSize": 20,
+    "totalPages": 8
+  }
+}
+```
+
+**Query Parameters for Filtering and Pagination:**
+```
+GET /api/tasks?status=pending&assignee=user123
+GET /api/tasks?page=2&limit=20
+GET /api/tasks?sort=-createdAt    # Descending by createdAt
+GET /api/tasks?fields=id,title    # Sparse fieldsets
+```
+
+### API Versioning
+
+APIs evolve over time. Versioning allows old clients to continue working while new clients use updated endpoints.
+
+**URL Path Versioning:**
+```
+GET /api/v1/tasks
+GET /api/v2/tasks
+```
+
+**Header Versioning:**
+```
+GET /api/tasks
+Accept: application/vnd.myapp.v2+json
+```
+
+**Query Parameter Versioning:**
+```
+GET /api/tasks?version=2
+```
+
+URL path versioning is most common because it's explicit and easy to test in browsers.
+
+## Project Scoping
+
+Effective project scoping prevents scope creep, ensures feasibility, and sets clear expectations. For semester projects, scoping is especially important given the fixed timeline.
+
+### Defining Project Scope
+
+**Scope includes:**
+- Features to be implemented
+- Quality attributes (performance, security requirements)
+- Technical constraints (must use specific technologies)
+- Deliverables (documentation, deployed application)
+
+**Scope excludes:**
+- Features explicitly not included
+- Future enhancements
+- Out-of-scope integrations
+
+### The MVP Approach
+
+A **Minimum Viable Product (MVP)** is the smallest version of a product that delivers value and enables learning. For course projects, think of MVP as the minimum needed to demonstrate your architectural concepts.
+
+**MVP Characteristics:**
+- Solves a core problem end-to-end
+- Demonstrates key technical patterns
+- Is deployable and demonstrable
+- Provides a foundation for extensions
+
+**Example - Task Management App:**
+
+| MVP Features | Nice-to-Have | Out of Scope |
+|-------------|--------------|--------------|
+| Create/edit/delete tasks | Task categories | Mobile app |
+| Mark tasks complete | Due date reminders | Calendar integration |
+| User authentication | Task sharing | AI task suggestions |
+| Basic API with CRUD | Search/filter | Offline support |
+
+### User Stories and Requirements
+
+**User stories** express requirements from the user's perspective:
+
+```
+As a [type of user]
+I want to [perform an action]
+So that [I achieve a goal]
+```
+
+**Examples:**
+```
+As a team member
+I want to create tasks with due dates
+So that I can track my deadlines
+
+As a project manager
+I want to see all tasks assigned to team members
+So that I can monitor project progress
+
+As a user
+I want to log in with my email
+So that my tasks are private and persistent
+```
+
+**Acceptance Criteria** define when a story is complete:
+
+```
+Story: Create tasks with due dates
+
+Acceptance Criteria:
+- [ ] Task creation form includes optional due date field
+- [ ] Due date is displayed on task list
+- [ ] Tasks can be sorted by due date
+- [ ] Overdue tasks are visually highlighted
+- [ ] API validates that due date is not in the past
+```
+
+### Estimation and Prioritization
+
+**T-Shirt Sizing** provides quick relative estimates:
+
+| Size | Relative Effort | Example |
+|------|----------------|---------|
+| XS | Trivial | Add a field to existing form |
+| S | Small | New API endpoint with existing pattern |
+| M | Medium | New feature with UI and API work |
+| L | Large | Major feature spanning multiple components |
+| XL | Very Large | Architectural change or complex integration |
+
+**MoSCoW Prioritization:**
+
+- **Must have**: Core features required for MVP
+- **Should have**: Important but not critical
+- **Could have**: Nice to have if time permits
+- **Won't have**: Explicitly out of scope (this time)
+
+**Example for semester project:**
+
+| Feature | Size | Priority |
+|---------|------|----------|
+| User authentication | M | Must |
+| CRUD for main entity | M | Must |
+| Docker Compose setup | S | Must |
+| Search functionality | M | Should |
+| Email notifications | L | Could |
+| Mobile app | XL | Won't |
+
+### Risk Assessment
+
+Identify risks early and plan mitigation strategies:
+
+| Risk | Probability | Impact | Mitigation |
+|------|-------------|--------|------------|
+| Team member unavailable | Medium | High | Document knowledge, pair program |
+| Technology learning curve | High | Medium | Allocate extra time, use tutorials |
+| Scope creep | High | High | Strict MVP definition, weekly scope reviews |
+| Integration issues | Medium | Medium | Early integration testing, mock APIs |
+| Deployment problems | Medium | Medium | Deploy early and often |
+
+## Putting It All Together
+
+### From Requirements to Architecture
+
+1. **Understand the problem domain**
+   - What problem are we solving?
+   - Who are the users?
+   - What are the key workflows?
+
+2. **Identify major components**
+   - What are the main functional areas?
+   - What external systems do we integrate with?
+   - What data do we need to store?
+
+3. **Define component interactions**
+   - How do components communicate?
+   - What are the data flows?
+   - Where are the boundaries?
+
+4. **Make and document key decisions**
+   - Technology choices
+   - Patterns to apply
+   - Trade-offs accepted
+
+5. **Validate against requirements**
+   - Does the architecture support all features?
+   - Does it meet quality attributes?
+   - Is it feasible within constraints?
+
+### Example: Task Management System
+
+**Requirements:**
+- Users can create, view, update, and delete tasks
+- Tasks belong to projects
+- Users can be assigned to tasks
+- Basic authentication required
+- Must be deployable with Docker
+
+**Component Decomposition:**
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                         Clients                              │
+│  ┌─────────────────┐              ┌─────────────────┐       │
+│  │  Web Frontend   │              │  Future Mobile  │       │
+│  │    (React)      │              │      App        │       │
+│  └────────┬────────┘              └────────┬────────┘       │
+└───────────┼─────────────────────────────────┼───────────────┘
+            │              HTTP/JSON          │
+            └──────────────┬──────────────────┘
+                           ▼
+┌─────────────────────────────────────────────────────────────┐
+│                       API Server                             │
+│  ┌─────────────────────────────────────────────────────┐   │
+│  │                    Express.js                        │   │
+│  │  ┌──────────┐ ┌──────────┐ ┌──────────┐            │   │
+│  │  │   Auth   │ │   Task   │ │ Project  │            │   │
+│  │  │  Routes  │ │  Routes  │ │  Routes  │            │   │
+│  │  └────┬─────┘ └────┬─────┘ └────┬─────┘            │   │
+│  │       │            │            │                   │   │
+│  │  ┌────▼─────┐ ┌────▼─────┐ ┌────▼─────┐            │   │
+│  │  │   Auth   │ │   Task   │ │ Project  │            │   │
+│  │  │ Service  │ │ Service  │ │ Service  │            │   │
+│  │  └────┬─────┘ └────┬─────┘ └────┬─────┘            │   │
+│  │       │            │            │                   │   │
+│  │  ┌────▼─────────────▼────────────▼─────┐            │   │
+│  │  │           Repositories              │            │   │
+│  │  └────────────────┬────────────────────┘            │   │
+│  └───────────────────┼──────────────────────────────────┘   │
+└──────────────────────┼──────────────────────────────────────┘
+                       │
+                       ▼
+┌─────────────────────────────────────────────────────────────┐
+│                      Data Layer                              │
+│  ┌─────────────────┐                                        │
+│  │    MongoDB      │                                        │
+│  │  - users        │                                        │
+│  │  - tasks        │                                        │
+│  │  - projects     │                                        │
+│  └─────────────────┘                                        │
+└─────────────────────────────────────────────────────────────┘
+```
+
+**Key Architectural Decisions:**
+
+1. **Monolithic API**: Single Express server (appropriate for team size and project scope)
+2. **Feature-based organization**: Code organized by domain (tasks, projects, users)
+3. **Repository pattern**: Abstract database access for testability
+4. **JWT authentication**: Stateless auth suitable for API
+5. **MongoDB**: Flexible schema for rapid development
+
+## Summary
+
+This week covered the foundational concepts of software architecture:
+
+1. **Architecture is about structure and decisions** that shape how a system evolves
+2. **Patterns provide proven solutions** to common problems (client-server, layered, MVC, repository, middleware)
+3. **Good decomposition creates cohesive, loosely-coupled components** that are easier to maintain
+4. **API design follows conventions** that make systems predictable and usable
+5. **Project scoping defines boundaries** that make projects achievable
+6. **Document decisions** using ADRs to preserve context for future developers
+
+These concepts will guide your work throughout the semester. In your project, you'll apply these patterns and make architectural decisions that you'll document and defend.
+
+## Key Terms
+
+- **Architecture**: The fundamental structures of a software system
+- **Pattern**: A reusable solution to a common problem
+- **Coupling**: The degree of interdependence between components
+- **Cohesion**: The degree to which elements within a component belong together
+- **ADR**: Architecture Decision Record—documentation of significant decisions
+- **MVP**: Minimum Viable Product—smallest useful version of a product
+- **REST**: Representational State Transfer—architectural style for APIs
 
 ## Further Reading
 
-*Resources coming soon.*
+- [Patterns of Enterprise Application Architecture](https://martinfowler.com/books/eaa.html) - Martin Fowler's classic reference
+- [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) - Robert C. Martin's architecture principles
+- [REST API Design Best Practices](https://restfulapi.net/) - Comprehensive REST guide
+- [Architecture Decision Records](https://adr.github.io/) - ADR templates and tools
+- [The Twelve-Factor App](https://12factor.net/) - Methodology for building SaaS applications
+- [Domain-Driven Design Quickly](https://www.infoq.com/minibooks/domain-driven-design-quickly/) - Free introduction to DDD concepts

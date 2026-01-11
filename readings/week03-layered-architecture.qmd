@@ -5,20 +5,902 @@ subtitle: "Separation of Concerns and Frontend Patterns"
 
 ::: {.callout-note}
 ## Reading Assignment
-Complete this reading before Week 4.
+Complete this reading before Week 4. Estimated time: 45-60 minutes.
 :::
 
-## Overview
+## Introduction
 
-*Content coming soon.*
+Last week we explored architectural patterns and system decomposition at a high level. This week, we dive deeper into **layered architecture**—one of the most fundamental and widely-used patterns in software development. We'll examine how layered architecture applies to both backend and frontend systems, with a particular focus on React application architecture.
 
-## Key Concepts
+Understanding layered architecture is essential because it provides a framework for organizing code in a way that promotes maintainability, testability, and flexibility. Whether you're building a simple CRUD application or a complex enterprise system, the principles of layered architecture will guide your design decisions.
 
-- Layered architecture principles
-- Presentation, application, domain, and infrastructure layers
-- Frontend architecture patterns
-- Dependency inversion
+## The Layered Architecture Pattern
+
+### Core Principles
+
+Layered architecture divides an application into horizontal layers, each with a specific responsibility. The fundamental rules are:
+
+1. **Each layer has a distinct responsibility** - Layers should do one thing well
+2. **Dependencies flow downward** - Upper layers depend on lower layers, never the reverse
+3. **Layers communicate through interfaces** - Each layer exposes a contract that upper layers consume
+4. **Implementation details are hidden** - Layers don't expose how they accomplish their tasks
+
+### The Classic Four-Layer Model
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                     Presentation Layer                           │
+│         User Interface, Views, Controllers, API Endpoints        │
+├─────────────────────────────────────────────────────────────────┤
+│                     Application Layer                            │
+│         Use Cases, Application Services, Orchestration           │
+├─────────────────────────────────────────────────────────────────┤
+│                       Domain Layer                               │
+│         Business Logic, Entities, Domain Services, Rules         │
+├─────────────────────────────────────────────────────────────────┤
+│                    Infrastructure Layer                          │
+│         Database, External APIs, File System, Messaging          │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### Layer Responsibilities
+
+#### Presentation Layer
+
+The presentation layer handles all user interaction. In a web application, this includes:
+
+- **User Interface Components** - React components, HTML templates
+- **Controllers/Routes** - Express route handlers, API endpoints
+- **View Models/DTOs** - Data shapes optimized for display
+- **Input Validation** - Basic validation of user input format
+
+```javascript
+// Express route handler (Presentation Layer)
+router.get('/api/tasks/:id', async (req, res) => {
+  try {
+    const task = await taskService.getTaskById(req.params.id);
+    res.json(TaskDTO.fromDomain(task));
+  } catch (error) {
+    if (error instanceof NotFoundError) {
+      return res.status(404).json({ error: 'Task not found' });
+    }
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+```
+
+The presentation layer should be thin—it transforms input, calls the application layer, and transforms output. It contains no business logic.
+
+#### Application Layer
+
+The application layer orchestrates the application's use cases. It:
+
+- **Coordinates workflows** - Manages the sequence of operations
+- **Enforces application rules** - Rules that aren't core business logic
+- **Handles transactions** - Manages unit-of-work boundaries
+- **Transforms data** - Converts between domain and presentation formats
+
+```javascript
+// Application Service (Application Layer)
+class TaskService {
+  constructor(taskRepository, notificationService, eventBus) {
+    this.taskRepository = taskRepository;
+    this.notificationService = notificationService;
+    this.eventBus = eventBus;
+  }
+
+  async completeTask(taskId, userId) {
+    // Retrieve domain entity
+    const task = await this.taskRepository.findById(taskId);
+    if (!task) {
+      throw new NotFoundError('Task');
+    }
+
+    // Verify authorization (application rule)
+    if (task.assigneeId !== userId) {
+      throw new UnauthorizedError('Only assignee can complete task');
+    }
+
+    // Execute domain logic
+    task.complete();
+
+    // Persist changes
+    await this.taskRepository.save(task);
+
+    // Trigger side effects
+    await this.notificationService.notifyTaskCompleted(task);
+    this.eventBus.publish(new TaskCompletedEvent(task));
+
+    return task;
+  }
+}
+```
+
+#### Domain Layer
+
+The domain layer contains the core business logic—the rules that define what your application does, independent of any technical concerns:
+
+- **Entities** - Objects with identity that encapsulate business rules
+- **Value Objects** - Immutable objects defined by their attributes
+- **Domain Services** - Operations that don't belong to a single entity
+- **Business Rules** - Invariants and constraints
+
+```javascript
+// Domain Entity (Domain Layer)
+class Task {
+  constructor({ id, title, description, status, assigneeId, dueDate }) {
+    this.id = id;
+    this.title = title;
+    this.description = description;
+    this.status = status || 'pending';
+    this.assigneeId = assigneeId;
+    this.dueDate = dueDate;
+    this.completedAt = null;
+  }
+
+  complete() {
+    if (this.status === 'completed') {
+      throw new DomainError('Task is already completed');
+    }
+    this.status = 'completed';
+    this.completedAt = new Date();
+  }
+
+  isOverdue() {
+    if (!this.dueDate || this.status === 'completed') {
+      return false;
+    }
+    return new Date() > this.dueDate;
+  }
+
+  reassign(newAssigneeId) {
+    if (this.status === 'completed') {
+      throw new DomainError('Cannot reassign completed task');
+    }
+    this.assigneeId = newAssigneeId;
+  }
+}
+```
+
+The domain layer should have no dependencies on other layers or external frameworks. It's pure business logic.
+
+#### Infrastructure Layer
+
+The infrastructure layer handles all external concerns:
+
+- **Database Access** - Repository implementations
+- **External Services** - API clients, email services
+- **File System** - File storage and retrieval
+- **Messaging** - Message queues, event buses
+
+```javascript
+// Repository Implementation (Infrastructure Layer)
+class MongoTaskRepository {
+  constructor(mongoClient) {
+    this.collection = mongoClient.db('app').collection('tasks');
+  }
+
+  async findById(id) {
+    const doc = await this.collection.findOne({ _id: new ObjectId(id) });
+    return doc ? this.toDomain(doc) : null;
+  }
+
+  async save(task) {
+    const doc = this.toDocument(task);
+    await this.collection.updateOne(
+      { _id: new ObjectId(task.id) },
+      { $set: doc },
+      { upsert: true }
+    );
+    return task;
+  }
+
+  toDomain(doc) {
+    return new Task({
+      id: doc._id.toString(),
+      title: doc.title,
+      description: doc.description,
+      status: doc.status,
+      assigneeId: doc.assigneeId,
+      dueDate: doc.dueDate,
+      completedAt: doc.completedAt
+    });
+  }
+
+  toDocument(task) {
+    return {
+      title: task.title,
+      description: task.description,
+      status: task.status,
+      assigneeId: task.assigneeId,
+      dueDate: task.dueDate,
+      completedAt: task.completedAt
+    };
+  }
+}
+```
+
+### Benefits of Layered Architecture
+
+| Benefit | Description |
+|---------|-------------|
+| **Separation of Concerns** | Each layer focuses on one aspect of the application |
+| **Testability** | Layers can be tested in isolation with mocks |
+| **Flexibility** | Implementations can be swapped without affecting other layers |
+| **Maintainability** | Changes are localized to specific layers |
+| **Team Scalability** | Different teams can work on different layers |
+
+### Common Pitfalls
+
+**1. Leaking Abstractions**
+
+When implementation details from lower layers appear in upper layers:
+
+```javascript
+// Bad: MongoDB-specific code in presentation layer
+router.get('/tasks', async (req, res) => {
+  const tasks = await Task.find({ status: { $ne: 'deleted' } })
+    .sort({ createdAt: -1 })
+    .populate('assignee');  // MongoDB-specific
+  res.json(tasks);
+});
+
+// Good: Layer-agnostic code
+router.get('/tasks', async (req, res) => {
+  const tasks = await taskService.getActiveTasks();
+  res.json(tasks.map(TaskDTO.fromDomain));
+});
+```
+
+**2. Anemic Domain Model**
+
+When entities are just data holders with no behavior:
+
+```javascript
+// Bad: Anemic entity
+class Task {
+  constructor(data) {
+    this.id = data.id;
+    this.title = data.title;
+    this.status = data.status;
+  }
+}
+
+// Business logic scattered in services
+class TaskService {
+  complete(task) {
+    if (task.status === 'completed') throw new Error('Already completed');
+    task.status = 'completed';
+    task.completedAt = new Date();
+  }
+}
+
+// Good: Rich domain model
+class Task {
+  complete() {
+    if (this.status === 'completed') {
+      throw new DomainError('Task is already completed');
+    }
+    this.status = 'completed';
+    this.completedAt = new Date();
+  }
+}
+```
+
+**3. God Services**
+
+When a single service handles too many responsibilities:
+
+```javascript
+// Bad: God service
+class ApplicationService {
+  createUser() { /* ... */ }
+  deleteUser() { /* ... */ }
+  createTask() { /* ... */ }
+  assignTask() { /* ... */ }
+  sendEmail() { /* ... */ }
+  generateReport() { /* ... */ }
+}
+
+// Good: Focused services
+class UserService { /* user operations */ }
+class TaskService { /* task operations */ }
+class ReportService { /* reporting operations */ }
+```
+
+## Dependency Inversion Principle
+
+The **Dependency Inversion Principle (DIP)** is crucial for effective layered architecture:
+
+> High-level modules should not depend on low-level modules. Both should depend on abstractions.
+
+### Without Dependency Inversion
+
+```
+┌─────────────────┐
+│  TaskService    │
+└────────┬────────┘
+         │ depends on
+         ▼
+┌─────────────────┐
+│MongoTaskRepository│
+└─────────────────┘
+```
+
+The application layer directly depends on a specific database implementation.
+
+### With Dependency Inversion
+
+```
+┌─────────────────┐
+│  TaskService    │
+└────────┬────────┘
+         │ depends on
+         ▼
+┌─────────────────┐
+│ TaskRepository  │  ← Interface (abstraction)
+│   (interface)   │
+└────────┬────────┘
+         │ implemented by
+         ▼
+┌─────────────────┐
+│MongoTaskRepository│
+└─────────────────┘
+```
+
+```javascript
+// Define interface (in domain or application layer)
+class TaskRepository {
+  async findById(id) { throw new Error('Not implemented'); }
+  async save(task) { throw new Error('Not implemented'); }
+  async findByAssignee(userId) { throw new Error('Not implemented'); }
+}
+
+// TaskService depends on the interface
+class TaskService {
+  constructor(taskRepository) {  // Injected dependency
+    this.taskRepository = taskRepository;
+  }
+
+  async getTask(id) {
+    return await this.taskRepository.findById(id);
+  }
+}
+
+// Infrastructure implements the interface
+class MongoTaskRepository extends TaskRepository {
+  async findById(id) {
+    // MongoDB-specific implementation
+  }
+}
+
+// Composition root wires everything together
+const taskRepository = new MongoTaskRepository(mongoClient);
+const taskService = new TaskService(taskRepository);
+```
+
+This approach enables:
+- Testing with mock repositories
+- Swapping database implementations
+- Clear contracts between layers
+
+## Frontend Layered Architecture
+
+React applications benefit greatly from layered thinking. While the layers look different from backend applications, the principles are the same.
+
+### Frontend Layer Model
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                     Presentation Layer                           │
+│              UI Components, Styling, Layout                      │
+├─────────────────────────────────────────────────────────────────┤
+│                     Container Layer                              │
+│         State Connection, Data Fetching, Event Handling          │
+├─────────────────────────────────────────────────────────────────┤
+│                     State Management Layer                       │
+│         Application State, Actions, Reducers, Selectors          │
+├─────────────────────────────────────────────────────────────────┤
+│                     Service/API Layer                            │
+│              API Clients, Data Transformation                    │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### Presentation Components
+
+Presentation components (also called "dumb" or "pure" components) focus solely on rendering UI:
+
+```jsx
+// Presentation Component
+function TaskCard({ task, onComplete, onDelete }) {
+  return (
+    <div className={`task-card ${task.completed ? 'completed' : ''}`}>
+      <h3>{task.title}</h3>
+      <p>{task.description}</p>
+      {task.dueDate && (
+        <span className="due-date">
+          Due: {formatDate(task.dueDate)}
+        </span>
+      )}
+      <div className="actions">
+        {!task.completed && (
+          <button onClick={() => onComplete(task.id)}>
+            Complete
+          </button>
+        )}
+        <button onClick={() => onDelete(task.id)}>
+          Delete
+        </button>
+      </div>
+    </div>
+  );
+}
+```
+
+Characteristics of presentation components:
+- Receive data and callbacks via props
+- No direct state management or API calls
+- Highly reusable and testable
+- Easy to develop in isolation (Storybook)
+
+### Container Components
+
+Container components (also called "smart" components) handle data and behavior:
+
+```jsx
+// Container Component
+function TaskListContainer() {
+  const [tasks, setTasks] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    loadTasks();
+  }, []);
+
+  const loadTasks = async () => {
+    try {
+      setLoading(true);
+      const data = await taskApi.getTasks();
+      setTasks(data);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleComplete = async (taskId) => {
+    try {
+      const updated = await taskApi.completeTask(taskId);
+      setTasks(tasks.map(t => t.id === taskId ? updated : t));
+    } catch (err) {
+      setError('Failed to complete task');
+    }
+  };
+
+  const handleDelete = async (taskId) => {
+    try {
+      await taskApi.deleteTask(taskId);
+      setTasks(tasks.filter(t => t.id !== taskId));
+    } catch (err) {
+      setError('Failed to delete task');
+    }
+  };
+
+  if (loading) return <LoadingSpinner />;
+  if (error) return <ErrorMessage message={error} />;
+
+  return (
+    <TaskList
+      tasks={tasks}
+      onComplete={handleComplete}
+      onDelete={handleDelete}
+    />
+  );
+}
+```
+
+### Custom Hooks as Service Layer
+
+Custom hooks can serve as a service layer, encapsulating data fetching and business logic:
+
+```jsx
+// Custom Hook (Service Layer)
+function useTasks() {
+  const [tasks, setTasks] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const fetchTasks = useCallback(async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const data = await taskApi.getTasks();
+      setTasks(data);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchTasks();
+  }, [fetchTasks]);
+
+  const completeTask = useCallback(async (taskId) => {
+    const updated = await taskApi.completeTask(taskId);
+    setTasks(prev => prev.map(t => t.id === taskId ? updated : t));
+    return updated;
+  }, []);
+
+  const deleteTask = useCallback(async (taskId) => {
+    await taskApi.deleteTask(taskId);
+    setTasks(prev => prev.filter(t => t.id !== taskId));
+  }, []);
+
+  const addTask = useCallback(async (taskData) => {
+    const newTask = await taskApi.createTask(taskData);
+    setTasks(prev => [newTask, ...prev]);
+    return newTask;
+  }, []);
+
+  return {
+    tasks,
+    loading,
+    error,
+    completeTask,
+    deleteTask,
+    addTask,
+    refresh: fetchTasks
+  };
+}
+
+// Usage in container
+function TaskListContainer() {
+  const { tasks, loading, error, completeTask, deleteTask } = useTasks();
+
+  if (loading) return <LoadingSpinner />;
+  if (error) return <ErrorMessage message={error} />;
+
+  return (
+    <TaskList
+      tasks={tasks}
+      onComplete={completeTask}
+      onDelete={deleteTask}
+    />
+  );
+}
+```
+
+### API Layer
+
+The API layer handles communication with the backend:
+
+```javascript
+// API Layer
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:4000';
+
+class TaskApi {
+  async getTasks(filters = {}) {
+    const params = new URLSearchParams(filters);
+    const response = await fetch(`${API_BASE}/api/tasks?${params}`);
+    if (!response.ok) {
+      throw new ApiError('Failed to fetch tasks', response.status);
+    }
+    return response.json();
+  }
+
+  async getTask(id) {
+    const response = await fetch(`${API_BASE}/api/tasks/${id}`);
+    if (!response.ok) {
+      if (response.status === 404) {
+        throw new NotFoundError('Task not found');
+      }
+      throw new ApiError('Failed to fetch task', response.status);
+    }
+    return response.json();
+  }
+
+  async createTask(data) {
+    const response = await fetch(`${API_BASE}/api/tasks`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    if (!response.ok) {
+      throw new ApiError('Failed to create task', response.status);
+    }
+    return response.json();
+  }
+
+  async completeTask(id) {
+    const response = await fetch(`${API_BASE}/api/tasks/${id}/complete`, {
+      method: 'POST'
+    });
+    if (!response.ok) {
+      throw new ApiError('Failed to complete task', response.status);
+    }
+    return response.json();
+  }
+
+  async deleteTask(id) {
+    const response = await fetch(`${API_BASE}/api/tasks/${id}`, {
+      method: 'DELETE'
+    });
+    if (!response.ok) {
+      throw new ApiError('Failed to delete task', response.status);
+    }
+  }
+}
+
+export const taskApi = new TaskApi();
+```
+
+## Project Structure for Layered Architecture
+
+### Backend Structure
+
+```
+api/
+├── src/
+│   ├── presentation/           # Presentation Layer
+│   │   ├── routes/
+│   │   │   ├── taskRoutes.js
+│   │   │   ├── userRoutes.js
+│   │   │   └── index.js
+│   │   ├── middleware/
+│   │   │   ├── auth.js
+│   │   │   ├── validation.js
+│   │   │   └── errorHandler.js
+│   │   └── dto/
+│   │       ├── TaskDTO.js
+│   │       └── UserDTO.js
+│   │
+│   ├── application/            # Application Layer
+│   │   ├── services/
+│   │   │   ├── TaskService.js
+│   │   │   └── UserService.js
+│   │   └── errors/
+│   │       ├── NotFoundError.js
+│   │       └── ValidationError.js
+│   │
+│   ├── domain/                 # Domain Layer
+│   │   ├── entities/
+│   │   │   ├── Task.js
+│   │   │   └── User.js
+│   │   ├── repositories/       # Interfaces
+│   │   │   ├── TaskRepository.js
+│   │   │   └── UserRepository.js
+│   │   └── services/
+│   │       └── TaskAssignmentService.js
+│   │
+│   ├── infrastructure/         # Infrastructure Layer
+│   │   ├── database/
+│   │   │   ├── MongoTaskRepository.js
+│   │   │   └── MongoUserRepository.js
+│   │   ├── external/
+│   │   │   └── EmailService.js
+│   │   └── config/
+│   │       └── database.js
+│   │
+│   ├── config/                 # Configuration
+│   │   └── container.js        # Dependency injection setup
+│   │
+│   └── server.js               # Entry point
+```
+
+### Frontend Structure
+
+```
+frontend/
+├── src/
+│   ├── components/             # Presentation Layer
+│   │   ├── common/
+│   │   │   ├── Button/
+│   │   │   ├── Input/
+│   │   │   └── Modal/
+│   │   ├── tasks/
+│   │   │   ├── TaskCard.jsx
+│   │   │   ├── TaskList.jsx
+│   │   │   └── TaskForm.jsx
+│   │   └── layout/
+│   │       ├── Header.jsx
+│   │       └── Sidebar.jsx
+│   │
+│   ├── containers/             # Container Layer
+│   │   ├── TaskListContainer.jsx
+│   │   └── TaskDetailContainer.jsx
+│   │
+│   ├── hooks/                  # Custom Hooks (Service Layer)
+│   │   ├── useTasks.js
+│   │   ├── useAuth.js
+│   │   └── useApi.js
+│   │
+│   ├── api/                    # API Layer
+│   │   ├── client.js
+│   │   ├── taskApi.js
+│   │   └── userApi.js
+│   │
+│   ├── state/                  # State Management
+│   │   ├── context/
+│   │   │   ├── AuthContext.jsx
+│   │   │   └── ThemeContext.jsx
+│   │   └── reducers/
+│   │       └── taskReducer.js
+│   │
+│   ├── utils/                  # Utilities
+│   │   ├── formatters.js
+│   │   └── validators.js
+│   │
+│   ├── pages/                  # Page Components
+│   │   ├── HomePage.jsx
+│   │   ├── TasksPage.jsx
+│   │   └── SettingsPage.jsx
+│   │
+│   ├── App.jsx
+│   └── main.jsx
+```
+
+## Testing Layered Applications
+
+Layered architecture enables focused testing at each layer.
+
+### Domain Layer Tests
+
+Domain tests focus on business logic:
+
+```javascript
+// Task.test.js
+describe('Task', () => {
+  describe('complete()', () => {
+    it('should mark task as completed', () => {
+      const task = new Task({ id: '1', title: 'Test', status: 'pending' });
+
+      task.complete();
+
+      expect(task.status).toBe('completed');
+      expect(task.completedAt).toBeInstanceOf(Date);
+    });
+
+    it('should throw if already completed', () => {
+      const task = new Task({ id: '1', title: 'Test', status: 'completed' });
+
+      expect(() => task.complete()).toThrow('Task is already completed');
+    });
+  });
+
+  describe('isOverdue()', () => {
+    it('should return true for past due date', () => {
+      const yesterday = new Date(Date.now() - 86400000);
+      const task = new Task({
+        id: '1',
+        title: 'Test',
+        status: 'pending',
+        dueDate: yesterday
+      });
+
+      expect(task.isOverdue()).toBe(true);
+    });
+  });
+});
+```
+
+### Application Layer Tests
+
+Application tests verify orchestration logic with mocked dependencies:
+
+```javascript
+// TaskService.test.js
+describe('TaskService', () => {
+  let taskService;
+  let mockTaskRepository;
+  let mockNotificationService;
+
+  beforeEach(() => {
+    mockTaskRepository = {
+      findById: jest.fn(),
+      save: jest.fn()
+    };
+    mockNotificationService = {
+      notifyTaskCompleted: jest.fn()
+    };
+    taskService = new TaskService(mockTaskRepository, mockNotificationService);
+  });
+
+  describe('completeTask()', () => {
+    it('should complete task and notify', async () => {
+      const task = new Task({
+        id: '123',
+        title: 'Test Task',
+        status: 'pending',
+        assigneeId: 'user1'
+      });
+      mockTaskRepository.findById.mockResolvedValue(task);
+      mockTaskRepository.save.mockResolvedValue(task);
+
+      await taskService.completeTask('123', 'user1');
+
+      expect(task.status).toBe('completed');
+      expect(mockTaskRepository.save).toHaveBeenCalledWith(task);
+      expect(mockNotificationService.notifyTaskCompleted).toHaveBeenCalledWith(task);
+    });
+
+    it('should throw if user is not assignee', async () => {
+      const task = new Task({
+        id: '123',
+        title: 'Test Task',
+        assigneeId: 'user1'
+      });
+      mockTaskRepository.findById.mockResolvedValue(task);
+
+      await expect(taskService.completeTask('123', 'user2'))
+        .rejects.toThrow('Only assignee can complete task');
+    });
+  });
+});
+```
+
+### Presentation Layer Tests
+
+Presentation tests verify HTTP handling:
+
+```javascript
+// taskRoutes.test.js
+describe('GET /api/tasks/:id', () => {
+  it('should return task as DTO', async () => {
+    const task = new Task({ id: '123', title: 'Test Task' });
+    mockTaskService.getTaskById.mockResolvedValue(task);
+
+    const response = await request(app).get('/api/tasks/123');
+
+    expect(response.status).toBe(200);
+    expect(response.body).toEqual({
+      id: '123',
+      title: 'Test Task'
+    });
+  });
+
+  it('should return 404 for missing task', async () => {
+    mockTaskService.getTaskById.mockRejectedValue(new NotFoundError('Task'));
+
+    const response = await request(app).get('/api/tasks/999');
+
+    expect(response.status).toBe(404);
+    expect(response.body.error).toBe('Task not found');
+  });
+});
+```
+
+## Summary
+
+This week we explored layered architecture in depth:
+
+1. **Four-layer model** separates presentation, application, domain, and infrastructure concerns
+2. **Dependencies flow downward** from presentation to infrastructure
+3. **Domain layer** contains pure business logic with no external dependencies
+4. **Dependency inversion** enables flexible, testable code
+5. **Frontend layers** follow similar principles with components, hooks, and API clients
+6. **Project structure** reflects architectural boundaries
+7. **Testing** becomes easier when layers are properly separated
+
+These principles will guide your implementation in Lab 2, where you'll refactor your MERN application to follow layered architecture principles.
+
+## Key Terms
+
+- **Layer**: A horizontal slice of an application with specific responsibilities
+- **Separation of Concerns**: Organizing code so each part addresses a single concern
+- **Dependency Inversion**: High-level modules depending on abstractions, not implementations
+- **Presentation Component**: UI component focused only on rendering
+- **Container Component**: Component that manages data and behavior
+- **Custom Hook**: React hook that encapsulates reusable stateful logic
+- **Repository Pattern**: Abstraction over data storage operations
 
 ## Further Reading
 
-*Resources coming soon.*
+- [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) - Robert C. Martin's architecture principles
+- [Presentational and Container Components](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0) - Dan Abramov's classic article
+- [Bulletproof React](https://github.com/alan2207/bulletproof-react) - Comprehensive React architecture guide
+- [Domain-Driven Design](https://martinfowler.com/bliki/DomainDrivenDesign.html) - Martin Fowler's DDD overview
+- [React Hooks Documentation](https://react.dev/reference/react) - Official React hooks reference

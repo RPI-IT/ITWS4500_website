@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -323,8 +358,47 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#key-concepts" id="toc-key-concepts" class="nav-link" data-scroll-target="#key-concepts">Key Concepts</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#database-paradigms" id="toc-database-paradigms" class="nav-link" data-scroll-target="#database-paradigms">Database Paradigms</a>
+  <ul class="collapse">
+  <li><a href="#document-databases-mongodb" id="toc-document-databases-mongodb" class="nav-link" data-scroll-target="#document-databases-mongodb">Document Databases (MongoDB)</a></li>
+  <li><a href="#relational-databases-postgresql" id="toc-relational-databases-postgresql" class="nav-link" data-scroll-target="#relational-databases-postgresql">Relational Databases (PostgreSQL)</a></li>
+  <li><a href="#key-value-stores-redis" id="toc-key-value-stores-redis" class="nav-link" data-scroll-target="#key-value-stores-redis">Key-Value Stores (Redis)</a></li>
+  <li><a href="#search-engines-elasticsearch" id="toc-search-engines-elasticsearch" class="nav-link" data-scroll-target="#search-engines-elasticsearch">Search Engines (Elasticsearch)</a></li>
+  </ul></li>
+  <li><a href="#choosing-the-right-database" id="toc-choosing-the-right-database" class="nav-link" data-scroll-target="#choosing-the-right-database">Choosing the Right Database</a>
+  <ul class="collapse">
+  <li><a href="#decision-framework" id="toc-decision-framework" class="nav-link" data-scroll-target="#decision-framework">Decision Framework</a></li>
+  <li><a href="#common-patterns-by-use-case" id="toc-common-patterns-by-use-case" class="nav-link" data-scroll-target="#common-patterns-by-use-case">Common Patterns by Use Case</a></li>
+  <li><a href="#the-polyglot-architecture" id="toc-the-polyglot-architecture" class="nav-link" data-scroll-target="#the-polyglot-architecture">The Polyglot Architecture</a></li>
+  </ul></li>
+  <li><a href="#data-modeling-patterns" id="toc-data-modeling-patterns" class="nav-link" data-scroll-target="#data-modeling-patterns">Data Modeling Patterns</a>
+  <ul class="collapse">
+  <li><a href="#denormalization-for-performance" id="toc-denormalization-for-performance" class="nav-link" data-scroll-target="#denormalization-for-performance">Denormalization for Performance</a></li>
+  <li><a href="#handling-many-to-many-relationships" id="toc-handling-many-to-many-relationships" class="nav-link" data-scroll-target="#handling-many-to-many-relationships">Handling Many-to-Many Relationships</a></li>
+  <li><a href="#polymorphic-patterns" id="toc-polymorphic-patterns" class="nav-link" data-scroll-target="#polymorphic-patterns">Polymorphic Patterns</a></li>
+  <li><a href="#time-series-data" id="toc-time-series-data" class="nav-link" data-scroll-target="#time-series-data">Time-Series Data</a></li>
+  </ul></li>
+  <li><a href="#data-consistency-patterns" id="toc-data-consistency-patterns" class="nav-link" data-scroll-target="#data-consistency-patterns">Data Consistency Patterns</a>
+  <ul class="collapse">
+  <li><a href="#cap-theorem" id="toc-cap-theorem" class="nav-link" data-scroll-target="#cap-theorem">CAP Theorem</a></li>
+  <li><a href="#eventual-consistency" id="toc-eventual-consistency" class="nav-link" data-scroll-target="#eventual-consistency">Eventual Consistency</a></li>
+  <li><a href="#transaction-patterns" id="toc-transaction-patterns" class="nav-link" data-scroll-target="#transaction-patterns">Transaction Patterns</a></li>
+  <li><a href="#outbox-pattern" id="toc-outbox-pattern" class="nav-link" data-scroll-target="#outbox-pattern">Outbox Pattern</a></li>
+  </ul></li>
+  <li><a href="#cross-database-operations" id="toc-cross-database-operations" class="nav-link" data-scroll-target="#cross-database-operations">Cross-Database Operations</a>
+  <ul class="collapse">
+  <li><a href="#synchronizing-data-between-databases" id="toc-synchronizing-data-between-databases" class="nav-link" data-scroll-target="#synchronizing-data-between-databases">Synchronizing Data Between Databases</a></li>
+  <li><a href="#cross-database-queries" id="toc-cross-database-queries" class="nav-link" data-scroll-target="#cross-database-queries">Cross-Database Queries</a></li>
+  </ul></li>
+  <li><a href="#caching-strategies" id="toc-caching-strategies" class="nav-link" data-scroll-target="#caching-strategies">Caching Strategies</a>
+  <ul class="collapse">
+  <li><a href="#cache-aside-pattern" id="toc-cache-aside-pattern" class="nav-link" data-scroll-target="#cache-aside-pattern">Cache-Aside Pattern</a></li>
+  <li><a href="#write-through-cache" id="toc-write-through-cache" class="nav-link" data-scroll-target="#write-through-cache">Write-Through Cache</a></li>
+  <li><a href="#cache-invalidation-patterns" id="toc-cache-invalidation-patterns" class="nav-link" data-scroll-target="#cache-invalidation-patterns">Cache Invalidation Patterns</a></li>
+  </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#key-terms" id="toc-key-terms" class="nav-link" data-scroll-target="#key-terms">Key Terms</a></li>
   <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
   </ul>
 </nav>
@@ -362,25 +436,933 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Complete this reading before Week 7.</p>
+<p>Complete this reading before Week 7 and Quiz 1. Estimated time: 55-70 minutes.</p>
 </div>
 </div>
-<section id="overview" class="level2">
-<h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p><em>Content coming soon.</em></p>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Data is at the heart of every application. How you model, store, and access data has profound implications for performance, scalability, and maintainability. This week, we dive deep into <strong>data architecture</strong>—the practice of designing data systems that meet your application’s specific needs.</p>
+<p>We’ll explore different database paradigms, understand when to use each, and learn patterns for managing data consistency in distributed systems. This reading builds on the polyglot persistence concepts introduced last week and provides the foundation for Lab 5, where you’ll implement a multi-database architecture.</p>
 </section>
-<section id="key-concepts" class="level2">
-<h2 class="anchored" data-anchor-id="key-concepts">Key Concepts</h2>
+<section id="database-paradigms" class="level2">
+<h2 class="anchored" data-anchor-id="database-paradigms">Database Paradigms</h2>
+<section id="document-databases-mongodb" class="level3">
+<h3 class="anchored" data-anchor-id="document-databases-mongodb">Document Databases (MongoDB)</h3>
+<p>Document databases store data as flexible, JSON-like documents. Each document can have a different structure, making them ideal for evolving schemas and hierarchical data.</p>
+<p><strong>Characteristics:</strong> - Schema flexibility within collections - Nested documents and arrays - Horizontal scaling through sharding - Rich query language - Eventual consistency by default (tunable)</p>
+<p><strong>Best For:</strong> - Content management systems - User profiles with varying attributes - Product catalogs with different product types - Real-time analytics - Rapid prototyping</p>
+<p><strong>MongoDB Document Example:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">_id</span><span class="op">:</span> <span class="fu">ObjectId</span>(<span class="st">"64f..."</span>)<span class="op">,</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">type</span><span class="op">:</span> <span class="st">"electronics"</span><span class="op">,</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">name</span><span class="op">:</span> <span class="st">"Wireless Headphones"</span><span class="op">,</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">price</span><span class="op">:</span> <span class="fl">149.99</span><span class="op">,</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">specs</span><span class="op">:</span> {</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">bluetooth</span><span class="op">:</span> <span class="st">"5.0"</span><span class="op">,</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">batteryLife</span><span class="op">:</span> <span class="st">"30 hours"</span><span class="op">,</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">noiseCancellation</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">drivers</span><span class="op">:</span> <span class="st">"40mm"</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="dt">reviews</span><span class="op">:</span> [</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>      <span class="dt">userId</span><span class="op">:</span> <span class="fu">ObjectId</span>(<span class="st">"64a..."</span>)<span class="op">,</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>      <span class="dt">rating</span><span class="op">:</span> <span class="dv">5</span><span class="op">,</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>      <span class="dt">comment</span><span class="op">:</span> <span class="st">"Great sound quality!"</span><span class="op">,</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>      <span class="dt">createdAt</span><span class="op">:</span> <span class="fu">ISODate</span>(<span class="st">"2026-01-15"</span>)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  ]<span class="op">,</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="dt">inventory</span><span class="op">:</span> {</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="dt">warehouse</span><span class="op">:</span> <span class="st">"NYC"</span><span class="op">,</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="dt">quantity</span><span class="op">:</span> <span class="dv">150</span><span class="op">,</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="dt">lastRestocked</span><span class="op">:</span> <span class="fu">ISODate</span>(<span class="st">"2026-01-10"</span>)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  <span class="dt">tags</span><span class="op">:</span> [<span class="st">"audio"</span><span class="op">,</span> <span class="st">"wireless"</span><span class="op">,</span> <span class="st">"premium"</span>]<span class="op">,</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  <span class="dt">createdAt</span><span class="op">:</span> <span class="fu">ISODate</span>(<span class="st">"2025-06-01"</span>)<span class="op">,</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  <span class="dt">updatedAt</span><span class="op">:</span> <span class="fu">ISODate</span>(<span class="st">"2026-01-15"</span>)</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="relational-databases-postgresql" class="level3">
+<h3 class="anchored" data-anchor-id="relational-databases-postgresql">Relational Databases (PostgreSQL)</h3>
+<p>Relational databases organize data into tables with predefined schemas. They excel at maintaining data integrity through constraints, relationships, and ACID transactions.</p>
+<p><strong>Characteristics:</strong> - Strict schema enforcement - ACID transactions - Complex joins and queries - Referential integrity - Mature tooling and expertise</p>
+<p><strong>Best For:</strong> - Financial transactions - Inventory management - User authentication and authorization - Reporting and analytics - Any data requiring strict consistency</p>
+<p><strong>PostgreSQL Schema Example:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- Users table</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> users (</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">id</span> SERIAL <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  email <span class="dt">VARCHAR</span>(<span class="dv">255</span>) <span class="kw">UNIQUE</span> <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  password_hash <span class="dt">VARCHAR</span>(<span class="dv">255</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  name <span class="dt">VARCHAR</span>(<span class="dv">100</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">role</span> <span class="dt">VARCHAR</span>(<span class="dv">20</span>) <span class="kw">DEFAULT</span> <span class="st">'user'</span>,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  created_at <span class="dt">TIMESTAMP</span> <span class="kw">DEFAULT</span> <span class="fu">CURRENT_TIMESTAMP</span>,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  updated_at <span class="dt">TIMESTAMP</span> <span class="kw">DEFAULT</span> <span class="fu">CURRENT_TIMESTAMP</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>);</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">-- Orders table with foreign key</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> orders (</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="kw">id</span> SERIAL <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  user_id <span class="dt">INTEGER</span> <span class="kw">NOT</span> <span class="kw">NULL</span> <span class="kw">REFERENCES</span> users(<span class="kw">id</span>),</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  status <span class="dt">VARCHAR</span>(<span class="dv">20</span>) <span class="kw">DEFAULT</span> <span class="st">'pending'</span>,</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  total_amount <span class="dt">DECIMAL</span>(<span class="dv">10</span>, <span class="dv">2</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  shipping_address JSONB,</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  created_at <span class="dt">TIMESTAMP</span> <span class="kw">DEFAULT</span> <span class="fu">CURRENT_TIMESTAMP</span>,</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  updated_at <span class="dt">TIMESTAMP</span> <span class="kw">DEFAULT</span> <span class="fu">CURRENT_TIMESTAMP</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>);</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="co">-- Order items (junction table)</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> order_items (</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  <span class="kw">id</span> SERIAL <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  order_id <span class="dt">INTEGER</span> <span class="kw">NOT</span> <span class="kw">NULL</span> <span class="kw">REFERENCES</span> orders(<span class="kw">id</span>) <span class="kw">ON</span> <span class="kw">DELETE</span> <span class="kw">CASCADE</span>,</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  product_id <span class="dt">VARCHAR</span>(<span class="dv">50</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>,  <span class="co">-- References MongoDB product</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>  quantity <span class="dt">INTEGER</span> <span class="kw">NOT</span> <span class="kw">NULL</span> <span class="kw">CHECK</span> (quantity <span class="op">&gt;</span> <span class="dv">0</span>),</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>  unit_price <span class="dt">DECIMAL</span>(<span class="dv">10</span>, <span class="dv">2</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>  created_at <span class="dt">TIMESTAMP</span> <span class="kw">DEFAULT</span> <span class="fu">CURRENT_TIMESTAMP</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>);</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="co">-- Indexes for common queries</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">INDEX</span> idx_orders_user_id <span class="kw">ON</span> orders(user_id);</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">INDEX</span> idx_orders_status <span class="kw">ON</span> orders(status);</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">INDEX</span> idx_order_items_order_id <span class="kw">ON</span> order_items(order_id);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="key-value-stores-redis" class="level3">
+<h3 class="anchored" data-anchor-id="key-value-stores-redis">Key-Value Stores (Redis)</h3>
+<p>Key-value stores provide extremely fast read/write operations by mapping keys directly to values. They’re ideal for caching and real-time data.</p>
+<p><strong>Characteristics:</strong> - Sub-millisecond latency - Simple data model - In-memory storage (with persistence options) - Rich data structures (strings, lists, sets, hashes, sorted sets) - Pub/sub messaging</p>
+<p><strong>Best For:</strong> - Session storage - Caching - Real-time leaderboards - Rate limiting - Message queues - Real-time analytics</p>
+<p><strong>Redis Data Structures:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Strings - Simple key-value</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">SET</span> user:123:name <span class="st">"John Doe"</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">GET</span> user:123:name</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Hashes - Object-like storage</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ex">HSET</span> user:123 name <span class="st">"John"</span> email <span class="st">"john@example.com"</span> role <span class="st">"admin"</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="ex">HGETALL</span> user:123</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Lists - Ordered collections</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="ex">LPUSH</span> notifications:user:123 <span class="st">"New message from Alice"</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="ex">LRANGE</span> notifications:user:123 0 9  <span class="co"># Get latest 10</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Sets - Unique collections</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="ex">SADD</span> user:123:followers <span class="st">"user:456"</span> <span class="st">"user:789"</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="ex">SISMEMBER</span> user:123:followers <span class="st">"user:456"</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Sorted Sets - Ranked collections</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="ex">ZADD</span> leaderboard 1500 <span class="st">"user:123"</span> 2000 <span class="st">"user:456"</span> 1800 <span class="st">"user:789"</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="ex">ZREVRANGE</span> leaderboard 0 9 WITHSCORES  <span class="co"># Top 10</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Expiration</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="ex">SETEX</span> session:abc123 3600 <span class="st">'{"userId": "123"}'</span>  <span class="co"># Expires in 1 hour</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="search-engines-elasticsearch" class="level3">
+<h3 class="anchored" data-anchor-id="search-engines-elasticsearch">Search Engines (Elasticsearch)</h3>
+<p>Search engines are optimized for full-text search, log analysis, and complex aggregations over large datasets.</p>
+<p><strong>Characteristics:</strong> - Full-text search with relevance scoring - Near real-time indexing - Distributed and scalable - Rich aggregation framework - Schema-on-read flexibility</p>
+<p><strong>Best For:</strong> - Product search - Log aggregation and analysis - Metrics and monitoring - Geospatial queries - Autocomplete and suggestions</p>
+<p><strong>Elasticsearch Example:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Index a document</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">await</span> client<span class="op">.</span><span class="fu">index</span>({</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">index</span><span class="op">:</span> <span class="st">'products'</span><span class="op">,</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">id</span><span class="op">:</span> <span class="st">'prod-123'</span><span class="op">,</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">body</span><span class="op">:</span> {</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">name</span><span class="op">:</span> <span class="st">'Wireless Bluetooth Headphones'</span><span class="op">,</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">description</span><span class="op">:</span> <span class="st">'Premium noise-cancelling headphones with 30-hour battery'</span><span class="op">,</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">category</span><span class="op">:</span> <span class="st">'electronics'</span><span class="op">,</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">price</span><span class="op">:</span> <span class="fl">149.99</span><span class="op">,</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">tags</span><span class="op">:</span> [<span class="st">'audio'</span><span class="op">,</span> <span class="st">'wireless'</span><span class="op">,</span> <span class="st">'bluetooth'</span>]<span class="op">,</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">specs</span><span class="op">:</span> {</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>      <span class="dt">brand</span><span class="op">:</span> <span class="st">'AudioPro'</span><span class="op">,</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>      <span class="dt">color</span><span class="op">:</span> <span class="st">'black'</span><span class="op">,</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>      <span class="dt">weight</span><span class="op">:</span> <span class="st">'250g'</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="dt">createdAt</span><span class="op">:</span> <span class="st">'2026-01-15T10:00:00Z'</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="co">// Full-text search with filters</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> results <span class="op">=</span> <span class="cf">await</span> client<span class="op">.</span><span class="fu">search</span>({</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>  <span class="dt">index</span><span class="op">:</span> <span class="st">'products'</span><span class="op">,</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>  <span class="dt">body</span><span class="op">:</span> {</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    <span class="dt">query</span><span class="op">:</span> {</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>      <span class="dt">bool</span><span class="op">:</span> {</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>        <span class="dt">must</span><span class="op">:</span> [</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>          {</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>            <span class="dt">multi_match</span><span class="op">:</span> {</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>              <span class="dt">query</span><span class="op">:</span> <span class="st">'wireless headphones'</span><span class="op">,</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>              <span class="dt">fields</span><span class="op">:</span> [<span class="st">'name^3'</span><span class="op">,</span> <span class="st">'description'</span><span class="op">,</span> <span class="st">'tags'</span>]<span class="op">,</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>              <span class="dt">fuzziness</span><span class="op">:</span> <span class="st">'AUTO'</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>          }</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>        ]<span class="op">,</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>        <span class="dt">filter</span><span class="op">:</span> [</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>          { <span class="dt">range</span><span class="op">:</span> { <span class="dt">price</span><span class="op">:</span> { <span class="dt">lte</span><span class="op">:</span> <span class="dv">200</span> } } }<span class="op">,</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>          { <span class="dt">term</span><span class="op">:</span> { <span class="dt">category</span><span class="op">:</span> <span class="st">'electronics'</span> } }</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>        ]</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>    <span class="dt">highlight</span><span class="op">:</span> {</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fields</span><span class="op">:</span> { <span class="dt">name</span><span class="op">:</span> {}<span class="op">,</span> <span class="dt">description</span><span class="op">:</span> {} }</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>    <span class="dt">aggs</span><span class="op">:</span> {</span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>      <span class="dt">price_ranges</span><span class="op">:</span> {</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>        <span class="dt">range</span><span class="op">:</span> {</span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>          <span class="dt">field</span><span class="op">:</span> <span class="st">'price'</span><span class="op">,</span></span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>          <span class="dt">ranges</span><span class="op">:</span> [</span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>            { <span class="dt">to</span><span class="op">:</span> <span class="dv">50</span> }<span class="op">,</span></span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>            { <span class="dt">from</span><span class="op">:</span> <span class="dv">50</span><span class="op">,</span> <span class="dt">to</span><span class="op">:</span> <span class="dv">100</span> }<span class="op">,</span></span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>            { <span class="dt">from</span><span class="op">:</span> <span class="dv">100</span><span class="op">,</span> <span class="dt">to</span><span class="op">:</span> <span class="dv">200</span> }<span class="op">,</span></span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>            { <span class="dt">from</span><span class="op">:</span> <span class="dv">200</span> }</span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>          ]</span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>      }<span class="op">,</span></span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>      <span class="dt">by_brand</span><span class="op">:</span> {</span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>        <span class="dt">terms</span><span class="op">:</span> { <span class="dt">field</span><span class="op">:</span> <span class="st">'specs.brand.keyword'</span> }</span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="choosing-the-right-database" class="level2">
+<h2 class="anchored" data-anchor-id="choosing-the-right-database">Choosing the Right Database</h2>
+<section id="decision-framework" class="level3">
+<h3 class="anchored" data-anchor-id="decision-framework">Decision Framework</h3>
+<p>When choosing a database, consider these factors:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 32%">
+<col style="width: 68%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Factor</th>
+<th>Questions to Ask</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Data Model</strong></td>
+<td>Is data structured or flexible? Are there complex relationships?</td>
+</tr>
+<tr class="even">
+<td><strong>Query Patterns</strong></td>
+<td>Simple lookups or complex joins? Full-text search needed?</td>
+</tr>
+<tr class="odd">
+<td><strong>Consistency</strong></td>
+<td>Is immediate consistency critical, or is eventual OK?</td>
+</tr>
+<tr class="even">
+<td><strong>Scale</strong></td>
+<td>What’s the expected data volume? Read vs.&nbsp;write ratio?</td>
+</tr>
+<tr class="odd">
+<td><strong>Team Expertise</strong></td>
+<td>What databases does the team know?</td>
+</tr>
+<tr class="even">
+<td><strong>Operational Costs</strong></td>
+<td>What’s the infrastructure and maintenance burden?</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="common-patterns-by-use-case" class="level3">
+<h3 class="anchored" data-anchor-id="common-patterns-by-use-case">Common Patterns by Use Case</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 27%">
+<col style="width: 35%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Use Case</th>
+<th>Primary DB</th>
+<th>Secondary DB</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>E-commerce</strong></td>
+<td>PostgreSQL</td>
+<td>MongoDB + Redis + Elasticsearch</td>
+<td>Transactions for orders, flexible products, caching, search</td>
+</tr>
+<tr class="even">
+<td><strong>Social Media</strong></td>
+<td>MongoDB</td>
+<td>Redis + Neo4j</td>
+<td>Flexible content, caching, graph relationships</td>
+</tr>
+<tr class="odd">
+<td><strong>Financial App</strong></td>
+<td>PostgreSQL</td>
+<td>Redis</td>
+<td>ACID transactions, caching</td>
+</tr>
+<tr class="even">
+<td><strong>Content Platform</strong></td>
+<td>MongoDB</td>
+<td>Elasticsearch + Redis</td>
+<td>Flexible content, search, caching</td>
+</tr>
+<tr class="odd">
+<td><strong>IoT Platform</strong></td>
+<td>TimescaleDB</td>
+<td>Redis + MongoDB</td>
+<td>Time-series data, caching, device configs</td>
+</tr>
+<tr class="even">
+<td><strong>Analytics</strong></td>
+<td>ClickHouse</td>
+<td>PostgreSQL</td>
+<td>OLAP queries, transactional data</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="the-polyglot-architecture" class="level3">
+<h3 class="anchored" data-anchor-id="the-polyglot-architecture">The Polyglot Architecture</h3>
+<p>A modern application might use multiple databases:</p>
+<pre><code>┌─────────────────────────────────────────────────────────────────────┐
+│                          Application Layer                           │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│   ┌─────────────┐    ┌─────────────┐    ┌─────────────┐           │
+│   │  MongoDB    │    │ PostgreSQL  │    │    Redis    │           │
+│   │             │    │             │    │             │           │
+│   │ - Products  │    │ - Users     │    │ - Sessions  │           │
+│   │ - Reviews   │    │ - Orders    │    │ - Cache     │           │
+│   │ - Content   │    │ - Payments  │    │ - Rate Limit│           │
+│   │ - Analytics │    │ - Inventory │    │ - Pub/Sub   │           │
+│   └─────────────┘    └─────────────┘    └─────────────┘           │
+│                                                                      │
+│   ┌─────────────────────────────────────────────────────────────┐  │
+│   │                      Elasticsearch                            │  │
+│   │           Product Search, Logs, Full-Text Queries            │  │
+│   └─────────────────────────────────────────────────────────────┘  │
+│                                                                      │
+└─────────────────────────────────────────────────────────────────────┘</code></pre>
+</section>
+</section>
+<section id="data-modeling-patterns" class="level2">
+<h2 class="anchored" data-anchor-id="data-modeling-patterns">Data Modeling Patterns</h2>
+<section id="denormalization-for-performance" class="level3">
+<h3 class="anchored" data-anchor-id="denormalization-for-performance">Denormalization for Performance</h3>
+<p>In document databases, denormalization trades storage space for query performance:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Normalized (requires join/lookup)</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">// users collection</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>{ <span class="dt">_id</span><span class="op">:</span> <span class="st">"user1"</span><span class="op">,</span> <span class="dt">name</span><span class="op">:</span> <span class="st">"Alice"</span> }</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">// posts collection</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>{ <span class="dt">_id</span><span class="op">:</span> <span class="st">"post1"</span><span class="op">,</span> <span class="dt">authorId</span><span class="op">:</span> <span class="st">"user1"</span><span class="op">,</span> <span class="dt">title</span><span class="op">:</span> <span class="st">"Hello World"</span> }</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">// Denormalized (self-contained)</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co">// posts collection</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="dt">_id</span><span class="op">:</span> <span class="st">"post1"</span><span class="op">,</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span><span class="op">:</span> <span class="st">"Hello World"</span><span class="op">,</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="dt">author</span><span class="op">:</span> {</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="dt">_id</span><span class="op">:</span> <span class="st">"user1"</span><span class="op">,</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="dt">name</span><span class="op">:</span> <span class="st">"Alice"</span><span class="op">,</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    <span class="dt">avatarUrl</span><span class="op">:</span> <span class="st">"/avatars/alice.jpg"</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Trade-offs:</strong> - <strong>Faster reads</strong> - No joins needed - <strong>Slower writes</strong> - Must update multiple documents when author changes - <strong>Data staleness</strong> - Denormalized data may become outdated - <strong>Storage increase</strong> - Duplicate data uses more space</p>
+</section>
+<section id="handling-many-to-many-relationships" class="level3">
+<h3 class="anchored" data-anchor-id="handling-many-to-many-relationships">Handling Many-to-Many Relationships</h3>
+<p><strong>In MongoDB (Array of References):</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">// For small to medium collections</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">// tags collection</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>{ <span class="dt">_id</span><span class="op">:</span> <span class="st">"tag1"</span><span class="op">,</span> <span class="dt">name</span><span class="op">:</span> <span class="st">"javascript"</span> }</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>{ <span class="dt">_id</span><span class="op">:</span> <span class="st">"tag2"</span><span class="op">,</span> <span class="dt">name</span><span class="op">:</span> <span class="st">"react"</span> }</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">// posts collection</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">_id</span><span class="op">:</span> <span class="st">"post1"</span><span class="op">,</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span><span class="op">:</span> <span class="st">"React Hooks Guide"</span><span class="op">,</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="dt">tagIds</span><span class="op">:</span> [<span class="st">"tag1"</span><span class="op">,</span> <span class="st">"tag2"</span>]  <span class="co">// Array of references</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co">// Query posts by tag</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>db<span class="op">.</span><span class="at">posts</span><span class="op">.</span><span class="fu">find</span>({ <span class="dt">tagIds</span><span class="op">:</span> <span class="st">"tag1"</span> })<span class="op">;</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co">// Populate tags (application-level join)</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> post <span class="op">=</span> <span class="cf">await</span> Post<span class="op">.</span><span class="fu">findById</span>(postId)<span class="op">.</span><span class="fu">populate</span>(<span class="st">'tagIds'</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>In PostgreSQL (Junction Table):</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- Junction table for many-to-many</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> post_tags (</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  post_id <span class="dt">INTEGER</span> <span class="kw">REFERENCES</span> posts(<span class="kw">id</span>) <span class="kw">ON</span> <span class="kw">DELETE</span> <span class="kw">CASCADE</span>,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  tag_id <span class="dt">INTEGER</span> <span class="kw">REFERENCES</span> tags(<span class="kw">id</span>) <span class="kw">ON</span> <span class="kw">DELETE</span> <span class="kw">CASCADE</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">PRIMARY</span> <span class="kw">KEY</span> (post_id, tag_id)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>);</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">-- Query posts with a specific tag</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> p.<span class="op">*</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> posts p</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> post_tags pt <span class="kw">ON</span> p.<span class="kw">id</span> <span class="op">=</span> pt.post_id</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> tags t <span class="kw">ON</span> pt.tag_id <span class="op">=</span> t.<span class="kw">id</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> t.name <span class="op">=</span> <span class="st">'javascript'</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="polymorphic-patterns" class="level3">
+<h3 class="anchored" data-anchor-id="polymorphic-patterns">Polymorphic Patterns</h3>
+<p>When different entity types share some fields but differ in others:</p>
+<p><strong>Single Collection with Type Field:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">// MongoDB: notifications collection</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">_id</span><span class="op">:</span> <span class="st">"notif1"</span><span class="op">,</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">type</span><span class="op">:</span> <span class="st">"comment"</span><span class="op">,</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">userId</span><span class="op">:</span> <span class="st">"user1"</span><span class="op">,</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">createdAt</span><span class="op">:</span> <span class="fu">ISODate</span>(<span class="st">"2026-01-15"</span>)<span class="op">,</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Type-specific fields</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">postId</span><span class="op">:</span> <span class="st">"post1"</span><span class="op">,</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">commentId</span><span class="op">:</span> <span class="st">"comment1"</span><span class="op">,</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="dt">commenterName</span><span class="op">:</span> <span class="st">"Bob"</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  <span class="dt">_id</span><span class="op">:</span> <span class="st">"notif2"</span><span class="op">,</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  <span class="dt">type</span><span class="op">:</span> <span class="st">"follow"</span><span class="op">,</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  <span class="dt">userId</span><span class="op">:</span> <span class="st">"user1"</span><span class="op">,</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>  <span class="dt">createdAt</span><span class="op">:</span> <span class="fu">ISODate</span>(<span class="st">"2026-01-15"</span>)<span class="op">,</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Type-specific fields</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>  <span class="dt">followerId</span><span class="op">:</span> <span class="st">"user2"</span><span class="op">,</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>  <span class="dt">followerName</span><span class="op">:</span> <span class="st">"Alice"</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>  <span class="dt">_id</span><span class="op">:</span> <span class="st">"notif3"</span><span class="op">,</span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>  <span class="dt">type</span><span class="op">:</span> <span class="st">"mention"</span><span class="op">,</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>  <span class="dt">userId</span><span class="op">:</span> <span class="st">"user1"</span><span class="op">,</span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>  <span class="dt">createdAt</span><span class="op">:</span> <span class="fu">ISODate</span>(<span class="st">"2026-01-15"</span>)<span class="op">,</span></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Type-specific fields</span></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>  <span class="dt">postId</span><span class="op">:</span> <span class="st">"post2"</span><span class="op">,</span></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>  <span class="dt">mentionedBy</span><span class="op">:</span> <span class="st">"user3"</span></span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Mongoose Discriminators:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> notificationSchema <span class="op">=</span> <span class="kw">new</span> mongoose<span class="op">.</span><span class="fu">Schema</span>({</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">userId</span><span class="op">:</span> { <span class="dt">type</span><span class="op">:</span> mongoose<span class="op">.</span><span class="at">Schema</span><span class="op">.</span><span class="at">Types</span><span class="op">.</span><span class="at">ObjectId</span><span class="op">,</span> <span class="dt">ref</span><span class="op">:</span> <span class="st">'User'</span><span class="op">,</span> <span class="dt">required</span><span class="op">:</span> <span class="kw">true</span> }<span class="op">,</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">read</span><span class="op">:</span> { <span class="dt">type</span><span class="op">:</span> <span class="bu">Boolean</span><span class="op">,</span> <span class="cf">default</span><span class="op">:</span> <span class="kw">false</span> }<span class="op">,</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">createdAt</span><span class="op">:</span> { <span class="dt">type</span><span class="op">:</span> <span class="bu">Date</span><span class="op">,</span> <span class="cf">default</span><span class="op">:</span> <span class="bu">Date</span><span class="op">.</span><span class="at">now</span> }</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>}<span class="op">,</span> { <span class="dt">discriminatorKey</span><span class="op">:</span> <span class="st">'type'</span> })<span class="op">;</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> <span class="bu">Notification</span> <span class="op">=</span> mongoose<span class="op">.</span><span class="fu">model</span>(<span class="st">'Notification'</span><span class="op">,</span> notificationSchema)<span class="op">;</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co">// Comment notification discriminator</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> CommentNotification <span class="op">=</span> <span class="bu">Notification</span><span class="op">.</span><span class="fu">discriminator</span>(<span class="st">'comment'</span><span class="op">,</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="kw">new</span> mongoose<span class="op">.</span><span class="fu">Schema</span>({</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">postId</span><span class="op">:</span> { <span class="dt">type</span><span class="op">:</span> mongoose<span class="op">.</span><span class="at">Schema</span><span class="op">.</span><span class="at">Types</span><span class="op">.</span><span class="at">ObjectId</span><span class="op">,</span> <span class="dt">ref</span><span class="op">:</span> <span class="st">'Post'</span> }<span class="op">,</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">commentId</span><span class="op">:</span> { <span class="dt">type</span><span class="op">:</span> mongoose<span class="op">.</span><span class="at">Schema</span><span class="op">.</span><span class="at">Types</span><span class="op">.</span><span class="at">ObjectId</span><span class="op">,</span> <span class="dt">ref</span><span class="op">:</span> <span class="st">'Comment'</span> }<span class="op">,</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    <span class="dt">commenterName</span><span class="op">:</span> <span class="bu">String</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="co">// Follow notification discriminator</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> FollowNotification <span class="op">=</span> <span class="bu">Notification</span><span class="op">.</span><span class="fu">discriminator</span>(<span class="st">'follow'</span><span class="op">,</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>  <span class="kw">new</span> mongoose<span class="op">.</span><span class="fu">Schema</span>({</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>    <span class="dt">followerId</span><span class="op">:</span> { <span class="dt">type</span><span class="op">:</span> mongoose<span class="op">.</span><span class="at">Schema</span><span class="op">.</span><span class="at">Types</span><span class="op">.</span><span class="at">ObjectId</span><span class="op">,</span> <span class="dt">ref</span><span class="op">:</span> <span class="st">'User'</span> }<span class="op">,</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>    <span class="dt">followerName</span><span class="op">:</span> <span class="bu">String</span></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a><span class="co">// Query all notifications (both types)</span></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> notifications <span class="op">=</span> <span class="cf">await</span> <span class="bu">Notification</span><span class="op">.</span><span class="fu">find</span>({ <span class="dt">userId</span><span class="op">:</span> user<span class="op">.</span><span class="at">_id</span> })<span class="op">;</span></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a><span class="co">// Query only follow notifications</span></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> follows <span class="op">=</span> <span class="cf">await</span> FollowNotification<span class="op">.</span><span class="fu">find</span>({ <span class="dt">userId</span><span class="op">:</span> user<span class="op">.</span><span class="at">_id</span> })<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="time-series-data" class="level3">
+<h3 class="anchored" data-anchor-id="time-series-data">Time-Series Data</h3>
+<p>For data that’s primarily written once and queried by time ranges:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">// MongoDB: Bucket pattern for time-series</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">_id</span><span class="op">:</span> <span class="fu">ObjectId</span>(<span class="st">"..."</span>)<span class="op">,</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">sensorId</span><span class="op">:</span> <span class="st">"sensor-001"</span><span class="op">,</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">bucket</span><span class="op">:</span> <span class="st">"2026-01-15T10:00"</span><span class="op">,</span>  <span class="co">// Hourly bucket</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">measurements</span><span class="op">:</span> [</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    { <span class="dt">timestamp</span><span class="op">:</span> <span class="fu">ISODate</span>(<span class="st">"2026-01-15T10:00:15"</span>)<span class="op">,</span> <span class="dt">temp</span><span class="op">:</span> <span class="fl">22.5</span><span class="op">,</span> <span class="dt">humidity</span><span class="op">:</span> <span class="dv">45</span> }<span class="op">,</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    { <span class="dt">timestamp</span><span class="op">:</span> <span class="fu">ISODate</span>(<span class="st">"2026-01-15T10:01:30"</span>)<span class="op">,</span> <span class="dt">temp</span><span class="op">:</span> <span class="fl">22.6</span><span class="op">,</span> <span class="dt">humidity</span><span class="op">:</span> <span class="dv">44</span> }<span class="op">,</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    { <span class="dt">timestamp</span><span class="op">:</span> <span class="fu">ISODate</span>(<span class="st">"2026-01-15T10:02:45"</span>)<span class="op">,</span> <span class="dt">temp</span><span class="op">:</span> <span class="fl">22.4</span><span class="op">,</span> <span class="dt">humidity</span><span class="op">:</span> <span class="dv">46</span> }</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">// ... up to N measurements per bucket</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>  ]<span class="op">,</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>  <span class="dt">count</span><span class="op">:</span> <span class="dv">180</span><span class="op">,</span>  <span class="co">// Number of measurements in bucket</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>  <span class="dt">sum</span><span class="op">:</span> { <span class="dt">temp</span><span class="op">:</span> <span class="dv">4050</span><span class="op">,</span> <span class="dt">humidity</span><span class="op">:</span> <span class="dv">8100</span> }<span class="op">,</span>  <span class="co">// For calculating averages</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>  <span class="dt">min</span><span class="op">:</span> { <span class="dt">temp</span><span class="op">:</span> <span class="fl">22.1</span><span class="op">,</span> <span class="dt">humidity</span><span class="op">:</span> <span class="dv">42</span> }<span class="op">,</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>  <span class="dt">max</span><span class="op">:</span> { <span class="dt">temp</span><span class="op">:</span> <span class="fl">23.0</span><span class="op">,</span> <span class="dt">humidity</span><span class="op">:</span> <span class="dv">48</span> }</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="co">// Query: Get hourly averages for a day</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>db<span class="op">.</span><span class="at">sensorData</span><span class="op">.</span><span class="fu">aggregate</span>([</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>  {</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    <span class="dt">$match</span><span class="op">:</span> {</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>      <span class="dt">sensorId</span><span class="op">:</span> <span class="st">"sensor-001"</span><span class="op">,</span></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>      <span class="dt">bucket</span><span class="op">:</span> {</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>        <span class="dt">$gte</span><span class="op">:</span> <span class="st">"2026-01-15T00:00"</span><span class="op">,</span></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>        <span class="dt">$lt</span><span class="op">:</span> <span class="st">"2026-01-16T00:00"</span></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>  {</span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>    <span class="dt">$project</span><span class="op">:</span> {</span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>      <span class="dt">bucket</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span></span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>      <span class="dt">avgTemp</span><span class="op">:</span> { <span class="dt">$divide</span><span class="op">:</span> [<span class="st">"$sum.temp"</span><span class="op">,</span> <span class="st">"$count"</span>] }<span class="op">,</span></span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>      <span class="dt">avgHumidity</span><span class="op">:</span> { <span class="dt">$divide</span><span class="op">:</span> [<span class="st">"$sum.humidity"</span><span class="op">,</span> <span class="st">"$count"</span>] }</span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>])<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="data-consistency-patterns" class="level2">
+<h2 class="anchored" data-anchor-id="data-consistency-patterns">Data Consistency Patterns</h2>
+<section id="cap-theorem" class="level3">
+<h3 class="anchored" data-anchor-id="cap-theorem">CAP Theorem</h3>
+<p>The <strong>CAP theorem</strong> states that a distributed system can provide at most two of three guarantees:</p>
 <ul>
-<li>MongoDB for document storage</li>
-<li>PostgreSQL for relational data</li>
-<li>Choosing the right database</li>
-<li>Data consistency patterns</li>
+<li><strong>Consistency</strong>: All nodes see the same data at the same time</li>
+<li><strong>Availability</strong>: Every request receives a response</li>
+<li><strong>Partition Tolerance</strong>: System continues to operate despite network partitions</li>
+</ul>
+<pre><code>                    Consistency
+                        /\
+                       /  \
+                      /    \
+                     /      \
+                    /   CA   \
+                   /          \
+                  /____________\
+                 /\            /\
+                /  \    CP    /  \
+               / AP \        /    \
+              /______\______/______\
+         Availability        Partition
+                            Tolerance</code></pre>
+<p><strong>In Practice:</strong> - Network partitions are inevitable - You must choose between <strong>CP</strong> (consistency) and <strong>AP</strong> (availability) - MongoDB and PostgreSQL are typically <strong>CP</strong> (strong consistency) - Cassandra and DynamoDB are typically <strong>AP</strong> (high availability)</p>
+</section>
+<section id="eventual-consistency" class="level3">
+<h3 class="anchored" data-anchor-id="eventual-consistency">Eventual Consistency</h3>
+<p>In eventually consistent systems, updates propagate asynchronously:</p>
+<pre><code>Time T0: User updates profile name to "Alice"
+         └─── Write to Primary
+
+Time T1: Primary acknowledges write
+         └─── User sees "Alice"
+         └─── Replica 1 still shows "Bob"
+
+Time T2: Replication in progress
+         └─── Replica 1 receives update
+
+Time T3: All replicas consistent
+         └─── All reads return "Alice"</code></pre>
+<p><strong>Handling Eventual Consistency:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Read your own writes pattern</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">updateProfile</span>(userId<span class="op">,</span> updates) {</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> user <span class="op">=</span> <span class="cf">await</span> User<span class="op">.</span><span class="fu">findByIdAndUpdate</span>(userId<span class="op">,</span> updates<span class="op">,</span> { <span class="kw">new</span><span class="op">:</span> <span class="kw">true</span> })<span class="op">;</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Cache the update for this user's session</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">await</span> redis<span class="op">.</span><span class="fu">setex</span>(<span class="vs">`user:</span><span class="sc">${</span>userId<span class="sc">}</span><span class="vs">:profile`</span><span class="op">,</span> <span class="dv">60</span><span class="op">,</span> <span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>(user))<span class="op">;</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> user<span class="op">;</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">getProfile</span>(userId<span class="op">,</span> requestingUserId) {</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  <span class="co">// If user is reading their own profile, check cache first</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (userId <span class="op">===</span> requestingUserId) {</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> cached <span class="op">=</span> <span class="cf">await</span> redis<span class="op">.</span><span class="fu">get</span>(<span class="vs">`user:</span><span class="sc">${</span>userId<span class="sc">}</span><span class="vs">:profile`</span>)<span class="op">;</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (cached) <span class="cf">return</span> <span class="bu">JSON</span><span class="op">.</span><span class="fu">parse</span>(cached)<span class="op">;</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Otherwise, read from database</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="cf">await</span> User<span class="op">.</span><span class="fu">findById</span>(userId)<span class="op">;</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="transaction-patterns" class="level3">
+<h3 class="anchored" data-anchor-id="transaction-patterns">Transaction Patterns</h3>
+<p><strong>Single Database Transactions (ACID):</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">// PostgreSQL transaction with Prisma</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> result <span class="op">=</span> <span class="cf">await</span> prisma<span class="op">.</span><span class="fu">$transaction</span>(<span class="kw">async</span> (tx) <span class="kw">=&gt;</span> {</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Deduct from sender</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> sender <span class="op">=</span> <span class="cf">await</span> tx<span class="op">.</span><span class="at">account</span><span class="op">.</span><span class="fu">update</span>({</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">where</span><span class="op">:</span> { <span class="dt">id</span><span class="op">:</span> senderId }<span class="op">,</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">data</span><span class="op">:</span> { <span class="dt">balance</span><span class="op">:</span> { <span class="dt">decrement</span><span class="op">:</span> amount } }</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (sender<span class="op">.</span><span class="at">balance</span> <span class="op">&lt;</span> <span class="dv">0</span>) {</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>(<span class="st">'Insufficient funds'</span>)<span class="op">;</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Add to receiver</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> receiver <span class="op">=</span> <span class="cf">await</span> tx<span class="op">.</span><span class="at">account</span><span class="op">.</span><span class="fu">update</span>({</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>    <span class="dt">where</span><span class="op">:</span> { <span class="dt">id</span><span class="op">:</span> receiverId }<span class="op">,</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>    <span class="dt">data</span><span class="op">:</span> { <span class="dt">balance</span><span class="op">:</span> { <span class="dt">increment</span><span class="op">:</span> amount } }</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Record transfer</span></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> transfer <span class="op">=</span> <span class="cf">await</span> tx<span class="op">.</span><span class="at">transfer</span><span class="op">.</span><span class="fu">create</span>({</span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>    <span class="dt">data</span><span class="op">:</span> {</span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>      senderId<span class="op">,</span></span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>      receiverId<span class="op">,</span></span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>      amount<span class="op">,</span></span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>      <span class="dt">status</span><span class="op">:</span> <span class="st">'completed'</span></span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> transfer<span class="op">;</span></span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Saga Pattern for Distributed Transactions:</strong></p>
+<p>When operations span multiple services/databases, use the Saga pattern:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Orchestration-based Saga</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> OrderSaga {</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">async</span> <span class="fu">execute</span>(orderData) {</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> steps <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span> {</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>      <span class="co">// Step 1: Create order (pending)</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> order <span class="op">=</span> <span class="cf">await</span> <span class="kw">this</span><span class="op">.</span><span class="at">orderService</span><span class="op">.</span><span class="fu">create</span>(orderData)<span class="op">;</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>      steps<span class="op">.</span><span class="fu">push</span>({ <span class="dt">service</span><span class="op">:</span> <span class="st">'order'</span><span class="op">,</span> <span class="dt">action</span><span class="op">:</span> <span class="st">'create'</span><span class="op">,</span> <span class="dt">data</span><span class="op">:</span> order })<span class="op">;</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>      <span class="co">// Step 2: Reserve inventory</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> reservation <span class="op">=</span> <span class="cf">await</span> <span class="kw">this</span><span class="op">.</span><span class="at">inventoryService</span><span class="op">.</span><span class="fu">reserve</span>(order<span class="op">.</span><span class="at">items</span>)<span class="op">;</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>      steps<span class="op">.</span><span class="fu">push</span>({ <span class="dt">service</span><span class="op">:</span> <span class="st">'inventory'</span><span class="op">,</span> <span class="dt">action</span><span class="op">:</span> <span class="st">'reserve'</span><span class="op">,</span> <span class="dt">data</span><span class="op">:</span> reservation })<span class="op">;</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>      <span class="co">// Step 3: Process payment</span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> payment <span class="op">=</span> <span class="cf">await</span> <span class="kw">this</span><span class="op">.</span><span class="at">paymentService</span><span class="op">.</span><span class="fu">charge</span>(order<span class="op">.</span><span class="at">total</span><span class="op">,</span> order<span class="op">.</span><span class="at">userId</span>)<span class="op">;</span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>      steps<span class="op">.</span><span class="fu">push</span>({ <span class="dt">service</span><span class="op">:</span> <span class="st">'payment'</span><span class="op">,</span> <span class="dt">action</span><span class="op">:</span> <span class="st">'charge'</span><span class="op">,</span> <span class="dt">data</span><span class="op">:</span> payment })<span class="op">;</span></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>      <span class="co">// Step 4: Confirm order</span></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>      <span class="cf">await</span> <span class="kw">this</span><span class="op">.</span><span class="at">orderService</span><span class="op">.</span><span class="fu">confirm</span>(order<span class="op">.</span><span class="at">id</span>)<span class="op">;</span></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> order<span class="op">;</span></span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">catch</span> (error) {</span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>      <span class="co">// Compensate in reverse order</span></span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>      <span class="cf">await</span> <span class="kw">this</span><span class="op">.</span><span class="fu">compensate</span>(steps)<span class="op">;</span></span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>      <span class="cf">throw</span> error<span class="op">;</span></span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>  <span class="kw">async</span> <span class="fu">compensate</span>(steps) {</span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">const</span> step <span class="kw">of</span> steps<span class="op">.</span><span class="fu">reverse</span>()) {</span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>      <span class="cf">try</span> {</span>
+<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>        <span class="cf">switch</span> (step<span class="op">.</span><span class="at">service</span>) {</span>
+<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a>          <span class="cf">case</span> <span class="st">'order'</span><span class="op">:</span></span>
+<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a>            <span class="cf">await</span> <span class="kw">this</span><span class="op">.</span><span class="at">orderService</span><span class="op">.</span><span class="fu">cancel</span>(step<span class="op">.</span><span class="at">data</span><span class="op">.</span><span class="at">id</span>)<span class="op">;</span></span>
+<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a>          <span class="cf">case</span> <span class="st">'inventory'</span><span class="op">:</span></span>
+<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a>            <span class="cf">await</span> <span class="kw">this</span><span class="op">.</span><span class="at">inventoryService</span><span class="op">.</span><span class="fu">release</span>(step<span class="op">.</span><span class="at">data</span><span class="op">.</span><span class="at">reservationId</span>)<span class="op">;</span></span>
+<span id="cb16-39"><a href="#cb16-39" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb16-40"><a href="#cb16-40" aria-hidden="true" tabindex="-1"></a>          <span class="cf">case</span> <span class="st">'payment'</span><span class="op">:</span></span>
+<span id="cb16-41"><a href="#cb16-41" aria-hidden="true" tabindex="-1"></a>            <span class="cf">await</span> <span class="kw">this</span><span class="op">.</span><span class="at">paymentService</span><span class="op">.</span><span class="fu">refund</span>(step<span class="op">.</span><span class="at">data</span><span class="op">.</span><span class="at">transactionId</span>)<span class="op">;</span></span>
+<span id="cb16-42"><a href="#cb16-42" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb16-43"><a href="#cb16-43" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb16-44"><a href="#cb16-44" aria-hidden="true" tabindex="-1"></a>      } <span class="cf">catch</span> (compensationError) {</span>
+<span id="cb16-45"><a href="#cb16-45" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Log and alert - manual intervention may be needed</span></span>
+<span id="cb16-46"><a href="#cb16-46" aria-hidden="true" tabindex="-1"></a>        <span class="bu">console</span><span class="op">.</span><span class="fu">error</span>(<span class="st">'Compensation failed:'</span><span class="op">,</span> compensationError)<span class="op">;</span></span>
+<span id="cb16-47"><a href="#cb16-47" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb16-48"><a href="#cb16-48" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb16-49"><a href="#cb16-49" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb16-50"><a href="#cb16-50" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="outbox-pattern" class="level3">
+<h3 class="anchored" data-anchor-id="outbox-pattern">Outbox Pattern</h3>
+<p>For reliable event publishing with database changes:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Instead of:</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co">// 1. Update database</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co">// 2. Publish event (might fail, leaving inconsistent state)</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co">// Use outbox pattern:</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co">// 1. Update database AND write to outbox table (single transaction)</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co">// 2. Separate process reads outbox and publishes events</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co">// Step 1: Write operation with outbox</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">completeOrder</span>(orderId) {</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">await</span> prisma<span class="op">.</span><span class="fu">$transaction</span>(<span class="kw">async</span> (tx) <span class="kw">=&gt;</span> {</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Update order status</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">await</span> tx<span class="op">.</span><span class="at">order</span><span class="op">.</span><span class="fu">update</span>({</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>      <span class="dt">where</span><span class="op">:</span> { <span class="dt">id</span><span class="op">:</span> orderId }<span class="op">,</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>      <span class="dt">data</span><span class="op">:</span> { <span class="dt">status</span><span class="op">:</span> <span class="st">'completed'</span><span class="op">,</span> <span class="dt">completedAt</span><span class="op">:</span> <span class="kw">new</span> <span class="bu">Date</span>() }</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Write to outbox (same transaction)</span></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">await</span> tx<span class="op">.</span><span class="at">outbox</span><span class="op">.</span><span class="fu">create</span>({</span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>      <span class="dt">data</span><span class="op">:</span> {</span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>        <span class="dt">aggregateType</span><span class="op">:</span> <span class="st">'Order'</span><span class="op">,</span></span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>        <span class="dt">aggregateId</span><span class="op">:</span> orderId<span class="op">,</span></span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>        <span class="dt">eventType</span><span class="op">:</span> <span class="st">'OrderCompleted'</span><span class="op">,</span></span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>        <span class="dt">payload</span><span class="op">:</span> <span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>({ orderId<span class="op">,</span> <span class="dt">completedAt</span><span class="op">:</span> <span class="kw">new</span> <span class="bu">Date</span>() })<span class="op">,</span></span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a>        <span class="dt">createdAt</span><span class="op">:</span> <span class="kw">new</span> <span class="bu">Date</span>()</span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a><span class="co">// Step 2: Outbox processor (runs periodically)</span></span>
+<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">processOutbox</span>() {</span>
+<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> events <span class="op">=</span> <span class="cf">await</span> prisma<span class="op">.</span><span class="at">outbox</span><span class="op">.</span><span class="fu">findMany</span>({</span>
+<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a>    <span class="dt">where</span><span class="op">:</span> { <span class="dt">processedAt</span><span class="op">:</span> <span class="kw">null</span> }<span class="op">,</span></span>
+<span id="cb17-35"><a href="#cb17-35" aria-hidden="true" tabindex="-1"></a>    <span class="dt">orderBy</span><span class="op">:</span> { <span class="dt">createdAt</span><span class="op">:</span> <span class="st">'asc'</span> }<span class="op">,</span></span>
+<span id="cb17-36"><a href="#cb17-36" aria-hidden="true" tabindex="-1"></a>    <span class="dt">take</span><span class="op">:</span> <span class="dv">100</span></span>
+<span id="cb17-37"><a href="#cb17-37" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb17-38"><a href="#cb17-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-39"><a href="#cb17-39" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">const</span> <span class="bu">event</span> <span class="kw">of</span> events) {</span>
+<span id="cb17-40"><a href="#cb17-40" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span> {</span>
+<span id="cb17-41"><a href="#cb17-41" aria-hidden="true" tabindex="-1"></a>      <span class="co">// Publish to message broker</span></span>
+<span id="cb17-42"><a href="#cb17-42" aria-hidden="true" tabindex="-1"></a>      <span class="cf">await</span> messageBroker<span class="op">.</span><span class="fu">publish</span>(<span class="bu">event</span><span class="op">.</span><span class="at">eventType</span><span class="op">,</span> <span class="bu">JSON</span><span class="op">.</span><span class="fu">parse</span>(<span class="bu">event</span><span class="op">.</span><span class="at">payload</span>))<span class="op">;</span></span>
+<span id="cb17-43"><a href="#cb17-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-44"><a href="#cb17-44" aria-hidden="true" tabindex="-1"></a>      <span class="co">// Mark as processed</span></span>
+<span id="cb17-45"><a href="#cb17-45" aria-hidden="true" tabindex="-1"></a>      <span class="cf">await</span> prisma<span class="op">.</span><span class="at">outbox</span><span class="op">.</span><span class="fu">update</span>({</span>
+<span id="cb17-46"><a href="#cb17-46" aria-hidden="true" tabindex="-1"></a>        <span class="dt">where</span><span class="op">:</span> { <span class="dt">id</span><span class="op">:</span> <span class="bu">event</span><span class="op">.</span><span class="at">id</span> }<span class="op">,</span></span>
+<span id="cb17-47"><a href="#cb17-47" aria-hidden="true" tabindex="-1"></a>        <span class="dt">data</span><span class="op">:</span> { <span class="dt">processedAt</span><span class="op">:</span> <span class="kw">new</span> <span class="bu">Date</span>() }</span>
+<span id="cb17-48"><a href="#cb17-48" aria-hidden="true" tabindex="-1"></a>      })<span class="op">;</span></span>
+<span id="cb17-49"><a href="#cb17-49" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">catch</span> (error) {</span>
+<span id="cb17-50"><a href="#cb17-50" aria-hidden="true" tabindex="-1"></a>      <span class="bu">console</span><span class="op">.</span><span class="fu">error</span>(<span class="st">'Failed to process outbox event:'</span><span class="op">,</span> <span class="bu">event</span><span class="op">.</span><span class="at">id</span><span class="op">,</span> error)<span class="op">;</span></span>
+<span id="cb17-51"><a href="#cb17-51" aria-hidden="true" tabindex="-1"></a>      <span class="co">// Will retry on next run</span></span>
+<span id="cb17-52"><a href="#cb17-52" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb17-53"><a href="#cb17-53" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb17-54"><a href="#cb17-54" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="cross-database-operations" class="level2">
+<h2 class="anchored" data-anchor-id="cross-database-operations">Cross-Database Operations</h2>
+<section id="synchronizing-data-between-databases" class="level3">
+<h3 class="anchored" data-anchor-id="synchronizing-data-between-databases">Synchronizing Data Between Databases</h3>
+<p>When using multiple databases, you need strategies for keeping data in sync.</p>
+<p><strong>Change Data Capture (CDC):</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">// MongoDB Change Streams</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> changeStream <span class="op">=</span> db<span class="op">.</span><span class="fu">collection</span>(<span class="st">'products'</span>)<span class="op">.</span><span class="fu">watch</span>()<span class="op">;</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>changeStream<span class="op">.</span><span class="fu">on</span>(<span class="st">'change'</span><span class="op">,</span> <span class="kw">async</span> (change) <span class="kw">=&gt;</span> {</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">switch</span> (change<span class="op">.</span><span class="at">operationType</span>) {</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> <span class="st">'insert'</span><span class="op">:</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> <span class="st">'update'</span><span class="op">:</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> <span class="st">'replace'</span><span class="op">:</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>      <span class="co">// Sync to Elasticsearch</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>      <span class="cf">await</span> elasticsearch<span class="op">.</span><span class="fu">index</span>({</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>        <span class="dt">index</span><span class="op">:</span> <span class="st">'products'</span><span class="op">,</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>        <span class="dt">id</span><span class="op">:</span> change<span class="op">.</span><span class="at">documentKey</span><span class="op">.</span><span class="at">_id</span><span class="op">.</span><span class="fu">toString</span>()<span class="op">,</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>        <span class="dt">body</span><span class="op">:</span> change<span class="op">.</span><span class="at">fullDocument</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>      })<span class="op">;</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>      <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> <span class="st">'delete'</span><span class="op">:</span></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>      <span class="cf">await</span> elasticsearch<span class="op">.</span><span class="fu">delete</span>({</span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>        <span class="dt">index</span><span class="op">:</span> <span class="st">'products'</span><span class="op">,</span></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>        <span class="dt">id</span><span class="op">:</span> change<span class="op">.</span><span class="at">documentKey</span><span class="op">.</span><span class="at">_id</span><span class="op">.</span><span class="fu">toString</span>()</span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>      })<span class="op">;</span></span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>      <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Application-Level Sync:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ProductService {</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">async</span> <span class="fu">create</span>(productData) {</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Write to primary database</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> product <span class="op">=</span> <span class="cf">await</span> Product<span class="op">.</span><span class="fu">create</span>(productData)<span class="op">;</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Sync to search index (fire and forget, or queue)</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="fu">syncToSearch</span>(product)<span class="op">.</span><span class="fu">catch</span>(err <span class="kw">=&gt;</span> {</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>      <span class="bu">console</span><span class="op">.</span><span class="fu">error</span>(<span class="st">'Search sync failed:'</span><span class="op">,</span> err)<span class="op">;</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>      <span class="co">// Queue for retry</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>      <span class="kw">this</span><span class="op">.</span><span class="at">syncQueue</span><span class="op">.</span><span class="fu">add</span>(<span class="st">'indexProduct'</span><span class="op">,</span> { <span class="dt">productId</span><span class="op">:</span> product<span class="op">.</span><span class="at">_id</span> })<span class="op">;</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Invalidate cache</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">await</span> redis<span class="op">.</span><span class="fu">del</span>(<span class="st">'products:list'</span>)<span class="op">;</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> product<span class="op">;</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>  <span class="kw">async</span> <span class="fu">syncToSearch</span>(product) {</span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">await</span> elasticsearch<span class="op">.</span><span class="fu">index</span>({</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>      <span class="dt">index</span><span class="op">:</span> <span class="st">'products'</span><span class="op">,</span></span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>      <span class="dt">id</span><span class="op">:</span> product<span class="op">.</span><span class="at">_id</span><span class="op">.</span><span class="fu">toString</span>()<span class="op">,</span></span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>      <span class="dt">body</span><span class="op">:</span> {</span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>        <span class="dt">name</span><span class="op">:</span> product<span class="op">.</span><span class="at">name</span><span class="op">,</span></span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>        <span class="dt">description</span><span class="op">:</span> product<span class="op">.</span><span class="at">description</span><span class="op">,</span></span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>        <span class="dt">category</span><span class="op">:</span> product<span class="op">.</span><span class="at">category</span><span class="op">,</span></span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>        <span class="dt">price</span><span class="op">:</span> product<span class="op">.</span><span class="at">price</span><span class="op">,</span></span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a>        <span class="dt">tags</span><span class="op">:</span> product<span class="op">.</span><span class="at">tags</span></span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="cross-database-queries" class="level3">
+<h3 class="anchored" data-anchor-id="cross-database-queries">Cross-Database Queries</h3>
+<p>Sometimes you need to query across databases:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Combine data from MongoDB and PostgreSQL</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">getOrderWithProducts</span>(orderId) {</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Get order from PostgreSQL</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> order <span class="op">=</span> <span class="cf">await</span> prisma<span class="op">.</span><span class="at">order</span><span class="op">.</span><span class="fu">findUnique</span>({</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">where</span><span class="op">:</span> { <span class="dt">id</span><span class="op">:</span> orderId }<span class="op">,</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">include</span><span class="op">:</span> {</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>      <span class="dt">items</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>      <span class="dt">user</span><span class="op">:</span> { <span class="dt">select</span><span class="op">:</span> { <span class="dt">id</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">name</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">email</span><span class="op">:</span> <span class="kw">true</span> } }</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="op">!</span>order) <span class="cf">return</span> <span class="kw">null</span><span class="op">;</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Get product details from MongoDB</span></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> productIds <span class="op">=</span> order<span class="op">.</span><span class="at">items</span><span class="op">.</span><span class="fu">map</span>(item <span class="kw">=&gt;</span> item<span class="op">.</span><span class="at">productId</span>)<span class="op">;</span></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> products <span class="op">=</span> <span class="cf">await</span> Product<span class="op">.</span><span class="fu">find</span>({</span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>    <span class="dt">_id</span><span class="op">:</span> { <span class="dt">$in</span><span class="op">:</span> productIds<span class="op">.</span><span class="fu">map</span>(id <span class="kw">=&gt;</span> <span class="kw">new</span> mongoose<span class="op">.</span><span class="at">Types</span><span class="op">.</span><span class="fu">ObjectId</span>(id)) }</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Create lookup map</span></span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> productMap <span class="op">=</span> <span class="kw">new</span> <span class="bu">Map</span>(</span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>    products<span class="op">.</span><span class="fu">map</span>(p <span class="kw">=&gt;</span> [p<span class="op">.</span><span class="at">_id</span><span class="op">.</span><span class="fu">toString</span>()<span class="op">,</span> p])</span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Combine data</span></span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> {</span>
+<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>    <span class="op">...</span>order<span class="op">,</span></span>
+<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>    <span class="dt">items</span><span class="op">:</span> order<span class="op">.</span><span class="at">items</span><span class="op">.</span><span class="fu">map</span>(item <span class="kw">=&gt;</span> ({</span>
+<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a>      <span class="op">...</span>item<span class="op">,</span></span>
+<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>      <span class="dt">product</span><span class="op">:</span> productMap<span class="op">.</span><span class="fu">get</span>(item<span class="op">.</span><span class="at">productId</span>)</span>
+<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a>    }))</span>
+<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="caching-strategies" class="level2">
+<h2 class="anchored" data-anchor-id="caching-strategies">Caching Strategies</h2>
+<section id="cache-aside-pattern" class="level3">
+<h3 class="anchored" data-anchor-id="cache-aside-pattern">Cache-Aside Pattern</h3>
+<p>The application manages the cache explicitly:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">getProduct</span>(productId) {</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> cacheKey <span class="op">=</span> <span class="vs">`product:</span><span class="sc">${</span>productId<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Try cache first</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> cached <span class="op">=</span> <span class="cf">await</span> redis<span class="op">.</span><span class="fu">get</span>(cacheKey)<span class="op">;</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (cached) {</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">JSON</span><span class="op">.</span><span class="fu">parse</span>(cached)<span class="op">;</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Cache miss - fetch from database</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> product <span class="op">=</span> <span class="cf">await</span> Product<span class="op">.</span><span class="fu">findById</span>(productId)<span class="op">;</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="op">!</span>product) <span class="cf">return</span> <span class="kw">null</span><span class="op">;</span></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Store in cache</span></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>  <span class="cf">await</span> redis<span class="op">.</span><span class="fu">setex</span>(cacheKey<span class="op">,</span> <span class="dv">3600</span><span class="op">,</span> <span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>(product))<span class="op">;</span></span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> product<span class="op">;</span></span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">updateProduct</span>(productId<span class="op">,</span> updates) {</span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> product <span class="op">=</span> <span class="cf">await</span> Product<span class="op">.</span><span class="fu">findByIdAndUpdate</span>(productId<span class="op">,</span> updates<span class="op">,</span> { <span class="kw">new</span><span class="op">:</span> <span class="kw">true</span> })<span class="op">;</span></span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Invalidate cache</span></span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>  <span class="cf">await</span> redis<span class="op">.</span><span class="fu">del</span>(<span class="vs">`product:</span><span class="sc">${</span>productId<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> product<span class="op">;</span></span>
+<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="write-through-cache" class="level3">
+<h3 class="anchored" data-anchor-id="write-through-cache">Write-Through Cache</h3>
+<p>Write to cache and database together:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">createProduct</span>(productData) {</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> product <span class="op">=</span> <span class="cf">await</span> Product<span class="op">.</span><span class="fu">create</span>(productData)<span class="op">;</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Immediately cache the new product</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">await</span> redis<span class="op">.</span><span class="fu">setex</span>(</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    <span class="vs">`product:</span><span class="sc">${</span>product<span class="op">.</span><span class="at">_id</span><span class="sc">}</span><span class="vs">`</span><span class="op">,</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    <span class="dv">3600</span><span class="op">,</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>(product)</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> product<span class="op">;</span></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="cache-invalidation-patterns" class="level3">
+<h3 class="anchored" data-anchor-id="cache-invalidation-patterns">Cache Invalidation Patterns</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Pattern 1: Time-based expiration</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="cf">await</span> redis<span class="op">.</span><span class="fu">setex</span>(<span class="st">'products:featured'</span><span class="op">,</span> <span class="dv">300</span><span class="op">,</span> <span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>(products))<span class="op">;</span> <span class="co">// 5 min</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co">// Pattern 2: Event-based invalidation</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">updateProduct</span>(productId<span class="op">,</span> updates) {</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> product <span class="op">=</span> <span class="cf">await</span> Product<span class="op">.</span><span class="fu">findByIdAndUpdate</span>(productId<span class="op">,</span> updates<span class="op">,</span> { <span class="kw">new</span><span class="op">:</span> <span class="kw">true</span> })<span class="op">;</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Invalidate specific cache</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">await</span> redis<span class="op">.</span><span class="fu">del</span>(<span class="vs">`product:</span><span class="sc">${</span>productId<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Invalidate related caches</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">await</span> redis<span class="op">.</span><span class="fu">del</span>(<span class="st">'products:featured'</span>)<span class="op">;</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">await</span> redis<span class="op">.</span><span class="fu">del</span>(<span class="vs">`products:category:</span><span class="sc">${</span>product<span class="op">.</span><span class="at">category</span><span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> product<span class="op">;</span></span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a><span class="co">// Pattern 3: Tag-based invalidation</span></span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">cacheWithTags</span>(key<span class="op">,</span> value<span class="op">,</span> tags<span class="op">,</span> ttl) {</span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> pipeline <span class="op">=</span> redis<span class="op">.</span><span class="fu">pipeline</span>()<span class="op">;</span></span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Store value</span></span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a>  pipeline<span class="op">.</span><span class="fu">setex</span>(key<span class="op">,</span> ttl<span class="op">,</span> <span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>(value))<span class="op">;</span></span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Add key to each tag set</span></span>
+<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">const</span> tag <span class="kw">of</span> tags) {</span>
+<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a>    pipeline<span class="op">.</span><span class="fu">sadd</span>(<span class="vs">`tag:</span><span class="sc">${</span>tag<span class="sc">}</span><span class="vs">`</span><span class="op">,</span> key)<span class="op">;</span></span>
+<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-30"><a href="#cb23-30" aria-hidden="true" tabindex="-1"></a>  <span class="cf">await</span> pipeline<span class="op">.</span><span class="fu">exec</span>()<span class="op">;</span></span>
+<span id="cb23-31"><a href="#cb23-31" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb23-32"><a href="#cb23-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-33"><a href="#cb23-33" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">invalidateByTag</span>(tag) {</span>
+<span id="cb23-34"><a href="#cb23-34" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> keys <span class="op">=</span> <span class="cf">await</span> redis<span class="op">.</span><span class="fu">smembers</span>(<span class="vs">`tag:</span><span class="sc">${</span>tag<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb23-35"><a href="#cb23-35" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (keys<span class="op">.</span><span class="at">length</span> <span class="op">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb23-36"><a href="#cb23-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">await</span> redis<span class="op">.</span><span class="fu">del</span>(<span class="op">...</span>keys)<span class="op">;</span></span>
+<span id="cb23-37"><a href="#cb23-37" aria-hidden="true" tabindex="-1"></a>    <span class="cf">await</span> redis<span class="op">.</span><span class="fu">del</span>(<span class="vs">`tag:</span><span class="sc">${</span>tag<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb23-38"><a href="#cb23-38" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb23-39"><a href="#cb23-39" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb23-40"><a href="#cb23-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-41"><a href="#cb23-41" aria-hidden="true" tabindex="-1"></a><span class="co">// Usage</span></span>
+<span id="cb23-42"><a href="#cb23-42" aria-hidden="true" tabindex="-1"></a><span class="cf">await</span> <span class="fu">cacheWithTags</span>(</span>
+<span id="cb23-43"><a href="#cb23-43" aria-hidden="true" tabindex="-1"></a>  <span class="vs">`product:</span><span class="sc">${</span>product<span class="op">.</span><span class="at">_id</span><span class="sc">}</span><span class="vs">`</span><span class="op">,</span></span>
+<span id="cb23-44"><a href="#cb23-44" aria-hidden="true" tabindex="-1"></a>  product<span class="op">,</span></span>
+<span id="cb23-45"><a href="#cb23-45" aria-hidden="true" tabindex="-1"></a>  [<span class="st">'products'</span><span class="op">,</span> <span class="vs">`category:</span><span class="sc">${</span>product<span class="op">.</span><span class="at">category</span><span class="sc">}</span><span class="vs">`</span>]<span class="op">,</span></span>
+<span id="cb23-46"><a href="#cb23-46" aria-hidden="true" tabindex="-1"></a>  <span class="dv">3600</span></span>
+<span id="cb23-47"><a href="#cb23-47" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span>
+<span id="cb23-48"><a href="#cb23-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-49"><a href="#cb23-49" aria-hidden="true" tabindex="-1"></a><span class="co">// Invalidate all products in a category</span></span>
+<span id="cb23-50"><a href="#cb23-50" aria-hidden="true" tabindex="-1"></a><span class="cf">await</span> <span class="fu">invalidateByTag</span>(<span class="vs">`category:electronics`</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>This week covered data architecture principles for modern applications:</p>
+<ol type="1">
+<li><strong>Database paradigms</strong> serve different needs: documents for flexibility, relational for integrity, key-value for speed, search for full-text</li>
+<li><strong>Polyglot persistence</strong> uses the right database for each data type</li>
+<li><strong>Data modeling patterns</strong> like denormalization and polymorphism address specific use cases</li>
+<li><strong>Consistency patterns</strong> (ACID, eventual consistency, sagas) handle distributed data</li>
+<li><strong>Cross-database operations</strong> require careful synchronization</li>
+<li><strong>Caching strategies</strong> dramatically improve performance</li>
+</ol>
+<p>Understanding these patterns prepares you for Quiz 1 and for designing robust data architectures in your projects.</p>
+</section>
+<section id="key-terms" class="level2">
+<h2 class="anchored" data-anchor-id="key-terms">Key Terms</h2>
+<ul>
+<li><strong>Polyglot Persistence</strong>: Using multiple database technologies in one application</li>
+<li><strong>CAP Theorem</strong>: Trade-off between Consistency, Availability, and Partition tolerance</li>
+<li><strong>Eventual Consistency</strong>: System where updates propagate asynchronously</li>
+<li><strong>Saga Pattern</strong>: Managing distributed transactions through compensating actions</li>
+<li><strong>Outbox Pattern</strong>: Reliable event publishing using database transactions</li>
+<li><strong>Change Data Capture</strong>: Tracking and propagating database changes</li>
+<li><strong>Cache-Aside</strong>: Application explicitly manages cache reads and writes</li>
 </ul>
 </section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<p><em>Resources coming soon.</em></p>
+<ul>
+<li><a href="https://www.mongodb.com/blog/post/building-with-patterns-a-summary">MongoDB Schema Design Patterns</a></li>
+<li><a href="https://www.postgresql.org/docs/">PostgreSQL Documentation</a></li>
+<li><a href="https://redis.io/docs/data-types/">Redis Data Types</a></li>
+<li><a href="https://martinfowler.com/bliki/PolyglotPersistence.html">Martin Fowler: Polyglot Persistence</a></li>
+<li><a href="https://microservices.io/patterns/data/saga.html">Microservices Patterns: Saga</a></li>
+<li><a href="https://www.ibm.com/topics/cap-theorem">CAP Theorem Explained</a></li>
+</ul>
 
 
 </section>

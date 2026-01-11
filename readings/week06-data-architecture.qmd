@@ -5,20 +5,973 @@ subtitle: "Polyglot Persistence and Database Design"
 
 ::: {.callout-note}
 ## Reading Assignment
-Complete this reading before Week 7.
+Complete this reading before Week 7 and Quiz 1. Estimated time: 55-70 minutes.
 :::
 
-## Overview
+## Introduction
 
-*Content coming soon.*
+Data is at the heart of every application. How you model, store, and access data has profound implications for performance, scalability, and maintainability. This week, we dive deep into **data architecture**—the practice of designing data systems that meet your application's specific needs.
 
-## Key Concepts
+We'll explore different database paradigms, understand when to use each, and learn patterns for managing data consistency in distributed systems. This reading builds on the polyglot persistence concepts introduced last week and provides the foundation for Lab 5, where you'll implement a multi-database architecture.
 
-- MongoDB for document storage
-- PostgreSQL for relational data
-- Choosing the right database
-- Data consistency patterns
+## Database Paradigms
+
+### Document Databases (MongoDB)
+
+Document databases store data as flexible, JSON-like documents. Each document can have a different structure, making them ideal for evolving schemas and hierarchical data.
+
+**Characteristics:**
+- Schema flexibility within collections
+- Nested documents and arrays
+- Horizontal scaling through sharding
+- Rich query language
+- Eventual consistency by default (tunable)
+
+**Best For:**
+- Content management systems
+- User profiles with varying attributes
+- Product catalogs with different product types
+- Real-time analytics
+- Rapid prototyping
+
+**MongoDB Document Example:**
+```javascript
+{
+  _id: ObjectId("64f..."),
+  type: "electronics",
+  name: "Wireless Headphones",
+  price: 149.99,
+  specs: {
+    bluetooth: "5.0",
+    batteryLife: "30 hours",
+    noiseCancellation: true,
+    drivers: "40mm"
+  },
+  reviews: [
+    {
+      userId: ObjectId("64a..."),
+      rating: 5,
+      comment: "Great sound quality!",
+      createdAt: ISODate("2026-01-15")
+    }
+  ],
+  inventory: {
+    warehouse: "NYC",
+    quantity: 150,
+    lastRestocked: ISODate("2026-01-10")
+  },
+  tags: ["audio", "wireless", "premium"],
+  createdAt: ISODate("2025-06-01"),
+  updatedAt: ISODate("2026-01-15")
+}
+```
+
+### Relational Databases (PostgreSQL)
+
+Relational databases organize data into tables with predefined schemas. They excel at maintaining data integrity through constraints, relationships, and ACID transactions.
+
+**Characteristics:**
+- Strict schema enforcement
+- ACID transactions
+- Complex joins and queries
+- Referential integrity
+- Mature tooling and expertise
+
+**Best For:**
+- Financial transactions
+- Inventory management
+- User authentication and authorization
+- Reporting and analytics
+- Any data requiring strict consistency
+
+**PostgreSQL Schema Example:**
+```sql
+-- Users table
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  email VARCHAR(255) UNIQUE NOT NULL,
+  password_hash VARCHAR(255) NOT NULL,
+  name VARCHAR(100) NOT NULL,
+  role VARCHAR(20) DEFAULT 'user',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Orders table with foreign key
+CREATE TABLE orders (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER NOT NULL REFERENCES users(id),
+  status VARCHAR(20) DEFAULT 'pending',
+  total_amount DECIMAL(10, 2) NOT NULL,
+  shipping_address JSONB,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Order items (junction table)
+CREATE TABLE order_items (
+  id SERIAL PRIMARY KEY,
+  order_id INTEGER NOT NULL REFERENCES orders(id) ON DELETE CASCADE,
+  product_id VARCHAR(50) NOT NULL,  -- References MongoDB product
+  quantity INTEGER NOT NULL CHECK (quantity > 0),
+  unit_price DECIMAL(10, 2) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Indexes for common queries
+CREATE INDEX idx_orders_user_id ON orders(user_id);
+CREATE INDEX idx_orders_status ON orders(status);
+CREATE INDEX idx_order_items_order_id ON order_items(order_id);
+```
+
+### Key-Value Stores (Redis)
+
+Key-value stores provide extremely fast read/write operations by mapping keys directly to values. They're ideal for caching and real-time data.
+
+**Characteristics:**
+- Sub-millisecond latency
+- Simple data model
+- In-memory storage (with persistence options)
+- Rich data structures (strings, lists, sets, hashes, sorted sets)
+- Pub/sub messaging
+
+**Best For:**
+- Session storage
+- Caching
+- Real-time leaderboards
+- Rate limiting
+- Message queues
+- Real-time analytics
+
+**Redis Data Structures:**
+```bash
+# Strings - Simple key-value
+SET user:123:name "John Doe"
+GET user:123:name
+
+# Hashes - Object-like storage
+HSET user:123 name "John" email "john@example.com" role "admin"
+HGETALL user:123
+
+# Lists - Ordered collections
+LPUSH notifications:user:123 "New message from Alice"
+LRANGE notifications:user:123 0 9  # Get latest 10
+
+# Sets - Unique collections
+SADD user:123:followers "user:456" "user:789"
+SISMEMBER user:123:followers "user:456"
+
+# Sorted Sets - Ranked collections
+ZADD leaderboard 1500 "user:123" 2000 "user:456" 1800 "user:789"
+ZREVRANGE leaderboard 0 9 WITHSCORES  # Top 10
+
+# Expiration
+SETEX session:abc123 3600 '{"userId": "123"}'  # Expires in 1 hour
+```
+
+### Search Engines (Elasticsearch)
+
+Search engines are optimized for full-text search, log analysis, and complex aggregations over large datasets.
+
+**Characteristics:**
+- Full-text search with relevance scoring
+- Near real-time indexing
+- Distributed and scalable
+- Rich aggregation framework
+- Schema-on-read flexibility
+
+**Best For:**
+- Product search
+- Log aggregation and analysis
+- Metrics and monitoring
+- Geospatial queries
+- Autocomplete and suggestions
+
+**Elasticsearch Example:**
+```javascript
+// Index a document
+await client.index({
+  index: 'products',
+  id: 'prod-123',
+  body: {
+    name: 'Wireless Bluetooth Headphones',
+    description: 'Premium noise-cancelling headphones with 30-hour battery',
+    category: 'electronics',
+    price: 149.99,
+    tags: ['audio', 'wireless', 'bluetooth'],
+    specs: {
+      brand: 'AudioPro',
+      color: 'black',
+      weight: '250g'
+    },
+    createdAt: '2026-01-15T10:00:00Z'
+  }
+});
+
+// Full-text search with filters
+const results = await client.search({
+  index: 'products',
+  body: {
+    query: {
+      bool: {
+        must: [
+          {
+            multi_match: {
+              query: 'wireless headphones',
+              fields: ['name^3', 'description', 'tags'],
+              fuzziness: 'AUTO'
+            }
+          }
+        ],
+        filter: [
+          { range: { price: { lte: 200 } } },
+          { term: { category: 'electronics' } }
+        ]
+      }
+    },
+    highlight: {
+      fields: { name: {}, description: {} }
+    },
+    aggs: {
+      price_ranges: {
+        range: {
+          field: 'price',
+          ranges: [
+            { to: 50 },
+            { from: 50, to: 100 },
+            { from: 100, to: 200 },
+            { from: 200 }
+          ]
+        }
+      },
+      by_brand: {
+        terms: { field: 'specs.brand.keyword' }
+      }
+    }
+  }
+});
+```
+
+## Choosing the Right Database
+
+### Decision Framework
+
+When choosing a database, consider these factors:
+
+| Factor | Questions to Ask |
+|--------|-----------------|
+| **Data Model** | Is data structured or flexible? Are there complex relationships? |
+| **Query Patterns** | Simple lookups or complex joins? Full-text search needed? |
+| **Consistency** | Is immediate consistency critical, or is eventual OK? |
+| **Scale** | What's the expected data volume? Read vs. write ratio? |
+| **Team Expertise** | What databases does the team know? |
+| **Operational Costs** | What's the infrastructure and maintenance burden? |
+
+### Common Patterns by Use Case
+
+| Use Case | Primary DB | Secondary DB | Why |
+|----------|-----------|--------------|-----|
+| **E-commerce** | PostgreSQL | MongoDB + Redis + Elasticsearch | Transactions for orders, flexible products, caching, search |
+| **Social Media** | MongoDB | Redis + Neo4j | Flexible content, caching, graph relationships |
+| **Financial App** | PostgreSQL | Redis | ACID transactions, caching |
+| **Content Platform** | MongoDB | Elasticsearch + Redis | Flexible content, search, caching |
+| **IoT Platform** | TimescaleDB | Redis + MongoDB | Time-series data, caching, device configs |
+| **Analytics** | ClickHouse | PostgreSQL | OLAP queries, transactional data |
+
+### The Polyglot Architecture
+
+A modern application might use multiple databases:
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                          Application Layer                           │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│   ┌─────────────┐    ┌─────────────┐    ┌─────────────┐           │
+│   │  MongoDB    │    │ PostgreSQL  │    │    Redis    │           │
+│   │             │    │             │    │             │           │
+│   │ - Products  │    │ - Users     │    │ - Sessions  │           │
+│   │ - Reviews   │    │ - Orders    │    │ - Cache     │           │
+│   │ - Content   │    │ - Payments  │    │ - Rate Limit│           │
+│   │ - Analytics │    │ - Inventory │    │ - Pub/Sub   │           │
+│   └─────────────┘    └─────────────┘    └─────────────┘           │
+│                                                                      │
+│   ┌─────────────────────────────────────────────────────────────┐  │
+│   │                      Elasticsearch                            │  │
+│   │           Product Search, Logs, Full-Text Queries            │  │
+│   └─────────────────────────────────────────────────────────────┘  │
+│                                                                      │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+## Data Modeling Patterns
+
+### Denormalization for Performance
+
+In document databases, denormalization trades storage space for query performance:
+
+```javascript
+// Normalized (requires join/lookup)
+// users collection
+{ _id: "user1", name: "Alice" }
+
+// posts collection
+{ _id: "post1", authorId: "user1", title: "Hello World" }
+
+// Denormalized (self-contained)
+// posts collection
+{
+  _id: "post1",
+  title: "Hello World",
+  author: {
+    _id: "user1",
+    name: "Alice",
+    avatarUrl: "/avatars/alice.jpg"
+  }
+}
+```
+
+**Trade-offs:**
+- **Faster reads** - No joins needed
+- **Slower writes** - Must update multiple documents when author changes
+- **Data staleness** - Denormalized data may become outdated
+- **Storage increase** - Duplicate data uses more space
+
+### Handling Many-to-Many Relationships
+
+**In MongoDB (Array of References):**
+```javascript
+// For small to medium collections
+// tags collection
+{ _id: "tag1", name: "javascript" }
+{ _id: "tag2", name: "react" }
+
+// posts collection
+{
+  _id: "post1",
+  title: "React Hooks Guide",
+  tagIds: ["tag1", "tag2"]  // Array of references
+}
+
+// Query posts by tag
+db.posts.find({ tagIds: "tag1" });
+
+// Populate tags (application-level join)
+const post = await Post.findById(postId).populate('tagIds');
+```
+
+**In PostgreSQL (Junction Table):**
+```sql
+-- Junction table for many-to-many
+CREATE TABLE post_tags (
+  post_id INTEGER REFERENCES posts(id) ON DELETE CASCADE,
+  tag_id INTEGER REFERENCES tags(id) ON DELETE CASCADE,
+  PRIMARY KEY (post_id, tag_id)
+);
+
+-- Query posts with a specific tag
+SELECT p.*
+FROM posts p
+JOIN post_tags pt ON p.id = pt.post_id
+JOIN tags t ON pt.tag_id = t.id
+WHERE t.name = 'javascript';
+```
+
+### Polymorphic Patterns
+
+When different entity types share some fields but differ in others:
+
+**Single Collection with Type Field:**
+```javascript
+// MongoDB: notifications collection
+{
+  _id: "notif1",
+  type: "comment",
+  userId: "user1",
+  createdAt: ISODate("2026-01-15"),
+  // Type-specific fields
+  postId: "post1",
+  commentId: "comment1",
+  commenterName: "Bob"
+}
+
+{
+  _id: "notif2",
+  type: "follow",
+  userId: "user1",
+  createdAt: ISODate("2026-01-15"),
+  // Type-specific fields
+  followerId: "user2",
+  followerName: "Alice"
+}
+
+{
+  _id: "notif3",
+  type: "mention",
+  userId: "user1",
+  createdAt: ISODate("2026-01-15"),
+  // Type-specific fields
+  postId: "post2",
+  mentionedBy: "user3"
+}
+```
+
+**Mongoose Discriminators:**
+```javascript
+const notificationSchema = new mongoose.Schema({
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+  read: { type: Boolean, default: false },
+  createdAt: { type: Date, default: Date.now }
+}, { discriminatorKey: 'type' });
+
+const Notification = mongoose.model('Notification', notificationSchema);
+
+// Comment notification discriminator
+const CommentNotification = Notification.discriminator('comment',
+  new mongoose.Schema({
+    postId: { type: mongoose.Schema.Types.ObjectId, ref: 'Post' },
+    commentId: { type: mongoose.Schema.Types.ObjectId, ref: 'Comment' },
+    commenterName: String
+  })
+);
+
+// Follow notification discriminator
+const FollowNotification = Notification.discriminator('follow',
+  new mongoose.Schema({
+    followerId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    followerName: String
+  })
+);
+
+// Query all notifications (both types)
+const notifications = await Notification.find({ userId: user._id });
+
+// Query only follow notifications
+const follows = await FollowNotification.find({ userId: user._id });
+```
+
+### Time-Series Data
+
+For data that's primarily written once and queried by time ranges:
+
+```javascript
+// MongoDB: Bucket pattern for time-series
+{
+  _id: ObjectId("..."),
+  sensorId: "sensor-001",
+  bucket: "2026-01-15T10:00",  // Hourly bucket
+  measurements: [
+    { timestamp: ISODate("2026-01-15T10:00:15"), temp: 22.5, humidity: 45 },
+    { timestamp: ISODate("2026-01-15T10:01:30"), temp: 22.6, humidity: 44 },
+    { timestamp: ISODate("2026-01-15T10:02:45"), temp: 22.4, humidity: 46 }
+    // ... up to N measurements per bucket
+  ],
+  count: 180,  // Number of measurements in bucket
+  sum: { temp: 4050, humidity: 8100 },  // For calculating averages
+  min: { temp: 22.1, humidity: 42 },
+  max: { temp: 23.0, humidity: 48 }
+}
+
+// Query: Get hourly averages for a day
+db.sensorData.aggregate([
+  {
+    $match: {
+      sensorId: "sensor-001",
+      bucket: {
+        $gte: "2026-01-15T00:00",
+        $lt: "2026-01-16T00:00"
+      }
+    }
+  },
+  {
+    $project: {
+      bucket: 1,
+      avgTemp: { $divide: ["$sum.temp", "$count"] },
+      avgHumidity: { $divide: ["$sum.humidity", "$count"] }
+    }
+  }
+]);
+```
+
+## Data Consistency Patterns
+
+### CAP Theorem
+
+The **CAP theorem** states that a distributed system can provide at most two of three guarantees:
+
+- **Consistency**: All nodes see the same data at the same time
+- **Availability**: Every request receives a response
+- **Partition Tolerance**: System continues to operate despite network partitions
+
+```
+                    Consistency
+                        /\
+                       /  \
+                      /    \
+                     /      \
+                    /   CA   \
+                   /          \
+                  /____________\
+                 /\            /\
+                /  \    CP    /  \
+               / AP \        /    \
+              /______\______/______\
+         Availability        Partition
+                            Tolerance
+```
+
+**In Practice:**
+- Network partitions are inevitable
+- You must choose between **CP** (consistency) and **AP** (availability)
+- MongoDB and PostgreSQL are typically **CP** (strong consistency)
+- Cassandra and DynamoDB are typically **AP** (high availability)
+
+### Eventual Consistency
+
+In eventually consistent systems, updates propagate asynchronously:
+
+```
+Time T0: User updates profile name to "Alice"
+         └─── Write to Primary
+
+Time T1: Primary acknowledges write
+         └─── User sees "Alice"
+         └─── Replica 1 still shows "Bob"
+
+Time T2: Replication in progress
+         └─── Replica 1 receives update
+
+Time T3: All replicas consistent
+         └─── All reads return "Alice"
+```
+
+**Handling Eventual Consistency:**
+
+```javascript
+// Read your own writes pattern
+async function updateProfile(userId, updates) {
+  const user = await User.findByIdAndUpdate(userId, updates, { new: true });
+
+  // Cache the update for this user's session
+  await redis.setex(`user:${userId}:profile`, 60, JSON.stringify(user));
+
+  return user;
+}
+
+async function getProfile(userId, requestingUserId) {
+  // If user is reading their own profile, check cache first
+  if (userId === requestingUserId) {
+    const cached = await redis.get(`user:${userId}:profile`);
+    if (cached) return JSON.parse(cached);
+  }
+
+  // Otherwise, read from database
+  return await User.findById(userId);
+}
+```
+
+### Transaction Patterns
+
+**Single Database Transactions (ACID):**
+```javascript
+// PostgreSQL transaction with Prisma
+const result = await prisma.$transaction(async (tx) => {
+  // Deduct from sender
+  const sender = await tx.account.update({
+    where: { id: senderId },
+    data: { balance: { decrement: amount } }
+  });
+
+  if (sender.balance < 0) {
+    throw new Error('Insufficient funds');
+  }
+
+  // Add to receiver
+  const receiver = await tx.account.update({
+    where: { id: receiverId },
+    data: { balance: { increment: amount } }
+  });
+
+  // Record transfer
+  const transfer = await tx.transfer.create({
+    data: {
+      senderId,
+      receiverId,
+      amount,
+      status: 'completed'
+    }
+  });
+
+  return transfer;
+});
+```
+
+**Saga Pattern for Distributed Transactions:**
+
+When operations span multiple services/databases, use the Saga pattern:
+
+```javascript
+// Orchestration-based Saga
+class OrderSaga {
+  async execute(orderData) {
+    const steps = [];
+
+    try {
+      // Step 1: Create order (pending)
+      const order = await this.orderService.create(orderData);
+      steps.push({ service: 'order', action: 'create', data: order });
+
+      // Step 2: Reserve inventory
+      const reservation = await this.inventoryService.reserve(order.items);
+      steps.push({ service: 'inventory', action: 'reserve', data: reservation });
+
+      // Step 3: Process payment
+      const payment = await this.paymentService.charge(order.total, order.userId);
+      steps.push({ service: 'payment', action: 'charge', data: payment });
+
+      // Step 4: Confirm order
+      await this.orderService.confirm(order.id);
+
+      return order;
+    } catch (error) {
+      // Compensate in reverse order
+      await this.compensate(steps);
+      throw error;
+    }
+  }
+
+  async compensate(steps) {
+    for (const step of steps.reverse()) {
+      try {
+        switch (step.service) {
+          case 'order':
+            await this.orderService.cancel(step.data.id);
+            break;
+          case 'inventory':
+            await this.inventoryService.release(step.data.reservationId);
+            break;
+          case 'payment':
+            await this.paymentService.refund(step.data.transactionId);
+            break;
+        }
+      } catch (compensationError) {
+        // Log and alert - manual intervention may be needed
+        console.error('Compensation failed:', compensationError);
+      }
+    }
+  }
+}
+```
+
+### Outbox Pattern
+
+For reliable event publishing with database changes:
+
+```javascript
+// Instead of:
+// 1. Update database
+// 2. Publish event (might fail, leaving inconsistent state)
+
+// Use outbox pattern:
+// 1. Update database AND write to outbox table (single transaction)
+// 2. Separate process reads outbox and publishes events
+
+// Step 1: Write operation with outbox
+async function completeOrder(orderId) {
+  await prisma.$transaction(async (tx) => {
+    // Update order status
+    await tx.order.update({
+      where: { id: orderId },
+      data: { status: 'completed', completedAt: new Date() }
+    });
+
+    // Write to outbox (same transaction)
+    await tx.outbox.create({
+      data: {
+        aggregateType: 'Order',
+        aggregateId: orderId,
+        eventType: 'OrderCompleted',
+        payload: JSON.stringify({ orderId, completedAt: new Date() }),
+        createdAt: new Date()
+      }
+    });
+  });
+}
+
+// Step 2: Outbox processor (runs periodically)
+async function processOutbox() {
+  const events = await prisma.outbox.findMany({
+    where: { processedAt: null },
+    orderBy: { createdAt: 'asc' },
+    take: 100
+  });
+
+  for (const event of events) {
+    try {
+      // Publish to message broker
+      await messageBroker.publish(event.eventType, JSON.parse(event.payload));
+
+      // Mark as processed
+      await prisma.outbox.update({
+        where: { id: event.id },
+        data: { processedAt: new Date() }
+      });
+    } catch (error) {
+      console.error('Failed to process outbox event:', event.id, error);
+      // Will retry on next run
+    }
+  }
+}
+```
+
+## Cross-Database Operations
+
+### Synchronizing Data Between Databases
+
+When using multiple databases, you need strategies for keeping data in sync.
+
+**Change Data Capture (CDC):**
+```javascript
+// MongoDB Change Streams
+const changeStream = db.collection('products').watch();
+
+changeStream.on('change', async (change) => {
+  switch (change.operationType) {
+    case 'insert':
+    case 'update':
+    case 'replace':
+      // Sync to Elasticsearch
+      await elasticsearch.index({
+        index: 'products',
+        id: change.documentKey._id.toString(),
+        body: change.fullDocument
+      });
+      break;
+
+    case 'delete':
+      await elasticsearch.delete({
+        index: 'products',
+        id: change.documentKey._id.toString()
+      });
+      break;
+  }
+});
+```
+
+**Application-Level Sync:**
+```javascript
+class ProductService {
+  async create(productData) {
+    // Write to primary database
+    const product = await Product.create(productData);
+
+    // Sync to search index (fire and forget, or queue)
+    this.syncToSearch(product).catch(err => {
+      console.error('Search sync failed:', err);
+      // Queue for retry
+      this.syncQueue.add('indexProduct', { productId: product._id });
+    });
+
+    // Invalidate cache
+    await redis.del('products:list');
+
+    return product;
+  }
+
+  async syncToSearch(product) {
+    await elasticsearch.index({
+      index: 'products',
+      id: product._id.toString(),
+      body: {
+        name: product.name,
+        description: product.description,
+        category: product.category,
+        price: product.price,
+        tags: product.tags
+      }
+    });
+  }
+}
+```
+
+### Cross-Database Queries
+
+Sometimes you need to query across databases:
+
+```javascript
+// Combine data from MongoDB and PostgreSQL
+async function getOrderWithProducts(orderId) {
+  // Get order from PostgreSQL
+  const order = await prisma.order.findUnique({
+    where: { id: orderId },
+    include: {
+      items: true,
+      user: { select: { id: true, name: true, email: true } }
+    }
+  });
+
+  if (!order) return null;
+
+  // Get product details from MongoDB
+  const productIds = order.items.map(item => item.productId);
+  const products = await Product.find({
+    _id: { $in: productIds.map(id => new mongoose.Types.ObjectId(id)) }
+  });
+
+  // Create lookup map
+  const productMap = new Map(
+    products.map(p => [p._id.toString(), p])
+  );
+
+  // Combine data
+  return {
+    ...order,
+    items: order.items.map(item => ({
+      ...item,
+      product: productMap.get(item.productId)
+    }))
+  };
+}
+```
+
+## Caching Strategies
+
+### Cache-Aside Pattern
+
+The application manages the cache explicitly:
+
+```javascript
+async function getProduct(productId) {
+  const cacheKey = `product:${productId}`;
+
+  // Try cache first
+  const cached = await redis.get(cacheKey);
+  if (cached) {
+    return JSON.parse(cached);
+  }
+
+  // Cache miss - fetch from database
+  const product = await Product.findById(productId);
+  if (!product) return null;
+
+  // Store in cache
+  await redis.setex(cacheKey, 3600, JSON.stringify(product));
+
+  return product;
+}
+
+async function updateProduct(productId, updates) {
+  const product = await Product.findByIdAndUpdate(productId, updates, { new: true });
+
+  // Invalidate cache
+  await redis.del(`product:${productId}`);
+
+  return product;
+}
+```
+
+### Write-Through Cache
+
+Write to cache and database together:
+
+```javascript
+async function createProduct(productData) {
+  const product = await Product.create(productData);
+
+  // Immediately cache the new product
+  await redis.setex(
+    `product:${product._id}`,
+    3600,
+    JSON.stringify(product)
+  );
+
+  return product;
+}
+```
+
+### Cache Invalidation Patterns
+
+```javascript
+// Pattern 1: Time-based expiration
+await redis.setex('products:featured', 300, JSON.stringify(products)); // 5 min
+
+// Pattern 2: Event-based invalidation
+async function updateProduct(productId, updates) {
+  const product = await Product.findByIdAndUpdate(productId, updates, { new: true });
+
+  // Invalidate specific cache
+  await redis.del(`product:${productId}`);
+
+  // Invalidate related caches
+  await redis.del('products:featured');
+  await redis.del(`products:category:${product.category}`);
+
+  return product;
+}
+
+// Pattern 3: Tag-based invalidation
+async function cacheWithTags(key, value, tags, ttl) {
+  const pipeline = redis.pipeline();
+
+  // Store value
+  pipeline.setex(key, ttl, JSON.stringify(value));
+
+  // Add key to each tag set
+  for (const tag of tags) {
+    pipeline.sadd(`tag:${tag}`, key);
+  }
+
+  await pipeline.exec();
+}
+
+async function invalidateByTag(tag) {
+  const keys = await redis.smembers(`tag:${tag}`);
+  if (keys.length > 0) {
+    await redis.del(...keys);
+    await redis.del(`tag:${tag}`);
+  }
+}
+
+// Usage
+await cacheWithTags(
+  `product:${product._id}`,
+  product,
+  ['products', `category:${product.category}`],
+  3600
+);
+
+// Invalidate all products in a category
+await invalidateByTag(`category:electronics`);
+```
+
+## Summary
+
+This week covered data architecture principles for modern applications:
+
+1. **Database paradigms** serve different needs: documents for flexibility, relational for integrity, key-value for speed, search for full-text
+2. **Polyglot persistence** uses the right database for each data type
+3. **Data modeling patterns** like denormalization and polymorphism address specific use cases
+4. **Consistency patterns** (ACID, eventual consistency, sagas) handle distributed data
+5. **Cross-database operations** require careful synchronization
+6. **Caching strategies** dramatically improve performance
+
+Understanding these patterns prepares you for Quiz 1 and for designing robust data architectures in your projects.
+
+## Key Terms
+
+- **Polyglot Persistence**: Using multiple database technologies in one application
+- **CAP Theorem**: Trade-off between Consistency, Availability, and Partition tolerance
+- **Eventual Consistency**: System where updates propagate asynchronously
+- **Saga Pattern**: Managing distributed transactions through compensating actions
+- **Outbox Pattern**: Reliable event publishing using database transactions
+- **Change Data Capture**: Tracking and propagating database changes
+- **Cache-Aside**: Application explicitly manages cache reads and writes
 
 ## Further Reading
 
-*Resources coming soon.*
+- [MongoDB Schema Design Patterns](https://www.mongodb.com/blog/post/building-with-patterns-a-summary)
+- [PostgreSQL Documentation](https://www.postgresql.org/docs/)
+- [Redis Data Types](https://redis.io/docs/data-types/)
+- [Martin Fowler: Polyglot Persistence](https://martinfowler.com/bliki/PolyglotPersistence.html)
+- [Microservices Patterns: Saga](https://microservices.io/patterns/data/saga.html)
+- [CAP Theorem Explained](https://www.ibm.com/topics/cap-theorem)

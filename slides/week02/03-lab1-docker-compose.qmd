@@ -5,6 +5,9 @@ author: "Jason Kuruzovich"
 date: "January 20, 2026"
 format:
   revealjs:
+    navigation-mode: linear
+    mermaid:
+        theme: default
     theme: [default, ../../slides-theme.scss]
     logo: ../../static/logos/RPI_Logo_Binary_1_White.png
     footer: "ITWS-4500 | Week 2, Day 1 | Lab 1"
@@ -12,7 +15,7 @@ format:
     transition: slide
     width: 1600
     height: 900
-    chalkboard: true
+    #chalkboard: true
     code-line-numbers: true
     highlight-style: github
     pdf-separate-fragments: false

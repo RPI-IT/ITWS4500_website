@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -323,8 +358,36 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#key-concepts" id="toc-key-concepts" class="nav-link" data-scroll-target="#key-concepts">Key Concepts</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#react-component-architecture" id="toc-react-component-architecture" class="nav-link" data-scroll-target="#react-component-architecture">React Component Architecture</a>
+  <ul class="collapse">
+  <li><a href="#thinking-in-components" id="toc-thinking-in-components" class="nav-link" data-scroll-target="#thinking-in-components">Thinking in Components</a></li>
+  <li><a href="#component-design-principles" id="toc-component-design-principles" class="nav-link" data-scroll-target="#component-design-principles">Component Design Principles</a></li>
+  <li><a href="#component-categories" id="toc-component-categories" class="nav-link" data-scroll-target="#component-categories">Component Categories</a></li>
+  </ul></li>
+  <li><a href="#state-management" id="toc-state-management" class="nav-link" data-scroll-target="#state-management">State Management</a>
+  <ul class="collapse">
+  <li><a href="#understanding-react-state" id="toc-understanding-react-state" class="nav-link" data-scroll-target="#understanding-react-state">Understanding React State</a></li>
+  <li><a href="#local-state-with-usestate" id="toc-local-state-with-usestate" class="nav-link" data-scroll-target="#local-state-with-usestate">Local State with useState</a></li>
+  <li><a href="#complex-local-state-with-usereducer" id="toc-complex-local-state-with-usereducer" class="nav-link" data-scroll-target="#complex-local-state-with-usereducer">Complex Local State with useReducer</a></li>
+  <li><a href="#react-context-for-shared-state" id="toc-react-context-for-shared-state" class="nav-link" data-scroll-target="#react-context-for-shared-state">React Context for Shared State</a></li>
+  <li><a href="#context-best-practices" id="toc-context-best-practices" class="nav-link" data-scroll-target="#context-best-practices">Context Best Practices</a></li>
+  <li><a href="#state-management-libraries" id="toc-state-management-libraries" class="nav-link" data-scroll-target="#state-management-libraries">State Management Libraries</a></li>
+  </ul></li>
+  <li><a href="#backend-service-patterns" id="toc-backend-service-patterns" class="nav-link" data-scroll-target="#backend-service-patterns">Backend Service Patterns</a>
+  <ul class="collapse">
+  <li><a href="#the-service-layer-pattern" id="toc-the-service-layer-pattern" class="nav-link" data-scroll-target="#the-service-layer-pattern">The Service Layer Pattern</a></li>
+  <li><a href="#controller-pattern" id="toc-controller-pattern" class="nav-link" data-scroll-target="#controller-pattern">Controller Pattern</a></li>
+  <li><a href="#middleware-pattern" id="toc-middleware-pattern" class="nav-link" data-scroll-target="#middleware-pattern">Middleware Pattern</a></li>
+  <li><a href="#data-transfer-objects-dtos" id="toc-data-transfer-objects-dtos" class="nav-link" data-scroll-target="#data-transfer-objects-dtos">Data Transfer Objects (DTOs)</a></li>
+  <li><a href="#input-validation" id="toc-input-validation" class="nav-link" data-scroll-target="#input-validation">Input Validation</a></li>
+  </ul></li>
+  <li><a href="#putting-it-together-full-stack-data-flow" id="toc-putting-it-together-full-stack-data-flow" class="nav-link" data-scroll-target="#putting-it-together-full-stack-data-flow">Putting It Together: Full Stack Data Flow</a>
+  <ul class="collapse">
+  <li><a href="#example-creating-a-task" id="toc-example-creating-a-task" class="nav-link" data-scroll-target="#example-creating-a-task">Example: Creating a Task</a></li>
+  </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#key-terms" id="toc-key-terms" class="nav-link" data-scroll-target="#key-terms">Key Terms</a></li>
   <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
   </ul>
 </nav>
@@ -362,25 +425,1161 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Complete this reading before Week 5.</p>
+<p>Complete this reading before Week 5. Estimated time: 50-65 minutes.</p>
 </div>
 </div>
-<section id="overview" class="level2">
-<h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p><em>Content coming soon.</em></p>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Last week we explored layered architecture and how to organize code into distinct layers with clear responsibilities. This week, we go deeper into two critical areas: <strong>React component architecture</strong> and <strong>state management</strong> on the frontend, and <strong>backend service patterns</strong> that support scalable API development.</p>
+<p>Component architecture is about more than just organizing files—it’s about designing systems of reusable, composable pieces that work together effectively. Similarly, backend patterns help you structure your API code to handle growing complexity while remaining maintainable.</p>
 </section>
-<section id="key-concepts" class="level2">
-<h2 class="anchored" data-anchor-id="key-concepts">Key Concepts</h2>
+<section id="react-component-architecture" class="level2">
+<h2 class="anchored" data-anchor-id="react-component-architecture">React Component Architecture</h2>
+<section id="thinking-in-components" class="level3">
+<h3 class="anchored" data-anchor-id="thinking-in-components">Thinking in Components</h3>
+<p>React’s component model encourages you to think about UIs as trees of components, where each component:</p>
 <ul>
-<li>Component-based architecture</li>
-<li>State management strategies (Context API, Redux)</li>
-<li>Backend architecture patterns</li>
-<li>Service layer design</li>
+<li>Has a <strong>single responsibility</strong></li>
+<li>Can be <strong>composed</strong> with other components</li>
+<li>Manages its own <strong>internal state</strong> (when needed)</li>
+<li>Communicates through <strong>props</strong> and <strong>callbacks</strong></li>
+</ul>
+<pre><code>┌─────────────────────────────────────────────────────────────────┐
+│                           App                                    │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │                       Header                              │   │
+│  │  ┌─────────────┐ ┌─────────────┐ ┌─────────────────┐    │   │
+│  │  │    Logo     │ │ Navigation  │ │   UserMenu      │    │   │
+│  │  └─────────────┘ └─────────────┘ └─────────────────┘    │   │
+│  └─────────────────────────────────────────────────────────┘   │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │                      MainContent                          │   │
+│  │  ┌────────────────────┐ ┌────────────────────────────┐  │   │
+│  │  │      Sidebar       │ │         TaskList            │  │   │
+│  │  │  ┌──────────────┐  │ │  ┌──────────────────────┐  │  │   │
+│  │  │  │  FilterPanel │  │ │  │      TaskCard        │  │  │   │
+│  │  │  └──────────────┘  │ │  ├──────────────────────┤  │  │   │
+│  │  │  ┌──────────────┐  │ │  │      TaskCard        │  │  │   │
+│  │  │  │  QuickStats  │  │ │  ├──────────────────────┤  │  │   │
+│  │  │  └──────────────┘  │ │  │      TaskCard        │  │  │   │
+│  │  └────────────────────┘ │  └──────────────────────┘  │  │   │
+│  │                         └────────────────────────────────┘  │   │
+│  └─────────────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────────────┘</code></pre>
+</section>
+<section id="component-design-principles" class="level3">
+<h3 class="anchored" data-anchor-id="component-design-principles">Component Design Principles</h3>
+<section id="single-responsibility" class="level4">
+<h4 class="anchored" data-anchor-id="single-responsibility">1. Single Responsibility</h4>
+<p>Each component should do one thing well:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode jsx code-with-copy"><code class="sourceCode javascriptreact"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Bad: Component doing too much</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">TaskManager</span>() {</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Fetching data</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Managing form state</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Handling validation</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Rendering list</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Rendering form</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Handling filters</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="co">// All in one component...</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">// Good: Separated responsibilities</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">TasksPage</span>() {</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;div</span> <span class="ot">className</span><span class="op">=</span><span class="st">"tasks-page"</span><span class="kw">&gt;</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>      <span class="fu">&lt;TaskFilters</span> <span class="fu">/&gt;</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>      <span class="fu">&lt;TaskList</span> <span class="fu">/&gt;</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>      <span class="fu">&lt;TaskForm</span> <span class="fu">/&gt;</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="composition-over-configuration" class="level4">
+<h4 class="anchored" data-anchor-id="composition-over-configuration">2. Composition Over Configuration</h4>
+<p>Prefer composing simple components over configuring complex ones:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode jsx code-with-copy"><code class="sourceCode javascriptreact"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Bad: One component with many configuration props</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;Card</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="ot">title</span><span class="op">=</span><span class="st">"Task"</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="ot">showHeader</span><span class="op">=</span><span class="va">{</span><span class="kw">true</span><span class="va">}</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="ot">showFooter</span><span class="op">=</span><span class="va">{</span><span class="kw">true</span><span class="va">}</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="ot">headerActions</span><span class="op">=</span><span class="va">{</span>[<span class="st">'edit'</span><span class="op">,</span> <span class="st">'delete'</span>]<span class="va">}</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="ot">footerContent</span><span class="op">=</span><span class="va">{</span><span class="fu">&lt;Button&gt;</span>Save<span class="fu">&lt;/Button&gt;</span><span class="va">}</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="ot">bordered</span><span class="op">=</span><span class="va">{</span><span class="kw">true</span><span class="va">}</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="ot">shadowed</span><span class="op">=</span><span class="va">{</span><span class="kw">true</span><span class="va">}</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="co">// ... many more props</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">/&gt;</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">// Good: Composed from simple components</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;Card</span> <span class="ot">bordered</span> <span class="ot">shadowed</span><span class="fu">&gt;</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">&lt;Card.Header&gt;</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">&lt;Card.Title&gt;</span>Task<span class="fu">&lt;/Card.Title&gt;</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">&lt;Card.Actions&gt;</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>      <span class="fu">&lt;EditButton</span> <span class="fu">/&gt;</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>      <span class="fu">&lt;DeleteButton</span> <span class="fu">/&gt;</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">&lt;/Card.Actions&gt;</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">&lt;/Card.Header&gt;</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">&lt;Card.Body&gt;</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    <span class="va">{</span><span class="co">/* content */</span><span class="va">}</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">&lt;/Card.Body&gt;</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">&lt;Card.Footer&gt;</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">&lt;Button&gt;</span>Save<span class="fu">&lt;/Button&gt;</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">&lt;/Card.Footer&gt;</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;/Card&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="props-down-events-up" class="level4">
+<h4 class="anchored" data-anchor-id="props-down-events-up">3. Props Down, Events Up</h4>
+<p>Data flows down through props; changes propagate up through callbacks:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode jsx code-with-copy"><code class="sourceCode javascriptreact"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">TaskList</span>({ tasks<span class="op">,</span> onTaskComplete<span class="op">,</span> onTaskDelete }) {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;ul&gt;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>      <span class="va">{</span>tasks<span class="op">.</span><span class="fu">map</span>(task <span class="kw">=&gt;</span> (</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">&lt;TaskItem</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>          <span class="ot">key</span><span class="op">=</span><span class="va">{</span>task<span class="op">.</span><span class="at">id</span><span class="va">}</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>          <span class="ot">task</span><span class="op">=</span><span class="va">{</span>task<span class="va">}</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>          <span class="ot">onComplete</span><span class="op">=</span><span class="va">{</span>() <span class="kw">=&gt;</span> <span class="fu">onTaskComplete</span>(task<span class="op">.</span><span class="at">id</span>)<span class="va">}</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>          <span class="ot">onDelete</span><span class="op">=</span><span class="va">{</span>() <span class="kw">=&gt;</span> <span class="fu">onTaskDelete</span>(task<span class="op">.</span><span class="at">id</span>)<span class="va">}</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">/&gt;</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>      ))<span class="va">}</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/ul&gt;</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">TaskItem</span>({ task<span class="op">,</span> onComplete<span class="op">,</span> onDelete }) {</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;li&gt;</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;span&gt;</span><span class="va">{</span>task<span class="op">.</span><span class="at">title</span><span class="va">}</span><span class="kw">&lt;/span&gt;</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;button</span> <span class="ot">onClick</span><span class="op">=</span><span class="va">{</span>onComplete<span class="va">}</span><span class="kw">&gt;</span>Complete<span class="kw">&lt;/button&gt;</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;button</span> <span class="ot">onClick</span><span class="op">=</span><span class="va">{</span>onDelete<span class="va">}</span><span class="kw">&gt;</span>Delete<span class="kw">&lt;/button&gt;</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/li&gt;</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="component-categories" class="level3">
+<h3 class="anchored" data-anchor-id="component-categories">Component Categories</h3>
+<section id="presentational-components" class="level4">
+<h4 class="anchored" data-anchor-id="presentational-components">Presentational Components</h4>
+<p>Focus purely on rendering UI:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode jsx code-with-copy"><code class="sourceCode javascriptreact"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Button.jsx - Presentational component</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">Button</span>({</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  children<span class="op">,</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  variant <span class="op">=</span> <span class="st">'primary'</span><span class="op">,</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  size <span class="op">=</span> <span class="st">'medium'</span><span class="op">,</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  disabled <span class="op">=</span> <span class="kw">false</span><span class="op">,</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  onClick</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>}) {</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;button</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>      <span class="ot">className</span><span class="op">=</span><span class="va">{</span><span class="vs">`btn btn-</span><span class="sc">${</span>variant<span class="sc">}</span><span class="vs"> btn-</span><span class="sc">${</span>size<span class="sc">}</span><span class="vs">`</span><span class="va">}</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>      <span class="ot">disabled</span><span class="op">=</span><span class="va">{</span>disabled<span class="va">}</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>      <span class="ot">onClick</span><span class="op">=</span><span class="va">{</span>onClick<span class="va">}</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&gt;</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>      <span class="va">{</span>children<span class="va">}</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/button&gt;</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="co">// TaskCard.jsx - Presentational component</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">TaskCard</span>({ task<span class="op">,</span> onEdit<span class="op">,</span> onDelete<span class="op">,</span> onToggleComplete }) {</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> statusClass <span class="op">=</span> task<span class="op">.</span><span class="at">completed</span> <span class="op">?</span> <span class="st">'completed'</span> <span class="op">:</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>                      task<span class="op">.</span><span class="at">overdue</span> <span class="op">?</span> <span class="st">'overdue'</span> <span class="op">:</span> <span class="st">''</span><span class="op">;</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;div</span> <span class="ot">className</span><span class="op">=</span><span class="va">{</span><span class="vs">`task-card </span><span class="sc">${</span>statusClass<span class="sc">}</span><span class="vs">`</span><span class="va">}</span><span class="kw">&gt;</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;div</span> <span class="ot">className</span><span class="op">=</span><span class="st">"task-header"</span><span class="kw">&gt;</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;input</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>          <span class="ot">type</span><span class="op">=</span><span class="st">"checkbox"</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>          <span class="ot">checked</span><span class="op">=</span><span class="va">{</span>task<span class="op">.</span><span class="at">completed</span><span class="va">}</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>          <span class="ot">onChange</span><span class="op">=</span><span class="va">{</span>onToggleComplete<span class="va">}</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>        <span class="kw">/&gt;</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;h3</span> <span class="ot">className</span><span class="op">=</span><span class="st">"task-title"</span><span class="kw">&gt;</span><span class="va">{</span>task<span class="op">.</span><span class="at">title</span><span class="va">}</span><span class="kw">&lt;/h3&gt;</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>      <span class="va">{</span>task<span class="op">.</span><span class="at">description</span> <span class="op">&amp;&amp;</span> (</span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;p</span> <span class="ot">className</span><span class="op">=</span><span class="st">"task-description"</span><span class="kw">&gt;</span><span class="va">{</span>task<span class="op">.</span><span class="at">description</span><span class="va">}</span><span class="kw">&lt;/p&gt;</span></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>      )<span class="va">}</span></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;div</span> <span class="ot">className</span><span class="op">=</span><span class="st">"task-meta"</span><span class="kw">&gt;</span></span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>        <span class="va">{</span>task<span class="op">.</span><span class="at">dueDate</span> <span class="op">&amp;&amp;</span> (</span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>          <span class="kw">&lt;span</span> <span class="ot">className</span><span class="op">=</span><span class="st">"due-date"</span><span class="kw">&gt;</span></span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>            Due: <span class="va">{</span><span class="fu">formatDate</span>(task<span class="op">.</span><span class="at">dueDate</span>)<span class="va">}</span></span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>          <span class="kw">&lt;/span&gt;</span></span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>        )<span class="va">}</span></span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>        <span class="va">{</span>task<span class="op">.</span><span class="at">assignee</span> <span class="op">&amp;&amp;</span> (</span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>          <span class="kw">&lt;span</span> <span class="ot">className</span><span class="op">=</span><span class="st">"assignee"</span><span class="kw">&gt;</span></span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>            Assigned to: <span class="va">{</span>task<span class="op">.</span><span class="at">assignee</span><span class="op">.</span><span class="at">name</span><span class="va">}</span></span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>          <span class="kw">&lt;/span&gt;</span></span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>        )<span class="va">}</span></span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;div</span> <span class="ot">className</span><span class="op">=</span><span class="st">"task-actions"</span><span class="kw">&gt;</span></span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>        <span class="fu">&lt;Button</span> <span class="ot">variant</span><span class="op">=</span><span class="st">"secondary"</span> <span class="ot">size</span><span class="op">=</span><span class="st">"small"</span> <span class="ot">onClick</span><span class="op">=</span><span class="va">{</span>onEdit<span class="va">}</span><span class="fu">&gt;</span></span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>          Edit</span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>        <span class="fu">&lt;/Button&gt;</span></span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>        <span class="fu">&lt;Button</span> <span class="ot">variant</span><span class="op">=</span><span class="st">"danger"</span> <span class="ot">size</span><span class="op">=</span><span class="st">"small"</span> <span class="ot">onClick</span><span class="op">=</span><span class="va">{</span>onDelete<span class="va">}</span><span class="fu">&gt;</span></span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>          Delete</span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a>        <span class="fu">&lt;/Button&gt;</span></span>
+<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="container-components" class="level4">
+<h4 class="anchored" data-anchor-id="container-components">Container Components</h4>
+<p>Manage data and behavior:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode jsx code-with-copy"><code class="sourceCode javascriptreact"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">// TaskListContainer.jsx</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">TaskListContainer</span>({ projectId }) {</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> { tasks<span class="op">,</span> loading<span class="op">,</span> error<span class="op">,</span> refresh } <span class="op">=</span> <span class="fu">useTasks</span>(projectId)<span class="op">;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> { completeTask<span class="op">,</span> deleteTask } <span class="op">=</span> <span class="fu">useTaskActions</span>()<span class="op">;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> [selectedTask<span class="op">,</span> setSelectedTask] <span class="op">=</span> <span class="fu">useState</span>(<span class="kw">null</span>)<span class="op">;</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> handleComplete <span class="op">=</span> <span class="kw">async</span> (taskId) <span class="kw">=&gt;</span> {</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">await</span> <span class="fu">completeTask</span>(taskId)<span class="op">;</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">refresh</span>()<span class="op">;</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> handleDelete <span class="op">=</span> <span class="kw">async</span> (taskId) <span class="kw">=&gt;</span> {</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">confirm</span>(<span class="st">'Delete this task?'</span>)) {</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>      <span class="cf">await</span> <span class="fu">deleteTask</span>(taskId)<span class="op">;</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>      <span class="fu">refresh</span>()<span class="op">;</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (loading) <span class="cf">return </span><span class="fu">&lt;LoadingSpinner</span> <span class="fu">/&gt;</span><span class="op">;</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (error) <span class="cf">return </span><span class="fu">&lt;ErrorMessage</span> <span class="ot">error</span><span class="op">=</span><span class="va">{</span>error<span class="va">}</span> <span class="ot">onRetry</span><span class="op">=</span><span class="va">{</span>refresh<span class="va">}</span> <span class="fu">/&gt;</span><span class="op">;</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (tasks<span class="op">.</span><span class="at">length</span> <span class="op">===</span> <span class="dv">0</span>) <span class="cf">return </span><span class="fu">&lt;EmptyState</span> <span class="ot">message</span><span class="op">=</span><span class="st">"No tasks yet"</span> <span class="fu">/&gt;</span><span class="op">;</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;&gt;</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>      <span class="fu">&lt;TaskList</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>        <span class="ot">tasks</span><span class="op">=</span><span class="va">{</span>tasks<span class="va">}</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>        <span class="ot">onTaskSelect</span><span class="op">=</span><span class="va">{</span>setSelectedTask<span class="va">}</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>        <span class="ot">onTaskComplete</span><span class="op">=</span><span class="va">{</span>handleComplete<span class="va">}</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>        <span class="ot">onTaskDelete</span><span class="op">=</span><span class="va">{</span>handleDelete<span class="va">}</span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>      <span class="fu">/&gt;</span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>      <span class="va">{</span>selectedTask <span class="op">&amp;&amp;</span> (</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>        <span class="fu">&lt;TaskDetailModal</span></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>          <span class="ot">task</span><span class="op">=</span><span class="va">{</span>selectedTask<span class="va">}</span></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>          <span class="ot">onClose</span><span class="op">=</span><span class="va">{</span>() <span class="kw">=&gt;</span> <span class="fu">setSelectedTask</span>(<span class="kw">null</span>)<span class="va">}</span></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>        <span class="fu">/&gt;</span></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>      )<span class="va">}</span></span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/&gt;</span></span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="layout-components" class="level4">
+<h4 class="anchored" data-anchor-id="layout-components">Layout Components</h4>
+<p>Handle page structure and layout concerns:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode jsx code-with-copy"><code class="sourceCode javascriptreact"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">// PageLayout.jsx</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">PageLayout</span>({ children }) {</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;div</span> <span class="ot">className</span><span class="op">=</span><span class="st">"page-layout"</span><span class="kw">&gt;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">&lt;Header</span> <span class="fu">/&gt;</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;div</span> <span class="ot">className</span><span class="op">=</span><span class="st">"page-content"</span><span class="kw">&gt;</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">&lt;Sidebar</span> <span class="fu">/&gt;</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;main</span> <span class="ot">className</span><span class="op">=</span><span class="st">"main-content"</span><span class="kw">&gt;</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>          <span class="va">{</span>children<span class="va">}</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;/main&gt;</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">&lt;Footer</span> <span class="fu">/&gt;</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co">// SplitPane.jsx</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">SplitPane</span>({ left<span class="op">,</span> right<span class="op">,</span> leftWidth <span class="op">=</span> <span class="st">'30%'</span> }) {</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;div</span> <span class="ot">className</span><span class="op">=</span><span class="st">"split-pane"</span><span class="kw">&gt;</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;div</span> <span class="ot">className</span><span class="op">=</span><span class="st">"split-left"</span> <span class="ot">style</span><span class="op">=</span><span class="va">{</span>{ <span class="dt">width</span><span class="op">:</span> leftWidth }<span class="va">}</span><span class="kw">&gt;</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>        <span class="va">{</span>left<span class="va">}</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;div</span> <span class="ot">className</span><span class="op">=</span><span class="st">"split-right"</span><span class="kw">&gt;</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>        <span class="va">{</span>right<span class="va">}</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a><span class="co">// Usage</span></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">TasksPage</span>() {</span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">&lt;PageLayout&gt;</span></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>      <span class="fu">&lt;SplitPane</span></span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>        <span class="ot">left</span><span class="op">=</span><span class="va">{</span><span class="fu">&lt;TaskFilters</span> <span class="fu">/&gt;</span><span class="va">}</span></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>        <span class="ot">right</span><span class="op">=</span><span class="va">{</span><span class="fu">&lt;TaskListContainer</span> <span class="fu">/&gt;</span><span class="va">}</span></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>        <span class="ot">leftWidth</span><span class="op">=</span><span class="st">"250px"</span></span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>      <span class="fu">/&gt;</span></span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>    <span class="fu">&lt;/PageLayout&gt;</span></span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+</section>
+<section id="state-management" class="level2">
+<h2 class="anchored" data-anchor-id="state-management">State Management</h2>
+<section id="understanding-react-state" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-react-state">Understanding React State</h3>
+<p>State in React represents data that changes over time. Understanding where state should live is crucial for maintainable applications.</p>
+<section id="state-placement-guidelines" class="level4">
+<h4 class="anchored" data-anchor-id="state-placement-guidelines">State Placement Guidelines</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 31%">
+<col style="width: 44%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>State Type</th>
+<th>Where to Put It</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>UI State</strong></td>
+<td>Local component</td>
+<td>Modal open/closed, form input values</td>
+</tr>
+<tr class="even">
+<td><strong>Shared UI State</strong></td>
+<td>Nearest common ancestor</td>
+<td>Selected tab in sibling components</td>
+</tr>
+<tr class="odd">
+<td><strong>Server Cache</strong></td>
+<td>Custom hook or library</td>
+<td>Fetched data, loading states</td>
+</tr>
+<tr class="even">
+<td><strong>Global App State</strong></td>
+<td>Context or state library</td>
+<td>Current user, theme, permissions</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="local-state-with-usestate" class="level3">
+<h3 class="anchored" data-anchor-id="local-state-with-usestate">Local State with useState</h3>
+<p>For state that doesn’t need to be shared:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode jsx code-with-copy"><code class="sourceCode javascriptreact"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">TaskForm</span>({ onSubmit }) {</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Form state is local to this component</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> [title<span class="op">,</span> setTitle] <span class="op">=</span> <span class="fu">useState</span>(<span class="st">''</span>)<span class="op">;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> [description<span class="op">,</span> setDescription] <span class="op">=</span> <span class="fu">useState</span>(<span class="st">''</span>)<span class="op">;</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> [dueDate<span class="op">,</span> setDueDate] <span class="op">=</span> <span class="fu">useState</span>(<span class="st">''</span>)<span class="op">;</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> [errors<span class="op">,</span> setErrors] <span class="op">=</span> <span class="fu">useState</span>({})<span class="op">;</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> validate <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> newErrors <span class="op">=</span> {}<span class="op">;</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="op">!</span>title<span class="op">.</span><span class="fu">trim</span>()) {</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>      newErrors<span class="op">.</span><span class="at">title</span> <span class="op">=</span> <span class="st">'Title is required'</span><span class="op">;</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (dueDate <span class="op">&amp;&amp;</span> <span class="kw">new</span> <span class="bu">Date</span>(dueDate) <span class="op">&lt;</span> <span class="kw">new</span> <span class="bu">Date</span>()) {</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>      newErrors<span class="op">.</span><span class="at">dueDate</span> <span class="op">=</span> <span class="st">'Due date cannot be in the past'</span><span class="op">;</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">setErrors</span>(newErrors)<span class="op">;</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">Object</span><span class="op">.</span><span class="fu">keys</span>(newErrors)<span class="op">.</span><span class="at">length</span> <span class="op">===</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> handleSubmit <span class="op">=</span> (e) <span class="kw">=&gt;</span> {</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    e<span class="op">.</span><span class="fu">preventDefault</span>()<span class="op">;</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">validate</span>()) {</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>      <span class="fu">onSubmit</span>({ title<span class="op">,</span> description<span class="op">,</span> dueDate })<span class="op">;</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>      <span class="co">// Reset form</span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>      <span class="fu">setTitle</span>(<span class="st">''</span>)<span class="op">;</span></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>      <span class="fu">setDescription</span>(<span class="st">''</span>)<span class="op">;</span></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>      <span class="fu">setDueDate</span>(<span class="st">''</span>)<span class="op">;</span></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;form</span> <span class="ot">onSubmit</span><span class="op">=</span><span class="va">{</span>handleSubmit<span class="va">}</span><span class="kw">&gt;</span></span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;div</span> <span class="ot">className</span><span class="op">=</span><span class="st">"form-group"</span><span class="kw">&gt;</span></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;label</span> <span class="ot">htmlFor</span><span class="op">=</span><span class="st">"title"</span><span class="kw">&gt;</span>Title<span class="kw">&lt;/label&gt;</span></span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;input</span></span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>          <span class="ot">id</span><span class="op">=</span><span class="st">"title"</span></span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>          <span class="ot">value</span><span class="op">=</span><span class="va">{</span>title<span class="va">}</span></span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>          <span class="ot">onChange</span><span class="op">=</span><span class="va">{</span>(e) <span class="kw">=&gt;</span> <span class="fu">setTitle</span>(e<span class="op">.</span><span class="at">target</span><span class="op">.</span><span class="at">value</span>)<span class="va">}</span></span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>          <span class="ot">className</span><span class="op">=</span><span class="va">{</span>errors<span class="op">.</span><span class="at">title</span> <span class="op">?</span> <span class="st">'error'</span> <span class="op">:</span> <span class="st">''</span><span class="va">}</span></span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>        <span class="kw">/&gt;</span></span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a>        <span class="va">{</span>errors<span class="op">.</span><span class="at">title</span> <span class="op">&amp;&amp; </span><span class="kw">&lt;span</span> <span class="ot">className</span><span class="op">=</span><span class="st">"error-message"</span><span class="kw">&gt;</span><span class="va">{</span>errors<span class="op">.</span><span class="at">title</span><span class="va">}</span><span class="kw">&lt;/span&gt;</span><span class="va">}</span></span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;div</span> <span class="ot">className</span><span class="op">=</span><span class="st">"form-group"</span><span class="kw">&gt;</span></span>
+<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;label</span> <span class="ot">htmlFor</span><span class="op">=</span><span class="st">"description"</span><span class="kw">&gt;</span>Description<span class="kw">&lt;/label&gt;</span></span>
+<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;textarea</span></span>
+<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a>          <span class="ot">id</span><span class="op">=</span><span class="st">"description"</span></span>
+<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a>          <span class="ot">value</span><span class="op">=</span><span class="va">{</span>description<span class="va">}</span></span>
+<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a>          <span class="ot">onChange</span><span class="op">=</span><span class="va">{</span>(e) <span class="kw">=&gt;</span> <span class="fu">setDescription</span>(e<span class="op">.</span><span class="at">target</span><span class="op">.</span><span class="at">value</span>)<span class="va">}</span></span>
+<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a>        <span class="kw">/&gt;</span></span>
+<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;div</span> <span class="ot">className</span><span class="op">=</span><span class="st">"form-group"</span><span class="kw">&gt;</span></span>
+<span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;label</span> <span class="ot">htmlFor</span><span class="op">=</span><span class="st">"dueDate"</span><span class="kw">&gt;</span>Due Date<span class="kw">&lt;/label&gt;</span></span>
+<span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;input</span></span>
+<span id="cb8-56"><a href="#cb8-56" aria-hidden="true" tabindex="-1"></a>          <span class="ot">id</span><span class="op">=</span><span class="st">"dueDate"</span></span>
+<span id="cb8-57"><a href="#cb8-57" aria-hidden="true" tabindex="-1"></a>          <span class="ot">type</span><span class="op">=</span><span class="st">"date"</span></span>
+<span id="cb8-58"><a href="#cb8-58" aria-hidden="true" tabindex="-1"></a>          <span class="ot">value</span><span class="op">=</span><span class="va">{</span>dueDate<span class="va">}</span></span>
+<span id="cb8-59"><a href="#cb8-59" aria-hidden="true" tabindex="-1"></a>          <span class="ot">onChange</span><span class="op">=</span><span class="va">{</span>(e) <span class="kw">=&gt;</span> <span class="fu">setDueDate</span>(e<span class="op">.</span><span class="at">target</span><span class="op">.</span><span class="at">value</span>)<span class="va">}</span></span>
+<span id="cb8-60"><a href="#cb8-60" aria-hidden="true" tabindex="-1"></a>          <span class="ot">className</span><span class="op">=</span><span class="va">{</span>errors<span class="op">.</span><span class="at">dueDate</span> <span class="op">?</span> <span class="st">'error'</span> <span class="op">:</span> <span class="st">''</span><span class="va">}</span></span>
+<span id="cb8-61"><a href="#cb8-61" aria-hidden="true" tabindex="-1"></a>        <span class="kw">/&gt;</span></span>
+<span id="cb8-62"><a href="#cb8-62" aria-hidden="true" tabindex="-1"></a>        <span class="va">{</span>errors<span class="op">.</span><span class="at">dueDate</span> <span class="op">&amp;&amp; </span><span class="kw">&lt;span</span> <span class="ot">className</span><span class="op">=</span><span class="st">"error-message"</span><span class="kw">&gt;</span><span class="va">{</span>errors<span class="op">.</span><span class="at">dueDate</span><span class="va">}</span><span class="kw">&lt;/span&gt;</span><span class="va">}</span></span>
+<span id="cb8-63"><a href="#cb8-63" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb8-64"><a href="#cb8-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-65"><a href="#cb8-65" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;button</span> <span class="ot">type</span><span class="op">=</span><span class="st">"submit"</span><span class="kw">&gt;</span>Create Task<span class="kw">&lt;/button&gt;</span></span>
+<span id="cb8-66"><a href="#cb8-66" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/form&gt;</span></span>
+<span id="cb8-67"><a href="#cb8-67" aria-hidden="true" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb8-68"><a href="#cb8-68" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="complex-local-state-with-usereducer" class="level3">
+<h3 class="anchored" data-anchor-id="complex-local-state-with-usereducer">Complex Local State with useReducer</h3>
+<p>When state logic becomes complex, useReducer provides better organization:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode jsx code-with-copy"><code class="sourceCode javascriptreact"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Define action types and reducer</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> taskFormReducer <span class="op">=</span> (state<span class="op">,</span> action) <span class="kw">=&gt;</span> {</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">switch</span> (action<span class="op">.</span><span class="at">type</span>) {</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> <span class="st">'SET_FIELD'</span><span class="op">:</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> {</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        <span class="op">...</span>state<span class="op">,</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>        <span class="dt">values</span><span class="op">:</span> { <span class="op">...</span>state<span class="op">.</span><span class="at">values</span><span class="op">,</span> [action<span class="op">.</span><span class="at">field</span>]<span class="op">:</span> action<span class="op">.</span><span class="at">value</span> }<span class="op">,</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>        <span class="dt">errors</span><span class="op">:</span> { <span class="op">...</span>state<span class="op">.</span><span class="at">errors</span><span class="op">,</span> [action<span class="op">.</span><span class="at">field</span>]<span class="op">:</span> <span class="kw">null</span> }</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>      }<span class="op">;</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> <span class="st">'SET_ERROR'</span><span class="op">:</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> {</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>        <span class="op">...</span>state<span class="op">,</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>        <span class="dt">errors</span><span class="op">:</span> { <span class="op">...</span>state<span class="op">.</span><span class="at">errors</span><span class="op">,</span> [action<span class="op">.</span><span class="at">field</span>]<span class="op">:</span> action<span class="op">.</span><span class="at">error</span> }</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>      }<span class="op">;</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> <span class="st">'SET_ERRORS'</span><span class="op">:</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> { <span class="op">...</span>state<span class="op">,</span> <span class="dt">errors</span><span class="op">:</span> action<span class="op">.</span><span class="at">errors</span> }<span class="op">;</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> <span class="st">'SET_SUBMITTING'</span><span class="op">:</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> { <span class="op">...</span>state<span class="op">,</span> <span class="dt">isSubmitting</span><span class="op">:</span> action<span class="op">.</span><span class="at">value</span> }<span class="op">;</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> <span class="st">'RESET'</span><span class="op">:</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> initialState<span class="op">;</span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">default</span><span class="op">:</span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> state<span class="op">;</span></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> initialState <span class="op">=</span> {</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>  <span class="dt">values</span><span class="op">:</span> { <span class="dt">title</span><span class="op">:</span> <span class="st">''</span><span class="op">,</span> <span class="dt">description</span><span class="op">:</span> <span class="st">''</span><span class="op">,</span> <span class="dt">dueDate</span><span class="op">:</span> <span class="st">''</span> }<span class="op">,</span></span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>  <span class="dt">errors</span><span class="op">:</span> {}<span class="op">,</span></span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>  <span class="dt">isSubmitting</span><span class="op">:</span> <span class="kw">false</span></span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">TaskForm</span>({ onSubmit }) {</span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> [state<span class="op">,</span> dispatch] <span class="op">=</span> <span class="fu">useReducer</span>(taskFormReducer<span class="op">,</span> initialState)<span class="op">;</span></span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> handleChange <span class="op">=</span> (field) <span class="kw">=&gt;</span> (e) <span class="kw">=&gt;</span> {</span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">dispatch</span>({ <span class="dt">type</span><span class="op">:</span> <span class="st">'SET_FIELD'</span><span class="op">,</span> field<span class="op">,</span> <span class="dt">value</span><span class="op">:</span> e<span class="op">.</span><span class="at">target</span><span class="op">.</span><span class="at">value</span> })<span class="op">;</span></span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> handleSubmit <span class="op">=</span> <span class="kw">async</span> (e) <span class="kw">=&gt;</span> {</span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a>    e<span class="op">.</span><span class="fu">preventDefault</span>()<span class="op">;</span></span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Validate</span></span>
+<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> errors <span class="op">=</span> <span class="fu">validateTaskForm</span>(state<span class="op">.</span><span class="at">values</span>)<span class="op">;</span></span>
+<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="bu">Object</span><span class="op">.</span><span class="fu">keys</span>(errors)<span class="op">.</span><span class="at">length</span> <span class="op">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a>      <span class="fu">dispatch</span>({ <span class="dt">type</span><span class="op">:</span> <span class="st">'SET_ERRORS'</span><span class="op">,</span> errors })<span class="op">;</span></span>
+<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span><span class="op">;</span></span>
+<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a>    <span class="fu">dispatch</span>({ <span class="dt">type</span><span class="op">:</span> <span class="st">'SET_SUBMITTING'</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="kw">true</span> })<span class="op">;</span></span>
+<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span> {</span>
+<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a>      <span class="cf">await</span> <span class="fu">onSubmit</span>(state<span class="op">.</span><span class="at">values</span>)<span class="op">;</span></span>
+<span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a>      <span class="fu">dispatch</span>({ <span class="dt">type</span><span class="op">:</span> <span class="st">'RESET'</span> })<span class="op">;</span></span>
+<span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">finally</span> {</span>
+<span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a>      <span class="fu">dispatch</span>({ <span class="dt">type</span><span class="op">:</span> <span class="st">'SET_SUBMITTING'</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="kw">false</span> })<span class="op">;</span></span>
+<span id="cb9-60"><a href="#cb9-60" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-63"><a href="#cb9-63" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb9-64"><a href="#cb9-64" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;form</span> <span class="ot">onSubmit</span><span class="op">=</span><span class="va">{</span>handleSubmit<span class="va">}</span><span class="kw">&gt;</span></span>
+<span id="cb9-65"><a href="#cb9-65" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;input</span></span>
+<span id="cb9-66"><a href="#cb9-66" aria-hidden="true" tabindex="-1"></a>        <span class="ot">value</span><span class="op">=</span><span class="va">{</span>state<span class="op">.</span><span class="at">values</span><span class="op">.</span><span class="at">title</span><span class="va">}</span></span>
+<span id="cb9-67"><a href="#cb9-67" aria-hidden="true" tabindex="-1"></a>        <span class="ot">onChange</span><span class="op">=</span><span class="va">{</span><span class="fu">handleChange</span>(<span class="st">'title'</span>)<span class="va">}</span></span>
+<span id="cb9-68"><a href="#cb9-68" aria-hidden="true" tabindex="-1"></a>        <span class="ot">disabled</span><span class="op">=</span><span class="va">{</span>state<span class="op">.</span><span class="at">isSubmitting</span><span class="va">}</span></span>
+<span id="cb9-69"><a href="#cb9-69" aria-hidden="true" tabindex="-1"></a>      <span class="kw">/&gt;</span></span>
+<span id="cb9-70"><a href="#cb9-70" aria-hidden="true" tabindex="-1"></a>      <span class="va">{</span>state<span class="op">.</span><span class="at">errors</span><span class="op">.</span><span class="at">title</span> <span class="op">&amp;&amp; </span><span class="kw">&lt;span&gt;</span><span class="va">{</span>state<span class="op">.</span><span class="at">errors</span><span class="op">.</span><span class="at">title</span><span class="va">}</span><span class="kw">&lt;/span&gt;</span><span class="va">}</span></span>
+<span id="cb9-71"><a href="#cb9-71" aria-hidden="true" tabindex="-1"></a>      <span class="va">{</span><span class="co">/* ... more fields */</span><span class="va">}</span></span>
+<span id="cb9-72"><a href="#cb9-72" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;button</span> <span class="ot">disabled</span><span class="op">=</span><span class="va">{</span>state<span class="op">.</span><span class="at">isSubmitting</span><span class="va">}</span><span class="kw">&gt;</span></span>
+<span id="cb9-73"><a href="#cb9-73" aria-hidden="true" tabindex="-1"></a>        <span class="va">{</span>state<span class="op">.</span><span class="at">isSubmitting</span> <span class="op">?</span> <span class="st">'Saving...'</span> <span class="op">:</span> <span class="st">'Create Task'</span><span class="va">}</span></span>
+<span id="cb9-74"><a href="#cb9-74" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;/button&gt;</span></span>
+<span id="cb9-75"><a href="#cb9-75" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/form&gt;</span></span>
+<span id="cb9-76"><a href="#cb9-76" aria-hidden="true" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb9-77"><a href="#cb9-77" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="react-context-for-shared-state" class="level3">
+<h3 class="anchored" data-anchor-id="react-context-for-shared-state">React Context for Shared State</h3>
+<p>Context provides a way to share state across the component tree without prop drilling:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode jsx code-with-copy"><code class="sourceCode javascriptreact"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">// AuthContext.jsx</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> AuthContext <span class="op">=</span> <span class="fu">createContext</span>(<span class="kw">null</span>)<span class="op">;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="kw">function</span> <span class="fu">AuthProvider</span>({ children }) {</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> [user<span class="op">,</span> setUser] <span class="op">=</span> <span class="fu">useState</span>(<span class="kw">null</span>)<span class="op">;</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> [loading<span class="op">,</span> setLoading] <span class="op">=</span> <span class="fu">useState</span>(<span class="kw">true</span>)<span class="op">;</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">useEffect</span>(() <span class="kw">=&gt;</span> {</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Check for existing session on mount</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">checkAuthStatus</span>()<span class="op">.</span><span class="fu">then</span>(user <span class="kw">=&gt;</span> {</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">setUser</span>(user)<span class="op">;</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">setLoading</span>(<span class="kw">false</span>)<span class="op">;</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span> [])<span class="op">;</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> login <span class="op">=</span> <span class="kw">async</span> (credentials) <span class="kw">=&gt;</span> {</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> user <span class="op">=</span> <span class="cf">await</span> authApi<span class="op">.</span><span class="fu">login</span>(credentials)<span class="op">;</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">setUser</span>(user)<span class="op">;</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> user<span class="op">;</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> logout <span class="op">=</span> <span class="kw">async</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">await</span> authApi<span class="op">.</span><span class="fu">logout</span>()<span class="op">;</span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">setUser</span>(<span class="kw">null</span>)<span class="op">;</span></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> value <span class="op">=</span> {</span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>    user<span class="op">,</span></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>    <span class="dt">isAuthenticated</span><span class="op">:</span> <span class="op">!!</span>user<span class="op">,</span></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>    loading<span class="op">,</span></span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>    login<span class="op">,</span></span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>    logout</span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">&lt;AuthContext.Provider</span> <span class="ot">value</span><span class="op">=</span><span class="va">{</span>value<span class="va">}</span><span class="fu">&gt;</span></span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>      <span class="va">{</span>children<span class="va">}</span></span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">&lt;/AuthContext.Provider&gt;</span></span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a><span class="co">// Custom hook for consuming context</span></span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="kw">function</span> <span class="fu">useAuth</span>() {</span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> context <span class="op">=</span> <span class="fu">useContext</span>(AuthContext)<span class="op">;</span></span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="op">!</span>context) {</span>
+<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a>    <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>(<span class="st">'useAuth must be used within AuthProvider'</span>)<span class="op">;</span></span>
+<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> context<span class="op">;</span></span>
+<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a><span class="co">// Usage in components</span></span>
+<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">UserMenu</span>() {</span>
+<span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> { user<span class="op">,</span> logout<span class="op">,</span> isAuthenticated } <span class="op">=</span> <span class="fu">useAuth</span>()<span class="op">;</span></span>
+<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="op">!</span>isAuthenticated) {</span>
+<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return </span><span class="fu">&lt;LoginButton</span> <span class="fu">/&gt;</span><span class="op">;</span></span>
+<span id="cb10-57"><a href="#cb10-57" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb10-58"><a href="#cb10-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-59"><a href="#cb10-59" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb10-60"><a href="#cb10-60" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;div</span> <span class="ot">className</span><span class="op">=</span><span class="st">"user-menu"</span><span class="kw">&gt;</span></span>
+<span id="cb10-61"><a href="#cb10-61" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;span&gt;</span>Welcome, <span class="va">{</span>user<span class="op">.</span><span class="at">name</span><span class="va">}</span><span class="kw">&lt;/span&gt;</span></span>
+<span id="cb10-62"><a href="#cb10-62" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;button</span> <span class="ot">onClick</span><span class="op">=</span><span class="va">{</span>logout<span class="va">}</span><span class="kw">&gt;</span>Logout<span class="kw">&lt;/button&gt;</span></span>
+<span id="cb10-63"><a href="#cb10-63" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb10-64"><a href="#cb10-64" aria-hidden="true" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb10-65"><a href="#cb10-65" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="context-best-practices" class="level3">
+<h3 class="anchored" data-anchor-id="context-best-practices">Context Best Practices</h3>
+<p><strong>1. Separate Contexts by Domain</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode jsx code-with-copy"><code class="sourceCode javascriptreact"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Bad: One giant context</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> AppContext <span class="op">=</span> <span class="fu">createContext</span>({</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">user</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">theme</span><span class="op">:</span> <span class="st">'light'</span><span class="op">,</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">tasks</span><span class="op">:</span> []<span class="op">,</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">notifications</span><span class="op">:</span> []<span class="op">,</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">settings</span><span class="op">:</span> {}</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co">// Good: Separate contexts</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> AuthContext <span class="op">=</span> <span class="fu">createContext</span>(<span class="kw">null</span>)<span class="op">;</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> ThemeContext <span class="op">=</span> <span class="fu">createContext</span>(<span class="kw">null</span>)<span class="op">;</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> NotificationContext <span class="op">=</span> <span class="fu">createContext</span>(<span class="kw">null</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>2. Optimize Re-renders</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode jsx code-with-copy"><code class="sourceCode javascriptreact"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Problem: Any change re-renders all consumers</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> TaskContext <span class="op">=</span> <span class="fu">createContext</span>(<span class="kw">null</span>)<span class="op">;</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">TaskProvider</span>({ children }) {</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> [tasks<span class="op">,</span> setTasks] <span class="op">=</span> <span class="fu">useState</span>([])<span class="op">;</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> [filter<span class="op">,</span> setFilter] <span class="op">=</span> <span class="fu">useState</span>(<span class="st">'all'</span>)<span class="op">;</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">// This object is recreated every render</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> value <span class="op">=</span> { tasks<span class="op">,</span> filter<span class="op">,</span> setTasks<span class="op">,</span> setFilter }<span class="op">;</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">&lt;TaskContext.Provider</span> <span class="ot">value</span><span class="op">=</span><span class="va">{</span>value<span class="va">}</span><span class="fu">&gt;</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>      <span class="va">{</span>children<span class="va">}</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">&lt;/TaskContext.Provider&gt;</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="co">// Solution: Memoize the value and split contexts</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">TaskProvider</span>({ children }) {</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> [tasks<span class="op">,</span> setTasks] <span class="op">=</span> <span class="fu">useState</span>([])<span class="op">;</span></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> [filter<span class="op">,</span> setFilter] <span class="op">=</span> <span class="fu">useState</span>(<span class="st">'all'</span>)<span class="op">;</span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> taskValue <span class="op">=</span> <span class="fu">useMemo</span>(() <span class="kw">=&gt;</span> ({ tasks<span class="op">,</span> setTasks })<span class="op">,</span> [tasks])<span class="op">;</span></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> filterValue <span class="op">=</span> <span class="fu">useMemo</span>(() <span class="kw">=&gt;</span> ({ filter<span class="op">,</span> setFilter })<span class="op">,</span> [filter])<span class="op">;</span></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">&lt;TaskStateContext.Provider</span> <span class="ot">value</span><span class="op">=</span><span class="va">{</span>taskValue<span class="va">}</span><span class="fu">&gt;</span></span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>      <span class="fu">&lt;TaskFilterContext.Provider</span> <span class="ot">value</span><span class="op">=</span><span class="va">{</span>filterValue<span class="va">}</span><span class="fu">&gt;</span></span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>        <span class="va">{</span>children<span class="va">}</span></span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>      <span class="fu">&lt;/TaskFilterContext.Provider&gt;</span></span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">&lt;/TaskStateContext.Provider&gt;</span></span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>3. Provide Default Values for Testing</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode jsx code-with-copy"><code class="sourceCode javascriptreact"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> ThemeContext <span class="op">=</span> <span class="fu">createContext</span>({</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">theme</span><span class="op">:</span> <span class="st">'light'</span><span class="op">,</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">toggleTheme</span><span class="op">:</span> () <span class="kw">=&gt;</span> {}  <span class="co">// No-op default</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co">// In tests, components work without provider</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co">// In app, provider overrides defaults</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="state-management-libraries" class="level3">
+<h3 class="anchored" data-anchor-id="state-management-libraries">State Management Libraries</h3>
+<p>For complex applications, dedicated state management libraries offer additional features.</p>
+<section id="when-to-use-a-library" class="level4">
+<h4 class="anchored" data-anchor-id="when-to-use-a-library">When to Use a Library</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Scenario</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Small app, simple state</td>
+<td>useState + Context</td>
+</tr>
+<tr class="even">
+<td>Medium app, moderate complexity</td>
+<td>Context + useReducer</td>
+</tr>
+<tr class="odd">
+<td>Large app, complex state</td>
+<td>Consider Zustand or Redux Toolkit</td>
+</tr>
+<tr class="even">
+<td>Heavy server state caching</td>
+<td>TanStack Query (React Query)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="example-zustand-lightweight-alternative" class="level4">
+<h4 class="anchored" data-anchor-id="example-zustand-lightweight-alternative">Example: Zustand (Lightweight Alternative)</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">// store/taskStore.js</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { create } <span class="im">from</span> <span class="st">'zustand'</span><span class="op">;</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> useTaskStore <span class="op">=</span> <span class="fu">create</span>((<span class="kw">set</span><span class="op">,</span> <span class="kw">get</span>) <span class="kw">=&gt;</span> ({</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">tasks</span><span class="op">:</span> []<span class="op">,</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">filter</span><span class="op">:</span> <span class="st">'all'</span><span class="op">,</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">isLoading</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">setTasks</span><span class="op">:</span> (tasks) <span class="kw">=&gt;</span> <span class="kw">set</span>({ tasks })<span class="op">,</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  <span class="dt">addTask</span><span class="op">:</span> (task) <span class="kw">=&gt;</span> <span class="kw">set</span>((state) <span class="kw">=&gt;</span> ({</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">tasks</span><span class="op">:</span> [task<span class="op">,</span> <span class="op">...</span>state<span class="op">.</span><span class="at">tasks</span>]</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  }))<span class="op">,</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>  <span class="dt">updateTask</span><span class="op">:</span> (id<span class="op">,</span> updates) <span class="kw">=&gt;</span> <span class="kw">set</span>((state) <span class="kw">=&gt;</span> ({</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>    <span class="dt">tasks</span><span class="op">:</span> state<span class="op">.</span><span class="at">tasks</span><span class="op">.</span><span class="fu">map</span>(t <span class="kw">=&gt;</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>      t<span class="op">.</span><span class="at">id</span> <span class="op">===</span> id <span class="op">?</span> { <span class="op">...</span>t<span class="op">,</span> <span class="op">...</span>updates } <span class="op">:</span> t</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>  }))<span class="op">,</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>  <span class="dt">deleteTask</span><span class="op">:</span> (id) <span class="kw">=&gt;</span> <span class="kw">set</span>((state) <span class="kw">=&gt;</span> ({</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>    <span class="dt">tasks</span><span class="op">:</span> state<span class="op">.</span><span class="at">tasks</span><span class="op">.</span><span class="fu">filter</span>(t <span class="kw">=&gt;</span> t<span class="op">.</span><span class="at">id</span> <span class="op">!==</span> id)</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>  }))<span class="op">,</span></span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>  <span class="dt">setFilter</span><span class="op">:</span> (filter) <span class="kw">=&gt;</span> <span class="kw">set</span>({ filter })<span class="op">,</span></span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Derived state (selector)</span></span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>  <span class="dt">getFilteredTasks</span><span class="op">:</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> { tasks<span class="op">,</span> filter } <span class="op">=</span> <span class="kw">get</span>()<span class="op">;</span></span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">switch</span> (filter) {</span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>      <span class="cf">case</span> <span class="st">'completed'</span><span class="op">:</span> <span class="cf">return</span> tasks<span class="op">.</span><span class="fu">filter</span>(t <span class="kw">=&gt;</span> t<span class="op">.</span><span class="at">completed</span>)<span class="op">;</span></span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>      <span class="cf">case</span> <span class="st">'pending'</span><span class="op">:</span> <span class="cf">return</span> tasks<span class="op">.</span><span class="fu">filter</span>(t <span class="kw">=&gt;</span> <span class="op">!</span>t<span class="op">.</span><span class="at">completed</span>)<span class="op">;</span></span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>      <span class="cf">default</span><span class="op">:</span> <span class="cf">return</span> tasks<span class="op">;</span></span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a>}))<span class="op">;</span></span>
+<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a><span class="co">// Usage in components</span></span>
+<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">TaskList</span>() {</span>
+<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> tasks <span class="op">=</span> <span class="fu">useTaskStore</span>((state) <span class="kw">=&gt;</span> state<span class="op">.</span><span class="fu">getFilteredTasks</span>())<span class="op">;</span></span>
+<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> deleteTask <span class="op">=</span> <span class="fu">useTaskStore</span>((state) <span class="kw">=&gt;</span> state<span class="op">.</span><span class="at">deleteTask</span>)<span class="op">;</span></span>
+<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;</span>ul<span class="op">&gt;</span></span>
+<span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a>      {tasks<span class="op">.</span><span class="fu">map</span>(task <span class="kw">=&gt;</span> (</span>
+<span id="cb14-46"><a href="#cb14-46" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;</span>TaskItem</span>
+<span id="cb14-47"><a href="#cb14-47" aria-hidden="true" tabindex="-1"></a>          key<span class="op">=</span>{task<span class="op">.</span><span class="at">id</span>}</span>
+<span id="cb14-48"><a href="#cb14-48" aria-hidden="true" tabindex="-1"></a>          task<span class="op">=</span>{task}</span>
+<span id="cb14-49"><a href="#cb14-49" aria-hidden="true" tabindex="-1"></a>          onDelete<span class="op">=</span>{() <span class="kw">=&gt;</span> <span class="fu">deleteTask</span>(task<span class="op">.</span><span class="at">id</span>)}</span>
+<span id="cb14-50"><a href="#cb14-50" aria-hidden="true" tabindex="-1"></a>        <span class="op">/&gt;</span></span>
+<span id="cb14-51"><a href="#cb14-51" aria-hidden="true" tabindex="-1"></a>      ))}</span>
+<span id="cb14-52"><a href="#cb14-52" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;/</span>ul<span class="op">&gt;</span></span>
+<span id="cb14-53"><a href="#cb14-53" aria-hidden="true" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb14-54"><a href="#cb14-54" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+</section>
+<section id="backend-service-patterns" class="level2">
+<h2 class="anchored" data-anchor-id="backend-service-patterns">Backend Service Patterns</h2>
+<section id="the-service-layer-pattern" class="level3">
+<h3 class="anchored" data-anchor-id="the-service-layer-pattern">The Service Layer Pattern</h3>
+<p>The service layer encapsulates business logic and orchestrates operations:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">// services/TaskService.js</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TaskService {</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">constructor</span>(taskRepository<span class="op">,</span> userRepository<span class="op">,</span> notificationService) {</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">taskRepository</span> <span class="op">=</span> taskRepository<span class="op">;</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">userRepository</span> <span class="op">=</span> userRepository<span class="op">;</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">notificationService</span> <span class="op">=</span> notificationService<span class="op">;</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="kw">async</span> <span class="fu">createTask</span>(taskData<span class="op">,</span> creatorId) {</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Validate creator exists</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> creator <span class="op">=</span> <span class="cf">await</span> <span class="kw">this</span><span class="op">.</span><span class="at">userRepository</span><span class="op">.</span><span class="fu">findById</span>(creatorId)<span class="op">;</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="op">!</span>creator) {</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>      <span class="cf">throw</span> <span class="kw">new</span> <span class="fu">NotFoundError</span>(<span class="st">'User not found'</span>)<span class="op">;</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Create task entity</span></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> task <span class="op">=</span> <span class="kw">new</span> <span class="fu">Task</span>({</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>      <span class="op">...</span>taskData<span class="op">,</span></span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>      <span class="dt">createdBy</span><span class="op">:</span> creatorId<span class="op">,</span></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>      <span class="dt">status</span><span class="op">:</span> <span class="st">'pending'</span></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Persist</span></span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> saved <span class="op">=</span> <span class="cf">await</span> <span class="kw">this</span><span class="op">.</span><span class="at">taskRepository</span><span class="op">.</span><span class="fu">save</span>(task)<span class="op">;</span></span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Notify assignee if assigned</span></span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (task<span class="op">.</span><span class="at">assigneeId</span>) {</span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>      <span class="cf">await</span> <span class="kw">this</span><span class="op">.</span><span class="at">notificationService</span><span class="op">.</span><span class="fu">notifyTaskAssigned</span>(saved)<span class="op">;</span></span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> saved<span class="op">;</span></span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a>  <span class="kw">async</span> <span class="fu">assignTask</span>(taskId<span class="op">,</span> assigneeId<span class="op">,</span> assignerId) {</span>
+<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> task <span class="op">=</span> <span class="cf">await</span> <span class="kw">this</span><span class="op">.</span><span class="at">taskRepository</span><span class="op">.</span><span class="fu">findById</span>(taskId)<span class="op">;</span></span>
+<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="op">!</span>task) {</span>
+<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a>      <span class="cf">throw</span> <span class="kw">new</span> <span class="fu">NotFoundError</span>(<span class="st">'Task not found'</span>)<span class="op">;</span></span>
+<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> assignee <span class="op">=</span> <span class="cf">await</span> <span class="kw">this</span><span class="op">.</span><span class="at">userRepository</span><span class="op">.</span><span class="fu">findById</span>(assigneeId)<span class="op">;</span></span>
+<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="op">!</span>assignee) {</span>
+<span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a>      <span class="cf">throw</span> <span class="kw">new</span> <span class="fu">NotFoundError</span>(<span class="st">'Assignee not found'</span>)<span class="op">;</span></span>
+<span id="cb15-43"><a href="#cb15-43" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb15-44"><a href="#cb15-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-45"><a href="#cb15-45" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Domain logic</span></span>
+<span id="cb15-46"><a href="#cb15-46" aria-hidden="true" tabindex="-1"></a>    task<span class="op">.</span><span class="fu">assignTo</span>(assigneeId)<span class="op">;</span></span>
+<span id="cb15-47"><a href="#cb15-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-48"><a href="#cb15-48" aria-hidden="true" tabindex="-1"></a>    <span class="cf">await</span> <span class="kw">this</span><span class="op">.</span><span class="at">taskRepository</span><span class="op">.</span><span class="fu">save</span>(task)<span class="op">;</span></span>
+<span id="cb15-49"><a href="#cb15-49" aria-hidden="true" tabindex="-1"></a>    <span class="cf">await</span> <span class="kw">this</span><span class="op">.</span><span class="at">notificationService</span><span class="op">.</span><span class="fu">notifyTaskAssigned</span>(task<span class="op">,</span> assignee)<span class="op">;</span></span>
+<span id="cb15-50"><a href="#cb15-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-51"><a href="#cb15-51" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> task<span class="op">;</span></span>
+<span id="cb15-52"><a href="#cb15-52" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb15-53"><a href="#cb15-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-54"><a href="#cb15-54" aria-hidden="true" tabindex="-1"></a>  <span class="kw">async</span> <span class="fu">getTasksForUser</span>(userId<span class="op">,</span> filters <span class="op">=</span> {}) {</span>
+<span id="cb15-55"><a href="#cb15-55" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> tasks <span class="op">=</span> <span class="cf">await</span> <span class="kw">this</span><span class="op">.</span><span class="at">taskRepository</span><span class="op">.</span><span class="fu">findByAssignee</span>(userId<span class="op">,</span> filters)<span class="op">;</span></span>
+<span id="cb15-56"><a href="#cb15-56" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> tasks<span class="op">;</span></span>
+<span id="cb15-57"><a href="#cb15-57" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb15-58"><a href="#cb15-58" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="controller-pattern" class="level3">
+<h3 class="anchored" data-anchor-id="controller-pattern">Controller Pattern</h3>
+<p>Controllers handle HTTP concerns and delegate to services:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">// controllers/taskController.js</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TaskController {</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">constructor</span>(taskService) {</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">taskService</span> <span class="op">=</span> taskService<span class="op">;</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">// GET /api/tasks</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="kw">async</span> <span class="fu">list</span>(req<span class="op">,</span> res<span class="op">,</span> next) {</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span> {</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> filters <span class="op">=</span> {</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>        <span class="dt">status</span><span class="op">:</span> req<span class="op">.</span><span class="at">query</span><span class="op">.</span><span class="at">status</span><span class="op">,</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>        <span class="dt">assignee</span><span class="op">:</span> req<span class="op">.</span><span class="at">query</span><span class="op">.</span><span class="at">assignee</span><span class="op">,</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>        <span class="dt">page</span><span class="op">:</span> <span class="pp">parseInt</span>(req<span class="op">.</span><span class="at">query</span><span class="op">.</span><span class="at">page</span>) <span class="op">||</span> <span class="dv">1</span><span class="op">,</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>        <span class="dt">limit</span><span class="op">:</span> <span class="pp">parseInt</span>(req<span class="op">.</span><span class="at">query</span><span class="op">.</span><span class="at">limit</span>) <span class="op">||</span> <span class="dv">20</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>      }<span class="op">;</span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> result <span class="op">=</span> <span class="cf">await</span> <span class="kw">this</span><span class="op">.</span><span class="at">taskService</span><span class="op">.</span><span class="fu">getTasks</span>(filters)<span class="op">;</span></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>      res<span class="op">.</span><span class="fu">json</span>({</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>        <span class="dt">data</span><span class="op">:</span> result<span class="op">.</span><span class="at">tasks</span><span class="op">.</span><span class="fu">map</span>(TaskDTO<span class="op">.</span><span class="at">fromDomain</span>)<span class="op">,</span></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>        <span class="dt">meta</span><span class="op">:</span> {</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>          <span class="dt">total</span><span class="op">:</span> result<span class="op">.</span><span class="at">total</span><span class="op">,</span></span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>          <span class="dt">page</span><span class="op">:</span> filters<span class="op">.</span><span class="at">page</span><span class="op">,</span></span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>          <span class="dt">limit</span><span class="op">:</span> filters<span class="op">.</span><span class="at">limit</span><span class="op">,</span></span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>          <span class="dt">totalPages</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">ceil</span>(result<span class="op">.</span><span class="at">total</span> <span class="op">/</span> filters<span class="op">.</span><span class="at">limit</span>)</span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>      })<span class="op">;</span></span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">catch</span> (error) {</span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>      <span class="fu">next</span>(error)<span class="op">;</span></span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>  <span class="co">// GET /api/tasks/:id</span></span>
+<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a>  <span class="kw">async</span> <span class="kw">get</span>(req<span class="op">,</span> res<span class="op">,</span> next) {</span>
+<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span> {</span>
+<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> task <span class="op">=</span> <span class="cf">await</span> <span class="kw">this</span><span class="op">.</span><span class="at">taskService</span><span class="op">.</span><span class="fu">getTaskById</span>(req<span class="op">.</span><span class="at">params</span><span class="op">.</span><span class="at">id</span>)<span class="op">;</span></span>
+<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a>      res<span class="op">.</span><span class="fu">json</span>({ <span class="dt">data</span><span class="op">:</span> TaskDTO<span class="op">.</span><span class="fu">fromDomain</span>(task) })<span class="op">;</span></span>
+<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">catch</span> (error) {</span>
+<span id="cb16-39"><a href="#cb16-39" aria-hidden="true" tabindex="-1"></a>      <span class="fu">next</span>(error)<span class="op">;</span></span>
+<span id="cb16-40"><a href="#cb16-40" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb16-41"><a href="#cb16-41" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb16-42"><a href="#cb16-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-43"><a href="#cb16-43" aria-hidden="true" tabindex="-1"></a>  <span class="co">// POST /api/tasks</span></span>
+<span id="cb16-44"><a href="#cb16-44" aria-hidden="true" tabindex="-1"></a>  <span class="kw">async</span> <span class="fu">create</span>(req<span class="op">,</span> res<span class="op">,</span> next) {</span>
+<span id="cb16-45"><a href="#cb16-45" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span> {</span>
+<span id="cb16-46"><a href="#cb16-46" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> task <span class="op">=</span> <span class="cf">await</span> <span class="kw">this</span><span class="op">.</span><span class="at">taskService</span><span class="op">.</span><span class="fu">createTask</span>(</span>
+<span id="cb16-47"><a href="#cb16-47" aria-hidden="true" tabindex="-1"></a>        req<span class="op">.</span><span class="at">body</span><span class="op">,</span></span>
+<span id="cb16-48"><a href="#cb16-48" aria-hidden="true" tabindex="-1"></a>        req<span class="op">.</span><span class="at">user</span><span class="op">.</span><span class="at">id</span>  <span class="co">// From auth middleware</span></span>
+<span id="cb16-49"><a href="#cb16-49" aria-hidden="true" tabindex="-1"></a>      )<span class="op">;</span></span>
+<span id="cb16-50"><a href="#cb16-50" aria-hidden="true" tabindex="-1"></a>      res<span class="op">.</span><span class="fu">status</span>(<span class="dv">201</span>)<span class="op">.</span><span class="fu">json</span>({ <span class="dt">data</span><span class="op">:</span> TaskDTO<span class="op">.</span><span class="fu">fromDomain</span>(task) })<span class="op">;</span></span>
+<span id="cb16-51"><a href="#cb16-51" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">catch</span> (error) {</span>
+<span id="cb16-52"><a href="#cb16-52" aria-hidden="true" tabindex="-1"></a>      <span class="fu">next</span>(error)<span class="op">;</span></span>
+<span id="cb16-53"><a href="#cb16-53" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb16-54"><a href="#cb16-54" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb16-55"><a href="#cb16-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-56"><a href="#cb16-56" aria-hidden="true" tabindex="-1"></a>  <span class="co">// PUT /api/tasks/:id</span></span>
+<span id="cb16-57"><a href="#cb16-57" aria-hidden="true" tabindex="-1"></a>  <span class="kw">async</span> <span class="fu">update</span>(req<span class="op">,</span> res<span class="op">,</span> next) {</span>
+<span id="cb16-58"><a href="#cb16-58" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span> {</span>
+<span id="cb16-59"><a href="#cb16-59" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> task <span class="op">=</span> <span class="cf">await</span> <span class="kw">this</span><span class="op">.</span><span class="at">taskService</span><span class="op">.</span><span class="fu">updateTask</span>(</span>
+<span id="cb16-60"><a href="#cb16-60" aria-hidden="true" tabindex="-1"></a>        req<span class="op">.</span><span class="at">params</span><span class="op">.</span><span class="at">id</span><span class="op">,</span></span>
+<span id="cb16-61"><a href="#cb16-61" aria-hidden="true" tabindex="-1"></a>        req<span class="op">.</span><span class="at">body</span><span class="op">,</span></span>
+<span id="cb16-62"><a href="#cb16-62" aria-hidden="true" tabindex="-1"></a>        req<span class="op">.</span><span class="at">user</span><span class="op">.</span><span class="at">id</span></span>
+<span id="cb16-63"><a href="#cb16-63" aria-hidden="true" tabindex="-1"></a>      )<span class="op">;</span></span>
+<span id="cb16-64"><a href="#cb16-64" aria-hidden="true" tabindex="-1"></a>      res<span class="op">.</span><span class="fu">json</span>({ <span class="dt">data</span><span class="op">:</span> TaskDTO<span class="op">.</span><span class="fu">fromDomain</span>(task) })<span class="op">;</span></span>
+<span id="cb16-65"><a href="#cb16-65" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">catch</span> (error) {</span>
+<span id="cb16-66"><a href="#cb16-66" aria-hidden="true" tabindex="-1"></a>      <span class="fu">next</span>(error)<span class="op">;</span></span>
+<span id="cb16-67"><a href="#cb16-67" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb16-68"><a href="#cb16-68" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb16-69"><a href="#cb16-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-70"><a href="#cb16-70" aria-hidden="true" tabindex="-1"></a>  <span class="co">// DELETE /api/tasks/:id</span></span>
+<span id="cb16-71"><a href="#cb16-71" aria-hidden="true" tabindex="-1"></a>  <span class="kw">async</span> <span class="kw">delete</span>(req<span class="op">,</span> res<span class="op">,</span> next) {</span>
+<span id="cb16-72"><a href="#cb16-72" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span> {</span>
+<span id="cb16-73"><a href="#cb16-73" aria-hidden="true" tabindex="-1"></a>      <span class="cf">await</span> <span class="kw">this</span><span class="op">.</span><span class="at">taskService</span><span class="op">.</span><span class="fu">deleteTask</span>(req<span class="op">.</span><span class="at">params</span><span class="op">.</span><span class="at">id</span><span class="op">,</span> req<span class="op">.</span><span class="at">user</span><span class="op">.</span><span class="at">id</span>)<span class="op">;</span></span>
+<span id="cb16-74"><a href="#cb16-74" aria-hidden="true" tabindex="-1"></a>      res<span class="op">.</span><span class="fu">status</span>(<span class="dv">204</span>)<span class="op">.</span><span class="fu">end</span>()<span class="op">;</span></span>
+<span id="cb16-75"><a href="#cb16-75" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">catch</span> (error) {</span>
+<span id="cb16-76"><a href="#cb16-76" aria-hidden="true" tabindex="-1"></a>      <span class="fu">next</span>(error)<span class="op">;</span></span>
+<span id="cb16-77"><a href="#cb16-77" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb16-78"><a href="#cb16-78" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb16-79"><a href="#cb16-79" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb16-80"><a href="#cb16-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-81"><a href="#cb16-81" aria-hidden="true" tabindex="-1"></a><span class="co">// Route setup</span></span>
+<span id="cb16-82"><a href="#cb16-82" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> taskController <span class="op">=</span> <span class="kw">new</span> <span class="fu">TaskController</span>(taskService)<span class="op">;</span></span>
+<span id="cb16-83"><a href="#cb16-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-84"><a href="#cb16-84" aria-hidden="true" tabindex="-1"></a>router<span class="op">.</span><span class="fu">get</span>(<span class="st">'/'</span><span class="op">,</span> (req<span class="op">,</span> res<span class="op">,</span> next) <span class="kw">=&gt;</span> taskController<span class="op">.</span><span class="fu">list</span>(req<span class="op">,</span> res<span class="op">,</span> next))<span class="op">;</span></span>
+<span id="cb16-85"><a href="#cb16-85" aria-hidden="true" tabindex="-1"></a>router<span class="op">.</span><span class="fu">get</span>(<span class="st">'/:id'</span><span class="op">,</span> (req<span class="op">,</span> res<span class="op">,</span> next) <span class="kw">=&gt;</span> taskController<span class="op">.</span><span class="fu">get</span>(req<span class="op">,</span> res<span class="op">,</span> next))<span class="op">;</span></span>
+<span id="cb16-86"><a href="#cb16-86" aria-hidden="true" tabindex="-1"></a>router<span class="op">.</span><span class="fu">post</span>(<span class="st">'/'</span><span class="op">,</span> (req<span class="op">,</span> res<span class="op">,</span> next) <span class="kw">=&gt;</span> taskController<span class="op">.</span><span class="fu">create</span>(req<span class="op">,</span> res<span class="op">,</span> next))<span class="op">;</span></span>
+<span id="cb16-87"><a href="#cb16-87" aria-hidden="true" tabindex="-1"></a>router<span class="op">.</span><span class="fu">put</span>(<span class="st">'/:id'</span><span class="op">,</span> (req<span class="op">,</span> res<span class="op">,</span> next) <span class="kw">=&gt;</span> taskController<span class="op">.</span><span class="fu">update</span>(req<span class="op">,</span> res<span class="op">,</span> next))<span class="op">;</span></span>
+<span id="cb16-88"><a href="#cb16-88" aria-hidden="true" tabindex="-1"></a>router<span class="op">.</span><span class="fu">delete</span>(<span class="st">'/:id'</span><span class="op">,</span> (req<span class="op">,</span> res<span class="op">,</span> next) <span class="kw">=&gt;</span> taskController<span class="op">.</span><span class="fu">delete</span>(req<span class="op">,</span> res<span class="op">,</span> next))<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="middleware-pattern" class="level3">
+<h3 class="anchored" data-anchor-id="middleware-pattern">Middleware Pattern</h3>
+<p>Middleware functions process requests before they reach route handlers:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">// middleware/auth.js</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">authenticate</span>(req<span class="op">,</span> res<span class="op">,</span> next) {</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">try</span> {</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> token <span class="op">=</span> req<span class="op">.</span><span class="at">headers</span><span class="op">.</span><span class="at">authorization</span><span class="op">?.</span><span class="fu">replace</span>(<span class="st">'Bearer '</span><span class="op">,</span> <span class="st">''</span>)<span class="op">;</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="op">!</span>token) {</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> res<span class="op">.</span><span class="fu">status</span>(<span class="dv">401</span>)<span class="op">.</span><span class="fu">json</span>({ <span class="dt">error</span><span class="op">:</span> <span class="st">'Authentication required'</span> })<span class="op">;</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> decoded <span class="op">=</span> <span class="fu">verifyToken</span>(token)<span class="op">;</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> user <span class="op">=</span> <span class="cf">await</span> userRepository<span class="op">.</span><span class="fu">findById</span>(decoded<span class="op">.</span><span class="at">userId</span>)<span class="op">;</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="op">!</span>user) {</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> res<span class="op">.</span><span class="fu">status</span>(<span class="dv">401</span>)<span class="op">.</span><span class="fu">json</span>({ <span class="dt">error</span><span class="op">:</span> <span class="st">'User not found'</span> })<span class="op">;</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>    req<span class="op">.</span><span class="at">user</span> <span class="op">=</span> user<span class="op">;</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">next</span>()<span class="op">;</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">catch</span> (error) {</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>    res<span class="op">.</span><span class="fu">status</span>(<span class="dv">401</span>)<span class="op">.</span><span class="fu">json</span>({ <span class="dt">error</span><span class="op">:</span> <span class="st">'Invalid token'</span> })<span class="op">;</span></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a><span class="co">// middleware/validate.js</span></span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">validate</span>(schema) {</span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> (req<span class="op">,</span> res<span class="op">,</span> next) <span class="kw">=&gt;</span> {</span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> { error<span class="op">,</span> value } <span class="op">=</span> schema<span class="op">.</span><span class="fu">validate</span>(req<span class="op">.</span><span class="at">body</span><span class="op">,</span> {</span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>      <span class="dt">abortEarly</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span></span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>      <span class="dt">stripUnknown</span><span class="op">:</span> <span class="kw">true</span></span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (error) {</span>
+<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> errors <span class="op">=</span> error<span class="op">.</span><span class="at">details</span><span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> ({</span>
+<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a>        <span class="dt">field</span><span class="op">:</span> d<span class="op">.</span><span class="at">path</span><span class="op">.</span><span class="fu">join</span>(<span class="st">'.'</span>)<span class="op">,</span></span>
+<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a>        <span class="dt">message</span><span class="op">:</span> d<span class="op">.</span><span class="at">message</span></span>
+<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a>      }))<span class="op">;</span></span>
+<span id="cb17-35"><a href="#cb17-35" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> res<span class="op">.</span><span class="fu">status</span>(<span class="dv">400</span>)<span class="op">.</span><span class="fu">json</span>({ errors })<span class="op">;</span></span>
+<span id="cb17-36"><a href="#cb17-36" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb17-37"><a href="#cb17-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-38"><a href="#cb17-38" aria-hidden="true" tabindex="-1"></a>    req<span class="op">.</span><span class="at">body</span> <span class="op">=</span> value<span class="op">;</span>  <span class="co">// Use validated/sanitized value</span></span>
+<span id="cb17-39"><a href="#cb17-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">next</span>()<span class="op">;</span></span>
+<span id="cb17-40"><a href="#cb17-40" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb17-41"><a href="#cb17-41" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb17-42"><a href="#cb17-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-43"><a href="#cb17-43" aria-hidden="true" tabindex="-1"></a><span class="co">// middleware/errorHandler.js</span></span>
+<span id="cb17-44"><a href="#cb17-44" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">errorHandler</span>(err<span class="op">,</span> req<span class="op">,</span> res<span class="op">,</span> next) {</span>
+<span id="cb17-45"><a href="#cb17-45" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">error</span>(err)<span class="op">;</span></span>
+<span id="cb17-46"><a href="#cb17-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-47"><a href="#cb17-47" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (err <span class="kw">instanceof</span> ValidationError) {</span>
+<span id="cb17-48"><a href="#cb17-48" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> res<span class="op">.</span><span class="fu">status</span>(<span class="dv">400</span>)<span class="op">.</span><span class="fu">json</span>({</span>
+<span id="cb17-49"><a href="#cb17-49" aria-hidden="true" tabindex="-1"></a>      <span class="dt">error</span><span class="op">:</span> { <span class="dt">code</span><span class="op">:</span> <span class="st">'VALIDATION_ERROR'</span><span class="op">,</span> <span class="dt">message</span><span class="op">:</span> err<span class="op">.</span><span class="at">message</span><span class="op">,</span> <span class="dt">details</span><span class="op">:</span> err<span class="op">.</span><span class="at">details</span> }</span>
+<span id="cb17-50"><a href="#cb17-50" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb17-51"><a href="#cb17-51" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb17-52"><a href="#cb17-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-53"><a href="#cb17-53" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (err <span class="kw">instanceof</span> NotFoundError) {</span>
+<span id="cb17-54"><a href="#cb17-54" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> res<span class="op">.</span><span class="fu">status</span>(<span class="dv">404</span>)<span class="op">.</span><span class="fu">json</span>({</span>
+<span id="cb17-55"><a href="#cb17-55" aria-hidden="true" tabindex="-1"></a>      <span class="dt">error</span><span class="op">:</span> { <span class="dt">code</span><span class="op">:</span> <span class="st">'NOT_FOUND'</span><span class="op">,</span> <span class="dt">message</span><span class="op">:</span> err<span class="op">.</span><span class="at">message</span> }</span>
+<span id="cb17-56"><a href="#cb17-56" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb17-57"><a href="#cb17-57" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb17-58"><a href="#cb17-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-59"><a href="#cb17-59" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (err <span class="kw">instanceof</span> UnauthorizedError) {</span>
+<span id="cb17-60"><a href="#cb17-60" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> res<span class="op">.</span><span class="fu">status</span>(<span class="dv">403</span>)<span class="op">.</span><span class="fu">json</span>({</span>
+<span id="cb17-61"><a href="#cb17-61" aria-hidden="true" tabindex="-1"></a>      <span class="dt">error</span><span class="op">:</span> { <span class="dt">code</span><span class="op">:</span> <span class="st">'FORBIDDEN'</span><span class="op">,</span> <span class="dt">message</span><span class="op">:</span> err<span class="op">.</span><span class="at">message</span> }</span>
+<span id="cb17-62"><a href="#cb17-62" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb17-63"><a href="#cb17-63" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb17-64"><a href="#cb17-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-65"><a href="#cb17-65" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Default server error</span></span>
+<span id="cb17-66"><a href="#cb17-66" aria-hidden="true" tabindex="-1"></a>  res<span class="op">.</span><span class="fu">status</span>(<span class="dv">500</span>)<span class="op">.</span><span class="fu">json</span>({</span>
+<span id="cb17-67"><a href="#cb17-67" aria-hidden="true" tabindex="-1"></a>    <span class="dt">error</span><span class="op">:</span> { <span class="dt">code</span><span class="op">:</span> <span class="st">'INTERNAL_ERROR'</span><span class="op">,</span> <span class="dt">message</span><span class="op">:</span> <span class="st">'An unexpected error occurred'</span> }</span>
+<span id="cb17-68"><a href="#cb17-68" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb17-69"><a href="#cb17-69" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb17-70"><a href="#cb17-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-71"><a href="#cb17-71" aria-hidden="true" tabindex="-1"></a><span class="co">// Usage in app</span></span>
+<span id="cb17-72"><a href="#cb17-72" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">use</span>(express<span class="op">.</span><span class="fu">json</span>())<span class="op">;</span></span>
+<span id="cb17-73"><a href="#cb17-73" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">use</span>(<span class="st">'/api'</span><span class="op">,</span> authenticate)<span class="op">;</span></span>
+<span id="cb17-74"><a href="#cb17-74" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">use</span>(<span class="st">'/api/tasks'</span><span class="op">,</span> taskRoutes)<span class="op">;</span></span>
+<span id="cb17-75"><a href="#cb17-75" aria-hidden="true" tabindex="-1"></a>app<span class="op">.</span><span class="fu">use</span>(errorHandler)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="data-transfer-objects-dtos" class="level3">
+<h3 class="anchored" data-anchor-id="data-transfer-objects-dtos">Data Transfer Objects (DTOs)</h3>
+<p>DTOs shape data for API responses, hiding internal details:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">// dto/TaskDTO.js</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TaskDTO {</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">constructor</span>(task) {</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">id</span> <span class="op">=</span> task<span class="op">.</span><span class="at">id</span><span class="op">;</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">title</span> <span class="op">=</span> task<span class="op">.</span><span class="at">title</span><span class="op">;</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">description</span> <span class="op">=</span> task<span class="op">.</span><span class="at">description</span><span class="op">;</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">status</span> <span class="op">=</span> task<span class="op">.</span><span class="at">status</span><span class="op">;</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">dueDate</span> <span class="op">=</span> task<span class="op">.</span><span class="at">dueDate</span><span class="op">?.</span><span class="fu">toISOString</span>()<span class="op">;</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">createdAt</span> <span class="op">=</span> task<span class="op">.</span><span class="at">createdAt</span><span class="op">.</span><span class="fu">toISOString</span>()<span class="op">;</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">updatedAt</span> <span class="op">=</span> task<span class="op">.</span><span class="at">updatedAt</span><span class="op">.</span><span class="fu">toISOString</span>()<span class="op">;</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Include related data if populated</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (task<span class="op">.</span><span class="at">assignee</span>) {</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>      <span class="kw">this</span><span class="op">.</span><span class="at">assignee</span> <span class="op">=</span> {</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>        <span class="dt">id</span><span class="op">:</span> task<span class="op">.</span><span class="at">assignee</span><span class="op">.</span><span class="at">id</span><span class="op">,</span></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>        <span class="dt">name</span><span class="op">:</span> task<span class="op">.</span><span class="at">assignee</span><span class="op">.</span><span class="at">name</span><span class="op">,</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>        <span class="dt">email</span><span class="op">:</span> task<span class="op">.</span><span class="at">assignee</span><span class="op">.</span><span class="at">email</span></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>      }<span class="op">;</span></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Computed properties</span></span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">isOverdue</span> <span class="op">=</span> task<span class="op">.</span><span class="fu">isOverdue</span>()<span class="op">;</span></span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>  <span class="kw">static</span> <span class="fu">fromDomain</span>(task) {</span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="kw">new</span> <span class="fu">TaskDTO</span>(task)<span class="op">;</span></span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a>  <span class="kw">static</span> <span class="fu">fromDomainList</span>(tasks) {</span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> tasks<span class="op">.</span><span class="fu">map</span>(t <span class="kw">=&gt;</span> TaskDTO<span class="op">.</span><span class="fu">fromDomain</span>(t))<span class="op">;</span></span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a><span class="co">// Usage in controller</span></span>
+<span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a>res<span class="op">.</span><span class="fu">json</span>({</span>
+<span id="cb18-36"><a href="#cb18-36" aria-hidden="true" tabindex="-1"></a>  <span class="dt">data</span><span class="op">:</span> TaskDTO<span class="op">.</span><span class="fu">fromDomainList</span>(tasks)<span class="op">,</span></span>
+<span id="cb18-37"><a href="#cb18-37" aria-hidden="true" tabindex="-1"></a>  <span class="dt">meta</span><span class="op">:</span> { <span class="dt">total</span><span class="op">:</span> tasks<span class="op">.</span><span class="at">length</span> }</span>
+<span id="cb18-38"><a href="#cb18-38" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="input-validation" class="level3">
+<h3 class="anchored" data-anchor-id="input-validation">Input Validation</h3>
+<p>Validate incoming data before processing:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">// validation/taskValidation.js</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> Joi <span class="op">=</span> <span class="pp">require</span>(<span class="st">'joi'</span>)<span class="op">;</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> createTaskSchema <span class="op">=</span> Joi<span class="op">.</span><span class="fu">object</span>({</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span><span class="op">:</span> Joi<span class="op">.</span><span class="fu">string</span>()</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">min</span>(<span class="dv">1</span>)</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">max</span>(<span class="dv">200</span>)</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">required</span>()</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">messages</span>({</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>      <span class="st">'string.empty'</span><span class="op">:</span> <span class="st">'Title is required'</span><span class="op">,</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>      <span class="st">'string.max'</span><span class="op">:</span> <span class="st">'Title cannot exceed 200 characters'</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>    })<span class="op">,</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>  <span class="dt">description</span><span class="op">:</span> Joi<span class="op">.</span><span class="fu">string</span>()</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">max</span>(<span class="dv">2000</span>)</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">optional</span>()<span class="op">,</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>  <span class="dt">dueDate</span><span class="op">:</span> Joi<span class="op">.</span><span class="fu">date</span>()</span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">min</span>(<span class="st">'now'</span>)</span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">optional</span>()</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">messages</span>({</span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>      <span class="st">'date.min'</span><span class="op">:</span> <span class="st">'Due date cannot be in the past'</span></span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>    })<span class="op">,</span></span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>  <span class="dt">assigneeId</span><span class="op">:</span> Joi<span class="op">.</span><span class="fu">string</span>()</span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">pattern</span>(<span class="ss">/</span><span class="sc">^[a-f\d]{24}$</span><span class="ss">/i</span>)  <span class="co">// MongoDB ObjectId</span></span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">optional</span>()<span class="op">,</span></span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a>  <span class="dt">priority</span><span class="op">:</span> Joi<span class="op">.</span><span class="fu">string</span>()</span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">valid</span>(<span class="st">'low'</span><span class="op">,</span> <span class="st">'medium'</span><span class="op">,</span> <span class="st">'high'</span>)</span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">default</span>(<span class="st">'medium'</span>)</span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
+<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> updateTaskSchema <span class="op">=</span> Joi<span class="op">.</span><span class="fu">object</span>({</span>
+<span id="cb19-35"><a href="#cb19-35" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span><span class="op">:</span> Joi<span class="op">.</span><span class="fu">string</span>()<span class="op">.</span><span class="fu">min</span>(<span class="dv">1</span>)<span class="op">.</span><span class="fu">max</span>(<span class="dv">200</span>)<span class="op">,</span></span>
+<span id="cb19-36"><a href="#cb19-36" aria-hidden="true" tabindex="-1"></a>  <span class="dt">description</span><span class="op">:</span> Joi<span class="op">.</span><span class="fu">string</span>()<span class="op">.</span><span class="fu">max</span>(<span class="dv">2000</span>)<span class="op">,</span></span>
+<span id="cb19-37"><a href="#cb19-37" aria-hidden="true" tabindex="-1"></a>  <span class="dt">dueDate</span><span class="op">:</span> Joi<span class="op">.</span><span class="fu">date</span>()<span class="op">,</span></span>
+<span id="cb19-38"><a href="#cb19-38" aria-hidden="true" tabindex="-1"></a>  <span class="dt">assigneeId</span><span class="op">:</span> Joi<span class="op">.</span><span class="fu">string</span>()<span class="op">.</span><span class="fu">pattern</span>(<span class="ss">/</span><span class="sc">^[a-f\d]{24}$</span><span class="ss">/i</span>)<span class="op">,</span></span>
+<span id="cb19-39"><a href="#cb19-39" aria-hidden="true" tabindex="-1"></a>  <span class="dt">priority</span><span class="op">:</span> Joi<span class="op">.</span><span class="fu">string</span>()<span class="op">.</span><span class="fu">valid</span>(<span class="st">'low'</span><span class="op">,</span> <span class="st">'medium'</span><span class="op">,</span> <span class="st">'high'</span>)<span class="op">,</span></span>
+<span id="cb19-40"><a href="#cb19-40" aria-hidden="true" tabindex="-1"></a>  <span class="dt">status</span><span class="op">:</span> Joi<span class="op">.</span><span class="fu">string</span>()<span class="op">.</span><span class="fu">valid</span>(<span class="st">'pending'</span><span class="op">,</span> <span class="st">'in_progress'</span><span class="op">,</span> <span class="st">'completed'</span>)</span>
+<span id="cb19-41"><a href="#cb19-41" aria-hidden="true" tabindex="-1"></a>})<span class="op">.</span><span class="fu">min</span>(<span class="dv">1</span>)<span class="op">;</span>  <span class="co">// At least one field required</span></span>
+<span id="cb19-42"><a href="#cb19-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-43"><a href="#cb19-43" aria-hidden="true" tabindex="-1"></a><span class="co">// Route with validation middleware</span></span>
+<span id="cb19-44"><a href="#cb19-44" aria-hidden="true" tabindex="-1"></a>router<span class="op">.</span><span class="fu">post</span>(<span class="st">'/'</span><span class="op">,</span> <span class="fu">validate</span>(createTaskSchema)<span class="op">,</span> taskController<span class="op">.</span><span class="at">create</span>)<span class="op">;</span></span>
+<span id="cb19-45"><a href="#cb19-45" aria-hidden="true" tabindex="-1"></a>router<span class="op">.</span><span class="fu">put</span>(<span class="st">'/:id'</span><span class="op">,</span> <span class="fu">validate</span>(updateTaskSchema)<span class="op">,</span> taskController<span class="op">.</span><span class="at">update</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="putting-it-together-full-stack-data-flow" class="level2">
+<h2 class="anchored" data-anchor-id="putting-it-together-full-stack-data-flow">Putting It Together: Full Stack Data Flow</h2>
+<p>Here’s how data flows through a full-stack application:</p>
+<pre><code>┌─────────────────────────────────────────────────────────────────┐
+│                        FRONTEND                                   │
+│                                                                   │
+│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐         │
+│  │   TaskForm  │───►│  useTasks   │───►│  taskApi    │         │
+│  │ (Component) │    │   (Hook)    │    │   (API)     │         │
+│  └─────────────┘    └─────────────┘    └──────┬──────┘         │
+│                                                │                  │
+└────────────────────────────────────────────────┼──────────────────┘
+                                                 │ HTTP POST
+                                                 │ /api/tasks
+                                                 ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                        BACKEND                                    │
+│                                                                   │
+│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐         │
+│  │   Router    │───►│ Controller  │───►│   Service   │         │
+│  │ (Express)   │    │  (HTTP)     │    │ (Business)  │         │
+│  └─────────────┘    └─────────────┘    └──────┬──────┘         │
+│                                                │                  │
+│                                                ▼                  │
+│                                        ┌─────────────┐          │
+│                                        │ Repository  │          │
+│                                        │   (Data)    │          │
+│                                        └──────┬──────┘          │
+│                                                │                  │
+└────────────────────────────────────────────────┼──────────────────┘
+                                                 │
+                                                 ▼
+                                        ┌─────────────┐
+                                        │   MongoDB   │
+                                        └─────────────┘</code></pre>
+<section id="example-creating-a-task" class="level3">
+<h3 class="anchored" data-anchor-id="example-creating-a-task">Example: Creating a Task</h3>
+<p><strong>1. User fills form and submits:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode jsx code-with-copy"><code class="sourceCode javascriptreact"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">// TaskForm.jsx</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> handleSubmit <span class="op">=</span> <span class="kw">async</span> (e) <span class="kw">=&gt;</span> {</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  e<span class="op">.</span><span class="fu">preventDefault</span>()<span class="op">;</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">await</span> <span class="fu">createTask</span>({ title<span class="op">,</span> description<span class="op">,</span> dueDate })<span class="op">;</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>2. Custom hook calls API:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">// useTasks.js</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> createTask <span class="op">=</span> <span class="kw">async</span> (data) <span class="kw">=&gt;</span> {</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> newTask <span class="op">=</span> <span class="cf">await</span> taskApi<span class="op">.</span><span class="fu">createTask</span>(data)<span class="op">;</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">setTasks</span>(prev <span class="kw">=&gt;</span> [newTask<span class="op">,</span> <span class="op">...</span>prev])<span class="op">;</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> newTask<span class="op">;</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>3. API layer makes HTTP request:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">// taskApi.js</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="fu">createTask</span>(data) {</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> response <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(<span class="st">'/api/tasks'</span><span class="op">,</span> {</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">method</span><span class="op">:</span> <span class="st">'POST'</span><span class="op">,</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">headers</span><span class="op">:</span> { <span class="st">'Content-Type'</span><span class="op">:</span> <span class="st">'application/json'</span> }<span class="op">,</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">body</span><span class="op">:</span> <span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>(data)</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>4. Backend validates and processes:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Router</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>router<span class="op">.</span><span class="fu">post</span>(<span class="st">'/'</span><span class="op">,</span> <span class="fu">validate</span>(createTaskSchema)<span class="op">,</span> (req<span class="op">,</span> res<span class="op">,</span> next) <span class="kw">=&gt;</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  taskController<span class="op">.</span><span class="fu">create</span>(req<span class="op">,</span> res<span class="op">,</span> next))<span class="op">;</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="co">// Controller</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="fu">create</span>(req<span class="op">,</span> res<span class="op">,</span> next) {</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> task <span class="op">=</span> <span class="cf">await</span> <span class="kw">this</span><span class="op">.</span><span class="at">taskService</span><span class="op">.</span><span class="fu">createTask</span>(req<span class="op">.</span><span class="at">body</span><span class="op">,</span> req<span class="op">.</span><span class="at">user</span><span class="op">.</span><span class="at">id</span>)<span class="op">;</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>  res<span class="op">.</span><span class="fu">status</span>(<span class="dv">201</span>)<span class="op">.</span><span class="fu">json</span>({ <span class="dt">data</span><span class="op">:</span> TaskDTO<span class="op">.</span><span class="fu">fromDomain</span>(task) })<span class="op">;</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="co">// Service</span></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="fu">createTask</span>(data<span class="op">,</span> creatorId) {</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> task <span class="op">=</span> <span class="kw">new</span> <span class="fu">Task</span>({ <span class="op">...</span>data<span class="op">,</span> <span class="dt">createdBy</span><span class="op">:</span> creatorId })<span class="op">;</span></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="cf">await</span> <span class="kw">this</span><span class="op">.</span><span class="at">taskRepository</span><span class="op">.</span><span class="fu">save</span>(task)<span class="op">;</span></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a><span class="co">// Repository</span></span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="fu">save</span>(task) {</span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> doc <span class="op">=</span> <span class="cf">await</span> TaskModel<span class="op">.</span><span class="fu">create</span>(<span class="kw">this</span><span class="op">.</span><span class="fu">toDocument</span>(task))<span class="op">;</span></span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="kw">this</span><span class="op">.</span><span class="fu">toDomain</span>(doc)<span class="op">;</span></span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>This week we covered component architecture and state management:</p>
+<ol type="1">
+<li><strong>Component design principles</strong>: Single responsibility, composition, props down/events up</li>
+<li><strong>Component categories</strong>: Presentational, container, and layout components</li>
+<li><strong>Local state</strong>: useState for simple state, useReducer for complex logic</li>
+<li><strong>Shared state</strong>: Context API for cross-component communication</li>
+<li><strong>State management libraries</strong>: When and how to use Zustand or similar tools</li>
+<li><strong>Backend service layer</strong>: Separating business logic from HTTP handling</li>
+<li><strong>Middleware pattern</strong>: Processing requests through composable functions</li>
+<li><strong>DTOs and validation</strong>: Shaping and validating data at boundaries</li>
+</ol>
+<p>These patterns form the foundation for building maintainable full-stack applications.</p>
+</section>
+<section id="key-terms" class="level2">
+<h2 class="anchored" data-anchor-id="key-terms">Key Terms</h2>
+<ul>
+<li><strong>Component Composition</strong>: Building complex UIs by combining simple components</li>
+<li><strong>Prop Drilling</strong>: Passing props through many component layers (often a sign to use Context)</li>
+<li><strong>State Colocation</strong>: Keeping state as close as possible to where it’s used</li>
+<li><strong>Lifting State Up</strong>: Moving state to a common ancestor when siblings need to share it</li>
+<li><strong>Service Layer</strong>: Application layer containing business logic</li>
+<li><strong>DTO (Data Transfer Object)</strong>: Object shaped for transferring data across boundaries</li>
+<li><strong>Middleware</strong>: Functions that process requests in a pipeline</li>
 </ul>
 </section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<p><em>Resources coming soon.</em></p>
+<ul>
+<li><a href="https://react.dev/learn/thinking-in-react">React Documentation: Thinking in React</a></li>
+<li><a href="https://www.patterns.dev/react">Patterns.dev: React Patterns</a></li>
+<li><a href="https://kentcdodds.com/blog/state-colocation-will-make-your-react-app-faster">Kent C. Dodds: State Colocation</a></li>
+<li><a href="https://github.com/pmndrs/zustand">Zustand Documentation</a></li>
+<li><a href="https://expressjs.com/en/advanced/best-practice-performance.html">Express.js Best Practices</a></li>
+<li><a href="https://www.nodejsdesignpatterns.com/">Node.js Design Patterns</a></li>
+</ul>
 
 
 </section>

@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -323,9 +358,40 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#key-concepts" id="toc-key-concepts" class="nav-link" data-scroll-target="#key-concepts">Key Concepts</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#architectural-decision-records" id="toc-architectural-decision-records" class="nav-link" data-scroll-target="#architectural-decision-records">Architectural Decision Records</a>
+  <ul class="collapse">
+  <li><a href="#why-document-decisions" id="toc-why-document-decisions" class="nav-link" data-scroll-target="#why-document-decisions">Why Document Decisions?</a></li>
+  <li><a href="#the-adr-format" id="toc-the-adr-format" class="nav-link" data-scroll-target="#the-adr-format">The ADR Format</a></li>
+  <li><a href="#adr-best-practices" id="toc-adr-best-practices" class="nav-link" data-scroll-target="#adr-best-practices">ADR Best Practices</a></li>
+  <li><a href="#adr-templates-by-decision-type" id="toc-adr-templates-by-decision-type" class="nav-link" data-scroll-target="#adr-templates-by-decision-type">ADR Templates by Decision Type</a></li>
+  </ul></li>
+  <li><a href="#trade-off-analysis" id="toc-trade-off-analysis" class="nav-link" data-scroll-target="#trade-off-analysis">Trade-off Analysis</a>
+  <ul class="collapse">
+  <li><a href="#the-reality-of-engineering-trade-offs" id="toc-the-reality-of-engineering-trade-offs" class="nav-link" data-scroll-target="#the-reality-of-engineering-trade-offs">The Reality of Engineering Trade-offs</a></li>
+  <li><a href="#the-quality-attributes" id="toc-the-quality-attributes" class="nav-link" data-scroll-target="#the-quality-attributes">The Quality Attributes</a></li>
+  <li><a href="#trade-off-analysis-framework" id="toc-trade-off-analysis-framework" class="nav-link" data-scroll-target="#trade-off-analysis-framework">Trade-off Analysis Framework</a></li>
+  <li><a href="#common-trade-off-patterns" id="toc-common-trade-off-patterns" class="nav-link" data-scroll-target="#common-trade-off-patterns">Common Trade-off Patterns</a></li>
+  </ul></li>
+  <li><a href="#midterm-concept-review" id="toc-midterm-concept-review" class="nav-link" data-scroll-target="#midterm-concept-review">Midterm Concept Review</a>
+  <ul class="collapse">
+  <li><a href="#week-1-infrastructure-as-code" id="toc-week-1-infrastructure-as-code" class="nav-link" data-scroll-target="#week-1-infrastructure-as-code">Week 1: Infrastructure as Code</a></li>
+  <li><a href="#week-2-architecture-foundations" id="toc-week-2-architecture-foundations" class="nav-link" data-scroll-target="#week-2-architecture-foundations">Week 2: Architecture Foundations</a></li>
+  <li><a href="#week-3-layered-architecture" id="toc-week-3-layered-architecture" class="nav-link" data-scroll-target="#week-3-layered-architecture">Week 3: Layered Architecture</a></li>
+  <li><a href="#week-4-component-architecture" id="toc-week-4-component-architecture" class="nav-link" data-scroll-target="#week-4-component-architecture">Week 4: Component Architecture</a></li>
+  <li><a href="#week-5-backend-data-patterns" id="toc-week-5-backend-data-patterns" class="nav-link" data-scroll-target="#week-5-backend-data-patterns">Week 5: Backend &amp; Data Patterns</a></li>
+  <li><a href="#week-6-data-architecture" id="toc-week-6-data-architecture" class="nav-link" data-scroll-target="#week-6-data-architecture">Week 6: Data Architecture</a></li>
+  </ul></li>
+  <li><a href="#presentation-best-practices" id="toc-presentation-best-practices" class="nav-link" data-scroll-target="#presentation-best-practices">Presentation Best Practices</a>
+  <ul class="collapse">
+  <li><a href="#structuring-your-midterm-presentation" id="toc-structuring-your-midterm-presentation" class="nav-link" data-scroll-target="#structuring-your-midterm-presentation">Structuring Your Midterm Presentation</a></li>
+  <li><a href="#effective-technical-presentations" id="toc-effective-technical-presentations" class="nav-link" data-scroll-target="#effective-technical-presentations">Effective Technical Presentations</a></li>
+  <li><a href="#visual-aids" id="toc-visual-aids" class="nav-link" data-scroll-target="#visual-aids">Visual Aids</a></li>
+  </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#key-terms" id="toc-key-terms" class="nav-link" data-scroll-target="#key-terms">Key Terms</a></li>
   <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
+  <li><a href="#midterm-checklist" id="toc-midterm-checklist" class="nav-link" data-scroll-target="#midterm-checklist">Midterm Checklist</a></li>
   </ul>
 </nav>
     </div>
@@ -362,25 +428,733 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Review this material for midterm presentations.</p>
+<p>Review this material before your midterm presentations. Estimated time: 60-75 minutes.</p>
 </div>
 </div>
-<section id="overview" class="level2">
-<h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p><em>Content coming soon.</em></p>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>The first half of this course has covered the foundational patterns of modern application development—from Infrastructure as Code through layered architecture, component design, and data management. The midterm represents an opportunity to synthesize these concepts by documenting and presenting the architectural decisions you’ve made in your projects.</p>
+<p>This reading serves two purposes: first, to introduce <strong>Architectural Decision Records (ADRs)</strong> and trade-off analysis as professional practices; second, to review the key concepts from Weeks 1-6 that form the foundation of your architectural understanding.</p>
 </section>
-<section id="key-concepts" class="level2">
-<h2 class="anchored" data-anchor-id="key-concepts">Key Concepts</h2>
+<section id="architectural-decision-records" class="level2">
+<h2 class="anchored" data-anchor-id="architectural-decision-records">Architectural Decision Records</h2>
+<section id="why-document-decisions" class="level3">
+<h3 class="anchored" data-anchor-id="why-document-decisions">Why Document Decisions?</h3>
+<p>Every software project involves countless decisions: Which framework to use? How to structure the codebase? What database fits our needs? Where to draw service boundaries? These decisions, once made, shape the project’s trajectory and constrain future options.</p>
+<p>Yet decisions are often lost to institutional memory. New team members join and wonder “why did we do it this way?” Original authors leave, taking context with them. Months later, even the same developer may not remember the reasoning behind a choice.</p>
+<p><strong>Architectural Decision Records (ADRs)</strong> solve this problem by documenting decisions in a structured, lightweight format. They capture not just <em>what</em> was decided, but <em>why</em>—including the context, alternatives considered, and trade-offs evaluated.</p>
+</section>
+<section id="the-adr-format" class="level3">
+<h3 class="anchored" data-anchor-id="the-adr-format">The ADR Format</h3>
+<p>A standard ADR contains these sections:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># ADR-001: Use MongoDB for Primary Data Store</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## Status</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>Accepted</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">## Context</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>Our application needs to store user profiles, posts, and comments.</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>The data model is still evolving as we discover user needs. We expect</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>to scale to thousands of concurrent users within the first year.</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">## Decision</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>We will use MongoDB as our primary data store for user-generated content.</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">## Consequences</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">### Positive</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Flexible schema accommodates evolving data models</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Document model maps naturally to our JavaScript objects</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Horizontal scaling through sharding when needed</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Strong Node.js ecosystem support with Mongoose</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">### Negative</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>No built-in support for complex joins (must denormalize or use aggregation)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Eventual consistency by default (must configure for strong consistency if needed)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Team must learn MongoDB query patterns and indexing strategies</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="fu">### Risks</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Large documents could impact performance; will monitor document sizes</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Schema flexibility could lead to inconsistent data if not validated</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="fu">## Alternatives Considered</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="fu">### PostgreSQL</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Pros: ACID compliance, powerful query language, mature ecosystem</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Cons: Rigid schema less suited to evolving requirements, more complex</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>  setup for Node.js applications</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Why rejected: Our data model is still unstable; schema migrations</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>  would slow development</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="fu">### Firebase Firestore</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Pros: Managed service, real-time sync, serverless-friendly</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Cons: Vendor lock-in, limited query capabilities, costs scale with reads</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Why rejected: Prefer portable solution, more query flexibility needed</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="adr-best-practices" class="level3">
+<h3 class="anchored" data-anchor-id="adr-best-practices">ADR Best Practices</h3>
+<p><strong>1. Write ADRs at decision time</strong></p>
+<p>Document decisions when you make them, not after. The context and reasoning are freshest in your mind, and the act of writing often clarifies thinking.</p>
+<p><strong>2. Keep ADRs short and focused</strong></p>
+<p>Each ADR should address one decision. A good ADR fits on one to two pages. If it’s longer, you’re probably covering multiple decisions.</p>
+<p><strong>3. Number ADRs sequentially</strong></p>
+<p>Use a simple numbering scheme (ADR-001, ADR-002) to track decisions over time. This creates a chronological record of architectural evolution.</p>
+<p><strong>4. ADRs are immutable</strong></p>
+<p>Once accepted, don’t modify an ADR. If a decision changes, create a new ADR that supersedes the old one. This preserves the historical record.</p>
+<p><strong>5. Store ADRs with code</strong></p>
+<p>Keep ADRs in your repository (typically in <code>docs/adr/</code> or <code>docs/decisions/</code>). This ensures they’re version-controlled and discoverable.</p>
+</section>
+<section id="adr-templates-by-decision-type" class="level3">
+<h3 class="anchored" data-anchor-id="adr-templates-by-decision-type">ADR Templates by Decision Type</h3>
+<p>Different decisions benefit from different emphases:</p>
+<p><strong>Technology Selection ADR</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># ADR-XXX: Select [Technology] for [Purpose]</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## Status</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Proposed | Accepted | Deprecated | Superseded by ADR-YYY</span><span class="co">]</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">## Context</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>What problem are we solving?</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>What are our requirements and constraints?</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>What is the team's current expertise?</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">## Decision</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>We will use <span class="co">[</span><span class="ot">technology</span><span class="co">]</span> because <span class="co">[</span><span class="ot">primary reasons</span><span class="co">]</span>.</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">## Consequences</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>What becomes easier?</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>What becomes harder?</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>What new skills does the team need?</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>What are the cost implications?</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="fu">## Alternatives Considered</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Alternative 1</span><span class="co">]</span>: Why not chosen</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Alternative 2</span><span class="co">]</span>: Why not chosen</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Architectural Pattern ADR</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># ADR-XXX: Adopt [Pattern] for [Aspect]</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## Status</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Status</span><span class="co">]</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">## Context</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>What architectural challenge are we addressing?</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>What quality attributes matter most (scalability, maintainability, etc.)?</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">## Decision</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>We will structure <span class="co">[</span><span class="ot">aspect</span><span class="co">]</span> using the <span class="co">[</span><span class="ot">pattern</span><span class="co">]</span> pattern.</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="fu">## Consequences</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>How does this affect system complexity?</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>What coupling/cohesion trade-offs are we making?</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>How does this impact testing and deployment?</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="fu">## Alternatives Considered</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Alternative pattern</span><span class="co">]</span>: Trade-offs comparison</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="trade-off-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="trade-off-analysis">Trade-off Analysis</h2>
+<section id="the-reality-of-engineering-trade-offs" class="level3">
+<h3 class="anchored" data-anchor-id="the-reality-of-engineering-trade-offs">The Reality of Engineering Trade-offs</h3>
+<p>Every architectural decision involves trade-offs. There is no “best” solution—only solutions that optimize for different qualities. Understanding and articulating these trade-offs is a core engineering skill.</p>
+</section>
+<section id="the-quality-attributes" class="level3">
+<h3 class="anchored" data-anchor-id="the-quality-attributes">The Quality Attributes</h3>
+<p>Software architecture balances multiple <strong>quality attributes</strong> (also called “-ilities”):</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 28%">
+<col style="width: 34%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Attribute</th>
+<th>Description</th>
+<th>Tension With</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Performance</strong></td>
+<td>Response time, throughput, resource efficiency</td>
+<td>Security, Maintainability</td>
+</tr>
+<tr class="even">
+<td><strong>Scalability</strong></td>
+<td>Ability to handle growth</td>
+<td>Simplicity, Cost</td>
+</tr>
+<tr class="odd">
+<td><strong>Availability</strong></td>
+<td>System uptime, fault tolerance</td>
+<td>Consistency, Cost</td>
+</tr>
+<tr class="even">
+<td><strong>Security</strong></td>
+<td>Protection against threats</td>
+<td>Usability, Performance</td>
+</tr>
+<tr class="odd">
+<td><strong>Maintainability</strong></td>
+<td>Ease of modification</td>
+<td>Performance, Time-to-market</td>
+</tr>
+<tr class="even">
+<td><strong>Testability</strong></td>
+<td>Ease of verification</td>
+<td>Time-to-market</td>
+</tr>
+<tr class="odd">
+<td><strong>Usability</strong></td>
+<td>User experience quality</td>
+<td>Security, Complexity</td>
+</tr>
+<tr class="even">
+<td><strong>Simplicity</strong></td>
+<td>System understandability</td>
+<td>Feature completeness</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="trade-off-analysis-framework" class="level3">
+<h3 class="anchored" data-anchor-id="trade-off-analysis-framework">Trade-off Analysis Framework</h3>
+<p>When evaluating architectural options, use this structured approach:</p>
+<p><strong>Step 1: Identify Quality Priorities</strong></p>
+<p>Not all quality attributes matter equally for every project. A real-time trading system prioritizes performance; a medical records system prioritizes security; a startup MVP prioritizes time-to-market.</p>
+<pre><code>For our project, the priority order is:
+1. Maintainability (team is learning, code will change)
+2. Simplicity (limited development time)
+3. Performance (adequate for expected load)
+4. Scalability (not a concern for MVP)</code></pre>
+<p><strong>Step 2: Enumerate Options</strong></p>
+<p>List the viable approaches without judging them:</p>
+<pre><code>Options for state management:
+A. Local component state only (useState)
+B. React Context for shared state
+C. Zustand for global state
+D. Redux Toolkit for complex state</code></pre>
+<p><strong>Step 3: Evaluate Each Option Against Priorities</strong></p>
+<p>Create a decision matrix:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Option</th>
+<th>Maintainability</th>
+<th>Simplicity</th>
+<th>Performance</th>
+<th>Learning Curve</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>useState only</td>
+<td>Medium</td>
+<td>High</td>
+<td>High</td>
+<td>Low</td>
+</tr>
+<tr class="even">
+<td>React Context</td>
+<td>Medium</td>
+<td>Medium</td>
+<td>Medium*</td>
+<td>Low</td>
+</tr>
+<tr class="odd">
+<td>Zustand</td>
+<td>High</td>
+<td>High</td>
+<td>High</td>
+<td>Low</td>
+</tr>
+<tr class="even">
+<td>Redux Toolkit</td>
+<td>High</td>
+<td>Low</td>
+<td>High</td>
+<td>High</td>
+</tr>
+</tbody>
+</table>
+<p>*Context can cause unnecessary re-renders if not carefully structured.</p>
+<p><strong>Step 4: Make and Document the Decision</strong></p>
+<p>Choose the option that best balances your priorities, then document the reasoning in an ADR.</p>
+</section>
+<section id="common-trade-off-patterns" class="level3">
+<h3 class="anchored" data-anchor-id="common-trade-off-patterns">Common Trade-off Patterns</h3>
+<p><strong>Flexibility vs.&nbsp;Simplicity</strong></p>
+<p>More flexible systems handle more cases but are harder to understand:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Simple but inflexible</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">formatDate</span>(date) {</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> date<span class="op">.</span><span class="fu">toLocaleDateString</span>(<span class="st">'en-US'</span>)<span class="op">;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">// Flexible but complex</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">formatDate</span>(date<span class="op">,</span> options <span class="op">=</span> {}) {</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> {</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    locale <span class="op">=</span> <span class="st">'en-US'</span><span class="op">,</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    format <span class="op">=</span> <span class="st">'long'</span><span class="op">,</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    includeTime <span class="op">=</span> <span class="kw">false</span><span class="op">,</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    timezone <span class="op">=</span> <span class="kw">undefined</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  } <span class="op">=</span> options<span class="op">;</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> dateOptions <span class="op">=</span> {</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    <span class="dt">dateStyle</span><span class="op">:</span> format<span class="op">,</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    <span class="op">...</span>(includeTime <span class="op">&amp;&amp;</span> { <span class="dt">timeStyle</span><span class="op">:</span> <span class="st">'short'</span> })<span class="op">,</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    <span class="op">...</span>(timezone <span class="op">&amp;&amp;</span> { <span class="dt">timeZone</span><span class="op">:</span> timezone })</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> date<span class="op">.</span><span class="fu">toLocaleString</span>(locale<span class="op">,</span> dateOptions)<span class="op">;</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Consistency vs.&nbsp;Availability (CAP Theorem)</strong></p>
+<p>In distributed systems, you must choose between strong consistency and high availability during network partitions:</p>
+<pre><code>┌─────────────────────────────────────────────────────────┐
+│                    CAP Theorem                          │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│            Consistency                                  │
+│               /\                                        │
+│              /  \                                       │
+│             /    \                                      │
+│            / CA   \   CP                               │
+│           /        \                                    │
+│          /──────────\                                   │
+│         Availability  Partition                        │
+│                       Tolerance                         │
+│                                                         │
+│  CA: Traditional RDBMS (single node)                   │
+│  CP: MongoDB (with write concern majority)             │
+│  AP: DynamoDB, Cassandra (eventual consistency)        │
+│                                                         │
+│  In practice, network partitions happen, so you        │
+│  choose between CP and AP for distributed systems.     │
+│                                                         │
+└─────────────────────────────────────────────────────────┘</code></pre>
+<p><strong>Normalization vs.&nbsp;Performance</strong></p>
+<p>Normalized databases minimize redundancy but require joins:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Normalized: Separate collections, references</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">// Pros: No data duplication, easy updates</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">// Cons: Requires multiple queries or $lookup</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> post <span class="op">=</span> {</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">_id</span><span class="op">:</span> <span class="fu">ObjectId</span>(<span class="st">'...'</span>)<span class="op">,</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span><span class="op">:</span> <span class="st">'Understanding Trade-offs'</span><span class="op">,</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">authorId</span><span class="op">:</span> <span class="fu">ObjectId</span>(<span class="st">'...'</span>)<span class="op">,</span>  <span class="co">// Reference to users collection</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">categoryIds</span><span class="op">:</span> [<span class="fu">ObjectId</span>(<span class="st">'...'</span>)<span class="op">,</span> <span class="fu">ObjectId</span>(<span class="st">'...'</span>)]</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co">// Denormalized: Embedded data</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co">// Pros: Single query retrieves everything</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co">// Cons: Data duplication, complex updates</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> post <span class="op">=</span> {</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  <span class="dt">_id</span><span class="op">:</span> <span class="fu">ObjectId</span>(<span class="st">'...'</span>)<span class="op">,</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span><span class="op">:</span> <span class="st">'Understanding Trade-offs'</span><span class="op">,</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>  <span class="dt">author</span><span class="op">:</span> {</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>    <span class="dt">_id</span><span class="op">:</span> <span class="fu">ObjectId</span>(<span class="st">'...'</span>)<span class="op">,</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    <span class="dt">name</span><span class="op">:</span> <span class="st">'Jane Developer'</span><span class="op">,</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>    <span class="dt">avatar</span><span class="op">:</span> <span class="st">'jane.jpg'</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>  <span class="dt">categories</span><span class="op">:</span> [</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>    { <span class="dt">_id</span><span class="op">:</span> <span class="fu">ObjectId</span>(<span class="st">'...'</span>)<span class="op">,</span> <span class="dt">name</span><span class="op">:</span> <span class="st">'Architecture'</span> }<span class="op">,</span></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>    { <span class="dt">_id</span><span class="op">:</span> <span class="fu">ObjectId</span>(<span class="st">'...'</span>)<span class="op">,</span> <span class="dt">name</span><span class="op">:</span> <span class="st">'Best Practices'</span> }</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="midterm-concept-review" class="level2">
+<h2 class="anchored" data-anchor-id="midterm-concept-review">Midterm Concept Review</h2>
+<section id="week-1-infrastructure-as-code" class="level3">
+<h3 class="anchored" data-anchor-id="week-1-infrastructure-as-code">Week 1: Infrastructure as Code</h3>
+<p><strong>Core Concepts</strong></p>
+<ol type="1">
+<li><strong>Containers vs.&nbsp;Virtual Machines</strong>
 <ul>
-<li>Architectural decision records</li>
-<li>Trade-off analysis</li>
-<li>Project documentation</li>
-<li>Presentation best practices</li>
+<li>Containers share the host OS kernel (lightweight, fast startup)</li>
+<li>VMs include full guest OS (heavier, complete isolation)</li>
+<li>Containers: megabytes, seconds to start</li>
+<li>VMs: gigabytes, minutes to start</li>
+</ul></li>
+<li><strong>Docker Images and Layers</strong>
+<ul>
+<li>Images are read-only templates built from Dockerfiles</li>
+<li>Each instruction creates a layer</li>
+<li>Layers are cached and shared for efficiency</li>
+<li>Order matters: put frequently-changing content last</li>
+</ul></li>
+<li><strong>Docker Compose</strong>
+<ul>
+<li>Defines multi-container applications in YAML</li>
+<li>Services communicate by service name</li>
+<li>Volumes persist data beyond container lifecycle</li>
+<li><code>depends_on</code> controls startup order</li>
+</ul></li>
+</ol>
+<p><strong>Key Commands</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> build <span class="at">-t</span> my-app .</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-d</span> <span class="at">-p</span> 3000:3000 my-app</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose up <span class="at">--build</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose down <span class="at">-v</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Review Questions</strong> - What problem does containerization solve? - Why do we order Dockerfile instructions from least to most frequently changed? - What’s the difference between a named volume and a bind mount?</p>
+</section>
+<section id="week-2-architecture-foundations" class="level3">
+<h3 class="anchored" data-anchor-id="week-2-architecture-foundations">Week 2: Architecture Foundations</h3>
+<p><strong>Core Concepts</strong></p>
+<ol type="1">
+<li><strong>Separation of Concerns</strong>
+<ul>
+<li>Each module handles one aspect of functionality</li>
+<li>Changes to one concern don’t affect others</li>
+<li>Enables independent development and testing</li>
+</ul></li>
+<li><strong>Client-Server Architecture</strong>
+<ul>
+<li>Clear separation between frontend and backend</li>
+<li>Communication via HTTP/REST APIs</li>
+<li>Frontend handles presentation, backend handles business logic and data</li>
+</ul></li>
+<li><strong>Environment Configuration</strong>
+<ul>
+<li>Different configurations for dev/staging/production</li>
+<li>Environment variables for runtime configuration</li>
+<li>Never commit secrets to version control</li>
+</ul></li>
+</ol>
+<p><strong>Architecture Diagram</strong></p>
+<pre><code>┌─────────────────┐         ┌─────────────────┐
+│     Client      │  HTTP   │     Server      │
+│   (React App)   │ ──────▶ │ (Express API)   │
+│                 │         │                 │
+│ - Components    │         │ - Routes        │
+│ - State         │ ◀────── │ - Controllers   │
+│ - Routing       │  JSON   │ - Services      │
+└─────────────────┘         │ - Models        │
+                            └────────┬────────┘
+                                     │
+                            ┌────────▼────────┐
+                            │    Database     │
+                            │   (MongoDB)     │
+                            └─────────────────┘</code></pre>
+</section>
+<section id="week-3-layered-architecture" class="level3">
+<h3 class="anchored" data-anchor-id="week-3-layered-architecture">Week 3: Layered Architecture</h3>
+<p><strong>Core Concepts</strong></p>
+<ol type="1">
+<li><strong>The Four-Layer Model</strong>
+<ul>
+<li><strong>Presentation Layer</strong>: UI components, user interaction</li>
+<li><strong>Application Layer</strong>: Use cases, orchestration, DTOs</li>
+<li><strong>Domain Layer</strong>: Business logic, entities, rules</li>
+<li><strong>Infrastructure Layer</strong>: Database, external services, frameworks</li>
+</ul></li>
+<li><strong>Dependency Rule</strong>
+<ul>
+<li>Dependencies point inward (toward domain)</li>
+<li>Inner layers don’t know about outer layers</li>
+<li>Interfaces at boundaries for flexibility</li>
+</ul></li>
+<li><strong>Layer Responsibilities</strong></li>
+</ol>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Layer</th>
+<th>Contains</th>
+<th>Depends On</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Presentation</td>
+<td>Components, Views</td>
+<td>Application</td>
+</tr>
+<tr class="even">
+<td>Application</td>
+<td>Services, DTOs</td>
+<td>Domain</td>
+</tr>
+<tr class="odd">
+<td>Domain</td>
+<td>Entities, Business Rules</td>
+<td>Nothing</td>
+</tr>
+<tr class="even">
+<td>Infrastructure</td>
+<td>Repositories, APIs</td>
+<td>Domain (implements interfaces)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Review Questions</strong> - Why should the domain layer have no external dependencies? - How does the repository pattern enable database flexibility? - What belongs in the Application layer vs.&nbsp;the Domain layer?</p>
+</section>
+<section id="week-4-component-architecture" class="level3">
+<h3 class="anchored" data-anchor-id="week-4-component-architecture">Week 4: Component Architecture</h3>
+<p><strong>Core Concepts</strong></p>
+<ol type="1">
+<li><strong>React Component Types</strong>
+<ul>
+<li><strong>Presentational</strong>: Display data, no business logic</li>
+<li><strong>Container</strong>: Manage state, fetch data, coordinate children</li>
+<li><strong>Layout</strong>: Structure and arrange other components</li>
+<li><strong>Higher-Order Components</strong>: Enhance other components</li>
+</ul></li>
+<li><strong>State Management Patterns</strong>
+<ul>
+<li><code>useState</code> for local component state</li>
+<li><code>useReducer</code> for complex local state</li>
+<li>Context API for shared state without prop drilling</li>
+<li>External stores (Zustand, Redux) for complex global state</li>
+</ul></li>
+<li><strong>Component Communication</strong>
+<ul>
+<li>Props down (parent to child)</li>
+<li>Callbacks up (child to parent)</li>
+<li>Context across (shared state)</li>
+</ul></li>
+</ol>
+<p><strong>State Selection Guide</strong></p>
+<pre><code>┌─────────────────────────────────────────────────────────┐
+│              State Management Decision Tree              │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│  Is the state used by multiple components?              │
+│     │                                                   │
+│     ├─ No → useState (local state)                     │
+│     │                                                   │
+│     └─ Yes → Are they in a parent-child relationship?  │
+│              │                                          │
+│              ├─ Yes, close → Props/callbacks            │
+│              │                                          │
+│              └─ No, or deeply nested →                 │
+│                 │                                       │
+│                 ├─ Simple shared state → Context        │
+│                 │                                       │
+│                 └─ Complex state with actions →        │
+│                    Zustand or Redux                     │
+│                                                         │
+└─────────────────────────────────────────────────────────┘</code></pre>
+</section>
+<section id="week-5-backend-data-patterns" class="level3">
+<h3 class="anchored" data-anchor-id="week-5-backend-data-patterns">Week 5: Backend &amp; Data Patterns</h3>
+<p><strong>Core Concepts</strong></p>
+<ol type="1">
+<li><strong>RESTful API Design</strong>
+<ul>
+<li>Resources as URLs: <code>/api/posts</code>, <code>/api/posts/:id</code></li>
+<li>HTTP verbs for operations: GET, POST, PUT, DELETE</li>
+<li>Status codes for outcomes: 200, 201, 400, 404, 500</li>
+<li>Consistent response structure</li>
+</ul></li>
+<li><strong>Middleware Patterns</strong>
+<ul>
+<li>Authentication: Verify identity (JWT validation)</li>
+<li>Authorization: Check permissions</li>
+<li>Validation: Verify input data</li>
+<li>Error handling: Centralized error processing</li>
+</ul></li>
+<li><strong>MongoDB Document Design</strong>
+<ul>
+<li>Embed data that’s accessed together</li>
+<li>Reference data that’s shared or large</li>
+<li>Index fields used in queries</li>
+<li>Validate with Mongoose schemas</li>
+</ul></li>
+</ol>
+<p><strong>RESTful Endpoints Pattern</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Resource: posts</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>GET    <span class="op">/</span>api<span class="op">/</span>posts          <span class="co">// List all posts</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>POST   <span class="op">/</span>api<span class="op">/</span>posts          <span class="co">// Create new post</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>GET    <span class="op">/</span>api<span class="op">/</span>posts<span class="op">/:</span>id      <span class="co">// Get single post</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>PUT    <span class="op">/</span>api<span class="op">/</span>posts<span class="op">/:</span>id      <span class="co">// Update post</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>DELETE <span class="op">/</span>api<span class="op">/</span>posts<span class="op">/:</span>id      <span class="co">// Delete post</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co">// Nested resources</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>GET    <span class="op">/</span>api<span class="op">/</span>posts<span class="op">/:</span>id<span class="op">/</span>comments     <span class="co">// List comments on post</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>POST   <span class="op">/</span>api<span class="op">/</span>posts<span class="op">/:</span>id<span class="op">/</span>comments     <span class="co">// Add comment to post</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Review Questions</strong> - When should you embed vs.&nbsp;reference related data in MongoDB? - What’s the purpose of the next() function in Express middleware? - How do you handle validation errors in a RESTful API?</p>
+</section>
+<section id="week-6-data-architecture" class="level3">
+<h3 class="anchored" data-anchor-id="week-6-data-architecture">Week 6: Data Architecture</h3>
+<p><strong>Core Concepts</strong></p>
+<ol type="1">
+<li><strong>Database Paradigms</strong>
+<ul>
+<li>Document (MongoDB): Flexible schema, nested data</li>
+<li>Relational (PostgreSQL): ACID, complex queries</li>
+<li>Key-Value (Redis): Speed, caching</li>
+<li>Search (Elasticsearch): Full-text search</li>
+</ul></li>
+<li><strong>Polyglot Persistence</strong>
+<ul>
+<li>Use the right database for each use case</li>
+<li>Synchronize data between databases</li>
+<li>Trade-off: complexity vs.&nbsp;optimization</li>
+</ul></li>
+<li><strong>Consistency Patterns</strong>
+<ul>
+<li>Strong consistency: Immediate visibility</li>
+<li>Eventual consistency: Delayed propagation</li>
+<li>Distributed transactions: Saga pattern</li>
+</ul></li>
+</ol>
+<p><strong>Database Selection Guide</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Use Case</th>
+<th>Recommended</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>User profiles</td>
+<td>MongoDB</td>
+<td>Flexible schema, document model</td>
+</tr>
+<tr class="even">
+<td>Financial transactions</td>
+<td>PostgreSQL</td>
+<td>ACID compliance</td>
+</tr>
+<tr class="odd">
+<td>Session storage</td>
+<td>Redis</td>
+<td>Speed, TTL support</td>
+</tr>
+<tr class="even">
+<td>Product search</td>
+<td>Elasticsearch</td>
+<td>Full-text search</td>
+</tr>
+<tr class="odd">
+<td>Real-time analytics</td>
+<td>ClickHouse</td>
+<td>Columnar, aggregations</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="presentation-best-practices" class="level2">
+<h2 class="anchored" data-anchor-id="presentation-best-practices">Presentation Best Practices</h2>
+<section id="structuring-your-midterm-presentation" class="level3">
+<h3 class="anchored" data-anchor-id="structuring-your-midterm-presentation">Structuring Your Midterm Presentation</h3>
+<p>Your midterm presentation should demonstrate understanding of architectural concepts through your project implementation. Structure it as follows:</p>
+<p><strong>1. Project Overview (2 minutes)</strong> - What does your application do? - Who are the users? - What are the core features?</p>
+<p><strong>2. Architectural Decisions (5-7 minutes)</strong> - Present 2-3 key ADRs - For each: Context, Decision, Trade-offs - Connect decisions to course concepts</p>
+<p><strong>3. Technical Demonstration (3-5 minutes)</strong> - Show the architecture in action - Demonstrate a key feature flow - Highlight how layers interact</p>
+<p><strong>4. Lessons Learned (2-3 minutes)</strong> - What would you do differently? - What patterns proved most valuable? - What challenges remain?</p>
+</section>
+<section id="effective-technical-presentations" class="level3">
+<h3 class="anchored" data-anchor-id="effective-technical-presentations">Effective Technical Presentations</h3>
+<p><strong>Know Your Audience</strong> Assume your audience understands the course concepts but doesn’t know your specific project. Explain your choices in terms of the patterns we’ve studied.</p>
+<p><strong>Show, Don’t Just Tell</strong> Use diagrams, code snippets, and live demos. A 30-second demo often communicates more than 5 minutes of description.</p>
+<p><strong>Anticipate Questions</strong> Think about alternative approaches you considered. Why didn’t you choose them? What trade-offs did you make?</p>
+<p><strong>Practice Timing</strong> Presentations always take longer than expected. Practice your full presentation at least twice, and have cuts ready if you run long.</p>
+</section>
+<section id="visual-aids" class="level3">
+<h3 class="anchored" data-anchor-id="visual-aids">Visual Aids</h3>
+<p><strong>Architecture Diagrams</strong> Show how components connect:</p>
+<pre><code>┌─────────────────────────────────────────────────────────┐
+│                    Your Application                      │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│   ┌─────────────┐         ┌─────────────────────┐      │
+│   │   React     │         │      Express        │      │
+│   │   Frontend  │  REST   │      Backend        │      │
+│   │             │ ──────▶ │                     │      │
+│   │ Components  │         │ Routes → Controllers│      │
+│   │ State (Ctx) │ ◀────── │       → Services   │      │
+│   │ React Router│  JSON   │       → Models     │      │
+│   └─────────────┘         └──────────┬──────────┘      │
+│                                      │                  │
+│                           ┌──────────▼──────────┐      │
+│                           │      MongoDB        │      │
+│                           │    (via Mongoose)   │      │
+│                           └─────────────────────┘      │
+│                                                         │
+└─────────────────────────────────────────────────────────┘</code></pre>
+<p><strong>Data Flow Diagrams</strong> Trace a request through your system:</p>
+<pre><code>User Action: "Create Post"
+        │
+        ▼
+┌───────────────────┐
+│ PostForm Component│  1. User submits form
+│   (Presentation)  │
+└─────────┬─────────┘
+          │ onClick → createPost(data)
+          ▼
+┌───────────────────┐
+│ PostContext       │  2. Context calls API
+│   (State Mgmt)    │
+└─────────┬─────────┘
+          │ POST /api/posts
+          ▼
+┌───────────────────┐
+│ postsRouter       │  3. Route validates, calls controller
+│   (API Layer)     │
+└─────────┬─────────┘
+          │ controller.create(req, res)
+          ▼
+┌───────────────────┐
+│ PostService       │  4. Service applies business logic
+│   (Business)      │
+└─────────┬─────────┘
+          │ PostModel.create(data)
+          ▼
+┌───────────────────┐
+│ MongoDB           │  5. Database stores document
+│   (Persistence)   │
+└───────────────────┘</code></pre>
+</section>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>This reading prepared you for the midterm by:</p>
+<ol type="1">
+<li><strong>Introducing ADRs</strong> as a professional practice for documenting architectural decisions</li>
+<li><strong>Providing a trade-off analysis framework</strong> for evaluating options systematically</li>
+<li><strong>Reviewing key concepts</strong> from Weeks 1-6</li>
+<li><strong>Offering presentation guidance</strong> for effectively communicating technical decisions</li>
+</ol>
+<p>The midterm is your opportunity to demonstrate not just that you can build working software, but that you understand <em>why</em> it’s built the way it is. Focus on the reasoning behind your decisions, the trade-offs you considered, and how course concepts guided your choices.</p>
+</section>
+<section id="key-terms" class="level2">
+<h2 class="anchored" data-anchor-id="key-terms">Key Terms</h2>
+<ul>
+<li><strong>Architectural Decision Record (ADR)</strong>: A document capturing an important architectural decision, its context, and consequences</li>
+<li><strong>Quality Attributes</strong>: Non-functional requirements that describe system characteristics (performance, scalability, maintainability)</li>
+<li><strong>Trade-off</strong>: A balance between competing qualities where improving one may diminish another</li>
+<li><strong>Decision Matrix</strong>: A table comparing options against evaluation criteria</li>
+<li><strong>Technical Debt</strong>: The implied cost of future rework caused by choosing expedient solutions now</li>
 </ul>
 </section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<p><em>Resources coming soon.</em></p>
+<ul>
+<li><a href="https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions">Documenting Architecture Decisions</a> - Michael Nygard’s original ADR proposal</li>
+<li><a href="https://adr.github.io/">ADR GitHub Organization</a> - Templates and tools for ADRs</li>
+<li><a href="https://www.sei.cmu.edu/publications/books/software-engineering/software-architecture-in-practice.cfm">Software Architecture in Practice</a> - Comprehensive quality attributes coverage</li>
+<li><a href="https://c4model.com/">The C4 Model</a> - Approach for visualizing software architecture</li>
+<li><a href="https://www.presentationzen.com/">Presentation Zen</a> - Principles for effective presentations</li>
+</ul>
+</section>
+<section id="midterm-checklist" class="level2">
+<h2 class="anchored" data-anchor-id="midterm-checklist">Midterm Checklist</h2>
+<p>Before your presentation, verify:</p>
+<ul class="task-list">
+<li><label><input type="checkbox">You have 2-3 documented ADRs for your project</label></li>
+<li><label><input type="checkbox">Each ADR includes context, decision, and consequences</label></li>
+<li><label><input type="checkbox">You can explain trade-offs for each major decision</label></li>
+<li><label><input type="checkbox">Your architecture diagram is clear and accurate</label></li>
+<li><label><input type="checkbox">You can trace a request through your system layers</label></li>
+<li><label><input type="checkbox">You’ve practiced your presentation within the time limit</label></li>
+<li><label><input type="checkbox">Your demo environment is set up and tested</label></li>
+<li><label><input type="checkbox">You have a backup plan if live demo fails (screenshots, video)</label></li>
+</ul>
 
 
 </section>

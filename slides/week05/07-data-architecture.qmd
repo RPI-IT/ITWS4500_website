@@ -1,0 +1,894 @@
+---
+title: "Data Architecture"
+subtitle: "Polyglot Persistence and Database Trade-offs"
+author: "Jason Kuruzovich"
+date: "February 13, 2026"
+format:
+  revealjs:
+    navigation-mode: linear
+    mermaid:
+        theme: default
+    theme: [default, ../../slides-theme.scss]
+    logo: ../../static/logos/RPI_Logo_Binary_1_White.png
+    footer: "ITWS-4500 | Week 5, Day 2"
+    slide-number: true
+    transition: slide
+    width: 1600
+    height: 900
+    #chalkboard: true
+    code-line-numbers: true
+    highlight-style: github
+    pdf-separate-fragments: false
+---
+
+# Data Architecture {.section-slide background-color="#d6001c"}
+
+Choosing the Right Database for the Job
+
+## Today's Agenda
+
+::: {.learning-objectives}
+#### Learning Objectives
+
+1. Understand **database paradigms** and their strengths
+2. Learn **polyglot persistence** principles
+3. Master **MongoDB** document design patterns
+4. Compare **MongoDB vs PostgreSQL** trade-offs
+5. Apply **data modeling** best practices
+6. Understand **CAP theorem** implications
+:::
+
+## The Database Landscape
+
+```{mermaid}
+%%| fig-width: 14
+mindmap
+  root((Databases))
+    Document
+      MongoDB
+      CouchDB
+      Firestore
+    Relational
+      PostgreSQL
+      MySQL
+      SQLite
+    Key-Value
+      Redis
+      DynamoDB
+      Memcached
+    Graph
+      Neo4j
+      Amazon Neptune
+    Search
+      Elasticsearch
+      Algolia
+    Time-Series
+      InfluxDB
+      TimescaleDB
+```
+
+# Database Paradigms {.section-slide background-color="#d6001c"}
+
+## Document Databases
+
+**Model:** JSON-like documents with flexible schemas
+
+```javascript
+// MongoDB document
+{
+  _id: ObjectId("..."),
+  name: "John Doe",
+  email: "john@example.com",
+  address: {
+    street: "123 Main St",
+    city: "Boston",
+    zip: "02101"
+  },
+  orders: [
+    { id: "ord-1", total: 99.99, date: ISODate("...") },
+    { id: "ord-2", total: 149.50, date: ISODate("...") }
+  ],
+  tags: ["premium", "verified"]
+}
+```
+
+**Strengths:** Flexible schema, nested data, horizontal scaling
+
+**Weaknesses:** No joins, limited transactions (historically)
+
+## Relational Databases
+
+**Model:** Tables with rows and relationships via foreign keys
+
+```sql
+-- PostgreSQL tables
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  email VARCHAR(255) UNIQUE NOT NULL
+);
+
+CREATE TABLE addresses (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES users(id),
+  street VARCHAR(255),
+  city VARCHAR(100),
+  zip VARCHAR(20)
+);
+
+CREATE TABLE orders (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES users(id),
+  total DECIMAL(10,2),
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- Query with joins
+SELECT u.name, COUNT(o.id) as order_count
+FROM users u
+LEFT JOIN orders o ON u.id = o.user_id
+GROUP BY u.id;
+```
+
+**Strengths:** ACID transactions, complex queries, data integrity
+
+**Weaknesses:** Rigid schema, vertical scaling challenges
+
+## Key-Value Stores
+
+**Model:** Simple key → value pairs, optimized for speed
+
+```javascript
+// Redis examples
+SET user:123:session "eyJhbGciOiJIUzI1NiJ9..."
+GET user:123:session
+
+SETEX user:123:session 3600 "token..."  // Expires in 1 hour
+
+HSET user:123 name "John" email "john@example.com"
+HGETALL user:123
+
+LPUSH notifications:123 "New message"
+LRANGE notifications:123 0 9  // Get last 10
+
+ZADD leaderboard 1500 "player:456"
+ZREVRANGE leaderboard 0 9 WITHSCORES  // Top 10
+```
+
+**Strengths:** Extremely fast, TTL support, data structures
+
+**Weaknesses:** Limited queries, no relationships, memory-bound
+
+## Search Engines
+
+**Model:** Inverted index optimized for full-text search
+
+```javascript
+// Elasticsearch document and query
+PUT /products/_doc/1
+{
+  "name": "Wireless Bluetooth Headphones",
+  "description": "Premium noise-canceling headphones with 30-hour battery",
+  "category": "Electronics",
+  "price": 299.99,
+  "tags": ["wireless", "bluetooth", "noise-canceling"]
+}
+
+GET /products/_search
+{
+  "query": {
+    "bool": {
+      "must": {
+        "multi_match": {
+          "query": "wireless headphones",
+          "fields": ["name^2", "description", "tags"]
+        }
+      },
+      "filter": {
+        "range": { "price": { "lte": 300 } }
+      }
+    }
+  },
+  "highlight": { "fields": { "description": {} } }
+}
+```
+
+**Strengths:** Full-text search, relevance scoring, aggregations
+
+**Weaknesses:** Eventual consistency, complex operations
+
+## Database Comparison
+
+| Feature | MongoDB | PostgreSQL | Redis | Elasticsearch |
+|---------|---------|------------|-------|---------------|
+| **Data Model** | Documents | Tables | Key-Value | Documents |
+| **Schema** | Flexible | Strict | None | Flexible |
+| **Transactions** | Multi-doc | ACID | Single-key | None |
+| **Scaling** | Horizontal | Vertical* | Horizontal | Horizontal |
+| **Queries** | Rich | Very Rich | Limited | Search-focused |
+| **Speed** | Fast | Moderate | Fastest | Fast reads |
+| **Use Case** | General | Complex data | Caching | Search |
+
+*PostgreSQL can scale horizontally with extensions like Citus
+
+# Polyglot Persistence {.section-slide background-color="#d6001c"}
+
+## What is Polyglot Persistence?
+
+Using **multiple database technologies** within a single application, each optimized for specific data access patterns.
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                     Application                              │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│   ┌──────────┐   ┌──────────┐   ┌──────────┐   ┌────────┐ │
+│   │ MongoDB  │   │PostgreSQL│   │  Redis   │   │Elastic │ │
+│   │          │   │          │   │          │   │search  │ │
+│   │  Users   │   │ Orders   │   │ Sessions │   │Products│ │
+│   │ Profiles │   │ Payments │   │  Cache   │   │ Search │ │
+│   │ Comments │   │ Reports  │   │   Queues │   │  Logs  │ │
+│   └──────────┘   └──────────┘   └──────────┘   └────────┘ │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+```
+
+## Why Polyglot Persistence?
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Benefits
+
+- **Optimized performance** for each use case
+- **Best tool** for each job
+- **Scalability** where needed
+- **Flexibility** to evolve
+:::
+
+::: {.column width="50%"}
+### Challenges
+
+- **Operational complexity**
+- **Data synchronization**
+- **Transaction management**
+- **Team expertise**
+:::
+
+::::
+
+## Choosing a Database
+
+| Use Case | Best Choice | Why |
+|----------|-------------|-----|
+| User profiles, content | MongoDB | Flexible schema, nested data |
+| Financial transactions | PostgreSQL | ACID, complex queries |
+| Session storage | Redis | Speed, TTL support |
+| Product search | Elasticsearch | Full-text, facets |
+| Activity feeds | MongoDB/Redis | Time-ordered, fast writes |
+| Analytics | PostgreSQL/ClickHouse | Aggregations, SQL |
+| Relationships | PostgreSQL/Neo4j | Joins, graph queries |
+
+## Real-World Example: E-Commerce
+
+```{mermaid}
+%%| fig-width: 14
+flowchart TB
+    subgraph App["E-Commerce Application"]
+        API[API Server]
+    end
+
+    subgraph DBs["Polyglot Data Layer"]
+        Mongo[(MongoDB)]
+        Postgres[(PostgreSQL)]
+        Redis[(Redis)]
+        Elastic[(Elasticsearch)]
+    end
+
+    API --> Mongo
+    API --> Postgres
+    API --> Redis
+    API --> Elastic
+
+    Mongo --> |"Products\nReviews\nUser Profiles"| M1[Document Store]
+    Postgres --> |"Orders\nPayments\nInventory"| P1[Transactional]
+    Redis --> |"Sessions\nCart\nCache"| R1[Speed Layer]
+    Elastic --> |"Product Search\nAutocomplete"| E1[Search Layer]
+```
+
+# MongoDB Deep Dive {.section-slide background-color="#d6001c"}
+
+## Document Design Principles
+
+**Key Question:** Embed or Reference?
+
+```javascript
+// Embedded (denormalized)
+{
+  _id: ObjectId("..."),
+  name: "Blog Post Title",
+  author: {
+    id: ObjectId("..."),
+    name: "Jane Author",
+    avatar: "/avatars/jane.jpg"
+  },
+  comments: [
+    { user: "Bob", text: "Great post!", date: ISODate("...") },
+    { user: "Alice", text: "Thanks!", date: ISODate("...") }
+  ]
+}
+
+// Referenced (normalized)
+{
+  _id: ObjectId("..."),
+  name: "Blog Post Title",
+  authorId: ObjectId("..."),      // Reference to users collection
+  commentIds: [ObjectId("...")]    // References to comments collection
+}
+```
+
+## When to Embed
+
+Embed when data is:
+
+- **Accessed together** (one query gets all needed data)
+- **Owned** by the parent document
+- **Bounded** in size (won't grow indefinitely)
+- **Updated together**
+
+```javascript
+// Good embedding: User with addresses
+{
+  _id: ObjectId("..."),
+  name: "John Doe",
+  addresses: [
+    { type: "home", street: "123 Main", city: "Boston" },
+    { type: "work", street: "456 Office", city: "Cambridge" }
+  ]
+}
+
+// Addresses belong to user, bounded count, always accessed together
+```
+
+## When to Reference
+
+Reference when data:
+
+- **Accessed independently**
+- **Shared** across multiple documents
+- **Grows unbounded**
+- **Updated independently**
+
+```javascript
+// Products reference categories
+{
+  _id: ObjectId("..."),
+  name: "Laptop",
+  categoryId: ObjectId("..."),  // Reference
+  brandId: ObjectId("...")      // Reference
+}
+
+// Categories are shared, updated independently, accessed separately
+
+// Use $lookup for joins
+db.products.aggregate([
+  { $lookup: {
+      from: "categories",
+      localField: "categoryId",
+      foreignField: "_id",
+      as: "category"
+    }
+  }
+]);
+```
+
+## Embedding vs Referencing Decision Tree
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│           How is the data accessed?                         │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  Always together?                                           │
+│     ├─ Yes → Consider embedding                            │
+│     └─ No → Consider referencing                           │
+│                                                             │
+│  How often does it change?                                  │
+│     ├─ Rarely → Embed is fine                              │
+│     └─ Frequently → Reference if updates are independent   │
+│                                                             │
+│  How big can it get?                                        │
+│     ├─ Bounded (< 100 items) → Embed                       │
+│     └─ Unbounded → Reference                               │
+│                                                             │
+│  Is it shared across documents?                             │
+│     ├─ No → Embed                                          │
+│     └─ Yes → Reference                                     │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+```
+
+## MongoDB Schema Design Pattern: Extended Reference
+
+Keep frequently accessed data with the reference:
+
+```javascript
+// Instead of just the ID, store commonly needed fields
+{
+  _id: ObjectId("..."),
+  title: "Blog Post",
+  author: {
+    _id: ObjectId("..."),   // Reference
+    name: "Jane Author",    // Cached
+    avatar: "/avatars/jane.jpg"  // Cached
+  },
+  // Full author details in users collection
+}
+
+// Benefits:
+// - Single query for common reads
+// - Can still lookup full author when needed
+// - Trade-off: must update cached data when source changes
+```
+
+## Indexing Strategies
+
+```javascript
+// Single field index
+db.products.createIndex({ category: 1 });
+
+// Compound index (order matters!)
+db.products.createIndex({ category: 1, price: -1 });
+
+// Text index for search
+db.products.createIndex({ name: "text", description: "text" });
+
+// Unique index
+db.users.createIndex({ email: 1 }, { unique: true });
+
+// TTL index (auto-delete after time)
+db.sessions.createIndex({ createdAt: 1 }, { expireAfterSeconds: 3600 });
+
+// Partial index (only index subset)
+db.orders.createIndex(
+  { status: 1 },
+  { partialFilterExpression: { status: "pending" } }
+);
+
+// Explain query to analyze index usage
+db.products.find({ category: "electronics" }).explain("executionStats");
+```
+
+# MongoDB vs PostgreSQL {.section-slide background-color="#d6001c"}
+
+## Schema Flexibility
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### MongoDB: Schema-Optional
+
+```javascript
+// Version 1
+{ name: "Product", price: 10 }
+
+// Version 2: Add field without migration
+{
+  name: "Product",
+  price: 10,
+  tags: ["new"],
+  metadata: { weight: 1.5 }
+}
+
+// Different documents can have
+// different structures
+```
+
+**Pros:** Rapid iteration, flexible data
+
+**Cons:** No enforced structure
+:::
+
+::: {.column width="50%"}
+### PostgreSQL: Schema-Required
+
+```sql
+-- Version 1
+CREATE TABLE products (
+  name VARCHAR(100),
+  price DECIMAL
+);
+
+-- Version 2: Migration required
+ALTER TABLE products
+ADD COLUMN tags TEXT[];
+ADD COLUMN metadata JSONB;
+
+-- All rows must conform to schema
+```
+
+**Pros:** Data integrity, clear structure
+
+**Cons:** Migrations for changes
+:::
+
+::::
+
+## Query Capabilities
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### MongoDB
+
+```javascript
+// Aggregation pipeline
+db.orders.aggregate([
+  { $match: { status: "completed" } },
+  { $group: {
+      _id: "$customerId",
+      total: { $sum: "$amount" },
+      count: { $count: {} }
+    }
+  },
+  { $sort: { total: -1 } },
+  { $limit: 10 }
+]);
+
+// Joins via $lookup
+{ $lookup: {
+    from: "users",
+    localField: "customerId",
+    foreignField: "_id",
+    as: "customer"
+  }
+}
+```
+:::
+
+::: {.column width="50%"}
+### PostgreSQL
+
+```sql
+-- SQL query
+SELECT
+  customer_id,
+  SUM(amount) as total,
+  COUNT(*) as count
+FROM orders
+WHERE status = 'completed'
+GROUP BY customer_id
+ORDER BY total DESC
+LIMIT 10;
+
+-- Joins built-in
+SELECT o.*, u.name
+FROM orders o
+JOIN users u ON o.customer_id = u.id;
+
+-- Window functions
+SELECT *,
+  ROW_NUMBER() OVER (
+    PARTITION BY category
+    ORDER BY price DESC
+  ) as rank
+FROM products;
+```
+:::
+
+::::
+
+## Transactions
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### MongoDB (4.0+)
+
+```javascript
+const session = client.startSession();
+
+try {
+  session.startTransaction();
+
+  await orders.insertOne(
+    { ...orderData },
+    { session }
+  );
+
+  await inventory.updateOne(
+    { productId },
+    { $inc: { quantity: -1 } },
+    { session }
+  );
+
+  await session.commitTransaction();
+} catch (error) {
+  await session.abortTransaction();
+  throw error;
+} finally {
+  session.endSession();
+}
+```
+
+Multi-document transactions available but with overhead
+:::
+
+::: {.column width="50%"}
+### PostgreSQL
+
+```sql
+BEGIN;
+
+INSERT INTO orders (...)
+VALUES (...);
+
+UPDATE inventory
+SET quantity = quantity - 1
+WHERE product_id = $1;
+
+-- If anything fails, rollback
+COMMIT;
+
+-- Or explicitly
+ROLLBACK;
+```
+
+ACID transactions are native and efficient
+:::
+
+::::
+
+## When to Choose Which
+
+| Criteria | Choose MongoDB | Choose PostgreSQL |
+|----------|---------------|-------------------|
+| **Schema** | Evolving, flexible | Stable, well-defined |
+| **Data** | Nested, document-like | Relational, normalized |
+| **Scale** | Horizontal (sharding) | Vertical (or Citus) |
+| **Transactions** | Single-doc mostly | Multi-table required |
+| **Queries** | Simple to moderate | Complex, analytical |
+| **Team** | JS/Node.js focused | SQL expertise |
+
+# CAP Theorem {.section-slide background-color="#d6001c"}
+
+## Understanding CAP
+
+```
+                    Consistency
+                        /\
+                       /  \
+                      /    \
+                     / CA   \ CP
+                    /        \
+                   /──────────\
+                Availability  Partition
+                              Tolerance
+```
+
+**C**onsistency: All nodes see the same data at the same time
+
+**A**vailability: Every request receives a response
+
+**P**artition Tolerance: System works despite network failures
+
+**The theorem:** In a distributed system, you can only guarantee 2 of 3
+
+## CAP in Practice
+
+Since network partitions *will* happen in distributed systems, the real choice is:
+
+**CP (Consistency + Partition Tolerance)**
+- Sacrifice availability during partitions
+- May return errors or timeout
+- Example: MongoDB with majority write concern
+
+**AP (Availability + Partition Tolerance)**
+- Sacrifice consistency during partitions
+- May return stale data
+- Example: Cassandra, DynamoDB
+
+## Consistency Levels in MongoDB
+
+```javascript
+// Strong consistency (CP behavior)
+await collection.insertOne(doc, {
+  writeConcern: { w: "majority" }
+});
+
+const result = await collection.findOne(
+  { _id },
+  { readConcern: { level: "majority" } }
+);
+
+// Eventual consistency (faster, AP behavior)
+await collection.insertOne(doc, {
+  writeConcern: { w: 1 }  // Only primary acknowledgment
+});
+
+const result = await collection.findOne(
+  { _id },
+  { readPreference: "secondaryPreferred" }  // Read from replica
+);
+```
+
+## Consistency Patterns
+
+```{mermaid}
+%%| fig-width: 14
+sequenceDiagram
+    participant Client
+    participant Primary
+    participant Secondary1
+    participant Secondary2
+
+    Note over Client,Secondary2: Strong Consistency (w: majority)
+    Client->>Primary: Write
+    Primary->>Secondary1: Replicate
+    Primary->>Secondary2: Replicate
+    Secondary1-->>Primary: ACK
+    Secondary2-->>Primary: ACK
+    Primary-->>Client: Success (after majority)
+
+    Note over Client,Secondary2: Eventual Consistency (w: 1)
+    Client->>Primary: Write
+    Primary-->>Client: Success (immediate)
+    Primary->>Secondary1: Replicate (async)
+    Primary->>Secondary2: Replicate (async)
+```
+
+# Data Synchronization {.section-slide background-color="#d6001c"}
+
+## Cross-Database Sync Patterns
+
+When using polyglot persistence, data often needs to exist in multiple databases:
+
+```
+                    MongoDB                    Elasticsearch
+                  (Primary)                      (Search)
+                      │                             │
+                      │      Sync Strategy          │
+                      │◄──────────────────────────►│
+                      │                             │
+┌─────────────────────┼─────────────────────────────┼──────────────────┐
+│                     │                             │                  │
+│  1. Dual Write      │ App writes to both         │                  │
+│  2. Change Streams  │ MongoDB notifies on change │                  │
+│  3. Event Bus       │ Publish to queue, both consume               │
+│  4. ETL Process     │ Periodic batch sync        │                  │
+│                                                                      │
+└──────────────────────────────────────────────────────────────────────┘
+```
+
+## Change Streams (MongoDB → Elasticsearch)
+
+```javascript
+// Sync MongoDB changes to Elasticsearch in real-time
+const { MongoClient } = require('mongodb');
+const { Client } = require('@elastic/elasticsearch');
+
+const mongo = new MongoClient(MONGO_URI);
+const elastic = new Client({ node: ELASTIC_URI });
+
+async function syncToElastic() {
+  const collection = mongo.db('shop').collection('products');
+
+  const changeStream = collection.watch();
+
+  changeStream.on('change', async (change) => {
+    switch (change.operationType) {
+      case 'insert':
+      case 'update':
+      case 'replace':
+        await elastic.index({
+          index: 'products',
+          id: change.documentKey._id.toString(),
+          body: change.fullDocument
+        });
+        break;
+
+      case 'delete':
+        await elastic.delete({
+          index: 'products',
+          id: change.documentKey._id.toString()
+        });
+        break;
+    }
+  });
+}
+```
+
+## Event-Driven Sync
+
+```{mermaid}
+%%| fig-width: 14
+flowchart LR
+    subgraph App
+        API[API Service]
+    end
+
+    subgraph Events
+        Queue[(Message Queue)]
+    end
+
+    subgraph DBs
+        Mongo[(MongoDB)]
+        Elastic[(Elasticsearch)]
+        Redis[(Redis Cache)]
+    end
+
+    API -->|1. Write| Mongo
+    API -->|2. Publish Event| Queue
+    Queue -->|3. Consume| ElasticSync[ES Sync Service]
+    Queue -->|3. Consume| CacheSync[Cache Sync Service]
+    ElasticSync -->|4. Index| Elastic
+    CacheSync -->|4. Invalidate| Redis
+```
+
+# Summary {.section-slide background-color="#d6001c"}
+
+## Key Takeaways
+
+1. **Different databases excel** at different use cases
+2. **Polyglot persistence** optimizes for each data pattern
+3. **Document design** balances embedding vs referencing
+4. **MongoDB** for flexibility; **PostgreSQL** for transactions
+5. **CAP theorem** forces trade-offs in distributed systems
+6. **Data sync** requires careful architecture
+
+## Decision Framework
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│  1. What are the access patterns?                           │
+│  2. How important is transaction integrity?                 │
+│  3. How will the schema evolve?                            │
+│  4. What scale do you need?                                │
+│  5. What's the team's expertise?                           │
+│  6. What's the operational cost?                           │
+└─────────────────────────────────────────────────────────────┘
+```
+
+## Looking Ahead
+
+### Lab 4 Due: Tuesday, February 17
+
+- Implement backend patterns
+- Design MongoDB schemas
+- Add validation and error handling
+
+### Next Week: Quiz 1 Review
+
+- Friday: Quiz 1 - Architectural Foundations
+- Cover weeks 1-5 material
+
+## Quiz 1 Preview
+
+Topics covered:
+- Infrastructure as Code (Docker, Compose)
+- Layered Architecture patterns
+- Frontend component architecture
+- Backend service patterns
+- Data architecture and database selection
+
+## Resources
+
+- [MongoDB Data Modeling](https://www.mongodb.com/docs/manual/data-modeling/)
+- [PostgreSQL Documentation](https://www.postgresql.org/docs/)
+- [Redis Data Types](https://redis.io/docs/data-types/)
+- [Martin Fowler: Polyglot Persistence](https://martinfowler.com/bliki/PolyglotPersistence.html)
+- [CAP Theorem Explained](https://www.ibm.com/topics/cap-theorem)
+
+## Questions?
+
+::: {.callout-box}
+**Office Hours:** Tuesday 9-11 AM, Pitt 2206
+
+**Email:** kuruzj@rpi.edu
+
+**Appointments:** [bit.ly/jason-rpi](https://bit.ly/jason-rpi)
+:::
+
+---
+
+Good luck with Lab 4 and Quiz 1!

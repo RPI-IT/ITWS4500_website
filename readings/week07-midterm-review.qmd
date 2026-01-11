@@ -5,20 +5,669 @@ subtitle: "Architectural Decisions and Trade-offs"
 
 ::: {.callout-note}
 ## Reading Assignment
-Review this material for midterm presentations.
+Review this material before your midterm presentations. Estimated time: 60-75 minutes.
 :::
 
-## Overview
+## Introduction
 
-*Content coming soon.*
+The first half of this course has covered the foundational patterns of modern application development—from Infrastructure as Code through layered architecture, component design, and data management. The midterm represents an opportunity to synthesize these concepts by documenting and presenting the architectural decisions you've made in your projects.
 
-## Key Concepts
+This reading serves two purposes: first, to introduce **Architectural Decision Records (ADRs)** and trade-off analysis as professional practices; second, to review the key concepts from Weeks 1-6 that form the foundation of your architectural understanding.
 
-- Architectural decision records
-- Trade-off analysis
-- Project documentation
-- Presentation best practices
+## Architectural Decision Records
+
+### Why Document Decisions?
+
+Every software project involves countless decisions: Which framework to use? How to structure the codebase? What database fits our needs? Where to draw service boundaries? These decisions, once made, shape the project's trajectory and constrain future options.
+
+Yet decisions are often lost to institutional memory. New team members join and wonder "why did we do it this way?" Original authors leave, taking context with them. Months later, even the same developer may not remember the reasoning behind a choice.
+
+**Architectural Decision Records (ADRs)** solve this problem by documenting decisions in a structured, lightweight format. They capture not just *what* was decided, but *why*—including the context, alternatives considered, and trade-offs evaluated.
+
+### The ADR Format
+
+A standard ADR contains these sections:
+
+```markdown
+# ADR-001: Use MongoDB for Primary Data Store
+
+## Status
+Accepted
+
+## Context
+Our application needs to store user profiles, posts, and comments.
+The data model is still evolving as we discover user needs. We expect
+to scale to thousands of concurrent users within the first year.
+
+## Decision
+We will use MongoDB as our primary data store for user-generated content.
+
+## Consequences
+### Positive
+- Flexible schema accommodates evolving data models
+- Document model maps naturally to our JavaScript objects
+- Horizontal scaling through sharding when needed
+- Strong Node.js ecosystem support with Mongoose
+
+### Negative
+- No built-in support for complex joins (must denormalize or use aggregation)
+- Eventual consistency by default (must configure for strong consistency if needed)
+- Team must learn MongoDB query patterns and indexing strategies
+
+### Risks
+- Large documents could impact performance; will monitor document sizes
+- Schema flexibility could lead to inconsistent data if not validated
+
+## Alternatives Considered
+
+### PostgreSQL
+- Pros: ACID compliance, powerful query language, mature ecosystem
+- Cons: Rigid schema less suited to evolving requirements, more complex
+  setup for Node.js applications
+- Why rejected: Our data model is still unstable; schema migrations
+  would slow development
+
+### Firebase Firestore
+- Pros: Managed service, real-time sync, serverless-friendly
+- Cons: Vendor lock-in, limited query capabilities, costs scale with reads
+- Why rejected: Prefer portable solution, more query flexibility needed
+```
+
+### ADR Best Practices
+
+**1. Write ADRs at decision time**
+
+Document decisions when you make them, not after. The context and reasoning are freshest in your mind, and the act of writing often clarifies thinking.
+
+**2. Keep ADRs short and focused**
+
+Each ADR should address one decision. A good ADR fits on one to two pages. If it's longer, you're probably covering multiple decisions.
+
+**3. Number ADRs sequentially**
+
+Use a simple numbering scheme (ADR-001, ADR-002) to track decisions over time. This creates a chronological record of architectural evolution.
+
+**4. ADRs are immutable**
+
+Once accepted, don't modify an ADR. If a decision changes, create a new ADR that supersedes the old one. This preserves the historical record.
+
+**5. Store ADRs with code**
+
+Keep ADRs in your repository (typically in `docs/adr/` or `docs/decisions/`). This ensures they're version-controlled and discoverable.
+
+### ADR Templates by Decision Type
+
+Different decisions benefit from different emphases:
+
+**Technology Selection ADR**
+```markdown
+# ADR-XXX: Select [Technology] for [Purpose]
+
+## Status
+[Proposed | Accepted | Deprecated | Superseded by ADR-YYY]
+
+## Context
+- What problem are we solving?
+- What are our requirements and constraints?
+- What is the team's current expertise?
+
+## Decision
+We will use [technology] because [primary reasons].
+
+## Consequences
+- What becomes easier?
+- What becomes harder?
+- What new skills does the team need?
+- What are the cost implications?
+
+## Alternatives Considered
+- [Alternative 1]: Why not chosen
+- [Alternative 2]: Why not chosen
+```
+
+**Architectural Pattern ADR**
+```markdown
+# ADR-XXX: Adopt [Pattern] for [Aspect]
+
+## Status
+[Status]
+
+## Context
+- What architectural challenge are we addressing?
+- What quality attributes matter most (scalability, maintainability, etc.)?
+
+## Decision
+We will structure [aspect] using the [pattern] pattern.
+
+## Consequences
+- How does this affect system complexity?
+- What coupling/cohesion trade-offs are we making?
+- How does this impact testing and deployment?
+
+## Alternatives Considered
+- [Alternative pattern]: Trade-offs comparison
+```
+
+## Trade-off Analysis
+
+### The Reality of Engineering Trade-offs
+
+Every architectural decision involves trade-offs. There is no "best" solution—only solutions that optimize for different qualities. Understanding and articulating these trade-offs is a core engineering skill.
+
+### The Quality Attributes
+
+Software architecture balances multiple **quality attributes** (also called "-ilities"):
+
+| Attribute | Description | Tension With |
+|-----------|-------------|--------------|
+| **Performance** | Response time, throughput, resource efficiency | Security, Maintainability |
+| **Scalability** | Ability to handle growth | Simplicity, Cost |
+| **Availability** | System uptime, fault tolerance | Consistency, Cost |
+| **Security** | Protection against threats | Usability, Performance |
+| **Maintainability** | Ease of modification | Performance, Time-to-market |
+| **Testability** | Ease of verification | Time-to-market |
+| **Usability** | User experience quality | Security, Complexity |
+| **Simplicity** | System understandability | Feature completeness |
+
+### Trade-off Analysis Framework
+
+When evaluating architectural options, use this structured approach:
+
+**Step 1: Identify Quality Priorities**
+
+Not all quality attributes matter equally for every project. A real-time trading system prioritizes performance; a medical records system prioritizes security; a startup MVP prioritizes time-to-market.
+
+```
+For our project, the priority order is:
+1. Maintainability (team is learning, code will change)
+2. Simplicity (limited development time)
+3. Performance (adequate for expected load)
+4. Scalability (not a concern for MVP)
+```
+
+**Step 2: Enumerate Options**
+
+List the viable approaches without judging them:
+
+```
+Options for state management:
+A. Local component state only (useState)
+B. React Context for shared state
+C. Zustand for global state
+D. Redux Toolkit for complex state
+```
+
+**Step 3: Evaluate Each Option Against Priorities**
+
+Create a decision matrix:
+
+| Option | Maintainability | Simplicity | Performance | Learning Curve |
+|--------|-----------------|------------|-------------|----------------|
+| useState only | Medium | High | High | Low |
+| React Context | Medium | Medium | Medium* | Low |
+| Zustand | High | High | High | Low |
+| Redux Toolkit | High | Low | High | High |
+
+*Context can cause unnecessary re-renders if not carefully structured.
+
+**Step 4: Make and Document the Decision**
+
+Choose the option that best balances your priorities, then document the reasoning in an ADR.
+
+### Common Trade-off Patterns
+
+**Flexibility vs. Simplicity**
+
+More flexible systems handle more cases but are harder to understand:
+
+```javascript
+// Simple but inflexible
+function formatDate(date) {
+  return date.toLocaleDateString('en-US');
+}
+
+// Flexible but complex
+function formatDate(date, options = {}) {
+  const {
+    locale = 'en-US',
+    format = 'long',
+    includeTime = false,
+    timezone = undefined
+  } = options;
+
+  const dateOptions = {
+    dateStyle: format,
+    ...(includeTime && { timeStyle: 'short' }),
+    ...(timezone && { timeZone: timezone })
+  };
+
+  return date.toLocaleString(locale, dateOptions);
+}
+```
+
+**Consistency vs. Availability (CAP Theorem)**
+
+In distributed systems, you must choose between strong consistency and high availability during network partitions:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                    CAP Theorem                          │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│            Consistency                                  │
+│               /\                                        │
+│              /  \                                       │
+│             /    \                                      │
+│            / CA   \   CP                               │
+│           /        \                                    │
+│          /──────────\                                   │
+│         Availability  Partition                        │
+│                       Tolerance                         │
+│                                                         │
+│  CA: Traditional RDBMS (single node)                   │
+│  CP: MongoDB (with write concern majority)             │
+│  AP: DynamoDB, Cassandra (eventual consistency)        │
+│                                                         │
+│  In practice, network partitions happen, so you        │
+│  choose between CP and AP for distributed systems.     │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+**Normalization vs. Performance**
+
+Normalized databases minimize redundancy but require joins:
+
+```javascript
+// Normalized: Separate collections, references
+// Pros: No data duplication, easy updates
+// Cons: Requires multiple queries or $lookup
+
+const post = {
+  _id: ObjectId('...'),
+  title: 'Understanding Trade-offs',
+  authorId: ObjectId('...'),  // Reference to users collection
+  categoryIds: [ObjectId('...'), ObjectId('...')]
+};
+
+// Denormalized: Embedded data
+// Pros: Single query retrieves everything
+// Cons: Data duplication, complex updates
+
+const post = {
+  _id: ObjectId('...'),
+  title: 'Understanding Trade-offs',
+  author: {
+    _id: ObjectId('...'),
+    name: 'Jane Developer',
+    avatar: 'jane.jpg'
+  },
+  categories: [
+    { _id: ObjectId('...'), name: 'Architecture' },
+    { _id: ObjectId('...'), name: 'Best Practices' }
+  ]
+};
+```
+
+## Midterm Concept Review
+
+### Week 1: Infrastructure as Code
+
+**Core Concepts**
+
+1. **Containers vs. Virtual Machines**
+   - Containers share the host OS kernel (lightweight, fast startup)
+   - VMs include full guest OS (heavier, complete isolation)
+   - Containers: megabytes, seconds to start
+   - VMs: gigabytes, minutes to start
+
+2. **Docker Images and Layers**
+   - Images are read-only templates built from Dockerfiles
+   - Each instruction creates a layer
+   - Layers are cached and shared for efficiency
+   - Order matters: put frequently-changing content last
+
+3. **Docker Compose**
+   - Defines multi-container applications in YAML
+   - Services communicate by service name
+   - Volumes persist data beyond container lifecycle
+   - `depends_on` controls startup order
+
+**Key Commands**
+```bash
+docker build -t my-app .
+docker run -d -p 3000:3000 my-app
+docker compose up --build
+docker compose down -v
+```
+
+**Review Questions**
+- What problem does containerization solve?
+- Why do we order Dockerfile instructions from least to most frequently changed?
+- What's the difference between a named volume and a bind mount?
+
+### Week 2: Architecture Foundations
+
+**Core Concepts**
+
+1. **Separation of Concerns**
+   - Each module handles one aspect of functionality
+   - Changes to one concern don't affect others
+   - Enables independent development and testing
+
+2. **Client-Server Architecture**
+   - Clear separation between frontend and backend
+   - Communication via HTTP/REST APIs
+   - Frontend handles presentation, backend handles business logic and data
+
+3. **Environment Configuration**
+   - Different configurations for dev/staging/production
+   - Environment variables for runtime configuration
+   - Never commit secrets to version control
+
+**Architecture Diagram**
+```
+┌─────────────────┐         ┌─────────────────┐
+│     Client      │  HTTP   │     Server      │
+│   (React App)   │ ──────▶ │ (Express API)   │
+│                 │         │                 │
+│ - Components    │         │ - Routes        │
+│ - State         │ ◀────── │ - Controllers   │
+│ - Routing       │  JSON   │ - Services      │
+└─────────────────┘         │ - Models        │
+                            └────────┬────────┘
+                                     │
+                            ┌────────▼────────┐
+                            │    Database     │
+                            │   (MongoDB)     │
+                            └─────────────────┘
+```
+
+### Week 3: Layered Architecture
+
+**Core Concepts**
+
+1. **The Four-Layer Model**
+   - **Presentation Layer**: UI components, user interaction
+   - **Application Layer**: Use cases, orchestration, DTOs
+   - **Domain Layer**: Business logic, entities, rules
+   - **Infrastructure Layer**: Database, external services, frameworks
+
+2. **Dependency Rule**
+   - Dependencies point inward (toward domain)
+   - Inner layers don't know about outer layers
+   - Interfaces at boundaries for flexibility
+
+3. **Layer Responsibilities**
+
+| Layer | Contains | Depends On |
+|-------|----------|------------|
+| Presentation | Components, Views | Application |
+| Application | Services, DTOs | Domain |
+| Domain | Entities, Business Rules | Nothing |
+| Infrastructure | Repositories, APIs | Domain (implements interfaces) |
+
+**Review Questions**
+- Why should the domain layer have no external dependencies?
+- How does the repository pattern enable database flexibility?
+- What belongs in the Application layer vs. the Domain layer?
+
+### Week 4: Component Architecture
+
+**Core Concepts**
+
+1. **React Component Types**
+   - **Presentational**: Display data, no business logic
+   - **Container**: Manage state, fetch data, coordinate children
+   - **Layout**: Structure and arrange other components
+   - **Higher-Order Components**: Enhance other components
+
+2. **State Management Patterns**
+   - `useState` for local component state
+   - `useReducer` for complex local state
+   - Context API for shared state without prop drilling
+   - External stores (Zustand, Redux) for complex global state
+
+3. **Component Communication**
+   - Props down (parent to child)
+   - Callbacks up (child to parent)
+   - Context across (shared state)
+
+**State Selection Guide**
+```
+┌─────────────────────────────────────────────────────────┐
+│              State Management Decision Tree              │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│  Is the state used by multiple components?              │
+│     │                                                   │
+│     ├─ No → useState (local state)                     │
+│     │                                                   │
+│     └─ Yes → Are they in a parent-child relationship?  │
+│              │                                          │
+│              ├─ Yes, close → Props/callbacks            │
+│              │                                          │
+│              └─ No, or deeply nested →                 │
+│                 │                                       │
+│                 ├─ Simple shared state → Context        │
+│                 │                                       │
+│                 └─ Complex state with actions →        │
+│                    Zustand or Redux                     │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+### Week 5: Backend & Data Patterns
+
+**Core Concepts**
+
+1. **RESTful API Design**
+   - Resources as URLs: `/api/posts`, `/api/posts/:id`
+   - HTTP verbs for operations: GET, POST, PUT, DELETE
+   - Status codes for outcomes: 200, 201, 400, 404, 500
+   - Consistent response structure
+
+2. **Middleware Patterns**
+   - Authentication: Verify identity (JWT validation)
+   - Authorization: Check permissions
+   - Validation: Verify input data
+   - Error handling: Centralized error processing
+
+3. **MongoDB Document Design**
+   - Embed data that's accessed together
+   - Reference data that's shared or large
+   - Index fields used in queries
+   - Validate with Mongoose schemas
+
+**RESTful Endpoints Pattern**
+```javascript
+// Resource: posts
+GET    /api/posts          // List all posts
+POST   /api/posts          // Create new post
+GET    /api/posts/:id      // Get single post
+PUT    /api/posts/:id      // Update post
+DELETE /api/posts/:id      // Delete post
+
+// Nested resources
+GET    /api/posts/:id/comments     // List comments on post
+POST   /api/posts/:id/comments     // Add comment to post
+```
+
+**Review Questions**
+- When should you embed vs. reference related data in MongoDB?
+- What's the purpose of the next() function in Express middleware?
+- How do you handle validation errors in a RESTful API?
+
+### Week 6: Data Architecture
+
+**Core Concepts**
+
+1. **Database Paradigms**
+   - Document (MongoDB): Flexible schema, nested data
+   - Relational (PostgreSQL): ACID, complex queries
+   - Key-Value (Redis): Speed, caching
+   - Search (Elasticsearch): Full-text search
+
+2. **Polyglot Persistence**
+   - Use the right database for each use case
+   - Synchronize data between databases
+   - Trade-off: complexity vs. optimization
+
+3. **Consistency Patterns**
+   - Strong consistency: Immediate visibility
+   - Eventual consistency: Delayed propagation
+   - Distributed transactions: Saga pattern
+
+**Database Selection Guide**
+
+| Use Case | Recommended | Why |
+|----------|-------------|-----|
+| User profiles | MongoDB | Flexible schema, document model |
+| Financial transactions | PostgreSQL | ACID compliance |
+| Session storage | Redis | Speed, TTL support |
+| Product search | Elasticsearch | Full-text search |
+| Real-time analytics | ClickHouse | Columnar, aggregations |
+
+## Presentation Best Practices
+
+### Structuring Your Midterm Presentation
+
+Your midterm presentation should demonstrate understanding of architectural concepts through your project implementation. Structure it as follows:
+
+**1. Project Overview (2 minutes)**
+- What does your application do?
+- Who are the users?
+- What are the core features?
+
+**2. Architectural Decisions (5-7 minutes)**
+- Present 2-3 key ADRs
+- For each: Context, Decision, Trade-offs
+- Connect decisions to course concepts
+
+**3. Technical Demonstration (3-5 minutes)**
+- Show the architecture in action
+- Demonstrate a key feature flow
+- Highlight how layers interact
+
+**4. Lessons Learned (2-3 minutes)**
+- What would you do differently?
+- What patterns proved most valuable?
+- What challenges remain?
+
+### Effective Technical Presentations
+
+**Know Your Audience**
+Assume your audience understands the course concepts but doesn't know your specific project. Explain your choices in terms of the patterns we've studied.
+
+**Show, Don't Just Tell**
+Use diagrams, code snippets, and live demos. A 30-second demo often communicates more than 5 minutes of description.
+
+**Anticipate Questions**
+Think about alternative approaches you considered. Why didn't you choose them? What trade-offs did you make?
+
+**Practice Timing**
+Presentations always take longer than expected. Practice your full presentation at least twice, and have cuts ready if you run long.
+
+### Visual Aids
+
+**Architecture Diagrams**
+Show how components connect:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                    Your Application                      │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│   ┌─────────────┐         ┌─────────────────────┐      │
+│   │   React     │         │      Express        │      │
+│   │   Frontend  │  REST   │      Backend        │      │
+│   │             │ ──────▶ │                     │      │
+│   │ Components  │         │ Routes → Controllers│      │
+│   │ State (Ctx) │ ◀────── │       → Services   │      │
+│   │ React Router│  JSON   │       → Models     │      │
+│   └─────────────┘         └──────────┬──────────┘      │
+│                                      │                  │
+│                           ┌──────────▼──────────┐      │
+│                           │      MongoDB        │      │
+│                           │    (via Mongoose)   │      │
+│                           └─────────────────────┘      │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+**Data Flow Diagrams**
+Trace a request through your system:
+
+```
+User Action: "Create Post"
+        │
+        ▼
+┌───────────────────┐
+│ PostForm Component│  1. User submits form
+│   (Presentation)  │
+└─────────┬─────────┘
+          │ onClick → createPost(data)
+          ▼
+┌───────────────────┐
+│ PostContext       │  2. Context calls API
+│   (State Mgmt)    │
+└─────────┬─────────┘
+          │ POST /api/posts
+          ▼
+┌───────────────────┐
+│ postsRouter       │  3. Route validates, calls controller
+│   (API Layer)     │
+└─────────┬─────────┘
+          │ controller.create(req, res)
+          ▼
+┌───────────────────┐
+│ PostService       │  4. Service applies business logic
+│   (Business)      │
+└─────────┬─────────┘
+          │ PostModel.create(data)
+          ▼
+┌───────────────────┐
+│ MongoDB           │  5. Database stores document
+│   (Persistence)   │
+└───────────────────┘
+```
+
+## Summary
+
+This reading prepared you for the midterm by:
+
+1. **Introducing ADRs** as a professional practice for documenting architectural decisions
+2. **Providing a trade-off analysis framework** for evaluating options systematically
+3. **Reviewing key concepts** from Weeks 1-6
+4. **Offering presentation guidance** for effectively communicating technical decisions
+
+The midterm is your opportunity to demonstrate not just that you can build working software, but that you understand *why* it's built the way it is. Focus on the reasoning behind your decisions, the trade-offs you considered, and how course concepts guided your choices.
+
+## Key Terms
+
+- **Architectural Decision Record (ADR)**: A document capturing an important architectural decision, its context, and consequences
+- **Quality Attributes**: Non-functional requirements that describe system characteristics (performance, scalability, maintainability)
+- **Trade-off**: A balance between competing qualities where improving one may diminish another
+- **Decision Matrix**: A table comparing options against evaluation criteria
+- **Technical Debt**: The implied cost of future rework caused by choosing expedient solutions now
 
 ## Further Reading
 
-*Resources coming soon.*
+- [Documenting Architecture Decisions](https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions) - Michael Nygard's original ADR proposal
+- [ADR GitHub Organization](https://adr.github.io/) - Templates and tools for ADRs
+- [Software Architecture in Practice](https://www.sei.cmu.edu/publications/books/software-engineering/software-architecture-in-practice.cfm) - Comprehensive quality attributes coverage
+- [The C4 Model](https://c4model.com/) - Approach for visualizing software architecture
+- [Presentation Zen](https://www.presentationzen.com/) - Principles for effective presentations
+
+## Midterm Checklist
+
+Before your presentation, verify:
+
+- [ ] You have 2-3 documented ADRs for your project
+- [ ] Each ADR includes context, decision, and consequences
+- [ ] You can explain trade-offs for each major decision
+- [ ] Your architecture diagram is clear and accurate
+- [ ] You can trace a request through your system layers
+- [ ] You've practiced your presentation within the time limit
+- [ ] Your demo environment is set up and tested
+- [ ] You have a backup plan if live demo fails (screenshots, video)

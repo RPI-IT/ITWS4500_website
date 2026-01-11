@@ -1,0 +1,942 @@
+---
+title: "Frontend Architecture Patterns"
+subtitle: "Component Design, State Management, and Project Proposals"
+author: "Jason Kuruzovich"
+date: "January 30, 2026"
+format:
+  revealjs:
+    navigation-mode: linear
+    mermaid:
+        theme: default
+    theme: [default, ../../slides-theme.scss]
+    logo: ../../static/logos/RPI_Logo_Binary_1_White.png
+    footer: "ITWS-4500 | Week 3, Day 2"
+    slide-number: true
+    transition: slide
+    width: 1600
+    height: 900
+    #chalkboard: true
+    code-line-numbers: true
+    highlight-style: github
+    pdf-separate-fragments: false
+---
+
+# Frontend Architecture {.section-slide background-color="#d6001c"}
+
+Building Maintainable User Interfaces
+
+## Today's Agenda
+
+::: {.learning-objectives}
+#### Learning Objectives
+
+1. Understand **component-based architecture** principles
+2. Master **component categorization** patterns
+3. Learn effective **state management** strategies
+4. Apply **frontend layered architecture** concepts
+5. Present and discuss **project proposals**
+:::
+
+## Why Frontend Architecture Matters
+
+> "The key to building large applications is never build large applications."
+>
+> — Justin Meyer
+
+. . .
+
+**The Challenge:**
+- Frontend code grows faster than backend
+- UI complexity increases exponentially
+- State synchronization is hard
+- Testing requires structure
+
+# Component Architecture {.section-slide background-color="#d6001c"}
+
+## What is a Component?
+
+A **component** is a self-contained, reusable piece of UI that:
+
+- Encapsulates **markup** (structure)
+- Manages **styling** (presentation)
+- Contains **behavior** (logic)
+- Accepts **inputs** (props)
+- Produces **outputs** (events/callbacks)
+
+```jsx
+function UserCard({ user, onSelect }) {
+  return (
+    <div className="user-card" onClick={() => onSelect(user.id)}>
+      <img src={user.avatar} alt={user.name} />
+      <h3>{user.name}</h3>
+      <p>{user.email}</p>
+    </div>
+  );
+}
+```
+
+## Component Mental Model
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                        Component                             │
+│  ┌──────────┐    ┌──────────┐    ┌──────────┐             │
+│  │  Props   │───►│  State   │───►│  Render  │──► UI       │
+│  │  (Input) │    │ (Memory) │    │ (Output) │             │
+│  └──────────┘    └──────────┘    └──────────┘             │
+│        │              │              ▲                      │
+│        │              │              │                      │
+│        │         Events/Callbacks ───┘                      │
+│        │              │                                     │
+│        └──────────────┴─────────────────────────────────►  │
+│                    Side Effects                             │
+└─────────────────────────────────────────────────────────────┘
+```
+
+## Component Categories
+
+```{mermaid}
+%%| fig-width: 14
+mindmap
+  root((Components))
+    Presentational
+      Display data
+      No business logic
+      Highly reusable
+      Easy to test
+    Container
+      Manage state
+      Fetch data
+      Coordinate children
+      Handle side effects
+    Layout
+      Page structure
+      Grid systems
+      Responsive design
+    Utility
+      HOCs
+      Render props
+      Custom hooks
+```
+
+## Presentational Components
+
+**Purpose:** Display data and emit user events
+
+```jsx
+// Pure presentational - no state, no side effects
+function ProductCard({ product, onAddToCart }) {
+  return (
+    <article className="product-card">
+      <img src={product.image} alt={product.name} />
+      <h3>{product.name}</h3>
+      <p className="price">${product.price.toFixed(2)}</p>
+      <p className="description">{product.description}</p>
+      <button onClick={() => onAddToCart(product)}>
+        Add to Cart
+      </button>
+    </article>
+  );
+}
+
+// Characteristics:
+// ✓ Receives all data via props
+// ✓ No useState, useEffect, or API calls
+// ✓ Easily testable with different inputs
+// ✓ Highly reusable across the application
+```
+
+## Container Components
+
+**Purpose:** Manage state and coordinate children
+
+```jsx
+function ProductListContainer() {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const { addToCart } = useCart();
+
+  useEffect(() => {
+    fetchProducts()
+      .then(setProducts)
+      .catch(setError)
+      .finally(() => setLoading(false));
+  }, []);
+
+  if (loading) return <LoadingSpinner />;
+  if (error) return <ErrorMessage error={error} />;
+
+  return (
+    <div className="product-grid">
+      {products.map(product => (
+        <ProductCard
+          key={product.id}
+          product={product}
+          onAddToCart={addToCart}
+        />
+      ))}
+    </div>
+  );
+}
+```
+
+## Layout Components
+
+**Purpose:** Define page structure and composition
+
+```jsx
+function DashboardLayout({ children }) {
+  return (
+    <div className="dashboard">
+      <header className="dashboard-header">
+        <Logo />
+        <Navigation />
+        <UserMenu />
+      </header>
+
+      <aside className="dashboard-sidebar">
+        <SidebarNav />
+      </aside>
+
+      <main className="dashboard-content">
+        {children}
+      </main>
+
+      <footer className="dashboard-footer">
+        <FooterContent />
+      </footer>
+    </div>
+  );
+}
+
+// Usage
+<DashboardLayout>
+  <ProductListContainer />
+</DashboardLayout>
+```
+
+## Component Composition Pattern
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                      App (Root)                              │
+│  ┌────────────────────────────────────────────────────────┐ │
+│  │                 DashboardLayout                         │ │
+│  │  ┌─────────────────────────────────────────────────┐  │ │
+│  │  │              ProductListContainer                │  │ │
+│  │  │  ┌──────────┐ ┌──────────┐ ┌──────────┐        │  │ │
+│  │  │  │ProductCard│ │ProductCard│ │ProductCard│        │  │ │
+│  │  │  └──────────┘ └──────────┘ └──────────┘        │  │ │
+│  │  └─────────────────────────────────────────────────┘  │ │
+│  └────────────────────────────────────────────────────────┘ │
+└─────────────────────────────────────────────────────────────┘
+
+Layout → Container → Presentational
+(Structure)  (Logic)    (Display)
+```
+
+## Component Design Principles
+
+### Single Responsibility
+
+Each component should do **one thing well**
+
+```jsx
+// Bad: Does too many things
+function UserDashboard() {
+  // Fetches users, manages selection, handles editing,
+  // displays list, shows form, validates input...
+}
+
+// Good: Separated concerns
+function UserDashboard() {
+  return (
+    <UserProvider>
+      <UserList />
+      <UserEditor />
+    </UserProvider>
+  );
+}
+```
+
+## Component Design Principles
+
+### Composition Over Configuration
+
+Prefer composing smaller components over adding props
+
+```jsx
+// Configuration approach (harder to extend)
+<Card
+  showHeader={true}
+  showFooter={true}
+  headerContent="Title"
+  footerActions={[...]}
+/>
+
+// Composition approach (flexible)
+<Card>
+  <Card.Header>Title</Card.Header>
+  <Card.Body>Content</Card.Body>
+  <Card.Footer>
+    <Button>Action</Button>
+  </Card.Footer>
+</Card>
+```
+
+## Prop Drilling Problem
+
+```
+        App
+         │
+    ┌────┴────┐
+    │         │
+  Header    Main
+    │         │
+  Nav     Dashboard
+    │         │
+UserMenu   Content
+    │         │
+  Avatar   UserList
+              │
+           UserItem ← needs user data from App!
+```
+
+**Problem:** Passing props through many levels of components that don't use them
+
+# State Management {.section-slide background-color="#d6001c"}
+
+## State Categories
+
+| Type | Scope | Examples | Solution |
+|------|-------|----------|----------|
+| **Local** | Single component | Form input, toggle | `useState` |
+| **Shared** | Component subtree | Theme, user preferences | Context |
+| **Global** | Entire app | Auth, cart, notifications | Context or Store |
+| **Server** | Cached API data | Products, users | React Query / SWR |
+| **URL** | Navigation state | Filters, page, search | React Router |
+
+## useState: Local State
+
+```jsx
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>+</button>
+      <button onClick={() => setCount(count - 1)}>-</button>
+    </div>
+  );
+}
+```
+
+**Use when:**
+
+- State is only needed by one component
+- State doesn't need to persist across navigation
+- State doesn't need to be shared
+
+## useReducer: Complex Local State
+
+```jsx
+const initialState = { count: 0, step: 1 };
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'increment':
+      return { ...state, count: state.count + state.step };
+    case 'decrement':
+      return { ...state, count: state.count - state.step };
+    case 'setStep':
+      return { ...state, step: action.payload };
+    case 'reset':
+      return initialState;
+    default:
+      return state;
+  }
+}
+
+function Counter() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  return (
+    <div>
+      <p>Count: {state.count} (step: {state.step})</p>
+      <button onClick={() => dispatch({ type: 'increment' })}>+</button>
+      <button onClick={() => dispatch({ type: 'decrement' })}>-</button>
+      <button onClick={() => dispatch({ type: 'reset' })}>Reset</button>
+    </div>
+  );
+}
+```
+
+## Context API: Shared State
+
+```jsx
+// 1. Create Context
+const ThemeContext = createContext();
+
+// 2. Create Provider
+function ThemeProvider({ children }) {
+  const [theme, setTheme] = useState('light');
+
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'light' ? 'dark' : 'light');
+  };
+
+  return (
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+}
+
+// 3. Create Hook
+function useTheme() {
+  const context = useContext(ThemeContext);
+  if (!context) {
+    throw new Error('useTheme must be used within ThemeProvider');
+  }
+  return context;
+}
+
+// 4. Use in Components
+function ThemeToggle() {
+  const { theme, toggleTheme } = useTheme();
+  return <button onClick={toggleTheme}>Current: {theme}</button>;
+}
+```
+
+## Context Pattern: Complete Example
+
+```jsx
+// contexts/AuthContext.jsx
+const AuthContext = createContext();
+
+export function AuthProvider({ children }) {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Check for existing session
+    checkAuth().then(setUser).finally(() => setLoading(false));
+  }, []);
+
+  const login = async (credentials) => {
+    const user = await authService.login(credentials);
+    setUser(user);
+  };
+
+  const logout = async () => {
+    await authService.logout();
+    setUser(null);
+  };
+
+  return (
+    <AuthContext.Provider value={{ user, loading, login, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
+}
+
+export const useAuth = () => useContext(AuthContext);
+```
+
+## State Management Decision Tree
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                 Where should state live?                     │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  Is it used by multiple components?                         │
+│     │                                                       │
+│     ├─ No → useState in component                          │
+│     │                                                       │
+│     └─ Yes → Are they in the same subtree?                 │
+│              │                                              │
+│              ├─ Yes, nearby → Lift state up                │
+│              │                                              │
+│              └─ No, or deeply nested →                     │
+│                 │                                           │
+│                 ├─ Frequent updates? → External store       │
+│                 │                   (Zustand, Redux)        │
+│                 │                                           │
+│                 └─ Infrequent → Context                    │
+│                                                             │
+│  Is it server data that needs caching?                      │
+│     │                                                       │
+│     └─ Yes → React Query / SWR                             │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+```
+
+## Zustand: Simple Global Store
+
+```jsx
+// stores/cartStore.js
+import { create } from 'zustand';
+
+const useCartStore = create((set, get) => ({
+  items: [],
+
+  addItem: (product) => set((state) => ({
+    items: [...state.items, { ...product, quantity: 1 }]
+  })),
+
+  removeItem: (productId) => set((state) => ({
+    items: state.items.filter(item => item.id !== productId)
+  })),
+
+  updateQuantity: (productId, quantity) => set((state) => ({
+    items: state.items.map(item =>
+      item.id === productId ? { ...item, quantity } : item
+    )
+  })),
+
+  clearCart: () => set({ items: [] }),
+
+  get total() {
+    return get().items.reduce(
+      (sum, item) => sum + item.price * item.quantity, 0
+    );
+  }
+}));
+
+// Usage in any component
+function CartIcon() {
+  const itemCount = useCartStore(state => state.items.length);
+  return <span className="badge">{itemCount}</span>;
+}
+```
+
+## Server State with React Query
+
+```jsx
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+
+function ProductList() {
+  const queryClient = useQueryClient();
+
+  // Fetch with caching, background refresh, error handling
+  const { data: products, isLoading, error } = useQuery({
+    queryKey: ['products'],
+    queryFn: () => fetch('/api/products').then(res => res.json()),
+    staleTime: 5 * 60 * 1000, // 5 minutes
+  });
+
+  // Optimistic updates
+  const deleteMutation = useMutation({
+    mutationFn: (id) => fetch(`/api/products/${id}`, { method: 'DELETE' }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['products'] });
+    }
+  });
+
+  if (isLoading) return <Spinner />;
+  if (error) return <Error message={error.message} />;
+
+  return (
+    <ul>
+      {products.map(product => (
+        <li key={product.id}>
+          {product.name}
+          <button onClick={() => deleteMutation.mutate(product.id)}>
+            Delete
+          </button>
+        </li>
+      ))}
+    </ul>
+  );
+}
+```
+
+# Frontend Layered Architecture {.section-slide background-color="#d6001c"}
+
+## Layers in Frontend Applications
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    Presentation Layer                        │
+│         Components, Pages, Layouts, Styles                   │
+├─────────────────────────────────────────────────────────────┤
+│                    Application Layer                         │
+│       Hooks, Context, State Management, Routing             │
+├─────────────────────────────────────────────────────────────┤
+│                      Domain Layer                            │
+│       Business Logic, Validation, Transformations           │
+├─────────────────────────────────────────────────────────────┤
+│                   Infrastructure Layer                       │
+│         API Clients, Storage, External Services             │
+└─────────────────────────────────────────────────────────────┘
+```
+
+## Project Structure by Layer
+
+```
+src/
+├── components/           # Presentation Layer
+│   ├── common/          # Shared components
+│   ├── features/        # Feature-specific components
+│   └── layouts/         # Layout components
+│
+├── pages/               # Route components
+│
+├── hooks/               # Application Layer
+│   ├── useAuth.js
+│   └── useProducts.js
+│
+├── contexts/            # Application Layer
+│   └── AuthContext.jsx
+│
+├── stores/              # Application Layer (if using Zustand)
+│   └── cartStore.js
+│
+├── domain/              # Domain Layer
+│   ├── models/
+│   └── validators/
+│
+├── services/            # Infrastructure Layer
+│   ├── api/
+│   └── storage/
+│
+└── utils/               # Shared utilities
+```
+
+## Layer Communication
+
+```{mermaid}
+%%| fig-width: 14
+flowchart TB
+    subgraph Presentation["Presentation Layer"]
+        Page[ProductPage]
+        List[ProductList]
+        Card[ProductCard]
+    end
+
+    subgraph Application["Application Layer"]
+        Hook[useProducts Hook]
+        Context[CartContext]
+    end
+
+    subgraph Domain["Domain Layer"]
+        Model[Product Model]
+        Valid[Validators]
+    end
+
+    subgraph Infrastructure["Infrastructure Layer"]
+        API[API Client]
+        Storage[Local Storage]
+    end
+
+    Page --> Hook
+    List --> Card
+    Hook --> API
+    Hook --> Model
+    Context --> Storage
+    Card --> Context
+```
+
+## Infrastructure Layer: API Client
+
+```javascript
+// services/api/client.js
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:4000';
+
+class ApiClient {
+  constructor(baseUrl) {
+    this.baseUrl = baseUrl;
+  }
+
+  async request(endpoint, options = {}) {
+    const url = `${this.baseUrl}${endpoint}`;
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        ...options.headers,
+      },
+      ...options,
+    };
+
+    // Add auth token if available
+    const token = localStorage.getItem('token');
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+
+    const response = await fetch(url, config);
+
+    if (!response.ok) {
+      const error = await response.json();
+      throw new ApiError(response.status, error.message);
+    }
+
+    return response.json();
+  }
+
+  get(endpoint) { return this.request(endpoint); }
+  post(endpoint, data) { return this.request(endpoint, { method: 'POST', body: JSON.stringify(data) }); }
+  put(endpoint, data) { return this.request(endpoint, { method: 'PUT', body: JSON.stringify(data) }); }
+  delete(endpoint) { return this.request(endpoint, { method: 'DELETE' }); }
+}
+
+export const api = new ApiClient(API_BASE);
+```
+
+## Domain Layer: Models and Validation
+
+```javascript
+// domain/models/Product.js
+export class Product {
+  constructor(data) {
+    this.id = data.id || data._id;
+    this.name = data.name;
+    this.price = parseFloat(data.price);
+    this.description = data.description;
+    this.category = data.category;
+    this.inStock = data.inStock ?? true;
+  }
+
+  get formattedPrice() {
+    return `$${this.price.toFixed(2)}`;
+  }
+
+  get isAvailable() {
+    return this.inStock && this.price > 0;
+  }
+}
+
+// domain/validators/productValidator.js
+export function validateProduct(data) {
+  const errors = {};
+
+  if (!data.name || data.name.length < 2) {
+    errors.name = 'Name must be at least 2 characters';
+  }
+
+  if (!data.price || data.price <= 0) {
+    errors.price = 'Price must be greater than 0';
+  }
+
+  return {
+    isValid: Object.keys(errors).length === 0,
+    errors
+  };
+}
+```
+
+## Application Layer: Custom Hooks
+
+```javascript
+// hooks/useProducts.js
+import { useState, useEffect } from 'react';
+import { api } from '../services/api/client';
+import { Product } from '../domain/models/Product';
+
+export function useProducts() {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    loadProducts();
+  }, []);
+
+  const loadProducts = async () => {
+    try {
+      setLoading(true);
+      const data = await api.get('/api/products');
+      setProducts(data.map(p => new Product(p)));
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const addProduct = async (productData) => {
+    const data = await api.post('/api/products', productData);
+    const newProduct = new Product(data);
+    setProducts(prev => [...prev, newProduct]);
+    return newProduct;
+  };
+
+  return { products, loading, error, addProduct, refresh: loadProducts };
+}
+```
+
+# Testing Frontend Components {.section-slide background-color="#d6001c"}
+
+## Testing by Component Type
+
+| Component Type | What to Test | Tools |
+|---------------|--------------|-------|
+| **Presentational** | Renders correctly, handles events | React Testing Library |
+| **Container** | State changes, API integration | RTL + Mock Service Worker |
+| **Hooks** | State updates, side effects | @testing-library/react-hooks |
+| **Context** | Provider values, updates | RTL with custom wrapper |
+
+## Testing Presentational Components
+
+```jsx
+// ProductCard.test.jsx
+import { render, screen, fireEvent } from '@testing-library/react';
+import { ProductCard } from './ProductCard';
+
+describe('ProductCard', () => {
+  const mockProduct = {
+    id: '1',
+    name: 'Test Product',
+    price: 29.99,
+    image: '/test.jpg'
+  };
+
+  it('renders product information', () => {
+    render(<ProductCard product={mockProduct} onAddToCart={() => {}} />);
+
+    expect(screen.getByText('Test Product')).toBeInTheDocument();
+    expect(screen.getByText('$29.99')).toBeInTheDocument();
+  });
+
+  it('calls onAddToCart when button clicked', () => {
+    const handleAddToCart = jest.fn();
+    render(<ProductCard product={mockProduct} onAddToCart={handleAddToCart} />);
+
+    fireEvent.click(screen.getByRole('button', { name: /add to cart/i }));
+
+    expect(handleAddToCart).toHaveBeenCalledWith(mockProduct);
+  });
+});
+```
+
+## Testing Custom Hooks
+
+```jsx
+// useCounter.test.js
+import { renderHook, act } from '@testing-library/react';
+import { useCounter } from './useCounter';
+
+describe('useCounter', () => {
+  it('should initialize with default value', () => {
+    const { result } = renderHook(() => useCounter(10));
+
+    expect(result.current.count).toBe(10);
+  });
+
+  it('should increment count', () => {
+    const { result } = renderHook(() => useCounter(0));
+
+    act(() => {
+      result.current.increment();
+    });
+
+    expect(result.current.count).toBe(1);
+  });
+
+  it('should decrement count', () => {
+    const { result } = renderHook(() => useCounter(5));
+
+    act(() => {
+      result.current.decrement();
+    });
+
+    expect(result.current.count).toBe(4);
+  });
+});
+```
+
+# Project Proposals {.section-slide background-color="#d6001c"}
+
+## Presentation Format Reminder
+
+**5-7 minutes per team**
+
+1. **Problem & Users** (1 min)
+2. **Solution Overview** (2 min)
+3. **Architecture** (2 min)
+4. **AI Integration** (1 min)
+5. **Team & Risks** (1 min)
+
+## Evaluation Criteria
+
+| Criteria | Weight |
+|----------|--------|
+| Problem clarity and relevance | 20% |
+| Technical feasibility | 20% |
+| Architectural thinking | 20% |
+| AI integration meaningfulness | 15% |
+| Presentation quality | 15% |
+| Team organization | 10% |
+
+## Questions to Consider
+
+As you watch each presentation, think about:
+
+- Is the problem **real** and **worth solving**?
+- Is the scope **achievable** in a semester?
+- Are the **architectural decisions** justified?
+- How does AI **meaningfully** enhance the solution?
+- What **risks** might they face?
+
+# Presentations {.section-slide background-color="#d6001c"}
+
+## Team Presentations
+
+*Teams present in order*
+
+---
+
+**Remember:**
+- Questions after each presentation
+- Constructive feedback
+- Note interesting approaches
+
+# Summary {.section-slide background-color="#d6001c"}
+
+## Key Takeaways
+
+1. **Component categorization** helps organize code (Presentational, Container, Layout)
+2. **State management** should match the scope of data
+3. **Custom hooks** encapsulate reusable logic
+4. **Context** solves prop drilling for shared state
+5. **Layered architecture** works on frontend too
+6. **Testing strategy** depends on component type
+
+## Looking Ahead
+
+### Lab 2 Due: Tuesday, February 3
+
+- Implement layered architecture in MERN app
+- Separate concerns between layers
+- Document architectural decisions
+
+### Next Week: Backend Architecture
+
+- Service layer patterns
+- Middleware design
+- API versioning and documentation
+
+## Resources
+
+- [React Docs: Thinking in React](https://react.dev/learn/thinking-in-react)
+- [Patterns.dev: Component Patterns](https://www.patterns.dev/react)
+- [Zustand Documentation](https://github.com/pmndrs/zustand)
+- [TanStack Query (React Query)](https://tanstack.com/query)
+- [Testing Library Docs](https://testing-library.com/docs/react-testing-library/intro/)
+
+## Questions?
+
+::: {.callout-box}
+**Office Hours:** Tuesday 9-11 AM, Pitt 2206
+
+**Email:** kuruzj@rpi.edu
+
+**Appointments:** [bit.ly/jason-rpi](https://bit.ly/jason-rpi)
+:::
+
+---
+
+Good luck with Lab 2!

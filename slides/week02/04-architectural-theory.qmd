@@ -5,6 +5,9 @@ author: "Jason Kuruzovich"
 date: "January 23, 2026"
 format:
   revealjs:
+    navigation-mode: linear
+    mermaid:
+        theme: default
     theme: [default, ../../slides-theme.scss]
     logo: ../../static/logos/RPI_Logo_Binary_1_White.png
     footer: "ITWS-4500 | Week 2, Day 2"
@@ -12,7 +15,7 @@ format:
     transition: slide
     width: 1600
     height: 900
-    chalkboard: true
+    #chalkboard: true
     code-line-numbers: true
     highlight-style: github
     pdf-separate-fragments: false
@@ -687,7 +690,7 @@ Each team shares:
 
 ## Looking Ahead
 
-### Lab 0 Due: Tuesday, January 27
+### Lab 1 Due: Tuesday, January 27
 
 - Complete MERN Docker Compose setup
 - README with instructions
