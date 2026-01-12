@@ -13,14 +13,18 @@ Component and State Management Architecture (Angular/React)
 ### Friday, February 6: Backend Architecture
 Backend Architecture Patterns: Services, APIs, and Data Flow
 
+[View Presentation](06-backend-architecture.qmd){.btn .btn-primary}
+[Download PDF](06-backend-architecture.pdf){.btn .btn-secondary}
+
 ## Learning Objectives
 
 By the end of this week, you will be able to:
 
 1. Implement component-based architecture
 2. Manage application state effectively
-3. Design RESTful APIs
-4. Understand service layer patterns
+3. Design RESTful APIs with proper HTTP methods and status codes
+4. Implement service layer patterns
+5. Create middleware for authentication, validation, and error handling
 
 ## Deliverables
 
@@ -30,4 +34,6 @@ By the end of this week, you will be able to:
 
 ## Resources
 
-*Coming soon*
+- [Week 4 Reading: Component Architecture](../../readings/week04-component-architecture.qmd)
+- [Express.js Best Practices](https://expressjs.com/en/advanced/best-practice-performance.html)
+- [REST API Design Best Practices](https://docs.microsoft.com/en-us/azure/architecture/best-practices/api-design)

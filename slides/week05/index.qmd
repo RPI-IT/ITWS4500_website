@@ -13,14 +13,18 @@ Backend Architecture Patterns (Node.js & Express)
 ### Friday, February 13: Data Architecture
 Polyglot Persistence - Document vs Relational Trade-offs
 
+[View Presentation](07-data-architecture.qmd){.btn .btn-primary}
+[Download PDF](07-data-architecture.pdf){.btn .btn-secondary}
+
 ## Learning Objectives
 
 By the end of this week, you will be able to:
 
 1. Implement backend architectural patterns
 2. Design effective API endpoints
-3. Understand polyglot persistence
-4. Choose appropriate databases for different use cases
+3. Understand polyglot persistence and when to use different databases
+4. Apply MongoDB document design patterns (embed vs reference)
+5. Make informed database selection decisions based on use case
 
 ## Deliverables
 
@@ -30,4 +34,6 @@ By the end of this week, you will be able to:
 
 ## Resources
 
-*Coming soon*
+- [Week 5 Reading: Backend & Data Patterns](../../readings/week05-backend-data.qmd)
+- [MongoDB Data Modeling](https://www.mongodb.com/docs/manual/data-modeling/)
+- [PostgreSQL Documentation](https://www.postgresql.org/docs/)

@@ -8,6 +8,9 @@ subtitle: "Project Presentations & Work Day"
 ### Tuesday, February 24: Midterm Presentations
 Architectural Decisions and Trade-offs
 
+[View Presentation](08-midterm-presentations.qmd){.btn .btn-primary}
+[Download PDF](08-midterm-presentations.pdf){.btn .btn-secondary}
+
 ### Friday, February 27: Project Work Day
 Refactoring and Architectural Improvement
 
@@ -16,8 +19,9 @@ Refactoring and Architectural Improvement
 By the end of this week, you will be able to:
 
 1. Present architectural decisions effectively
-2. Receive and incorporate feedback
-3. Refactor code based on architectural principles
+2. Articulate trade-offs in technical choices
+3. Receive and incorporate feedback
+4. Refactor code based on architectural principles
 
 ## Deliverables
 
@@ -28,14 +32,27 @@ By the end of this week, you will be able to:
 ## Presentation Guidelines
 
 Each team will present:
+
 - Current system architecture
-- Key technical decisions and trade-offs
+- Key technical decisions and trade-offs (2-3 ADRs)
 - Demo of working features
 - Challenges and lessons learned
 - Next steps
 
-**Time:** 10-15 minutes per team
+**Time:** 10-15 minutes per team + 5 minutes Q&A
+
+## Evaluation Criteria
+
+| Criteria | Weight |
+|----------|--------|
+| Architecture Understanding | 30% |
+| Decision Quality (ADRs) | 25% |
+| Implementation | 20% |
+| Presentation Quality | 15% |
+| Q&A Response | 10% |
 
 ## Resources
 
-*Coming soon*
+- [Week 7 Reading: Midterm Review](../../readings/week07-midterm-review.qmd)
+- [ADR GitHub Organization](https://adr.github.io/)
+- [The C4 Model for Software Architecture](https://c4model.com/)

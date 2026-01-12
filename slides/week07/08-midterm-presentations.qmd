@@ -1,0 +1,409 @@
+---
+title: "Midterm Presentations"
+subtitle: "Architectural Decisions and Trade-offs"
+author: "Jason Kuruzovich"
+date: "February 24, 2026"
+format:
+  revealjs:
+    navigation-mode: linear
+    mermaid:
+        theme: default
+    theme: [default, ../../slides-theme.scss]
+    logo: ../../static/logos/RPI_Logo_Binary_1_White.png
+    footer: "ITWS-4500 | Week 7, Day 1"
+    slide-number: true
+    transition: slide
+    width: 1600
+    height: 900
+    #chalkboard: true
+    code-line-numbers: true
+    highlight-style: github
+    pdf-separate-fragments: false
+---
+
+# Midterm Presentations {.section-slide background-color="#d6001c"}
+
+Demonstrating Architectural Understanding
+
+## Today's Agenda
+
+::: {.learning-objectives}
+#### Session Goals
+
+1. Review **presentation requirements** and evaluation criteria
+2. Discuss **effective technical presentations**
+3. **Team presentations** (10-15 minutes each)
+4. **Q&A and feedback** after each presentation
+:::
+
+## What We're Looking For
+
+The midterm is your opportunity to demonstrate:
+
+- Understanding of **architectural concepts** from weeks 1-6
+- Ability to make and justify **technical decisions**
+- Clear communication of **trade-offs**
+- Working **implementation** of your project
+
+# Presentation Guidelines {.section-slide background-color="#d6001c"}
+
+## Required Sections
+
+Each presentation must cover:
+
+| Section | Time | Content |
+|---------|------|---------|
+| **Project Overview** | 2 min | Problem, users, core features |
+| **Architecture** | 5-7 min | System design, key decisions, ADRs |
+| **Demo** | 3-5 min | Working features, data flow |
+| **Lessons Learned** | 2-3 min | Challenges, insights, next steps |
+
+**Total: 10-15 minutes** + 5 minutes Q&A
+
+## Section 1: Project Overview
+
+**2 minutes**
+
+Cover these points:
+
+- What **problem** are you solving?
+- Who are your **target users**?
+- What are the **core features** (MVP)?
+- What makes your solution **valuable**?
+
+. . .
+
+::: {.callout-tip}
+Don't spend too long here—we know your projects from the proposals. Focus on any evolution since then.
+:::
+
+## Section 2: Architecture Deep Dive
+
+**5-7 minutes** (most important section)
+
+Present 2-3 **Architectural Decision Records**:
+
+```markdown
+# ADR-001: [Decision Title]
+
+## Context
+What situation required a decision?
+
+## Decision
+What did you choose?
+
+## Consequences
+- Positive: What improved?
+- Negative: What trade-offs did you accept?
+- Risks: What could go wrong?
+
+## Alternatives Considered
+What else did you evaluate and why was it rejected?
+```
+
+## Example ADR Presentation
+
+> **ADR-001: Use Zustand for State Management**
+>
+> **Context:** Our app has complex cart state shared across many components. We needed a solution that avoided prop drilling and re-render issues.
+>
+> **Decision:** We chose Zustand over Context API and Redux.
+>
+> **Why not Context?** Context causes re-renders of all consumers on any state change. With our cart updating frequently, this caused performance issues.
+>
+> **Why not Redux?** Too much boilerplate for our team size and timeline. Redux Toolkit helped, but Zustand was simpler.
+>
+> **Trade-off:** Less ecosystem (middleware, devtools) than Redux, but acceptable for our scope.
+
+## Architecture Diagram
+
+Show how your system is structured:
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    Your Application                          │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│   ┌─────────────┐         ┌─────────────────────┐          │
+│   │   React     │         │      Express        │          │
+│   │   Frontend  │  REST   │      Backend        │          │
+│   │             │ ──────► │                     │          │
+│   │ Components  │         │ Routes → Controllers│          │
+│   │ Zustand     │ ◄────── │       → Services    │          │
+│   │ React Router│  JSON   │       → Repositories│          │
+│   └─────────────┘         └──────────┬──────────┘          │
+│                                      │                      │
+│                           ┌──────────▼──────────┐          │
+│                           │      MongoDB        │          │
+│                           └─────────────────────┘          │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+```
+
+## Data Flow Diagram
+
+Trace a key user action through your system:
+
+```
+User Action: "Add Item to Cart"
+        │
+        ▼
+┌───────────────────┐
+│ ProductCard       │  1. User clicks "Add to Cart"
+│   (Component)     │
+└─────────┬─────────┘
+          │ addItem(product)
+          ▼
+┌───────────────────┐
+│ cartStore         │  2. Zustand updates state
+│   (State)         │
+└─────────┬─────────┘
+          │ POST /api/cart
+          ▼
+┌───────────────────┐
+│ CartController    │  3. Validates, calls service
+└─────────┬─────────┘
+          │
+          ▼
+┌───────────────────┐
+│ CartService       │  4. Business logic, saves
+└─────────┬─────────┘
+          │
+          ▼
+┌───────────────────┐
+│ MongoDB           │  5. Persists cart
+└───────────────────┘
+```
+
+## Section 3: Live Demo
+
+**3-5 minutes**
+
+Demonstrate:
+
+- **Core user flow** (most important feature)
+- **Data persistence** (show data in MongoDB)
+- **Architecture in action** (how layers interact)
+
+. . .
+
+::: {.callout-warning}
+### Demo Tips
+
+- Have a backup plan (screenshots, video)
+- Pre-load data to avoid empty states
+- Test your demo environment before presenting
+- Keep it focused—don't show everything
+:::
+
+## Section 4: Lessons Learned
+
+**2-3 minutes**
+
+Reflect honestly on:
+
+- What **worked well**?
+- What would you do **differently**?
+- What **challenges** remain?
+- What are your **next steps**?
+
+. . .
+
+This section shows **maturity**—we're not expecting perfection!
+
+# Evaluation Criteria {.section-slide background-color="#d6001c"}
+
+## Grading Rubric
+
+| Criteria | Weight | Description |
+|----------|--------|-------------|
+| **Architecture Understanding** | 30% | Clear explanation of patterns, layers, decisions |
+| **Decision Quality** | 25% | Well-reasoned ADRs with trade-off analysis |
+| **Implementation** | 20% | Working demo, code quality, structure |
+| **Presentation Quality** | 15% | Clear communication, time management |
+| **Q&A Response** | 10% | Thoughtful answers, technical depth |
+
+## What Makes an "A" Presentation?
+
+**Architecture Understanding:**
+- Correctly applies course concepts
+- Shows clear separation of concerns
+- Demonstrates understanding of trade-offs
+
+**Decision Quality:**
+- ADRs have clear context and rationale
+- Alternatives were genuinely considered
+- Trade-offs are acknowledged
+
+**Implementation:**
+- Demo works smoothly
+- Code follows discussed patterns
+- Evidence of testing/quality
+
+## Common Pitfalls to Avoid
+
+❌ **Too much code walkthrough** - Show architecture, not every file
+
+❌ **No trade-offs discussed** - Every decision has downsides
+
+❌ **Demo-heavy, architecture-light** - Features matter less than design
+
+❌ **Rushed Q&A** - Save time for questions
+
+❌ **No backup for demo** - Technology fails; be prepared
+
+❌ **Vague ADRs** - "We chose React because it's popular" isn't sufficient
+
+# Effective Presentations {.section-slide background-color="#d6001c"}
+
+## Know Your Audience
+
+You're presenting to:
+
+- **Instructors** who know the concepts (don't over-explain basics)
+- **Classmates** who don't know your specific project
+- **Technical audience** who appreciates depth
+
+Balance:
+- Enough context for understanding
+- Enough depth to show mastery
+- Not so much detail that you lose people
+
+## Visual Communication
+
+**Good slides:**
+
+- Diagrams over bullet points
+- Code snippets (short, focused)
+- Screenshots of key UI
+- Architecture visualizations
+
+**Avoid:**
+
+- Walls of text
+- Tiny font sizes
+- Full source files
+- Reading slides verbatim
+
+## Handling Q&A
+
+**Prepare for common questions:**
+
+- "Why didn't you use X instead?"
+- "How does Y scale?"
+- "What would you do differently?"
+- "How do you handle Z edge case?"
+
+**Good responses:**
+
+- Acknowledge the question
+- Give a direct answer
+- Explain reasoning
+- Admit uncertainty if appropriate ("We haven't tested that yet, but...")
+
+# Presentation Order {.section-slide background-color="#d6001c"}
+
+## Today's Schedule
+
+| Order | Team | Project |
+|-------|------|---------|
+| 1 | Team A | *Project Name* |
+| 2 | Team B | *Project Name* |
+| 3 | Team C | *Project Name* |
+| 4 | Team D | *Project Name* |
+| 5 | Team E | *Project Name* |
+
+**Format:** 10-15 min presentation + 5 min Q&A
+
+*5 minute break between presentations*
+
+## While Others Present
+
+Be an **engaged audience**:
+
+- Take notes on interesting approaches
+- Think of constructive questions
+- Notice patterns across projects
+- Learn from each other's solutions
+
+# Presentations Begin {.section-slide background-color="#d6001c"}
+
+## Team 1
+
+*Presentation begins*
+
+---
+
+**Remember:**
+- 10-15 minutes presentation
+- 5 minutes Q&A
+- Feedback is constructive
+
+## Q&A Template
+
+Questions to consider asking:
+
+1. **Architecture:** "How did you decide where to put [X] in your layers?"
+
+2. **Trade-offs:** "What downside of [decision] have you experienced?"
+
+3. **Alternatives:** "Did you consider [Y]? What made you choose [X]?"
+
+4. **Scale:** "How would this handle [larger load]?"
+
+5. **Lessons:** "If starting over, what would you change?"
+
+# Wrap-Up {.section-slide background-color="#d6001c"}
+
+## Common Themes
+
+*To be filled in after presentations*
+
+- Successful patterns observed
+- Common challenges
+- Interesting solutions
+- Areas for improvement
+
+## Friday: Project Work Day
+
+Use Friday's session to:
+
+- Incorporate feedback from today
+- Refactor based on insights
+- Address technical debt
+- Prepare for second half of semester
+
+## Looking Ahead: Weeks 8-14
+
+The second half of the course covers:
+
+- **Authentication & Security** (Week 8)
+- **Testing Strategies** (Week 9)
+- **AI Integration Patterns** (Week 10)
+- **Agentic Architecture** (Week 11)
+- **Performance & Scalability** (Week 12)
+- **Production Deployment** (Week 13)
+- **Capstone Presentations** (Week 14)
+
+## Key Takeaways
+
+From today's presentations:
+
+1. **Document your decisions** - ADRs capture crucial context
+2. **Trade-offs are unavoidable** - Acknowledge them honestly
+3. **Architecture enables evolution** - Good structure supports change
+4. **Communication matters** - Technical skills + presentation skills
+
+## Questions?
+
+::: {.callout-box}
+**Office Hours:** Tuesday 9-11 AM, Pitt 2206
+
+**Email:** kuruzj@rpi.edu
+
+**Appointments:** [bit.ly/jason-rpi](https://bit.ly/jason-rpi)
+:::
+
+---
+
+Great work on your midterm projects!

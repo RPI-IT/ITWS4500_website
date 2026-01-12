@@ -13,13 +13,16 @@ Polyglot Persistence (MongoDB & PostgreSQL)
 ### Friday, February 20: Quiz 1
 Architectural Foundations and System Design
 
+[View Review Slides](08-quiz1-review.qmd){.btn .btn-primary}
+[Download PDF](08-quiz1-review.pdf){.btn .btn-secondary}
+
 ## Learning Objectives
 
 By the end of this week, you will be able to:
 
 1. Implement polyglot persistence patterns
 2. Work with both MongoDB and PostgreSQL
-3. Demonstrate understanding of architectural foundations
+3. Demonstrate understanding of architectural foundations (Weeks 1-6)
 
 ## Deliverables
 
@@ -32,11 +35,19 @@ By the end of this week, you will be able to:
 ## Quiz 1 Topics
 
 - Infrastructure as Code (Docker, Docker Compose)
-- Architectural Patterns (Layered, Client-Server, etc.)
-- Frontend Architecture
-- Backend Architecture
-- Data Architecture
+- Architectural Patterns (Layered, Client-Server)
+- Frontend Architecture (Components, State Management)
+- Backend Architecture (Services, Middleware, APIs)
+- Data Architecture (MongoDB, PostgreSQL, Polyglot Persistence)
+
+## Quiz Format
+
+- **Duration:** 50 minutes
+- **Format:** Mixed (multiple choice, short answer, diagrams)
+- **Materials:** Closed book, closed notes
 
 ## Resources
 
-*Coming soon*
+- [Week 6 Reading: Data Architecture](../../readings/week06-data-architecture.qmd)
+- All previous week readings for review
+- [CAP Theorem Explained](https://www.ibm.com/topics/cap-theorem)
