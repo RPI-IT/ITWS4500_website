@@ -233,6 +233,7 @@ COPY . .
 
 **4. Use .dockerignore to exclude unnecessary files**
 
+The .dockerignore file tells Docker which files and directories to exclude when building an image. When you run docker build, Docker does not automatically send your entire project directory into the image. Instead, it first creates a build context—a snapshot of your project folder—and .dockerignore controls what does not get included in that snapshot.
 ```
 # .dockerignore
 node_modules
@@ -416,7 +417,9 @@ docker compose up
 docker compose -f docker-compose.yml -f docker-compose.prod.yml up
 ```
 
-The production override might use production images, remove volume mounts, and add resource limits.
+The production override might use production images, remove volume mounts, and add resource limits. Docker Compose allows you to layer configuration files, where later files override or extend earlier ones. This means that you start from the base Compose configuration, then override it with production-specific settings.
+
+
 
 ## Container Networking
 

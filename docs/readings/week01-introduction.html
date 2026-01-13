@@ -696,6 +696,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Code changes frequently - this layer rebuilds often</span></span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> . .</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>4. Use .dockerignore to exclude unnecessary files</strong></p>
+<p>The .dockerignore file tells Docker which files and directories to exclude when building an image. When you run docker build, Docker does not automatically send your entire project directory into the image. Instead, it first creates a build context—a snapshot of your project folder—and .dockerignore controls what does not get included in that snapshot.</p>
 <pre><code># .dockerignore
 node_modules
 .git
@@ -847,7 +848,7 @@ README.md</code></pre>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Production (override)</span></span>
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose <span class="at">-f</span> docker-compose.yml <span class="at">-f</span> docker-compose.prod.yml up</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The production override might use production images, remove volume mounts, and add resource limits.</p>
+<p>The production override might use production images, remove volume mounts, and add resource limits. Docker Compose allows you to layer configuration files, where later files override or extend earlier ones. This means that you start from the base Compose configuration, then override it with production-specific settings.</p>
 </section>
 </section>
 <section id="container-networking" class="level2">

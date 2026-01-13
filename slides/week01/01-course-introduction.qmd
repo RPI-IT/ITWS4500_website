@@ -85,7 +85,9 @@ Tools and frameworks change quickly.
 
 . . .
 
+
 Patterns stick around:
+
 - Client ↔ server communication
 - Authentication and sessions
 - Data modeling and persistence
@@ -111,11 +113,13 @@ We’ll revisit this diagram all semester and add details as your systems grow.
 ## Web Applications
 
 Common pattern:
+
 - Browser UI (React, Vue, etc.)
 - Communicates over **HTTP/HTTPS**
 - Mostly **stateless** requests
 
 Typical concerns:
+
 - Routing
 - Authentication
 - State management
@@ -126,6 +130,7 @@ Typical concerns:
 ## Mobile Applications
 
 Common pattern:
+
 - Native or cross-platform app
 - Often the **same backend** as the web app
 - More constraints (battery, offline use, flaky networks)
@@ -139,10 +144,12 @@ Common pattern:
 ## API-Centered Design
 
 Most systems revolve around APIs:
+
 - REST (common default)
 - GraphQL (when it fits)
 
 Typical responsibilities:
+
 - Authentication & authorization
 - Business logic
 - Validation & error handling
@@ -152,6 +159,7 @@ Typical responsibilities:
 ## Service Organization
 
 You’ll commonly see:
+
 - **Monolith** — everything in one deployable
 - **Modular monolith** — one deployable, clean internal boundaries
 - **Microservices** — multiple deployables, more coordination
@@ -194,6 +202,7 @@ A common progression:
 ## Infrastructure as Code
 
 Instead of manual setup:
+
 - Configuration files
 - Repeatable environments
 - Version-controlled deployments
@@ -207,6 +216,7 @@ If it can’t be reproduced, it’s not done.
 ## The New Reality
 
 Modern developers use AI to:
+
 - Generate boilerplate
 - Explore unfamiliar stacks
 - Debug and refactor faster
@@ -224,6 +234,7 @@ This course will help you **ask better questions** and evaluate AI output critic
 ## Patterns → Tools → Systems
 
 We will move from:
+
 - Concepts and patterns
 - To implementation and integration
 - To deployment and operations

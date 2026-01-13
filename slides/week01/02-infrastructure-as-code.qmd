@@ -36,6 +36,7 @@ System Definition and Reproducibility
 4. Use **Docker Compose** for multi-service orchestration
 5. Implement **development workflows** with containers
 6. Understand container **networking** and **data persistence**
+
 :::
 
 ## The "Works on My Machine" Problem
@@ -58,6 +59,7 @@ Production:  Node 16, MongoDB 5.0
 - Different configurations
 - Different data
 - Hours debugging environment issues
+
 :::
 
 ::: {.column width="50%"}

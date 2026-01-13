@@ -86,6 +86,9 @@ We will use MongoDB as our primary data store.
 
 ADRs create a historical record that helps current and future team members understand *why* the system is structured as it is.
 
+For additional information see links to the [Github ADR resource](https://adr.github.io), [AWS resources](https://docs.aws.amazon.com/prescriptive-guidance/latest/architectural-decision-records/adr-process.html), and [Microsoft](https://learn.microsoft.com/en-us/azure/well-architected/architect-role/architecture-decision-record). 
+
+
 ## Foundational Architectural Patterns
 
 Patterns are reusable solutions to common problems. They provide a shared vocabulary for discussing architecture and help teams avoid reinventing solutions to solved problems.
