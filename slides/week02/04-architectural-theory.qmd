@@ -28,7 +28,7 @@ From Patterns to Practice
 ## Today's Agenda
 
 ::: {.learning-objectives}
-#### Learning Objectives
+**Learning Objectives**
 
 1. Master fundamental **architectural patterns** for web systems
 2. Learn techniques for **system decomposition**

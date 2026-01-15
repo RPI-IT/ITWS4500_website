@@ -28,7 +28,7 @@ Building Maintainable User Interfaces
 ## Today's Agenda
 
 ::: {.learning-objectives}
-#### Learning Objectives
+**Learning Objectives**
 
 1. Understand **component-based architecture** principles
 2. Master **component categorization** patterns

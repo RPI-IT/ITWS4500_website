@@ -28,7 +28,7 @@ Building Your Development Foundation
 ## Today's Objectives
 
 ::: {.learning-objectives}
-#### Lab Learning Goals
+**Lab Learning Goals**
 
 1. Create a **complete MERN development environment** from scratch
 2. Write **production-ready Dockerfiles** for Node.js applications

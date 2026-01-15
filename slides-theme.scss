@@ -257,7 +257,16 @@ $code-color: $rpi-dark-red;
     margin-top: 0;
   }
 
-  ul {
+  // Style bold text used as header (replaces h4 to avoid nested sections)
+  > p:first-child {
+    color: $rpi-red;
+    font-weight: 600;
+    font-size: 1.0em;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+  }
+
+  ul, ol {
     margin-bottom: 0;
   }
 }

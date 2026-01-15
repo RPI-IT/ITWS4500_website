@@ -28,7 +28,7 @@ System Definition and Reproducibility
 ## Today's Agenda
 
 ::: {.learning-objectives}
-#### Learning Objectives
+**Learning Objectives**
 
 1. Understand the **problems** that containers solve
 2. Master **Docker fundamentals** - images, containers, volumes

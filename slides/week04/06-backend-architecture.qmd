@@ -28,7 +28,7 @@ Building Scalable API Services
 ## Today's Agenda
 
 ::: {.learning-objectives}
-#### Learning Objectives
+**Learning Objectives**
 
 1. Understand **layered backend architecture** principles
 2. Design effective **RESTful APIs**

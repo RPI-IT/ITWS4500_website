@@ -28,7 +28,7 @@ Choosing the Right Database for the Job
 ## Today's Agenda
 
 ::: {.learning-objectives}
-#### Learning Objectives
+**Learning Objectives**
 
 1. Understand **database paradigms** and their strengths
 2. Learn **polyglot persistence** principles

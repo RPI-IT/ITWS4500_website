@@ -36,6 +36,8 @@ gantt
 ### Week 1: Course Foundation {#week-1}
 **January 13-16, 2026**
 
+**Background Readings:** [Week 1 Readings](readings/week01-introduction.qmd)
+
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
 | Tue 1/13 | Lecture | Course Introduction: Web Applications as Architectural Patterns; Group Formation | [Slides](slides/week01/01-course-introduction.qmd) |
@@ -53,6 +55,8 @@ gantt
 ### Week 2: Architecture Foundations {#week-2}
 **January 20-23, 2026**
 
+**Background Readings:** [Week 2 Readings](readings/week02-architecture-foundations.qmd)
+
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
 | Tue 1/20 | Lab | **Lab 1:** Infrastructure as Code with Docker Compose (Baseline MERN System) | [Lab 1](labs/lab01-infrastructure-as-code.qmd) |
@@ -66,6 +70,8 @@ gantt
 
 ### Week 3: Layered Architecture {#week-3}
 **January 27-30, 2026**
+
+**Background Readings:** [Week 3 Readings](readings/week03-layered-architecture.qmd)
 
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
@@ -81,6 +87,8 @@ gantt
 ### Week 4: Component Architecture {#week-4}
 **February 3-6, 2026**
 
+**Background Readings:** [Week 4 Readings](readings/week04-component-architecture.qmd)
+
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
 | Tue 2/3 | Lab | **Lab 3:** Component and State Management Architecture (Angular/React) | [Lab 3](labs/lab03-component-state.qmd) |
@@ -91,6 +99,8 @@ gantt
 ### Week 5: Backend & Data Patterns {#week-5}
 **February 10-13, 2026**
 
+**Background Readings:** [Week 5 Readings](readings/week05-backend-data.qmd)
+
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
 | Tue 2/10 | Lab | **Lab 4:** Backend Architecture Patterns (Node.js & Express) | [Lab 4](labs/lab04-backend-patterns.qmd) |
@@ -100,6 +110,8 @@ gantt
 
 ### Week 6: Data Architecture & Quiz 1 {#week-6}
 **February 17-20, 2026**
+
+**Background Readings:** [Week 6 Readings](readings/week06-data-architecture.qmd)
 
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
@@ -116,6 +128,8 @@ Covers Weeks 1-5: Infrastructure as Code, Architectural Patterns, Frontend/Backe
 ### Week 7: Midterm Project Review {#week-7}
 **February 24-27, 2026**
 
+**Background Readings:** [Week 7 Readings](readings/week07-midterm-review.qmd)
+
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
 | Tue 2/24 | **Presentations** | **Midterm Project Presentations:** Architectural Decisions and Trade-offs | Guidelines |
@@ -131,6 +145,8 @@ Covers Weeks 1-5: Infrastructure as Code, Architectural Patterns, Frontend/Backe
 ### Week 8: Authentication & Mobile {#week-8}
 **March 10-13, 2026**
 
+**Background Readings:** [Week 8 Readings](readings/week08-auth-mobile.qmd)
+
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
 | Tue 3/10 | Lecture | Identity, Authentication, and Mobile Architecture Patterns | [Slides](slides/week08/index.qmd) |
@@ -140,6 +156,8 @@ Covers Weeks 1-5: Infrastructure as Code, Architectural Patterns, Frontend/Backe
 
 ### Week 9: Agentic AI I {#week-9}
 **March 17-20, 2026**
+
+**Background Readings:** [Week 9 Readings](readings/week09-agentic-ai-1.qmd)
 
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
@@ -151,6 +169,8 @@ Covers Weeks 1-5: Infrastructure as Code, Architectural Patterns, Frontend/Backe
 ### Week 10: Agentic AI II {#week-10}
 **March 24-27, 2026**
 
+**Background Readings:** [Week 10 Readings](readings/week10-agentic-ai-2.qmd)
+
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
 | Tue 3/24 | Lecture | Agentic Architecture Patterns II: Orchestration, Memory, and Governance | [Slides](slides/week10/index.qmd) |
@@ -160,6 +180,8 @@ Covers Weeks 1-5: Infrastructure as Code, Architectural Patterns, Frontend/Backe
 
 ### Week 11: Continuous Integration {#week-11}
 **March 31 - April 3, 2026**
+
+**Background Readings:** [Week 11 Readings](readings/week11-ci-cd.qmd)
 
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
@@ -171,6 +193,8 @@ Covers Weeks 1-5: Infrastructure as Code, Architectural Patterns, Frontend/Backe
 ### Week 12: AI-Assisted Development {#week-12}
 **April 7-10, 2026**
 
+**Background Readings:** [Week 12 Readings](readings/week12-ai-assisted-dev.qmd)
+
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
 | Tue 4/7 | Lecture | AI-Assisted Development: Human-AI Collaboration Patterns | [Slides](slides/week12/index.qmd) |
@@ -181,6 +205,8 @@ Covers Weeks 1-5: Infrastructure as Code, Architectural Patterns, Frontend/Backe
 ### Week 13: Deployment Architecture {#week-13}
 **April 14-17, 2026**
 
+**Background Readings:** [Week 13 Readings](readings/week13-deployment.qmd)
+
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
 | Tue 4/14 | Lecture | Deployment & Runtime Architecture: Cloud Patterns, Caching, Scaling, and Cost | [Slides](slides/week13/index.qmd) |
@@ -190,6 +216,8 @@ Covers Weeks 1-5: Infrastructure as Code, Architectural Patterns, Frontend/Backe
 
 ### Week 14: Quiz 2 & Capstone {#week-14}
 **April 21-24, 2026**
+
+**Background Readings:** [Week 14 Readings](readings/week14-capstone.qmd)
 
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
@@ -205,6 +233,8 @@ Comprehensive assessment covering all course material, with emphasis on Weeks 8-
 
 ### Week 15: Final Presentations {#week-15}
 **April 28, 2026**
+
+**Background Readings:** [Week 15 Readings](readings/week15-final.qmd)
 
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
