@@ -18,7 +18,7 @@
     "href": "schedule.html#weekly-schedule",
     "title": "Course Schedule",
     "section": "Weekly Schedule",
-    "text": "Weekly Schedule\n\nWeek 1: Course Foundation\nJanuary 13-16, 2026\nBackground Readings: Week 1 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 1/13\nLecture\nCourse Introduction: Web Applications as Architectural Patterns; Group Formation\nSlides\n\n\nFri 1/16\nLecture\nInfrastructure as Code: Containers, Docker, and Docker Compose\nSlides\n\n\n\n\n\n\n\n\n\nTipThis Week\n\n\n\n\nForm project groups (3-4 members)\nInstall Docker Desktop\nSet up development environment\n\n\n\n\n\n\nWeek 2: Architecture Foundations\nJanuary 20-23, 2026\nBackground Readings: Week 2 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 1/20\nLab\nLab 1: Infrastructure as Code with Docker Compose (Baseline MERN System)\nLab 1\n\n\nFri 1/23\nLecture\nArchitectural Theory: Patterns, System Decomposition, and Project Scoping\nSlides\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nLab 1 Due: January 27, 2026\n\n\n\n\n\nWeek 3: Layered Architecture\nJanuary 27-30, 2026\nBackground Readings: Week 3 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 1/27\nLab\nLab 2: Layered Client-Server Architecture (MERN as Reference)\nLab 2\n\n\nFri 1/30\nLecture + Presentations\nFrontend Architecture Patterns; Project Proposal Presentations\nSlides\n\n\n\n\n\n\n\n\n\nWarning\n\n\n\nProject Proposals Due: January 30, 2026\n\n\n\n\n\nWeek 4: Component Architecture\nFebruary 3-6, 2026\nBackground Readings: Week 4 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 2/3\nLab\nLab 3: Component and State Management Architecture (Angular/React)\nLab 3\n\n\nFri 2/6\nLecture\nBackend Architecture Patterns: Services, APIs, and Data Flow\nSlides\n\n\n\n\n\n\nWeek 5: Backend & Data Patterns\nFebruary 10-13, 2026\nBackground Readings: Week 5 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 2/10\nLab\nLab 4: Backend Architecture Patterns (Node.js & Express)\nLab 4\n\n\nFri 2/13\nLecture\nData Architecture Patterns: Polyglot Persistence - Document vs Relational Trade-offs\nSlides\n\n\n\n\n\n\nWeek 6: Data Architecture & Quiz 1\nFebruary 17-20, 2026\nBackground Readings: Week 6 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 2/17\nLab\nLab 5: Polyglot Persistence (MongoDB & PostgreSQL)\nLab 5\n\n\nFri 2/20\nQuiz\nQuiz 1: Architectural Foundations and System Design\nStudy Guide\n\n\n\n\n\n\n\n\n\nImportantQuiz 1\n\n\n\nCovers Weeks 1-5: Infrastructure as Code, Architectural Patterns, Frontend/Backend/Data Architecture\n\n\n\n\n\nWeek 7: Midterm Project Review\nFebruary 24-27, 2026\nBackground Readings: Week 7 Readings\n\n\n\n\n\n\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 2/24\nPresentations\nMidterm Project Presentations: Architectural Decisions and Trade-offs\nGuidelines\n\n\nFri 2/27\nWorkshop\nProject Work Day: Refactoring and Architectural Improvement\n-\n\n\n\n\n\n\nSpring Break\nMarch 2-6, 2026 - No Classes\n\n\n\nWeek 8: Authentication & Mobile\nMarch 10-13, 2026\nBackground Readings: Week 8 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 3/10\nLecture\nIdentity, Authentication, and Mobile Architecture Patterns\nSlides\n\n\nFri 3/13\nLab\nLab 6: Authentication and Mobile Application Architecture\nLab 6\n\n\n\n\n\n\nWeek 9: Agentic AI I\nMarch 17-20, 2026\nBackground Readings: Week 9 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 3/17\nLecture\nAgentic Architecture Patterns I: Agents as Workflow Systems\nSlides\n\n\nFri 3/20\nLab\nLab 7: Agentic Workflows\nLab 7\n\n\n\n\n\n\nWeek 10: Agentic AI II\nMarch 24-27, 2026\nBackground Readings: Week 10 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 3/24\nLecture\nAgentic Architecture Patterns II: Orchestration, Memory, and Governance\nSlides\n\n\nFri 3/27\nLab\nLab 8: Agent Orchestration and Tooling Patterns\nLab 8\n\n\n\n\n\n\nWeek 11: Continuous Integration\nMarch 31 - April 3, 2026\nBackground Readings: Week 11 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 3/31\nLecture\nContinuous Integration and Testing as Architecture\nSlides\n\n\nFri 4/3\nLab\nLab 9: CI Pipelines and Automated Testing\nLab 9\n\n\n\n\n\n\nWeek 12: AI-Assisted Development\nApril 7-10, 2026\nBackground Readings: Week 12 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 4/7\nLecture\nAI-Assisted Development: Human-AI Collaboration Patterns\nSlides\n\n\nFri 4/10\nLab\nLab 10: AI-Assisted Coding and Testing\nLab 10\n\n\n\n\n\n\nWeek 13: Deployment Architecture\nApril 14-17, 2026\nBackground Readings: Week 13 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 4/14\nLecture\nDeployment & Runtime Architecture: Cloud Patterns, Caching, Scaling, and Cost\nSlides\n\n\nFri 4/17\nLab\nLab 11: Containerized Deployment, Caching, Scaling, and Reliability\nLab 11\n\n\n\n\n\n\nWeek 14: Quiz 2 & Capstone\nApril 21-24, 2026\nBackground Readings: Week 14 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 4/21\nQuiz\nQuiz 2: Comprehensive Architectural and Systems Reasoning\nStudy Guide\n\n\nFri 4/24\nLab\nLab 12: Capstone Extension - Architectural Experimentation / Project Hardening\nLab 12\n\n\n\n\n\n\n\n\n\nImportantQuiz 2\n\n\n\nComprehensive assessment covering all course material, with emphasis on Weeks 8-13\n\n\n\n\n\nWeek 15: Final Presentations\nApril 28, 2026\nBackground Readings: Week 15 Readings\n\n\n\n\n\n\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 4/28\nPresentations\nFinal Project Presentations: Evaluation, Feedback, and Reflection\nGuidelines\n\n\n\n\n\n\n\n\n\nNoteFinal Project Deliverables\n\n\n\n\nWorking deployed application\nTechnical documentation\nArchitecture decision records\nIndividual contribution summary\nPeer evaluations"
+    "text": "Weekly Schedule\n\nWeek 1: Course Foundation\nJanuary 13-16, 2026\nBackground Readings: Week 1 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 1/13\nLecture\nCourse Introduction: Web Applications as Architectural Patterns; Group Formation\nSlides\n\n\nFri 1/16\nLecture + Lab\nInfrastructure as Code: Containers, Docker, and Docker Compose; Lab 1 Assigned\nSlides, Lab 1\n\n\n\n\n\n\n\n\n\nTipGetting Started\n\n\n\n\nForm project groups (3-4 members)\nInstall Docker Desktop\nSet up development environment\nLab 1 Due: January 23, 2026\n\n\n\n\n\n\nWeek 2: Architecture Foundations\nJanuary 20-23, 2026\nBackground Readings: Week 2 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 1/20\nLab\nLab 2: Layered Client-Server Architecture (MERN as Reference)\nLab 2\n\n\nFri 1/23\nLecture\nArchitectural Theory: Patterns, System Decomposition, and Project Scoping\nSlides\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nLab 2 Due: January 27, 2026\n\n\n\n\n\nWeek 3: Component Architecture\nJanuary 27-30, 2026\nBackground Readings: Week 3 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 1/27\nLab\nLab 3: Component and State Management Architecture (Angular/React)\nLab 3\n\n\nFri 1/30\nLecture + Presentations\nFrontend Architecture Patterns; Project Proposal Presentations\nSlides\n\n\n\n\n\n\n\n\n\nWarning\n\n\n\nProject Proposals Due: January 30, 2026 Lab 3 Due: February 3, 2026\n\n\n\n\n\nWeek 4: Backend Architecture\nFebruary 3-6, 2026\nBackground Readings: Week 4 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 2/3\nLab\nLab 4: Backend Architecture Patterns (Node.js & Express)\nLab 4\n\n\nFri 2/6\nLecture\nBackend Architecture Patterns: Services, APIs, and Data Flow\nSlides\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nLab 4 Due: February 10, 2026\n\n\n\n\n\nWeek 5: Data Architecture\nFebruary 10-13, 2026\nBackground Readings: Week 5 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 2/10\nLab\nLab 5: Polyglot Persistence (MongoDB & PostgreSQL)\nLab 5\n\n\nFri 2/13\nLecture\nData Architecture Patterns: Polyglot Persistence - Document vs Relational Trade-offs\nSlides\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nLab 5 Due: February 17, 2026\n\n\n\n\n\nWeek 6: Quiz 1\nFebruary 17-20, 2026\nBackground Readings: Week 6 Readings\n\n\n\n\n\n\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 2/17\nNo Class\nPresidents’ Day Week - No Tuesday Class\n-\n\n\nFri 2/20\nQuiz\nQuiz 1: Architectural Foundations and System Design\nStudy Guide\n\n\n\n\n\n\n\n\n\nImportantQuiz 1\n\n\n\nCovers Weeks 1-5: Infrastructure as Code, Architectural Patterns, Frontend/Backend/Data Architecture\n\n\n\n\n\nWeek 7: Midterm Project Review\nFebruary 24-27, 2026\nBackground Readings: Week 7 Readings\n\n\n\n\n\n\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 2/24\nPresentations\nMidterm Project Presentations: Architectural Decisions and Trade-offs\nGuidelines\n\n\nFri 2/27\nWorkshop\nProject Work Day: Refactoring and Architectural Improvement\n-\n\n\n\n\n\n\nSpring Break\nMarch 2-6, 2026 - No Classes\n\n\n\nWeek 8: Authentication & Mobile\nMarch 10-13, 2026\nBackground Readings: Week 8 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 3/10\nLecture\nIdentity, Authentication, and Mobile Architecture Patterns\nSlides TBD\n\n\nFri 3/13\nLab\nLab 6: Authentication and Mobile Application Architecture\nLab 6\n\n\n\n\n\n\nWeek 9: Agentic AI I\nMarch 17-20, 2026\nBackground Readings: Week 9 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 3/17\nLecture\nAgentic Architecture Patterns I: Agents as Workflow Systems\nSlides TBD\n\n\nFri 3/20\nLab\nLab 7: Agentic Workflows\nLab 7\n\n\n\n\n\n\nWeek 10: Agentic AI II\nMarch 24-27, 2026\nBackground Readings: Week 10 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 3/24\nLecture\nAgentic Architecture Patterns II: Orchestration, Memory, and Governance\nSlides TBD\n\n\nFri 3/27\nLab\nLab 8: Agent Orchestration and Tooling Patterns\nLab 8\n\n\n\n\n\n\nWeek 11: Continuous Integration\nMarch 31 - April 3, 2026\nBackground Readings: Week 11 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 3/31\nLecture\nContinuous Integration and Testing as Architecture\nSlides TBD\n\n\nFri 4/3\nLab\nLab 9: CI Pipelines and Automated Testing\nLab 9\n\n\n\n\n\n\nWeek 12: AI-Assisted Development\nApril 7-10, 2026\nBackground Readings: Week 12 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 4/7\nLecture\nAI-Assisted Development: Human-AI Collaboration Patterns\nSlides TBD\n\n\nFri 4/10\nLab\nLab 10: AI-Assisted Coding and Testing\nLab 10\n\n\n\n\n\n\nWeek 13: Deployment Architecture\nApril 14-17, 2026\nBackground Readings: Week 13 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 4/14\nLecture\nDeployment & Runtime Architecture: Cloud Patterns, Caching, Scaling, and Cost\nSlides TBD\n\n\nFri 4/17\nLab\nLab 11: Containerized Deployment, Caching, Scaling, and Reliability\nLab 11\n\n\n\n\n\n\nWeek 14: Quiz 2 & Capstone\nApril 21-24, 2026\nBackground Readings: Week 14 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 4/21\nQuiz\nQuiz 2: Comprehensive Architectural and Systems Reasoning\nStudy Guide\n\n\nFri 4/24\nLab\nLab 12: Capstone Extension - Architectural Experimentation / Project Hardening\nLab 12\n\n\n\n\n\n\n\n\n\nImportantQuiz 2\n\n\n\nComprehensive assessment covering all course material, with emphasis on Weeks 8-13\n\n\n\n\n\nWeek 15: Final Presentations\nApril 28, 2026\nBackground Readings: Week 15 Readings\n\n\n\n\n\n\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 4/28\nPresentations\nFinal Project Presentations: Evaluation, Feedback, and Reflection\nGuidelines\n\n\n\n\n\n\n\n\n\nNoteFinal Project Deliverables\n\n\n\n\nWorking deployed application\nTechnical documentation\nArchitecture decision records\nIndividual contribution summary\nPeer evaluations"
   },
   {
     "objectID": "schedule.html#key-dates-summary",
@@ -32,7 +32,7 @@
     "href": "schedule.html#lab-assignment-schedule",
     "title": "Course Schedule",
     "section": "Lab Assignment Schedule",
-    "text": "Lab Assignment Schedule\n\n\n\nLab\nTopic\nAssigned\nDue\n\n\n\n\nLab 1\nInfrastructure as Code with Docker Compose\n1/20\n1/27\n\n\nLab 2\nLayered Client-Server Architecture\n1/27\n2/3\n\n\nLab 3\nComponent and State Management\n2/3\n2/10\n\n\nLab 4\nBackend Architecture Patterns\n2/10\n2/17\n\n\nLab 5\nPolyglot Persistence\n2/17\n2/24\n\n\nLab 6\nAuthentication and Mobile\n3/13\n3/20\n\n\nLab 7\nAgentic Workflows\n3/20\n3/27\n\n\nLab 8\nAgent Orchestration\n3/27\n4/3\n\n\nLab 9\nCI Pipelines\n4/3\n4/10\n\n\nLab 10\nAI-Assisted Coding\n4/10\n4/17\n\n\nLab 11\nDeployment\n4/17\n4/24\n\n\nLab 12\nCapstone Extension\n4/24\n4/28"
+    "text": "Lab Assignment Schedule\n\n\n\nLab\nTopic\nAssigned\nDue\n\n\n\n\nLab 1\nInfrastructure as Code with Docker Compose\n1/16\n1/23\n\n\nLab 2\nLayered Client-Server Architecture\n1/20\n1/27\n\n\nLab 3\nComponent and State Management\n1/27\n2/3\n\n\nLab 4\nBackend Architecture Patterns\n2/3\n2/10\n\n\nLab 5\nPolyglot Persistence\n2/10\n2/17\n\n\nLab 6\nAuthentication and Mobile\n3/13\n3/20\n\n\nLab 7\nAgentic Workflows\n3/20\n3/27\n\n\nLab 8\nAgent Orchestration\n3/27\n4/3\n\n\nLab 9\nCI Pipelines\n4/3\n4/10\n\n\nLab 10\nAI-Assisted Coding\n4/10\n4/17\n\n\nLab 11\nDeployment\n4/17\n4/24\n\n\nLab 12\nCapstone Extension\n4/24\n4/28"
   },
   {
     "objectID": "labs_reference/lab1/TA-instructions/GRADING_GUIDE.html",
@@ -571,21 +571,21 @@
     "href": "slides/week02/index.html",
     "title": "Week 2: Architecture Foundations",
     "section": "",
-    "text": "Infrastructure as Code with Docker Compose (Baseline MERN System)\nView Presentation Lab Assignment Accept Lab via GitHub Classroom\n\n\n\nPatterns, System Decomposition, and Project Scoping\nView Presentation Download PDF"
+    "text": "Layered Client-Server Architecture (MERN as Reference)\nLab 2 Assignment\n\n\n\nPatterns, System Decomposition, and Project Scoping\nView Presentation Download PDF"
   },
   {
     "objectID": "slides/week02/index.html#this-weeks-sessions",
     "href": "slides/week02/index.html#this-weeks-sessions",
     "title": "Week 2: Architecture Foundations",
     "section": "",
-    "text": "Infrastructure as Code with Docker Compose (Baseline MERN System)\nView Presentation Lab Assignment Accept Lab via GitHub Classroom\n\n\n\nPatterns, System Decomposition, and Project Scoping\nView Presentation Download PDF"
+    "text": "Layered Client-Server Architecture (MERN as Reference)\nLab 2 Assignment\n\n\n\nPatterns, System Decomposition, and Project Scoping\nView Presentation Download PDF"
   },
   {
     "objectID": "slides/week02/index.html#learning-objectives",
     "href": "slides/week02/index.html#learning-objectives",
     "title": "Week 2: Architecture Foundations",
     "section": "Learning Objectives",
-    "text": "Learning Objectives\nBy the end of this week, you will be able to:\n\nBuild a complete MERN development environment with Docker Compose\nUnderstand service orchestration and container networking\nApply architectural patterns to system design\nDecompose systems into well-defined components\nScope and plan a semester project"
+    "text": "Learning Objectives\nBy the end of this week, you will be able to:\n\nUnderstand layered architecture patterns for web applications\nImplement clear separation of concerns in MERN applications\nApply architectural patterns to system design\nDecompose systems into well-defined components\nScope and plan a semester project"
   },
   {
     "objectID": "slides/week02/index.html#lab-1-due",
@@ -1327,14 +1327,14 @@
     "href": "slides/week01/index.html",
     "title": "Week 1: Course Foundation",
     "section": "",
-    "text": "Web Applications as Architectural Patterns; Group Formation\nView Presentation Download PDF\n\n\n\nContainers, Docker, and Docker Compose (System Definition)\nView Presentation Download PDF"
+    "text": "Web Applications as Architectural Patterns; Group Formation\nView Presentation Download PDF\n\n\n\nContainers, Docker, and Docker Compose (System Definition)\nView Presentation Download PDF Lab 1 Assignment Accept Lab via GitHub Classroom"
   },
   {
     "objectID": "slides/week01/index.html#this-weeks-sessions",
     "href": "slides/week01/index.html#this-weeks-sessions",
     "title": "Week 1: Course Foundation",
     "section": "",
-    "text": "Web Applications as Architectural Patterns; Group Formation\nView Presentation Download PDF\n\n\n\nContainers, Docker, and Docker Compose (System Definition)\nView Presentation Download PDF"
+    "text": "Web Applications as Architectural Patterns; Group Formation\nView Presentation Download PDF\n\n\n\nContainers, Docker, and Docker Compose (System Definition)\nView Presentation Download PDF Lab 1 Assignment Accept Lab via GitHub Classroom"
   },
   {
     "objectID": "slides/week01/index.html#learning-objectives",
@@ -1656,7 +1656,7 @@
     "href": "labs/lab01-infrastructure-as-code.html",
     "title": "Lab 1: Infrastructure as Code",
     "section": "",
-    "text": "ImportantLab Information\n\n\n\nAssigned: Tuesday, January 20, 2026 Due: Tuesday, January 27, 2026 (before class) Points: 100"
+    "text": "ImportantLab Information\n\n\n\nAssigned: Friday, January 16, 2026 Due: Thursday, January 23, 2026 (before class) Points: 100"
   },
   {
     "objectID": "labs/lab01-infrastructure-as-code.html#overview",
@@ -1761,7 +1761,7 @@
     "href": "labs/lab02-layered-architecture.html#getting-started",
     "title": "Lab 2: Layered Client-Server Architecture",
     "section": "Getting Started",
-    "text": "Getting Started\nClick the button below to accept the assignment and create your repository:\nAccept Assignment on GitHub Classroom"
+    "text": "Getting Started\nClick the button below to accept the assignment and create your repository:"
   },
   {
     "objectID": "labs/lab02-layered-architecture.html#prerequisites",
@@ -2804,7 +2804,7 @@
     "href": "slides/week02/03-lab1-docker-compose.html#lab-1-requirements",
     "title": "Lab 1: Infrastructure as Code",
     "section": "Lab 1 Requirements",
-    "text": "Lab 1 Requirements\nComplete the following by Tuesday, January 27:\nCore Requirements (80%)\n\n✅ Working docker-compose.yml with all 4 services\n✅ API with health endpoint and CRUD routes\n✅ Frontend that displays and manages items\n✅ MongoDB persistence with named volume\n✅ Hot reload working for both frontend and API\n✅ README.md with setup instructions\n\nStretch Goals (+20%)\n\nAdd input validation\nImplement error boundary in React\nAdd loading states and error handling\nCreate production Dockerfiles\nAdd environment-specific compose files"
+    "text": "Lab 1 Requirements\nComplete the following by Thursday, January 23:\nCore Requirements (80%)\n\n✅ Working docker-compose.yml with all 4 services\n✅ API with health endpoint and CRUD routes\n✅ Frontend that displays and manages items\n✅ MongoDB persistence with named volume\n✅ Hot reload working for both frontend and API\n✅ README.md with setup instructions\n\nStretch Goals (+20%)\n\nAdd input validation\nImplement error boundary in React\nAdd loading states and error handling\nCreate production Dockerfiles\nAdd environment-specific compose files"
   },
   {
     "objectID": "slides/week02/03-lab1-docker-compose.html#submission-requirements",
@@ -2825,7 +2825,7 @@
     "href": "slides/week02/03-lab1-docker-compose.html#accept-the-assignment",
     "title": "Lab 1: Infrastructure as Code",
     "section": "Accept the Assignment",
-    "text": "Accept the Assignment\nStep 1: Click the GitHub Classroom Link\nhttps://classroom.github.com/a/KBx2aztW\n. . .\nStep 2: Authorize GitHub Classroom\n\nLog in with your GitHub account\nAuthorize GitHub Classroom to access your account\nAccept the assignment\n\n. . .\nStep 3: Your Repository is Created\n\nGitHub Classroom creates a private repository for you\nNamed: lab1-infrastructure-as-code-&lt;your-username&gt;\nContains starter files and instructions"
+    "text": "Accept the Assignment\nStep 1: Click the GitHub Classroom Link\nhttps://classroom.github.com/a/Gbc2JCRP\n. . .\nStep 2: Authorize GitHub Classroom\n\nLog in with your GitHub account\nAuthorize GitHub Classroom to access your account\nAccept the assignment\n\n. . .\nStep 3: Your Repository is Created\n\nGitHub Classroom creates a private repository for you\nNamed: lab1-infrastructure-as-code-&lt;your-username&gt;\nContains starter files and instructions"
   },
   {
     "objectID": "slides/week02/03-lab1-docker-compose.html#clone-and-work-locally",
@@ -2909,7 +2909,7 @@
     "href": "slides/week02/03-lab1-docker-compose.html#questions",
     "title": "Lab 1: Infrastructure as Code",
     "section": "Questions?",
-    "text": "Questions?\n\nLab Help: - Office Hours: Tuesday 9-11 AM - Piazza for Q&A - TA sessions (see LMS)\nDue Date: January 27, 2026"
+    "text": "Questions?\n\nLab Help: - Office Hours: Tuesday 9-11 AM - Piazza for Q&A - TA sessions (see LMS)\nDue Date: January 23, 2026"
   },
   {
     "objectID": "slides/week02/04-architectural-theory.html#todays-agenda",
@@ -3140,7 +3140,7 @@
     "href": "slides/week02/04-architectural-theory.html#looking-ahead",
     "title": "Architectural Theory",
     "section": "Looking Ahead",
-    "text": "Looking Ahead\nLab 1 Due: Tuesday, January 27\n\nComplete MERN Docker Compose setup\nREADME with instructions\nWorking demo\n\nProject Proposals: Friday, January 30\n\n5-7 minute presentation\nProblem, solution, architecture, AI, team"
+    "text": "Looking Ahead\nLab 1 Due: Thursday, January 23\n\nComplete MERN Docker Compose setup\nREADME with instructions\nWorking demo\n\nProject Proposals: Friday, January 30\n\n5-7 minute presentation\nProblem, solution, architecture, AI, team"
   },
   {
     "objectID": "slides/week02/04-architectural-theory.html#reading-for-next-week",
@@ -4233,5 +4233,292 @@
     "title": "GitHub Classroom Setup Guide",
     "section": "",
     "text": "In GitHub Classroom, click “Download grades”\nCSV includes: student, repository, score, tests passed\nImport to your LMS gradebook\n\nOr use the GitHub Classroom API for automated sync."
+  },
+  {
+    "objectID": "project/proposal.html",
+    "href": "project/proposal.html",
+    "title": "Project Proposal",
+    "section": "",
+    "text": "ImportantProposal Information\n\n\n\nDue Date: Friday, January 30, 2026 Presentation: In-class presentations during Week 3 Weight: 15% of total project grade (9% of course grade)"
+  },
+  {
+    "objectID": "project/proposal.html#overview",
+    "href": "project/proposal.html#overview",
+    "title": "Project Proposal",
+    "section": "Overview",
+    "text": "Overview\nThe project proposal is your team’s opportunity to define a compelling problem, articulate your solution, and outline the architectural approach you’ll take. This is not just a document—it’s a presentation to your peers and instructors that demonstrates your understanding of the problem space and your plan to address it."
+  },
+  {
+    "objectID": "project/proposal.html#the-startupstakeholder-lens",
+    "href": "project/proposal.html#the-startupstakeholder-lens",
+    "title": "Project Proposal",
+    "section": "The Startup/Stakeholder Lens",
+    "text": "The Startup/Stakeholder Lens\nYour proposal should frame the project as if you were:\n\nPitching to investors: What problem are you solving? Why does it matter?\nConsulting for a client: Who is the stakeholder? What are their needs?\nLaunching a product: Who are your users? What’s your value proposition?\n\n\n\n\n\n\n\nTipPro Tip\n\n\n\nEven if your project is for a class, treating it as a real product forces you to think about users, value, and sustainability—skills that transfer directly to industry."
+  },
+  {
+    "objectID": "project/proposal.html#deliverables",
+    "href": "project/proposal.html#deliverables",
+    "title": "Project Proposal",
+    "section": "Deliverables",
+    "text": "Deliverables\n\n1. Written Proposal Document\nSubmit a written proposal (3-5 pages) covering the following sections:\n\nExecutive Summary (0.5 page)\n\nOne-paragraph description of the problem and solution\nTarget users or stakeholders\nKey value proposition\n\n\n\nProblem Statement (0.5 page)\n\nClear articulation of the problem you’re solving\nEvidence that the problem exists (user research, market data, stakeholder interviews)\nCurrent alternatives and their limitations\n\n\n\nProposed Solution (1 page)\n\nHigh-level description of your application\nCore features (MVP scope)\nUser stories for primary use cases\nDifferentiation from existing solutions\n\n\n\nTechnical Architecture (1-2 pages)\n\nSystem architecture diagram\nTechnology stack with justification\nData model overview\nAPI design approach\nAuthentication and security considerations\nDeployment strategy\n\n\n\nProject Management Plan (0.5 page)\n\nTeam roles and responsibilities\nProject management tool choice (GitHub Projects, Jira, etc.)\nSprint/milestone breakdown\nRisk identification and mitigation\n\n\n\nTimeline and Milestones (0.5 page)\n\nWeek-by-week plan through midterm\nKey deliverables for each milestone\nDependencies and critical path\n\n\n\n\n2. GitHub Repository Setup\nYour repository must be initialized with:\nproject-name/\n├── README.md                 # Project overview, setup instructions\n├── docs/\n│   ├── proposal.md          # Your proposal document\n│   └── architecture/\n│       └── decisions/       # Architecture Decision Records (ADRs)\n├── .github/\n│   ├── ISSUE_TEMPLATE/\n│   └── PULL_REQUEST_TEMPLATE.md\n├── docker-compose.yml       # Initial compose file (can be placeholder)\n└── .gitignore\n\n\n3. Project Board Initialization\nSet up your project management with:\n\nAt least 3 milestones defined (Proposal, Midterm, Final)\nInitial backlog of 10+ issues/tasks\nLabels for categorization (feature, bug, documentation, etc.)\nTeam member assignments\n\n\n\n4. In-Class Presentation (5-7 minutes)\nPresent your proposal to the class covering:\n\nThe Hook (1 min): What problem are you solving and why does it matter?\nThe Solution (2 min): What are you building and for whom?\nThe Architecture (2 min): How will you build it? Key technical decisions?\nThe Plan (1-2 min): How will you manage the project and track progress?"
+  },
+  {
+    "objectID": "project/proposal.html#rubric",
+    "href": "project/proposal.html#rubric",
+    "title": "Project Proposal",
+    "section": "Rubric",
+    "text": "Rubric\n\nWritten Proposal (50 points)\n\n\n\n\n\n\n\n\n\n\n\nCriterion\nExcellent (10)\nGood (8)\nSatisfactory (6)\nNeeds Work (4)\nMissing (0)\n\n\n\n\nProblem Statement\nClear, compelling problem with evidence; well-defined target users\nClear problem statement; adequate user definition\nProblem stated but lacks clarity or evidence\nVague problem; unclear who benefits\nNo clear problem\n\n\nSolution Design\nInnovative solution with clear value prop; well-scoped MVP\nGood solution with reasonable scope\nSolution addresses problem but scope unclear\nSolution poorly defined or unrealistic\nNo solution presented\n\n\nTechnical Architecture\nComprehensive architecture with justified decisions; clear diagrams\nGood architecture with some justification\nBasic architecture present\nArchitecture incomplete or unjustified\nNo architecture\n\n\nProject Management\nDetailed plan with clear roles, tools, and milestones\nGood plan with most elements\nBasic plan present\nIncomplete planning\nNo plan\n\n\nWriting Quality\nProfessional, clear, well-organized\nGood writing with minor issues\nAdequate but could be clearer\nDifficult to follow\nUnacceptable\n\n\n\n\n\nRepository Setup (25 points)\n\n\n\n\n\n\n\n\n\n\n\nCriterion\nExcellent (5)\nGood (4)\nSatisfactory (3)\nNeeds Work (2)\nMissing (0)\n\n\n\n\nREADME Quality\nComprehensive with setup instructions, contributing guide\nGood README with most elements\nBasic README present\nIncomplete README\nNo README\n\n\nDocumentation Structure\nWell-organized docs folder with proposal and ADR templates\nGood structure with some gaps\nBasic structure\nPoorly organized\nNo structure\n\n\nIssue Templates\nCustom templates for features, bugs, tasks\nSome templates present\nDefault templates only\nIncomplete templates\nNo templates\n\n\nProject Board\nFully configured with milestones, labels, assignments\nGood setup with some gaps\nBasic board present\nMinimal setup\nNo board\n\n\nInitial Backlog\n10+ well-written issues with acceptance criteria\nGood issues, some lacking detail\nBasic issues present\nFew/poor issues\nNo backlog\n\n\n\n\n\nPresentation (25 points)\n\n\n\n\n\n\n\n\n\n\n\nCriterion\nExcellent (5)\nGood (4)\nSatisfactory (3)\nNeeds Work (2)\nMissing (0)\n\n\n\n\nProblem & Hook\nCompelling opening; clear problem articulation\nGood opening; clear problem\nAdequate opening\nWeak opening\nNo clear problem\n\n\nSolution Clarity\nClear, concise explanation; obvious value\nGood explanation\nAdequate but confusing\nUnclear solution\nNo solution presented\n\n\nTechnical Depth\nDemonstrates understanding of architecture decisions\nGood technical content\nSome technical content\nLacks depth\nNo technical content\n\n\nProject Plan\nClear plan with realistic milestones\nGood plan\nBasic plan\nUnclear plan\nNo plan\n\n\nDelivery & Timing\nProfessional delivery; good pacing; within time\nGood delivery\nAdequate delivery\nPoor delivery\nDid not present"
+  },
+  {
+    "objectID": "project/proposal.html#submission-instructions",
+    "href": "project/proposal.html#submission-instructions",
+    "title": "Project Proposal",
+    "section": "Submission Instructions",
+    "text": "Submission Instructions\n\nWritten Proposal: Submit PDF to LMS by 11:59 PM on January 30\nRepository Link: Include in your proposal document\nProject Board Link: Include in your proposal document (ensure public access or invite instructor)\nPresentation: Be prepared to present during class on January 30"
+  },
+  {
+    "objectID": "project/proposal.html#examples-of-strong-proposals",
+    "href": "project/proposal.html#examples-of-strong-proposals",
+    "title": "Project Proposal",
+    "section": "Examples of Strong Proposals",
+    "text": "Examples of Strong Proposals\n\nStartup Idea Example\n\nTaskFlow AI: An AI-powered task management platform that automatically prioritizes work based on deadlines, dependencies, and team capacity. Unlike existing tools, TaskFlow uses natural language processing to convert meeting notes and emails into actionable tasks.\n\n\n\nExternal Stakeholder Example\n\nRPI Club Connect: A platform for the RPI Student Union to manage club registration, event scheduling, and member communication. Built in partnership with the Student Senate to address pain points in the current manual process.\n\n\n\nSocial Impact Example\n\nFoodShare Network: A peer-to-peer platform connecting restaurants with surplus food to local shelters and food banks. Reduces food waste while addressing food insecurity in the Capital Region."
+  },
+  {
+    "objectID": "project/proposal.html#common-pitfalls-to-avoid",
+    "href": "project/proposal.html#common-pitfalls-to-avoid",
+    "title": "Project Proposal",
+    "section": "Common Pitfalls to Avoid",
+    "text": "Common Pitfalls to Avoid\n\n\n\n\n\n\nWarningWatch Out For\n\n\n\n\nScope Creep: Proposing too many features for the timeline\nTechnology Tourism: Choosing tech because it’s “cool” rather than appropriate\nVague Users: Not clearly defining who will use the application\nMissing MVP: No clear definition of minimum viable product\nNo Evidence: Claiming a problem exists without any validation"
+  },
+  {
+    "objectID": "project/proposal.html#questions",
+    "href": "project/proposal.html#questions",
+    "title": "Project Proposal",
+    "section": "Questions?",
+    "text": "Questions?\n\nOffice Hours: Tuesday 9-11 AM, Pitt 2206\nPiazza: Use the project-proposal tag\nEmail: kuruzj@rpi.edu"
+  },
+  {
+    "objectID": "project/index.html",
+    "href": "project/index.html",
+    "title": "Semester Project",
+    "section": "",
+    "text": "The semester project is your opportunity to apply the architectural patterns, development practices, and deployment strategies learned throughout the course to build a real-world application. You will work in teams of 3-4 members to conceptualize, design, build, and deploy a functional web application.\n\n\n\n\n\n\nImportantProject Focus\n\n\n\nYour project should address a genuine problem or opportunity through one of these lenses:\n\nStartup Idea: A product concept you could potentially launch\nExternal Stakeholder: An application for a real organization, club, or community\nSocial Impact: A solution addressing a meaningful social or environmental challenge"
+  },
+  {
+    "objectID": "project/index.html#project-overview",
+    "href": "project/index.html#project-overview",
+    "title": "Semester Project",
+    "section": "",
+    "text": "The semester project is your opportunity to apply the architectural patterns, development practices, and deployment strategies learned throughout the course to build a real-world application. You will work in teams of 3-4 members to conceptualize, design, build, and deploy a functional web application.\n\n\n\n\n\n\nImportantProject Focus\n\n\n\nYour project should address a genuine problem or opportunity through one of these lenses:\n\nStartup Idea: A product concept you could potentially launch\nExternal Stakeholder: An application for a real organization, club, or community\nSocial Impact: A solution addressing a meaningful social or environmental challenge"
+  },
+  {
+    "objectID": "project/index.html#project-timeline",
+    "href": "project/index.html#project-timeline",
+    "title": "Semester Project",
+    "section": "Project Timeline",
+    "text": "Project Timeline\n\n\n\n\n\ngantt\n    title Project Milestones\n    dateFormat  YYYY-MM-DD\n    section Planning\n    Team Formation           :2026-01-13, 3d\n    Proposal Development     :2026-01-16, 14d\n    section Execution\n    Core Development         :2026-01-30, 25d\n    Midterm Presentation     :milestone, 2026-02-24, 1d\n    Advanced Features        :2026-02-27, 35d\n    section Completion\n    Final Polish             :2026-04-14, 14d\n    Final Presentation       :milestone, 2026-04-28, 1d"
+  },
+  {
+    "objectID": "project/index.html#deliverables",
+    "href": "project/index.html#deliverables",
+    "title": "Semester Project",
+    "section": "Deliverables",
+    "text": "Deliverables\n\n\n\nDeliverable\nDue Date\nWeight\n\n\n\n\nProject Proposal\nJanuary 30, 2026\n15%\n\n\nMidterm Update\nFebruary 24, 2026\n20%\n\n\nFinal Presentation\nApril 28, 2026\n25%\n\n\nTotal Project Weight\n\n60%"
+  },
+  {
+    "objectID": "project/index.html#team-requirements",
+    "href": "project/index.html#team-requirements",
+    "title": "Semester Project",
+    "section": "Team Requirements",
+    "text": "Team Requirements\n\nTeam Composition\n\nSize: 3-4 members per team\nRoles: Each member should take ownership of specific areas (frontend, backend, data, DevOps)\nCollaboration: All members must contribute code and participate in architectural decisions\n\n\n\nTeam Formation Process\n\nForm teams during Week 1 (by January 16)\nRegister your team on the LMS\nCreate your team’s GitHub organization or repository\nSet up your project management tool"
+  },
+  {
+    "objectID": "project/index.html#project-management-requirements",
+    "href": "project/index.html#project-management-requirements",
+    "title": "Semester Project",
+    "section": "Project Management Requirements",
+    "text": "Project Management Requirements\n\n\n\n\n\n\nWarningRequired: Integrated Project Management\n\n\n\nYour project must use a structured project management approach with visible progress tracking.\n\n\n\nOption 1: GitHub Projects (Recommended)\nUse GitHub’s built-in project management features:\n\nGitHub Projects: Kanban boards integrated with your repository\nIssues: Track features, bugs, and tasks\nMilestones: Group issues into sprints or phases\nPull Requests: Link PRs to issues for traceability\n\nSetup Requirements:\nRepository Structure:\n├── .github/\n│   ├── ISSUE_TEMPLATE/\n│   │   ├── feature.md\n│   │   ├── bug.md\n│   │   └── task.md\n│   └── PULL_REQUEST_TEMPLATE.md\n├── docs/\n│   └── architecture/\n├── src/\n└── README.md\n\n\nOption 2: External Tools (Jira, Linear, Notion)\nIf you prefer external tools, they must be:\n\nPublicly viewable or instructor access granted\nLinked from your repository README\nActively maintained with regular updates\nIntegrated with GitHub (e.g., Jira-GitHub integration)"
+  },
+  {
+    "objectID": "project/index.html#technical-requirements",
+    "href": "project/index.html#technical-requirements",
+    "title": "Semester Project",
+    "section": "Technical Requirements",
+    "text": "Technical Requirements\n\nArchitecture Requirements\nYour application must demonstrate understanding of course concepts:\n\nLayered Architecture: Clear separation of concerns (presentation, business logic, data)\nAPI Design: RESTful or GraphQL API with proper documentation\nData Persistence: Appropriate database choice with justified trade-offs\nAuthentication: Secure user authentication and authorization\nContainerization: Docker-based development and deployment\n\n\n\nTechnology Stack\nRequired: - Frontend: React, Vue, Angular, or equivalent modern framework - Backend: Node.js/Express, Python/FastAPI, or equivalent - Database: MongoDB, PostgreSQL, or justified alternative - Containerization: Docker and Docker Compose - Version Control: Git with GitHub\nEncouraged: - CI/CD: GitHub Actions or equivalent - Cloud Deployment: Any cloud provider - Agentic AI: Integration of AI-powered features"
+  },
+  {
+    "objectID": "project/index.html#grading-philosophy",
+    "href": "project/index.html#grading-philosophy",
+    "title": "Semester Project",
+    "section": "Grading Philosophy",
+    "text": "Grading Philosophy\nProjects are evaluated on:\n\nArchitectural Decisions (30%): Sound design choices with clear rationale\nImplementation Quality (25%): Clean, maintainable, well-tested code\nProject Management (20%): Effective use of tools, clear progress tracking\nPresentation & Communication (15%): Clear explanation of decisions and trade-offs\nInnovation & Ambition (10%): Scope appropriate to team size, creative solutions\n\n\n\n\n\n\n\nNoteA Note on Scope\n\n\n\nA well-executed simple project will score higher than a poorly-executed ambitious one. Focus on demonstrating mastery of patterns and practices over feature quantity."
+  },
+  {
+    "objectID": "project/index.html#resources",
+    "href": "project/index.html#resources",
+    "title": "Semester Project",
+    "section": "Resources",
+    "text": "Resources\n\nGitHub Projects Documentation\nJira Software Guide\nThe Twelve-Factor App\nArchitecture Decision Records"
+  },
+  {
+    "objectID": "project/index.html#getting-help",
+    "href": "project/index.html#getting-help",
+    "title": "Semester Project",
+    "section": "Getting Help",
+    "text": "Getting Help\n\nOffice Hours: Tuesday 9-11 AM, Pitt 2206\nPiazza: Use the project tag for questions\nTA Sessions: Check LMS for schedule\nTeam Meetings: Schedule time with the instructor for project guidance"
+  },
+  {
+    "objectID": "project/final.html",
+    "href": "project/final.html",
+    "title": "Final Project Presentation",
+    "section": "",
+    "text": "ImportantFinal Presentation Information\n\n\n\nDue Date: Tuesday, April 28, 2026 Presentation: Final class session Weight: 25% of total project grade (15% of course grade)"
+  },
+  {
+    "objectID": "project/final.html#overview",
+    "href": "project/final.html#overview",
+    "title": "Final Project Presentation",
+    "section": "Overview",
+    "text": "Overview\nThe final presentation is your opportunity to showcase the culmination of a semester’s work. You’ll present a complete, deployed application while reflecting on your architectural decisions, team dynamics, and learning journey. This is both a technical demonstration and a professional presentation of your work."
+  },
+  {
+    "objectID": "project/final.html#final-project-expectations",
+    "href": "project/final.html#final-project-expectations",
+    "title": "Final Project Presentation",
+    "section": "Final Project Expectations",
+    "text": "Final Project Expectations\nBy the final presentation, your project should demonstrate:\n\nDeployed and accessible: Application running on cloud infrastructure\nFeature complete: All planned MVP features implemented\nProduction ready: Error handling, security considerations, documentation\nWell documented: README, API docs, architecture decision records\nProfessionally managed: Complete project history visible in GitHub\n\n\n\n\n\n\n\nNoteThe “Ship It” Standard\n\n\n\nYour application should be something you’d be proud to show to a potential employer, investor, or stakeholder. It doesn’t need to be perfect, but it should be complete, functional, and professionally presented."
+  },
+  {
+    "objectID": "project/final.html#deliverables",
+    "href": "project/final.html#deliverables",
+    "title": "Final Project Presentation",
+    "section": "Deliverables",
+    "text": "Deliverables\n\n1. Deployed Application\nYour application must be:\n\nPublicly accessible via a URL (cloud deployment required)\nFunctional with all core features working\nStable enough for a live demonstration\nSecure with proper authentication and data protection\n\nDeployment Options: - Railway, Render, Fly.io (recommended for ease) - AWS, GCP, Azure (more complex but valuable experience) - DigitalOcean, Linode (good middle ground)\n\n\n2. Final Technical Report (5-7 pages)\n\nExecutive Summary (0.5 page)\n\nWhat you built and why\nKey accomplishments\nLive application URL\n\n\n\nArchitecture Deep-Dive (1.5-2 pages)\n\nFinal system architecture diagram\nTechnology stack with retrospective on choices\nComplete ADR summary (what decisions were made and why)\nSecurity measures implemented\nScalability considerations\n\n\n\nFeature Documentation (1-1.5 pages)\n\nComplete feature list with descriptions\nUser flows with screenshots\nAPI documentation summary (link to full docs)\nKnown limitations and future enhancements\n\n\n\nDevelopment Journey (1-1.5 pages)\n\nEvolution from proposal to final\nMajor pivots and their rationale\nTechnical challenges and solutions\nWhat you would do differently\n\n\n\nProject Management Retrospective (1 page)\n\nFinal project metrics (issues, PRs, commits by member)\nSprint velocity analysis\nTeam dynamics and collaboration assessment\nProcess improvements discovered\n\n\n\nIndividual Contributions (0.5 page per member)\n\nEach team member writes a brief summary of their contributions\nKey learnings and growth areas\n\n\n\n\n3. Complete GitHub Repository\nYour repository should be a portfolio piece:\nproject-name/\n├── README.md                       # Comprehensive project documentation\n│   ├── Project overview and demo link\n│   ├── Features list\n│   ├── Technology stack\n│   ├── Local development setup\n│   ├── Deployment instructions\n│   └── Contributing guidelines\n├── docs/\n│   ├── proposal.md\n│   ├── midterm-report.md\n│   ├── final-report.md\n│   ├── api/                        # API documentation\n│   │   └── openapi.yaml           # Or equivalent\n│   └── architecture/\n│       └── decisions/             # Complete ADR history\n├── frontend/\n│   ├── Dockerfile\n│   ├── README.md                  # Frontend-specific docs\n│   ├── src/\n│   └── tests/\n├── api/\n│   ├── Dockerfile\n│   ├── README.md                  # API-specific docs\n│   ├── src/\n│   └── tests/\n├── docker-compose.yml\n├── docker-compose.prod.yml\n├── .github/\n│   └── workflows/\n│       ├── ci.yml                 # Continuous integration\n│       └── deploy.yml             # Deployment automation (if applicable)\n└── LICENSE\n\n\n4. Peer Evaluations\nEach team member submits a confidential peer evaluation:\n\nRate each team member’s contribution (1-5 scale)\nProvide specific examples of contributions\nIdentify team strengths and areas for improvement\nSelf-assessment of your own contribution\n\n\n\n\n\n\n\nWarningPeer Evaluation Impact\n\n\n\nSignificant discrepancies in peer evaluations may result in individual grade adjustments. Be honest and fair in your assessments.\n\n\n\n\n5. Final Presentation (12-15 minutes)\nPresent your completed project to the class:\n\nThe Pitch (2 min): Problem, solution, and value proposition recap\nLive Demo (5-6 min): Complete walkthrough of key features\nArchitecture Tour (3 min): Technical decisions, trade-offs, and learnings\nTeam Retrospective (2-3 min): What worked, what didn’t, what you learned\nQ&A (2 min): Field questions from class and instructors"
+  },
+  {
+    "objectID": "project/final.html#rubric",
+    "href": "project/final.html#rubric",
+    "title": "Final Project Presentation",
+    "section": "Rubric",
+    "text": "Rubric\n\nDeployed Application (35 points)\n\n\n\n\n\n\n\n\n\n\n\nCriterion\nExcellent (7)\nGood (6)\nSatisfactory (5)\nNeeds Work (3)\nMissing (0)\n\n\n\n\nDeployment\nFully deployed; reliable; professional URL\nDeployed and working\nDeployed with issues\nPartially deployed\nNot deployed\n\n\nCore Features\nAll MVP features polished and complete\nMost features complete\nCore features work\nPartial features\nNon-functional\n\n\nUser Experience\nIntuitive; responsive; handles errors gracefully\nGood UX; minor issues\nFunctional UX\nPoor UX\nUnusable\n\n\nSecurity\nAuth, input validation, HTTPS, no vulnerabilities\nGood security\nBasic security\nSecurity gaps\nMajor vulnerabilities\n\n\nDocumentation\nComprehensive README; API docs; setup guides\nGood documentation\nBasic docs\nMinimal docs\nNo documentation\n\n\n\n\n\nTechnical Report (25 points)\n\n\n\n\n\n\n\n\n\n\n\nCriterion\nExcellent (5)\nGood (4)\nSatisfactory (3)\nNeeds Work (2)\nMissing (0)\n\n\n\n\nArchitecture Analysis\nInsightful analysis; clear evolution story\nGood analysis\nBasic analysis\nWeak analysis\nNo analysis\n\n\nDecision Documentation\nComplete ADRs; clear rationale\nGood ADRs\nSome ADRs\nFew/poor ADRs\nNo ADRs\n\n\nRetrospective Quality\nHonest reflection; meaningful insights\nGood reflection\nBasic reflection\nSuperficial\nNo reflection\n\n\nIndividual Contributions\nClear, specific contributions documented\nGood summaries\nBasic summaries\nVague summaries\nMissing\n\n\nWriting Quality\nProfessional; well-organized; publication-ready\nGood writing\nAdequate\nPoor quality\nUnacceptable\n\n\n\n\n\nRepository Quality (15 points)\n\n\n\n\n\n\n\n\n\n\n\nCriterion\nExcellent (5)\nGood (4)\nSatisfactory (3)\nNeeds Work (2)\nMissing (0)\n\n\n\n\nCode Quality\nClean, consistent; good test coverage\nGood quality\nAcceptable quality\nPoor quality\nVery poor\n\n\nCommit History\nClean history; meaningful messages\nGood history\nAcceptable\nPoor history\nSingle commits\n\n\nProject Management\nComplete issue history; closed milestones\nGood tracking\nSome tracking\nMinimal\nNone\n\n\n\n\n\nPresentation (15 points)\n\n\n\n\n\n\n\n\n\n\n\nCriterion\nExcellent (5)\nGood (4)\nSatisfactory (3)\nNeeds Work (2)\nMissing (0)\n\n\n\n\nDemo Quality\nSmooth, professional; handles edge cases\nGood demo\nDemo works\nDemo issues\nFailed demo\n\n\nTechnical Communication\nClear architecture explanation; insightful\nGood explanation\nBasic\nUnclear\nNo explanation\n\n\nTeam Presentation\nAll members contribute; cohesive story\nGood teamwork\nSome imbalance\nVery uneven\nSolo presentation\n\n\n\n\n\nPeer Evaluation Modifier (10 points)\n\n\n\n\n\n\n\n\n\nCriterion\nFull Credit (10)\nPartial (5-9)\nSignificant Concerns (0-4)\n\n\n\n\nContribution\nContributions match or exceed peer expectations\nMinor discrepancies with peers\nMajor discrepancies or concerns raised"
+  },
+  {
+    "objectID": "project/final.html#final-checklist",
+    "href": "project/final.html#final-checklist",
+    "title": "Final Project Presentation",
+    "section": "Final Checklist",
+    "text": "Final Checklist\nBefore your final presentation, verify:\n\nTechnical Requirements\n\nApplication deployed and accessible via public URL\nAll core features functional\nDocker Compose works for local development\nREADME includes complete setup instructions\nAPI documentation available (Swagger/OpenAPI recommended)\n\n\n\nDocumentation Requirements\n\nFinal report submitted to LMS\nAll ADRs complete and in repository\nIndividual contribution summaries included\nRepository is clean and well-organized\n\n\n\nPresentation Requirements\n\nDemo practiced and timed (12-15 minutes)\nBackup demo ready (screenshots, video)\nAll team members prepared to speak\nDeployment verified working morning of presentation\n\n\n\nAdministrative Requirements\n\nPeer evaluations submitted (due 48 hours after presentation)\nAll team members present for presentation\nRepository is public or instructor has access"
+  },
+  {
+    "objectID": "project/final.html#grading-philosophy-for-final",
+    "href": "project/final.html#grading-philosophy-for-final",
+    "title": "Final Project Presentation",
+    "section": "Grading Philosophy for Final",
+    "text": "Grading Philosophy for Final\nThe final grade weighs both product and process:\nProduct (60%): - Does the application work? - Is it deployed and accessible? - Does it solve the stated problem?\nProcess (40%): - Was the project well-managed? - Did the team collaborate effectively? - Are decisions documented? - Is the codebase maintainable?\n\n\n\n\n\n\nTipWhat Makes an “A” Project?\n\n\n\nAn “A” project demonstrates mastery of course concepts through thoughtful architectural decisions, clean implementation, effective teamwork, and honest reflection on the development journey. It’s not about feature count—it’s about doing things well."
+  },
+  {
+    "objectID": "project/final.html#post-course-opportunities",
+    "href": "project/final.html#post-course-opportunities",
+    "title": "Final Project Presentation",
+    "section": "Post-Course Opportunities",
+    "text": "Post-Course Opportunities\nExceptional projects may be considered for:\n\nShowcase presentation to department or industry partners\nContinued development as independent study\nPublication in student portfolios or case studies\nReference for future course materials"
+  },
+  {
+    "objectID": "project/final.html#submission-instructions",
+    "href": "project/final.html#submission-instructions",
+    "title": "Final Project Presentation",
+    "section": "Submission Instructions",
+    "text": "Submission Instructions\n\nFinal Report: Submit PDF to LMS by 11:59 PM on April 28\nDeployed Application: URL must be working by presentation time\nRepository: Ensure all code is pushed and README is complete\nPeer Evaluations: Submit via LMS within 48 hours of presentation\nPresentation: Be prepared to present during final class session"
+  },
+  {
+    "objectID": "project/final.html#questions",
+    "href": "project/final.html#questions",
+    "title": "Final Project Presentation",
+    "section": "Questions?",
+    "text": "Questions?\n\nOffice Hours: Tuesday 9-11 AM, Pitt 2206\nPiazza: Use the project-final tag\nEmail: kuruzj@rpi.edu\n\n\nGood luck with your final presentations! This is your moment to shine."
+  },
+  {
+    "objectID": "project/midterm.html",
+    "href": "project/midterm.html",
+    "title": "Midterm Project Update",
+    "section": "",
+    "text": "ImportantMidterm Information\n\n\n\nDue Date: Tuesday, February 24, 2026 Presentation: In-class presentations during Week 7 Weight: 20% of total project grade (12% of course grade)"
+  },
+  {
+    "objectID": "project/midterm.html#overview",
+    "href": "project/midterm.html#overview",
+    "title": "Midterm Project Update",
+    "section": "Overview",
+    "text": "Overview\nThe midterm update is a checkpoint to assess your team’s progress, validate your architectural decisions, and ensure you’re on track for a successful final delivery. This is your opportunity to demonstrate a working MVP, reflect on what you’ve learned, and adjust your plan based on real-world development experience."
+  },
+  {
+    "objectID": "project/midterm.html#what-you-should-have-completed",
+    "href": "project/midterm.html#what-you-should-have-completed",
+    "title": "Midterm Project Update",
+    "section": "What You Should Have Completed",
+    "text": "What You Should Have Completed\nBy midterm, your project should demonstrate:\n\nCore functionality working: At least 2-3 key features implemented end-to-end\nFull-stack integration: Frontend, backend, and database connected and working\nContainerized development: Docker Compose environment functional\nActive project management: Evidence of sprint planning, issue tracking, and code review\n\n\n\n\n\n\n\nNoteThe “Walking Skeleton” Standard\n\n\n\nYour application should be a “walking skeleton”—a thin slice of functionality that touches all architectural layers. It doesn’t need to be feature-complete, but it must prove your architecture works."
+  },
+  {
+    "objectID": "project/midterm.html#deliverables",
+    "href": "project/midterm.html#deliverables",
+    "title": "Midterm Project Update",
+    "section": "Deliverables",
+    "text": "Deliverables\n\n1. Working Application Demo\nPrepare a live demonstration of your application showing:\n\nUser authentication flow (if applicable)\nCore feature walkthrough (2-3 primary use cases)\nData persistence verification\nContainerized deployment\n\nDemo Requirements: - Must run from Docker Compose (docker compose up) - Should be reproducible from a fresh clone - Include seed data or easy setup for demo purposes\n\n\n2. Technical Progress Report (3-4 pages)\n\nArchitecture Evolution (1 page)\n\nOriginal architecture vs. current implementation\nDecisions changed and why (include ADRs)\nTechnical challenges encountered and solutions\nDiagrams showing current system state\n\n\n\nImplementation Status (1 page)\n\nFeatures completed with evidence (screenshots, code references)\nFeatures in progress with current state\nFeatures deferred with reasoning\nTest coverage and quality metrics\n\n\n\nProject Management Review (1 page)\n\nSprint retrospectives summary\nVelocity/burndown data (if using Scrum)\nProject board screenshot with current state\nTeam contribution analysis (GitHub Insights)\n\n\n\nPath to Final (0.5-1 page)\n\nRemaining work itemized\nUpdated timeline\nIdentified risks and mitigation\nResource or scope adjustments needed\n\n\n\n\n3. GitHub Repository State\nYour repository should demonstrate:\nproject-name/\n├── README.md                    # Updated with current setup instructions\n├── docs/\n│   ├── proposal.md\n│   ├── midterm-report.md       # Your progress report\n│   └── architecture/\n│       └── decisions/\n│           ├── 001-database-choice.md\n│           ├── 002-auth-strategy.md\n│           └── ...              # At least 3 ADRs\n├── frontend/\n│   ├── Dockerfile\n│   ├── src/\n│   └── tests/\n├── api/\n│   ├── Dockerfile\n│   ├── src/\n│   └── tests/\n├── docker-compose.yml\n├── docker-compose.prod.yml      # If different from dev\n└── .github/\n    └── workflows/               # CI pipeline (encouraged)\n\n\n4. Project Management Artifacts\nEvidence of active project management:\n\nClosed Issues: At least 15 issues closed since proposal\nPull Requests: Evidence of code review process\nMilestones: Progress visible toward defined milestones\nSprint History: If using Scrum, evidence of completed sprints\n\n\n\n5. In-Class Presentation (8-10 minutes)\nPresent your progress to the class:\n\nRecap (1 min): Brief reminder of your project and goals\nLive Demo (3-4 min): Show your working application\nArchitecture Deep-Dive (2 min): Key technical decisions and learnings\nProject Health (1-2 min): Progress metrics, team dynamics, project management\nPath Forward (1 min): What’s next, any pivots or adjustments"
+  },
+  {
+    "objectID": "project/midterm.html#rubric",
+    "href": "project/midterm.html#rubric",
+    "title": "Midterm Project Update",
+    "section": "Rubric",
+    "text": "Rubric\n\nWorking Application (40 points)\n\n\n\n\n\n\n\n\n\n\n\nCriterion\nExcellent (10)\nGood (8)\nSatisfactory (6)\nNeeds Work (4)\nMissing (0)\n\n\n\n\nCore Features\n3+ features working end-to-end; polished UX\n2-3 features working; good UX\n1-2 features working; basic UX\nPartial features; poor UX\nNo working features\n\n\nFull-Stack Integration\nSeamless FE/BE/DB integration; clean APIs\nGood integration; minor issues\nBasic integration working\nIntegration problems\nNot integrated\n\n\nContainerization\nOne-command setup; works on any machine\nGood Docker setup; minor issues\nDocker works but setup complex\nDocker partially working\nNot containerized\n\n\nData Persistence\nData persists correctly; good model design\nData works; minor model issues\nBasic persistence working\nData issues\nNo persistence\n\n\n\n\n\nTechnical Progress Report (30 points)\n\n\n\n\n\n\n\n\n\n\n\nCriterion\nExcellent (6)\nGood (5)\nSatisfactory (4)\nNeeds Work (3)\nMissing (0)\n\n\n\n\nArchitecture Analysis\nThoughtful evolution analysis; clear ADRs\nGood analysis; adequate ADRs\nBasic analysis; few ADRs\nWeak analysis\nNo analysis\n\n\nImplementation Status\nClear status with evidence; honest assessment\nGood status reporting\nBasic status\nVague status\nNo status\n\n\nProject Management\nStrong metrics; clear velocity data\nGood metrics\nSome metrics\nLimited data\nNo data\n\n\nPath Forward\nRealistic plan; risks identified\nGood plan\nBasic plan\nUnclear plan\nNo plan\n\n\nWriting Quality\nProfessional; well-organized\nGood writing\nAdequate\nPoor writing\nUnacceptable\n\n\n\n\n\nProject Management Evidence (15 points)\n\n\n\n\n\n\n\n\n\n\n\nCriterion\nExcellent (5)\nGood (4)\nSatisfactory (3)\nNeeds Work (2)\nMissing (0)\n\n\n\n\nIssue Tracking\n15+ closed issues; well-documented\nGood issue usage\nSome issues\nFew issues\nNo issues\n\n\nCode Review\nPR reviews on all merges; thoughtful feedback\nGood PR process\nSome PRs\nMinimal PRs\nNo PRs\n\n\nTeam Contribution\nBalanced contributions; all members active\nGood distribution\nUneven but acceptable\nVery uneven\nSingle contributor\n\n\n\n\n\nPresentation (15 points)\n\n\n\n\n\n\n\n\n\n\n\nCriterion\nExcellent (5)\nGood (4)\nSatisfactory (3)\nNeeds Work (2)\nMissing (0)\n\n\n\n\nLive Demo\nSmooth demo; handles questions well\nGood demo; minor issues\nDemo works\nDemo problems\nFailed demo\n\n\nTechnical Depth\nClear architecture explanation; good insights\nGood technical content\nSome depth\nLacks depth\nNo depth\n\n\nProfessionalism\nExcellent delivery; good timing; engaging\nGood delivery\nAdequate\nPoor delivery\nDid not present"
+  },
+  {
+    "objectID": "project/midterm.html#midterm-checkpoint-expectations",
+    "href": "project/midterm.html#midterm-checkpoint-expectations",
+    "title": "Midterm Project Update",
+    "section": "Midterm Checkpoint Expectations",
+    "text": "Midterm Checkpoint Expectations\n\nMinimum Viable Progress\nTo receive a passing grade on the midterm, you must demonstrate:\n\nDocker Compose environment runs with one command\nAt least one complete user flow working (e.g., signup → create item → view item)\nDatabase connected and persisting data\nFrontend and backend communicating via API\nEvidence of 10+ completed issues in project tracker\nEvidence of code review (merged PRs with comments)\n\n\n\nSigns of Excellent Progress\nTeams exceeding expectations typically show:\n\nMultiple complete features with edge case handling\nAutomated tests with reasonable coverage\nCI pipeline running on push\nClear ADRs documenting major decisions\nThoughtful UI/UX design\nEvidence of user feedback incorporation"
+  },
+  {
+    "objectID": "project/midterm.html#common-midterm-challenges",
+    "href": "project/midterm.html#common-midterm-challenges",
+    "title": "Midterm Project Update",
+    "section": "Common Midterm Challenges",
+    "text": "Common Midterm Challenges\n\n\n\n\n\n\nWarningWatch Out For\n\n\n\n\nDemo Disasters: Always have a backup plan (recorded demo, screenshots)\nEnvironment Issues: Test your docker compose up on a fresh machine before presenting\nScope Denial: Be honest about what’s working vs. “almost working”\nGhost Team Members: Address contribution imbalances now, not at final\nTechnical Debt: Document it; don’t pretend it doesn’t exist"
+  },
+  {
+    "objectID": "project/midterm.html#recovering-from-a-rough-start",
+    "href": "project/midterm.html#recovering-from-a-rough-start",
+    "title": "Midterm Project Update",
+    "section": "Recovering from a Rough Start",
+    "text": "Recovering from a Rough Start\nIf your team is behind, the midterm is the time to course-correct:\n\nBe honest in your report about challenges\nReduce scope to focus on core functionality\nCreate a recovery plan with realistic milestones\nSeek help during office hours or TA sessions\n\nTeams that honestly assess their situation and create realistic plans are viewed more favorably than teams that overpromise and underdeliver."
+  },
+  {
+    "objectID": "project/midterm.html#submission-instructions",
+    "href": "project/midterm.html#submission-instructions",
+    "title": "Midterm Project Update",
+    "section": "Submission Instructions",
+    "text": "Submission Instructions\n\nTechnical Report: Submit PDF to LMS by 11:59 PM on February 24\nRepository Link: Ensure all code is pushed and README is updated\nDemo Preparation: Have your demo ready to run at the start of class\nPresentation: Be prepared to present during class on February 24"
+  },
+  {
+    "objectID": "project/midterm.html#questions",
+    "href": "project/midterm.html#questions",
+    "title": "Midterm Project Update",
+    "section": "Questions?",
+    "text": "Questions?\n\nOffice Hours: Tuesday 9-11 AM, Pitt 2206\nPiazza: Use the project-midterm tag\nEmail: kuruzj@rpi.edu"
+  },
+  {
+    "objectID": "slides/week02/index.html#lab-2-due",
+    "href": "slides/week02/index.html#lab-2-due",
+    "title": "Week 2: Architecture Foundations",
+    "section": "Lab 2 Due",
+    "text": "Lab 2 Due\n\n\n\n\n\n\nImportant\n\n\n\nLab 2: Layered Client-Server Architecture Due: Tuesday, January 27, 2026 before class"
+  },
+  {
+    "objectID": "slides/week01/index.html#lab-1-due",
+    "href": "slides/week01/index.html#lab-1-due",
+    "title": "Week 1: Course Foundation",
+    "section": "Lab 1 Due",
+    "text": "Lab 1 Due\n\n\n\n\n\n\nImportant\n\n\n\nLab 1: Infrastructure as Code Due: Thursday, January 23, 2026 before class"
   }
 ]

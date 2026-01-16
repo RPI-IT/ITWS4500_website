@@ -1,0 +1,152 @@
+---
+title: "Semester Project"
+subtitle: "Building a Real-World Application for Impact"
+---
+
+## Project Overview
+
+The semester project is your opportunity to apply the architectural patterns, development practices, and deployment strategies learned throughout the course to build a **real-world application**. You will work in teams of 3-4 members to conceptualize, design, build, and deploy a functional web application.
+
+::: {.callout-important}
+## Project Focus
+Your project should address a genuine problem or opportunity through one of these lenses:
+
+- **Startup Idea**: A product concept you could potentially launch
+- **External Stakeholder**: An application for a real organization, club, or community
+- **Social Impact**: A solution addressing a meaningful social or environmental challenge
+:::
+
+## Project Timeline
+
+```{mermaid}
+gantt
+    title Project Milestones
+    dateFormat  YYYY-MM-DD
+    section Planning
+    Team Formation           :2026-01-13, 3d
+    Proposal Development     :2026-01-16, 14d
+    section Execution
+    Core Development         :2026-01-30, 25d
+    Midterm Presentation     :milestone, 2026-02-24, 1d
+    Advanced Features        :2026-02-27, 35d
+    section Completion
+    Final Polish             :2026-04-14, 14d
+    Final Presentation       :milestone, 2026-04-28, 1d
+```
+
+## Deliverables
+
+| Deliverable | Due Date | Weight |
+|-------------|----------|--------|
+| [Project Proposal](proposal.qmd) | January 30, 2026 | 15% |
+| [Midterm Update](midterm.qmd) | February 24, 2026 | 20% |
+| [Final Presentation](final.qmd) | April 28, 2026 | 25% |
+| **Total Project Weight** | | **60%** |
+
+## Team Requirements
+
+### Team Composition
+- **Size**: 3-4 members per team
+- **Roles**: Each member should take ownership of specific areas (frontend, backend, data, DevOps)
+- **Collaboration**: All members must contribute code and participate in architectural decisions
+
+### Team Formation Process
+1. Form teams during Week 1 (by January 16)
+2. Register your team on the LMS
+3. Create your team's GitHub organization or repository
+4. Set up your project management tool
+
+## Project Management Requirements
+
+::: {.callout-warning}
+## Required: Integrated Project Management
+Your project **must** use a structured project management approach with visible progress tracking.
+:::
+
+### Option 1: GitHub Projects (Recommended)
+
+Use GitHub's built-in project management features:
+
+- **GitHub Projects**: Kanban boards integrated with your repository
+- **Issues**: Track features, bugs, and tasks
+- **Milestones**: Group issues into sprints or phases
+- **Pull Requests**: Link PRs to issues for traceability
+
+**Setup Requirements:**
+```
+Repository Structure:
+├── .github/
+│   ├── ISSUE_TEMPLATE/
+│   │   ├── feature.md
+│   │   ├── bug.md
+│   │   └── task.md
+│   └── PULL_REQUEST_TEMPLATE.md
+├── docs/
+│   └── architecture/
+├── src/
+└── README.md
+```
+
+### Option 2: External Tools (Jira, Linear, Notion)
+
+If you prefer external tools, they must be:
+
+- **Publicly viewable** or instructor access granted
+- **Linked** from your repository README
+- **Actively maintained** with regular updates
+- **Integrated** with GitHub (e.g., Jira-GitHub integration)
+
+## Technical Requirements
+
+### Architecture Requirements
+
+Your application must demonstrate understanding of course concepts:
+
+1. **Layered Architecture**: Clear separation of concerns (presentation, business logic, data)
+2. **API Design**: RESTful or GraphQL API with proper documentation
+3. **Data Persistence**: Appropriate database choice with justified trade-offs
+4. **Authentication**: Secure user authentication and authorization
+5. **Containerization**: Docker-based development and deployment
+
+### Technology Stack
+
+**Required:**
+- Frontend: React, Vue, Angular, or equivalent modern framework
+- Backend: Node.js/Express, Python/FastAPI, or equivalent
+- Database: MongoDB, PostgreSQL, or justified alternative
+- Containerization: Docker and Docker Compose
+- Version Control: Git with GitHub
+
+**Encouraged:**
+- CI/CD: GitHub Actions or equivalent
+- Cloud Deployment: Any cloud provider
+- Agentic AI: Integration of AI-powered features
+
+## Grading Philosophy
+
+Projects are evaluated on:
+
+1. **Architectural Decisions** (30%): Sound design choices with clear rationale
+2. **Implementation Quality** (25%): Clean, maintainable, well-tested code
+3. **Project Management** (20%): Effective use of tools, clear progress tracking
+4. **Presentation & Communication** (15%): Clear explanation of decisions and trade-offs
+5. **Innovation & Ambition** (10%): Scope appropriate to team size, creative solutions
+
+::: {.callout-note}
+## A Note on Scope
+A well-executed simple project will score higher than a poorly-executed ambitious one. Focus on demonstrating mastery of patterns and practices over feature quantity.
+:::
+
+## Resources
+
+- [GitHub Projects Documentation](https://docs.github.com/en/issues/planning-and-tracking-with-projects)
+- [Jira Software Guide](https://www.atlassian.com/software/jira/guides)
+- [The Twelve-Factor App](https://12factor.net/)
+- [Architecture Decision Records](https://adr.github.io/)
+
+## Getting Help
+
+- **Office Hours**: Tuesday 9-11 AM, Pitt 2206
+- **Piazza**: Use the `project` tag for questions
+- **TA Sessions**: Check LMS for schedule
+- **Team Meetings**: Schedule time with the instructor for project guidance

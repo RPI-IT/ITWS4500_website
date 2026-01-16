@@ -41,13 +41,14 @@ gantt
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
 | Tue 1/13 | Lecture | Course Introduction: Web Applications as Architectural Patterns; Group Formation | [Slides](slides/week01/01-course-introduction.qmd) |
-| Fri 1/16 | Lecture | Infrastructure as Code: Containers, Docker, and Docker Compose | [Slides](slides/week01/02-infrastructure-as-code.qmd) |
+| Fri 1/16 | Lecture + Lab | Infrastructure as Code: Containers, Docker, and Docker Compose; **Lab 1 Assigned** | [Slides](slides/week01/02-infrastructure-as-code.qmd), [Lab 1](labs/lab01-infrastructure-as-code.qmd) |
 
 ::: {.callout-tip}
-## This Week
+## Getting Started
 - Form project groups (3-4 members)
 - Install Docker Desktop
 - Set up development environment
+- **Lab 1 Due:** January 23, 2026
 :::
 
 ---
@@ -59,63 +60,72 @@ gantt
 
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
-| Tue 1/20 | Lab | **Lab 1:** Infrastructure as Code with Docker Compose (Baseline MERN System) | [Lab 1](labs/lab01-infrastructure-as-code.qmd) |
+| Tue 1/20 | Lab | **Lab 2:** Layered Client-Server Architecture (MERN as Reference) | [Lab 2](labs/lab02-layered-architecture.qmd) |
 | Fri 1/23 | Lecture | Architectural Theory: Patterns, System Decomposition, and Project Scoping | [Slides](slides/week02/04-architectural-theory.qmd) |
 
 ::: {.callout-note}
-**Lab 1 Due:** January 27, 2026
+**Lab 2 Due:** January 27, 2026
 :::
 
 ---
 
-### Week 3: Layered Architecture {#week-3}
+### Week 3: Component Architecture {#week-3}
 **January 27-30, 2026**
 
 **Background Readings:** [Week 3 Readings](readings/week03-layered-architecture.qmd)
 
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
-| Tue 1/27 | Lab | **Lab 2:** Layered Client-Server Architecture (MERN as Reference) | [Lab 2](labs/lab02-layered-architecture.qmd) |
-| Fri 1/30 | Lecture + Presentations | Frontend Architecture Patterns; **Project Proposal Presentations** | [Slides](slides/week03/index.qmd) |
+| Tue 1/27 | Lab | **Lab 3:** Component and State Management Architecture (Angular/React) | [Lab 3](labs/lab03-component-state.qmd) |
+| Fri 1/30 | Lecture + Presentations | Frontend Architecture Patterns; **Project Proposal Presentations** | [Slides](slides/week03/05-frontend-architecture.qmd) |
 
 ::: {.callout-warning}
 **Project Proposals Due:** January 30, 2026
+**Lab 3 Due:** February 3, 2026
 :::
 
 ---
 
-### Week 4: Component Architecture {#week-4}
+### Week 4: Backend Architecture {#week-4}
 **February 3-6, 2026**
 
 **Background Readings:** [Week 4 Readings](readings/week04-component-architecture.qmd)
 
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
-| Tue 2/3 | Lab | **Lab 3:** Component and State Management Architecture (Angular/React) | [Lab 3](labs/lab03-component-state.qmd) |
-| Fri 2/6 | Lecture | Backend Architecture Patterns: Services, APIs, and Data Flow | [Slides](slides/week04/index.qmd) |
+| Tue 2/3 | Lab | **Lab 4:** Backend Architecture Patterns (Node.js & Express) | [Lab 4](labs/lab04-backend-patterns.qmd) |
+| Fri 2/6 | Lecture | Backend Architecture Patterns: Services, APIs, and Data Flow | [Slides](slides/week04/06-backend-architecture.qmd) |
+
+::: {.callout-note}
+**Lab 4 Due:** February 10, 2026
+:::
 
 ---
 
-### Week 5: Backend & Data Patterns {#week-5}
+### Week 5: Data Architecture {#week-5}
 **February 10-13, 2026**
 
 **Background Readings:** [Week 5 Readings](readings/week05-backend-data.qmd)
 
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
-| Tue 2/10 | Lab | **Lab 4:** Backend Architecture Patterns (Node.js & Express) | [Lab 4](labs/lab04-backend-patterns.qmd) |
-| Fri 2/13 | Lecture | Data Architecture Patterns: Polyglot Persistence - Document vs Relational Trade-offs | [Slides](slides/week05/index.qmd) |
+| Tue 2/10 | Lab | **Lab 5:** Polyglot Persistence (MongoDB & PostgreSQL) | [Lab 5](labs/lab05-polyglot-persistence.qmd) |
+| Fri 2/13 | Lecture | Data Architecture Patterns: Polyglot Persistence - Document vs Relational Trade-offs | [Slides](slides/week05/07-data-architecture.qmd) |
+
+::: {.callout-note}
+**Lab 5 Due:** February 17, 2026
+:::
 
 ---
 
-### Week 6: Data Architecture & Quiz 1 {#week-6}
+### Week 6: Quiz 1 {#week-6}
 **February 17-20, 2026**
 
 **Background Readings:** [Week 6 Readings](readings/week06-data-architecture.qmd)
 
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
-| Tue 2/17 | Lab | **Lab 5:** Polyglot Persistence (MongoDB & PostgreSQL) | [Lab 5](labs/lab05-polyglot-persistence.qmd) |
+| Tue 2/17 | *No Class* | Presidents' Day Week - No Tuesday Class | - |
 | Fri 2/20 | **Quiz** | **Quiz 1:** Architectural Foundations and System Design | Study Guide |
 
 ::: {.callout-important}
@@ -149,7 +159,7 @@ Covers Weeks 1-5: Infrastructure as Code, Architectural Patterns, Frontend/Backe
 
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
-| Tue 3/10 | Lecture | Identity, Authentication, and Mobile Architecture Patterns | [Slides](slides/week08/index.qmd) |
+| Tue 3/10 | Lecture | Identity, Authentication, and Mobile Architecture Patterns | Slides TBD |
 | Fri 3/13 | Lab | **Lab 6:** Authentication and Mobile Application Architecture | [Lab 6](labs/lab06-auth-mobile.qmd) |
 
 ---
@@ -161,7 +171,7 @@ Covers Weeks 1-5: Infrastructure as Code, Architectural Patterns, Frontend/Backe
 
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
-| Tue 3/17 | Lecture | Agentic Architecture Patterns I: Agents as Workflow Systems | [Slides](slides/week09/index.qmd) |
+| Tue 3/17 | Lecture | Agentic Architecture Patterns I: Agents as Workflow Systems | Slides TBD |
 | Fri 3/20 | Lab | **Lab 7:** Agentic Workflows | [Lab 7](labs/lab07-agentic-workflows.qmd) |
 
 ---
@@ -173,7 +183,7 @@ Covers Weeks 1-5: Infrastructure as Code, Architectural Patterns, Frontend/Backe
 
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
-| Tue 3/24 | Lecture | Agentic Architecture Patterns II: Orchestration, Memory, and Governance | [Slides](slides/week10/index.qmd) |
+| Tue 3/24 | Lecture | Agentic Architecture Patterns II: Orchestration, Memory, and Governance | Slides TBD |
 | Fri 3/27 | Lab | **Lab 8:** Agent Orchestration and Tooling Patterns | [Lab 8](labs/lab08-agent-orchestration.qmd) |
 
 ---
@@ -185,7 +195,7 @@ Covers Weeks 1-5: Infrastructure as Code, Architectural Patterns, Frontend/Backe
 
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
-| Tue 3/31 | Lecture | Continuous Integration and Testing as Architecture | [Slides](slides/week11/index.qmd) |
+| Tue 3/31 | Lecture | Continuous Integration and Testing as Architecture | Slides TBD |
 | Fri 4/3 | Lab | **Lab 9:** CI Pipelines and Automated Testing | [Lab 9](labs/lab09-ci-pipelines.qmd) |
 
 ---
@@ -197,7 +207,7 @@ Covers Weeks 1-5: Infrastructure as Code, Architectural Patterns, Frontend/Backe
 
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
-| Tue 4/7 | Lecture | AI-Assisted Development: Human-AI Collaboration Patterns | [Slides](slides/week12/index.qmd) |
+| Tue 4/7 | Lecture | AI-Assisted Development: Human-AI Collaboration Patterns | Slides TBD |
 | Fri 4/10 | Lab | **Lab 10:** AI-Assisted Coding and Testing | [Lab 10](labs/lab10-ai-assisted-coding.qmd) |
 
 ---
@@ -209,7 +219,7 @@ Covers Weeks 1-5: Infrastructure as Code, Architectural Patterns, Frontend/Backe
 
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
-| Tue 4/14 | Lecture | Deployment & Runtime Architecture: Cloud Patterns, Caching, Scaling, and Cost | [Slides](slides/week13/index.qmd) |
+| Tue 4/14 | Lecture | Deployment & Runtime Architecture: Cloud Patterns, Caching, Scaling, and Cost | Slides TBD |
 | Fri 4/17 | Lab | **Lab 11:** Containerized Deployment, Caching, Scaling, and Reliability | [Lab 11](labs/lab11-deployment.qmd) |
 
 ---
@@ -268,11 +278,11 @@ Comprehensive assessment covering all course material, with emphasis on Weeks 8-
 
 | Lab | Topic | Assigned | Due |
 |-----|-------|----------|-----|
-| Lab 1 | Infrastructure as Code with Docker Compose | 1/20 | 1/27 |
-| Lab 2 | Layered Client-Server Architecture | 1/27 | 2/3 |
-| Lab 3 | Component and State Management | 2/3 | 2/10 |
-| Lab 4 | Backend Architecture Patterns | 2/10 | 2/17 |
-| Lab 5 | Polyglot Persistence | 2/17 | 2/24 |
+| Lab 1 | Infrastructure as Code with Docker Compose | 1/16 | 1/23 |
+| Lab 2 | Layered Client-Server Architecture | 1/20 | 1/27 |
+| Lab 3 | Component and State Management | 1/27 | 2/3 |
+| Lab 4 | Backend Architecture Patterns | 2/3 | 2/10 |
+| Lab 5 | Polyglot Persistence | 2/10 | 2/17 |
 | Lab 6 | Authentication and Mobile | 3/13 | 3/20 |
 | Lab 7 | Agentic Workflows | 3/20 | 3/27 |
 | Lab 8 | Agent Orchestration | 3/27 | 4/3 |

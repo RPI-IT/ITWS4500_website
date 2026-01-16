@@ -27,7 +27,6 @@ By completing this lab, you will:
 
 Click the button below to accept the assignment and create your repository:
 
-[Accept Assignment on GitHub Classroom](#){.btn .btn-primary .btn-lg}
 
 ## Prerequisites
 

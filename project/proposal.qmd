@@ -1,0 +1,173 @@
+---
+title: "Project Proposal"
+subtitle: "Defining Your Vision and Architecture"
+---
+
+::: {.callout-important}
+## Proposal Information
+**Due Date:** Friday, January 30, 2026
+**Presentation:** In-class presentations during Week 3
+**Weight:** 15% of total project grade (9% of course grade)
+:::
+
+## Overview
+
+The project proposal is your team's opportunity to define a compelling problem, articulate your solution, and outline the architectural approach you'll take. This is not just a document—it's a presentation to your peers and instructors that demonstrates your understanding of the problem space and your plan to address it.
+
+## The Startup/Stakeholder Lens
+
+Your proposal should frame the project as if you were:
+
+- **Pitching to investors**: What problem are you solving? Why does it matter?
+- **Consulting for a client**: Who is the stakeholder? What are their needs?
+- **Launching a product**: Who are your users? What's your value proposition?
+
+::: {.callout-tip}
+## Pro Tip
+Even if your project is for a class, treating it as a real product forces you to think about users, value, and sustainability—skills that transfer directly to industry.
+:::
+
+## Deliverables
+
+### 1. Written Proposal Document
+
+Submit a written proposal (3-5 pages) covering the following sections:
+
+#### Executive Summary (0.5 page)
+- One-paragraph description of the problem and solution
+- Target users or stakeholders
+- Key value proposition
+
+#### Problem Statement (0.5 page)
+- Clear articulation of the problem you're solving
+- Evidence that the problem exists (user research, market data, stakeholder interviews)
+- Current alternatives and their limitations
+
+#### Proposed Solution (1 page)
+- High-level description of your application
+- Core features (MVP scope)
+- User stories for primary use cases
+- Differentiation from existing solutions
+
+#### Technical Architecture (1-2 pages)
+- System architecture diagram
+- Technology stack with justification
+- Data model overview
+- API design approach
+- Authentication and security considerations
+- Deployment strategy
+
+#### Project Management Plan (0.5 page)
+- Team roles and responsibilities
+- Project management tool choice (GitHub Projects, Jira, etc.)
+- Sprint/milestone breakdown
+- Risk identification and mitigation
+
+#### Timeline and Milestones (0.5 page)
+- Week-by-week plan through midterm
+- Key deliverables for each milestone
+- Dependencies and critical path
+
+### 2. GitHub Repository Setup
+
+Your repository must be initialized with:
+
+```
+project-name/
+├── README.md                 # Project overview, setup instructions
+├── docs/
+│   ├── proposal.md          # Your proposal document
+│   └── architecture/
+│       └── decisions/       # Architecture Decision Records (ADRs)
+├── .github/
+│   ├── ISSUE_TEMPLATE/
+│   └── PULL_REQUEST_TEMPLATE.md
+├── docker-compose.yml       # Initial compose file (can be placeholder)
+└── .gitignore
+```
+
+### 3. Project Board Initialization
+
+Set up your project management with:
+
+- At least 3 milestones defined (Proposal, Midterm, Final)
+- Initial backlog of 10+ issues/tasks
+- Labels for categorization (feature, bug, documentation, etc.)
+- Team member assignments
+
+### 4. In-Class Presentation (5-7 minutes)
+
+Present your proposal to the class covering:
+
+1. **The Hook** (1 min): What problem are you solving and why does it matter?
+2. **The Solution** (2 min): What are you building and for whom?
+3. **The Architecture** (2 min): How will you build it? Key technical decisions?
+4. **The Plan** (1-2 min): How will you manage the project and track progress?
+
+## Rubric
+
+### Written Proposal (50 points)
+
+| Criterion | Excellent (10) | Good (8) | Satisfactory (6) | Needs Work (4) | Missing (0) |
+|-----------|----------------|----------|------------------|----------------|-------------|
+| **Problem Statement** | Clear, compelling problem with evidence; well-defined target users | Clear problem statement; adequate user definition | Problem stated but lacks clarity or evidence | Vague problem; unclear who benefits | No clear problem |
+| **Solution Design** | Innovative solution with clear value prop; well-scoped MVP | Good solution with reasonable scope | Solution addresses problem but scope unclear | Solution poorly defined or unrealistic | No solution presented |
+| **Technical Architecture** | Comprehensive architecture with justified decisions; clear diagrams | Good architecture with some justification | Basic architecture present | Architecture incomplete or unjustified | No architecture |
+| **Project Management** | Detailed plan with clear roles, tools, and milestones | Good plan with most elements | Basic plan present | Incomplete planning | No plan |
+| **Writing Quality** | Professional, clear, well-organized | Good writing with minor issues | Adequate but could be clearer | Difficult to follow | Unacceptable |
+
+### Repository Setup (25 points)
+
+| Criterion | Excellent (5) | Good (4) | Satisfactory (3) | Needs Work (2) | Missing (0) |
+|-----------|---------------|----------|------------------|----------------|-------------|
+| **README Quality** | Comprehensive with setup instructions, contributing guide | Good README with most elements | Basic README present | Incomplete README | No README |
+| **Documentation Structure** | Well-organized docs folder with proposal and ADR templates | Good structure with some gaps | Basic structure | Poorly organized | No structure |
+| **Issue Templates** | Custom templates for features, bugs, tasks | Some templates present | Default templates only | Incomplete templates | No templates |
+| **Project Board** | Fully configured with milestones, labels, assignments | Good setup with some gaps | Basic board present | Minimal setup | No board |
+| **Initial Backlog** | 10+ well-written issues with acceptance criteria | Good issues, some lacking detail | Basic issues present | Few/poor issues | No backlog |
+
+### Presentation (25 points)
+
+| Criterion | Excellent (5) | Good (4) | Satisfactory (3) | Needs Work (2) | Missing (0) |
+|-----------|---------------|----------|------------------|----------------|-------------|
+| **Problem & Hook** | Compelling opening; clear problem articulation | Good opening; clear problem | Adequate opening | Weak opening | No clear problem |
+| **Solution Clarity** | Clear, concise explanation; obvious value | Good explanation | Adequate but confusing | Unclear solution | No solution presented |
+| **Technical Depth** | Demonstrates understanding of architecture decisions | Good technical content | Some technical content | Lacks depth | No technical content |
+| **Project Plan** | Clear plan with realistic milestones | Good plan | Basic plan | Unclear plan | No plan |
+| **Delivery & Timing** | Professional delivery; good pacing; within time | Good delivery | Adequate delivery | Poor delivery | Did not present |
+
+## Submission Instructions
+
+1. **Written Proposal**: Submit PDF to LMS by 11:59 PM on January 30
+2. **Repository Link**: Include in your proposal document
+3. **Project Board Link**: Include in your proposal document (ensure public access or invite instructor)
+4. **Presentation**: Be prepared to present during class on January 30
+
+## Examples of Strong Proposals
+
+### Startup Idea Example
+> **TaskFlow AI**: An AI-powered task management platform that automatically prioritizes work based on deadlines, dependencies, and team capacity. Unlike existing tools, TaskFlow uses natural language processing to convert meeting notes and emails into actionable tasks.
+
+### External Stakeholder Example
+> **RPI Club Connect**: A platform for the RPI Student Union to manage club registration, event scheduling, and member communication. Built in partnership with the Student Senate to address pain points in the current manual process.
+
+### Social Impact Example
+> **FoodShare Network**: A peer-to-peer platform connecting restaurants with surplus food to local shelters and food banks. Reduces food waste while addressing food insecurity in the Capital Region.
+
+## Common Pitfalls to Avoid
+
+::: {.callout-warning}
+## Watch Out For
+
+- **Scope Creep**: Proposing too many features for the timeline
+- **Technology Tourism**: Choosing tech because it's "cool" rather than appropriate
+- **Vague Users**: Not clearly defining who will use the application
+- **Missing MVP**: No clear definition of minimum viable product
+- **No Evidence**: Claiming a problem exists without any validation
+:::
+
+## Questions?
+
+- **Office Hours**: Tuesday 9-11 AM, Pitt 2206
+- **Piazza**: Use the `project-proposal` tag
+- **Email**: kuruzj@rpi.edu

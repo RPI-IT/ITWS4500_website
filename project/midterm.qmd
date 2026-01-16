@@ -1,0 +1,216 @@
+---
+title: "Midterm Project Update"
+subtitle: "Demonstrating Progress and Refining Direction"
+---
+
+::: {.callout-important}
+## Midterm Information
+**Due Date:** Tuesday, February 24, 2026
+**Presentation:** In-class presentations during Week 7
+**Weight:** 20% of total project grade (12% of course grade)
+:::
+
+## Overview
+
+The midterm update is a checkpoint to assess your team's progress, validate your architectural decisions, and ensure you're on track for a successful final delivery. This is your opportunity to demonstrate a working MVP, reflect on what you've learned, and adjust your plan based on real-world development experience.
+
+## What You Should Have Completed
+
+By midterm, your project should demonstrate:
+
+- **Core functionality working**: At least 2-3 key features implemented end-to-end
+- **Full-stack integration**: Frontend, backend, and database connected and working
+- **Containerized development**: Docker Compose environment functional
+- **Active project management**: Evidence of sprint planning, issue tracking, and code review
+
+::: {.callout-note}
+## The "Walking Skeleton" Standard
+Your application should be a "walking skeleton"—a thin slice of functionality that touches all architectural layers. It doesn't need to be feature-complete, but it must prove your architecture works.
+:::
+
+## Deliverables
+
+### 1. Working Application Demo
+
+Prepare a **live demonstration** of your application showing:
+
+- User authentication flow (if applicable)
+- Core feature walkthrough (2-3 primary use cases)
+- Data persistence verification
+- Containerized deployment
+
+**Demo Requirements:**
+- Must run from Docker Compose (`docker compose up`)
+- Should be reproducible from a fresh clone
+- Include seed data or easy setup for demo purposes
+
+### 2. Technical Progress Report (3-4 pages)
+
+#### Architecture Evolution (1 page)
+- Original architecture vs. current implementation
+- Decisions changed and why (include ADRs)
+- Technical challenges encountered and solutions
+- Diagrams showing current system state
+
+#### Implementation Status (1 page)
+- Features completed with evidence (screenshots, code references)
+- Features in progress with current state
+- Features deferred with reasoning
+- Test coverage and quality metrics
+
+#### Project Management Review (1 page)
+- Sprint retrospectives summary
+- Velocity/burndown data (if using Scrum)
+- Project board screenshot with current state
+- Team contribution analysis (GitHub Insights)
+
+#### Path to Final (0.5-1 page)
+- Remaining work itemized
+- Updated timeline
+- Identified risks and mitigation
+- Resource or scope adjustments needed
+
+### 3. GitHub Repository State
+
+Your repository should demonstrate:
+
+```
+project-name/
+├── README.md                    # Updated with current setup instructions
+├── docs/
+│   ├── proposal.md
+│   ├── midterm-report.md       # Your progress report
+│   └── architecture/
+│       └── decisions/
+│           ├── 001-database-choice.md
+│           ├── 002-auth-strategy.md
+│           └── ...              # At least 3 ADRs
+├── frontend/
+│   ├── Dockerfile
+│   ├── src/
+│   └── tests/
+├── api/
+│   ├── Dockerfile
+│   ├── src/
+│   └── tests/
+├── docker-compose.yml
+├── docker-compose.prod.yml      # If different from dev
+└── .github/
+    └── workflows/               # CI pipeline (encouraged)
+```
+
+### 4. Project Management Artifacts
+
+Evidence of active project management:
+
+- **Closed Issues**: At least 15 issues closed since proposal
+- **Pull Requests**: Evidence of code review process
+- **Milestones**: Progress visible toward defined milestones
+- **Sprint History**: If using Scrum, evidence of completed sprints
+
+### 5. In-Class Presentation (8-10 minutes)
+
+Present your progress to the class:
+
+1. **Recap** (1 min): Brief reminder of your project and goals
+2. **Live Demo** (3-4 min): Show your working application
+3. **Architecture Deep-Dive** (2 min): Key technical decisions and learnings
+4. **Project Health** (1-2 min): Progress metrics, team dynamics, project management
+5. **Path Forward** (1 min): What's next, any pivots or adjustments
+
+## Rubric
+
+### Working Application (40 points)
+
+| Criterion | Excellent (10) | Good (8) | Satisfactory (6) | Needs Work (4) | Missing (0) |
+|-----------|----------------|----------|------------------|----------------|-------------|
+| **Core Features** | 3+ features working end-to-end; polished UX | 2-3 features working; good UX | 1-2 features working; basic UX | Partial features; poor UX | No working features |
+| **Full-Stack Integration** | Seamless FE/BE/DB integration; clean APIs | Good integration; minor issues | Basic integration working | Integration problems | Not integrated |
+| **Containerization** | One-command setup; works on any machine | Good Docker setup; minor issues | Docker works but setup complex | Docker partially working | Not containerized |
+| **Data Persistence** | Data persists correctly; good model design | Data works; minor model issues | Basic persistence working | Data issues | No persistence |
+
+### Technical Progress Report (30 points)
+
+| Criterion | Excellent (6) | Good (5) | Satisfactory (4) | Needs Work (3) | Missing (0) |
+|-----------|---------------|----------|------------------|----------------|-------------|
+| **Architecture Analysis** | Thoughtful evolution analysis; clear ADRs | Good analysis; adequate ADRs | Basic analysis; few ADRs | Weak analysis | No analysis |
+| **Implementation Status** | Clear status with evidence; honest assessment | Good status reporting | Basic status | Vague status | No status |
+| **Project Management** | Strong metrics; clear velocity data | Good metrics | Some metrics | Limited data | No data |
+| **Path Forward** | Realistic plan; risks identified | Good plan | Basic plan | Unclear plan | No plan |
+| **Writing Quality** | Professional; well-organized | Good writing | Adequate | Poor writing | Unacceptable |
+
+### Project Management Evidence (15 points)
+
+| Criterion | Excellent (5) | Good (4) | Satisfactory (3) | Needs Work (2) | Missing (0) |
+|-----------|---------------|----------|------------------|----------------|-------------|
+| **Issue Tracking** | 15+ closed issues; well-documented | Good issue usage | Some issues | Few issues | No issues |
+| **Code Review** | PR reviews on all merges; thoughtful feedback | Good PR process | Some PRs | Minimal PRs | No PRs |
+| **Team Contribution** | Balanced contributions; all members active | Good distribution | Uneven but acceptable | Very uneven | Single contributor |
+
+### Presentation (15 points)
+
+| Criterion | Excellent (5) | Good (4) | Satisfactory (3) | Needs Work (2) | Missing (0) |
+|-----------|---------------|----------|------------------|----------------|-------------|
+| **Live Demo** | Smooth demo; handles questions well | Good demo; minor issues | Demo works | Demo problems | Failed demo |
+| **Technical Depth** | Clear architecture explanation; good insights | Good technical content | Some depth | Lacks depth | No depth |
+| **Professionalism** | Excellent delivery; good timing; engaging | Good delivery | Adequate | Poor delivery | Did not present |
+
+## Midterm Checkpoint Expectations
+
+### Minimum Viable Progress
+
+To receive a passing grade on the midterm, you must demonstrate:
+
+- [ ] Docker Compose environment runs with one command
+- [ ] At least one complete user flow working (e.g., signup → create item → view item)
+- [ ] Database connected and persisting data
+- [ ] Frontend and backend communicating via API
+- [ ] Evidence of 10+ completed issues in project tracker
+- [ ] Evidence of code review (merged PRs with comments)
+
+### Signs of Excellent Progress
+
+Teams exceeding expectations typically show:
+
+- [ ] Multiple complete features with edge case handling
+- [ ] Automated tests with reasonable coverage
+- [ ] CI pipeline running on push
+- [ ] Clear ADRs documenting major decisions
+- [ ] Thoughtful UI/UX design
+- [ ] Evidence of user feedback incorporation
+
+## Common Midterm Challenges
+
+::: {.callout-warning}
+## Watch Out For
+
+- **Demo Disasters**: Always have a backup plan (recorded demo, screenshots)
+- **Environment Issues**: Test your `docker compose up` on a fresh machine before presenting
+- **Scope Denial**: Be honest about what's working vs. "almost working"
+- **Ghost Team Members**: Address contribution imbalances now, not at final
+- **Technical Debt**: Document it; don't pretend it doesn't exist
+:::
+
+## Recovering from a Rough Start
+
+If your team is behind, the midterm is the time to course-correct:
+
+1. **Be honest** in your report about challenges
+2. **Reduce scope** to focus on core functionality
+3. **Create a recovery plan** with realistic milestones
+4. **Seek help** during office hours or TA sessions
+
+Teams that honestly assess their situation and create realistic plans are viewed more favorably than teams that overpromise and underdeliver.
+
+## Submission Instructions
+
+1. **Technical Report**: Submit PDF to LMS by 11:59 PM on February 24
+2. **Repository Link**: Ensure all code is pushed and README is updated
+3. **Demo Preparation**: Have your demo ready to run at the start of class
+4. **Presentation**: Be prepared to present during class on February 24
+
+## Questions?
+
+- **Office Hours**: Tuesday 9-11 AM, Pitt 2206
+- **Piazza**: Use the `project-midterm` tag
+- **Email**: kuruzj@rpi.edu

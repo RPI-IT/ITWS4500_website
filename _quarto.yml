@@ -19,38 +19,6 @@ website:
         text: Syllabus
       - href: schedule.qmd
         text: Schedule
-      - text: Slides
-        menu:
-          - text: "Week 1: Introduction & IaC"
-            href: slides/week01/index.qmd
-          - text: "Week 2: Lab 1 & Architecture"
-            href: slides/week02/index.qmd
-          - text: "Week 3: Lab 2 & Frontend"
-            href: slides/week03/index.qmd
-          - text: "Week 4: Lab 3 & Backend"
-            href: slides/week04/index.qmd
-          - text: "Week 5: Lab 4 & Data"
-            href: slides/week05/index.qmd
-          - text: "Week 6: Lab 5 & Quiz 1"
-            href: slides/week06/index.qmd
-          - text: "Week 7: Midterm & Project"
-            href: slides/week07/index.qmd
-          - text: "Week 8: Auth & Mobile"
-            href: slides/week08/index.qmd
-          - text: "Week 9: Agentic AI I"
-            href: slides/week09/index.qmd
-          - text: "Week 10: Agentic AI II"
-            href: slides/week10/index.qmd
-          - text: "Week 11: CI/CD"
-            href: slides/week11/index.qmd
-          - text: "Week 12: AI-Assisted Dev"
-            href: slides/week12/index.qmd
-          - text: "Week 13: Deployment"
-            href: slides/week13/index.qmd
-          - text: "Week 14: Quiz 2 & Capstone"
-            href: slides/week14/index.qmd
-          - text: "Week 15: Final Presentations"
-            href: slides/week15/index.qmd
       - text: Readings
         menu:
           - text: "Week 1: Introduction & IaC"
@@ -83,6 +51,17 @@ website:
             href: readings/week14-capstone.qmd
           - text: "Week 15: Final"
             href: readings/week15-final.qmd
+      - text: Project
+        menu:
+          - text: "Project Overview"
+            href: project/index.qmd
+          - text: "---"
+          - text: "Proposal (Jan 30)"
+            href: project/proposal.qmd
+          - text: "Midterm Update (Feb 24)"
+            href: project/midterm.qmd
+          - text: "Final Presentation (Apr 28)"
+            href: project/final.qmd
       - text: Labs
         menu:
           - text: "Lab 1: Infrastructure as Code"

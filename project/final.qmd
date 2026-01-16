@@ -1,0 +1,265 @@
+---
+title: "Final Project Presentation"
+subtitle: "Showcasing Your Complete Application"
+---
+
+::: {.callout-important}
+## Final Presentation Information
+**Due Date:** Tuesday, April 28, 2026
+**Presentation:** Final class session
+**Weight:** 25% of total project grade (15% of course grade)
+:::
+
+## Overview
+
+The final presentation is your opportunity to showcase the culmination of a semester's work. You'll present a complete, deployed application while reflecting on your architectural decisions, team dynamics, and learning journey. This is both a technical demonstration and a professional presentation of your work.
+
+## Final Project Expectations
+
+By the final presentation, your project should demonstrate:
+
+- **Deployed and accessible**: Application running on cloud infrastructure
+- **Feature complete**: All planned MVP features implemented
+- **Production ready**: Error handling, security considerations, documentation
+- **Well documented**: README, API docs, architecture decision records
+- **Professionally managed**: Complete project history visible in GitHub
+
+::: {.callout-note}
+## The "Ship It" Standard
+Your application should be something you'd be proud to show to a potential employer, investor, or stakeholder. It doesn't need to be perfect, but it should be complete, functional, and professionally presented.
+:::
+
+## Deliverables
+
+### 1. Deployed Application
+
+Your application must be:
+
+- **Publicly accessible** via a URL (cloud deployment required)
+- **Functional** with all core features working
+- **Stable** enough for a live demonstration
+- **Secure** with proper authentication and data protection
+
+**Deployment Options:**
+- Railway, Render, Fly.io (recommended for ease)
+- AWS, GCP, Azure (more complex but valuable experience)
+- DigitalOcean, Linode (good middle ground)
+
+### 2. Final Technical Report (5-7 pages)
+
+#### Executive Summary (0.5 page)
+- What you built and why
+- Key accomplishments
+- Live application URL
+
+#### Architecture Deep-Dive (1.5-2 pages)
+- Final system architecture diagram
+- Technology stack with retrospective on choices
+- Complete ADR summary (what decisions were made and why)
+- Security measures implemented
+- Scalability considerations
+
+#### Feature Documentation (1-1.5 pages)
+- Complete feature list with descriptions
+- User flows with screenshots
+- API documentation summary (link to full docs)
+- Known limitations and future enhancements
+
+#### Development Journey (1-1.5 pages)
+- Evolution from proposal to final
+- Major pivots and their rationale
+- Technical challenges and solutions
+- What you would do differently
+
+#### Project Management Retrospective (1 page)
+- Final project metrics (issues, PRs, commits by member)
+- Sprint velocity analysis
+- Team dynamics and collaboration assessment
+- Process improvements discovered
+
+#### Individual Contributions (0.5 page per member)
+- Each team member writes a brief summary of their contributions
+- Key learnings and growth areas
+
+### 3. Complete GitHub Repository
+
+Your repository should be a portfolio piece:
+
+```
+project-name/
+├── README.md                       # Comprehensive project documentation
+│   ├── Project overview and demo link
+│   ├── Features list
+│   ├── Technology stack
+│   ├── Local development setup
+│   ├── Deployment instructions
+│   └── Contributing guidelines
+├── docs/
+│   ├── proposal.md
+│   ├── midterm-report.md
+│   ├── final-report.md
+│   ├── api/                        # API documentation
+│   │   └── openapi.yaml           # Or equivalent
+│   └── architecture/
+│       └── decisions/             # Complete ADR history
+├── frontend/
+│   ├── Dockerfile
+│   ├── README.md                  # Frontend-specific docs
+│   ├── src/
+│   └── tests/
+├── api/
+│   ├── Dockerfile
+│   ├── README.md                  # API-specific docs
+│   ├── src/
+│   └── tests/
+├── docker-compose.yml
+├── docker-compose.prod.yml
+├── .github/
+│   └── workflows/
+│       ├── ci.yml                 # Continuous integration
+│       └── deploy.yml             # Deployment automation (if applicable)
+└── LICENSE
+```
+
+### 4. Peer Evaluations
+
+Each team member submits a confidential peer evaluation:
+
+- Rate each team member's contribution (1-5 scale)
+- Provide specific examples of contributions
+- Identify team strengths and areas for improvement
+- Self-assessment of your own contribution
+
+::: {.callout-warning}
+## Peer Evaluation Impact
+Significant discrepancies in peer evaluations may result in individual grade adjustments. Be honest and fair in your assessments.
+:::
+
+### 5. Final Presentation (12-15 minutes)
+
+Present your completed project to the class:
+
+1. **The Pitch** (2 min): Problem, solution, and value proposition recap
+2. **Live Demo** (5-6 min): Complete walkthrough of key features
+3. **Architecture Tour** (3 min): Technical decisions, trade-offs, and learnings
+4. **Team Retrospective** (2-3 min): What worked, what didn't, what you learned
+5. **Q&A** (2 min): Field questions from class and instructors
+
+## Rubric
+
+### Deployed Application (35 points)
+
+| Criterion | Excellent (7) | Good (6) | Satisfactory (5) | Needs Work (3) | Missing (0) |
+|-----------|---------------|----------|------------------|----------------|-------------|
+| **Deployment** | Fully deployed; reliable; professional URL | Deployed and working | Deployed with issues | Partially deployed | Not deployed |
+| **Core Features** | All MVP features polished and complete | Most features complete | Core features work | Partial features | Non-functional |
+| **User Experience** | Intuitive; responsive; handles errors gracefully | Good UX; minor issues | Functional UX | Poor UX | Unusable |
+| **Security** | Auth, input validation, HTTPS, no vulnerabilities | Good security | Basic security | Security gaps | Major vulnerabilities |
+| **Documentation** | Comprehensive README; API docs; setup guides | Good documentation | Basic docs | Minimal docs | No documentation |
+
+### Technical Report (25 points)
+
+| Criterion | Excellent (5) | Good (4) | Satisfactory (3) | Needs Work (2) | Missing (0) |
+|-----------|---------------|----------|------------------|----------------|-------------|
+| **Architecture Analysis** | Insightful analysis; clear evolution story | Good analysis | Basic analysis | Weak analysis | No analysis |
+| **Decision Documentation** | Complete ADRs; clear rationale | Good ADRs | Some ADRs | Few/poor ADRs | No ADRs |
+| **Retrospective Quality** | Honest reflection; meaningful insights | Good reflection | Basic reflection | Superficial | No reflection |
+| **Individual Contributions** | Clear, specific contributions documented | Good summaries | Basic summaries | Vague summaries | Missing |
+| **Writing Quality** | Professional; well-organized; publication-ready | Good writing | Adequate | Poor quality | Unacceptable |
+
+### Repository Quality (15 points)
+
+| Criterion | Excellent (5) | Good (4) | Satisfactory (3) | Needs Work (2) | Missing (0) |
+|-----------|---------------|----------|------------------|----------------|-------------|
+| **Code Quality** | Clean, consistent; good test coverage | Good quality | Acceptable quality | Poor quality | Very poor |
+| **Commit History** | Clean history; meaningful messages | Good history | Acceptable | Poor history | Single commits |
+| **Project Management** | Complete issue history; closed milestones | Good tracking | Some tracking | Minimal | None |
+
+### Presentation (15 points)
+
+| Criterion | Excellent (5) | Good (4) | Satisfactory (3) | Needs Work (2) | Missing (0) |
+|-----------|---------------|----------|------------------|----------------|-------------|
+| **Demo Quality** | Smooth, professional; handles edge cases | Good demo | Demo works | Demo issues | Failed demo |
+| **Technical Communication** | Clear architecture explanation; insightful | Good explanation | Basic | Unclear | No explanation |
+| **Team Presentation** | All members contribute; cohesive story | Good teamwork | Some imbalance | Very uneven | Solo presentation |
+
+### Peer Evaluation Modifier (10 points)
+
+| Criterion | Full Credit (10) | Partial (5-9) | Significant Concerns (0-4) |
+|-----------|------------------|---------------|----------------------------|
+| **Contribution** | Contributions match or exceed peer expectations | Minor discrepancies with peers | Major discrepancies or concerns raised |
+
+## Final Checklist
+
+Before your final presentation, verify:
+
+### Technical Requirements
+- [ ] Application deployed and accessible via public URL
+- [ ] All core features functional
+- [ ] Docker Compose works for local development
+- [ ] README includes complete setup instructions
+- [ ] API documentation available (Swagger/OpenAPI recommended)
+
+### Documentation Requirements
+- [ ] Final report submitted to LMS
+- [ ] All ADRs complete and in repository
+- [ ] Individual contribution summaries included
+- [ ] Repository is clean and well-organized
+
+### Presentation Requirements
+- [ ] Demo practiced and timed (12-15 minutes)
+- [ ] Backup demo ready (screenshots, video)
+- [ ] All team members prepared to speak
+- [ ] Deployment verified working morning of presentation
+
+### Administrative Requirements
+- [ ] Peer evaluations submitted (due 48 hours after presentation)
+- [ ] All team members present for presentation
+- [ ] Repository is public or instructor has access
+
+## Grading Philosophy for Final
+
+The final grade weighs both **product** and **process**:
+
+**Product (60%):**
+- Does the application work?
+- Is it deployed and accessible?
+- Does it solve the stated problem?
+
+**Process (40%):**
+- Was the project well-managed?
+- Did the team collaborate effectively?
+- Are decisions documented?
+- Is the codebase maintainable?
+
+::: {.callout-tip}
+## What Makes an "A" Project?
+An "A" project demonstrates mastery of course concepts through thoughtful architectural decisions, clean implementation, effective teamwork, and honest reflection on the development journey. It's not about feature count—it's about doing things well.
+:::
+
+## Post-Course Opportunities
+
+Exceptional projects may be considered for:
+
+- **Showcase presentation** to department or industry partners
+- **Continued development** as independent study
+- **Publication** in student portfolios or case studies
+- **Reference** for future course materials
+
+## Submission Instructions
+
+1. **Final Report**: Submit PDF to LMS by 11:59 PM on April 28
+2. **Deployed Application**: URL must be working by presentation time
+3. **Repository**: Ensure all code is pushed and README is complete
+4. **Peer Evaluations**: Submit via LMS within 48 hours of presentation
+5. **Presentation**: Be prepared to present during final class session
+
+## Questions?
+
+- **Office Hours**: Tuesday 9-11 AM, Pitt 2206
+- **Piazza**: Use the `project-final` tag
+- **Email**: kuruzj@rpi.edu
+
+---
+
+**Good luck with your final presentations! This is your moment to shine.**

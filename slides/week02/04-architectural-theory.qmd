@@ -690,7 +690,7 @@ Each team shares:
 
 ## Looking Ahead
 
-### Lab 1 Due: Tuesday, January 27
+### Lab 1 Due: Thursday, January 23
 
 - Complete MERN Docker Compose setup
 - README with instructions

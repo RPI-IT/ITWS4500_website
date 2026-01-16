@@ -874,7 +874,7 @@ docker compose down -v --rmi all
 
 ## Lab 1 Requirements
 
-Complete the following by **Tuesday, January 27**:
+Complete the following by **Thursday, January 23**:
 
 ### Core Requirements (80%)
 
@@ -922,7 +922,7 @@ Complete the following by **Tuesday, January 27**:
 
 ### Step 1: Click the GitHub Classroom Link
 
-[https://classroom.github.com/a/KBx2aztW](https://classroom.github.com/a/KBx2aztW)
+[https://classroom.github.com/a/Gbc2JCRP](https://classroom.github.com/a/Gbc2JCRP)
 
 . . .
 
@@ -1148,7 +1148,7 @@ The TAs can see your commits and will clone your repository to grade it.
 - Piazza for Q&A
 - TA sessions (see LMS)
 
-**Due Date:** January 27, 2026
+**Due Date:** January 23, 2026
 :::
 
 ---

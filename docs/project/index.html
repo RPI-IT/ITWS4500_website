@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Week 4: Component Architecture – ITWS-4500: Advanced Web &amp; Agentic AI Development</title>
+<title>Semester Project – ITWS-4500: Advanced Web &amp; Agentic AI Development</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +23,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<link href="../../static/logos/RPI_Logo_Binary_1.png" rel="icon" type="image/png">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-674b895ea931ffa4b4900794805962b3.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-e0dfd07c0e7a91a9a0c538eb51a6efe0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../static/logos/RPI_Logo_Binary_1.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-674b895ea931ffa4b4900794805962b3.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-e0dfd07c0e7a91a9a0c538eb51a6efe0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,9 +69,12 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -81,11 +84,11 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../static/logos/RPI_Logo_Binary_1_White.png" alt="" class="navbar-logo light-content">
-    <img src="../../static/logos/RPI_Logo_Binary_1_White.png" alt="" class="navbar-logo dark-content">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../static/logos/RPI_Logo_Binary_1_White.png" alt="" class="navbar-logo light-content">
+    <img src="../static/logos/RPI_Logo_Binary_1_White.png" alt="" class="navbar-logo dark-content">
     </a>
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">ITWS-4500: Advanced Web &amp; Agentic AI Development</span>
     </a>
   </div>
@@ -96,15 +99,15 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../syllabus.html"> 
+    <a class="nav-link" href="../syllabus.html"> 
 <span class="menu-text">Syllabus</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../schedule.html"> 
+    <a class="nav-link" href="../schedule.html"> 
 <span class="menu-text">Schedule</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -113,63 +116,63 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-slides">    
         <li>
-    <a class="dropdown-item" href="../../slides/week01/index.html">
+    <a class="dropdown-item" href="../slides/week01/index.html">
  <span class="dropdown-text">Week 1: Introduction &amp; IaC</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../slides/week02/index.html">
+    <a class="dropdown-item" href="../slides/week02/index.html">
  <span class="dropdown-text">Week 2: Lab 1 &amp; Architecture</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../slides/week03/index.html">
+    <a class="dropdown-item" href="../slides/week03/index.html">
  <span class="dropdown-text">Week 3: Lab 2 &amp; Frontend</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../slides/week04/index.html">
+    <a class="dropdown-item" href="../slides/week04/index.html">
  <span class="dropdown-text">Week 4: Lab 3 &amp; Backend</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../slides/week05/index.html">
+    <a class="dropdown-item" href="../slides/week05/index.html">
  <span class="dropdown-text">Week 5: Lab 4 &amp; Data</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../slides/week06/index.html">
+    <a class="dropdown-item" href="../slides/week06/index.html">
  <span class="dropdown-text">Week 6: Lab 5 &amp; Quiz 1</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../slides/week07/index.html">
+    <a class="dropdown-item" href="../slides/week07/index.html">
  <span class="dropdown-text">Week 7: Midterm &amp; Project</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../slides/week08/index.html">
+    <a class="dropdown-item" href="../slides/week08/index.html">
  <span class="dropdown-text">Week 8: Auth &amp; Mobile</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../slides/week09/index.html">
+    <a class="dropdown-item" href="../slides/week09/index.html">
  <span class="dropdown-text">Week 9: Agentic AI I</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../slides/week10/index.html">
+    <a class="dropdown-item" href="../slides/week10/index.html">
  <span class="dropdown-text">Week 10: Agentic AI II</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../slides/week11/index.html">
+    <a class="dropdown-item" href="../slides/week11/index.html">
  <span class="dropdown-text">Week 11: CI/CD</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../slides/week12/index.html">
+    <a class="dropdown-item" href="../slides/week12/index.html">
  <span class="dropdown-text">Week 12: AI-Assisted Dev</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../slides/week13/index.html">
+    <a class="dropdown-item" href="../slides/week13/index.html">
  <span class="dropdown-text">Week 13: Deployment</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../slides/week14/index.html">
+    <a class="dropdown-item" href="../slides/week14/index.html">
  <span class="dropdown-text">Week 14: Quiz 2 &amp; Capstone</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../slides/week15/index.html">
+    <a class="dropdown-item" href="../slides/week15/index.html">
  <span class="dropdown-text">Week 15: Final Presentations</span></a>
   </li>  
     </ul>
@@ -180,64 +183,88 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-readings">    
         <li>
-    <a class="dropdown-item" href="../../readings/week01-introduction.html">
+    <a class="dropdown-item" href="../readings/week01-introduction.html">
  <span class="dropdown-text">Week 1: Introduction &amp; IaC</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../readings/week02-architecture-foundations.html">
+    <a class="dropdown-item" href="../readings/week02-architecture-foundations.html">
  <span class="dropdown-text">Week 2: Architecture Foundations</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../readings/week03-layered-architecture.html">
+    <a class="dropdown-item" href="../readings/week03-layered-architecture.html">
  <span class="dropdown-text">Week 3: Layered Architecture</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../readings/week04-component-architecture.html">
+    <a class="dropdown-item" href="../readings/week04-component-architecture.html">
  <span class="dropdown-text">Week 4: Component Architecture</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../readings/week05-backend-data.html">
+    <a class="dropdown-item" href="../readings/week05-backend-data.html">
  <span class="dropdown-text">Week 5: Backend &amp; Data</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../readings/week06-data-architecture.html">
+    <a class="dropdown-item" href="../readings/week06-data-architecture.html">
  <span class="dropdown-text">Week 6: Data Architecture</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../readings/week07-midterm-review.html">
+    <a class="dropdown-item" href="../readings/week07-midterm-review.html">
  <span class="dropdown-text">Week 7: Midterm Review</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../readings/week08-auth-mobile.html">
+    <a class="dropdown-item" href="../readings/week08-auth-mobile.html">
  <span class="dropdown-text">Week 8: Auth &amp; Mobile</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../readings/week09-agentic-ai-1.html">
+    <a class="dropdown-item" href="../readings/week09-agentic-ai-1.html">
  <span class="dropdown-text">Week 9: Agentic AI I</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../readings/week10-agentic-ai-2.html">
+    <a class="dropdown-item" href="../readings/week10-agentic-ai-2.html">
  <span class="dropdown-text">Week 10: Agentic AI II</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../readings/week11-ci-cd.html">
+    <a class="dropdown-item" href="../readings/week11-ci-cd.html">
  <span class="dropdown-text">Week 11: CI/CD</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../readings/week12-ai-assisted-dev.html">
+    <a class="dropdown-item" href="../readings/week12-ai-assisted-dev.html">
  <span class="dropdown-text">Week 12: AI-Assisted Dev</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../readings/week13-deployment.html">
+    <a class="dropdown-item" href="../readings/week13-deployment.html">
  <span class="dropdown-text">Week 13: Deployment</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../readings/week14-capstone.html">
+    <a class="dropdown-item" href="../readings/week14-capstone.html">
  <span class="dropdown-text">Week 14: Capstone</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../readings/week15-final.html">
+    <a class="dropdown-item" href="../readings/week15-final.html">
  <span class="dropdown-text">Week 15: Final</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-project" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Project</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-project">    
+        <li>
+    <a class="dropdown-item" href="../project/index.html">
+ <span class="dropdown-text">Project Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../project/proposal.html">
+ <span class="dropdown-text">Proposal (Jan 30)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../project/midterm.html">
+ <span class="dropdown-text">Midterm Update (Feb 24)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../project/final.html">
+ <span class="dropdown-text">Final Presentation (Apr 28)</span></a>
   </li>  
     </ul>
   </li>
@@ -247,51 +274,51 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-labs">    
         <li>
-    <a class="dropdown-item" href="../../labs/lab01-infrastructure-as-code.html">
+    <a class="dropdown-item" href="../labs/lab01-infrastructure-as-code.html">
  <span class="dropdown-text">Lab 1: Infrastructure as Code</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../labs/lab02-layered-architecture.html">
+    <a class="dropdown-item" href="../labs/lab02-layered-architecture.html">
  <span class="dropdown-text">Lab 2: Layered Architecture</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../labs/lab03-component-state.html">
+    <a class="dropdown-item" href="../labs/lab03-component-state.html">
  <span class="dropdown-text">Lab 3: Component &amp; State</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../labs/lab04-backend-patterns.html">
+    <a class="dropdown-item" href="../labs/lab04-backend-patterns.html">
  <span class="dropdown-text">Lab 4: Backend Patterns</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../labs/lab05-polyglot-persistence.html">
+    <a class="dropdown-item" href="../labs/lab05-polyglot-persistence.html">
  <span class="dropdown-text">Lab 5: Polyglot Persistence</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../labs/lab06-auth-mobile.html">
+    <a class="dropdown-item" href="../labs/lab06-auth-mobile.html">
  <span class="dropdown-text">Lab 6: Auth &amp; Mobile</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../labs/lab07-agentic-workflows.html">
+    <a class="dropdown-item" href="../labs/lab07-agentic-workflows.html">
  <span class="dropdown-text">Lab 7: Agentic Workflows</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../labs/lab08-agent-orchestration.html">
+    <a class="dropdown-item" href="../labs/lab08-agent-orchestration.html">
  <span class="dropdown-text">Lab 8: Agent Orchestration</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../labs/lab09-ci-pipelines.html">
+    <a class="dropdown-item" href="../labs/lab09-ci-pipelines.html">
  <span class="dropdown-text">Lab 9: CI Pipelines</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../labs/lab10-ai-assisted-coding.html">
+    <a class="dropdown-item" href="../labs/lab10-ai-assisted-coding.html">
  <span class="dropdown-text">Lab 10: AI-Assisted Coding</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../labs/lab11-deployment.html">
+    <a class="dropdown-item" href="../labs/lab11-deployment.html">
  <span class="dropdown-text">Lab 11: Deployment</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../labs/lab12-capstone-extension.html">
+    <a class="dropdown-item" href="../labs/lab12-capstone-extension.html">
  <span class="dropdown-text">Lab 12: Capstone Extension</span></a>
   </li>  
     </ul>
@@ -323,14 +350,27 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#this-weeks-sessions" id="toc-this-weeks-sessions" class="nav-link active" data-scroll-target="#this-weeks-sessions">This Week’s Sessions</a>
-  <ul class="collapse">
-  <li><a href="#tuesday-february-3-lab-3" id="toc-tuesday-february-3-lab-3" class="nav-link" data-scroll-target="#tuesday-february-3-lab-3">Tuesday, February 3: Lab 3</a></li>
-  <li><a href="#friday-february-6-backend-architecture" id="toc-friday-february-6-backend-architecture" class="nav-link" data-scroll-target="#friday-february-6-backend-architecture">Friday, February 6: Backend Architecture</a></li>
-  </ul></li>
-  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li><a href="#project-overview" id="toc-project-overview" class="nav-link active" data-scroll-target="#project-overview">Project Overview</a></li>
+  <li><a href="#project-timeline" id="toc-project-timeline" class="nav-link" data-scroll-target="#project-timeline">Project Timeline</a></li>
   <li><a href="#deliverables" id="toc-deliverables" class="nav-link" data-scroll-target="#deliverables">Deliverables</a></li>
+  <li><a href="#team-requirements" id="toc-team-requirements" class="nav-link" data-scroll-target="#team-requirements">Team Requirements</a>
+  <ul class="collapse">
+  <li><a href="#team-composition" id="toc-team-composition" class="nav-link" data-scroll-target="#team-composition">Team Composition</a></li>
+  <li><a href="#team-formation-process" id="toc-team-formation-process" class="nav-link" data-scroll-target="#team-formation-process">Team Formation Process</a></li>
+  </ul></li>
+  <li><a href="#project-management-requirements" id="toc-project-management-requirements" class="nav-link" data-scroll-target="#project-management-requirements">Project Management Requirements</a>
+  <ul class="collapse">
+  <li><a href="#option-1-github-projects-recommended" id="toc-option-1-github-projects-recommended" class="nav-link" data-scroll-target="#option-1-github-projects-recommended">Option 1: GitHub Projects (Recommended)</a></li>
+  <li><a href="#option-2-external-tools-jira-linear-notion" id="toc-option-2-external-tools-jira-linear-notion" class="nav-link" data-scroll-target="#option-2-external-tools-jira-linear-notion">Option 2: External Tools (Jira, Linear, Notion)</a></li>
+  </ul></li>
+  <li><a href="#technical-requirements" id="toc-technical-requirements" class="nav-link" data-scroll-target="#technical-requirements">Technical Requirements</a>
+  <ul class="collapse">
+  <li><a href="#architecture-requirements" id="toc-architecture-requirements" class="nav-link" data-scroll-target="#architecture-requirements">Architecture Requirements</a></li>
+  <li><a href="#technology-stack" id="toc-technology-stack" class="nav-link" data-scroll-target="#technology-stack">Technology Stack</a></li>
+  </ul></li>
+  <li><a href="#grading-philosophy" id="toc-grading-philosophy" class="nav-link" data-scroll-target="#grading-philosophy">Grading Philosophy</a></li>
   <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
+  <li><a href="#getting-help" id="toc-getting-help" class="nav-link" data-scroll-target="#getting-help">Getting Help</a></li>
   </ul>
 </nav>
     </div>
@@ -339,8 +379,8 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Week 4: Component Architecture</h1>
-<p class="subtitle lead">Lab 3 &amp; Backend Patterns</p>
+<h1 class="title">Semester Project</h1>
+<p class="subtitle lead">Building a Real-World Application for Impact</p>
 </div>
 
 
@@ -357,52 +397,216 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="this-weeks-sessions" class="level2">
-<h2 class="anchored" data-anchor-id="this-weeks-sessions">This Week’s Sessions</h2>
-<section id="tuesday-february-3-lab-3" class="level3">
-<h3 class="anchored" data-anchor-id="tuesday-february-3-lab-3">Tuesday, February 3: Lab 3</h3>
-<p>Component and State Management Architecture (Angular/React)</p>
-<p><a href="../../labs/lab03-component-state.html" class="btn btn-success">Lab Assignment</a></p>
-</section>
-<section id="friday-february-6-backend-architecture" class="level3">
-<h3 class="anchored" data-anchor-id="friday-february-6-backend-architecture">Friday, February 6: Backend Architecture</h3>
-<p>Backend Architecture Patterns: Services, APIs, and Data Flow</p>
-<p><a href="../../slides/week04/06-backend-architecture.html" class="btn btn-primary">View Presentation</a> <a href="06-backend-architecture.pdf" class="btn btn-secondary">Download PDF</a></p>
-</section>
-</section>
-<section id="learning-objectives" class="level2">
-<h2 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
-<p>By the end of this week, you will be able to:</p>
-<ol type="1">
-<li>Implement component-based architecture</li>
-<li>Manage application state effectively</li>
-<li>Design RESTful APIs with proper HTTP methods and status codes</li>
-<li>Implement service layer patterns</li>
-<li>Create middleware for authentication, validation, and error handling</li>
-</ol>
-</section>
-<section id="deliverables" class="level2">
-<h2 class="anchored" data-anchor-id="deliverables">Deliverables</h2>
+<section id="project-overview" class="level2">
+<h2 class="anchored" data-anchor-id="project-overview">Project Overview</h2>
+<p>The semester project is your opportunity to apply the architectural patterns, development practices, and deployment strategies learned throughout the course to build a <strong>real-world application</strong>. You will work in teams of 3-4 members to conceptualize, design, build, and deploy a functional web application.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Important
+<span class="screen-reader-only">Important</span>Project Focus
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Lab 3 Due:</strong> Tuesday, February 10, 2026</p>
+<p>Your project should address a genuine problem or opportunity through one of these lenses:</p>
+<ul>
+<li><strong>Startup Idea</strong>: A product concept you could potentially launch</li>
+<li><strong>External Stakeholder</strong>: An application for a real organization, club, or community</li>
+<li><strong>Social Impact</strong>: A solution addressing a meaningful social or environmental challenge</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="project-timeline" class="level2">
+<h2 class="anchored" data-anchor-id="project-timeline">Project Timeline</h2>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">gantt
+    title Project Milestones
+    dateFormat  YYYY-MM-DD
+    section Planning
+    Team Formation           :2026-01-13, 3d
+    Proposal Development     :2026-01-16, 14d
+    section Execution
+    Core Development         :2026-01-30, 25d
+    Midterm Presentation     :milestone, 2026-02-24, 1d
+    Advanced Features        :2026-02-27, 35d
+    section Completion
+    Final Polish             :2026-04-14, 14d
+    Final Presentation       :milestone, 2026-04-28, 1d
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="deliverables" class="level2">
+<h2 class="anchored" data-anchor-id="deliverables">Deliverables</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Deliverable</th>
+<th>Due Date</th>
+<th>Weight</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="../project/proposal.html">Project Proposal</a></td>
+<td>January 30, 2026</td>
+<td>15%</td>
+</tr>
+<tr class="even">
+<td><a href="../project/midterm.html">Midterm Update</a></td>
+<td>February 24, 2026</td>
+<td>20%</td>
+</tr>
+<tr class="odd">
+<td><a href="../project/final.html">Final Presentation</a></td>
+<td>April 28, 2026</td>
+<td>25%</td>
+</tr>
+<tr class="even">
+<td><strong>Total Project Weight</strong></td>
+<td></td>
+<td><strong>60%</strong></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="team-requirements" class="level2">
+<h2 class="anchored" data-anchor-id="team-requirements">Team Requirements</h2>
+<section id="team-composition" class="level3">
+<h3 class="anchored" data-anchor-id="team-composition">Team Composition</h3>
+<ul>
+<li><strong>Size</strong>: 3-4 members per team</li>
+<li><strong>Roles</strong>: Each member should take ownership of specific areas (frontend, backend, data, DevOps)</li>
+<li><strong>Collaboration</strong>: All members must contribute code and participate in architectural decisions</li>
+</ul>
+</section>
+<section id="team-formation-process" class="level3">
+<h3 class="anchored" data-anchor-id="team-formation-process">Team Formation Process</h3>
+<ol type="1">
+<li>Form teams during Week 1 (by January 16)</li>
+<li>Register your team on the LMS</li>
+<li>Create your team’s GitHub organization or repository</li>
+<li>Set up your project management tool</li>
+</ol>
+</section>
+</section>
+<section id="project-management-requirements" class="level2">
+<h2 class="anchored" data-anchor-id="project-management-requirements">Project Management Requirements</h2>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Required: Integrated Project Management
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Your project <strong>must</strong> use a structured project management approach with visible progress tracking.</p>
+</div>
+</div>
+<section id="option-1-github-projects-recommended" class="level3">
+<h3 class="anchored" data-anchor-id="option-1-github-projects-recommended">Option 1: GitHub Projects (Recommended)</h3>
+<p>Use GitHub’s built-in project management features:</p>
+<ul>
+<li><strong>GitHub Projects</strong>: Kanban boards integrated with your repository</li>
+<li><strong>Issues</strong>: Track features, bugs, and tasks</li>
+<li><strong>Milestones</strong>: Group issues into sprints or phases</li>
+<li><strong>Pull Requests</strong>: Link PRs to issues for traceability</li>
+</ul>
+<p><strong>Setup Requirements:</strong></p>
+<pre><code>Repository Structure:
+├── .github/
+│   ├── ISSUE_TEMPLATE/
+│   │   ├── feature.md
+│   │   ├── bug.md
+│   │   └── task.md
+│   └── PULL_REQUEST_TEMPLATE.md
+├── docs/
+│   └── architecture/
+├── src/
+└── README.md</code></pre>
+</section>
+<section id="option-2-external-tools-jira-linear-notion" class="level3">
+<h3 class="anchored" data-anchor-id="option-2-external-tools-jira-linear-notion">Option 2: External Tools (Jira, Linear, Notion)</h3>
+<p>If you prefer external tools, they must be:</p>
+<ul>
+<li><strong>Publicly viewable</strong> or instructor access granted</li>
+<li><strong>Linked</strong> from your repository README</li>
+<li><strong>Actively maintained</strong> with regular updates</li>
+<li><strong>Integrated</strong> with GitHub (e.g., Jira-GitHub integration)</li>
+</ul>
+</section>
+</section>
+<section id="technical-requirements" class="level2">
+<h2 class="anchored" data-anchor-id="technical-requirements">Technical Requirements</h2>
+<section id="architecture-requirements" class="level3">
+<h3 class="anchored" data-anchor-id="architecture-requirements">Architecture Requirements</h3>
+<p>Your application must demonstrate understanding of course concepts:</p>
+<ol type="1">
+<li><strong>Layered Architecture</strong>: Clear separation of concerns (presentation, business logic, data)</li>
+<li><strong>API Design</strong>: RESTful or GraphQL API with proper documentation</li>
+<li><strong>Data Persistence</strong>: Appropriate database choice with justified trade-offs</li>
+<li><strong>Authentication</strong>: Secure user authentication and authorization</li>
+<li><strong>Containerization</strong>: Docker-based development and deployment</li>
+</ol>
+</section>
+<section id="technology-stack" class="level3">
+<h3 class="anchored" data-anchor-id="technology-stack">Technology Stack</h3>
+<p><strong>Required:</strong> - Frontend: React, Vue, Angular, or equivalent modern framework - Backend: Node.js/Express, Python/FastAPI, or equivalent - Database: MongoDB, PostgreSQL, or justified alternative - Containerization: Docker and Docker Compose - Version Control: Git with GitHub</p>
+<p><strong>Encouraged:</strong> - CI/CD: GitHub Actions or equivalent - Cloud Deployment: Any cloud provider - Agentic AI: Integration of AI-powered features</p>
+</section>
+</section>
+<section id="grading-philosophy" class="level2">
+<h2 class="anchored" data-anchor-id="grading-philosophy">Grading Philosophy</h2>
+<p>Projects are evaluated on:</p>
+<ol type="1">
+<li><strong>Architectural Decisions</strong> (30%): Sound design choices with clear rationale</li>
+<li><strong>Implementation Quality</strong> (25%): Clean, maintainable, well-tested code</li>
+<li><strong>Project Management</strong> (20%): Effective use of tools, clear progress tracking</li>
+<li><strong>Presentation &amp; Communication</strong> (15%): Clear explanation of decisions and trade-offs</li>
+<li><strong>Innovation &amp; Ambition</strong> (10%): Scope appropriate to team size, creative solutions</li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>A Note on Scope
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A well-executed simple project will score higher than a poorly-executed ambitious one. Focus on demonstrating mastery of patterns and practices over feature quantity.</p>
 </div>
 </div>
 </section>
 <section id="resources" class="level2">
 <h2 class="anchored" data-anchor-id="resources">Resources</h2>
 <ul>
-<li><a href="../../readings/week04-component-architecture.html">Week 4 Reading: Component Architecture</a></li>
-<li><a href="https://expressjs.com/en/advanced/best-practice-performance.html">Express.js Best Practices</a></li>
-<li><a href="https://docs.microsoft.com/en-us/azure/architecture/best-practices/api-design">REST API Design Best Practices</a></li>
+<li><a href="https://docs.github.com/en/issues/planning-and-tracking-with-projects">GitHub Projects Documentation</a></li>
+<li><a href="https://www.atlassian.com/software/jira/guides">Jira Software Guide</a></li>
+<li><a href="https://12factor.net/">The Twelve-Factor App</a></li>
+<li><a href="https://adr.github.io/">Architecture Decision Records</a></li>
+</ul>
+</section>
+<section id="getting-help" class="level2">
+<h2 class="anchored" data-anchor-id="getting-help">Getting Help</h2>
+<ul>
+<li><strong>Office Hours</strong>: Tuesday 9-11 AM, Pitt 2206</li>
+<li><strong>Piazza</strong>: Use the <code>project</code> tag for questions</li>
+<li><strong>TA Sessions</strong>: Check LMS for schedule</li>
+<li><strong>Team Meetings</strong>: Schedule time with the instructor for project guidance</li>
 </ul>
 
 

@@ -1,0 +1,100 @@
+﻿Major,Section,Name,RIN,Email,ProjectSection,"First Name (If different from what listed on SIS, put what you like to be called in parentheses). ",Last Name,Undergraduate Major,1,Briefly list relevant work experience.,"Compared with my classmates, I am a born leader.  ","Compared with my classmates, I have an excellent ability to interact with clients. ","Compared with my classmates, I am an excellent writer.","Compared with my classmates, I have strong coding - analytics capabilities.",Anything else we should be aware of when setting up teams?
+ITWS,1,"Angus, Alanah R.",662057165,angusa@rpi.edu,1,Alanah,Angus,Computer Science and ITWS,1,"Worked on web applications in Intro to ITWS and Web Science, as well as did a lot of backend work for my internship with Node.js and PostgreSQL",4,7,7,4,0
+ITWS,1,"Palladino, Cyrus",662088683,pallac@rpi.edu,1,Cyrus,Palladino,CS + ITWS,1,"Have experience from last 2 classes as well as some personal work I did over break involving API requests, React, and frontend/backend communication.",5,4,5,6,0
+ITWS,1,"Lee, Derek Z.",662046197,leed22@rpi.edu,1,Derek,Lee,Computer Science & ITWS,1,SWE Intern @ AT&T last summer and Full stack developer at a startup last spring,5,5,5,6,0
+ITWS,1,"Gutierrez, Eric A.",662056014,gutiee2@rpi.edu,1,Eric,Gutierrez,ITWS & Economics,1,Class projects and internship work,7,6,5,2,0
+ITWS,1,"Alves, Felipe",662049830,alvesf@rpi.edu,1,Felipe,Alves,ITWS,1,"Class projects using HTML, CSS, JS, PHP, MySQL, Python, and very basic Web Dev internship.",6,5,4,4,0
+ITWS,2,"Travis, Henry A.",662080197,travih@rpi.edu,1,Henry,Travis,ITWS,1,"Teaching summer camps for 2 summers that covered CS and engineering topics such as web development with HTML, CSS, and JS",5,6,3,5,"I'd prefer to work with people I already know (Dathan L, Evan S, Will D)"
+ITWS,1,"Collen, Jake P.",662089080,collej2@rpi.edu,1,Jake,Collen,ITWS,1,One current personal project creating a website with techniques learned from Intro and Web Systems.,5,4,2,4,0
+ITWS,1,"Tarantino, James C.",662077267,taranj@rpi.edu,1,James,Tarantino,ITWS,1,Only from ITWS classes,5,5,4,3,0
+CS,1,"Yeboah, ""Manny"" Emmanuel A.",662023897,yeboae@rpi.edu,1,Manny ,Yeboah,Information Technology and Web Science ,1,Currently Working as a Co-op student at NYISO. This is my first professional experience. ,4,4,7,4,0
+ITWS,1,"Nansaram, Mary Jane B.",662067682,nansam@rpi.edu,1,Mary Jane,Nansaram,ITWS,1,"I maintained a volunteer website for my neighborhood where residents could submit or email their concerns to the community board. I am also comfortable with XAMPP, mySQL, phpMyAdmin, and front-end design.",6,6,7,4,I'm comfortable with communicative portions and UI design.
+ITWS,1,"Pamidala, Neha",662086545,pamidn@rpi.edu,1,Neha,Pamidala,ITWS (Minoring in Data Science & Engineering),1,"PAST: Information Technology Consultant Intern (Conducting research, producing articles, and providing operational support for projects in Gen AI, predictive analytics, and systems integration - contributing to innovative, client-focused solutions)
+
+PRESENT: Currently Working/Aiding Startup (Crypto accounting platform that automatically pulls transactions from wallets, blockchains, and exchanges and converts them into accounting-ready records. It syncs this data directly with QuickBooks Online. Working on solving a timely based issue)",4,6,6,4,0
+ITWS,1,"Wong, Priscilla",662057099,wongp4@rpi.edu,1,Priscilla,Wong,Computer Science & ITWS,1,Interned at GE Vernova last summer as a Technical Product Management Intern. Interned at New York Blood Center as a Data Science Intern in 2024.,5,6,4,4,N/A
+ITWS,1,"Kuraganti, ""Raagav"" Raagav",662078692,kuragr@rpi.edu,1,Raagav,Kuraganti,ITWS,1,Intro to IT and Web Systems Development. pretty average at frontend as I excel in backend with PHP and MySQL,6,3,6,4,0
+ITWS,2,"Haag, Reese K.",662083118,haagr2@rpi.edu,1,Reese,Haag,CS/ITWS,1,Only online math tutoring through a company called Wyzant.,6,6,4,5,0
+ITWS,1,"Lei, Rita",662047531,leir@rpi.edu,1,Rita,Lei,CS/ITWS,1,"Software Engineer Intern | NYS Office of Information Technology Services
+- Revised legacy code and utilized SQL to query and update State programs, resolving over 20 defective system calls.
+- Collaborated with support staff to improve the State Welfare Management System through detailed documentation and systematic improvements.
+
+UI/UX Designer & Frontend Developer | Deloitte Employee Compliance Capstone Project
+- Led the design of a user-centered platform, creating static UI mockups and wireframes to visually communicate system architecture.
+- Developed responsive frontend features using React, including advanced filtering tools, and conducted usability testing to improve accessibility.
+
+Project Lead & Full Stack Developer | Tutoria
+- Designed a full-stack web application using the PERN stack (PostgreSQL, Express.js, React.js, Node.js).
+- Architected core components including backend APIs and database schemas to create a scalable platform.
+
+Project Lead & UI/UX Designer | TripTime
+- Built responsive frontend features with JavaScript, achieving a 95+ score on Google PageSpeed Insights.
+- Implemented data collection forms using PHP and JavaScript, and designed a MySQL database schema for efficient data storage.
+- Integrated the Google Maps API for real-time trip planning and location selection.
+
+Lead & Full Stack Developer | Rensselaer Center for Open Source (RookCook)
+- Spearheaded a comprehensive CSS/UI redesign to enhance responsiveness and accessibility across mobile and desktop platforms.
+- Directed the integration of features such as an interactive kitchen environment and advanced search filters, improving backend API response times.",6,6,3,4,0
+ITWS,1,"Steenbruggen, Samantha M.",662062456,steens2@rpi.edu,1,Samantha,Steenbruggen,Computer Science & Information Technology and Web Science,1,"- UI/UX Researcher and Front-End Developer for a non-profit, focusing on accessibility, performance, and user engagement.
+- 4x Computer Science Mentor for CSCI-1100 (Computer Science I) and CSCI-4440 (Software Design and Documentation)
+- Project Manager & Developer for a PDF scanner and notes library, using React with modular components, centralized state management, dependency injection patterns, and async data flows
+- Front-End Developer for Axia Finance, using APIs from S&P Capital IQ, FactSet, and EDGAR to provide real-time market data and simple visualizations ",7,6,6,6,0
+CS,1,"Thapa, Sandesh",662064311,thapas2@rpi.edu,1,Sandesh,Thapa,ITWS,1,Made websites for a company. ,4,6,5,5,none
+ITWS,1,"Hebbel, Jacob C.",662056453,hebbej@rpi.edu,1,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A
+ITWS,1,"Liu, Carina",662070571,liuc17@rpi.edu,1,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A
+ITWS,1,"Olausson, Liam E.",662070849,olausl@rpi.edu,1,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A
+ITWS,1,"Sit, Courteney L.",662071201,sitc@rpi.edu,1,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A
+ITWS,1,"Syed, Aliza H.",662058954,syeda3@rpi.edu,1,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A
+CS,1,"Patel, Anish D.",662039863,patela16@rpi.edu,1,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A
+CS,1,"Siong Sin, Dana",662040406,siongd@rpi.edu,1,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A
+ITWS,2,"Corujo Pagan, Adrian G.",662069887,coruja@rpi.edu,2,Adrian,Corujo Pagan,Electrical and Computer and Systems Enginering,2,IT/SWE Engineering intern @ Oriental Bank and Johnson and Johnson,5,7,5,7,"Mainly a backend/infrastructure developer, I would prefer to keep learning in that area."
+cs,2,"Prakash, Akshat",662083330,prakaa3@rpi.edu,2,Akshat,Prakash,Dual Major in Computer Science and ITWS,2,"Python, HTML, CSS, JavaScript, APIs, WebScraping, Writing",3,4,7,6,0
+ITWS,2,"Lin, Alex",662094103,lina13@rpi.edu,2,Alex,Lin,CS/ITWS,2,"Intro to ITWS, Web Sys Dev, Cloud Security",4,3,5,5,0
+ITWS,2,"Imanuel, Angela",662050516,imanua@rpi.edu,2,Angela,Imanuel,CS/ITWS,2,"tech analyst, full-stack programmer, back end and front end, databases",5,6,5,5,0
+cs,2,"Revis, Arielle",662081965,revisa@rpi.edu,2,Arielle,Revis,ITWS/MGMT,2,"Deloitte Risk & Financial Advisory Intern (Summer 2025)
+Generative AI and Cybersecurity Research Assistant (Fall 2024 - Spring 2025)
+RPI IT Help Desk (Spring 2025 - Present)",7,7,5,4,I would appreciate collaborating in a group with at least one other woman.
+cs,2,"McGrady, ""Avi"" Avraham J.",662079049,mcgraa4@rpi.edu,2,Avraham (Avi),McGrady,Computer Science / ITWS,2,Presented at DEFCON 32 about cybersecurity in schools,5,7,5,5,"Not much. I am quite effective at communicating with classmates / teammates, and I have a very solid amount of experience in front and back end web development. I am flexible and am willing to pick up/learn new technologies to contribute to team work."
+ITWS,2,"Ulman, Boaz O.",662087151,ulmanb@rpi.edu,2,Boaz,Ulman,CS/ITWS Dual,2,No relavent work experience -- Only in class experience,5,6,7,4,0
+cs,2,"Lee, Chloe G.",662060787,leec30@rpi.edu,2,Chloe,Lee,Computer Science / ITWS,2,I have some background in data management and data migration outside of RPI classes.,5,5,4,5,0
+ITWS,2,"Lewis, Claire M.",662080570,lewisc8@rpi.edu,2,Claire,Lewis,ITWS/CS,2,"I had an internship with my local government IT office last summer, where I got basic web development experience with WordPress.",6,6,6,2,0
+ITWS,2,"Lang, Dathan D.",662079449,langd4@rpi.edu,2,Dathan,Lang,Computer Science & ITWS,2,Opex Software Engineering Intern (Summer 2025),5,6,6,7,I have no preference with teams.
+ITWS,2,"Gruber, Davis C.",662085651,grubed@rpi.edu,2,Davis (Carlin),Gruber,CS / ITWS dual,2,My experience is mostly limited to ITWS-1100 and ITWS-2110,6,5,5,5,"I enjoy organization, setting up structures and tasks, managing deadlines, and working on the group's logistics (required software, instructions, specs, end reports). I am also relatively proficient with the coding."
+ITWS,2,"Kusse, Ethan",662093133,kussee@rpi.edu,2,Ethan,Kusse,"CS, ITWS",2,"Mostly personal projects, built a productivity app from scratch in Java, built the corresponding web app & server with MERN stack. Working on AI-native software to help k-12 teachers more efficiently run their classrooms",6,6,1,7,0
+ITWS,2,"Lugo, Eva L.",662086182,lugoe@rpi.edu,2,Eva,Lugo,CS & ITWS,2,Tech consulting,6,6,4,5,0
+ITWS,2,"Snyder, Evan S.",662078026,snydee2@rpi.edu,2,Evan,Snyder,ITWS,2,In WebSys I worked with public FDIC financial data and D3,5,3,6,2,"The friends I'd prefer to work with are any of the following: Henry Travis, Will Dwyer, Dathan Lang or Akshat Prakash. I'd like my group to have at least one of them if possible."
+cs,2,"Lee, Isaac J.",662070512,leei8@rpi.edu,2,Isaac,Lee,ITWS,2,"I've worked a part time job in a bagel store, and have done some volunteer math tutoring for highschool kids.",5,4,5,4,0
+ITWS,2,"Hascup, Jake T.",662085717,hascuj2@rpi.edu,2,Jake,Hascup,CS/ITWS,2,Just stuff in classes,6,3,3,6,0
+ITWS,2,"Biggs, Jeremiah C.",662092506,biggsj3@rpi.edu,2,Jeremiah,Biggs,"CS, ITWS",2,"Intro to ITWS, Web Systems Development",4,5,5,6,0
+ITWS,2,"Cho, ""Jodie"" Hyuna",662075944,choh4@rpi.edu,2,Jodie,Cho,ITWS,2,Internship at a cloud company during high school,5,5,1,6,0
+ITWS,2,"Johnson, Jordan T.",662088093,johnsj27@rpi.edu,2,Jordan,Johnson,ITWS,2,None,5,6,3,4,0
+ITWS,2,"Liu, Lala",662086151,liul14@rpi.edu,2,Lala,Liu,ITWS/CS Dual,2,None outside of class work.,4,4,6,5,Please put me with someone who can do front-end.
+ITWS,2,"Lifrieri, Matthew Joseph A.",662081897,lifrim@rpi.edu,2,Matthew,Lifrieri,Computer Science & ITWS,2,"Highschool - Data Management & Tutoring @ local Kumon
+Freshman @ RPI - Tech Teacher/Counselor @ International Ivy STEM summer camp
+Sophmore @ RPI - Computer Science Tutor @ RPI Student Success Center",4,3,5,7,0
+ITWS,2,"Cheung, Mayge",662089514,cheunm5@rpi.edu,2,Mayge ,Cheung,Computer Science & Information Technology and Web Science Dual Major,2,Human Resources Intern (Not too sure if this counts) ,1,1,6,4,0
+ITWS,2,"Benson, Meredith L.",662080545,bensom3@rpi.edu,2,Meredith,Benson,Computer Science and ITWS,2,"Only past classes like Data Structures, Intro to ITWS, and Web Systems Development",5,4,5,5,0
+ITWS,2,"Ciuica, ""Nick"" Nicholas C.",662076511,ciuicn@rpi.edu,2,Nicholas (Nick),Ciuica,CSCI/ITWS,2,"Self study of JS, HTML, and CSS in high school, working as a team under pressure during HackRPI hackathon events (used JS, Python), open-source contributions in RCOS (used C++, Java), Intro to ITWS and Web Systems Development",3,3,6,5,"I don't generally want to be the leader in group projects, but I have a strong initiative because I don't like to procrastinate on work/leave it for later, so sometimes I end up taking on a leadership position to try to get everyone in the group on the same pace. I am still learning to properly pace my contributions, there have been a couple previous projects where I start working too early and end up contributing more than my fair share of time and effort to the project because of it."
+ITWS,2,"Crotty, Oliver K.",662085311,crotto@rpi.edu,2,Oliver,Crotty,Computer Science and ITWS dual,2,previous RPI coursework,5,4,6,6,preferably with someone who can do front-end
+ITWS,2,"Semidey Baralt, Pablo A.",662080178,semidp@rpi.edu,2,Pablo,Semidey,ITWS,2,"-Used React.js and DynamoDB for a web dev intern project
+-Certified AWS Solutions Architect and Cloud Practitioner
+-Used Flask, React, Node.js, and HTML/CSS in ITWS/RCOS projects",5,4,3,4,"I can do both frontend and backend, but I prefer backend implementation. I would like to make use of containerazation and cloud services this semester."
+ITWS,2,"Carlson, Paul D.",662085124,carlsp2@rpi.edu,2,Paul,Carlson,"CS, ITWS",2,"Web dev and geospatial tech intern at East-SouthEast, LLC",5,5,3,5,0
+ITWS,2,"Santos, Preston A.",662080812,santop@rpi.edu,2,Preston,Santos,"Computer Science, ITWS",2,No work experience,4,4,3,7,0
+ITWS,2,"Thomas, Ryan",662092342,thomar9@rpi.edu,2,Ryan,Thomas,CS and ITWS,2,Have worked on personal projects and am currently working on a team to develop a product for the Rensselaer Finance Club. Have no professional experience yet.,5,6,4,5,0
+ITWS,2,"Wu, Sherlyn",662082052,wus15@rpi.edu,2,Sherlyn,Wu,CSCI/ITWS,2,"Summer 2025 - full stack webdev for a 5k charity run
+Fall 2025 - frontend for work portfolio website",6,5,7,4,"I want to be paired with Jake Hascup, Carlin Gruber, and Paul Kellerman "
+ITWS,2,"Patel, Shivani V.",662043636,patels24@rpi.edu,2,Shivani,Patel,Business Management and ITWS,2,N/A,5,6,6,3,0
+ITWS,2,"Dong, So Mey",662092749,dongs@rpi.edu,2,So Mey,Dong,ITWS,2,none,2,2,3,1,I prefer frontend so I'd prefer a teammates who like backend or can do both
+ITWS,2,"Sridhar, Swaroop",662051409,sridhs2@rpi.edu,2,Swaroop,Sridhar,Computer Science & Information Technology and Web Science,2,"I'm part of another research group called Project Voice (2 semesters) where I've had the opportunity to work with Next.js and typescript in order to create our conference website alongside my machine learning work (cinpct.org). I also have a ton of experience when working with my own RCOS, personal projects, and hackathon (web app won 2 awards).",4,4,2,7,"From my experience, the worst results I've had are from team members that say they will do things and don't get deliverables done on time. If there's 2 qualities I'd appreciate, I'd like group mates who are communicative and honest. This is because a majority of times I had to take a majority of the workload that wasn't done."
+ITWS,2,"Oladeji, Temitayo P.",662059933,oladet@rpi.edu,2,Temitayo,Oladeji,Computer science and Itws,2,"I was a Financial Data Analysis Platform Developer at RPI's School of Management building full-stack analytics tools with Python and Flask. Previously, I interned as a Software Development Intern at Open Q Quantify working on quantum computing simulations, and as an Information Technology Intern at Bellmore-Merrick School District managing security operations and network infrastructure.",6,6,4,6,0
+cs,2,"Komatireddy, Trivika",662085996,komatt@rpi.edu,2,Trivika,Komatireddy,Computer Science,2,"- HackRPI website developer: used Typescript and React to restyle the HackRPI website for the 2025 hackathon
+- MunchiMaps website developer: used HTML, CSS, JavaScript, and Python--mostly worked on catching and fixing bugs",5,6,5,4,0
+ITWS,2,"Bhamidipati, ""Vanshika"" Sai Vanshika",662082487,bhamis3@rpi.edu,2,Vanshika,Bhamidipati,CS/ITWS,2,Mostly group projects done in class ,4,6,7,4,0
+ITWS,2,"Jiang, Zhimin",662092100,jiangz15@rpi.edu,2,Zhimin ,Jiang,Cs/itws,2,NA,5,6,3,5,0
+ITWS,2,"Dwyer, ""Will"" William J.",662080381,dwyerw@rpi.edu,2,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A
+ITWS,2,"Ermishkin, ""Peter"" Petr",662085451,ermisp@rpi.edu,2,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A
+ITWS,2,"Gabriel, Jesse C.",662048587,gabrij2@rpi.edu,2,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A
+ITWS,2,"Kellermann, Paul R.",662074912,kellep2@rpi.edu,2,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A
+ITWS,2,"Lee, Oskar E.",662056971,leeo3@rpi.edu,2,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A
+ITWS,2,"Steadman, Lucas T.",662086999,steadl2@rpi.edu,2,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A
