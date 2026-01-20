@@ -60,8 +60,8 @@ gantt
 
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
-| Tue 1/20 | Lab | **Lab 2:** Layered Client-Server Architecture (MERN as Reference) | [Lab 2](labs/lab02-layered-architecture.qmd) |
-| Fri 1/23 | Lecture | Architectural Theory: Patterns, System Decomposition, and Project Scoping | [Slides](slides/week02/04-architectural-theory.qmd) |
+| Tue 1/20 | Lecture | Architectural Theory: Patterns, System Decomposition, and Project Scoping | [Slides](slides/week02/03-architectural-theory.qmd) |
+| Fri 1/23 | Lab | **Lab 2:** Layered Client-Server Architecture (MERN as Reference) | [Lab 2](labs/lab02-layered-architecture.qmd) |
 
 ::: {.callout-note}
 **Lab 2 Due:** January 27, 2026
@@ -279,7 +279,7 @@ Comprehensive assessment covering all course material, with emphasis on Weeks 8-
 | Lab | Topic | Assigned | Due |
 |-----|-------|----------|-----|
 | Lab 1 | Infrastructure as Code with Docker Compose | 1/16 | 1/23 |
-| Lab 2 | Layered Client-Server Architecture | 1/20 | 1/27 |
+| Lab 2 | Layered Client-Server Architecture | 1/23 | 1/27 |
 | Lab 3 | Component and State Management | 1/27 | 2/3 |
 | Lab 4 | Backend Architecture Patterns | 2/3 | 2/10 |
 | Lab 5 | Polyglot Persistence | 2/10 | 2/17 |

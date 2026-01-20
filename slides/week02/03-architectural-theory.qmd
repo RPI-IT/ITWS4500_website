@@ -1,0 +1,1417 @@
+---
+title: "Architectural Theory"
+subtitle: "Patterns, System Decomposition, and Project Scoping"
+author: "Jason Kuruzovich"
+date: "January 20, 2026"
+format:
+  revealjs:
+    navigation-mode: linear
+    mermaid:
+        theme: default
+    theme: [default, ../../slides-theme.scss]
+    logo: ../../static/logos/RPI_Logo_Binary_1_White.png
+    footer: "ITWS-4500 | Week 2, Day 1"
+    slide-number: true
+    transition: slide
+    width: 1600
+    height: 900
+    #chalkboard: true
+    code-line-numbers: true
+    highlight-style: github
+    pdf-separate-fragments: false
+---
+
+# Architectural Theory {.section-slide background-color="#d6001c"}
+
+From Patterns to Practice
+
+## Today's Agenda
+
+::: {.learning-objectives}
+**Learning Objectives**
+
+1. Master fundamental **architectural patterns** for web systems
+2. Learn techniques for **system decomposition**
+3. Understand **bounded contexts** and service boundaries
+4. Apply **quality attribute** analysis to design decisions
+5. Develop skills for **project scoping** and estimation
+6. Prepare effective **project proposals**
+:::
+
+## Why Architectural Theory?
+
+> "Good architecture allows decisions to be deferred."
+>
+> — Robert C. Martin
+
+. . .
+
+**The goal:**
+
+- Make systems that can **evolve** over time
+- Enable teams to work **independently**
+- Support changing **requirements**
+- Maintain **quality** as systems grow
+
+# Architectural Patterns Deep Dive {.section-slide background-color="#d6001c"}
+
+## Pattern Categories
+
+```{mermaid}
+%%| fig-width: 14
+mindmap
+  root((Architectural Patterns))
+    Structural
+      Layered
+      Client-Server
+      Microservices
+      Monolithic
+    Messaging
+      Event-Driven
+      Pub-Sub
+      Message Queue
+      CQRS
+    Data
+      Repository
+      Unit of Work
+      CQRS
+      Event Sourcing
+    Deployment
+      Containers
+      Serverless
+      Hybrid
+```
+
+## Pattern: Layered Architecture
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    Presentation Layer                            │
+│    Components, Views, User Interface Logic                       │
+├─────────────────────────────────────────────────────────────────┤
+│                    Application Layer                             │
+│    Use Cases, Application Services, DTOs                         │
+├─────────────────────────────────────────────────────────────────┤
+│                    Domain Layer                                  │
+│    Entities, Value Objects, Domain Services, Business Rules      │
+├─────────────────────────────────────────────────────────────────┤
+│                    Infrastructure Layer                          │
+│    Repositories, External Services, Database, File System        │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+**Key Rule:** Dependencies point downward only
+
+## Layered Example: Presentation & Application
+
+```javascript
+// Presentation Layer (Controller)
+class UserController {
+  async getUser(req, res) {
+    const user = await this.userService.findById(req.params.id);
+    res.json(UserDTO.fromDomain(user));
+  }
+}
+
+// Application Layer (Service)
+class UserService {
+  async findById(id) {
+    const user = await this.userRepository.findById(id);
+    if (!user) throw new NotFoundError('User');
+    return user;
+  }
+}
+```
+
+Controller handles HTTP → Service orchestrates use case
+
+## Layered Example: Domain & Infrastructure
+
+```javascript
+// Domain Layer (Entity) - Business rules live here
+class User {
+  constructor(id, email, name) {
+    this.id = id;
+    this.email = email;
+    this.name = name;
+  }
+
+  changeName(newName) {
+    if (!newName || newName.length < 2) {
+      throw new ValidationError('Name must be at least 2 characters');
+    }
+    this.name = newName;
+  }
+}
+
+// Infrastructure Layer (Repository)
+class MongoUserRepository {
+  async findById(id) {
+    const doc = await UserModel.findById(id);
+    return doc ? User.fromDocument(doc) : null;
+  }
+}
+```
+
+## Layered Example: Banking Application
+
+| Layer | Components |
+|-------|------------|
+| **Presentation** | Mobile app, web portal, ATM interface |
+| **Application** | Transfer funds, check balance, apply for loan |
+| **Domain** | Account rules, interest calculations, fraud detection |
+| **Infrastructure** | Core banking system, payment networks, regulatory reporting |
+
+## Layered Example: E-Learning Platform
+
+| Layer | Components |
+|-------|------------|
+| **Presentation** | Student dashboard, instructor tools, mobile app |
+| **Application** | Enroll in courses, submit assignments, grade work |
+| **Domain** | Learning paths, certification rules, plagiarism detection |
+| **Infrastructure** | Video hosting, payment gateway, certificate generation |
+
+## Why Layered Architecture Works
+
+Each layer has a **single responsibility**:
+
+- UI changes don't affect business rules
+- Database migrations don't break the API
+- New channels (mobile, API) reuse domain logic
+- Teams can work independently on different layers
+
+## Pattern: Hexagonal Architecture (Ports & Adapters)
+
+```
+                    ┌────────────────────────────────┐
+                    │                                │
+       ┌──────┐     │    ┌──────────────────┐       │     ┌──────┐
+       │ REST │─────┼───►│                  │       │     │ SQL  │
+       │ API  │     │    │                  │◄──────┼─────│  DB  │
+       └──────┘     │    │                  │       │     └──────┘
+                    │    │   Application    │       │
+       ┌──────┐     │    │      Core        │       │     ┌──────┐
+       │ CLI  │─────┼───►│                  │◄──────┼─────│ Msg  │
+       │      │     │    │  (Domain Logic)  │       │     │ Queue│
+       └──────┘     │    │                  │       │     └──────┘
+                    │    └──────────────────┘       │
+       ┌──────┐     │                               │     ┌──────┐
+       │ gRPC │─────┼───►          ◄────────────────┼─────│ Cache│
+       │      │     │                               │     │      │
+       └──────┘     └────────────────────────────────┘     └──────┘
+
+                    Ports (Interfaces)    Adapters (Implementations)
+```
+
+**Core Principle:** Business logic doesn't depend on external details
+
+## Hexagonal Example: Payment Processing
+
+| Layer | Components |
+|-------|------------|
+| **Core Domain** | Payment validation, currency conversion, fraud scoring, transaction state |
+| **Ports (Interfaces)** | `PaymentGateway`, `FraudChecker`, `NotificationSender` |
+| **Adapters** | Stripe/PayPal/Square, ML fraud service, Email/SMS/Push |
+
+**Key Insight:** Swap Stripe for PayPal without changing business logic
+
+## Hexagonal Example: Ride-Sharing
+
+| Layer | Components |
+|-------|------------|
+| **Core Domain** | Ride matching algorithms, pricing calculations, driver/rider ratings |
+| **Ports (Interfaces)** | `LocationProvider`, `PaymentProcessor`, `MapService` |
+| **Adapters** | GPS/Google Maps/Apple Maps, Stripe/Apple Pay, Mapbox/HERE |
+
+**Key Insight:** Switch from Google Maps to Mapbox without touching core logic
+
+## Pattern: Event-Driven Architecture
+
+```{mermaid}
+%%| fig-width: 14
+sequenceDiagram
+    participant Client
+    participant OrderService
+    participant EventBus
+    participant InventoryService
+    participant NotificationService
+    participant AnalyticsService
+
+    Client->>OrderService: Place Order
+    OrderService->>EventBus: Publish: OrderCreated
+
+    par Async Processing
+        EventBus->>InventoryService: OrderCreated
+        InventoryService->>EventBus: Publish: InventoryReserved
+    and
+        EventBus->>NotificationService: OrderCreated
+        NotificationService->>Client: Email Confirmation
+    and
+        EventBus->>AnalyticsService: OrderCreated
+        AnalyticsService->>AnalyticsService: Record Event
+    end
+
+    OrderService-->>Client: Order Confirmed
+```
+
+## Event-Driven: E-Commerce Order Processing
+
+When a customer places an order online (the **event**), multiple independent services react simultaneously without waiting for a direct response:
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Services That React to "OrderCreated"
+
+1. **Inventory Management**
+   - Automatically reduces stock levels
+   - Triggers reorder if below threshold
+   - Updates warehouse systems
+
+2. **Payment Processing**
+   - Charges customer's payment method
+   - Handles failures and retries
+   - Records transaction for accounting
+
+3. **Customer Notification**
+   - Sends order confirmation email
+   - Triggers SMS notification
+   - Updates customer's order history
+:::
+
+::: {.column width="50%"}
+4. **Shipping/Fulfillment**
+   - Initiates picking process in warehouse
+   - Reserves shipping carrier slot
+   - Generates shipping label
+
+5. **Fraud Detection**
+   - Analyzes order in real-time
+   - Checks for suspicious patterns
+   - Can flag or hold suspicious orders
+
+6. **Analytics & Reporting**
+   - Records sale for dashboards
+   - Updates revenue projections
+   - Feeds recommendation engine
+:::
+
+::::
+
+## Event-Driven: Social Media Example
+
+**Event:** User posts a photo
+
+| Service | Reaction |
+|---------|----------|
+| **Feed Service** | Adds to followers' feeds |
+| **Notification Service** | Alerts mentioned users |
+| **Moderation Service** | Scans for policy violations |
+| **Analytics Service** | Records engagement metrics |
+| **Search Service** | Indexes for discoverability |
+| **CDN Service** | Replicates to edge locations |
+
+All services react **independently** and **simultaneously**
+
+## Event-Driven: IoT Smart Home Example
+
+**Event:** Motion detected at front door
+
+| Service | Reaction |
+|---------|----------|
+| **Camera Service** | Starts recording |
+| **Lighting Service** | Turns on porch lights |
+| **Notification Service** | Sends phone alert |
+| **Security Service** | Logs event, checks for patterns |
+| **Energy Service** | Adjusts HVAC if someone's home |
+
+No service waits for another — **parallel processing**
+
+## Event-Driven: Financial Trading Example
+
+**Event:** Stock price changes
+
+| Service | Reaction |
+|---------|----------|
+| **Portfolio Service** | Recalculates holdings value |
+| **Alert Service** | Notifies users with price alerts |
+| **Trading Service** | Executes triggered orders |
+| **Risk Service** | Updates exposure calculations |
+| **Compliance Service** | Checks for unusual activity |
+
+Millisecond response times through **async event processing**
+
+## Event-Driven Benefits & Challenges
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Benefits
+
+- **Loose Coupling** - Services don't know about each other
+- **Scalability** - Handle spikes with queuing
+- **Resilience** - Failures don't cascade
+- **Flexibility** - Add consumers without changing producers
+- **Audit Trail** - Events are a natural log
+:::
+
+::: {.column width="50%"}
+### Challenges
+
+- **Complexity** - Harder to understand flow
+- **Eventual Consistency** - Data may be stale
+- **Debugging** - Distributed tracing needed
+- **Ordering** - Events may arrive out of order
+- **Idempotency** - Must handle duplicate events
+:::
+
+::::
+
+## Pattern: CQRS (Command Query Responsibility Segregation)
+
+```
+                          Commands                    Queries
+                             │                           │
+                             ▼                           ▼
+                    ┌────────────────┐         ┌────────────────┐
+                    │ Command Handler│         │ Query Handler  │
+                    └───────┬────────┘         └───────┬────────┘
+                            │                          │
+                            ▼                          ▼
+                    ┌────────────────┐         ┌────────────────┐
+                    │  Write Model   │────────►│   Read Model   │
+                    │   (Primary)    │ Sync/   │  (Optimized)   │
+                    │                │ Events  │                │
+                    └───────┬────────┘         └───────┬────────┘
+                            │                          │
+                            ▼                          ▼
+                    ┌────────────────┐         ┌────────────────┐
+                    │  Normalized DB │         │ Denormalized DB│
+                    │  (PostgreSQL)  │         │   (MongoDB)    │
+                    └────────────────┘         └────────────────┘
+```
+
+**Use When:** Read and write patterns are significantly different
+
+## CQRS Example: E-Commerce Product Catalog
+
+| Side | Purpose | Implementation |
+|------|---------|----------------|
+| **Write (Commands)** | `CreateProduct`, `UpdatePrice`, `AdjustInventory` | Normalized tables, full validation |
+| **Read (Queries)** | Search, browse, recommendations | Denormalized docs, pre-computed aggregations |
+
+**Why CQRS here?** Millions of reads (browsing) vs. thousands of writes (admin updates)
+
+## CQRS Example: Banking Transactions
+
+| Side | Purpose | Implementation |
+|------|---------|----------------|
+| **Write (Commands)** | `DepositFunds`, `TransferMoney`, `ApplyInterest` | ACID-compliant relational DB |
+| **Read (Queries)** | Balance, statements, analytics | Materialized views, cached balances |
+
+**Why CQRS here?** Write model needs transaction integrity; read model needs speed
+
+## CQRS: When to Use It
+
+### Good Fit for CQRS
+
+| Scenario | Why CQRS Helps |
+|----------|----------------|
+| **High read/write ratio** (100:1) | Optimize reads independently |
+| **Complex domain logic** | Keep write model focused on business rules |
+| **Different scaling needs** | Scale reads and writes separately |
+| **Event sourcing** | Natural fit with event-driven systems |
+| **Multiple read representations** | Same data, different views (mobile vs web) |
+
+### Probably Overkill
+
+- Simple CRUD applications
+- Small datasets
+- Team unfamiliar with the pattern
+- Tight consistency requirements everywhere
+
+## Pattern: API Gateway
+
+```{mermaid}
+%%| fig-width: 14
+flowchart TB
+    subgraph Clients
+        Web[Web App]
+        Mobile[Mobile App]
+        Partner[Partner API]
+    end
+
+    subgraph Gateway["API Gateway"]
+        Auth[Authentication]
+        Rate[Rate Limiting]
+        Cache[Response Cache]
+        Route[Request Routing]
+        Transform[Transform/Aggregate]
+    end
+
+    subgraph Services
+        Users[User Service]
+        Products[Product Service]
+        Orders[Order Service]
+        Search[Search Service]
+    end
+
+    Clients --> Gateway
+    Gateway --> Services
+```
+
+**Responsibilities:** Auth, rate limiting, routing, aggregation, protocol translation
+
+## API Gateway: Streaming Service Example
+
+**Netflix-style Gateway Responsibilities:**
+
+| Function | What It Does |
+|----------|--------------|
+| **Authentication** | Validate JWT, check subscription tier |
+| **Device Detection** | Route to mobile-optimized vs web APIs |
+| **Content Filtering** | Apply regional restrictions |
+| **Rate Limiting** | Prevent abuse, enforce fair usage |
+| **Response Aggregation** | Combine profile + recommendations into single response |
+
+**Backend Services Called:** User, Catalog, Recommendations, Playback, Billing
+
+## API Gateway: Food Delivery Example
+
+**Gateway Handles:**
+
+| Function | What It Does |
+|----------|--------------|
+| **Geo-routing** | Direct to nearest regional servers |
+| **A/B Testing** | Route to experiment variants |
+| **Caching** | Cache restaurant menus, reduce load |
+| **Request Transformation** | Mobile gets minimal data, web gets full details |
+
+**Single API Call Returns:** User profile + nearby restaurants + active orders + promotions
+
+**Behind the scenes:** 5+ microservices called and aggregated into one response
+
+## API Gateway: Benefits by Use Case
+
+| Use Case | Without Gateway | With Gateway |
+|----------|-----------------|--------------|
+| **Mobile App** | Multiple API calls, wasted bandwidth | Single aggregated call |
+| **Partner API** | Expose internal services directly | Controlled, versioned interface |
+| **Multi-region** | Complex client-side routing | Automatic geo-routing |
+| **Security** | Auth logic duplicated everywhere | Centralized authentication |
+| **Monitoring** | Instrument each service | Single point for metrics |
+
+## Common API Gateway Solutions
+
+| Solution | Best For |
+|----------|----------|
+| **AWS API Gateway** | Serverless, pay-per-request |
+| **Kong** | Open source, plugin ecosystem |
+| **NGINX** | High performance, familiar |
+| **Envoy** | Service mesh, Kubernetes native |
+| **Express Gateway** | Node.js, JavaScript ecosystem |
+
+# Monolith vs Microservices {.section-slide background-color="#d6001c"}
+
+Choosing Your Architecture Style
+
+## Monolith Architecture
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                      Monolith Application                    │
+├─────────────────────────────────────────────────────────────┤
+│  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐        │
+│  │  User   │  │ Product │  │  Order  │  │ Payment │        │
+│  │ Module  │  │ Module  │  │ Module  │  │ Module  │        │
+│  └────┬────┘  └────┬────┘  └────┬────┘  └────┬────┘        │
+│       │            │            │            │              │
+│       └────────────┴────────────┴────────────┘              │
+│                         │                                    │
+│              ┌──────────┴──────────┐                        │
+│              │   Shared Database   │                        │
+│              └─────────────────────┘                        │
+└─────────────────────────────────────────────────────────────┘
+```
+
+**Single deployable unit** - all code ships together
+
+## Microservices Architecture
+
+```
+┌──────────┐   ┌──────────┐   ┌──────────┐   ┌──────────┐
+│  User    │   │ Product  │   │  Order   │   │ Payment  │
+│ Service  │   │ Service  │   │ Service  │   │ Service  │
+├──────────┤   ├──────────┤   ├──────────┤   ├──────────┤
+│   DB     │   │   DB     │   │   DB     │   │   DB     │
+└────┬─────┘   └────┬─────┘   └────┬─────┘   └────┬─────┘
+     │              │              │              │
+     └──────────────┴──────────────┴──────────────┘
+                         │
+              ┌──────────┴──────────┐
+              │     API Gateway     │
+              └─────────────────────┘
+```
+
+**Independent services** - each owns its data and deploys separately
+
+## Monolith vs Microservices: Key Differences
+
+| Aspect | Monolith | Microservices |
+|--------|----------|---------------|
+| **Deployment** | All-or-nothing | Independent per service |
+| **Scaling** | Scale entire app | Scale individual services |
+| **Data** | Shared database | Database per service |
+| **Communication** | Function calls | Network calls (HTTP, messaging) |
+| **Failure** | One bug can crash all | Failures are isolated |
+| **Team Structure** | One team, or tightly coordinated | Independent teams per service |
+
+## When to Choose Monolith
+
+**Start with a monolith when:**
+
+- Small team (< 10 developers)
+- New product with uncertain requirements
+- Need to move fast and iterate
+- Simple deployment infrastructure
+- Tight budget for DevOps
+
+**Examples:**
+
+- Early-stage startups
+- Internal tools
+- MVPs and prototypes
+- Small e-commerce sites
+
+## When to Choose Microservices
+
+**Consider microservices when:**
+
+- Large team (multiple teams, 20+ developers)
+- Well-understood domain boundaries
+- Different scaling needs per feature
+- Need independent deployments
+- Can invest in DevOps infrastructure
+
+**Examples:**
+
+- Netflix (1000+ microservices)
+- Amazon (200+ teams)
+- Uber (2000+ microservices)
+
+## The Monolith-First Approach
+
+> "Don't start with microservices. Start with a monolith, keep it modular, and split when needed."
+>
+> — Martin Fowler
+
+```
+┌─────────────┐         ┌─────────────┐         ┌─────────────┐
+│  Monolith   │   ──►   │  Modular    │   ──►   │ Microservices│
+│   (MVP)     │         │  Monolith   │         │  (Scale)     │
+└─────────────┘         └─────────────┘         └─────────────┘
+    Phase 1                 Phase 2                 Phase 3
+```
+
+**Key insight:** Keep your monolith modular so it's easier to split later
+
+## Microservices: Real Costs
+
+| Hidden Cost | What It Means |
+|-------------|---------------|
+| **Network latency** | Every service call adds ~1-10ms |
+| **Distributed debugging** | Need tracing tools (Jaeger, Zipkin) |
+| **Data consistency** | No more ACID transactions across services |
+| **Deployment complexity** | Need Kubernetes, service mesh, CI/CD per service |
+| **Testing** | Integration tests become complex |
+| **Operational overhead** | More services = more things to monitor |
+
+**Rule of thumb:** If you don't have these problems, you don't need microservices
+
+# Patterns in Practice: Real Stacks {.section-slide background-color="#d6001c"}
+
+Mapping Architecture to Code
+
+## MERN Stack: Client Directory
+
+```
+mern-app/
+├── client/                    # PRESENTATION LAYER
+│   ├── src/
+│   │   ├── components/        # React UI components
+│   │   ├── pages/             # Route-level views
+│   │   ├── hooks/             # Custom React hooks
+│   │   ├── context/           # State management
+│   │   ├── services/          # API client calls
+│   │   └── utils/             # Frontend utilities
+│   └── package.json
+```
+
+**Presentation Layer:** Everything the user sees and interacts with
+
+## MERN Stack: Server Directory
+
+```
+├── server/                    # APPLICATION + DOMAIN + INFRASTRUCTURE
+│   ├── src/
+│   │   ├── routes/            # API endpoints (Application Layer)
+│   │   ├── controllers/       # Request handlers (Application Layer)
+│   │   ├── services/          # Business logic (Domain Layer)
+│   │   ├── models/            # Mongoose schemas (Domain + Infrastructure)
+│   │   ├── middleware/        # Auth, validation (Cross-cutting)
+│   │   └── utils/             # Shared utilities
+│   └── package.json
+│
+└── docker-compose.yml         # DEPLOYMENT/INFRASTRUCTURE
+```
+
+**Backend Layers:** Application, Domain, and Infrastructure combined
+
+## MERN: Layered Architecture Mapping
+
+```{mermaid}
+%%| fig-width: 14
+flowchart TB
+    subgraph Presentation["Presentation Layer (client/)"]
+        React[React Components]
+        Pages[Pages/Views]
+        Hooks[Custom Hooks]
+        Context[Context/State]
+    end
+
+    subgraph Application["Application Layer (server/)"]
+        Routes[routes/ - Express Routes]
+        Controllers[controllers/ - Request Handlers]
+        Middleware[middleware/ - Auth, Validation]
+    end
+
+    subgraph Domain["Domain Layer (server/)"]
+        Services[services/ - Business Logic]
+        Models[models/ - Entity Definitions]
+    end
+
+    subgraph Infrastructure["Infrastructure Layer"]
+        Mongoose[Mongoose ODM]
+        MongoDB[(MongoDB)]
+        External[External APIs]
+    end
+
+    Presentation --> Application
+    Application --> Domain
+    Domain --> Infrastructure
+```
+
+## MERN Code Flow: Presentation Layer
+
+**User Registration - Step 1:**
+
+```javascript
+// PRESENTATION: client/src/pages/Register.jsx
+const handleSubmit = async (formData) => {
+  const response = await userService.register(formData);
+  navigate('/dashboard');
+};
+```
+
+User clicks "Register" → React calls API service → Navigates on success
+
+## MERN Code Flow: Application Layer
+
+**User Registration - Steps 2 & 3:**
+
+```javascript
+// APPLICATION: server/src/routes/auth.js
+router.post('/register', validateRegistration, authController.register);
+
+// APPLICATION: server/src/controllers/authController.js
+const register = async (req, res) => {
+  const user = await userService.createUser(req.body);
+  const token = generateToken(user);
+  res.status(201).json({ user, token });
+};
+```
+
+Route receives request → Middleware validates → Controller orchestrates
+
+## MERN Code Flow: Domain & Infrastructure
+
+**User Registration - Steps 4 & 5:**
+
+```javascript
+// DOMAIN: server/src/services/userService.js
+const createUser = async (userData) => {
+  const hashedPassword = await bcrypt.hash(userData.password, 10);
+  return User.create({ ...userData, password: hashedPassword });
+};
+
+// INFRASTRUCTURE: server/src/models/User.js
+const userSchema = new mongoose.Schema({
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+  createdAt: { type: Date, default: Date.now }
+});
+```
+
+Service applies business rules → Model persists to MongoDB
+
+## MERN: Where Patterns Live
+
+| Pattern | MERN Implementation |
+|---------|---------------------|
+| **Layered** | client/ (presentation) → routes/controllers (application) → services (domain) → models (infrastructure) |
+| **Client-Server** | React SPA communicates with Express API via HTTP/REST |
+| **Repository** | Mongoose models abstract MongoDB operations |
+| **MVC** | Models (Mongoose), Views (React), Controllers (Express handlers) |
+| **API Gateway** | Express middleware chain handles auth, validation, routing |
+
+## Flask Stack: Core App Directory
+
+```
+flask-app/
+├── app/                       # Main application package
+│   ├── __init__.py            # App factory, configuration
+│   ├── routes/                # APPLICATION LAYER
+│   │   ├── auth.py            # Authentication endpoints
+│   │   ├── users.py           # User CRUD endpoints
+│   │   └── products.py        # Product endpoints
+│   │
+│   ├── services/              # DOMAIN LAYER
+│   │   ├── user_service.py    # User business logic
+│   │   └── product_service.py # Product business logic
+│   │
+│   ├── models/                # DOMAIN + INFRASTRUCTURE
+│   │   ├── user.py            # SQLAlchemy models
+│   │   └── product.py
+```
+
+## Flask Stack: Supporting Files
+
+```
+│   ├── schemas/               # Data Transfer Objects (DTOs)
+│   │   └── user_schema.py     # Marshmallow/Pydantic schemas
+│   │
+│   └── utils/                 # Cross-cutting concerns
+│       ├── auth.py            # JWT handling
+│       └── decorators.py      # Custom decorators
+│
+├── templates/                 # PRESENTATION (Jinja2)
+├── static/                    # Static assets
+├── migrations/                # Database migrations (Alembic)
+├── config.py                  # Configuration settings
+└── run.py                     # Application entry point
+```
+
+## Flask: Layered Architecture Mapping
+
+```{mermaid}
+%%| fig-width: 14
+flowchart TB
+    subgraph Presentation["Presentation Layer"]
+        Templates[templates/ - Jinja2]
+        Static[static/ - CSS/JS]
+        SPA[Or: Separate React/Vue SPA]
+    end
+
+    subgraph Application["Application Layer (app/)"]
+        Routes[routes/ - Flask Blueprints]
+        Schemas[schemas/ - Request/Response DTOs]
+        Decorators[utils/decorators.py]
+    end
+
+    subgraph Domain["Domain Layer (app/)"]
+        Services[services/ - Business Logic]
+        Models[models/ - Entity Definitions]
+    end
+
+    subgraph Infrastructure["Infrastructure Layer"]
+        SQLAlchemy[SQLAlchemy ORM]
+        PostgreSQL[(PostgreSQL)]
+        Redis[(Redis Cache)]
+    end
+
+    Presentation --> Application
+    Application --> Domain
+    Domain --> Infrastructure
+```
+
+## Flask Code Flow: Application Layer
+
+**User Registration - Step 1:**
+
+```python
+# APPLICATION: app/routes/auth.py
+from flask import Blueprint, request, jsonify
+from app.services.user_service import UserService
+from app.schemas.user_schema import UserCreateSchema, UserResponseSchema
+
+auth_bp = Blueprint('auth', __name__)
+
+@auth_bp.route('/register', methods=['POST'])
+def register():
+    schema = UserCreateSchema()
+    data = schema.load(request.json)  # Validate input
+    user = UserService.create_user(data)
+    return jsonify(UserResponseSchema().dump(user)), 201
+```
+
+Route receives request → Schema validates → Calls service
+
+## Flask Code Flow: Domain Layer
+
+**User Registration - Step 2:**
+
+```python
+# DOMAIN: app/services/user_service.py
+from app.models.user import User
+from app import db
+from werkzeug.security import generate_password_hash
+
+class UserService:
+    @staticmethod
+    def create_user(data):
+        user = User(
+            email=data['email'],
+            password_hash=generate_password_hash(data['password'])
+        )
+        db.session.add(user)
+        db.session.commit()
+        return user
+```
+
+Service contains business logic → Hashes password → Creates user
+
+## Flask Code Flow: Infrastructure Layer
+
+**User Registration - Step 3:**
+
+```python
+# INFRASTRUCTURE: app/models/user.py
+from app import db
+
+class User(db.Model):
+    __tablename__ = 'users'
+
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    password_hash = db.Column(db.String(256), nullable=False)
+    created_at = db.Column(db.DateTime, default=db.func.now())
+```
+
+SQLAlchemy model → Defines schema → Handles persistence to PostgreSQL
+
+## Flask: Where Patterns Live
+
+| Pattern | Flask Implementation |
+|---------|---------------------|
+| **Layered** | routes (application) → services (domain) → models (infrastructure) |
+| **Repository** | SQLAlchemy models + custom repository classes abstract DB |
+| **Factory** | `create_app()` function in `__init__.py` |
+| **Blueprint** | Modular route organization (Flask-specific) |
+| **DTO** | Marshmallow/Pydantic schemas for serialization |
+
+## MERN vs Flask: Architectural Comparison
+
+| Aspect | MERN | Flask |
+|--------|------|-------|
+| **Presentation** | React (separate SPA) | Jinja2 templates or separate SPA |
+| **API Layer** | Express routes + controllers | Flask Blueprints + route functions |
+| **Business Logic** | services/ directory | services/ directory |
+| **Data Access** | Mongoose ODM | SQLAlchemy ORM |
+| **Database** | MongoDB (document) | PostgreSQL/MySQL (relational) |
+| **Validation** | Joi, express-validator | Marshmallow, Pydantic |
+| **Auth Middleware** | Express middleware | Flask decorators |
+
+## Common Anti-Patterns to Avoid
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Fat Controllers/Routes
+
+```javascript
+// ❌ BAD: Business logic in controller
+router.post('/order', async (req, res) => {
+  // 50 lines of business logic here
+  // Validation, calculations, DB calls...
+});
+
+// ✅ GOOD: Thin controller, logic in service
+router.post('/order', async (req, res) => {
+  const order = await orderService.create(req.body);
+  res.json(order);
+});
+```
+:::
+
+::: {.column width="50%"}
+### Anemic Domain Model
+
+```python
+# ❌ BAD: Model is just data, no behavior
+class User(db.Model):
+    email = db.Column(db.String)
+    # All logic lives elsewhere
+
+# ✅ GOOD: Model has domain behavior
+class User(db.Model):
+    email = db.Column(db.String)
+
+    def can_purchase(self, item):
+        return self.balance >= item.price
+
+    def apply_discount(self, code):
+        # Domain logic here
+```
+:::
+
+::::
+
+## Architectural Decision: When to Use What
+
+| If You Need... | Consider |
+|----------------|----------|
+| Flexible schema, rapid iteration | MERN (MongoDB) |
+| Complex queries, transactions | Flask + PostgreSQL |
+| Real-time features | MERN + Socket.io |
+| Data science integration | Flask + Python ecosystem |
+| Large existing React codebase | MERN |
+| Team knows Python well | Flask |
+| Horizontal scaling priority | MERN (MongoDB sharding) |
+| Strong data integrity | Flask + PostgreSQL |
+
+# System Decomposition {.section-slide background-color="#d6001c"}
+
+## The Art of Decomposition
+
+> "The key to controlling complexity is a good domain model."
+>
+> — Eric Evans
+
+**Goal:** Break systems into pieces that are:
+
+- **Cohesive** - Related things together
+- **Loosely Coupled** - Minimal dependencies
+- **Independently Deployable** - Change without coordination
+- **Team-Sized** - One team can own it
+
+## Decomposition Strategies
+
+### 1. By Business Capability
+
+```
+E-commerce Platform
+├── Catalog Management     (Product team)
+├── Order Processing       (Fulfillment team)
+├── Customer Management    (CRM team)
+├── Payment Processing     (Finance team)
+└── Shipping & Delivery    (Logistics team)
+```
+
+### 2. By Subdomain (Domain-Driven Design)
+
+```
+├── Core Domain          (Competitive advantage)
+├── Supporting Domain    (Necessary but not differentiating)
+└── Generic Domain       (Commodity, buy or use OSS)
+```
+
+## Bounded Contexts
+
+```{mermaid}
+%%| fig-width: 14
+flowchart TB
+    subgraph Sales["Sales Context"]
+        SCustomer[Customer]
+        SProduct[Product]
+        SOrder[Order]
+    end
+
+    subgraph Shipping["Shipping Context"]
+        ShCustomer[Recipient]
+        ShOrder[Shipment]
+        ShAddress[Address]
+    end
+
+    subgraph Billing["Billing Context"]
+        BCustomer[Account]
+        BInvoice[Invoice]
+        BPayment[Payment]
+    end
+
+    Sales -->|Customer ID| Shipping
+    Sales -->|Order ID| Billing
+    Shipping -->|Shipment Status| Sales
+```
+
+**Key Insight:** Same concept (Customer) has different meanings in different contexts
+
+## Context Mapping
+
+| Pattern | Description | Example |
+|---------|-------------|---------|
+| **Shared Kernel** | Teams share a subset of model | Common types library |
+| **Customer-Supplier** | Upstream serves downstream | Orders → Shipping |
+| **Conformist** | Downstream adopts upstream model | Using external API as-is |
+| **Anti-Corruption Layer** | Translation layer | Legacy system integration |
+| **Open Host Service** | Published interface | Public API |
+| **Published Language** | Shared standard | Industry standard format |
+
+## Service Boundaries Checklist
+
+When defining service boundaries, ask:
+
+- [ ] Does it have a **single responsibility**?
+- [ ] Can it be **deployed independently**?
+- [ ] Does it own its **data**?
+- [ ] Can one **team** own it end-to-end?
+- [ ] Is the **interface** stable and well-defined?
+- [ ] Can it **fail independently** without cascading?
+- [ ] Is it **right-sized** (not too big, not too small)?
+
+## The Two-Pizza Rule
+
+> "If you can't feed a team with two pizzas, it's too big."
+>
+> — Jeff Bezos
+
+**Applied to Services:**
+- If one team can't understand the whole service, it's too big
+- If there's nothing meaningful a service can do alone, it's too small
+- Aim for services that map to teams and business capabilities
+
+# Quality Attributes {.section-slide background-color="#d6001c"}
+
+## Quality Attribute Scenarios
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                   Quality Attribute Scenario                     │
+├──────────────┬──────────────────────────────────────────────────┤
+│ Source       │ Who/what causes the stimulus                      │
+│ Stimulus     │ The event or condition                            │
+│ Environment  │ System state when stimulus occurs                 │
+│ Artifact     │ What part of system is affected                   │
+│ Response     │ How the system responds                           │
+│ Measure      │ How we evaluate the response                      │
+└──────────────┴──────────────────────────────────────────────────┘
+```
+
+**Example:**
+- **Source:** 1000 concurrent users
+- **Stimulus:** Request product search
+- **Environment:** Normal operations
+- **Artifact:** Search service
+- **Response:** Return results
+- **Measure:** 95th percentile < 200ms
+
+## Key Quality Attributes for Web Systems
+
+| Attribute | Question | Metric Example |
+|-----------|----------|----------------|
+| **Performance** | How fast? | Response time < 200ms |
+| **Scalability** | How much growth? | 10x users without redesign |
+| **Availability** | How reliable? | 99.9% uptime (8.76 hrs/year down) |
+| **Security** | How protected? | Zero critical vulnerabilities |
+| **Maintainability** | How easy to change? | New feature in < 1 week |
+| **Testability** | How verifiable? | 80% code coverage |
+
+## Trade-off Analysis
+
+Every architectural decision involves trade-offs:
+
+```{mermaid}
+%%| fig-width: 12
+flowchart LR
+    subgraph Decision["Add Caching Layer"]
+        Improves["✅ Improves"]
+        Costs["❌ Costs"]
+    end
+
+    Improves --> Perf[Performance]
+    Improves --> Scale[Scalability]
+    Improves --> Avail[Availability]
+
+    Costs --> Complex[Complexity]
+    Costs --> Consist[Consistency]
+    Costs --> Cost[Infrastructure Cost]
+```
+
+## Architecture Decision Records (ADRs)
+
+Document important decisions:
+
+```markdown
+# ADR 001: Use MongoDB for Primary Data Store
+
+## Status
+Accepted
+
+## Context
+We need a database for our MERN application that supports:
+- Flexible schema for evolving data models
+- Horizontal scaling for growing data
+- JSON-native storage for API compatibility
+
+## Decision
+We will use MongoDB as our primary data store.
+
+## Consequences
+### Positive
+- Schema flexibility accelerates development
+- Native JSON support simplifies API layer
+- Horizontal scaling with sharding
+
+### Negative
+- No ACID transactions across documents (until MongoDB 4.0+)
+- Complex queries may be less efficient than SQL
+- Team needs MongoDB expertise
+```
+
+# Project Scoping {.section-slide background-color="#d6001c"}
+
+## What Makes a Good Project?
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Good Scope
+
+- Clear problem statement
+- Well-defined user stories
+- Achievable in semester
+- Demonstrates patterns
+- Meaningful AI integration
+- Clear success criteria
+:::
+
+::: {.column width="50%"}
+### Poor Scope
+
+- "We'll build the next Facebook"
+- Vague requirements
+- Feature creep built-in
+- No architectural depth
+- AI as afterthought
+- No measurable outcome
+:::
+
+::::
+
+## Scoping Techniques
+
+### 1. MoSCoW Prioritization
+
+```
+MUST have    - Core functionality (MVP)
+SHOULD have  - Important but not critical
+COULD have   - Nice to have if time permits
+WON'T have   - Out of scope (explicitly)
+```
+
+### 2. User Story Mapping
+
+```
+                     User Journey
+    ┌────────┬────────┬────────┬────────┬────────┐
+    │  Sign  │ Browse │  Add   │  Check │ Track  │
+    │   Up   │Products│to Cart │  Out   │ Order  │
+    ├────────┼────────┼────────┼────────┼────────┤
+MVP │  ✓     │   ✓    │   ✓    │   ✓    │        │
+    ├────────┼────────┼────────┼────────┼────────┤
+v1.1│        │   ✓    │   ✓    │   ✓    │   ✓    │
+    └────────┴────────┴────────┴────────┴────────┘
+```
+
+## Estimation Techniques
+
+### T-Shirt Sizing
+
+| Size | Complexity | Example |
+|------|------------|---------|
+| XS | Trivial | Add validation message |
+| S | Simple | CRUD endpoint |
+| M | Moderate | User authentication |
+| L | Complex | Search with filters |
+| XL | Very complex | AI recommendation engine |
+
+### Planning Poker
+
+Team estimates relative complexity, discusses outliers
+
+## Risk Assessment
+
+Identify and mitigate project risks:
+
+| Risk | Likelihood | Impact | Mitigation |
+|------|------------|--------|------------|
+| Team member drops | Medium | High | Document knowledge, pair program |
+| Technology unknown | High | Medium | Spike early, have backup |
+| Scope creep | High | High | Fixed scope, say no |
+| Integration issues | Medium | High | Early integration, mocks |
+| AI API costs | Medium | Medium | Budget limits, caching |
+
+# Project Proposal {.section-slide background-color="#d6001c"}
+
+## Proposal Requirements
+
+**Due: January 30, 2026** (Presentations in class)
+
+### Required Sections
+
+1. **Problem Statement** - What problem are you solving?
+2. **Target Users** - Who benefits from this?
+3. **Core Features** - What does the MVP include?
+4. **Architecture Overview** - High-level system design
+5. **Technology Stack** - What tools and frameworks?
+6. **AI Integration** - How will AI/agents be used?
+7. **Team & Roles** - Who is responsible for what?
+8. **Risks & Mitigations** - What could go wrong?
+
+## Example Proposal Outline
+
+```markdown
+# Project: Smart Study Buddy
+
+## Problem Statement
+Students struggle to effectively review course material
+and identify knowledge gaps for exams.
+
+## Target Users
+- University students preparing for exams
+- Study groups collaborating on material
+
+## Core Features (MVP)
+1. Upload course materials (PDFs, notes)
+2. AI-generated practice questions
+3. Spaced repetition flashcards
+4. Progress tracking dashboard
+5. Study session scheduling
+
+## Architecture
+[Diagram showing frontend, API, database, AI service]
+
+## Tech Stack
+- Frontend: React + TypeScript
+- Backend: Node.js + Express
+- Database: MongoDB + PostgreSQL
+- AI: OpenAI API + LangChain
+- Infrastructure: Docker + GitHub Actions
+
+## AI Integration
+- Question generation from uploaded content
+- Adaptive difficulty based on performance
+- Natural language Q&A for clarification
+
+## Team
+- Alice: Frontend lead
+- Bob: Backend lead
+- Carol: AI/ML integration
+- Dave: DevOps and infrastructure
+
+## Risks
+- AI response quality → Human review, prompt engineering
+- Cost of API calls → Caching, rate limiting, budgeting
+```
+
+## Presentation Format (5-7 minutes)
+
+1. **Problem & Users** (1 min)
+   - What problem? Who cares?
+
+2. **Solution Overview** (2 min)
+   - Key features, demo mockup
+
+3. **Architecture** (2 min)
+   - System diagram, tech choices, why
+
+4. **AI Integration** (1 min)
+   - Specific AI capabilities
+
+5. **Team & Timeline** (1 min)
+   - Roles, major milestones
+
+## Evaluation Criteria
+
+| Criteria | Weight |
+|----------|--------|
+| Problem clarity and relevance | 20% |
+| Technical feasibility | 20% |
+| Architectural thinking | 20% |
+| AI integration meaningfulness | 15% |
+| Presentation quality | 15% |
+| Team organization | 10% |
+
+# Activity: Project Ideation {.section-slide background-color="#d6001c"}
+
+## Brainstorming Session (20 minutes)
+
+In your teams:
+
+1. **Individual** (5 min): Each person writes 3 project ideas
+2. **Share** (5 min): Present ideas to team, no judgment
+3. **Vote** (3 min): Each person gets 3 votes
+4. **Discuss** (7 min): Top 2-3 ideas - feasibility, interest
+
+## Idea Evaluation Matrix
+
+| Criteria | Idea 1 | Idea 2 | Idea 3 |
+|----------|--------|--------|--------|
+| Problem clarity | 1-5 | 1-5 | 1-5 |
+| Technical feasibility | 1-5 | 1-5 | 1-5 |
+| Team interest | 1-5 | 1-5 | 1-5 |
+| AI integration fit | 1-5 | 1-5 | 1-5 |
+| Uniqueness | 1-5 | 1-5 | 1-5 |
+| **Total** | | | |
+
+## Report Out (15 minutes)
+
+Each team shares:
+
+1. Your top project idea
+2. Why you chose it
+3. Biggest risk or concern
+4. One question for the class
+
+# Summary {.section-slide background-color="#d6001c"}
+
+## Key Takeaways
+
+1. **Patterns** provide proven solutions - know when to apply them
+2. **Decomposition** is about finding the right boundaries
+3. **Quality attributes** drive architectural decisions
+4. **Trade-offs** are inevitable - document and justify them
+5. **Scoping** is crucial - be explicit about what's out
+6. **ADRs** capture why decisions were made
+
+## Looking Ahead
+
+### Lab 1 Due: Friday, January 23
+
+- Complete MERN Docker Compose setup
+- README with instructions
+- Working demo
+
+### Project Proposals: Friday, January 30
+
+- 5-7 minute presentation
+- Problem, solution, architecture, AI, team
+
+## Reading for Next Week
+
+- [Martin Fowler: Patterns of Enterprise Application Architecture](https://martinfowler.com/eaaCatalog/)
+- [The Twelve-Factor App](https://12factor.net/)
+- [Microsoft: Cloud Design Patterns](https://docs.microsoft.com/en-us/azure/architecture/patterns/)
+
+## Questions?
+
+::: {.callout-box}
+**Office Hours:** Tuesday 9-11 AM, Pitt 2206
+
+**Email:** kuruzj@rpi.edu
+
+**Appointments:** [bit.ly/jason-rpi](https://bit.ly/jason-rpi)
+:::
+
+---
+
+Good luck with Lab 0 and your project proposals!
