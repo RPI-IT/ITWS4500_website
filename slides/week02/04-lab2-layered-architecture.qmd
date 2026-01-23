@@ -1,0 +1,1024 @@
+---
+title: "Layered Architecture"
+subtitle: "Domain, Application, and Infrastructure Patterns"
+author: "Jason Kuruzovich"
+date: "January 23, 2026"
+format:
+  revealjs:
+    navigation-mode: linear
+    mermaid:
+        theme: default
+    theme: [default, ../../slides-theme.scss]
+    logo: ../../static/logos/RPI_Logo_Binary_1_White.png
+    footer: "ITWS-4500 | Lab 2"
+    slide-number: true
+    transition: slide
+    width: 1600
+    height: 900
+    code-line-numbers: true
+    highlight-style: github
+    pdf-separate-fragments: false
+---
+
+# Layered Architecture {.section-slide background-color="#d6001c"}
+
+Separation of Concerns in Modern Applications
+
+## Today's Agenda
+
+::: {.learning-objectives}
+**Learning Objectives**
+
+1. Understand the **four-layer architecture** pattern
+2. Implement **domain entities** with business rules
+3. Write **application services** that orchestrate use cases
+4. Apply **validation and error handling** patterns
+5. Write **unit tests** for business logic
+6. Understand how layers connect through **dependency injection**
+
+:::
+
+## The Problem: Spaghetti Code
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Without Architecture
+
+```javascript
+app.post('/tasks', async (req, res) => {
+  // Validation mixed with DB logic
+  if (!req.body.title) {
+    return res.status(400).json({error: 'No title'});
+  }
+  // Business rules scattered everywhere
+  if (req.body.status === 'completed') {
+    req.body.completedAt = new Date();
+  }
+  // Direct database access
+  const task = await db.collection('tasks')
+    .insertOne(req.body);
+  res.json(task);
+});
+```
+
+- Business logic in controllers
+- Hard to test
+- Hard to maintain
+- Hard to reuse
+:::
+
+::: {.column width="50%"}
+### With Layered Architecture
+
+```javascript
+// Controller - just HTTP handling
+app.post('/tasks', async (req, res) => {
+  const task = await taskService.createTask(req.body);
+  res.json(task);
+});
+
+// Service - orchestration
+async createTask(data) {
+  const task = new Task(data);
+  task.validate();
+  return this.repository.save(task);
+}
+
+// Entity - business rules
+validate() {
+  if (!this.title) throw new ValidationError();
+}
+```
+
+- Clear separation
+- Easy to test
+- Easy to maintain
+- Reusable logic
+:::
+
+::::
+
+# The Four Layers {.section-slide background-color="#d6001c"}
+
+## Architecture Overview
+
+```{mermaid}
+%%| fig-width: 14
+flowchart TB
+    subgraph Presentation["Presentation Layer"]
+        Controllers[Controllers]
+        Routes[Routes]
+        Validators[HTTP Validators]
+    end
+
+    subgraph Application["Application Layer"]
+        Services[Application Services]
+        DTOs[Data Transfer Objects]
+    end
+
+    subgraph Domain["Domain Layer"]
+        Entities[Entities]
+        DomainServices[Domain Services]
+        Interfaces[Repository Interfaces]
+    end
+
+    subgraph Infrastructure["Infrastructure Layer"]
+        Repositories[Repositories]
+        Database[Database]
+        External[External Services]
+    end
+
+    Presentation --> Application
+    Application --> Domain
+    Infrastructure --> Domain
+    Infrastructure --> Database
+```
+
+## Layer Responsibilities
+
+| Layer | Responsibility | Dependencies |
+|-------|---------------|--------------|
+| **Presentation** | HTTP handling, routing, input validation | Application |
+| **Application** | Use case orchestration, transaction management | Domain |
+| **Domain** | Business rules, entities, core logic | None (pure) |
+| **Infrastructure** | Data persistence, external services | Domain interfaces |
+
+. . .
+
+**Key Principle:** Dependencies flow **downward only**. The Domain layer has **no dependencies** on other layers.
+
+## Why This Matters
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Testability
+
+```javascript
+// Test domain logic without database
+const task = new Task({
+  title: 'Test',
+  dueDate: yesterday
+});
+
+expect(task.isOverdue()).toBe(true);
+```
+
+- Unit test business rules in isolation
+- Mock repositories for service tests
+- Fast test execution
+:::
+
+::: {.column width="50%"}
+### Maintainability
+
+```
+Change request: "Add email notifications"
+
+Only modify:
+├── infrastructure/
+│   └── services/EmailService.js  ← New
+└── application/
+    └── services/TaskService.js   ← Inject & use
+
+Domain layer: unchanged
+Presentation layer: unchanged
+```
+
+- Changes isolated to specific layers
+- Clear boundaries reduce bugs
+- Easier onboarding for new developers
+:::
+
+::::
+
+# Domain Layer {.section-slide background-color="#d6001c"}
+
+The Heart of Your Application
+
+## What Belongs in the Domain Layer?
+
+The domain layer contains **pure business logic** with no external dependencies.
+
+```
+domain/
+├── entities/           # Core business objects
+│   └── Task.js         # Task with business methods
+├── services/           # Domain operations
+│   └── TaskDomainService.js
+├── interfaces/         # Contracts (ports)
+│   └── ITaskRepository.js
+└── errors/             # Business exceptions
+    └── DomainErrors.js
+```
+
+. . .
+
+**Rule:** If you can explain it to a non-technical stakeholder, it belongs in the domain.
+
+- "A task is overdue if the due date has passed" ✓
+- "We use MongoDB with Mongoose" ✗
+
+## Entity: The Task Class
+
+```javascript
+class Task {
+  constructor(data = {}) {
+    this.id = data.id || null;
+    this.title = data.title || '';
+    this.description = data.description || '';
+    this.status = data.status || 'pending';
+    this.priority = data.priority || 'medium';
+    this.dueDate = data.dueDate ? new Date(data.dueDate) : null;
+    this.createdAt = data.createdAt ? new Date(data.createdAt) : new Date();
+    this.updatedAt = data.updatedAt ? new Date(data.updatedAt) : new Date();
+  }
+
+  // Business methods go here...
+}
+```
+
+An entity is more than a data container - it **encapsulates business rules**.
+
+## Entity Methods: isOverdue()
+
+```javascript
+/**
+ * Check if the task is overdue
+ * Business rule: A task is overdue if:
+ * - It has a due date
+ * - It's not completed
+ * - The due date is in the past
+ */
+isOverdue() {
+  if (!this.dueDate) return false;
+  if (this.status === 'completed') return false;
+  return new Date() > this.dueDate;
+}
+```
+
+. . .
+
+**Test it:**
+```javascript
+const task = new Task({
+  title: 'Review PR',
+  dueDate: new Date('2024-01-01'),
+  status: 'pending'
+});
+
+expect(task.isOverdue()).toBe(true);
+```
+
+## Entity Methods: complete()
+
+```javascript
+/**
+ * Mark the task as completed
+ * Updates status and timestamp
+ */
+complete() {
+  this.status = 'completed';
+  this.updatedAt = new Date();
+}
+```
+
+. . .
+
+**Why a method instead of direct assignment?**
+
+```javascript
+// Bad: Business logic scattered
+task.status = 'completed';
+task.updatedAt = new Date();
+// Did we forget anything? Who knows...
+
+// Good: Encapsulated behavior
+task.complete();
+// All related changes happen together
+```
+
+## Entity Methods: validate()
+
+```javascript
+/**
+ * Validate the task against business rules
+ * @returns {string[]} Array of error messages
+ */
+validate() {
+  const errors = [];
+
+  // Title is required and must be 3-100 characters
+  if (!this.title || this.title.trim().length === 0) {
+    errors.push('Title is required');
+  } else if (this.title.length < 3 || this.title.length > 100) {
+    errors.push('Title must be between 3 and 100 characters');
+  }
+
+  // Status must be valid
+  const validStatuses = ['pending', 'in-progress', 'completed'];
+  if (!validStatuses.includes(this.status)) {
+    errors.push(`Status must be one of: ${validStatuses.join(', ')}`);
+  }
+
+  // Priority must be valid
+  const validPriorities = ['low', 'medium', 'high'];
+  if (!validPriorities.includes(this.priority)) {
+    errors.push(`Priority must be one of: ${validPriorities.join(', ')}`);
+  }
+
+  return errors;
+}
+```
+
+## Domain Service: Business Operations
+
+```javascript
+class TaskDomainService {
+  /**
+   * Check if a status transition is valid
+   * Business rules:
+   * - pending → in-progress (start work)
+   * - in-progress → completed (finish work)
+   * - any → pending (reset/reopen)
+   */
+  canTransitionStatus(currentStatus, newStatus) {
+    // Same status is always allowed
+    if (currentStatus === newStatus) return true;
+
+    // Can always reset to pending
+    if (newStatus === 'pending') return true;
+
+    // Define valid transitions
+    const transitions = {
+      'pending': ['in-progress'],
+      'in-progress': ['completed']
+    };
+
+    return transitions[currentStatus]?.includes(newStatus) || false;
+  }
+}
+```
+
+## Domain Service: Priority Scoring
+
+```javascript
+/**
+ * Calculate a priority score (1-10) for sorting/display
+ * Higher score = more urgent
+ */
+calculatePriorityScore(task) {
+  // Base score from priority level
+  const priorityBase = {
+    'low': 2,
+    'medium': 5,
+    'high': 8
+  };
+
+  let score = priorityBase[task.priority] || 5;
+
+  // Adjust for due date proximity
+  if (task.dueDate) {
+    const daysUntilDue = Math.ceil(
+      (new Date(task.dueDate) - new Date()) / (1000 * 60 * 60 * 24)
+    );
+
+    if (daysUntilDue < 0) score = 10;        // Overdue
+    else if (daysUntilDue <= 1) score += 2;  // Due today/tomorrow
+    else if (daysUntilDue <= 7) score += 1;  // Due this week
+  }
+
+  return Math.min(10, Math.max(1, score));
+}
+```
+
+## Repository Interface (Port)
+
+```javascript
+/**
+ * Repository interface - defines what we need from persistence
+ * The DOMAIN defines this, INFRASTRUCTURE implements it
+ */
+class ITaskRepository {
+  async findAll(filters) { throw new Error('Not implemented'); }
+  async findById(id) { throw new Error('Not implemented'); }
+  async save(task) { throw new Error('Not implemented'); }
+  async update(id, task) { throw new Error('Not implemented'); }
+  async delete(id) { throw new Error('Not implemented'); }
+}
+```
+
+. . .
+
+**Dependency Inversion Principle:**
+
+- Domain defines the interface (what it needs)
+- Infrastructure provides the implementation (how it's done)
+- Domain doesn't know about MongoDB, SQL, or any specific technology
+
+# Application Layer {.section-slide background-color="#d6001c"}
+
+Orchestrating Use Cases
+
+## What Belongs in the Application Layer?
+
+The application layer **coordinates** between presentation and domain.
+
+```
+application/
+├── services/
+│   └── TaskService.js    # Use case orchestration
+└── errors/
+    └── ApplicationErrors.js
+```
+
+. . .
+
+**Responsibilities:**
+
+- Orchestrate multiple domain operations
+- Handle transactions
+- Convert between DTOs and entities
+- Apply application-level validation
+- Throw application-specific errors
+
+## Application Service Pattern
+
+```javascript
+class TaskService {
+  constructor(taskRepository, domainService) {
+    // Dependencies injected - easy to test with mocks
+    this.taskRepository = taskRepository;
+    this.domainService = domainService;
+  }
+
+  // Use case methods...
+}
+```
+
+**Key Insight:** The service doesn't create its dependencies - they're **injected**. This enables:
+
+- Unit testing with mock repositories
+- Swapping implementations (MongoDB → PostgreSQL)
+- Clear dependency graph
+
+## Use Case: Create Task
+
+```javascript
+async createTask(taskData) {
+  // 1. Create domain entity
+  const task = new Task({
+    ...taskData,
+    status: 'pending',
+    createdAt: new Date(),
+    updatedAt: new Date()
+  });
+
+  // 2. Validate using domain rules
+  const errors = task.validate();
+  if (errors.length > 0) {
+    throw new ValidationError('Invalid task data', errors);
+  }
+
+  // 3. Persist via repository
+  const savedTask = await this.taskRepository.save(task);
+
+  // 4. Return the result
+  return savedTask;
+}
+```
+
+## Use Case: Update Task Status
+
+```javascript
+async updateTaskStatus(id, newStatus) {
+  // 1. Get existing task
+  const task = await this.taskRepository.findById(id);
+  if (!task) {
+    throw new NotFoundError(`Task with id ${id} not found`);
+  }
+
+  // 2. Validate transition using domain service
+  if (!this.domainService.canTransitionStatus(task.status, newStatus)) {
+    throw new ValidationError(
+      `Cannot transition from '${task.status}' to '${newStatus}'`
+    );
+  }
+
+  // 3. Update and persist
+  task.status = newStatus;
+  task.updatedAt = new Date();
+
+  return await this.taskRepository.update(id, task);
+}
+```
+
+## Use Case: Get Task Statistics
+
+```javascript
+async getTaskStatistics() {
+  // 1. Get all tasks
+  const tasks = await this.taskRepository.findAll();
+
+  // 2. Calculate statistics using domain logic
+  const overdueTasks = this.domainService.getOverdueTasks(tasks);
+
+  // 3. Aggregate results
+  return {
+    total: tasks.length,
+    byStatus: {
+      pending: tasks.filter(t => t.status === 'pending').length,
+      inProgress: tasks.filter(t => t.status === 'in-progress').length,
+      completed: tasks.filter(t => t.status === 'completed').length
+    },
+    overdue: overdueTasks.length,
+    averagePriorityScore: this.calculateAveragePriority(tasks)
+  };
+}
+```
+
+## Error Handling Strategy
+
+```javascript
+// Domain errors - business rule violations
+class ValidationError extends Error {
+  constructor(message, errors = []) {
+    super(message);
+    this.name = 'ValidationError';
+    this.errors = errors;
+    this.statusCode = 400;
+  }
+}
+
+// Application errors - resource issues
+class NotFoundError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = 'NotFoundError';
+    this.statusCode = 404;
+  }
+}
+```
+
+. . .
+
+**Error flow:** Domain/Application → Controller → HTTP Response
+
+```javascript
+// In error middleware
+if (error instanceof NotFoundError) {
+  return res.status(404).json({ error: error.message });
+}
+```
+
+# Infrastructure Layer {.section-slide background-color="#d6001c"}
+
+Implementing Persistence
+
+## Repository Implementation
+
+```javascript
+class MongoTaskRepository {
+  async findById(id) {
+    const doc = await TaskModel.findById(id);
+    if (!doc) return null;
+    return this.toEntity(doc);  // Convert to domain entity
+  }
+
+  async save(task) {
+    const doc = new TaskModel(this.toDocument(task));
+    const saved = await doc.save();
+    return this.toEntity(saved);
+  }
+
+  // Convert between MongoDB document and domain entity
+  toEntity(doc) {
+    return new Task({
+      id: doc._id.toString(),
+      title: doc.title,
+      status: doc.status,
+      // ... other fields
+    });
+  }
+
+  toDocument(task) {
+    return {
+      title: task.title,
+      status: task.status,
+      // ... other fields
+    };
+  }
+}
+```
+
+## Why Separate Entity and Document?
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Domain Entity
+```javascript
+class Task {
+  id: string
+  title: string
+  status: 'pending' | 'in-progress' | 'completed'
+  dueDate: Date
+
+  isOverdue() { ... }
+  complete() { ... }
+  validate() { ... }
+}
+```
+
+- Has behavior (methods)
+- Uses domain language
+- No database concerns
+:::
+
+::: {.column width="50%"}
+### MongoDB Document
+```javascript
+const TaskSchema = {
+  _id: ObjectId,
+  title: String,
+  status: String,
+  due_date: Date,
+  created_at: Date,
+  __v: Number
+}
+```
+
+- Pure data
+- Database conventions (_id, __v)
+- Mongoose-specific concerns
+:::
+
+::::
+
+. . .
+
+**The repository translates between these two representations.**
+
+# Dependency Injection {.section-slide background-color="#d6001c"}
+
+Wiring It All Together
+
+## The Composition Root
+
+```javascript
+// index.js - Application entry point
+import express from 'express';
+import { connectDB } from './infrastructure/database/connection.js';
+import { MongoTaskRepository } from './infrastructure/repositories/MongoTaskRepository.js';
+import { TaskDomainService } from './domain/services/TaskDomainService.js';
+import { TaskService } from './application/services/TaskService.js';
+import { TaskController } from './presentation/controllers/TaskController.js';
+import { createTaskRoutes } from './presentation/routes/taskRoutes.js';
+
+async function bootstrap() {
+  await connectDB();
+
+  // Create instances (dependency injection)
+  const taskRepository = new MongoTaskRepository();
+  const domainService = new TaskDomainService();
+  const taskService = new TaskService(taskRepository, domainService);
+  const taskController = new TaskController(taskService);
+
+  // Wire up routes
+  const app = express();
+  app.use('/api/tasks', createTaskRoutes(taskController));
+
+  app.listen(3000);
+}
+
+bootstrap();
+```
+
+## Dependency Flow Visualization
+
+```{mermaid}
+%%| fig-width: 14
+flowchart LR
+    subgraph Composition["Composition Root (index.js)"]
+        direction TB
+        Boot[Bootstrap]
+    end
+
+    subgraph Infra["Infrastructure"]
+        Repo[MongoTaskRepository]
+    end
+
+    subgraph Domain["Domain"]
+        DS[TaskDomainService]
+        Entity[Task Entity]
+    end
+
+    subgraph App["Application"]
+        AS[TaskService]
+    end
+
+    subgraph Pres["Presentation"]
+        Ctrl[TaskController]
+        Routes[Express Routes]
+    end
+
+    Boot --> Repo
+    Boot --> DS
+    Boot --> AS
+    Boot --> Ctrl
+    Boot --> Routes
+
+    AS --> Repo
+    AS --> DS
+    AS --> Entity
+    Ctrl --> AS
+    Routes --> Ctrl
+```
+
+## Benefits of Dependency Injection
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### For Testing
+```javascript
+// Unit test with mock repository
+const mockRepo = {
+  findById: jest.fn().mockResolvedValue(
+    new Task({ id: '1', title: 'Test' })
+  )
+};
+
+const service = new TaskService(
+  mockRepo,
+  new TaskDomainService()
+);
+
+// Test without real database!
+const task = await service.getTaskById('1');
+expect(mockRepo.findById).toHaveBeenCalledWith('1');
+```
+:::
+
+::: {.column width="50%"}
+### For Flexibility
+```javascript
+// Swap implementations easily
+const taskRepository = process.env.DB_TYPE === 'postgres'
+  ? new PostgresTaskRepository()
+  : new MongoTaskRepository();
+
+// Same service, different storage
+const taskService = new TaskService(
+  taskRepository,
+  domainService
+);
+```
+:::
+
+::::
+
+# Testing Strategy {.section-slide background-color="#d6001c"}
+
+## Testing Pyramid
+
+```
+                    ┌───────────┐
+                   /   E2E      \           Few, slow, expensive
+                  / (Playwright) \
+                 /─────────────────\
+                /   Integration     \       Some, medium speed
+               /   (Supertest +     \
+              /      MongoDB)        \
+             /─────────────────────────\
+            /       Unit Tests          \   Many, fast, cheap
+           /    (Jest + Mocks)           \
+          /───────────────────────────────\
+```
+
+Layered architecture makes each level easier to test.
+
+## Unit Testing Domain Logic
+
+```javascript
+describe('Task Entity', () => {
+  describe('isOverdue', () => {
+    it('returns true when due date is in the past', () => {
+      const task = new Task({
+        title: 'Test Task',
+        dueDate: new Date('2024-01-01'),
+        status: 'pending'
+      });
+
+      expect(task.isOverdue()).toBe(true);
+    });
+
+    it('returns false for completed tasks', () => {
+      const task = new Task({
+        title: 'Test Task',
+        dueDate: new Date('2024-01-01'),
+        status: 'completed'
+      });
+
+      expect(task.isOverdue()).toBe(false);
+    });
+
+    it('returns false when no due date', () => {
+      const task = new Task({
+        title: 'Test Task',
+        status: 'pending'
+      });
+
+      expect(task.isOverdue()).toBe(false);
+    });
+  });
+});
+```
+
+## Unit Testing Application Services
+
+```javascript
+describe('TaskService', () => {
+  let taskService;
+  let mockRepository;
+  let domainService;
+
+  beforeEach(() => {
+    mockRepository = {
+      findById: jest.fn(),
+      save: jest.fn(),
+      update: jest.fn()
+    };
+    domainService = new TaskDomainService();
+    taskService = new TaskService(mockRepository, domainService);
+  });
+
+  describe('updateTaskStatus', () => {
+    it('throws NotFoundError when task does not exist', async () => {
+      mockRepository.findById.mockResolvedValue(null);
+
+      await expect(taskService.updateTaskStatus('123', 'completed'))
+        .rejects.toThrow(NotFoundError);
+    });
+
+    it('throws ValidationError for invalid transition', async () => {
+      mockRepository.findById.mockResolvedValue(
+        new Task({ id: '123', status: 'pending' })
+      );
+
+      await expect(taskService.updateTaskStatus('123', 'completed'))
+        .rejects.toThrow(ValidationError);
+    });
+  });
+});
+```
+
+## Integration Testing
+
+```javascript
+describe('Task API', () => {
+  beforeAll(async () => {
+    await connectDB(process.env.TEST_MONGODB_URI);
+  });
+
+  afterEach(async () => {
+    await TaskModel.deleteMany({});
+  });
+
+  describe('POST /api/tasks', () => {
+    it('creates a new task', async () => {
+      const response = await request(app)
+        .post('/api/tasks')
+        .send({
+          title: 'Integration Test Task',
+          priority: 'high'
+        });
+
+      expect(response.status).toBe(201);
+      expect(response.body.success).toBe(true);
+      expect(response.body.data.title).toBe('Integration Test Task');
+    });
+
+    it('returns 400 for invalid data', async () => {
+      const response = await request(app)
+        .post('/api/tasks')
+        .send({ title: 'AB' });  // Too short
+
+      expect(response.status).toBe(400);
+      expect(response.body.success).toBe(false);
+    });
+  });
+});
+```
+
+# Lab 2 Walkthrough {.section-slide background-color="#d6001c"}
+
+## Project Structure
+
+```
+lab2-server/
+├── src/
+│   ├── presentation/           # PROVIDED - complete
+│   │   ├── controllers/        # TaskController
+│   │   ├── routes/             # Express routes
+│   │   └── validators/         # Input validation
+│   ├── application/            # TODO - implement
+│   │   └── services/           # TaskService
+│   ├── domain/                 # TODO - implement
+│   │   ├── entities/           # Task entity
+│   │   ├── interfaces/         # Repository interface
+│   │   └── services/           # TaskDomainService
+│   └── infrastructure/         # PROVIDED - complete
+│       ├── database/           # MongoDB connection
+│       └── repositories/       # MongoTaskRepository
+└── tests/
+    ├── unit/                   # Unit tests
+    └── integration/            # API tests
+```
+
+## Your Tasks
+
+| File | Methods to Implement |
+|------|---------------------|
+| `domain/entities/Task.js` | `isOverdue()`, `complete()`, `validate()` |
+| `domain/services/TaskDomainService.js` | `canTransitionStatus()`, `calculatePriorityScore()`, `getOverdueTasks()` |
+| `application/services/TaskService.js` | All 7 service methods |
+
+. . .
+
+**Tips:**
+
+1. Start with the domain layer (Task entity)
+2. Run tests frequently: `npm test`
+3. Read the existing code to understand patterns
+4. Look for `// TODO:` comments with hints
+
+## Quick Start Commands
+
+```bash
+# Install all dependencies
+npm run install:all
+
+# Copy environment file
+cp lab2-server/.env.example lab2-server/.env
+
+# Start with Docker (recommended)
+npm run docker:up
+
+# OR run locally
+docker compose up mongo -d
+npm run dev:server
+npm run dev:client  # In another terminal
+
+# Run tests
+npm test
+
+# Verify setup
+curl http://localhost:3000/health
+curl http://localhost:3000/api/tasks
+```
+
+# Key Takeaways {.section-slide background-color="#d6001c"}
+
+## Summary
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Architecture Benefits
+
+- **Separation of concerns** - each layer has one job
+- **Testability** - test business logic without infrastructure
+- **Maintainability** - changes isolated to specific layers
+- **Flexibility** - swap implementations easily
+
+:::
+
+::: {.column width="50%"}
+### Layer Rules
+
+- **Presentation** - HTTP only, no business logic
+- **Application** - orchestration, no domain rules
+- **Domain** - pure business logic, no dependencies
+- **Infrastructure** - implements domain interfaces
+
+:::
+
+::::
+
+. . .
+
+**Remember:** Dependencies flow **downward**. The domain layer is the **heart** of your application.
+
+## Questions?
+
+::: {.center-content}
+### Resources
+
+- [Clean Architecture by Robert C. Martin](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
+- [Domain-Driven Design by Eric Evans](https://www.domainlanguage.com/ddd/)
+- [SOLID Principles](https://en.wikipedia.org/wiki/SOLID)
+- Lab 2 `ARCHITECTURE.md` for detailed documentation
+
+:::

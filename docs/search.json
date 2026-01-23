@@ -18,7 +18,7 @@
     "href": "schedule.html#weekly-schedule",
     "title": "Course Schedule",
     "section": "Weekly Schedule",
-    "text": "Weekly Schedule\n\nWeek 1: Course Foundation\nJanuary 13-16, 2026\nBackground Readings: Week 1 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 1/13\nLecture\nCourse Introduction: Web Applications as Architectural Patterns; Group Formation\nSlides\n\n\nFri 1/16\nLecture + Lab\nInfrastructure as Code: Containers, Docker, and Docker Compose; Lab 1 Assigned\nSlides, Lab 1\n\n\n\n\n\n\n\n\n\nTipGetting Started\n\n\n\n\nForm project groups (3-4 members)\nInstall Docker Desktop\nSet up development environment\nLab 1 Due: January 23, 2026\n\n\n\n\n\n\nWeek 2: Architecture Foundations\nJanuary 20-23, 2026\nBackground Readings: Week 2 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 1/20\nLecture\nArchitectural Theory: Patterns, System Decomposition, and Project Scoping\nSlides\n\n\nFri 1/23\nLab\nLab 2: Layered Client-Server Architecture (MERN as Reference)\nLab 2\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nLab 2 Due: January 27, 2026\n\n\n\n\n\nWeek 3: Component Architecture\nJanuary 27-30, 2026\nBackground Readings: Week 3 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 1/27\nLab\nLab 3: Component and State Management Architecture (Angular/React)\nLab 3\n\n\nFri 1/30\nLecture + Presentations\nFrontend Architecture Patterns; Project Proposal Presentations\nSlides\n\n\n\n\n\n\n\n\n\nWarning\n\n\n\nProject Proposals Due: January 30, 2026 Lab 3 Due: February 3, 2026\n\n\n\n\n\nWeek 4: Backend Architecture\nFebruary 3-6, 2026\nBackground Readings: Week 4 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 2/3\nLab\nLab 4: Backend Architecture Patterns (Node.js & Express)\nLab 4\n\n\nFri 2/6\nLecture\nBackend Architecture Patterns: Services, APIs, and Data Flow\nSlides\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nLab 4 Due: February 10, 2026\n\n\n\n\n\nWeek 5: Data Architecture\nFebruary 10-13, 2026\nBackground Readings: Week 5 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 2/10\nLab\nLab 5: Polyglot Persistence (MongoDB & PostgreSQL)\nLab 5\n\n\nFri 2/13\nLecture\nData Architecture Patterns: Polyglot Persistence - Document vs Relational Trade-offs\nSlides\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nLab 5 Due: February 17, 2026\n\n\n\n\n\nWeek 6: Quiz 1\nFebruary 17-20, 2026\nBackground Readings: Week 6 Readings\n\n\n\n\n\n\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 2/17\nNo Class\nPresidents’ Day Week - No Tuesday Class\n-\n\n\nFri 2/20\nQuiz\nQuiz 1: Architectural Foundations and System Design\nStudy Guide\n\n\n\n\n\n\n\n\n\nImportantQuiz 1\n\n\n\nCovers Weeks 1-5: Infrastructure as Code, Architectural Patterns, Frontend/Backend/Data Architecture\n\n\n\n\n\nWeek 7: Midterm Project Review\nFebruary 24-27, 2026\nBackground Readings: Week 7 Readings\n\n\n\n\n\n\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 2/24\nPresentations\nMidterm Project Presentations: Architectural Decisions and Trade-offs\nGuidelines\n\n\nFri 2/27\nWorkshop\nProject Work Day: Refactoring and Architectural Improvement\n-\n\n\n\n\n\n\nSpring Break\nMarch 2-6, 2026 - No Classes\n\n\n\nWeek 8: Authentication & Mobile\nMarch 10-13, 2026\nBackground Readings: Week 8 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 3/10\nLecture\nIdentity, Authentication, and Mobile Architecture Patterns\nSlides TBD\n\n\nFri 3/13\nLab\nLab 6: Authentication and Mobile Application Architecture\nLab 6\n\n\n\n\n\n\nWeek 9: Agentic AI I\nMarch 17-20, 2026\nBackground Readings: Week 9 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 3/17\nLecture\nAgentic Architecture Patterns I: Agents as Workflow Systems\nSlides TBD\n\n\nFri 3/20\nLab\nLab 7: Agentic Workflows\nLab 7\n\n\n\n\n\n\nWeek 10: Agentic AI II\nMarch 24-27, 2026\nBackground Readings: Week 10 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 3/24\nLecture\nAgentic Architecture Patterns II: Orchestration, Memory, and Governance\nSlides TBD\n\n\nFri 3/27\nLab\nLab 8: Agent Orchestration and Tooling Patterns\nLab 8\n\n\n\n\n\n\nWeek 11: Continuous Integration\nMarch 31 - April 3, 2026\nBackground Readings: Week 11 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 3/31\nLecture\nContinuous Integration and Testing as Architecture\nSlides TBD\n\n\nFri 4/3\nLab\nLab 9: CI Pipelines and Automated Testing\nLab 9\n\n\n\n\n\n\nWeek 12: AI-Assisted Development\nApril 7-10, 2026\nBackground Readings: Week 12 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 4/7\nLecture\nAI-Assisted Development: Human-AI Collaboration Patterns\nSlides TBD\n\n\nFri 4/10\nLab\nLab 10: AI-Assisted Coding and Testing\nLab 10\n\n\n\n\n\n\nWeek 13: Deployment Architecture\nApril 14-17, 2026\nBackground Readings: Week 13 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 4/14\nLecture\nDeployment & Runtime Architecture: Cloud Patterns, Caching, Scaling, and Cost\nSlides TBD\n\n\nFri 4/17\nLab\nLab 11: Containerized Deployment, Caching, Scaling, and Reliability\nLab 11\n\n\n\n\n\n\nWeek 14: Quiz 2 & Capstone\nApril 21-24, 2026\nBackground Readings: Week 14 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 4/21\nQuiz\nQuiz 2: Comprehensive Architectural and Systems Reasoning\nStudy Guide\n\n\nFri 4/24\nLab\nLab 12: Capstone Extension - Architectural Experimentation / Project Hardening\nLab 12\n\n\n\n\n\n\n\n\n\nImportantQuiz 2\n\n\n\nComprehensive assessment covering all course material, with emphasis on Weeks 8-13\n\n\n\n\n\nWeek 15: Final Presentations\nApril 28, 2026\nBackground Readings: Week 15 Readings\n\n\n\n\n\n\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 4/28\nPresentations\nFinal Project Presentations: Evaluation, Feedback, and Reflection\nGuidelines\n\n\n\n\n\n\n\n\n\nNoteFinal Project Deliverables\n\n\n\n\nWorking deployed application\nTechnical documentation\nArchitecture decision records\nIndividual contribution summary\nPeer evaluations"
+    "text": "Weekly Schedule\n\nWeek 1: Course Foundation\nJanuary 13-16, 2026\nBackground Readings: Week 1 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 1/13\nLecture\nCourse Introduction: Web Applications as Architectural Patterns; Group Formation\nSlides\n\n\nFri 1/16\nLecture + Lab\nInfrastructure as Code: Containers, Docker, and Docker Compose; Lab 1 Assigned\nSlides, Lab 1\n\n\n\n\n\n\n\n\n\nTipGetting Started\n\n\n\n\nForm project groups (3-4 members)\nInstall Docker Desktop\nSet up development environment\nLab 1 Due: January 23, 2026\n\n\n\n\n\n\nWeek 2: Architecture Foundations\nJanuary 20-23, 2026\nBackground Readings: Week 2 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 1/20\nLecture\nLab 1 Review; Architectural Theory: Patterns, System Decomposition, and Project Scoping\nLab 1 Slides, Theory Slides\n\n\nFri 1/23\nLecture + Lab\nLab 2: Layered Client-Server Architecture (MERN as Reference)\nSlides, Lab 2\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nLab 2 Due: January 27, 2026\n\n\n\n\n\nWeek 3: Component Architecture\nJanuary 27-30, 2026\nBackground Readings: Week 3 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 1/27\nLab\nLab 3: Component and State Management Architecture (Angular/React)\nLab 3\n\n\nFri 1/30\nLecture + Presentations\nFrontend Architecture Patterns; Project Proposal Presentations\nSlides\n\n\n\n\n\n\n\n\n\nWarning\n\n\n\nProject Proposals Due: January 30, 2026 Lab 3 Due: February 3, 2026\n\n\n\n\n\nWeek 4: Backend Architecture\nFebruary 3-6, 2026\nBackground Readings: Week 4 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 2/3\nLab\nLab 4: Backend Architecture Patterns (Node.js & Express)\nLab 4\n\n\nFri 2/6\nLecture\nBackend Architecture Patterns: Services, APIs, and Data Flow\nSlides\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nLab 4 Due: February 10, 2026\n\n\n\n\n\nWeek 5: Data Architecture\nFebruary 10-13, 2026\nBackground Readings: Week 5 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 2/10\nLab\nLab 5: Polyglot Persistence (MongoDB & PostgreSQL)\nLab 5\n\n\nFri 2/13\nLecture\nData Architecture Patterns: Polyglot Persistence - Document vs Relational Trade-offs\nSlides\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nLab 5 Due: February 17, 2026\n\n\n\n\n\nWeek 6: Quiz 1\nFebruary 17-20, 2026\nBackground Readings: Week 6 Readings\n\n\n\n\n\n\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 2/17\nNo Class\nPresidents’ Day Week - No Tuesday Class\n-\n\n\nFri 2/20\nQuiz\nQuiz 1: Architectural Foundations and System Design\nStudy Guide\n\n\n\n\n\n\n\n\n\nImportantQuiz 1\n\n\n\nCovers Weeks 1-5: Infrastructure as Code, Architectural Patterns, Frontend/Backend/Data Architecture\n\n\n\n\n\nWeek 7: Midterm Project Review\nFebruary 24-27, 2026\nBackground Readings: Week 7 Readings\n\n\n\n\n\n\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 2/24\nPresentations\nMidterm Project Presentations: Architectural Decisions and Trade-offs\nGuidelines\n\n\nFri 2/27\nWorkshop\nProject Work Day: Refactoring and Architectural Improvement\n-\n\n\n\n\n\n\nSpring Break\nMarch 2-6, 2026 - No Classes\n\n\n\nWeek 8: Authentication & Mobile\nMarch 10-13, 2026\nBackground Readings: Week 8 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 3/10\nLecture\nIdentity, Authentication, and Mobile Architecture Patterns\nSlides TBD\n\n\nFri 3/13\nLab\nLab 6: Authentication and Mobile Application Architecture\nLab 6\n\n\n\n\n\n\nWeek 9: Agentic AI I\nMarch 17-20, 2026\nBackground Readings: Week 9 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 3/17\nLecture\nAgentic Architecture Patterns I: Agents as Workflow Systems\nSlides TBD\n\n\nFri 3/20\nLab\nLab 7: Agentic Workflows\nLab 7\n\n\n\n\n\n\nWeek 10: Agentic AI II\nMarch 24-27, 2026\nBackground Readings: Week 10 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 3/24\nLecture\nAgentic Architecture Patterns II: Orchestration, Memory, and Governance\nSlides TBD\n\n\nFri 3/27\nLab\nLab 8: Agent Orchestration and Tooling Patterns\nLab 8\n\n\n\n\n\n\nWeek 11: Continuous Integration\nMarch 31 - April 3, 2026\nBackground Readings: Week 11 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 3/31\nLecture\nContinuous Integration and Testing as Architecture\nSlides TBD\n\n\nFri 4/3\nLab\nLab 9: CI Pipelines and Automated Testing\nLab 9\n\n\n\n\n\n\nWeek 12: AI-Assisted Development\nApril 7-10, 2026\nBackground Readings: Week 12 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 4/7\nLecture\nAI-Assisted Development: Human-AI Collaboration Patterns\nSlides TBD\n\n\nFri 4/10\nLab\nLab 10: AI-Assisted Coding and Testing\nLab 10\n\n\n\n\n\n\nWeek 13: Deployment Architecture\nApril 14-17, 2026\nBackground Readings: Week 13 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 4/14\nLecture\nDeployment & Runtime Architecture: Cloud Patterns, Caching, Scaling, and Cost\nSlides TBD\n\n\nFri 4/17\nLab\nLab 11: Containerized Deployment, Caching, Scaling, and Reliability\nLab 11\n\n\n\n\n\n\nWeek 14: Quiz 2 & Capstone\nApril 21-24, 2026\nBackground Readings: Week 14 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 4/21\nQuiz\nQuiz 2: Comprehensive Architectural and Systems Reasoning\nStudy Guide\n\n\nFri 4/24\nLab\nLab 12: Capstone Extension - Architectural Experimentation / Project Hardening\nLab 12\n\n\n\n\n\n\n\n\n\nImportantQuiz 2\n\n\n\nComprehensive assessment covering all course material, with emphasis on Weeks 8-13\n\n\n\n\n\nWeek 15: Final Presentations\nApril 28, 2026\nBackground Readings: Week 15 Readings\n\n\n\n\n\n\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 4/28\nPresentations\nFinal Project Presentations: Evaluation, Feedback, and Reflection\nGuidelines\n\n\n\n\n\n\n\n\n\nNoteFinal Project Deliverables\n\n\n\n\nWorking deployed application\nTechnical documentation\nArchitecture decision records\nIndividual contribution summary\nPeer evaluations"
   },
   {
     "objectID": "schedule.html#key-dates-summary",
@@ -1761,7 +1761,7 @@
     "href": "labs/lab02-layered-architecture.html#getting-started",
     "title": "Lab 2: Layered Client-Server Architecture",
     "section": "Getting Started",
-    "text": "Getting Started\nClick the button below to accept the assignment and create your repository:"
+    "text": "Getting Started\nClick the button below to accept the assignment and create your repository:\nAccept Lab 2 Assignment"
   },
   {
     "objectID": "labs/lab02-layered-architecture.html#prerequisites",
@@ -5409,5 +5409,1062 @@
     "title": "Architectural Theory",
     "section": "Questions?",
     "text": "Questions?\n\nOffice Hours: Tuesday 9-11 AM, Pitt 2206\nEmail: kuruzj@rpi.edu\nAppointments: bit.ly/jason-rpi"
+  },
+  {
+    "objectID": "slides/week02/04-lab2-layered-architecture.html#todays-agenda",
+    "href": "slides/week02/04-lab2-layered-architecture.html#todays-agenda",
+    "title": "Layered Architecture",
+    "section": "Today’s Agenda",
+    "text": "Today’s Agenda\n\nLearning Objectives\n\nUnderstand the four-layer architecture pattern\nImplement domain entities with business rules\nWrite application services that orchestrate use cases\nApply validation and error handling patterns\nWrite unit tests for business logic\nUnderstand how layers connect through dependency injection"
+  },
+  {
+    "objectID": "slides/week02/04-lab2-layered-architecture.html#the-problem-spaghetti-code",
+    "href": "slides/week02/04-lab2-layered-architecture.html#the-problem-spaghetti-code",
+    "title": "Layered Architecture",
+    "section": "The Problem: Spaghetti Code",
+    "text": "The Problem: Spaghetti Code\n\n\nWithout Architecture\napp.post('/tasks', async (req, res) =&gt; {\n  // Validation mixed with DB logic\n  if (!req.body.title) {\n    return res.status(400).json({error: 'No title'});\n  }\n  // Business rules scattered everywhere\n  if (req.body.status === 'completed') {\n    req.body.completedAt = new Date();\n  }\n  // Direct database access\n  const task = await db.collection('tasks')\n    .insertOne(req.body);\n  res.json(task);\n});\n\nBusiness logic in controllers\nHard to test\nHard to maintain\nHard to reuse\n\n\nWith Layered Architecture\n// Controller - just HTTP handling\napp.post('/tasks', async (req, res) =&gt; {\n  const task = await taskService.createTask(req.body);\n  res.json(task);\n});\n\n// Service - orchestration\nasync createTask(data) {\n  const task = new Task(data);\n  task.validate();\n  return this.repository.save(task);\n}\n\n// Entity - business rules\nvalidate() {\n  if (!this.title) throw new ValidationError();\n}\n\nClear separation\nEasy to test\nEasy to maintain\nReusable logic"
+  },
+  {
+    "objectID": "slides/week02/04-lab2-layered-architecture.html#architecture-overview",
+    "href": "slides/week02/04-lab2-layered-architecture.html#architecture-overview",
+    "title": "Layered Architecture",
+    "section": "Architecture Overview",
+    "text": "Architecture Overview\n\n\n\n\n\nflowchart TB\n    subgraph Presentation[\"Presentation Layer\"]\n        Controllers[Controllers]\n        Routes[Routes]\n        Validators[HTTP Validators]\n    end\n\n    subgraph Application[\"Application Layer\"]\n        Services[Application Services]\n        DTOs[Data Transfer Objects]\n    end\n\n    subgraph Domain[\"Domain Layer\"]\n        Entities[Entities]\n        DomainServices[Domain Services]\n        Interfaces[Repository Interfaces]\n    end\n\n    subgraph Infrastructure[\"Infrastructure Layer\"]\n        Repositories[Repositories]\n        Database[Database]\n        External[External Services]\n    end\n\n    Presentation --&gt; Application\n    Application --&gt; Domain\n    Infrastructure --&gt; Domain\n    Infrastructure --&gt; Database"
+  },
+  {
+    "objectID": "slides/week02/04-lab2-layered-architecture.html#layer-responsibilities",
+    "href": "slides/week02/04-lab2-layered-architecture.html#layer-responsibilities",
+    "title": "Layered Architecture",
+    "section": "Layer Responsibilities",
+    "text": "Layer Responsibilities\n\n\n\n\n\n\n\n\nLayer\nResponsibility\nDependencies\n\n\n\n\nPresentation\nHTTP handling, routing, input validation\nApplication\n\n\nApplication\nUse case orchestration, transaction management\nDomain\n\n\nDomain\nBusiness rules, entities, core logic\nNone (pure)\n\n\nInfrastructure\nData persistence, external services\nDomain interfaces\n\n\n\n\nKey Principle: Dependencies flow downward only. The Domain layer has no dependencies on other layers."
+  },
+  {
+    "objectID": "slides/week02/04-lab2-layered-architecture.html#why-this-matters",
+    "href": "slides/week02/04-lab2-layered-architecture.html#why-this-matters",
+    "title": "Layered Architecture",
+    "section": "Why This Matters",
+    "text": "Why This Matters\n\n\nTestability\n// Test domain logic without database\nconst task = new Task({\n  title: 'Test',\n  dueDate: yesterday\n});\n\nexpect(task.isOverdue()).toBe(true);\n\nUnit test business rules in isolation\nMock repositories for service tests\nFast test execution\n\n\nMaintainability\nChange request: \"Add email notifications\"\n\nOnly modify:\n├── infrastructure/\n│   └── services/EmailService.js  ← New\n└── application/\n    └── services/TaskService.js   ← Inject & use\n\nDomain layer: unchanged\nPresentation layer: unchanged\n\nChanges isolated to specific layers\nClear boundaries reduce bugs\nEasier onboarding for new developers"
+  },
+  {
+    "objectID": "slides/week02/04-lab2-layered-architecture.html#what-belongs-in-the-domain-layer",
+    "href": "slides/week02/04-lab2-layered-architecture.html#what-belongs-in-the-domain-layer",
+    "title": "Layered Architecture",
+    "section": "What Belongs in the Domain Layer?",
+    "text": "What Belongs in the Domain Layer?\nThe domain layer contains pure business logic with no external dependencies.\ndomain/\n├── entities/           # Core business objects\n│   └── Task.js         # Task with business methods\n├── services/           # Domain operations\n│   └── TaskDomainService.js\n├── interfaces/         # Contracts (ports)\n│   └── ITaskRepository.js\n└── errors/             # Business exceptions\n    └── DomainErrors.js\n\nRule: If you can explain it to a non-technical stakeholder, it belongs in the domain.\n\n“A task is overdue if the due date has passed” ✓\n“We use MongoDB with Mongoose” ✗"
+  },
+  {
+    "objectID": "slides/week02/04-lab2-layered-architecture.html#entity-the-task-class",
+    "href": "slides/week02/04-lab2-layered-architecture.html#entity-the-task-class",
+    "title": "Layered Architecture",
+    "section": "Entity: The Task Class",
+    "text": "Entity: The Task Class\nclass Task {\n  constructor(data = {}) {\n    this.id = data.id || null;\n    this.title = data.title || '';\n    this.description = data.description || '';\n    this.status = data.status || 'pending';\n    this.priority = data.priority || 'medium';\n    this.dueDate = data.dueDate ? new Date(data.dueDate) : null;\n    this.createdAt = data.createdAt ? new Date(data.createdAt) : new Date();\n    this.updatedAt = data.updatedAt ? new Date(data.updatedAt) : new Date();\n  }\n\n  // Business methods go here...\n}\nAn entity is more than a data container - it encapsulates business rules."
+  },
+  {
+    "objectID": "slides/week02/04-lab2-layered-architecture.html#entity-methods-isoverdue",
+    "href": "slides/week02/04-lab2-layered-architecture.html#entity-methods-isoverdue",
+    "title": "Layered Architecture",
+    "section": "Entity Methods: isOverdue()",
+    "text": "Entity Methods: isOverdue()\n/**\n * Check if the task is overdue\n * Business rule: A task is overdue if:\n * - It has a due date\n * - It's not completed\n * - The due date is in the past\n */\nisOverdue() {\n  if (!this.dueDate) return false;\n  if (this.status === 'completed') return false;\n  return new Date() &gt; this.dueDate;\n}\n\nTest it:\nconst task = new Task({\n  title: 'Review PR',\n  dueDate: new Date('2024-01-01'),\n  status: 'pending'\n});\n\nexpect(task.isOverdue()).toBe(true);"
+  },
+  {
+    "objectID": "slides/week02/04-lab2-layered-architecture.html#entity-methods-complete",
+    "href": "slides/week02/04-lab2-layered-architecture.html#entity-methods-complete",
+    "title": "Layered Architecture",
+    "section": "Entity Methods: complete()",
+    "text": "Entity Methods: complete()\n/**\n * Mark the task as completed\n * Updates status and timestamp\n */\ncomplete() {\n  this.status = 'completed';\n  this.updatedAt = new Date();\n}\n\nWhy a method instead of direct assignment?\n// Bad: Business logic scattered\ntask.status = 'completed';\ntask.updatedAt = new Date();\n// Did we forget anything? Who knows...\n\n// Good: Encapsulated behavior\ntask.complete();\n// All related changes happen together"
+  },
+  {
+    "objectID": "slides/week02/04-lab2-layered-architecture.html#entity-methods-validate",
+    "href": "slides/week02/04-lab2-layered-architecture.html#entity-methods-validate",
+    "title": "Layered Architecture",
+    "section": "Entity Methods: validate()",
+    "text": "Entity Methods: validate()\n/**\n * Validate the task against business rules\n * @returns {string[]} Array of error messages\n */\nvalidate() {\n  const errors = [];\n\n  // Title is required and must be 3-100 characters\n  if (!this.title || this.title.trim().length === 0) {\n    errors.push('Title is required');\n  } else if (this.title.length &lt; 3 || this.title.length &gt; 100) {\n    errors.push('Title must be between 3 and 100 characters');\n  }\n\n  // Status must be valid\n  const validStatuses = ['pending', 'in-progress', 'completed'];\n  if (!validStatuses.includes(this.status)) {\n    errors.push(`Status must be one of: ${validStatuses.join(', ')}`);\n  }\n\n  // Priority must be valid\n  const validPriorities = ['low', 'medium', 'high'];\n  if (!validPriorities.includes(this.priority)) {\n    errors.push(`Priority must be one of: ${validPriorities.join(', ')}`);\n  }\n\n  return errors;\n}"
+  },
+  {
+    "objectID": "slides/week02/04-lab2-layered-architecture.html#domain-service-business-operations",
+    "href": "slides/week02/04-lab2-layered-architecture.html#domain-service-business-operations",
+    "title": "Layered Architecture",
+    "section": "Domain Service: Business Operations",
+    "text": "Domain Service: Business Operations\nclass TaskDomainService {\n  /**\n   * Check if a status transition is valid\n   * Business rules:\n   * - pending → in-progress (start work)\n   * - in-progress → completed (finish work)\n   * - any → pending (reset/reopen)\n   */\n  canTransitionStatus(currentStatus, newStatus) {\n    // Same status is always allowed\n    if (currentStatus === newStatus) return true;\n\n    // Can always reset to pending\n    if (newStatus === 'pending') return true;\n\n    // Define valid transitions\n    const transitions = {\n      'pending': ['in-progress'],\n      'in-progress': ['completed']\n    };\n\n    return transitions[currentStatus]?.includes(newStatus) || false;\n  }\n}"
+  },
+  {
+    "objectID": "slides/week02/04-lab2-layered-architecture.html#domain-service-priority-scoring",
+    "href": "slides/week02/04-lab2-layered-architecture.html#domain-service-priority-scoring",
+    "title": "Layered Architecture",
+    "section": "Domain Service: Priority Scoring",
+    "text": "Domain Service: Priority Scoring\n/**\n * Calculate a priority score (1-10) for sorting/display\n * Higher score = more urgent\n */\ncalculatePriorityScore(task) {\n  // Base score from priority level\n  const priorityBase = {\n    'low': 2,\n    'medium': 5,\n    'high': 8\n  };\n\n  let score = priorityBase[task.priority] || 5;\n\n  // Adjust for due date proximity\n  if (task.dueDate) {\n    const daysUntilDue = Math.ceil(\n      (new Date(task.dueDate) - new Date()) / (1000 * 60 * 60 * 24)\n    );\n\n    if (daysUntilDue &lt; 0) score = 10;        // Overdue\n    else if (daysUntilDue &lt;= 1) score += 2;  // Due today/tomorrow\n    else if (daysUntilDue &lt;= 7) score += 1;  // Due this week\n  }\n\n  return Math.min(10, Math.max(1, score));\n}"
+  },
+  {
+    "objectID": "slides/week02/04-lab2-layered-architecture.html#repository-interface-port",
+    "href": "slides/week02/04-lab2-layered-architecture.html#repository-interface-port",
+    "title": "Layered Architecture",
+    "section": "Repository Interface (Port)",
+    "text": "Repository Interface (Port)\n/**\n * Repository interface - defines what we need from persistence\n * The DOMAIN defines this, INFRASTRUCTURE implements it\n */\nclass ITaskRepository {\n  async findAll(filters) { throw new Error('Not implemented'); }\n  async findById(id) { throw new Error('Not implemented'); }\n  async save(task) { throw new Error('Not implemented'); }\n  async update(id, task) { throw new Error('Not implemented'); }\n  async delete(id) { throw new Error('Not implemented'); }\n}\n\nDependency Inversion Principle:\n\nDomain defines the interface (what it needs)\nInfrastructure provides the implementation (how it’s done)\nDomain doesn’t know about MongoDB, SQL, or any specific technology"
+  },
+  {
+    "objectID": "slides/week02/04-lab2-layered-architecture.html#what-belongs-in-the-application-layer",
+    "href": "slides/week02/04-lab2-layered-architecture.html#what-belongs-in-the-application-layer",
+    "title": "Layered Architecture",
+    "section": "What Belongs in the Application Layer?",
+    "text": "What Belongs in the Application Layer?\nThe application layer coordinates between presentation and domain.\napplication/\n├── services/\n│   └── TaskService.js    # Use case orchestration\n└── errors/\n    └── ApplicationErrors.js\n\nResponsibilities:\n\nOrchestrate multiple domain operations\nHandle transactions\nConvert between DTOs and entities\nApply application-level validation\nThrow application-specific errors"
+  },
+  {
+    "objectID": "slides/week02/04-lab2-layered-architecture.html#application-service-pattern",
+    "href": "slides/week02/04-lab2-layered-architecture.html#application-service-pattern",
+    "title": "Layered Architecture",
+    "section": "Application Service Pattern",
+    "text": "Application Service Pattern\nclass TaskService {\n  constructor(taskRepository, domainService) {\n    // Dependencies injected - easy to test with mocks\n    this.taskRepository = taskRepository;\n    this.domainService = domainService;\n  }\n\n  // Use case methods...\n}\nKey Insight: The service doesn’t create its dependencies - they’re injected. This enables:\n\nUnit testing with mock repositories\nSwapping implementations (MongoDB → PostgreSQL)\nClear dependency graph"
+  },
+  {
+    "objectID": "slides/week02/04-lab2-layered-architecture.html#use-case-create-task",
+    "href": "slides/week02/04-lab2-layered-architecture.html#use-case-create-task",
+    "title": "Layered Architecture",
+    "section": "Use Case: Create Task",
+    "text": "Use Case: Create Task\nasync createTask(taskData) {\n  // 1. Create domain entity\n  const task = new Task({\n    ...taskData,\n    status: 'pending',\n    createdAt: new Date(),\n    updatedAt: new Date()\n  });\n\n  // 2. Validate using domain rules\n  const errors = task.validate();\n  if (errors.length &gt; 0) {\n    throw new ValidationError('Invalid task data', errors);\n  }\n\n  // 3. Persist via repository\n  const savedTask = await this.taskRepository.save(task);\n\n  // 4. Return the result\n  return savedTask;\n}"
+  },
+  {
+    "objectID": "slides/week02/04-lab2-layered-architecture.html#use-case-update-task-status",
+    "href": "slides/week02/04-lab2-layered-architecture.html#use-case-update-task-status",
+    "title": "Layered Architecture",
+    "section": "Use Case: Update Task Status",
+    "text": "Use Case: Update Task Status\nasync updateTaskStatus(id, newStatus) {\n  // 1. Get existing task\n  const task = await this.taskRepository.findById(id);\n  if (!task) {\n    throw new NotFoundError(`Task with id ${id} not found`);\n  }\n\n  // 2. Validate transition using domain service\n  if (!this.domainService.canTransitionStatus(task.status, newStatus)) {\n    throw new ValidationError(\n      `Cannot transition from '${task.status}' to '${newStatus}'`\n    );\n  }\n\n  // 3. Update and persist\n  task.status = newStatus;\n  task.updatedAt = new Date();\n\n  return await this.taskRepository.update(id, task);\n}"
+  },
+  {
+    "objectID": "slides/week02/04-lab2-layered-architecture.html#use-case-get-task-statistics",
+    "href": "slides/week02/04-lab2-layered-architecture.html#use-case-get-task-statistics",
+    "title": "Layered Architecture",
+    "section": "Use Case: Get Task Statistics",
+    "text": "Use Case: Get Task Statistics\nasync getTaskStatistics() {\n  // 1. Get all tasks\n  const tasks = await this.taskRepository.findAll();\n\n  // 2. Calculate statistics using domain logic\n  const overdueTasks = this.domainService.getOverdueTasks(tasks);\n\n  // 3. Aggregate results\n  return {\n    total: tasks.length,\n    byStatus: {\n      pending: tasks.filter(t =&gt; t.status === 'pending').length,\n      inProgress: tasks.filter(t =&gt; t.status === 'in-progress').length,\n      completed: tasks.filter(t =&gt; t.status === 'completed').length\n    },\n    overdue: overdueTasks.length,\n    averagePriorityScore: this.calculateAveragePriority(tasks)\n  };\n}"
+  },
+  {
+    "objectID": "slides/week02/04-lab2-layered-architecture.html#error-handling-strategy",
+    "href": "slides/week02/04-lab2-layered-architecture.html#error-handling-strategy",
+    "title": "Layered Architecture",
+    "section": "Error Handling Strategy",
+    "text": "Error Handling Strategy\n// Domain errors - business rule violations\nclass ValidationError extends Error {\n  constructor(message, errors = []) {\n    super(message);\n    this.name = 'ValidationError';\n    this.errors = errors;\n    this.statusCode = 400;\n  }\n}\n\n// Application errors - resource issues\nclass NotFoundError extends Error {\n  constructor(message) {\n    super(message);\n    this.name = 'NotFoundError';\n    this.statusCode = 404;\n  }\n}\n\nError flow: Domain/Application → Controller → HTTP Response\n// In error middleware\nif (error instanceof NotFoundError) {\n  return res.status(404).json({ error: error.message });\n}"
+  },
+  {
+    "objectID": "slides/week02/04-lab2-layered-architecture.html#repository-implementation",
+    "href": "slides/week02/04-lab2-layered-architecture.html#repository-implementation",
+    "title": "Layered Architecture",
+    "section": "Repository Implementation",
+    "text": "Repository Implementation\nclass MongoTaskRepository {\n  async findById(id) {\n    const doc = await TaskModel.findById(id);\n    if (!doc) return null;\n    return this.toEntity(doc);  // Convert to domain entity\n  }\n\n  async save(task) {\n    const doc = new TaskModel(this.toDocument(task));\n    const saved = await doc.save();\n    return this.toEntity(saved);\n  }\n\n  // Convert between MongoDB document and domain entity\n  toEntity(doc) {\n    return new Task({\n      id: doc._id.toString(),\n      title: doc.title,\n      status: doc.status,\n      // ... other fields\n    });\n  }\n\n  toDocument(task) {\n    return {\n      title: task.title,\n      status: task.status,\n      // ... other fields\n    };\n  }\n}"
+  },
+  {
+    "objectID": "slides/week02/04-lab2-layered-architecture.html#why-separate-entity-and-document",
+    "href": "slides/week02/04-lab2-layered-architecture.html#why-separate-entity-and-document",
+    "title": "Layered Architecture",
+    "section": "Why Separate Entity and Document?",
+    "text": "Why Separate Entity and Document?\n\n\nDomain Entity\nclass Task {\n  id: string\n  title: string\n  status: 'pending' | 'in-progress' | 'completed'\n  dueDate: Date\n\n  isOverdue() { ... }\n  complete() { ... }\n  validate() { ... }\n}\n\nHas behavior (methods)\nUses domain language\nNo database concerns\n\n\nMongoDB Document\nconst TaskSchema = {\n  _id: ObjectId,\n  title: String,\n  status: String,\n  due_date: Date,\n  created_at: Date,\n  __v: Number\n}\n\nPure data\nDatabase conventions (_id, __v)\nMongoose-specific concerns\n\n\n\nThe repository translates between these two representations."
+  },
+  {
+    "objectID": "slides/week02/04-lab2-layered-architecture.html#the-composition-root",
+    "href": "slides/week02/04-lab2-layered-architecture.html#the-composition-root",
+    "title": "Layered Architecture",
+    "section": "The Composition Root",
+    "text": "The Composition Root\n// index.js - Application entry point\nimport express from 'express';\nimport { connectDB } from './infrastructure/database/connection.js';\nimport { MongoTaskRepository } from './infrastructure/repositories/MongoTaskRepository.js';\nimport { TaskDomainService } from './domain/services/TaskDomainService.js';\nimport { TaskService } from './application/services/TaskService.js';\nimport { TaskController } from './presentation/controllers/TaskController.js';\nimport { createTaskRoutes } from './presentation/routes/taskRoutes.js';\n\nasync function bootstrap() {\n  await connectDB();\n\n  // Create instances (dependency injection)\n  const taskRepository = new MongoTaskRepository();\n  const domainService = new TaskDomainService();\n  const taskService = new TaskService(taskRepository, domainService);\n  const taskController = new TaskController(taskService);\n\n  // Wire up routes\n  const app = express();\n  app.use('/api/tasks', createTaskRoutes(taskController));\n\n  app.listen(3000);\n}\n\nbootstrap();"
+  },
+  {
+    "objectID": "slides/week02/04-lab2-layered-architecture.html#dependency-flow-visualization",
+    "href": "slides/week02/04-lab2-layered-architecture.html#dependency-flow-visualization",
+    "title": "Layered Architecture",
+    "section": "Dependency Flow Visualization",
+    "text": "Dependency Flow Visualization\n\n\n\n\n\nflowchart LR\n    subgraph Composition[\"Composition Root (index.js)\"]\n        direction TB\n        Boot[Bootstrap]\n    end\n\n    subgraph Infra[\"Infrastructure\"]\n        Repo[MongoTaskRepository]\n    end\n\n    subgraph Domain[\"Domain\"]\n        DS[TaskDomainService]\n        Entity[Task Entity]\n    end\n\n    subgraph App[\"Application\"]\n        AS[TaskService]\n    end\n\n    subgraph Pres[\"Presentation\"]\n        Ctrl[TaskController]\n        Routes[Express Routes]\n    end\n\n    Boot --&gt; Repo\n    Boot --&gt; DS\n    Boot --&gt; AS\n    Boot --&gt; Ctrl\n    Boot --&gt; Routes\n\n    AS --&gt; Repo\n    AS --&gt; DS\n    AS --&gt; Entity\n    Ctrl --&gt; AS\n    Routes --&gt; Ctrl"
+  },
+  {
+    "objectID": "slides/week02/04-lab2-layered-architecture.html#benefits-of-dependency-injection",
+    "href": "slides/week02/04-lab2-layered-architecture.html#benefits-of-dependency-injection",
+    "title": "Layered Architecture",
+    "section": "Benefits of Dependency Injection",
+    "text": "Benefits of Dependency Injection\n\n\nFor Testing\n// Unit test with mock repository\nconst mockRepo = {\n  findById: jest.fn().mockResolvedValue(\n    new Task({ id: '1', title: 'Test' })\n  )\n};\n\nconst service = new TaskService(\n  mockRepo,\n  new TaskDomainService()\n);\n\n// Test without real database!\nconst task = await service.getTaskById('1');\nexpect(mockRepo.findById).toHaveBeenCalledWith('1');\n\nFor Flexibility\n// Swap implementations easily\nconst taskRepository = process.env.DB_TYPE === 'postgres'\n  ? new PostgresTaskRepository()\n  : new MongoTaskRepository();\n\n// Same service, different storage\nconst taskService = new TaskService(\n  taskRepository,\n  domainService\n);"
+  },
+  {
+    "objectID": "slides/week02/04-lab2-layered-architecture.html#testing-pyramid",
+    "href": "slides/week02/04-lab2-layered-architecture.html#testing-pyramid",
+    "title": "Layered Architecture",
+    "section": "Testing Pyramid",
+    "text": "Testing Pyramid\n                    ┌───────────┐\n                   /   E2E      \\           Few, slow, expensive\n                  / (Playwright) \\\n                 /─────────────────\\\n                /   Integration     \\       Some, medium speed\n               /   (Supertest +     \\\n              /      MongoDB)        \\\n             /─────────────────────────\\\n            /       Unit Tests          \\   Many, fast, cheap\n           /    (Jest + Mocks)           \\\n          /───────────────────────────────\\\nLayered architecture makes each level easier to test."
+  },
+  {
+    "objectID": "slides/week02/04-lab2-layered-architecture.html#unit-testing-domain-logic",
+    "href": "slides/week02/04-lab2-layered-architecture.html#unit-testing-domain-logic",
+    "title": "Layered Architecture",
+    "section": "Unit Testing Domain Logic",
+    "text": "Unit Testing Domain Logic\ndescribe('Task Entity', () =&gt; {\n  describe('isOverdue', () =&gt; {\n    it('returns true when due date is in the past', () =&gt; {\n      const task = new Task({\n        title: 'Test Task',\n        dueDate: new Date('2024-01-01'),\n        status: 'pending'\n      });\n\n      expect(task.isOverdue()).toBe(true);\n    });\n\n    it('returns false for completed tasks', () =&gt; {\n      const task = new Task({\n        title: 'Test Task',\n        dueDate: new Date('2024-01-01'),\n        status: 'completed'\n      });\n\n      expect(task.isOverdue()).toBe(false);\n    });\n\n    it('returns false when no due date', () =&gt; {\n      const task = new Task({\n        title: 'Test Task',\n        status: 'pending'\n      });\n\n      expect(task.isOverdue()).toBe(false);\n    });\n  });\n});"
+  },
+  {
+    "objectID": "slides/week02/04-lab2-layered-architecture.html#unit-testing-application-services",
+    "href": "slides/week02/04-lab2-layered-architecture.html#unit-testing-application-services",
+    "title": "Layered Architecture",
+    "section": "Unit Testing Application Services",
+    "text": "Unit Testing Application Services\ndescribe('TaskService', () =&gt; {\n  let taskService;\n  let mockRepository;\n  let domainService;\n\n  beforeEach(() =&gt; {\n    mockRepository = {\n      findById: jest.fn(),\n      save: jest.fn(),\n      update: jest.fn()\n    };\n    domainService = new TaskDomainService();\n    taskService = new TaskService(mockRepository, domainService);\n  });\n\n  describe('updateTaskStatus', () =&gt; {\n    it('throws NotFoundError when task does not exist', async () =&gt; {\n      mockRepository.findById.mockResolvedValue(null);\n\n      await expect(taskService.updateTaskStatus('123', 'completed'))\n        .rejects.toThrow(NotFoundError);\n    });\n\n    it('throws ValidationError for invalid transition', async () =&gt; {\n      mockRepository.findById.mockResolvedValue(\n        new Task({ id: '123', status: 'pending' })\n      );\n\n      await expect(taskService.updateTaskStatus('123', 'completed'))\n        .rejects.toThrow(ValidationError);\n    });\n  });\n});"
+  },
+  {
+    "objectID": "slides/week02/04-lab2-layered-architecture.html#integration-testing",
+    "href": "slides/week02/04-lab2-layered-architecture.html#integration-testing",
+    "title": "Layered Architecture",
+    "section": "Integration Testing",
+    "text": "Integration Testing\ndescribe('Task API', () =&gt; {\n  beforeAll(async () =&gt; {\n    await connectDB(process.env.TEST_MONGODB_URI);\n  });\n\n  afterEach(async () =&gt; {\n    await TaskModel.deleteMany({});\n  });\n\n  describe('POST /api/tasks', () =&gt; {\n    it('creates a new task', async () =&gt; {\n      const response = await request(app)\n        .post('/api/tasks')\n        .send({\n          title: 'Integration Test Task',\n          priority: 'high'\n        });\n\n      expect(response.status).toBe(201);\n      expect(response.body.success).toBe(true);\n      expect(response.body.data.title).toBe('Integration Test Task');\n    });\n\n    it('returns 400 for invalid data', async () =&gt; {\n      const response = await request(app)\n        .post('/api/tasks')\n        .send({ title: 'AB' });  // Too short\n\n      expect(response.status).toBe(400);\n      expect(response.body.success).toBe(false);\n    });\n  });\n});"
+  },
+  {
+    "objectID": "slides/week02/04-lab2-layered-architecture.html#project-structure",
+    "href": "slides/week02/04-lab2-layered-architecture.html#project-structure",
+    "title": "Layered Architecture",
+    "section": "Project Structure",
+    "text": "Project Structure\nlab2-server/\n├── src/\n│   ├── presentation/           # PROVIDED - complete\n│   │   ├── controllers/        # TaskController\n│   │   ├── routes/             # Express routes\n│   │   └── validators/         # Input validation\n│   ├── application/            # TODO - implement\n│   │   └── services/           # TaskService\n│   ├── domain/                 # TODO - implement\n│   │   ├── entities/           # Task entity\n│   │   ├── interfaces/         # Repository interface\n│   │   └── services/           # TaskDomainService\n│   └── infrastructure/         # PROVIDED - complete\n│       ├── database/           # MongoDB connection\n│       └── repositories/       # MongoTaskRepository\n└── tests/\n    ├── unit/                   # Unit tests\n    └── integration/            # API tests"
+  },
+  {
+    "objectID": "slides/week02/04-lab2-layered-architecture.html#your-tasks",
+    "href": "slides/week02/04-lab2-layered-architecture.html#your-tasks",
+    "title": "Layered Architecture",
+    "section": "Your Tasks",
+    "text": "Your Tasks\n\n\n\n\n\n\n\nFile\nMethods to Implement\n\n\n\n\ndomain/entities/Task.js\nisOverdue(), complete(), validate()\n\n\ndomain/services/TaskDomainService.js\ncanTransitionStatus(), calculatePriorityScore(), getOverdueTasks()\n\n\napplication/services/TaskService.js\nAll 7 service methods\n\n\n\n\nTips:\n\nStart with the domain layer (Task entity)\nRun tests frequently: npm test\nRead the existing code to understand patterns\nLook for // TODO: comments with hints"
+  },
+  {
+    "objectID": "slides/week02/04-lab2-layered-architecture.html#quick-start-commands",
+    "href": "slides/week02/04-lab2-layered-architecture.html#quick-start-commands",
+    "title": "Layered Architecture",
+    "section": "Quick Start Commands",
+    "text": "Quick Start Commands\n# Install all dependencies\nnpm run install:all\n\n# Copy environment file\ncp lab2-server/.env.example lab2-server/.env\n\n# Start with Docker (recommended)\nnpm run docker:up\n\n# OR run locally\ndocker compose up mongo -d\nnpm run dev:server\nnpm run dev:client  # In another terminal\n\n# Run tests\nnpm test\n\n# Verify setup\ncurl http://localhost:3000/health\ncurl http://localhost:3000/api/tasks"
+  },
+  {
+    "objectID": "slides/week02/04-lab2-layered-architecture.html#summary",
+    "href": "slides/week02/04-lab2-layered-architecture.html#summary",
+    "title": "Layered Architecture",
+    "section": "Summary",
+    "text": "Summary\n\n\nArchitecture Benefits\n\nSeparation of concerns - each layer has one job\nTestability - test business logic without infrastructure\nMaintainability - changes isolated to specific layers\nFlexibility - swap implementations easily\n\n\nLayer Rules\n\nPresentation - HTTP only, no business logic\nApplication - orchestration, no domain rules\nDomain - pure business logic, no dependencies\nInfrastructure - implements domain interfaces\n\n\n\nRemember: Dependencies flow downward. The domain layer is the heart of your application."
+  },
+  {
+    "objectID": "slides/week02/04-lab2-layered-architecture.html#questions",
+    "href": "slides/week02/04-lab2-layered-architecture.html#questions",
+    "title": "Layered Architecture",
+    "section": "Questions?",
+    "text": "Questions?\n\nResources\n\nClean Architecture by Robert C. Martin\nDomain-Driven Design by Eric Evans\nSOLID Principles\nLab 2 ARCHITECTURE.md for detailed documentation"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#todays-agenda",
+    "href": "slides/week02/03b-architectural-theory.html#todays-agenda",
+    "title": "Architectural Theory",
+    "section": "Today’s Agenda",
+    "text": "Today’s Agenda\n\nLearning Objectives\n\nMaster fundamental architectural patterns for web systems\nLearn techniques for system decomposition\nUnderstand bounded contexts and service boundaries\nApply quality attribute analysis to design decisions\nDevelop skills for project scoping and estimation\nPrepare effective project proposals"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#why-architectural-theory",
+    "href": "slides/week02/03b-architectural-theory.html#why-architectural-theory",
+    "title": "Architectural Theory",
+    "section": "Why Architectural Theory?",
+    "text": "Why Architectural Theory?\n\n“Good architecture allows decisions to be deferred.”\n— Robert C. Martin\n\n\nThe goal:\n\nMake systems that can evolve over time\nEnable teams to work independently\nSupport changing requirements\nMaintain quality as systems grow"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#pattern-categories",
+    "href": "slides/week02/03b-architectural-theory.html#pattern-categories",
+    "title": "Architectural Theory",
+    "section": "Pattern Categories",
+    "text": "Pattern Categories\n\n\n\n\n\nmindmap\n  root((Architectural Patterns))\n    Structural\n      Layered\n      Client-Server\n      Microservices\n      Monolithic\n    Messaging\n      Event-Driven\n      Pub-Sub\n      Message Queue\n      CQRS\n    Data\n      Repository\n      Unit of Work\n      CQRS\n      Event Sourcing\n    Deployment\n      Containers\n      Serverless\n      Hybrid"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#pattern-layered-architecture",
+    "href": "slides/week02/03b-architectural-theory.html#pattern-layered-architecture",
+    "title": "Architectural Theory",
+    "section": "Pattern: Layered Architecture",
+    "text": "Pattern: Layered Architecture\n┌─────────────────────────────────────────────────────────────────┐\n│                    Presentation Layer                            │\n│    Components, Views, User Interface Logic                       │\n├─────────────────────────────────────────────────────────────────┤\n│                    Application Layer                             │\n│    Use Cases, Application Services, DTOs                         │\n├─────────────────────────────────────────────────────────────────┤\n│                    Domain Layer                                  │\n│    Entities, Value Objects, Domain Services, Business Rules      │\n├─────────────────────────────────────────────────────────────────┤\n│                    Infrastructure Layer                          │\n│    Repositories, External Services, Database, File System        │\n└─────────────────────────────────────────────────────────────────┘\nKey Rule: Dependencies point downward only"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#layered-example-presentation-application",
+    "href": "slides/week02/03b-architectural-theory.html#layered-example-presentation-application",
+    "title": "Architectural Theory",
+    "section": "Layered Example: Presentation & Application",
+    "text": "Layered Example: Presentation & Application\n// Presentation Layer (Controller)\nclass UserController {\n  async getUser(req, res) {\n    const user = await this.userService.findById(req.params.id);\n    res.json(UserDTO.fromDomain(user));\n  }\n}\n\n// Application Layer (Service)\nclass UserService {\n  async findById(id) {\n    const user = await this.userRepository.findById(id);\n    if (!user) throw new NotFoundError('User');\n    return user;\n  }\n}\nController handles HTTP → Service orchestrates use case"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#layered-example-domain-infrastructure",
+    "href": "slides/week02/03b-architectural-theory.html#layered-example-domain-infrastructure",
+    "title": "Architectural Theory",
+    "section": "Layered Example: Domain & Infrastructure",
+    "text": "Layered Example: Domain & Infrastructure\n// Domain Layer (Entity) - Business rules live here\nclass User {\n  constructor(id, email, name) {\n    this.id = id;\n    this.email = email;\n    this.name = name;\n  }\n\n  changeName(newName) {\n    if (!newName || newName.length &lt; 2) {\n      throw new ValidationError('Name must be at least 2 characters');\n    }\n    this.name = newName;\n  }\n}\n\n// Infrastructure Layer (Repository)\nclass MongoUserRepository {\n  async findById(id) {\n    const doc = await UserModel.findById(id);\n    return doc ? User.fromDocument(doc) : null;\n  }\n}"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#layered-example-banking-application",
+    "href": "slides/week02/03b-architectural-theory.html#layered-example-banking-application",
+    "title": "Architectural Theory",
+    "section": "Layered Example: Banking Application",
+    "text": "Layered Example: Banking Application\n\n\n\n\n\n\n\nLayer\nComponents\n\n\n\n\nPresentation\nMobile app, web portal, ATM interface\n\n\nApplication\nTransfer funds, check balance, apply for loan\n\n\nDomain\nAccount rules, interest calculations, fraud detection\n\n\nInfrastructure\nCore banking system, payment networks, regulatory reporting"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#layered-example-e-learning-platform",
+    "href": "slides/week02/03b-architectural-theory.html#layered-example-e-learning-platform",
+    "title": "Architectural Theory",
+    "section": "Layered Example: E-Learning Platform",
+    "text": "Layered Example: E-Learning Platform\n\n\n\n\n\n\n\nLayer\nComponents\n\n\n\n\nPresentation\nStudent dashboard, instructor tools, mobile app\n\n\nApplication\nEnroll in courses, submit assignments, grade work\n\n\nDomain\nLearning paths, certification rules, plagiarism detection\n\n\nInfrastructure\nVideo hosting, payment gateway, certificate generation"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#why-layered-architecture-works",
+    "href": "slides/week02/03b-architectural-theory.html#why-layered-architecture-works",
+    "title": "Architectural Theory",
+    "section": "Why Layered Architecture Works",
+    "text": "Why Layered Architecture Works\nEach layer has a single responsibility:\n\nUI changes don’t affect business rules\nDatabase migrations don’t break the API\nNew channels (mobile, API) reuse domain logic\nTeams can work independently on different layers"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#pattern-hexagonal-architecture-ports-adapters",
+    "href": "slides/week02/03b-architectural-theory.html#pattern-hexagonal-architecture-ports-adapters",
+    "title": "Architectural Theory",
+    "section": "Pattern: Hexagonal Architecture (Ports & Adapters)",
+    "text": "Pattern: Hexagonal Architecture (Ports & Adapters)\n                    ┌────────────────────────────────┐\n                    │                                │\n       ┌──────┐     │    ┌──────────────────┐       │     ┌──────┐\n       │ REST │─────┼───►│                  │       │     │ SQL  │\n       │ API  │     │    │                  │◄──────┼─────│  DB  │\n       └──────┘     │    │                  │       │     └──────┘\n                    │    │   Application    │       │\n       ┌──────┐     │    │      Core        │       │     ┌──────┐\n       │ CLI  │─────┼───►│                  │◄──────┼─────│ Msg  │\n       │      │     │    │  (Domain Logic)  │       │     │ Queue│\n       └──────┘     │    │                  │       │     └──────┘\n                    │    └──────────────────┘       │\n       ┌──────┐     │                               │     ┌──────┐\n       │ gRPC │─────┼───►          ◄────────────────┼─────│ Cache│\n       │      │     │                               │     │      │\n       └──────┘     └────────────────────────────────┘     └──────┘\n\n                    Ports (Interfaces)    Adapters (Implementations)\nCore Principle: Business logic doesn’t depend on external details"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#hexagonal-example-payment-processing",
+    "href": "slides/week02/03b-architectural-theory.html#hexagonal-example-payment-processing",
+    "title": "Architectural Theory",
+    "section": "Hexagonal Example: Payment Processing",
+    "text": "Hexagonal Example: Payment Processing\n\n\n\n\n\n\n\nLayer\nComponents\n\n\n\n\nCore Domain\nPayment validation, currency conversion, fraud scoring, transaction state\n\n\nPorts (Interfaces)\nPaymentGateway, FraudChecker, NotificationSender\n\n\nAdapters\nStripe/PayPal/Square, ML fraud service, Email/SMS/Push\n\n\n\nKey Insight: Swap Stripe for PayPal without changing business logic"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#hexagonal-example-ride-sharing",
+    "href": "slides/week02/03b-architectural-theory.html#hexagonal-example-ride-sharing",
+    "title": "Architectural Theory",
+    "section": "Hexagonal Example: Ride-Sharing",
+    "text": "Hexagonal Example: Ride-Sharing\n\n\n\n\n\n\n\nLayer\nComponents\n\n\n\n\nCore Domain\nRide matching algorithms, pricing calculations, driver/rider ratings\n\n\nPorts (Interfaces)\nLocationProvider, PaymentProcessor, MapService\n\n\nAdapters\nGPS/Google Maps/Apple Maps, Stripe/Apple Pay, Mapbox/HERE\n\n\n\nKey Insight: Switch from Google Maps to Mapbox without touching core logic"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#pattern-event-driven-architecture",
+    "href": "slides/week02/03b-architectural-theory.html#pattern-event-driven-architecture",
+    "title": "Architectural Theory",
+    "section": "Pattern: Event-Driven Architecture",
+    "text": "Pattern: Event-Driven Architecture\n\n\n\n\n\nsequenceDiagram\n    participant Client\n    participant OrderService\n    participant EventBus\n    participant InventoryService\n    participant NotificationService\n    participant AnalyticsService\n\n    Client-&gt;&gt;OrderService: Place Order\n    OrderService-&gt;&gt;EventBus: Publish: OrderCreated\n\n    par Async Processing\n        EventBus-&gt;&gt;InventoryService: OrderCreated\n        InventoryService-&gt;&gt;EventBus: Publish: InventoryReserved\n    and\n        EventBus-&gt;&gt;NotificationService: OrderCreated\n        NotificationService-&gt;&gt;Client: Email Confirmation\n    and\n        EventBus-&gt;&gt;AnalyticsService: OrderCreated\n        AnalyticsService-&gt;&gt;AnalyticsService: Record Event\n    end\n\n    OrderService--&gt;&gt;Client: Order Confirmed"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#event-driven-e-commerce-order-processing",
+    "href": "slides/week02/03b-architectural-theory.html#event-driven-e-commerce-order-processing",
+    "title": "Architectural Theory",
+    "section": "Event-Driven: E-Commerce Order Processing",
+    "text": "Event-Driven: E-Commerce Order Processing\nWhen a customer places an order online (the event), multiple independent services react simultaneously without waiting for a direct response:\n\n\nServices That React to “OrderCreated”\n\nInventory Management\n\nAutomatically reduces stock levels\nTriggers reorder if below threshold\nUpdates warehouse systems\n\nPayment Processing\n\nCharges customer’s payment method\nHandles failures and retries\nRecords transaction for accounting\n\nCustomer Notification\n\nSends order confirmation email\nTriggers SMS notification\nUpdates customer’s order history\n\n\n\n\nShipping/Fulfillment\n\nInitiates picking process in warehouse\nReserves shipping carrier slot\nGenerates shipping label\n\nFraud Detection\n\nAnalyzes order in real-time\nChecks for suspicious patterns\nCan flag or hold suspicious orders\n\nAnalytics & Reporting\n\nRecords sale for dashboards\nUpdates revenue projections\nFeeds recommendation engine"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#event-driven-social-media-example",
+    "href": "slides/week02/03b-architectural-theory.html#event-driven-social-media-example",
+    "title": "Architectural Theory",
+    "section": "Event-Driven: Social Media Example",
+    "text": "Event-Driven: Social Media Example\nEvent: User posts a photo\n\n\n\nService\nReaction\n\n\n\n\nFeed Service\nAdds to followers’ feeds\n\n\nNotification Service\nAlerts mentioned users\n\n\nModeration Service\nScans for policy violations\n\n\nAnalytics Service\nRecords engagement metrics\n\n\nSearch Service\nIndexes for discoverability\n\n\nCDN Service\nReplicates to edge locations\n\n\n\nAll services react independently and simultaneously"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#event-driven-iot-smart-home-example",
+    "href": "slides/week02/03b-architectural-theory.html#event-driven-iot-smart-home-example",
+    "title": "Architectural Theory",
+    "section": "Event-Driven: IoT Smart Home Example",
+    "text": "Event-Driven: IoT Smart Home Example\nEvent: Motion detected at front door\n\n\n\nService\nReaction\n\n\n\n\nCamera Service\nStarts recording\n\n\nLighting Service\nTurns on porch lights\n\n\nNotification Service\nSends phone alert\n\n\nSecurity Service\nLogs event, checks for patterns\n\n\nEnergy Service\nAdjusts HVAC if someone’s home\n\n\n\nNo service waits for another — parallel processing"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#event-driven-financial-trading-example",
+    "href": "slides/week02/03b-architectural-theory.html#event-driven-financial-trading-example",
+    "title": "Architectural Theory",
+    "section": "Event-Driven: Financial Trading Example",
+    "text": "Event-Driven: Financial Trading Example\nEvent: Stock price changes\n\n\n\nService\nReaction\n\n\n\n\nPortfolio Service\nRecalculates holdings value\n\n\nAlert Service\nNotifies users with price alerts\n\n\nTrading Service\nExecutes triggered orders\n\n\nRisk Service\nUpdates exposure calculations\n\n\nCompliance Service\nChecks for unusual activity\n\n\n\nMillisecond response times through async event processing"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#event-driven-benefits-challenges",
+    "href": "slides/week02/03b-architectural-theory.html#event-driven-benefits-challenges",
+    "title": "Architectural Theory",
+    "section": "Event-Driven Benefits & Challenges",
+    "text": "Event-Driven Benefits & Challenges\n\n\nBenefits\n\nLoose Coupling - Services don’t know about each other\nScalability - Handle spikes with queuing\nResilience - Failures don’t cascade\nFlexibility - Add consumers without changing producers\nAudit Trail - Events are a natural log\n\n\nChallenges\n\nComplexity - Harder to understand flow\nEventual Consistency - Data may be stale\nDebugging - Distributed tracing needed\nOrdering - Events may arrive out of order\nIdempotency - Must handle duplicate events"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#pattern-cqrs-command-query-responsibility-segregation",
+    "href": "slides/week02/03b-architectural-theory.html#pattern-cqrs-command-query-responsibility-segregation",
+    "title": "Architectural Theory",
+    "section": "Pattern: CQRS (Command Query Responsibility Segregation)",
+    "text": "Pattern: CQRS (Command Query Responsibility Segregation)\n                          Commands                    Queries\n                             │                           │\n                             ▼                           ▼\n                    ┌────────────────┐         ┌────────────────┐\n                    │ Command Handler│         │ Query Handler  │\n                    └───────┬────────┘         └───────┬────────┘\n                            │                          │\n                            ▼                          ▼\n                    ┌────────────────┐         ┌────────────────┐\n                    │  Write Model   │────────►│   Read Model   │\n                    │   (Primary)    │ Sync/   │  (Optimized)   │\n                    │                │ Events  │                │\n                    └───────┬────────┘         └───────┬────────┘\n                            │                          │\n                            ▼                          ▼\n                    ┌────────────────┐         ┌────────────────┐\n                    │  Normalized DB │         │ Denormalized DB│\n                    │  (PostgreSQL)  │         │   (MongoDB)    │\n                    └────────────────┘         └────────────────┘\nUse When: Read and write patterns are significantly different"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#cqrs-example-e-commerce-product-catalog",
+    "href": "slides/week02/03b-architectural-theory.html#cqrs-example-e-commerce-product-catalog",
+    "title": "Architectural Theory",
+    "section": "CQRS Example: E-Commerce Product Catalog",
+    "text": "CQRS Example: E-Commerce Product Catalog\n\n\n\n\n\n\n\n\nSide\nPurpose\nImplementation\n\n\n\n\nWrite (Commands)\nCreateProduct, UpdatePrice, AdjustInventory\nNormalized tables, full validation\n\n\nRead (Queries)\nSearch, browse, recommendations\nDenormalized docs, pre-computed aggregations\n\n\n\nWhy CQRS here? Millions of reads (browsing) vs. thousands of writes (admin updates)"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#cqrs-example-banking-transactions",
+    "href": "slides/week02/03b-architectural-theory.html#cqrs-example-banking-transactions",
+    "title": "Architectural Theory",
+    "section": "CQRS Example: Banking Transactions",
+    "text": "CQRS Example: Banking Transactions\n\n\n\n\n\n\n\n\nSide\nPurpose\nImplementation\n\n\n\n\nWrite (Commands)\nDepositFunds, TransferMoney, ApplyInterest\nACID-compliant relational DB\n\n\nRead (Queries)\nBalance, statements, analytics\nMaterialized views, cached balances\n\n\n\nWhy CQRS here? Write model needs transaction integrity; read model needs speed"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#cqrs-when-to-use-it",
+    "href": "slides/week02/03b-architectural-theory.html#cqrs-when-to-use-it",
+    "title": "Architectural Theory",
+    "section": "CQRS: When to Use It",
+    "text": "CQRS: When to Use It\nGood Fit for CQRS\n\n\n\n\n\n\n\nScenario\nWhy CQRS Helps\n\n\n\n\nHigh read/write ratio (100:1)\nOptimize reads independently\n\n\nComplex domain logic\nKeep write model focused on business rules\n\n\nDifferent scaling needs\nScale reads and writes separately\n\n\nEvent sourcing\nNatural fit with event-driven systems\n\n\nMultiple read representations\nSame data, different views (mobile vs web)\n\n\n\nProbably Overkill\n\nSimple CRUD applications\nSmall datasets\nTeam unfamiliar with the pattern\nTight consistency requirements everywhere"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#pattern-api-gateway",
+    "href": "slides/week02/03b-architectural-theory.html#pattern-api-gateway",
+    "title": "Architectural Theory",
+    "section": "Pattern: API Gateway",
+    "text": "Pattern: API Gateway\n\n\n\n\n\nflowchart TB\n    subgraph Clients\n        Web[Web App]\n        Mobile[Mobile App]\n        Partner[Partner API]\n    end\n\n    subgraph Gateway[\"API Gateway\"]\n        Auth[Authentication]\n        Rate[Rate Limiting]\n        Cache[Response Cache]\n        Route[Request Routing]\n        Transform[Transform/Aggregate]\n    end\n\n    subgraph Services\n        Users[User Service]\n        Products[Product Service]\n        Orders[Order Service]\n        Search[Search Service]\n    end\n\n    Clients --&gt; Gateway\n    Gateway --&gt; Services\n\n\n\n\n\n\nResponsibilities: Auth, rate limiting, routing, aggregation, protocol translation"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#api-gateway-streaming-service-example",
+    "href": "slides/week02/03b-architectural-theory.html#api-gateway-streaming-service-example",
+    "title": "Architectural Theory",
+    "section": "API Gateway: Streaming Service Example",
+    "text": "API Gateway: Streaming Service Example\nNetflix-style Gateway Responsibilities:\n\n\n\n\n\n\n\nFunction\nWhat It Does\n\n\n\n\nAuthentication\nValidate JWT, check subscription tier\n\n\nDevice Detection\nRoute to mobile-optimized vs web APIs\n\n\nContent Filtering\nApply regional restrictions\n\n\nRate Limiting\nPrevent abuse, enforce fair usage\n\n\nResponse Aggregation\nCombine profile + recommendations into single response\n\n\n\nBackend Services Called: User, Catalog, Recommendations, Playback, Billing"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#api-gateway-food-delivery-example",
+    "href": "slides/week02/03b-architectural-theory.html#api-gateway-food-delivery-example",
+    "title": "Architectural Theory",
+    "section": "API Gateway: Food Delivery Example",
+    "text": "API Gateway: Food Delivery Example\nGateway Handles:\n\n\n\n\n\n\n\nFunction\nWhat It Does\n\n\n\n\nGeo-routing\nDirect to nearest regional servers\n\n\nA/B Testing\nRoute to experiment variants\n\n\nCaching\nCache restaurant menus, reduce load\n\n\nRequest Transformation\nMobile gets minimal data, web gets full details\n\n\n\nSingle API Call Returns: User profile + nearby restaurants + active orders + promotions\nBehind the scenes: 5+ microservices called and aggregated into one response"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#api-gateway-benefits-by-use-case",
+    "href": "slides/week02/03b-architectural-theory.html#api-gateway-benefits-by-use-case",
+    "title": "Architectural Theory",
+    "section": "API Gateway: Benefits by Use Case",
+    "text": "API Gateway: Benefits by Use Case\n\n\n\n\n\n\n\n\nUse Case\nWithout Gateway\nWith Gateway\n\n\n\n\nMobile App\nMultiple API calls, wasted bandwidth\nSingle aggregated call\n\n\nPartner API\nExpose internal services directly\nControlled, versioned interface\n\n\nMulti-region\nComplex client-side routing\nAutomatic geo-routing\n\n\nSecurity\nAuth logic duplicated everywhere\nCentralized authentication\n\n\nMonitoring\nInstrument each service\nSingle point for metrics"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#common-api-gateway-solutions",
+    "href": "slides/week02/03b-architectural-theory.html#common-api-gateway-solutions",
+    "title": "Architectural Theory",
+    "section": "Common API Gateway Solutions",
+    "text": "Common API Gateway Solutions\n\n\n\nSolution\nBest For\n\n\n\n\nAWS API Gateway\nServerless, pay-per-request\n\n\nKong\nOpen source, plugin ecosystem\n\n\nNGINX\nHigh performance, familiar\n\n\nEnvoy\nService mesh, Kubernetes native\n\n\nExpress Gateway\nNode.js, JavaScript ecosystem"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#monolith-architecture",
+    "href": "slides/week02/03b-architectural-theory.html#monolith-architecture",
+    "title": "Architectural Theory",
+    "section": "Monolith Architecture",
+    "text": "Monolith Architecture\n┌─────────────────────────────────────────────────────────────┐\n│                      Monolith Application                    │\n├─────────────────────────────────────────────────────────────┤\n│  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐        │\n│  │  User   │  │ Product │  │  Order  │  │ Payment │        │\n│  │ Module  │  │ Module  │  │ Module  │  │ Module  │        │\n│  └────┬────┘  └────┬────┘  └────┬────┘  └────┬────┘        │\n│       │            │            │            │              │\n│       └────────────┴────────────┴────────────┘              │\n│                         │                                    │\n│              ┌──────────┴──────────┐                        │\n│              │   Shared Database   │                        │\n│              └─────────────────────┘                        │\n└─────────────────────────────────────────────────────────────┘\nSingle deployable unit - all code ships together"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#microservices-architecture",
+    "href": "slides/week02/03b-architectural-theory.html#microservices-architecture",
+    "title": "Architectural Theory",
+    "section": "Microservices Architecture",
+    "text": "Microservices Architecture\n┌──────────┐   ┌──────────┐   ┌──────────┐   ┌──────────┐\n│  User    │   │ Product  │   │  Order   │   │ Payment  │\n│ Service  │   │ Service  │   │ Service  │   │ Service  │\n├──────────┤   ├──────────┤   ├──────────┤   ├──────────┤\n│   DB     │   │   DB     │   │   DB     │   │   DB     │\n└────┬─────┘   └────┬─────┘   └────┬─────┘   └────┬─────┘\n     │              │              │              │\n     └──────────────┴──────────────┴──────────────┘\n                         │\n              ┌──────────┴──────────┐\n              │     API Gateway     │\n              └─────────────────────┘\nIndependent services - each owns its data and deploys separately"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#monolith-vs-microservices-key-differences",
+    "href": "slides/week02/03b-architectural-theory.html#monolith-vs-microservices-key-differences",
+    "title": "Architectural Theory",
+    "section": "Monolith vs Microservices: Key Differences",
+    "text": "Monolith vs Microservices: Key Differences\n\n\n\n\n\n\n\n\nAspect\nMonolith\nMicroservices\n\n\n\n\nDeployment\nAll-or-nothing\nIndependent per service\n\n\nScaling\nScale entire app\nScale individual services\n\n\nData\nShared database\nDatabase per service\n\n\nCommunication\nFunction calls\nNetwork calls (HTTP, messaging)\n\n\nFailure\nOne bug can crash all\nFailures are isolated\n\n\nTeam Structure\nOne team, or tightly coordinated\nIndependent teams per service"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#when-to-choose-monolith",
+    "href": "slides/week02/03b-architectural-theory.html#when-to-choose-monolith",
+    "title": "Architectural Theory",
+    "section": "When to Choose Monolith",
+    "text": "When to Choose Monolith\nStart with a monolith when:\n\nSmall team (&lt; 10 developers)\nNew product with uncertain requirements\nNeed to move fast and iterate\nSimple deployment infrastructure\nTight budget for DevOps\n\nExamples:\n\nEarly-stage startups\nInternal tools\nMVPs and prototypes\nSmall e-commerce sites"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#when-to-choose-microservices",
+    "href": "slides/week02/03b-architectural-theory.html#when-to-choose-microservices",
+    "title": "Architectural Theory",
+    "section": "When to Choose Microservices",
+    "text": "When to Choose Microservices\nConsider microservices when:\n\nLarge team (multiple teams, 20+ developers)\nWell-understood domain boundaries\nDifferent scaling needs per feature\nNeed independent deployments\nCan invest in DevOps infrastructure\n\nExamples:\n\nNetflix (1000+ microservices)\nAmazon (200+ teams)\nUber (2000+ microservices)"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#the-monolith-first-approach",
+    "href": "slides/week02/03b-architectural-theory.html#the-monolith-first-approach",
+    "title": "Architectural Theory",
+    "section": "The Monolith-First Approach",
+    "text": "The Monolith-First Approach\n\n“Don’t start with microservices. Start with a monolith, keep it modular, and split when needed.”\n— Martin Fowler\n\n┌─────────────┐         ┌─────────────┐         ┌─────────────┐\n│  Monolith   │   ──►   │  Modular    │   ──►   │ Microservices│\n│   (MVP)     │         │  Monolith   │         │  (Scale)     │\n└─────────────┘         └─────────────┘         └─────────────┘\n    Phase 1                 Phase 2                 Phase 3\nKey insight: Keep your monolith modular so it’s easier to split later"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#microservices-real-costs",
+    "href": "slides/week02/03b-architectural-theory.html#microservices-real-costs",
+    "title": "Architectural Theory",
+    "section": "Microservices: Real Costs",
+    "text": "Microservices: Real Costs\n\n\n\n\n\n\n\nHidden Cost\nWhat It Means\n\n\n\n\nNetwork latency\nEvery service call adds ~1-10ms\n\n\nDistributed debugging\nNeed tracing tools (Jaeger, Zipkin)\n\n\nData consistency\nNo more ACID transactions across services\n\n\nDeployment complexity\nNeed Kubernetes, service mesh, CI/CD per service\n\n\nTesting\nIntegration tests become complex\n\n\nOperational overhead\nMore services = more things to monitor\n\n\n\nRule of thumb: If you don’t have these problems, you don’t need microservices"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#mern-stack-client-directory",
+    "href": "slides/week02/03b-architectural-theory.html#mern-stack-client-directory",
+    "title": "Architectural Theory",
+    "section": "MERN Stack: Client Directory",
+    "text": "MERN Stack: Client Directory\nmern-app/\n├── client/                    # PRESENTATION LAYER\n│   ├── src/\n│   │   ├── components/        # React UI components\n│   │   ├── pages/             # Route-level views\n│   │   ├── hooks/             # Custom React hooks\n│   │   ├── context/           # State management\n│   │   ├── services/          # API client calls\n│   │   └── utils/             # Frontend utilities\n│   └── package.json\nPresentation Layer: Everything the user sees and interacts with"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#mern-stack-server-directory",
+    "href": "slides/week02/03b-architectural-theory.html#mern-stack-server-directory",
+    "title": "Architectural Theory",
+    "section": "MERN Stack: Server Directory",
+    "text": "MERN Stack: Server Directory\n├── server/                    # APPLICATION + DOMAIN + INFRASTRUCTURE\n│   ├── src/\n│   │   ├── routes/            # API endpoints (Application Layer)\n│   │   ├── controllers/       # Request handlers (Application Layer)\n│   │   ├── services/          # Business logic (Domain Layer)\n│   │   ├── models/            # Mongoose schemas (Domain + Infrastructure)\n│   │   ├── middleware/        # Auth, validation (Cross-cutting)\n│   │   └── utils/             # Shared utilities\n│   └── package.json\n│\n└── docker-compose.yml         # DEPLOYMENT/INFRASTRUCTURE\nBackend Layers: Application, Domain, and Infrastructure combined"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#mern-layered-architecture-mapping",
+    "href": "slides/week02/03b-architectural-theory.html#mern-layered-architecture-mapping",
+    "title": "Architectural Theory",
+    "section": "MERN: Layered Architecture Mapping",
+    "text": "MERN: Layered Architecture Mapping\n\n\n\n\n\nflowchart TB\n    subgraph Presentation[\"Presentation Layer (client/)\"]\n        React[React Components]\n        Pages[Pages/Views]\n        Hooks[Custom Hooks]\n        Context[Context/State]\n    end\n\n    subgraph Application[\"Application Layer (server/)\"]\n        Routes[routes/ - Express Routes]\n        Controllers[controllers/ - Request Handlers]\n        Middleware[middleware/ - Auth, Validation]\n    end\n\n    subgraph Domain[\"Domain Layer (server/)\"]\n        Services[services/ - Business Logic]\n        Models[models/ - Entity Definitions]\n    end\n\n    subgraph Infrastructure[\"Infrastructure Layer\"]\n        Mongoose[Mongoose ODM]\n        MongoDB[(MongoDB)]\n        External[External APIs]\n    end\n\n    Presentation --&gt; Application\n    Application --&gt; Domain\n    Domain --&gt; Infrastructure"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#mern-code-flow-presentation-layer",
+    "href": "slides/week02/03b-architectural-theory.html#mern-code-flow-presentation-layer",
+    "title": "Architectural Theory",
+    "section": "MERN Code Flow: Presentation Layer",
+    "text": "MERN Code Flow: Presentation Layer\nUser Registration - Step 1:\n// PRESENTATION: client/src/pages/Register.jsx\nconst handleSubmit = async (formData) =&gt; {\n  const response = await userService.register(formData);\n  navigate('/dashboard');\n};\nUser clicks “Register” → React calls API service → Navigates on success"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#mern-code-flow-application-layer",
+    "href": "slides/week02/03b-architectural-theory.html#mern-code-flow-application-layer",
+    "title": "Architectural Theory",
+    "section": "MERN Code Flow: Application Layer",
+    "text": "MERN Code Flow: Application Layer\nUser Registration - Steps 2 & 3:\n// APPLICATION: server/src/routes/auth.js\nrouter.post('/register', validateRegistration, authController.register);\n\n// APPLICATION: server/src/controllers/authController.js\nconst register = async (req, res) =&gt; {\n  const user = await userService.createUser(req.body);\n  const token = generateToken(user);\n  res.status(201).json({ user, token });\n};\nRoute receives request → Middleware validates → Controller orchestrates"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#mern-code-flow-domain-infrastructure",
+    "href": "slides/week02/03b-architectural-theory.html#mern-code-flow-domain-infrastructure",
+    "title": "Architectural Theory",
+    "section": "MERN Code Flow: Domain & Infrastructure",
+    "text": "MERN Code Flow: Domain & Infrastructure\nUser Registration - Steps 4 & 5:\n// DOMAIN: server/src/services/userService.js\nconst createUser = async (userData) =&gt; {\n  const hashedPassword = await bcrypt.hash(userData.password, 10);\n  return User.create({ ...userData, password: hashedPassword });\n};\n\n// INFRASTRUCTURE: server/src/models/User.js\nconst userSchema = new mongoose.Schema({\n  email: { type: String, required: true, unique: true },\n  password: { type: String, required: true },\n  createdAt: { type: Date, default: Date.now }\n});\nService applies business rules → Model persists to MongoDB"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#mern-where-patterns-live",
+    "href": "slides/week02/03b-architectural-theory.html#mern-where-patterns-live",
+    "title": "Architectural Theory",
+    "section": "MERN: Where Patterns Live",
+    "text": "MERN: Where Patterns Live\n\n\n\n\n\n\n\nPattern\nMERN Implementation\n\n\n\n\nLayered\nclient/ (presentation) → routes/controllers (application) → services (domain) → models (infrastructure)\n\n\nClient-Server\nReact SPA communicates with Express API via HTTP/REST\n\n\nRepository\nMongoose models abstract MongoDB operations\n\n\nMVC\nModels (Mongoose), Views (React), Controllers (Express handlers)\n\n\nAPI Gateway\nExpress middleware chain handles auth, validation, routing"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#flask-stack-core-app-directory",
+    "href": "slides/week02/03b-architectural-theory.html#flask-stack-core-app-directory",
+    "title": "Architectural Theory",
+    "section": "Flask Stack: Core App Directory",
+    "text": "Flask Stack: Core App Directory\nflask-app/\n├── app/                       # Main application package\n│   ├── __init__.py            # App factory, configuration\n│   ├── routes/                # APPLICATION LAYER\n│   │   ├── auth.py            # Authentication endpoints\n│   │   ├── users.py           # User CRUD endpoints\n│   │   └── products.py        # Product endpoints\n│   │\n│   ├── services/              # DOMAIN LAYER\n│   │   ├── user_service.py    # User business logic\n│   │   └── product_service.py # Product business logic\n│   │\n│   ├── models/                # DOMAIN + INFRASTRUCTURE\n│   │   ├── user.py            # SQLAlchemy models\n│   │   └── product.py"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#flask-stack-supporting-files",
+    "href": "slides/week02/03b-architectural-theory.html#flask-stack-supporting-files",
+    "title": "Architectural Theory",
+    "section": "Flask Stack: Supporting Files",
+    "text": "Flask Stack: Supporting Files\n│   ├── schemas/               # Data Transfer Objects (DTOs)\n│   │   └── user_schema.py     # Marshmallow/Pydantic schemas\n│   │\n│   └── utils/                 # Cross-cutting concerns\n│       ├── auth.py            # JWT handling\n│       └── decorators.py      # Custom decorators\n│\n├── templates/                 # PRESENTATION (Jinja2)\n├── static/                    # Static assets\n├── migrations/                # Database migrations (Alembic)\n├── config.py                  # Configuration settings\n└── run.py                     # Application entry point"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#flask-layered-architecture-mapping",
+    "href": "slides/week02/03b-architectural-theory.html#flask-layered-architecture-mapping",
+    "title": "Architectural Theory",
+    "section": "Flask: Layered Architecture Mapping",
+    "text": "Flask: Layered Architecture Mapping\n\n\n\n\n\nflowchart TB\n    subgraph Presentation[\"Presentation Layer\"]\n        Templates[templates/ - Jinja2]\n        Static[static/ - CSS/JS]\n        SPA[Or: Separate React/Vue SPA]\n    end\n\n    subgraph Application[\"Application Layer (app/)\"]\n        Routes[routes/ - Flask Blueprints]\n        Schemas[schemas/ - Request/Response DTOs]\n        Decorators[utils/decorators.py]\n    end\n\n    subgraph Domain[\"Domain Layer (app/)\"]\n        Services[services/ - Business Logic]\n        Models[models/ - Entity Definitions]\n    end\n\n    subgraph Infrastructure[\"Infrastructure Layer\"]\n        SQLAlchemy[SQLAlchemy ORM]\n        PostgreSQL[(PostgreSQL)]\n        Redis[(Redis Cache)]\n    end\n\n    Presentation --&gt; Application\n    Application --&gt; Domain\n    Domain --&gt; Infrastructure"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#flask-code-flow-application-layer",
+    "href": "slides/week02/03b-architectural-theory.html#flask-code-flow-application-layer",
+    "title": "Architectural Theory",
+    "section": "Flask Code Flow: Application Layer",
+    "text": "Flask Code Flow: Application Layer\nUser Registration - Step 1:\n# APPLICATION: app/routes/auth.py\nfrom flask import Blueprint, request, jsonify\nfrom app.services.user_service import UserService\nfrom app.schemas.user_schema import UserCreateSchema, UserResponseSchema\n\nauth_bp = Blueprint('auth', __name__)\n\n@auth_bp.route('/register', methods=['POST'])\ndef register():\n    schema = UserCreateSchema()\n    data = schema.load(request.json)  # Validate input\n    user = UserService.create_user(data)\n    return jsonify(UserResponseSchema().dump(user)), 201\nRoute receives request → Schema validates → Calls service"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#flask-code-flow-domain-layer",
+    "href": "slides/week02/03b-architectural-theory.html#flask-code-flow-domain-layer",
+    "title": "Architectural Theory",
+    "section": "Flask Code Flow: Domain Layer",
+    "text": "Flask Code Flow: Domain Layer\nUser Registration - Step 2:\n# DOMAIN: app/services/user_service.py\nfrom app.models.user import User\nfrom app import db\nfrom werkzeug.security import generate_password_hash\n\nclass UserService:\n    @staticmethod\n    def create_user(data):\n        user = User(\n            email=data['email'],\n            password_hash=generate_password_hash(data['password'])\n        )\n        db.session.add(user)\n        db.session.commit()\n        return user\nService contains business logic → Hashes password → Creates user"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#flask-code-flow-infrastructure-layer",
+    "href": "slides/week02/03b-architectural-theory.html#flask-code-flow-infrastructure-layer",
+    "title": "Architectural Theory",
+    "section": "Flask Code Flow: Infrastructure Layer",
+    "text": "Flask Code Flow: Infrastructure Layer\nUser Registration - Step 3:\n# INFRASTRUCTURE: app/models/user.py\nfrom app import db\n\nclass User(db.Model):\n    __tablename__ = 'users'\n\n    id = db.Column(db.Integer, primary_key=True)\n    email = db.Column(db.String(120), unique=True, nullable=False)\n    password_hash = db.Column(db.String(256), nullable=False)\n    created_at = db.Column(db.DateTime, default=db.func.now())\nSQLAlchemy model → Defines schema → Handles persistence to PostgreSQL"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#flask-where-patterns-live",
+    "href": "slides/week02/03b-architectural-theory.html#flask-where-patterns-live",
+    "title": "Architectural Theory",
+    "section": "Flask: Where Patterns Live",
+    "text": "Flask: Where Patterns Live\n\n\n\n\n\n\n\nPattern\nFlask Implementation\n\n\n\n\nLayered\nroutes (application) → services (domain) → models (infrastructure)\n\n\nRepository\nSQLAlchemy models + custom repository classes abstract DB\n\n\nFactory\ncreate_app() function in __init__.py\n\n\nBlueprint\nModular route organization (Flask-specific)\n\n\nDTO\nMarshmallow/Pydantic schemas for serialization"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#mern-vs-flask-architectural-comparison",
+    "href": "slides/week02/03b-architectural-theory.html#mern-vs-flask-architectural-comparison",
+    "title": "Architectural Theory",
+    "section": "MERN vs Flask: Architectural Comparison",
+    "text": "MERN vs Flask: Architectural Comparison\n\n\n\n\n\n\n\n\nAspect\nMERN\nFlask\n\n\n\n\nPresentation\nReact (separate SPA)\nJinja2 templates or separate SPA\n\n\nAPI Layer\nExpress routes + controllers\nFlask Blueprints + route functions\n\n\nBusiness Logic\nservices/ directory\nservices/ directory\n\n\nData Access\nMongoose ODM\nSQLAlchemy ORM\n\n\nDatabase\nMongoDB (document)\nPostgreSQL/MySQL (relational)\n\n\nValidation\nJoi, express-validator\nMarshmallow, Pydantic\n\n\nAuth Middleware\nExpress middleware\nFlask decorators"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#common-anti-patterns-to-avoid",
+    "href": "slides/week02/03b-architectural-theory.html#common-anti-patterns-to-avoid",
+    "title": "Architectural Theory",
+    "section": "Common Anti-Patterns to Avoid",
+    "text": "Common Anti-Patterns to Avoid\n\n\nFat Controllers/Routes\n// ❌ BAD: Business logic in controller\nrouter.post('/order', async (req, res) =&gt; {\n  // 50 lines of business logic here\n  // Validation, calculations, DB calls...\n});\n\n// ✅ GOOD: Thin controller, logic in service\nrouter.post('/order', async (req, res) =&gt; {\n  const order = await orderService.create(req.body);\n  res.json(order);\n});\n\nAnemic Domain Model\n# ❌ BAD: Model is just data, no behavior\nclass User(db.Model):\n    email = db.Column(db.String)\n    # All logic lives elsewhere\n\n# ✅ GOOD: Model has domain behavior\nclass User(db.Model):\n    email = db.Column(db.String)\n\n    def can_purchase(self, item):\n        return self.balance &gt;= item.price\n\n    def apply_discount(self, code):\n        # Domain logic here"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#architectural-decision-when-to-use-what",
+    "href": "slides/week02/03b-architectural-theory.html#architectural-decision-when-to-use-what",
+    "title": "Architectural Theory",
+    "section": "Architectural Decision: When to Use What",
+    "text": "Architectural Decision: When to Use What\n\n\n\nIf You Need…\nConsider\n\n\n\n\nFlexible schema, rapid iteration\nMERN (MongoDB)\n\n\nComplex queries, transactions\nFlask + PostgreSQL\n\n\nReal-time features\nMERN + Socket.io\n\n\nData science integration\nFlask + Python ecosystem\n\n\nLarge existing React codebase\nMERN\n\n\nTeam knows Python well\nFlask\n\n\nHorizontal scaling priority\nMERN (MongoDB sharding)\n\n\nStrong data integrity\nFlask + PostgreSQL"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#the-art-of-decomposition",
+    "href": "slides/week02/03b-architectural-theory.html#the-art-of-decomposition",
+    "title": "Architectural Theory",
+    "section": "The Art of Decomposition",
+    "text": "The Art of Decomposition\n\n“The key to controlling complexity is a good domain model.”\n— Eric Evans\n\nGoal: Break systems into pieces that are:\n\nCohesive - Related things together\nLoosely Coupled - Minimal dependencies\nIndependently Deployable - Change without coordination\nTeam-Sized - One team can own it"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#decomposition-strategies",
+    "href": "slides/week02/03b-architectural-theory.html#decomposition-strategies",
+    "title": "Architectural Theory",
+    "section": "Decomposition Strategies",
+    "text": "Decomposition Strategies\n1. By Business Capability\nE-commerce Platform\n├── Catalog Management     (Product team)\n├── Order Processing       (Fulfillment team)\n├── Customer Management    (CRM team)\n├── Payment Processing     (Finance team)\n└── Shipping & Delivery    (Logistics team)\n2. By Subdomain (Domain-Driven Design)\n├── Core Domain          (Competitive advantage)\n├── Supporting Domain    (Necessary but not differentiating)\n└── Generic Domain       (Commodity, buy or use OSS)"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#bounded-contexts",
+    "href": "slides/week02/03b-architectural-theory.html#bounded-contexts",
+    "title": "Architectural Theory",
+    "section": "Bounded Contexts",
+    "text": "Bounded Contexts\n\n\n\n\n\nflowchart TB\n    subgraph Sales[\"Sales Context\"]\n        SCustomer[Customer]\n        SProduct[Product]\n        SOrder[Order]\n    end\n\n    subgraph Shipping[\"Shipping Context\"]\n        ShCustomer[Recipient]\n        ShOrder[Shipment]\n        ShAddress[Address]\n    end\n\n    subgraph Billing[\"Billing Context\"]\n        BCustomer[Account]\n        BInvoice[Invoice]\n        BPayment[Payment]\n    end\n\n    Sales --&gt;|Customer ID| Shipping\n    Sales --&gt;|Order ID| Billing\n    Shipping --&gt;|Shipment Status| Sales\n\n\n\n\n\n\nKey Insight: Same concept (Customer) has different meanings in different contexts"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#context-mapping",
+    "href": "slides/week02/03b-architectural-theory.html#context-mapping",
+    "title": "Architectural Theory",
+    "section": "Context Mapping",
+    "text": "Context Mapping\n\n\n\n\n\n\n\n\nPattern\nDescription\nExample\n\n\n\n\nShared Kernel\nTeams share a subset of model\nCommon types library\n\n\nCustomer-Supplier\nUpstream serves downstream\nOrders → Shipping\n\n\nConformist\nDownstream adopts upstream model\nUsing external API as-is\n\n\nAnti-Corruption Layer\nTranslation layer\nLegacy system integration\n\n\nOpen Host Service\nPublished interface\nPublic API\n\n\nPublished Language\nShared standard\nIndustry standard format"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#service-boundaries-checklist",
+    "href": "slides/week02/03b-architectural-theory.html#service-boundaries-checklist",
+    "title": "Architectural Theory",
+    "section": "Service Boundaries Checklist",
+    "text": "Service Boundaries Checklist\nWhen defining service boundaries, ask:\n\nDoes it have a single responsibility?\nCan it be deployed independently?\nDoes it own its data?\nCan one team own it end-to-end?\nIs the interface stable and well-defined?\nCan it fail independently without cascading?\nIs it right-sized (not too big, not too small)?"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#the-two-pizza-rule",
+    "href": "slides/week02/03b-architectural-theory.html#the-two-pizza-rule",
+    "title": "Architectural Theory",
+    "section": "The Two-Pizza Rule",
+    "text": "The Two-Pizza Rule\n\n“If you can’t feed a team with two pizzas, it’s too big.”\n— Jeff Bezos\n\nApplied to Services: - If one team can’t understand the whole service, it’s too big - If there’s nothing meaningful a service can do alone, it’s too small - Aim for services that map to teams and business capabilities"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#quality-attribute-scenarios",
+    "href": "slides/week02/03b-architectural-theory.html#quality-attribute-scenarios",
+    "title": "Architectural Theory",
+    "section": "Quality Attribute Scenarios",
+    "text": "Quality Attribute Scenarios\n┌─────────────────────────────────────────────────────────────────┐\n│                   Quality Attribute Scenario                     │\n├──────────────┬──────────────────────────────────────────────────┤\n│ Source       │ Who/what causes the stimulus                      │\n│ Stimulus     │ The event or condition                            │\n│ Environment  │ System state when stimulus occurs                 │\n│ Artifact     │ What part of system is affected                   │\n│ Response     │ How the system responds                           │\n│ Measure      │ How we evaluate the response                      │\n└──────────────┴──────────────────────────────────────────────────┘\nExample: - Source: 1000 concurrent users - Stimulus: Request product search - Environment: Normal operations - Artifact: Search service - Response: Return results - Measure: 95th percentile &lt; 200ms"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#key-quality-attributes-for-web-systems",
+    "href": "slides/week02/03b-architectural-theory.html#key-quality-attributes-for-web-systems",
+    "title": "Architectural Theory",
+    "section": "Key Quality Attributes for Web Systems",
+    "text": "Key Quality Attributes for Web Systems\n\n\n\nAttribute\nQuestion\nMetric Example\n\n\n\n\nPerformance\nHow fast?\nResponse time &lt; 200ms\n\n\nScalability\nHow much growth?\n10x users without redesign\n\n\nAvailability\nHow reliable?\n99.9% uptime (8.76 hrs/year down)\n\n\nSecurity\nHow protected?\nZero critical vulnerabilities\n\n\nMaintainability\nHow easy to change?\nNew feature in &lt; 1 week\n\n\nTestability\nHow verifiable?\n80% code coverage"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#trade-off-analysis",
+    "href": "slides/week02/03b-architectural-theory.html#trade-off-analysis",
+    "title": "Architectural Theory",
+    "section": "Trade-off Analysis",
+    "text": "Trade-off Analysis\nEvery architectural decision involves trade-offs:\n\n\n\n\n\nflowchart LR\n    subgraph Decision[\"Add Caching Layer\"]\n        Improves[\"✅ Improves\"]\n        Costs[\"❌ Costs\"]\n    end\n\n    Improves --&gt; Perf[Performance]\n    Improves --&gt; Scale[Scalability]\n    Improves --&gt; Avail[Availability]\n\n    Costs --&gt; Complex[Complexity]\n    Costs --&gt; Consist[Consistency]\n    Costs --&gt; Cost[Infrastructure Cost]"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#architecture-decision-records-adrs",
+    "href": "slides/week02/03b-architectural-theory.html#architecture-decision-records-adrs",
+    "title": "Architectural Theory",
+    "section": "Architecture Decision Records (ADRs)",
+    "text": "Architecture Decision Records (ADRs)\nDocument important decisions:\n# ADR 001: Use MongoDB for Primary Data Store\n\n## Status\nAccepted\n\n## Context\nWe need a database for our MERN application that supports:\n- Flexible schema for evolving data models\n- Horizontal scaling for growing data\n- JSON-native storage for API compatibility\n\n## Decision\nWe will use MongoDB as our primary data store.\n\n## Consequences\n### Positive\n- Schema flexibility accelerates development\n- Native JSON support simplifies API layer\n- Horizontal scaling with sharding\n\n### Negative\n- No ACID transactions across documents (until MongoDB 4.0+)\n- Complex queries may be less efficient than SQL\n- Team needs MongoDB expertise"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#what-makes-a-good-project",
+    "href": "slides/week02/03b-architectural-theory.html#what-makes-a-good-project",
+    "title": "Architectural Theory",
+    "section": "What Makes a Good Project?",
+    "text": "What Makes a Good Project?\n\n\nGood Scope\n\nClear problem statement\nWell-defined user stories\nAchievable in semester\nDemonstrates patterns\nMeaningful AI integration\nClear success criteria\n\n\nPoor Scope\n\n“We’ll build the next Facebook”\nVague requirements\nFeature creep built-in\nNo architectural depth\nAI as afterthought\nNo measurable outcome"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#scoping-techniques",
+    "href": "slides/week02/03b-architectural-theory.html#scoping-techniques",
+    "title": "Architectural Theory",
+    "section": "Scoping Techniques",
+    "text": "Scoping Techniques\n1. MoSCoW Prioritization\nMUST have    - Core functionality (MVP)\nSHOULD have  - Important but not critical\nCOULD have   - Nice to have if time permits\nWON'T have   - Out of scope (explicitly)\n2. User Story Mapping\n                     User Journey\n    ┌────────┬────────┬────────┬────────┬────────┐\n    │  Sign  │ Browse │  Add   │  Check │ Track  │\n    │   Up   │Products│to Cart │  Out   │ Order  │\n    ├────────┼────────┼────────┼────────┼────────┤\nMVP │  ✓     │   ✓    │   ✓    │   ✓    │        │\n    ├────────┼────────┼────────┼────────┼────────┤\nv1.1│        │   ✓    │   ✓    │   ✓    │   ✓    │\n    └────────┴────────┴────────┴────────┴────────┘"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#estimation-techniques",
+    "href": "slides/week02/03b-architectural-theory.html#estimation-techniques",
+    "title": "Architectural Theory",
+    "section": "Estimation Techniques",
+    "text": "Estimation Techniques\nT-Shirt Sizing\n\n\n\nSize\nComplexity\nExample\n\n\n\n\nXS\nTrivial\nAdd validation message\n\n\nS\nSimple\nCRUD endpoint\n\n\nM\nModerate\nUser authentication\n\n\nL\nComplex\nSearch with filters\n\n\nXL\nVery complex\nAI recommendation engine\n\n\n\nPlanning Poker\nTeam estimates relative complexity, discusses outliers"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#risk-assessment",
+    "href": "slides/week02/03b-architectural-theory.html#risk-assessment",
+    "title": "Architectural Theory",
+    "section": "Risk Assessment",
+    "text": "Risk Assessment\nIdentify and mitigate project risks:\n\n\n\nRisk\nLikelihood\nImpact\nMitigation\n\n\n\n\nTeam member drops\nMedium\nHigh\nDocument knowledge, pair program\n\n\nTechnology unknown\nHigh\nMedium\nSpike early, have backup\n\n\nScope creep\nHigh\nHigh\nFixed scope, say no\n\n\nIntegration issues\nMedium\nHigh\nEarly integration, mocks\n\n\nAI API costs\nMedium\nMedium\nBudget limits, caching"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#proposal-requirements",
+    "href": "slides/week02/03b-architectural-theory.html#proposal-requirements",
+    "title": "Architectural Theory",
+    "section": "Proposal Requirements",
+    "text": "Proposal Requirements\nDue: January 30, 2026 (Presentations in class)\nRequired Sections\n\nProblem Statement - What problem are you solving?\nTarget Users - Who benefits from this?\nCore Features - What does the MVP include?\nArchitecture Overview - High-level system design\nTechnology Stack - What tools and frameworks?\nAI Integration - How will AI/agents be used?\nTeam & Roles - Who is responsible for what?\nRisks & Mitigations - What could go wrong?"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#example-proposal-outline",
+    "href": "slides/week02/03b-architectural-theory.html#example-proposal-outline",
+    "title": "Architectural Theory",
+    "section": "Example Proposal Outline",
+    "text": "Example Proposal Outline\n# Project: Smart Study Buddy\n\n## Problem Statement\nStudents struggle to effectively review course material\nand identify knowledge gaps for exams.\n\n## Target Users\n- University students preparing for exams\n- Study groups collaborating on material\n\n## Core Features (MVP)\n1. Upload course materials (PDFs, notes)\n2. AI-generated practice questions\n3. Spaced repetition flashcards\n4. Progress tracking dashboard\n5. Study session scheduling\n\n## Architecture\n[Diagram showing frontend, API, database, AI service]\n\n## Tech Stack\n- Frontend: React + TypeScript\n- Backend: Node.js + Express\n- Database: MongoDB + PostgreSQL\n- AI: OpenAI API + LangChain\n- Infrastructure: Docker + GitHub Actions\n\n## AI Integration\n- Question generation from uploaded content\n- Adaptive difficulty based on performance\n- Natural language Q&A for clarification\n\n## Team\n- Alice: Frontend lead\n- Bob: Backend lead\n- Carol: AI/ML integration\n- Dave: DevOps and infrastructure\n\n## Risks\n- AI response quality → Human review, prompt engineering\n- Cost of API calls → Caching, rate limiting, budgeting"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#presentation-format-5-7-minutes",
+    "href": "slides/week02/03b-architectural-theory.html#presentation-format-5-7-minutes",
+    "title": "Architectural Theory",
+    "section": "Presentation Format (5-7 minutes)",
+    "text": "Presentation Format (5-7 minutes)\n\nProblem & Users (1 min)\n\nWhat problem? Who cares?\n\nSolution Overview (2 min)\n\nKey features, demo mockup\n\nArchitecture (2 min)\n\nSystem diagram, tech choices, why\n\nAI Integration (1 min)\n\nSpecific AI capabilities\n\nTeam & Timeline (1 min)\n\nRoles, major milestones"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#evaluation-criteria",
+    "href": "slides/week02/03b-architectural-theory.html#evaluation-criteria",
+    "title": "Architectural Theory",
+    "section": "Evaluation Criteria",
+    "text": "Evaluation Criteria\n\n\n\nCriteria\nWeight\n\n\n\n\nProblem clarity and relevance\n20%\n\n\nTechnical feasibility\n20%\n\n\nArchitectural thinking\n20%\n\n\nAI integration meaningfulness\n15%\n\n\nPresentation quality\n15%\n\n\nTeam organization\n10%"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#brainstorming-session-20-minutes",
+    "href": "slides/week02/03b-architectural-theory.html#brainstorming-session-20-minutes",
+    "title": "Architectural Theory",
+    "section": "Brainstorming Session (20 minutes)",
+    "text": "Brainstorming Session (20 minutes)\nIn your teams:\n\nIndividual (5 min): Each person writes 3 project ideas\nShare (5 min): Present ideas to team, no judgment\nVote (3 min): Each person gets 3 votes\nDiscuss (7 min): Top 2-3 ideas - feasibility, interest"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#idea-evaluation-matrix",
+    "href": "slides/week02/03b-architectural-theory.html#idea-evaluation-matrix",
+    "title": "Architectural Theory",
+    "section": "Idea Evaluation Matrix",
+    "text": "Idea Evaluation Matrix\n\n\n\nCriteria\nIdea 1\nIdea 2\nIdea 3\n\n\n\n\nProblem clarity\n1-5\n1-5\n1-5\n\n\nTechnical feasibility\n1-5\n1-5\n1-5\n\n\nTeam interest\n1-5\n1-5\n1-5\n\n\nAI integration fit\n1-5\n1-5\n1-5\n\n\nUniqueness\n1-5\n1-5\n1-5\n\n\nTotal"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#report-out-15-minutes",
+    "href": "slides/week02/03b-architectural-theory.html#report-out-15-minutes",
+    "title": "Architectural Theory",
+    "section": "Report Out (15 minutes)",
+    "text": "Report Out (15 minutes)\nEach team shares:\n\nYour top project idea\nWhy you chose it\nBiggest risk or concern\nOne question for the class"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#key-takeaways",
+    "href": "slides/week02/03b-architectural-theory.html#key-takeaways",
+    "title": "Architectural Theory",
+    "section": "Key Takeaways",
+    "text": "Key Takeaways\n\nPatterns provide proven solutions - know when to apply them\nDecomposition is about finding the right boundaries\nQuality attributes drive architectural decisions\nTrade-offs are inevitable - document and justify them\nScoping is crucial - be explicit about what’s out\nADRs capture why decisions were made"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#looking-ahead",
+    "href": "slides/week02/03b-architectural-theory.html#looking-ahead",
+    "title": "Architectural Theory",
+    "section": "Looking Ahead",
+    "text": "Looking Ahead\nLab 1 Due: Friday, January 23\n\nComplete MERN Docker Compose setup\nREADME with instructions\nWorking demo\n\nProject Proposals: Friday, January 30\n\n5-7 minute presentation\nProblem, solution, architecture, AI, team"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#reading-for-next-week",
+    "href": "slides/week02/03b-architectural-theory.html#reading-for-next-week",
+    "title": "Architectural Theory",
+    "section": "Reading for Next Week",
+    "text": "Reading for Next Week\n\nMartin Fowler: Patterns of Enterprise Application Architecture\nThe Twelve-Factor App\nMicrosoft: Cloud Design Patterns"
+  },
+  {
+    "objectID": "slides/week02/03b-architectural-theory.html#questions",
+    "href": "slides/week02/03b-architectural-theory.html#questions",
+    "title": "Architectural Theory",
+    "section": "Questions?",
+    "text": "Questions?\n\nOffice Hours: Tuesday 9-11 AM, Pitt 2206\nEmail: kuruzj@rpi.edu\nAppointments: bit.ly/jason-rpi"
+  },
+  {
+    "objectID": "slides/week02/03a-lab1-docker-compose.html#todays-objectives",
+    "href": "slides/week02/03a-lab1-docker-compose.html#todays-objectives",
+    "title": "Lab 1: Infrastructure as Code",
+    "section": "Today’s Objectives",
+    "text": "Today’s Objectives\n\nLab Learning Goals\n\nCreate a complete MERN development environment from scratch\nWrite production-ready Dockerfiles for Node.js applications\nConfigure Docker Compose for multi-service orchestration\nImplement hot reloading for efficient development\nUnderstand container networking and service communication\nPractice Infrastructure as Code principles"
+  },
+  {
+    "objectID": "slides/week02/03a-lab1-docker-compose.html#lab-structure",
+    "href": "slides/week02/03a-lab1-docker-compose.html#lab-structure",
+    "title": "Lab 1: Infrastructure as Code",
+    "section": "Lab Structure",
+    "text": "Lab Structure\n\n\n\nTime\nActivity\n\n\n\n\n0:00 - 0:15\nLab overview and requirements\n\n\n0:15 - 0:45\nGuided setup: Project structure and API\n\n\n0:45 - 1:15\nGuided setup: Frontend and MongoDB\n\n\n1:15 - 1:30\nBreak\n\n\n1:30 - 1:45\nDocker Compose orchestration\n\n\n1:45 - 2:00\nTesting and troubleshooting"
+  },
+  {
+    "objectID": "slides/week02/03a-lab1-docker-compose.html#what-youll-build",
+    "href": "slides/week02/03a-lab1-docker-compose.html#what-youll-build",
+    "title": "Lab 1: Infrastructure as Code",
+    "section": "What You’ll Build",
+    "text": "What You’ll Build\n┌─────────────────────────────────────────────────────────────────┐\n│                    Your MERN Development Stack                   │\n│                                                                  │\n│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐         │\n│  │   React     │    │   Express   │    │   MongoDB   │         │\n│  │  Frontend   │───►│     API     │───►│  Database   │         │\n│  │  :3000      │    │   :4000     │    │   :27017    │         │\n│  └─────────────┘    └─────────────┘    └─────────────┘         │\n│                                                                  │\n│  ┌─────────────────────────────────────────────────────────┐   │\n│  │              Mongo Express (Admin UI) :8081              │   │\n│  └─────────────────────────────────────────────────────────┘   │\n│                                                                  │\n│  All running in Docker containers with hot reload               │\n└─────────────────────────────────────────────────────────────────┘"
+  },
+  {
+    "objectID": "slides/week02/03a-lab1-docker-compose.html#final-directory-structure",
+    "href": "slides/week02/03a-lab1-docker-compose.html#final-directory-structure",
+    "title": "Lab 1: Infrastructure as Code",
+    "section": "Final Directory Structure",
+    "text": "Final Directory Structure\nlab1-mern-stack/\n├── docker-compose.yml           # Orchestration\n├── docker-compose.prod.yml      # Production config\n├── .env                         # Environment variables\n├── .env.example                 # Template\n├── .gitignore\n├── README.md\n│\n├── api/                         # Express backend\n│   ├── Dockerfile\n│   ├── Dockerfile.dev\n│   ├── package.json\n│   ├── .dockerignore\n│   └── src/\n│       ├── server.js\n│       ├── routes/\n│       ├── models/\n│       └── middleware/\n│\n└── frontend/                    # React frontend\n    ├── Dockerfile\n    ├── Dockerfile.dev\n    ├── package.json\n    ├── .dockerignore\n    └── src/\n        ├── App.jsx\n        ├── index.jsx\n        └── components/"
+  },
+  {
+    "objectID": "slides/week02/03a-lab1-docker-compose.html#step-1-initialize-project",
+    "href": "slides/week02/03a-lab1-docker-compose.html#step-1-initialize-project",
+    "title": "Lab 1: Infrastructure as Code",
+    "section": "Step 1: Initialize Project",
+    "text": "Step 1: Initialize Project\n# Create project directory\nmkdir lab1-mern-stack\ncd lab1-mern-stack\n\n# Initialize git\ngit init\n\n# Create directory structure\nmkdir -p api/src/{routes,models,middleware}\nmkdir -p frontend/src/components\n\n# Create essential files\ntouch docker-compose.yml\ntouch .env .env.example .gitignore"
+  },
+  {
+    "objectID": "slides/week02/03a-lab1-docker-compose.html#step-2-create-.gitignore",
+    "href": "slides/week02/03a-lab1-docker-compose.html#step-2-create-.gitignore",
+    "title": "Lab 1: Infrastructure as Code",
+    "section": "Step 2: Create .gitignore",
+    "text": "Step 2: Create .gitignore\n# .gitignore\n# Dependencies\nnode_modules/\n\n# Environment files (never commit secrets)\n.env\n.env.local\n.env.*.local\n\n# Build outputs\ndist/\nbuild/\n\n# IDE\n.idea/\n.vscode/\n*.swp\n\n# OS\n.DS_Store\nThumbs.db\n\n# Logs\n*.log\nnpm-debug.log*\n\n# Docker\n.docker/"
+  },
+  {
+    "objectID": "slides/week02/03a-lab1-docker-compose.html#step-3-environment-configuration",
+    "href": "slides/week02/03a-lab1-docker-compose.html#step-3-environment-configuration",
+    "title": "Lab 1: Infrastructure as Code",
+    "section": "Step 3: Environment Configuration",
+    "text": "Step 3: Environment Configuration\n# .env.example (commit this)\nNODE_ENV=development\nAPI_PORT=4000\nFRONTEND_PORT=3000\nMONGODB_URI=mongodb://mongo:27017/mernapp\nMONGO_EXPRESS_PORT=8081\n# .env (don't commit this)\nNODE_ENV=development\nAPI_PORT=4000\nFRONTEND_PORT=3000\nMONGODB_URI=mongodb://mongo:27017/mernapp\nMONGO_EXPRESS_PORT=8081"
+  },
+  {
+    "objectID": "slides/week02/03a-lab1-docker-compose.html#api-package.json",
+    "href": "slides/week02/03a-lab1-docker-compose.html#api-package.json",
+    "title": "Lab 1: Infrastructure as Code",
+    "section": "API package.json",
+    "text": "API package.json\n{\n  \"name\": \"mern-api\",\n  \"version\": \"1.0.0\",\n  \"description\": \"MERN Stack API\",\n  \"main\": \"src/server.js\",\n  \"scripts\": {\n    \"start\": \"node src/server.js\",\n    \"dev\": \"nodemon src/server.js\",\n    \"test\": \"jest\"\n  },\n  \"dependencies\": {\n    \"express\": \"^4.18.2\",\n    \"mongoose\": \"^8.0.0\",\n    \"cors\": \"^2.8.5\",\n    \"dotenv\": \"^16.3.1\",\n    \"helmet\": \"^7.1.0\"\n  },\n  \"devDependencies\": {\n    \"nodemon\": \"^3.0.2\",\n    \"jest\": \"^29.7.0\"\n  }\n}"
+  },
+  {
+    "objectID": "slides/week02/03a-lab1-docker-compose.html#api-server-server.js",
+    "href": "slides/week02/03a-lab1-docker-compose.html#api-server-server.js",
+    "title": "Lab 1: Infrastructure as Code",
+    "section": "API Server (server.js)",
+    "text": "API Server (server.js)\n// api/src/server.js\nconst express = require('express');\nconst mongoose = require('mongoose');\nconst cors = require('cors');\nconst helmet = require('helmet');\n\nconst app = express();\nconst PORT = process.env.PORT || 4000;\nconst MONGODB_URI = process.env.MONGODB_URI;\n\n// Middleware\napp.use(helmet());\napp.use(cors());\napp.use(express.json());\n\n// Health check endpoint\napp.get('/health', (req, res) =&gt; {\n  res.json({\n    status: 'healthy',\n    timestamp: new Date().toISOString(),\n    uptime: process.uptime()\n  });\n});\n\n// API routes\napp.get('/api', (req, res) =&gt; {\n  res.json({ message: 'Welcome to the MERN API!' });\n});\n\n// Import routes\nconst itemRoutes = require('./routes/items');\napp.use('/api/items', itemRoutes);\n\n// Error handling middleware\napp.use((err, req, res, next) =&gt; {\n  console.error(err.stack);\n  res.status(500).json({ error: 'Something went wrong!' });\n});\n\n// Connect to MongoDB and start server\nmongoose.connect(MONGODB_URI)\n  .then(() =&gt; {\n    console.log('Connected to MongoDB');\n    app.listen(PORT, '0.0.0.0', () =&gt; {\n      console.log(`API server running on port ${PORT}`);\n    });\n  })\n  .catch(err =&gt; {\n    console.error('MongoDB connection error:', err);\n    process.exit(1);\n  });"
+  },
+  {
+    "objectID": "slides/week02/03a-lab1-docker-compose.html#item-model-modelsitem.js",
+    "href": "slides/week02/03a-lab1-docker-compose.html#item-model-modelsitem.js",
+    "title": "Lab 1: Infrastructure as Code",
+    "section": "Item Model (models/Item.js)",
+    "text": "Item Model (models/Item.js)\n// api/src/models/Item.js\nconst mongoose = require('mongoose');\n\nconst itemSchema = new mongoose.Schema({\n  name: {\n    type: String,\n    required: [true, 'Name is required'],\n    trim: true,\n    maxlength: [100, 'Name cannot exceed 100 characters']\n  },\n  description: {\n    type: String,\n    trim: true,\n    maxlength: [500, 'Description cannot exceed 500 characters']\n  },\n  completed: {\n    type: Boolean,\n    default: false\n  }\n}, {\n  timestamps: true  // Adds createdAt and updatedAt\n});\n\n// Index for common queries\nitemSchema.index({ completed: 1, createdAt: -1 });\n\nmodule.exports = mongoose.model('Item', itemSchema);"
+  },
+  {
+    "objectID": "slides/week02/03a-lab1-docker-compose.html#items-routes-routesitems.js",
+    "href": "slides/week02/03a-lab1-docker-compose.html#items-routes-routesitems.js",
+    "title": "Lab 1: Infrastructure as Code",
+    "section": "Items Routes (routes/items.js)",
+    "text": "Items Routes (routes/items.js)\n// api/src/routes/items.js\nconst express = require('express');\nconst router = express.Router();\nconst Item = require('../models/Item');\n\n// GET all items\nrouter.get('/', async (req, res) =&gt; {\n  try {\n    const items = await Item.find().sort({ createdAt: -1 });\n    res.json(items);\n  } catch (error) {\n    res.status(500).json({ error: error.message });\n  }\n});\n\n// GET single item\nrouter.get('/:id', async (req, res) =&gt; {\n  try {\n    const item = await Item.findById(req.params.id);\n    if (!item) {\n      return res.status(404).json({ error: 'Item not found' });\n    }\n    res.json(item);\n  } catch (error) {\n    res.status(500).json({ error: error.message });\n  }\n});\n\n// POST new item\nrouter.post('/', async (req, res) =&gt; {\n  try {\n    const item = new Item(req.body);\n    await item.save();\n    res.status(201).json(item);\n  } catch (error) {\n    res.status(400).json({ error: error.message });\n  }\n});\n\n// PUT update item\nrouter.put('/:id', async (req, res) =&gt; {\n  try {\n    const item = await Item.findByIdAndUpdate(\n      req.params.id,\n      req.body,\n      { new: true, runValidators: true }\n    );\n    if (!item) {\n      return res.status(404).json({ error: 'Item not found' });\n    }\n    res.json(item);\n  } catch (error) {\n    res.status(400).json({ error: error.message });\n  }\n});\n\n// DELETE item\nrouter.delete('/:id', async (req, res) =&gt; {\n  try {\n    const item = await Item.findByIdAndDelete(req.params.id);\n    if (!item) {\n      return res.status(404).json({ error: 'Item not found' });\n    }\n    res.json({ message: 'Item deleted successfully' });\n  } catch (error) {\n    res.status(500).json({ error: error.message });\n  }\n});\n\nmodule.exports = router;"
+  },
+  {
+    "objectID": "slides/week02/03a-lab1-docker-compose.html#api-dockerfiles",
+    "href": "slides/week02/03a-lab1-docker-compose.html#api-dockerfiles",
+    "title": "Lab 1: Infrastructure as Code",
+    "section": "API Dockerfiles",
+    "text": "API Dockerfiles\n\n\nDevelopment\n# api/Dockerfile.dev\nFROM node:20-alpine\n\nWORKDIR /app\n\n# Install dependencies\nCOPY package*.json ./\nRUN npm install\n\n# Don't copy src - use volume mount\n\nEXPOSE 4000\n\nCMD [\"npm\", \"run\", \"dev\"]\n\nProduction\n# api/Dockerfile\nFROM node:20-alpine AS builder\nWORKDIR /app\nCOPY package*.json ./\nRUN npm ci --only=production\n\nFROM node:20-alpine\nWORKDIR /app\nCOPY --from=builder /app/node_modules ./node_modules\nCOPY src ./src\nCOPY package.json ./\n\nUSER node\nEXPOSE 4000\nCMD [\"npm\", \"start\"]"
+  },
+  {
+    "objectID": "slides/week02/03a-lab1-docker-compose.html#api-.dockerignore",
+    "href": "slides/week02/03a-lab1-docker-compose.html#api-.dockerignore",
+    "title": "Lab 1: Infrastructure as Code",
+    "section": "API .dockerignore",
+    "text": "API .dockerignore\n# api/.dockerignore\nnode_modules\nnpm-debug.log\n.git\n.gitignore\n.env\n.env.*\n*.md\n.idea\n.vscode\ncoverage\n.nyc_output\n*.log"
+  },
+  {
+    "objectID": "slides/week02/03a-lab1-docker-compose.html#frontend-setup",
+    "href": "slides/week02/03a-lab1-docker-compose.html#frontend-setup",
+    "title": "Lab 1: Infrastructure as Code",
+    "section": "Frontend Setup",
+    "text": "Frontend Setup\n# From project root\ncd frontend\n\n# Create React app with Vite\nnpm create vite@latest . -- --template react\n\n# Or if you prefer Create React App\nnpx create-react-app . --template cra-template"
+  },
+  {
+    "objectID": "slides/week02/03a-lab1-docker-compose.html#frontend-package.json-vite",
+    "href": "slides/week02/03a-lab1-docker-compose.html#frontend-package.json-vite",
+    "title": "Lab 1: Infrastructure as Code",
+    "section": "Frontend package.json (Vite)",
+    "text": "Frontend package.json (Vite)\n{\n  \"name\": \"mern-frontend\",\n  \"version\": \"1.0.0\",\n  \"type\": \"module\",\n  \"scripts\": {\n    \"dev\": \"vite --host\",\n    \"build\": \"vite build\",\n    \"preview\": \"vite preview\"\n  },\n  \"dependencies\": {\n    \"react\": \"^18.2.0\",\n    \"react-dom\": \"^18.2.0\",\n    \"axios\": \"^1.6.0\"\n  },\n  \"devDependencies\": {\n    \"@vitejs/plugin-react\": \"^4.2.0\",\n    \"vite\": \"^5.0.0\"\n  }\n}"
+  },
+  {
+    "objectID": "slides/week02/03a-lab1-docker-compose.html#vite-configuration",
+    "href": "slides/week02/03a-lab1-docker-compose.html#vite-configuration",
+    "title": "Lab 1: Infrastructure as Code",
+    "section": "Vite Configuration",
+    "text": "Vite Configuration\n// frontend/vite.config.js\nimport { defineConfig } from 'vite'\nimport react from '@vitejs/plugin-react'\n\nexport default defineConfig({\n  plugins: [react()],\n  server: {\n    host: '0.0.0.0',\n    port: 3000,\n    watch: {\n      usePolling: true  // Required for Docker\n    },\n    proxy: {\n      '/api': {\n        target: 'http://api:4000',\n        changeOrigin: true\n      }\n    }\n  }\n})"
+  },
+  {
+    "objectID": "slides/week02/03a-lab1-docker-compose.html#app-component-app.jsx",
+    "href": "slides/week02/03a-lab1-docker-compose.html#app-component-app.jsx",
+    "title": "Lab 1: Infrastructure as Code",
+    "section": "App Component (App.jsx)",
+    "text": "App Component (App.jsx)\n// frontend/src/App.jsx\nimport { useState, useEffect } from 'react'\nimport axios from 'axios'\nimport './App.css'\n\nconst API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000'\n\nfunction App() {\n  const [items, setItems] = useState([])\n  const [newItem, setNewItem] = useState('')\n  const [loading, setLoading] = useState(true)\n  const [error, setError] = useState(null)\n\n  useEffect(() =&gt; {\n    fetchItems()\n  }, [])\n\n  const fetchItems = async () =&gt; {\n    try {\n      setLoading(true)\n      const response = await axios.get(`${API_URL}/api/items`)\n      setItems(response.data)\n      setError(null)\n    } catch (err) {\n      setError('Failed to fetch items')\n      console.error(err)\n    } finally {\n      setLoading(false)\n    }\n  }\n\n  const addItem = async (e) =&gt; {\n    e.preventDefault()\n    if (!newItem.trim()) return\n\n    try {\n      const response = await axios.post(`${API_URL}/api/items`, {\n        name: newItem\n      })\n      setItems([response.data, ...items])\n      setNewItem('')\n    } catch (err) {\n      setError('Failed to add item')\n    }\n  }\n\n  const toggleItem = async (id, completed) =&gt; {\n    try {\n      const response = await axios.put(`${API_URL}/api/items/${id}`, {\n        completed: !completed\n      })\n      setItems(items.map(item =&gt;\n        item._id === id ? response.data : item\n      ))\n    } catch (err) {\n      setError('Failed to update item')\n    }\n  }\n\n  const deleteItem = async (id) =&gt; {\n    try {\n      await axios.delete(`${API_URL}/api/items/${id}`)\n      setItems(items.filter(item =&gt; item._id !== id))\n    } catch (err) {\n      setError('Failed to delete item')\n    }\n  }\n\n  return (\n    &lt;div className=\"app\"&gt;\n      &lt;h1&gt;MERN Stack Items&lt;/h1&gt;\n\n      {error && &lt;div className=\"error\"&gt;{error}&lt;/div&gt;}\n\n      &lt;form onSubmit={addItem}&gt;\n        &lt;input\n          type=\"text\"\n          value={newItem}\n          onChange={(e) =&gt; setNewItem(e.target.value)}\n          placeholder=\"Add new item...\"\n        /&gt;\n        &lt;button type=\"submit\"&gt;Add&lt;/button&gt;\n      &lt;/form&gt;\n\n      {loading ? (\n        &lt;p&gt;Loading...&lt;/p&gt;\n      ) : (\n        &lt;ul&gt;\n          {items.map(item =&gt; (\n            &lt;li key={item._id} className={item.completed ? 'completed' : ''}&gt;\n              &lt;span onClick={() =&gt; toggleItem(item._id, item.completed)}&gt;\n                {item.name}\n              &lt;/span&gt;\n              &lt;button onClick={() =&gt; deleteItem(item._id)}&gt;Delete&lt;/button&gt;\n            &lt;/li&gt;\n          ))}\n        &lt;/ul&gt;\n      )}\n    &lt;/div&gt;\n  )\n}\n\nexport default App"
+  },
+  {
+    "objectID": "slides/week02/03a-lab1-docker-compose.html#frontend-dockerfiles",
+    "href": "slides/week02/03a-lab1-docker-compose.html#frontend-dockerfiles",
+    "title": "Lab 1: Infrastructure as Code",
+    "section": "Frontend Dockerfiles",
+    "text": "Frontend Dockerfiles\n\n\nDevelopment\n# frontend/Dockerfile.dev\nFROM node:20-alpine\n\nWORKDIR /app\n\nCOPY package*.json ./\nRUN npm install\n\n# Source mounted as volume\n\nEXPOSE 3000\n\nCMD [\"npm\", \"run\", \"dev\"]\n\nProduction\n# frontend/Dockerfile\nFROM node:20-alpine AS builder\nWORKDIR /app\nCOPY package*.json ./\nRUN npm ci\nCOPY . .\nRUN npm run build\n\nFROM nginx:alpine\nCOPY --from=builder /app/dist /usr/share/nginx/html\nCOPY nginx.conf /etc/nginx/conf.d/default.conf\nEXPOSE 80\nCMD [\"nginx\", \"-g\", \"daemon off;\"]"
+  },
+  {
+    "objectID": "slides/week02/03a-lab1-docker-compose.html#complete-docker-compose.yml",
+    "href": "slides/week02/03a-lab1-docker-compose.html#complete-docker-compose.yml",
+    "title": "Lab 1: Infrastructure as Code",
+    "section": "Complete docker-compose.yml",
+    "text": "Complete docker-compose.yml\nservices:\n  # React Frontend\n  frontend:\n    build:\n      context: ./frontend\n      dockerfile: Dockerfile.dev\n    container_name: mern-frontend\n    ports:\n      - \"${FRONTEND_PORT:-3000}:3000\"\n    volumes:\n      - ./frontend:/app\n      - /app/node_modules\n    environment:\n      - VITE_API_URL=http://localhost:${API_PORT:-4000}\n    depends_on:\n      - api\n    networks:\n      - mern-network\n\n  # Express API\n  api:\n    build:\n      context: ./api\n      dockerfile: Dockerfile.dev\n    container_name: mern-api\n    ports:\n      - \"${API_PORT:-4000}:4000\"\n    volumes:\n      - ./api:/app\n      - /app/node_modules\n    environment:\n      - NODE_ENV=development\n      - PORT=4000\n      - MONGODB_URI=${MONGODB_URI}\n    depends_on:\n      mongo:\n        condition: service_healthy\n    networks:\n      - mern-network\n\n  # MongoDB Database\n  mongo:\n    image: mongo:7\n    container_name: mern-mongo\n    ports:\n      - \"27017:27017\"\n    volumes:\n      - mongo-data:/data/db\n      - ./mongo-init:/docker-entrypoint-initdb.d\n    environment:\n      - MONGO_INITDB_DATABASE=mernapp\n    healthcheck:\n      test: [\"CMD\", \"mongosh\", \"--eval\", \"db.adminCommand('ping')\"]\n      interval: 10s\n      timeout: 5s\n      retries: 5\n      start_period: 30s\n    networks:\n      - mern-network\n\n  # MongoDB Admin UI\n  mongo-express:\n    image: mongo-express\n    container_name: mern-mongo-express\n    ports:\n      - \"${MONGO_EXPRESS_PORT:-8081}:8081\"\n    environment:\n      - ME_CONFIG_MONGODB_URL=mongodb://mongo:27017/\n      - ME_CONFIG_BASICAUTH=false\n    depends_on:\n      mongo:\n        condition: service_healthy\n    networks:\n      - mern-network\n\nvolumes:\n  mongo-data:\n    name: mern-mongo-data\n\nnetworks:\n  mern-network:\n    name: mern-network\n    driver: bridge"
+  },
+  {
+    "objectID": "slides/week02/03a-lab1-docker-compose.html#service-communication-diagram",
+    "href": "slides/week02/03a-lab1-docker-compose.html#service-communication-diagram",
+    "title": "Lab 1: Infrastructure as Code",
+    "section": "Service Communication Diagram",
+    "text": "Service Communication Diagram\n\n\n\n\n\nflowchart LR\n    subgraph Host[\"Host Machine (Your Computer)\"]\n        Browser[Web Browser]\n    end\n\n    subgraph Docker[\"Docker Network: mern-network\"]\n        Frontend[\"frontend:3000\"]\n        API[\"api:4000\"]\n        Mongo[\"mongo:27017\"]\n        MongoExpress[\"mongo-express:8081\"]\n    end\n\n    Browser --&gt;|localhost:3000| Frontend\n    Browser --&gt;|localhost:4000| API\n    Browser --&gt;|localhost:8081| MongoExpress\n\n    Frontend --&gt;|api:4000| API\n    API --&gt;|mongo:27017| Mongo\n    MongoExpress --&gt;|mongo:27017| Mongo"
+  },
+  {
+    "objectID": "slides/week02/03a-lab1-docker-compose.html#starting-the-stack",
+    "href": "slides/week02/03a-lab1-docker-compose.html#starting-the-stack",
+    "title": "Lab 1: Infrastructure as Code",
+    "section": "Starting the Stack",
+    "text": "Starting the Stack\n# Build and start all services\ndocker compose up --build\n\n# Or in detached mode\ndocker compose up -d --build\n\n# Watch the logs\ndocker compose logs -f\n\n# Check status\ndocker compose ps"
+  },
+  {
+    "objectID": "slides/week02/03a-lab1-docker-compose.html#expected-output",
+    "href": "slides/week02/03a-lab1-docker-compose.html#expected-output",
+    "title": "Lab 1: Infrastructure as Code",
+    "section": "Expected Output",
+    "text": "Expected Output\n[+] Running 4/4\n ✔ Container mern-mongo          Healthy\n ✔ Container mern-mongo-express  Started\n ✔ Container mern-api           Started\n ✔ Container mern-frontend      Started\n\nmern-api       | Connected to MongoDB\nmern-api       | API server running on port 4000\nmern-frontend  | VITE v5.0.0  ready in 500 ms\nmern-frontend  |   ➜  Local:   http://localhost:3000/"
+  },
+  {
+    "objectID": "slides/week02/03a-lab1-docker-compose.html#verification-checklist",
+    "href": "slides/week02/03a-lab1-docker-compose.html#verification-checklist",
+    "title": "Lab 1: Infrastructure as Code",
+    "section": "Verification Checklist",
+    "text": "Verification Checklist\n# 1. Check all containers are running\ndocker compose ps\n\n# 2. Test API health endpoint\ncurl http://localhost:4000/health\n\n# 3. Test API items endpoint\ncurl http://localhost:4000/api/items\n\n# 4. Create an item\ncurl -X POST http://localhost:4000/api/items \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"name\": \"Test Item\"}'\n\n# 5. Open frontend\nopen http://localhost:3000\n\n# 6. Open Mongo Express\nopen http://localhost:8081"
+  },
+  {
+    "objectID": "slides/week02/03a-lab1-docker-compose.html#test-hot-reload",
+    "href": "slides/week02/03a-lab1-docker-compose.html#test-hot-reload",
+    "title": "Lab 1: Infrastructure as Code",
+    "section": "Test Hot Reload",
+    "text": "Test Hot Reload\n\nAPI Hot Reload:\n# Edit api/src/server.js\n# Change the welcome message\n# Save - watch terminal for nodemon restart\ncurl http://localhost:4000/api\nFrontend Hot Reload:\n# Edit frontend/src/App.jsx\n# Change the h1 title\n# Save - browser updates automatically"
+  },
+  {
+    "objectID": "slides/week02/03a-lab1-docker-compose.html#common-issues-solutions",
+    "href": "slides/week02/03a-lab1-docker-compose.html#common-issues-solutions",
+    "title": "Lab 1: Infrastructure as Code",
+    "section": "Common Issues & Solutions",
+    "text": "Common Issues & Solutions\n\n\n\n\n\n\n\n\nIssue\nCause\nSolution\n\n\n\n\nPort already in use\nAnother service using port\nChange port in .env or stop other service\n\n\nMongoDB connection refused\nDB not ready\nWait or check depends_on health\n\n\nHot reload not working\nVolume mount issue\nEnsure paths correct, restart container\n\n\nCORS errors\nAPI not allowing frontend\nCheck CORS configuration\n\n\nModule not found\nnode_modules missing\nRebuild: docker compose build --no-cache"
+  },
+  {
+    "objectID": "slides/week02/03a-lab1-docker-compose.html#debugging-commands",
+    "href": "slides/week02/03a-lab1-docker-compose.html#debugging-commands",
+    "title": "Lab 1: Infrastructure as Code",
+    "section": "Debugging Commands",
+    "text": "Debugging Commands\n# View logs for specific service\ndocker compose logs -f api\n\n# Execute shell in container\ndocker compose exec api /bin/sh\n\n# Check network connectivity\ndocker compose exec api ping mongo\n\n# Inspect container\ndocker inspect mern-api\n\n# View resource usage\ndocker stats\n\n# Clean up everything\ndocker compose down -v --rmi all"
+  },
+  {
+    "objectID": "slides/week02/03a-lab1-docker-compose.html#lab-1-requirements",
+    "href": "slides/week02/03a-lab1-docker-compose.html#lab-1-requirements",
+    "title": "Lab 1: Infrastructure as Code",
+    "section": "Lab 1 Requirements",
+    "text": "Lab 1 Requirements\nComplete the following by Thursday, January 23:\nCore Requirements (80%)\n\n✅ Working docker-compose.yml with all 4 services\n✅ API with health endpoint and CRUD routes\n✅ Frontend that displays and manages items\n✅ MongoDB persistence with named volume\n✅ Hot reload working for both frontend and API\n✅ README.md with setup instructions\n\nStretch Goals (+20%)\n\nAdd input validation\nImplement error boundary in React\nAdd loading states and error handling\nCreate production Dockerfiles\nAdd environment-specific compose files"
+  },
+  {
+    "objectID": "slides/week02/03a-lab1-docker-compose.html#submission-requirements",
+    "href": "slides/week02/03a-lab1-docker-compose.html#submission-requirements",
+    "title": "Lab 1: Infrastructure as Code",
+    "section": "Submission Requirements",
+    "text": "Submission Requirements\n\nGitHub Repository with all code\nREADME.md containing:\n\nProject description\nSetup instructions\nEnvironment variables needed\nScreenshots of working app\n\nWorking demo - TAs will clone and run"
+  },
+  {
+    "objectID": "slides/week02/03a-lab1-docker-compose.html#grading-rubric",
+    "href": "slides/week02/03a-lab1-docker-compose.html#grading-rubric",
+    "title": "Lab 1: Infrastructure as Code",
+    "section": "Grading Rubric",
+    "text": "Grading Rubric\n\n\n\nCriteria\nPoints\n\n\n\n\nDocker Compose correctly configured\n20\n\n\nAPI with all CRUD operations\n20\n\n\nFrontend connects and displays data\n20\n\n\nHot reload working\n10\n\n\nMongoDB persistence\n10\n\n\nCode quality and organization\n10\n\n\nDocumentation (README)\n10\n\n\nTotal\n100"
+  },
+  {
+    "objectID": "slides/week02/03a-lab1-docker-compose.html#accept-the-assignment",
+    "href": "slides/week02/03a-lab1-docker-compose.html#accept-the-assignment",
+    "title": "Lab 1: Infrastructure as Code",
+    "section": "Accept the Assignment",
+    "text": "Accept the Assignment\nStep 1: Click the GitHub Classroom Link\nhttps://classroom.github.com/a/Gbc2JCRP\n. . .\nStep 2: Authorize GitHub Classroom\n\nLog in with your GitHub account\nAuthorize GitHub Classroom to access your account\nAccept the assignment\n\n. . .\nStep 3: Your Repository is Created\n\nGitHub Classroom creates a private repository for you\nNamed: lab1-infrastructure-as-code-&lt;your-username&gt;\nContains starter files and instructions"
+  },
+  {
+    "objectID": "slides/week02/03a-lab1-docker-compose.html#clone-and-work-locally",
+    "href": "slides/week02/03a-lab1-docker-compose.html#clone-and-work-locally",
+    "title": "Lab 1: Infrastructure as Code",
+    "section": "Clone and Work Locally",
+    "text": "Clone and Work Locally\n# Clone your repository\ngit clone https://github.com/rpi-techfundamentals/lab1-infrastructure-as-code-&lt;your-username&gt;.git\n\n# Navigate into the directory\ncd lab1-infrastructure-as-code-&lt;your-username&gt;\n\n# Open in VS Code (optional)\ncode .\n\nImportant: Replace &lt;your-username&gt; with your actual GitHub username."
+  },
+  {
+    "objectID": "slides/week02/03a-lab1-docker-compose.html#the-commit-process",
+    "href": "slides/week02/03a-lab1-docker-compose.html#the-commit-process",
+    "title": "Lab 1: Infrastructure as Code",
+    "section": "The Commit Process",
+    "text": "The Commit Process\n\n\n\n\n\nflowchart LR\n    A[Working Directory] --&gt;|git add| B[Staging Area]\n    B --&gt;|git commit| C[Local Repository]\n    C --&gt;|git push| D[Remote Repository]\n\n\n\n\n\n\nYour changes flow through three stages before reaching GitHub."
+  },
+  {
+    "objectID": "slides/week02/03a-lab1-docker-compose.html#essential-git-commands",
+    "href": "slides/week02/03a-lab1-docker-compose.html#essential-git-commands",
+    "title": "Lab 1: Infrastructure as Code",
+    "section": "Essential Git Commands",
+    "text": "Essential Git Commands\n# Check what files have changed\ngit status\n\n# Stage specific files for commit\ngit add docker-compose.yml\ngit add api/src/server.js\n\n# Or stage all changes\ngit add .\n\n# Commit with a descriptive message\ngit commit -m \"Add API health endpoint and MongoDB connection\"\n\n# Push to GitHub\ngit push origin main"
+  },
+  {
+    "objectID": "slides/week02/03a-lab1-docker-compose.html#writing-good-commit-messages",
+    "href": "slides/week02/03a-lab1-docker-compose.html#writing-good-commit-messages",
+    "title": "Lab 1: Infrastructure as Code",
+    "section": "Writing Good Commit Messages",
+    "text": "Writing Good Commit Messages\n\n\nGood Messages\ngit commit -m \"Add CRUD routes for items API\"\n\ngit commit -m \"Fix MongoDB connection timeout issue\"\n\ngit commit -m \"Implement hot reload for frontend\"\n\ngit commit -m \"Add error handling middleware\"\n\nAvoid These\ngit commit -m \"stuff\"\n\ngit commit -m \"fixed it\"\n\ngit commit -m \"asdfasdf\"\n\ngit commit -m \"changes\"\n\n\nRule of thumb: Your message should complete the sentence “This commit will…”"
+  },
+  {
+    "objectID": "slides/week02/03a-lab1-docker-compose.html#commit-early-commit-often",
+    "href": "slides/week02/03a-lab1-docker-compose.html#commit-early-commit-often",
+    "title": "Lab 1: Infrastructure as Code",
+    "section": "Commit Early, Commit Often",
+    "text": "Commit Early, Commit Often\n# After each milestone, commit your progress:\n\n# 1. After setting up project structure\ngit add .\ngit commit -m \"Initialize project structure with API and frontend directories\"\n\n# 2. After creating Dockerfiles\ngit add api/Dockerfile.dev frontend/Dockerfile.dev\ngit commit -m \"Add development Dockerfiles for API and frontend\"\n\n# 3. After docker-compose works\ngit add docker-compose.yml\ngit commit -m \"Configure Docker Compose with all services\"\n\n# 4. After implementing API routes\ngit add api/src/\ngit commit -m \"Implement CRUD endpoints for items\"\n\n# 5. After frontend is working\ngit add frontend/src/\ngit commit -m \"Add React frontend with item management\"\n\n# Push all commits to GitHub\ngit push origin main"
+  },
+  {
+    "objectID": "slides/week02/03a-lab1-docker-compose.html#viewing-your-progress",
+    "href": "slides/week02/03a-lab1-docker-compose.html#viewing-your-progress",
+    "title": "Lab 1: Infrastructure as Code",
+    "section": "Viewing Your Progress",
+    "text": "Viewing Your Progress\n# See commit history\ngit log --oneline\n\n# Example output:\n# a1b2c3d Add React frontend with item management\n# e4f5g6h Implement CRUD endpoints for items\n# i7j8k9l Configure Docker Compose with all services\n# m0n1o2p Add development Dockerfiles\n# q3r4s5t Initialize project structure\n\nYour commits tell the story of how you built the lab!"
+  },
+  {
+    "objectID": "slides/week02/03a-lab1-docker-compose.html#common-git-issues-solutions",
+    "href": "slides/week02/03a-lab1-docker-compose.html#common-git-issues-solutions",
+    "title": "Lab 1: Infrastructure as Code",
+    "section": "Common Git Issues & Solutions",
+    "text": "Common Git Issues & Solutions\n\n\n\n\n\n\n\nIssue\nSolution\n\n\n\n\n“Please tell me who you are”\ngit config --global user.email \"you@example.com\"\n\n\nForgot to commit before making changes\nCommit now - your changes are still safe\n\n\nCommitted wrong file\ngit reset HEAD~1 to undo last commit\n\n\nPush rejected\ngit pull first, then git push\n\n\nMerge conflict\nOpen file, resolve conflicts manually, then commit"
+  },
+  {
+    "objectID": "slides/week02/03a-lab1-docker-compose.html#submission-checklist",
+    "href": "slides/week02/03a-lab1-docker-compose.html#submission-checklist",
+    "title": "Lab 1: Infrastructure as Code",
+    "section": "Submission Checklist",
+    "text": "Submission Checklist\nBefore the deadline, ensure:\n\nAll code is committed and pushed to GitHub\ndocker compose up --build works in your repository\nREADME.md includes setup instructions\nNo secrets committed (check .gitignore)\nFill out the answers.yml file\n\n\nGitHub Classroom automatically tracks your submission!\nThe TAs can see your commits and will clone your repository to grade it."
+  },
+  {
+    "objectID": "slides/week02/03a-lab1-docker-compose.html#what-we-built-today",
+    "href": "slides/week02/03a-lab1-docker-compose.html#what-we-built-today",
+    "title": "Lab 1: Infrastructure as Code",
+    "section": "What We Built Today",
+    "text": "What We Built Today\n┌─────────────────────────────────────────────────────────┐\n│              Complete MERN Development Stack            │\n│                                                         │\n│  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌────────┐ │\n│  │  React   │  │ Express  │  │ MongoDB  │  │ Mongo  │ │\n│  │ Frontend │──│   API    │──│ Database │──│Express │ │\n│  │  :3000   │  │  :4000   │  │  :27017  │  │ :8081  │ │\n│  └──────────┘  └──────────┘  └──────────┘  └────────┘ │\n│                                                         │\n│  ✓ Hot Reloading    ✓ Persistent Data                  │\n│  ✓ Service Discovery    ✓ Health Checks                │\n│  ✓ Environment Config   ✓ Volume Mounting              │\n└─────────────────────────────────────────────────────────┘"
+  },
+  {
+    "objectID": "slides/week02/03a-lab1-docker-compose.html#key-takeaways",
+    "href": "slides/week02/03a-lab1-docker-compose.html#key-takeaways",
+    "title": "Lab 1: Infrastructure as Code",
+    "section": "Key Takeaways",
+    "text": "Key Takeaways\n\nInfrastructure as Code makes environments reproducible\nDocker Compose simplifies multi-service orchestration\nVolume mounting enables hot reload development\nNamed volumes provide data persistence\nService networking uses container names as hostnames\nHealth checks ensure proper startup ordering"
+  },
+  {
+    "objectID": "slides/week02/03a-lab1-docker-compose.html#next-class-friday",
+    "href": "slides/week02/03a-lab1-docker-compose.html#next-class-friday",
+    "title": "Lab 1: Infrastructure as Code",
+    "section": "Next Class: Friday",
+    "text": "Next Class: Friday\nArchitectural Theory: Patterns, System Decomposition, and Project Scoping\n\nDeeper dive into architectural patterns\nHow to decompose complex systems\nProject scoping techniques\nProject proposal preparation"
+  },
+  {
+    "objectID": "slides/week02/03a-lab1-docker-compose.html#questions",
+    "href": "slides/week02/03a-lab1-docker-compose.html#questions",
+    "title": "Lab 1: Infrastructure as Code",
+    "section": "Questions?",
+    "text": "Questions?\n\nLab Help: - Office Hours: Tuesday 9-11 AM - Piazza for Q&A - TA sessions (see LMS)\nDue Date: January 23, 2026"
   }
 ]

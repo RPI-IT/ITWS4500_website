@@ -60,8 +60,8 @@ gantt
 
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
-| Tue 1/20 | Lecture | Architectural Theory: Patterns, System Decomposition, and Project Scoping | [Slides](slides/week02/03-architectural-theory.qmd) |
-| Fri 1/23 | Lab | **Lab 2:** Layered Client-Server Architecture (MERN as Reference) | [Lab 2](labs/lab02-layered-architecture.qmd) |
+| Tue 1/20 | Lecture | Lab 1 Review; Architectural Theory: Patterns, System Decomposition, and Project Scoping | [Lab 1 Slides](slides/week02/03a-lab1-docker-compose.qmd), [Theory Slides](slides/week02/03b-architectural-theory.qmd) |
+| Fri 1/23 | Lecture + Lab | **Lab 2:** Layered Client-Server Architecture (MERN as Reference) | [Slides](slides/week02/04-lab2-layered-architecture.qmd), [Lab 2](labs/lab02-layered-architecture.qmd) |
 
 ::: {.callout-note}
 **Lab 2 Due:** January 27, 2026

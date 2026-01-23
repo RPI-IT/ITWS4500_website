@@ -997,47 +997,7 @@ docker compose down
 7. **Set resource limits** in production
 8. **Use restart policies** appropriately
 
-# Looking Ahead {.section-slide background-color="#d6001c"}
 
-## Lab 1: Next Week (January 20)
-
-**Infrastructure as Code with Docker Compose**
-
-You will:
-
-- Set up a complete MERN development environment
-- Write Dockerfiles for frontend and backend
-- Configure multi-service orchestration
-- Implement volume mounting for development
-- Test the complete stack
-
-## Preparation for Lab 1
-
-:::: {.columns}
-
-::: {.column width="50%"}
-### Install
-
-- Docker Desktop
-- VS Code with Docker extension
-- Git
-
-### Verify
-```bash
-docker --version
-docker compose version
-```
-:::
-
-::: {.column width="50%"}
-### Review
-
-- Today's slides
-- [Docker Docs: Get Started](https://docs.docker.com/get-started/)
-- [Compose File Reference](https://docs.docker.com/compose/compose-file/)
-:::
-
-::::
 
 ## Summary
 
