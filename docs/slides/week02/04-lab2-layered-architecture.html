@@ -380,10 +380,10 @@ Jason Kuruzovich
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource javascript number-lines code-with-copy"><code class="sourceCode javascript"><span id="cb3-1"><a></a><span class="co">// Test domain logic without database</span></span>
 <span id="cb3-2"><a></a><span class="kw">const</span> task <span class="op">=</span> <span class="kw">new</span> <span class="fu">Task</span>({</span>
 <span id="cb3-3"><a></a>  <span class="dt">title</span><span class="op">:</span> <span class="st">'Test'</span><span class="op">,</span></span>
-<span id="cb3-4"><a></a>  <span class="dt">dueDate</span><span class="op">:</span> yesterday</span>
+<span id="cb3-4"><a></a>  <span class="dt">priority</span><span class="op">:</span> <span class="st">'high'</span></span>
 <span id="cb3-5"><a></a>})<span class="op">;</span></span>
 <span id="cb3-6"><a></a></span>
-<span id="cb3-7"><a></a><span class="fu">expect</span>(task<span class="op">.</span><span class="fu">isOverdue</span>())<span class="op">.</span><span class="fu">toBe</span>(<span class="kw">true</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-7"><a></a><span class="fu">expect</span>(task<span class="op">.</span><span class="fu">isHighPriority</span>())<span class="op">.</span><span class="fu">toBe</span>(<span class="kw">true</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li>Unit test business rules in isolation</li>
 <li>Mock repositories for service tests</li>
@@ -428,7 +428,7 @@ Presentation layer: unchanged</code></pre>
 <div class="fragment">
 <p><strong>Rule:</strong> If you can explain it to a non-technical stakeholder, it belongs in the domain.</p>
 <ul>
-<li>“A task is overdue if the due date has passed” ✓</li>
+<li>“A high priority task needs immediate attention” ✓</li>
 <li>“We use MongoDB with Mongoose” ✗</li>
 </ul>
 </div>
@@ -442,38 +442,35 @@ Presentation layer: unchanged</code></pre>
 <span id="cb6-5"><a></a>    <span class="kw">this</span><span class="op">.</span><span class="at">description</span> <span class="op">=</span> data<span class="op">.</span><span class="at">description</span> <span class="op">||</span> <span class="st">''</span><span class="op">;</span></span>
 <span id="cb6-6"><a></a>    <span class="kw">this</span><span class="op">.</span><span class="at">status</span> <span class="op">=</span> data<span class="op">.</span><span class="at">status</span> <span class="op">||</span> <span class="st">'pending'</span><span class="op">;</span></span>
 <span id="cb6-7"><a></a>    <span class="kw">this</span><span class="op">.</span><span class="at">priority</span> <span class="op">=</span> data<span class="op">.</span><span class="at">priority</span> <span class="op">||</span> <span class="st">'medium'</span><span class="op">;</span></span>
-<span id="cb6-8"><a></a>    <span class="kw">this</span><span class="op">.</span><span class="at">dueDate</span> <span class="op">=</span> data<span class="op">.</span><span class="at">dueDate</span> <span class="op">?</span> <span class="kw">new</span> <span class="bu">Date</span>(data<span class="op">.</span><span class="at">dueDate</span>) <span class="op">:</span> <span class="kw">null</span><span class="op">;</span></span>
-<span id="cb6-9"><a></a>    <span class="kw">this</span><span class="op">.</span><span class="at">createdAt</span> <span class="op">=</span> data<span class="op">.</span><span class="at">createdAt</span> <span class="op">?</span> <span class="kw">new</span> <span class="bu">Date</span>(data<span class="op">.</span><span class="at">createdAt</span>) <span class="op">:</span> <span class="kw">new</span> <span class="bu">Date</span>()<span class="op">;</span></span>
-<span id="cb6-10"><a></a>    <span class="kw">this</span><span class="op">.</span><span class="at">updatedAt</span> <span class="op">=</span> data<span class="op">.</span><span class="at">updatedAt</span> <span class="op">?</span> <span class="kw">new</span> <span class="bu">Date</span>(data<span class="op">.</span><span class="at">updatedAt</span>) <span class="op">:</span> <span class="kw">new</span> <span class="bu">Date</span>()<span class="op">;</span></span>
-<span id="cb6-11"><a></a>  }</span>
-<span id="cb6-12"><a></a></span>
-<span id="cb6-13"><a></a>  <span class="co">// Business methods go here...</span></span>
-<span id="cb6-14"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-8"><a></a>    <span class="kw">this</span><span class="op">.</span><span class="at">createdAt</span> <span class="op">=</span> data<span class="op">.</span><span class="at">createdAt</span> <span class="op">?</span> <span class="kw">new</span> <span class="bu">Date</span>(data<span class="op">.</span><span class="at">createdAt</span>) <span class="op">:</span> <span class="kw">new</span> <span class="bu">Date</span>()<span class="op">;</span></span>
+<span id="cb6-9"><a></a>    <span class="kw">this</span><span class="op">.</span><span class="at">updatedAt</span> <span class="op">=</span> data<span class="op">.</span><span class="at">updatedAt</span> <span class="op">?</span> <span class="kw">new</span> <span class="bu">Date</span>(data<span class="op">.</span><span class="at">updatedAt</span>) <span class="op">:</span> <span class="kw">new</span> <span class="bu">Date</span>()<span class="op">;</span></span>
+<span id="cb6-10"><a></a>  }</span>
+<span id="cb6-11"><a></a></span>
+<span id="cb6-12"><a></a>  <span class="co">// Business methods go here...</span></span>
+<span id="cb6-13"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>An entity is more than a data container - it <strong>encapsulates business rules</strong>.</p>
 </section>
-<section id="entity-methods-isoverdue" class="slide level2">
-<h2>Entity Methods: isOverdue()</h2>
+<section id="entity-methods-ishighpriority" class="slide level2">
+<h2>Entity Methods: isHighPriority()</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource javascript number-lines code-with-copy"><code class="sourceCode javascript"><span id="cb7-1"><a></a><span class="co">/**</span></span>
-<span id="cb7-2"><a></a><span class="co"> * Check if the task is overdue</span></span>
-<span id="cb7-3"><a></a><span class="co"> * Business rule: A task is overdue if:</span></span>
-<span id="cb7-4"><a></a><span class="co"> * - It has a due date</span></span>
+<span id="cb7-2"><a></a><span class="co"> * Check if the task needs immediate attention</span></span>
+<span id="cb7-3"><a></a><span class="co"> * Business rule: A task is high priority if:</span></span>
+<span id="cb7-4"><a></a><span class="co"> * - It has priority set to 'high'</span></span>
 <span id="cb7-5"><a></a><span class="co"> * - It's not completed</span></span>
-<span id="cb7-6"><a></a><span class="co"> * - The due date is in the past</span></span>
-<span id="cb7-7"><a></a><span class="co"> */</span></span>
-<span id="cb7-8"><a></a><span class="fu">isOverdue</span>() {</span>
-<span id="cb7-9"><a></a>  <span class="cf">if</span> (<span class="op">!</span><span class="kw">this</span><span class="op">.</span><span class="at">dueDate</span>) <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span></span>
-<span id="cb7-10"><a></a>  <span class="cf">if</span> (<span class="kw">this</span><span class="op">.</span><span class="at">status</span> <span class="op">===</span> <span class="st">'completed'</span>) <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span></span>
-<span id="cb7-11"><a></a>  <span class="cf">return</span> <span class="kw">new</span> <span class="bu">Date</span>() <span class="op">&gt;</span> <span class="kw">this</span><span class="op">.</span><span class="at">dueDate</span><span class="op">;</span></span>
-<span id="cb7-12"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-6"><a></a><span class="co"> */</span></span>
+<span id="cb7-7"><a></a><span class="fu">isHighPriority</span>() {</span>
+<span id="cb7-8"><a></a>  <span class="cf">if</span> (<span class="kw">this</span><span class="op">.</span><span class="at">status</span> <span class="op">===</span> <span class="st">'completed'</span>) <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb7-9"><a></a>  <span class="cf">return</span> <span class="kw">this</span><span class="op">.</span><span class="at">priority</span> <span class="op">===</span> <span class="st">'high'</span><span class="op">;</span></span>
+<span id="cb7-10"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="fragment">
 <p><strong>Test it:</strong></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource javascript number-lines code-with-copy"><code class="sourceCode javascript"><span id="cb8-1"><a></a><span class="kw">const</span> task <span class="op">=</span> <span class="kw">new</span> <span class="fu">Task</span>({</span>
 <span id="cb8-2"><a></a>  <span class="dt">title</span><span class="op">:</span> <span class="st">'Review PR'</span><span class="op">,</span></span>
-<span id="cb8-3"><a></a>  <span class="dt">dueDate</span><span class="op">:</span> <span class="kw">new</span> <span class="bu">Date</span>(<span class="st">'2024-01-01'</span>)<span class="op">,</span></span>
+<span id="cb8-3"><a></a>  <span class="dt">priority</span><span class="op">:</span> <span class="st">'high'</span><span class="op">,</span></span>
 <span id="cb8-4"><a></a>  <span class="dt">status</span><span class="op">:</span> <span class="st">'pending'</span></span>
 <span id="cb8-5"><a></a>})<span class="op">;</span></span>
 <span id="cb8-6"><a></a></span>
-<span id="cb8-7"><a></a><span class="fu">expect</span>(task<span class="op">.</span><span class="fu">isOverdue</span>())<span class="op">.</span><span class="fu">toBe</span>(<span class="kw">true</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb8-7"><a></a><span class="fu">expect</span>(task<span class="op">.</span><span class="fu">isHighPriority</span>())<span class="op">.</span><span class="fu">toBe</span>(<span class="kw">true</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="entity-methods-complete" class="slide level2">
@@ -572,19 +569,13 @@ Presentation layer: unchanged</code></pre>
 <span id="cb13-12"><a></a></span>
 <span id="cb13-13"><a></a>  <span class="kw">let</span> score <span class="op">=</span> priorityBase[task<span class="op">.</span><span class="at">priority</span>] <span class="op">||</span> <span class="dv">5</span><span class="op">;</span></span>
 <span id="cb13-14"><a></a></span>
-<span id="cb13-15"><a></a>  <span class="co">// Adjust for due date proximity</span></span>
-<span id="cb13-16"><a></a>  <span class="cf">if</span> (task<span class="op">.</span><span class="at">dueDate</span>) {</span>
-<span id="cb13-17"><a></a>    <span class="kw">const</span> daysUntilDue <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">ceil</span>(</span>
-<span id="cb13-18"><a></a>      (<span class="kw">new</span> <span class="bu">Date</span>(task<span class="op">.</span><span class="at">dueDate</span>) <span class="op">-</span> <span class="kw">new</span> <span class="bu">Date</span>()) <span class="op">/</span> (<span class="dv">1000</span> <span class="op">*</span> <span class="dv">60</span> <span class="op">*</span> <span class="dv">60</span> <span class="op">*</span> <span class="dv">24</span>)</span>
-<span id="cb13-19"><a></a>    )<span class="op">;</span></span>
-<span id="cb13-20"><a></a></span>
-<span id="cb13-21"><a></a>    <span class="cf">if</span> (daysUntilDue <span class="op">&lt;</span> <span class="dv">0</span>) score <span class="op">=</span> <span class="dv">10</span><span class="op">;</span>        <span class="co">// Overdue</span></span>
-<span id="cb13-22"><a></a>    <span class="cf">else</span> <span class="cf">if</span> (daysUntilDue <span class="op">&lt;=</span> <span class="dv">1</span>) score <span class="op">+=</span> <span class="dv">2</span><span class="op">;</span>  <span class="co">// Due today/tomorrow</span></span>
-<span id="cb13-23"><a></a>    <span class="cf">else</span> <span class="cf">if</span> (daysUntilDue <span class="op">&lt;=</span> <span class="dv">7</span>) score <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span>  <span class="co">// Due this week</span></span>
-<span id="cb13-24"><a></a>  }</span>
-<span id="cb13-25"><a></a></span>
-<span id="cb13-26"><a></a>  <span class="cf">return</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(<span class="dv">10</span><span class="op">,</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(<span class="dv">1</span><span class="op">,</span> score))<span class="op">;</span></span>
-<span id="cb13-27"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb13-15"><a></a>  <span class="co">// Adjust for status</span></span>
+<span id="cb13-16"><a></a>  <span class="cf">if</span> (task<span class="op">.</span><span class="at">status</span> <span class="op">===</span> <span class="st">'in-progress'</span>) {</span>
+<span id="cb13-17"><a></a>    score <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span>  <span class="co">// In-progress tasks get slight boost</span></span>
+<span id="cb13-18"><a></a>  }</span>
+<span id="cb13-19"><a></a></span>
+<span id="cb13-20"><a></a>  <span class="cf">return</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(<span class="dv">10</span><span class="op">,</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(<span class="dv">1</span><span class="op">,</span> score))<span class="op">;</span></span>
+<span id="cb13-21"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="repository-interface-port" class="slide level2">
 <h2>Repository Interface (Port)</h2>
@@ -795,9 +786,9 @@ Presentation layer: unchanged</code></pre>
 <span id="cb23-2"><a></a>  <span class="dt">id</span><span class="op">:</span> string</span>
 <span id="cb23-3"><a></a>  <span class="dt">title</span><span class="op">:</span> string</span>
 <span id="cb23-4"><a></a>  <span class="dt">status</span><span class="op">:</span> <span class="st">'pending'</span> <span class="op">|</span> <span class="st">'in-progress'</span> <span class="op">|</span> <span class="st">'completed'</span></span>
-<span id="cb23-5"><a></a>  <span class="dt">dueDate</span><span class="op">:</span> <span class="bu">Date</span></span>
+<span id="cb23-5"><a></a>  <span class="dt">priority</span><span class="op">:</span> <span class="st">'low'</span> <span class="op">|</span> <span class="st">'medium'</span> <span class="op">|</span> <span class="st">'high'</span></span>
 <span id="cb23-6"><a></a></span>
-<span id="cb23-7"><a></a>  <span class="fu">isOverdue</span>() { <span class="op">...</span> }</span>
+<span id="cb23-7"><a></a>  <span class="fu">isHighPriority</span>() { <span class="op">...</span> }</span>
 <span id="cb23-8"><a></a>  <span class="fu">complete</span>() { <span class="op">...</span> }</span>
 <span id="cb23-9"><a></a>  <span class="fu">validate</span>() { <span class="op">...</span> }</span>
 <span id="cb23-10"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -812,7 +803,7 @@ Presentation layer: unchanged</code></pre>
 <span id="cb24-2"><a></a>  <span class="dt">_id</span><span class="op">:</span> ObjectId<span class="op">,</span></span>
 <span id="cb24-3"><a></a>  <span class="dt">title</span><span class="op">:</span> <span class="bu">String</span><span class="op">,</span></span>
 <span id="cb24-4"><a></a>  <span class="dt">status</span><span class="op">:</span> <span class="bu">String</span><span class="op">,</span></span>
-<span id="cb24-5"><a></a>  <span class="dt">due_date</span><span class="op">:</span> <span class="bu">Date</span><span class="op">,</span></span>
+<span id="cb24-5"><a></a>  <span class="dt">priority</span><span class="op">:</span> <span class="bu">String</span><span class="op">,</span></span>
 <span id="cb24-6"><a></a>  <span class="dt">created_at</span><span class="op">:</span> <span class="bu">Date</span><span class="op">,</span></span>
 <span id="cb24-7"><a></a>  <span class="dt">__v</span><span class="op">:</span> <span class="bu">Number</span></span>
 <span id="cb24-8"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -966,37 +957,38 @@ Presentation layer: unchanged</code></pre>
 <section id="unit-testing-domain-logic" class="slide level2">
 <h2>Unit Testing Domain Logic</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode numberSource javascript number-lines code-with-copy"><code class="sourceCode javascript"><span id="cb29-1"><a></a><span class="fu">describe</span>(<span class="st">'Task Entity'</span><span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
-<span id="cb29-2"><a></a>  <span class="fu">describe</span>(<span class="st">'isOverdue'</span><span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
-<span id="cb29-3"><a></a>    <span class="fu">it</span>(<span class="st">'returns true when due date is in the past'</span><span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb29-2"><a></a>  <span class="fu">describe</span>(<span class="st">'isHighPriority'</span><span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb29-3"><a></a>    <span class="fu">it</span>(<span class="st">'returns true when priority is high and not completed'</span><span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
 <span id="cb29-4"><a></a>      <span class="kw">const</span> task <span class="op">=</span> <span class="kw">new</span> <span class="fu">Task</span>({</span>
 <span id="cb29-5"><a></a>        <span class="dt">title</span><span class="op">:</span> <span class="st">'Test Task'</span><span class="op">,</span></span>
-<span id="cb29-6"><a></a>        <span class="dt">dueDate</span><span class="op">:</span> <span class="kw">new</span> <span class="bu">Date</span>(<span class="st">'2024-01-01'</span>)<span class="op">,</span></span>
+<span id="cb29-6"><a></a>        <span class="dt">priority</span><span class="op">:</span> <span class="st">'high'</span><span class="op">,</span></span>
 <span id="cb29-7"><a></a>        <span class="dt">status</span><span class="op">:</span> <span class="st">'pending'</span></span>
 <span id="cb29-8"><a></a>      })<span class="op">;</span></span>
 <span id="cb29-9"><a></a></span>
-<span id="cb29-10"><a></a>      <span class="fu">expect</span>(task<span class="op">.</span><span class="fu">isOverdue</span>())<span class="op">.</span><span class="fu">toBe</span>(<span class="kw">true</span>)<span class="op">;</span></span>
+<span id="cb29-10"><a></a>      <span class="fu">expect</span>(task<span class="op">.</span><span class="fu">isHighPriority</span>())<span class="op">.</span><span class="fu">toBe</span>(<span class="kw">true</span>)<span class="op">;</span></span>
 <span id="cb29-11"><a></a>    })<span class="op">;</span></span>
 <span id="cb29-12"><a></a></span>
 <span id="cb29-13"><a></a>    <span class="fu">it</span>(<span class="st">'returns false for completed tasks'</span><span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
 <span id="cb29-14"><a></a>      <span class="kw">const</span> task <span class="op">=</span> <span class="kw">new</span> <span class="fu">Task</span>({</span>
 <span id="cb29-15"><a></a>        <span class="dt">title</span><span class="op">:</span> <span class="st">'Test Task'</span><span class="op">,</span></span>
-<span id="cb29-16"><a></a>        <span class="dt">dueDate</span><span class="op">:</span> <span class="kw">new</span> <span class="bu">Date</span>(<span class="st">'2024-01-01'</span>)<span class="op">,</span></span>
+<span id="cb29-16"><a></a>        <span class="dt">priority</span><span class="op">:</span> <span class="st">'high'</span><span class="op">,</span></span>
 <span id="cb29-17"><a></a>        <span class="dt">status</span><span class="op">:</span> <span class="st">'completed'</span></span>
 <span id="cb29-18"><a></a>      })<span class="op">;</span></span>
 <span id="cb29-19"><a></a></span>
-<span id="cb29-20"><a></a>      <span class="fu">expect</span>(task<span class="op">.</span><span class="fu">isOverdue</span>())<span class="op">.</span><span class="fu">toBe</span>(<span class="kw">false</span>)<span class="op">;</span></span>
+<span id="cb29-20"><a></a>      <span class="fu">expect</span>(task<span class="op">.</span><span class="fu">isHighPriority</span>())<span class="op">.</span><span class="fu">toBe</span>(<span class="kw">false</span>)<span class="op">;</span></span>
 <span id="cb29-21"><a></a>    })<span class="op">;</span></span>
 <span id="cb29-22"><a></a></span>
-<span id="cb29-23"><a></a>    <span class="fu">it</span>(<span class="st">'returns false when no due date'</span><span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb29-23"><a></a>    <span class="fu">it</span>(<span class="st">'returns false when priority is not high'</span><span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
 <span id="cb29-24"><a></a>      <span class="kw">const</span> task <span class="op">=</span> <span class="kw">new</span> <span class="fu">Task</span>({</span>
 <span id="cb29-25"><a></a>        <span class="dt">title</span><span class="op">:</span> <span class="st">'Test Task'</span><span class="op">,</span></span>
-<span id="cb29-26"><a></a>        <span class="dt">status</span><span class="op">:</span> <span class="st">'pending'</span></span>
-<span id="cb29-27"><a></a>      })<span class="op">;</span></span>
-<span id="cb29-28"><a></a></span>
-<span id="cb29-29"><a></a>      <span class="fu">expect</span>(task<span class="op">.</span><span class="fu">isOverdue</span>())<span class="op">.</span><span class="fu">toBe</span>(<span class="kw">false</span>)<span class="op">;</span></span>
-<span id="cb29-30"><a></a>    })<span class="op">;</span></span>
-<span id="cb29-31"><a></a>  })<span class="op">;</span></span>
-<span id="cb29-32"><a></a>})<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb29-26"><a></a>        <span class="dt">priority</span><span class="op">:</span> <span class="st">'medium'</span><span class="op">,</span></span>
+<span id="cb29-27"><a></a>        <span class="dt">status</span><span class="op">:</span> <span class="st">'pending'</span></span>
+<span id="cb29-28"><a></a>      })<span class="op">;</span></span>
+<span id="cb29-29"><a></a></span>
+<span id="cb29-30"><a></a>      <span class="fu">expect</span>(task<span class="op">.</span><span class="fu">isHighPriority</span>())<span class="op">.</span><span class="fu">toBe</span>(<span class="kw">false</span>)<span class="op">;</span></span>
+<span id="cb29-31"><a></a>    })<span class="op">;</span></span>
+<span id="cb29-32"><a></a>  })<span class="op">;</span></span>
+<span id="cb29-33"><a></a>})<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="unit-testing-application-services" class="slide level2">
 <h2>Unit Testing Application Services</h2>

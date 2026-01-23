@@ -5,7 +5,6 @@ subtitle: "Showcasing Your Complete Application"
 
 ::: {.callout-important}
 ## Final Presentation Information
-**Due Date:** Tuesday, April 28, 2026
 **Presentation:** Final class session
 **Weight:** 25% of total project grade (15% of course grade)
 :::

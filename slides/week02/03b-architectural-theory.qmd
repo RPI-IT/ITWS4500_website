@@ -1254,7 +1254,7 @@ Identify and mitigate project risks:
 
 ## Proposal Requirements
 
-**Due: January 30, 2026** (Presentations in class)
+**Presentations in class: January 30, 2026**
 
 ### Required Sections
 
@@ -1385,13 +1385,13 @@ Each team shares:
 
 ## Looking Ahead
 
-### Lab 1 Due: Friday, January 23
+### Lab 1
 
 - Complete MERN Docker Compose setup
 - README with instructions
 - Working demo
 
-### Project Proposals: Friday, January 30
+### Project Proposals: January 30
 
 - 5-7 minute presentation
 - Problem, solution, architecture, AI, team

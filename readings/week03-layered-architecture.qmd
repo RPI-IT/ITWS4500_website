@@ -128,13 +128,13 @@ The domain layer contains the core business logic—the rules that define what y
 ```javascript
 // Domain Entity (Domain Layer)
 class Task {
-  constructor({ id, title, description, status, assigneeId, dueDate }) {
+  constructor({ id, title, description, status, assigneeId, priority }) {
     this.id = id;
     this.title = title;
     this.description = description;
     this.status = status || 'pending';
     this.assigneeId = assigneeId;
-    this.dueDate = dueDate;
+    this.priority = priority || 'medium';
     this.completedAt = null;
   }
 
@@ -146,11 +146,8 @@ class Task {
     this.completedAt = new Date();
   }
 
-  isOverdue() {
-    if (!this.dueDate || this.status === 'completed') {
-      return false;
-    }
-    return new Date() > this.dueDate;
+  isHighPriority() {
+    return this.priority === 'high' && this.status !== 'completed';
   }
 
   reassign(newAssigneeId) {
@@ -202,7 +199,7 @@ class MongoTaskRepository {
       description: doc.description,
       status: doc.status,
       assigneeId: doc.assigneeId,
-      dueDate: doc.dueDate,
+      priority: doc.priority,
       completedAt: doc.completedAt
     });
   }
@@ -213,7 +210,7 @@ class MongoTaskRepository {
       description: task.description,
       status: task.status,
       assigneeId: task.assigneeId,
-      dueDate: task.dueDate,
+      priority: task.priority,
       completedAt: task.completedAt
     };
   }
@@ -417,9 +414,9 @@ function TaskCard({ task, onComplete, onDelete }) {
     <div className={`task-card ${task.completed ? 'completed' : ''}`}>
       <h3>{task.title}</h3>
       <p>{task.description}</p>
-      {task.dueDate && (
-        <span className="due-date">
-          Due: {formatDate(task.dueDate)}
+      {task.priority && (
+        <span className={`priority priority-${task.priority}`}>
+          Priority: {task.priority}
         </span>
       )}
       <div className="actions">
@@ -771,17 +768,16 @@ describe('Task', () => {
     });
   });
 
-  describe('isOverdue()', () => {
-    it('should return true for past due date', () => {
-      const yesterday = new Date(Date.now() - 86400000);
+  describe('isHighPriority()', () => {
+    it('should return true for high priority pending task', () => {
       const task = new Task({
         id: '1',
         title: 'Test',
         status: 'pending',
-        dueDate: yesterday
+        priority: 'high'
       });
 
-      expect(task.isOverdue()).toBe(true);
+      expect(task.isHighPriority()).toBe(true);
     });
   });
 });

@@ -1147,8 +1147,6 @@ The TAs can see your commits and will clone your repository to grade it.
 - Office Hours: Tuesday 9-11 AM
 - Piazza for Q&A
 - TA sessions (see LMS)
-
-**Due Date:** January 23, 2026
 :::
 
 ---

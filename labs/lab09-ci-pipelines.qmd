@@ -6,7 +6,6 @@ subtitle: "Continuous Integration and Automated Testing"
 ::: {.callout-important}
 ## Lab Information
 **Assigned:** Friday, April 3, 2026
-**Due:** Friday, April 10, 2026 (before class)
 **Points:** 100
 :::
 

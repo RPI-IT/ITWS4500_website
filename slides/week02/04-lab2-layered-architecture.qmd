@@ -159,10 +159,10 @@ flowchart TB
 // Test domain logic without database
 const task = new Task({
   title: 'Test',
-  dueDate: yesterday
+  priority: 'high'
 });
 
-expect(task.isOverdue()).toBe(true);
+expect(task.isHighPriority()).toBe(true);
 ```
 
 - Unit test business rules in isolation
@@ -217,7 +217,7 @@ domain/
 
 **Rule:** If you can explain it to a non-technical stakeholder, it belongs in the domain.
 
-- "A task is overdue if the due date has passed" ✓
+- "A high priority task needs immediate attention" ✓
 - "We use MongoDB with Mongoose" ✗
 
 ## Entity: The Task Class
@@ -230,7 +230,6 @@ class Task {
     this.description = data.description || '';
     this.status = data.status || 'pending';
     this.priority = data.priority || 'medium';
-    this.dueDate = data.dueDate ? new Date(data.dueDate) : null;
     this.createdAt = data.createdAt ? new Date(data.createdAt) : new Date();
     this.updatedAt = data.updatedAt ? new Date(data.updatedAt) : new Date();
   }
@@ -241,20 +240,18 @@ class Task {
 
 An entity is more than a data container - it **encapsulates business rules**.
 
-## Entity Methods: isOverdue()
+## Entity Methods: isHighPriority()
 
 ```javascript
 /**
- * Check if the task is overdue
- * Business rule: A task is overdue if:
- * - It has a due date
+ * Check if the task needs immediate attention
+ * Business rule: A task is high priority if:
+ * - It has priority set to 'high'
  * - It's not completed
- * - The due date is in the past
  */
-isOverdue() {
-  if (!this.dueDate) return false;
+isHighPriority() {
   if (this.status === 'completed') return false;
-  return new Date() > this.dueDate;
+  return this.priority === 'high';
 }
 ```
 
@@ -264,11 +261,11 @@ isOverdue() {
 ```javascript
 const task = new Task({
   title: 'Review PR',
-  dueDate: new Date('2024-01-01'),
+  priority: 'high',
   status: 'pending'
 });
 
-expect(task.isOverdue()).toBe(true);
+expect(task.isHighPriority()).toBe(true);
 ```
 
 ## Entity Methods: complete()
@@ -378,15 +375,9 @@ calculatePriorityScore(task) {
 
   let score = priorityBase[task.priority] || 5;
 
-  // Adjust for due date proximity
-  if (task.dueDate) {
-    const daysUntilDue = Math.ceil(
-      (new Date(task.dueDate) - new Date()) / (1000 * 60 * 60 * 24)
-    );
-
-    if (daysUntilDue < 0) score = 10;        // Overdue
-    else if (daysUntilDue <= 1) score += 2;  // Due today/tomorrow
-    else if (daysUntilDue <= 7) score += 1;  // Due this week
+  // Adjust for status
+  if (task.status === 'in-progress') {
+    score += 1;  // In-progress tasks get slight boost
   }
 
   return Math.min(10, Math.max(1, score));
@@ -623,9 +614,9 @@ class Task {
   id: string
   title: string
   status: 'pending' | 'in-progress' | 'completed'
-  dueDate: Date
+  priority: 'low' | 'medium' | 'high'
 
-  isOverdue() { ... }
+  isHighPriority() { ... }
   complete() { ... }
   validate() { ... }
 }
@@ -643,7 +634,7 @@ const TaskSchema = {
   _id: ObjectId,
   title: String,
   status: String,
-  due_date: Date,
+  priority: String,
   created_at: Date,
   __v: Number
 }
@@ -803,34 +794,35 @@ Layered architecture makes each level easier to test.
 
 ```javascript
 describe('Task Entity', () => {
-  describe('isOverdue', () => {
-    it('returns true when due date is in the past', () => {
+  describe('isHighPriority', () => {
+    it('returns true when priority is high and not completed', () => {
       const task = new Task({
         title: 'Test Task',
-        dueDate: new Date('2024-01-01'),
+        priority: 'high',
         status: 'pending'
       });
 
-      expect(task.isOverdue()).toBe(true);
+      expect(task.isHighPriority()).toBe(true);
     });
 
     it('returns false for completed tasks', () => {
       const task = new Task({
         title: 'Test Task',
-        dueDate: new Date('2024-01-01'),
+        priority: 'high',
         status: 'completed'
       });
 
-      expect(task.isOverdue()).toBe(false);
+      expect(task.isHighPriority()).toBe(false);
     });
 
-    it('returns false when no due date', () => {
+    it('returns false when priority is not high', () => {
       const task = new Task({
         title: 'Test Task',
+        priority: 'medium',
         status: 'pending'
       });
 
-      expect(task.isOverdue()).toBe(false);
+      expect(task.isHighPriority()).toBe(false);
     });
   });
 });
@@ -941,8 +933,8 @@ lab2-server/
 
 | File | Methods to Implement |
 |------|---------------------|
-| `domain/entities/Task.js` | `isOverdue()`, `complete()`, `validate()` |
-| `domain/services/TaskDomainService.js` | `canTransitionStatus()`, `calculatePriorityScore()`, `getOverdueTasks()` |
+| `domain/entities/Task.js` | `isHighPriority()`, `complete()`, `validate()` |
+| `domain/services/TaskDomainService.js` | `canTransitionStatus()`, `calculatePriorityScore()`, `getHighPriorityTasks()` |
 | `application/services/TaskService.js` | All 7 service methods |
 
 . . .

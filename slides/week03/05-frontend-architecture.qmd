@@ -907,7 +907,7 @@ As you watch each presentation, think about:
 
 ## Looking Ahead
 
-### Lab 2 Due: Tuesday, February 3
+### Lab 2
 
 - Implement layered architecture in MERN app
 - Separate concerns between layers

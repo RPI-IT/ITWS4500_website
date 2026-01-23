@@ -6,7 +6,6 @@ subtitle: "Containerized Deployment, Caching, and Scaling"
 ::: {.callout-important}
 ## Lab Information
 **Assigned:** Friday, April 17, 2026
-**Due:** Friday, April 24, 2026 (before class)
 **Points:** 100
 :::
 

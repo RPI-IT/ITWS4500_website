@@ -6,7 +6,6 @@ subtitle: "Building AI Agent Systems"
 ::: {.callout-important}
 ## Lab Information
 **Assigned:** Friday, March 20, 2026
-**Due:** Friday, March 27, 2026 (before class)
 **Points:** 100
 :::
 

@@ -6,7 +6,6 @@ subtitle: "Identity and Mobile Architecture"
 ::: {.callout-important}
 ## Lab Information
 **Assigned:** Friday, March 13, 2026
-**Due:** Friday, March 20, 2026 (before class)
 **Points:** 100
 :::
 

@@ -175,7 +175,7 @@ function Button({
 // TaskCard.jsx - Presentational component
 function TaskCard({ task, onEdit, onDelete, onToggleComplete }) {
   const statusClass = task.completed ? 'completed' :
-                      task.overdue ? 'overdue' : '';
+                      task.priority === 'high' ? 'high-priority' : '';
 
   return (
     <div className={`task-card ${statusClass}`}>
@@ -193,9 +193,9 @@ function TaskCard({ task, onEdit, onDelete, onToggleComplete }) {
       )}
 
       <div className="task-meta">
-        {task.dueDate && (
-          <span className="due-date">
-            Due: {formatDate(task.dueDate)}
+        {task.priority && (
+          <span className={`priority priority-${task.priority}`}>
+            Priority: {task.priority}
           </span>
         )}
         {task.assignee && (
@@ -337,7 +337,7 @@ function TaskForm({ onSubmit }) {
   // Form state is local to this component
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [dueDate, setDueDate] = useState('');
+  const [priority, setPriority] = useState('medium');
   const [errors, setErrors] = useState({});
 
   const validate = () => {
@@ -345,8 +345,8 @@ function TaskForm({ onSubmit }) {
     if (!title.trim()) {
       newErrors.title = 'Title is required';
     }
-    if (dueDate && new Date(dueDate) < new Date()) {
-      newErrors.dueDate = 'Due date cannot be in the past';
+    if (!['low', 'medium', 'high'].includes(priority)) {
+      newErrors.priority = 'Invalid priority';
     }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -355,11 +355,11 @@ function TaskForm({ onSubmit }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validate()) {
-      onSubmit({ title, description, dueDate });
+      onSubmit({ title, description, priority });
       // Reset form
       setTitle('');
       setDescription('');
-      setDueDate('');
+      setPriority('medium');
     }
   };
 
@@ -386,15 +386,16 @@ function TaskForm({ onSubmit }) {
       </div>
 
       <div className="form-group">
-        <label htmlFor="dueDate">Due Date</label>
-        <input
-          id="dueDate"
-          type="date"
-          value={dueDate}
-          onChange={(e) => setDueDate(e.target.value)}
-          className={errors.dueDate ? 'error' : ''}
-        />
-        {errors.dueDate && <span className="error-message">{errors.dueDate}</span>}
+        <label htmlFor="priority">Priority</label>
+        <select
+          id="priority"
+          value={priority}
+          onChange={(e) => setPriority(e.target.value)}
+        >
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+        </select>
       </div>
 
       <button type="submit">Create Task</button>
@@ -439,7 +440,7 @@ const taskFormReducer = (state, action) => {
 };
 
 const initialState = {
-  values: { title: '', description: '', dueDate: '' },
+  values: { title: '', description: '', priority: 'medium' },
   errors: {},
   isSubmitting: false
 };
@@ -957,7 +958,7 @@ class TaskDTO {
     this.title = task.title;
     this.description = task.description;
     this.status = task.status;
-    this.dueDate = task.dueDate?.toISOString();
+    this.priority = task.priority;
     this.createdAt = task.createdAt.toISOString();
     this.updatedAt = task.updatedAt.toISOString();
 
@@ -1012,13 +1013,6 @@ const createTaskSchema = Joi.object({
     .max(2000)
     .optional(),
 
-  dueDate: Joi.date()
-    .min('now')
-    .optional()
-    .messages({
-      'date.min': 'Due date cannot be in the past'
-    }),
-
   assigneeId: Joi.string()
     .pattern(/^[a-f\d]{24}$/i)  // MongoDB ObjectId
     .optional(),
@@ -1031,7 +1025,6 @@ const createTaskSchema = Joi.object({
 const updateTaskSchema = Joi.object({
   title: Joi.string().min(1).max(200),
   description: Joi.string().max(2000),
-  dueDate: Joi.date(),
   assigneeId: Joi.string().pattern(/^[a-f\d]{24}$/i),
   priority: Joi.string().valid('low', 'medium', 'high'),
   status: Joi.string().valid('pending', 'in_progress', 'completed')
@@ -1088,7 +1081,7 @@ Here's how data flows through a full-stack application:
 // TaskForm.jsx
 const handleSubmit = async (e) => {
   e.preventDefault();
-  await createTask({ title, description, dueDate });
+  await createTask({ title, description, priority });
 };
 ```
 

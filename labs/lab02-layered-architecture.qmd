@@ -6,7 +6,6 @@ subtitle: "MERN as Reference Implementation"
 ::: {.callout-important}
 ## Lab Information
 **Assigned:** Tuesday, January 27, 2026
-**Due:** Tuesday, February 3, 2026 (before class)
 **Points:** 100
 :::
 

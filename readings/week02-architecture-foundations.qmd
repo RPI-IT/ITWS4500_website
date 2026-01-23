@@ -632,7 +632,7 @@ A **Minimum Viable Product (MVP)** is the smallest version of a product that del
 | MVP Features | Nice-to-Have | Out of Scope |
 |-------------|--------------|--------------|
 | Create/edit/delete tasks | Task categories | Mobile app |
-| Mark tasks complete | Due date reminders | Calendar integration |
+| Mark tasks complete | Email reminders | Calendar integration |
 | User authentication | Task sharing | AI task suggestions |
 | Basic API with CRUD | Search/filter | Offline support |
 
@@ -649,8 +649,8 @@ So that [I achieve a goal]
 **Examples:**
 ```
 As a team member
-I want to create tasks with due dates
-So that I can track my deadlines
+I want to create tasks with priorities
+So that I can organize my work
 
 As a project manager
 I want to see all tasks assigned to team members
@@ -664,14 +664,14 @@ So that my tasks are private and persistent
 **Acceptance Criteria** define when a story is complete:
 
 ```
-Story: Create tasks with due dates
+Story: Create tasks with priorities
 
 Acceptance Criteria:
-- [ ] Task creation form includes optional due date field
-- [ ] Due date is displayed on task list
-- [ ] Tasks can be sorted by due date
-- [ ] Overdue tasks are visually highlighted
-- [ ] API validates that due date is not in the past
+- [ ] Task creation form includes priority selector (low, medium, high)
+- [ ] Priority is displayed on task list
+- [ ] Tasks can be sorted by priority
+- [ ] High priority tasks are visually highlighted
+- [ ] API validates that priority is a valid value
 ```
 
 ### Estimation and Prioritization

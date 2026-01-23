@@ -143,73 +143,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Schedule</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-slides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Slides</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-slides">    
-        <li>
-    <a class="dropdown-item" href="../slides/week01/index.html">
- <span class="dropdown-text">Week 1: Introduction &amp; IaC</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../slides/week02/index.html">
- <span class="dropdown-text">Week 2: Lab 1 &amp; Architecture</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../slides/week03/index.html">
- <span class="dropdown-text">Week 3: Lab 2 &amp; Frontend</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../slides/week04/index.html">
- <span class="dropdown-text">Week 4: Lab 3 &amp; Backend</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../slides/week05/index.html">
- <span class="dropdown-text">Week 5: Lab 4 &amp; Data</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../slides/week06/index.html">
- <span class="dropdown-text">Week 6: Lab 5 &amp; Quiz 1</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../slides/week07/index.html">
- <span class="dropdown-text">Week 7: Midterm &amp; Project</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../slides/week08/index.html">
- <span class="dropdown-text">Week 8: Auth &amp; Mobile</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../slides/week09/index.html">
- <span class="dropdown-text">Week 9: Agentic AI I</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../slides/week10/index.html">
- <span class="dropdown-text">Week 10: Agentic AI II</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../slides/week11/index.html">
- <span class="dropdown-text">Week 11: CI/CD</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../slides/week12/index.html">
- <span class="dropdown-text">Week 12: AI-Assisted Dev</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../slides/week13/index.html">
- <span class="dropdown-text">Week 13: Deployment</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../slides/week14/index.html">
- <span class="dropdown-text">Week 14: Quiz 2 &amp; Capstone</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../slides/week15/index.html">
- <span class="dropdown-text">Week 15: Final Presentations</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-readings" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Readings</span>
     </a>
@@ -273,6 +206,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../readings/week15-final.html">
  <span class="dropdown-text">Week 15: Final</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-project" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Project</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-project">    
+        <li>
+    <a class="dropdown-item" href="../project/index.html">
+ <span class="dropdown-text">Project Overview</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../project/proposal.html">
+ <span class="dropdown-text">Proposal (Jan 30)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../project/midterm.html">
+ <span class="dropdown-text">Midterm Update (Feb 24)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../project/final.html">
+ <span class="dropdown-text">Final Presentation (Apr 28)</span></a>
   </li>  
     </ul>
   </li>
@@ -582,7 +539,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="co">// TaskCard.jsx - Presentational component</span></span>
 <span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">TaskCard</span>({ task<span class="op">,</span> onEdit<span class="op">,</span> onDelete<span class="op">,</span> onToggleComplete }) {</span>
 <span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> statusClass <span class="op">=</span> task<span class="op">.</span><span class="at">completed</span> <span class="op">?</span> <span class="st">'completed'</span> <span class="op">:</span></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>                      task<span class="op">.</span><span class="at">overdue</span> <span class="op">?</span> <span class="st">'overdue'</span> <span class="op">:</span> <span class="st">''</span><span class="op">;</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>                      task<span class="op">.</span><span class="at">priority</span> <span class="op">===</span> <span class="st">'high'</span> <span class="op">?</span> <span class="st">'high-priority'</span> <span class="op">:</span> <span class="st">''</span><span class="op">;</span></span>
 <span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> (</span>
 <span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;div</span> <span class="ot">className</span><span class="op">=</span><span class="va">{</span><span class="vs">`task-card </span><span class="sc">${</span>statusClass<span class="sc">}</span><span class="vs">`</span><span class="va">}</span><span class="kw">&gt;</span></span>
@@ -600,9 +557,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>      )<span class="va">}</span></span>
 <span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;div</span> <span class="ot">className</span><span class="op">=</span><span class="st">"task-meta"</span><span class="kw">&gt;</span></span>
-<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>        <span class="va">{</span>task<span class="op">.</span><span class="at">dueDate</span> <span class="op">&amp;&amp;</span> (</span>
-<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>          <span class="kw">&lt;span</span> <span class="ot">className</span><span class="op">=</span><span class="st">"due-date"</span><span class="kw">&gt;</span></span>
-<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>            Due: <span class="va">{</span><span class="fu">formatDate</span>(task<span class="op">.</span><span class="at">dueDate</span>)<span class="va">}</span></span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>        <span class="va">{</span>task<span class="op">.</span><span class="at">priority</span> <span class="op">&amp;&amp;</span> (</span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>          <span class="kw">&lt;span</span> <span class="ot">className</span><span class="op">=</span><span class="va">{</span><span class="vs">`priority priority-</span><span class="sc">${</span>task<span class="op">.</span><span class="at">priority</span><span class="sc">}</span><span class="vs">`</span><span class="va">}</span><span class="kw">&gt;</span></span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>            Priority: <span class="va">{</span>task<span class="op">.</span><span class="at">priority</span><span class="va">}</span></span>
 <span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>          <span class="kw">&lt;/span&gt;</span></span>
 <span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>        )<span class="va">}</span></span>
 <span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>        <span class="va">{</span>task<span class="op">.</span><span class="at">assignee</span> <span class="op">&amp;&amp;</span> (</span>
@@ -767,7 +724,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Form state is local to this component</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> [title<span class="op">,</span> setTitle] <span class="op">=</span> <span class="fu">useState</span>(<span class="st">''</span>)<span class="op">;</span></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> [description<span class="op">,</span> setDescription] <span class="op">=</span> <span class="fu">useState</span>(<span class="st">''</span>)<span class="op">;</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> [dueDate<span class="op">,</span> setDueDate] <span class="op">=</span> <span class="fu">useState</span>(<span class="st">''</span>)<span class="op">;</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> [priority<span class="op">,</span> setPriority] <span class="op">=</span> <span class="fu">useState</span>(<span class="st">'medium'</span>)<span class="op">;</span></span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> [errors<span class="op">,</span> setErrors] <span class="op">=</span> <span class="fu">useState</span>({})<span class="op">;</span></span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> validate <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
@@ -775,8 +732,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="op">!</span>title<span class="op">.</span><span class="fu">trim</span>()) {</span>
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>      newErrors<span class="op">.</span><span class="at">title</span> <span class="op">=</span> <span class="st">'Title is required'</span><span class="op">;</span></span>
 <span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (dueDate <span class="op">&amp;&amp;</span> <span class="kw">new</span> <span class="bu">Date</span>(dueDate) <span class="op">&lt;</span> <span class="kw">new</span> <span class="bu">Date</span>()) {</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>      newErrors<span class="op">.</span><span class="at">dueDate</span> <span class="op">=</span> <span class="st">'Due date cannot be in the past'</span><span class="op">;</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="op">!</span>[<span class="st">'low'</span><span class="op">,</span> <span class="st">'medium'</span><span class="op">,</span> <span class="st">'high'</span>]<span class="op">.</span><span class="fu">includes</span>(priority)) {</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>      newErrors<span class="op">.</span><span class="at">priority</span> <span class="op">=</span> <span class="st">'Invalid priority'</span><span class="op">;</span></span>
 <span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    }</span>
 <span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">setErrors</span>(newErrors)<span class="op">;</span></span>
 <span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">Object</span><span class="op">.</span><span class="fu">keys</span>(newErrors)<span class="op">.</span><span class="at">length</span> <span class="op">===</span> <span class="dv">0</span><span class="op">;</span></span>
@@ -785,11 +742,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> handleSubmit <span class="op">=</span> (e) <span class="kw">=&gt;</span> {</span>
 <span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    e<span class="op">.</span><span class="fu">preventDefault</span>()<span class="op">;</span></span>
 <span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">validate</span>()) {</span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>      <span class="fu">onSubmit</span>({ title<span class="op">,</span> description<span class="op">,</span> dueDate })<span class="op">;</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>      <span class="fu">onSubmit</span>({ title<span class="op">,</span> description<span class="op">,</span> priority })<span class="op">;</span></span>
 <span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>      <span class="co">// Reset form</span></span>
 <span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>      <span class="fu">setTitle</span>(<span class="st">''</span>)<span class="op">;</span></span>
 <span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>      <span class="fu">setDescription</span>(<span class="st">''</span>)<span class="op">;</span></span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>      <span class="fu">setDueDate</span>(<span class="st">''</span>)<span class="op">;</span></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>      <span class="fu">setPriority</span>(<span class="st">'medium'</span>)<span class="op">;</span></span>
 <span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>    }</span>
 <span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
 <span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a></span>
@@ -816,21 +773,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;/div&gt;</span></span>
 <span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;div</span> <span class="ot">className</span><span class="op">=</span><span class="st">"form-group"</span><span class="kw">&gt;</span></span>
-<span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;label</span> <span class="ot">htmlFor</span><span class="op">=</span><span class="st">"dueDate"</span><span class="kw">&gt;</span>Due Date<span class="kw">&lt;/label&gt;</span></span>
-<span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;input</span></span>
-<span id="cb8-56"><a href="#cb8-56" aria-hidden="true" tabindex="-1"></a>          <span class="ot">id</span><span class="op">=</span><span class="st">"dueDate"</span></span>
-<span id="cb8-57"><a href="#cb8-57" aria-hidden="true" tabindex="-1"></a>          <span class="ot">type</span><span class="op">=</span><span class="st">"date"</span></span>
-<span id="cb8-58"><a href="#cb8-58" aria-hidden="true" tabindex="-1"></a>          <span class="ot">value</span><span class="op">=</span><span class="va">{</span>dueDate<span class="va">}</span></span>
-<span id="cb8-59"><a href="#cb8-59" aria-hidden="true" tabindex="-1"></a>          <span class="ot">onChange</span><span class="op">=</span><span class="va">{</span>(e) <span class="kw">=&gt;</span> <span class="fu">setDueDate</span>(e<span class="op">.</span><span class="at">target</span><span class="op">.</span><span class="at">value</span>)<span class="va">}</span></span>
-<span id="cb8-60"><a href="#cb8-60" aria-hidden="true" tabindex="-1"></a>          <span class="ot">className</span><span class="op">=</span><span class="va">{</span>errors<span class="op">.</span><span class="at">dueDate</span> <span class="op">?</span> <span class="st">'error'</span> <span class="op">:</span> <span class="st">''</span><span class="va">}</span></span>
-<span id="cb8-61"><a href="#cb8-61" aria-hidden="true" tabindex="-1"></a>        <span class="kw">/&gt;</span></span>
-<span id="cb8-62"><a href="#cb8-62" aria-hidden="true" tabindex="-1"></a>        <span class="va">{</span>errors<span class="op">.</span><span class="at">dueDate</span> <span class="op">&amp;&amp; </span><span class="kw">&lt;span</span> <span class="ot">className</span><span class="op">=</span><span class="st">"error-message"</span><span class="kw">&gt;</span><span class="va">{</span>errors<span class="op">.</span><span class="at">dueDate</span><span class="va">}</span><span class="kw">&lt;/span&gt;</span><span class="va">}</span></span>
-<span id="cb8-63"><a href="#cb8-63" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;/div&gt;</span></span>
-<span id="cb8-64"><a href="#cb8-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-65"><a href="#cb8-65" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;button</span> <span class="ot">type</span><span class="op">=</span><span class="st">"submit"</span><span class="kw">&gt;</span>Create Task<span class="kw">&lt;/button&gt;</span></span>
-<span id="cb8-66"><a href="#cb8-66" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/form&gt;</span></span>
-<span id="cb8-67"><a href="#cb8-67" aria-hidden="true" tabindex="-1"></a>  )<span class="op">;</span></span>
-<span id="cb8-68"><a href="#cb8-68" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;label</span> <span class="ot">htmlFor</span><span class="op">=</span><span class="st">"priority"</span><span class="kw">&gt;</span>Priority<span class="kw">&lt;/label&gt;</span></span>
+<span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;select</span></span>
+<span id="cb8-56"><a href="#cb8-56" aria-hidden="true" tabindex="-1"></a>          <span class="ot">id</span><span class="op">=</span><span class="st">"priority"</span></span>
+<span id="cb8-57"><a href="#cb8-57" aria-hidden="true" tabindex="-1"></a>          <span class="ot">value</span><span class="op">=</span><span class="va">{</span>priority<span class="va">}</span></span>
+<span id="cb8-58"><a href="#cb8-58" aria-hidden="true" tabindex="-1"></a>          <span class="ot">onChange</span><span class="op">=</span><span class="va">{</span>(e) <span class="kw">=&gt;</span> <span class="fu">setPriority</span>(e<span class="op">.</span><span class="at">target</span><span class="op">.</span><span class="at">value</span>)<span class="va">}</span></span>
+<span id="cb8-59"><a href="#cb8-59" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&gt;</span></span>
+<span id="cb8-60"><a href="#cb8-60" aria-hidden="true" tabindex="-1"></a>          <span class="kw">&lt;option</span> <span class="ot">value</span><span class="op">=</span><span class="st">"low"</span><span class="kw">&gt;</span>Low<span class="kw">&lt;/option&gt;</span></span>
+<span id="cb8-61"><a href="#cb8-61" aria-hidden="true" tabindex="-1"></a>          <span class="kw">&lt;option</span> <span class="ot">value</span><span class="op">=</span><span class="st">"medium"</span><span class="kw">&gt;</span>Medium<span class="kw">&lt;/option&gt;</span></span>
+<span id="cb8-62"><a href="#cb8-62" aria-hidden="true" tabindex="-1"></a>          <span class="kw">&lt;option</span> <span class="ot">value</span><span class="op">=</span><span class="st">"high"</span><span class="kw">&gt;</span>High<span class="kw">&lt;/option&gt;</span></span>
+<span id="cb8-63"><a href="#cb8-63" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;/select&gt;</span></span>
+<span id="cb8-64"><a href="#cb8-64" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb8-65"><a href="#cb8-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-66"><a href="#cb8-66" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;button</span> <span class="ot">type</span><span class="op">=</span><span class="st">"submit"</span><span class="kw">&gt;</span>Create Task<span class="kw">&lt;/button&gt;</span></span>
+<span id="cb8-67"><a href="#cb8-67" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/form&gt;</span></span>
+<span id="cb8-68"><a href="#cb8-68" aria-hidden="true" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb8-69"><a href="#cb8-69" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="complex-local-state-with-usereducer" class="level3">
 <h3 class="anchored" data-anchor-id="complex-local-state-with-usereducer">Complex Local State with useReducer</h3>
@@ -866,7 +824,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span>
 <span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> initialState <span class="op">=</span> {</span>
-<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>  <span class="dt">values</span><span class="op">:</span> { <span class="dt">title</span><span class="op">:</span> <span class="st">''</span><span class="op">,</span> <span class="dt">description</span><span class="op">:</span> <span class="st">''</span><span class="op">,</span> <span class="dt">dueDate</span><span class="op">:</span> <span class="st">''</span> }<span class="op">,</span></span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>  <span class="dt">values</span><span class="op">:</span> { <span class="dt">title</span><span class="op">:</span> <span class="st">''</span><span class="op">,</span> <span class="dt">description</span><span class="op">:</span> <span class="st">''</span><span class="op">,</span> <span class="dt">priority</span><span class="op">:</span> <span class="st">'medium'</span> }<span class="op">,</span></span>
 <span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>  <span class="dt">errors</span><span class="op">:</span> {}<span class="op">,</span></span>
 <span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>  <span class="dt">isSubmitting</span><span class="op">:</span> <span class="kw">false</span></span>
 <span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span>
@@ -1377,7 +1335,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">title</span> <span class="op">=</span> task<span class="op">.</span><span class="at">title</span><span class="op">;</span></span>
 <span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">description</span> <span class="op">=</span> task<span class="op">.</span><span class="at">description</span><span class="op">;</span></span>
 <span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">status</span> <span class="op">=</span> task<span class="op">.</span><span class="at">status</span><span class="op">;</span></span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">dueDate</span> <span class="op">=</span> task<span class="op">.</span><span class="at">dueDate</span><span class="op">?.</span><span class="fu">toISOString</span>()<span class="op">;</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">priority</span> <span class="op">=</span> task<span class="op">.</span><span class="at">priority</span><span class="op">;</span></span>
 <span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">createdAt</span> <span class="op">=</span> task<span class="op">.</span><span class="at">createdAt</span><span class="op">.</span><span class="fu">toISOString</span>()<span class="op">;</span></span>
 <span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">updatedAt</span> <span class="op">=</span> task<span class="op">.</span><span class="at">updatedAt</span><span class="op">.</span><span class="fu">toISOString</span>()<span class="op">;</span></span>
 <span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a></span>
@@ -1429,34 +1387,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">max</span>(<span class="dv">2000</span>)</span>
 <span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">optional</span>()<span class="op">,</span></span>
 <span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>  <span class="dt">dueDate</span><span class="op">:</span> Joi<span class="op">.</span><span class="fu">date</span>()</span>
-<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">min</span>(<span class="st">'now'</span>)</span>
-<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">optional</span>()</span>
-<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">messages</span>({</span>
-<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>      <span class="st">'date.min'</span><span class="op">:</span> <span class="st">'Due date cannot be in the past'</span></span>
-<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>    })<span class="op">,</span></span>
-<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>  <span class="dt">assigneeId</span><span class="op">:</span> Joi<span class="op">.</span><span class="fu">string</span>()</span>
-<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">pattern</span>(<span class="ss">/</span><span class="sc">^[a-f\d]{24}$</span><span class="ss">/i</span>)  <span class="co">// MongoDB ObjectId</span></span>
-<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">optional</span>()<span class="op">,</span></span>
-<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a>  <span class="dt">priority</span><span class="op">:</span> Joi<span class="op">.</span><span class="fu">string</span>()</span>
-<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">valid</span>(<span class="st">'low'</span><span class="op">,</span> <span class="st">'medium'</span><span class="op">,</span> <span class="st">'high'</span>)</span>
-<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">default</span>(<span class="st">'medium'</span>)</span>
-<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
-<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> updateTaskSchema <span class="op">=</span> Joi<span class="op">.</span><span class="fu">object</span>({</span>
-<span id="cb19-35"><a href="#cb19-35" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span><span class="op">:</span> Joi<span class="op">.</span><span class="fu">string</span>()<span class="op">.</span><span class="fu">min</span>(<span class="dv">1</span>)<span class="op">.</span><span class="fu">max</span>(<span class="dv">200</span>)<span class="op">,</span></span>
-<span id="cb19-36"><a href="#cb19-36" aria-hidden="true" tabindex="-1"></a>  <span class="dt">description</span><span class="op">:</span> Joi<span class="op">.</span><span class="fu">string</span>()<span class="op">.</span><span class="fu">max</span>(<span class="dv">2000</span>)<span class="op">,</span></span>
-<span id="cb19-37"><a href="#cb19-37" aria-hidden="true" tabindex="-1"></a>  <span class="dt">dueDate</span><span class="op">:</span> Joi<span class="op">.</span><span class="fu">date</span>()<span class="op">,</span></span>
-<span id="cb19-38"><a href="#cb19-38" aria-hidden="true" tabindex="-1"></a>  <span class="dt">assigneeId</span><span class="op">:</span> Joi<span class="op">.</span><span class="fu">string</span>()<span class="op">.</span><span class="fu">pattern</span>(<span class="ss">/</span><span class="sc">^[a-f\d]{24}$</span><span class="ss">/i</span>)<span class="op">,</span></span>
-<span id="cb19-39"><a href="#cb19-39" aria-hidden="true" tabindex="-1"></a>  <span class="dt">priority</span><span class="op">:</span> Joi<span class="op">.</span><span class="fu">string</span>()<span class="op">.</span><span class="fu">valid</span>(<span class="st">'low'</span><span class="op">,</span> <span class="st">'medium'</span><span class="op">,</span> <span class="st">'high'</span>)<span class="op">,</span></span>
-<span id="cb19-40"><a href="#cb19-40" aria-hidden="true" tabindex="-1"></a>  <span class="dt">status</span><span class="op">:</span> Joi<span class="op">.</span><span class="fu">string</span>()<span class="op">.</span><span class="fu">valid</span>(<span class="st">'pending'</span><span class="op">,</span> <span class="st">'in_progress'</span><span class="op">,</span> <span class="st">'completed'</span>)</span>
-<span id="cb19-41"><a href="#cb19-41" aria-hidden="true" tabindex="-1"></a>})<span class="op">.</span><span class="fu">min</span>(<span class="dv">1</span>)<span class="op">;</span>  <span class="co">// At least one field required</span></span>
-<span id="cb19-42"><a href="#cb19-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-43"><a href="#cb19-43" aria-hidden="true" tabindex="-1"></a><span class="co">// Route with validation middleware</span></span>
-<span id="cb19-44"><a href="#cb19-44" aria-hidden="true" tabindex="-1"></a>router<span class="op">.</span><span class="fu">post</span>(<span class="st">'/'</span><span class="op">,</span> <span class="fu">validate</span>(createTaskSchema)<span class="op">,</span> taskController<span class="op">.</span><span class="at">create</span>)<span class="op">;</span></span>
-<span id="cb19-45"><a href="#cb19-45" aria-hidden="true" tabindex="-1"></a>router<span class="op">.</span><span class="fu">put</span>(<span class="st">'/:id'</span><span class="op">,</span> <span class="fu">validate</span>(updateTaskSchema)<span class="op">,</span> taskController<span class="op">.</span><span class="at">update</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>  <span class="dt">assigneeId</span><span class="op">:</span> Joi<span class="op">.</span><span class="fu">string</span>()</span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">pattern</span>(<span class="ss">/</span><span class="sc">^[a-f\d]{24}$</span><span class="ss">/i</span>)  <span class="co">// MongoDB ObjectId</span></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">optional</span>()<span class="op">,</span></span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>  <span class="dt">priority</span><span class="op">:</span> Joi<span class="op">.</span><span class="fu">string</span>()</span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">valid</span>(<span class="st">'low'</span><span class="op">,</span> <span class="st">'medium'</span><span class="op">,</span> <span class="st">'high'</span>)</span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">default</span>(<span class="st">'medium'</span>)</span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> updateTaskSchema <span class="op">=</span> Joi<span class="op">.</span><span class="fu">object</span>({</span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span><span class="op">:</span> Joi<span class="op">.</span><span class="fu">string</span>()<span class="op">.</span><span class="fu">min</span>(<span class="dv">1</span>)<span class="op">.</span><span class="fu">max</span>(<span class="dv">200</span>)<span class="op">,</span></span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a>  <span class="dt">description</span><span class="op">:</span> Joi<span class="op">.</span><span class="fu">string</span>()<span class="op">.</span><span class="fu">max</span>(<span class="dv">2000</span>)<span class="op">,</span></span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a>  <span class="dt">assigneeId</span><span class="op">:</span> Joi<span class="op">.</span><span class="fu">string</span>()<span class="op">.</span><span class="fu">pattern</span>(<span class="ss">/</span><span class="sc">^[a-f\d]{24}$</span><span class="ss">/i</span>)<span class="op">,</span></span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a>  <span class="dt">priority</span><span class="op">:</span> Joi<span class="op">.</span><span class="fu">string</span>()<span class="op">.</span><span class="fu">valid</span>(<span class="st">'low'</span><span class="op">,</span> <span class="st">'medium'</span><span class="op">,</span> <span class="st">'high'</span>)<span class="op">,</span></span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a>  <span class="dt">status</span><span class="op">:</span> Joi<span class="op">.</span><span class="fu">string</span>()<span class="op">.</span><span class="fu">valid</span>(<span class="st">'pending'</span><span class="op">,</span> <span class="st">'in_progress'</span><span class="op">,</span> <span class="st">'completed'</span>)</span>
+<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a>})<span class="op">.</span><span class="fu">min</span>(<span class="dv">1</span>)<span class="op">;</span>  <span class="co">// At least one field required</span></span>
+<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-35"><a href="#cb19-35" aria-hidden="true" tabindex="-1"></a><span class="co">// Route with validation middleware</span></span>
+<span id="cb19-36"><a href="#cb19-36" aria-hidden="true" tabindex="-1"></a>router<span class="op">.</span><span class="fu">post</span>(<span class="st">'/'</span><span class="op">,</span> <span class="fu">validate</span>(createTaskSchema)<span class="op">,</span> taskController<span class="op">.</span><span class="at">create</span>)<span class="op">;</span></span>
+<span id="cb19-37"><a href="#cb19-37" aria-hidden="true" tabindex="-1"></a>router<span class="op">.</span><span class="fu">put</span>(<span class="st">'/:id'</span><span class="op">,</span> <span class="fu">validate</span>(updateTaskSchema)<span class="op">,</span> taskController<span class="op">.</span><span class="at">update</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
 <section id="putting-it-together-full-stack-data-flow" class="level2">
@@ -1500,7 +1450,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode jsx code-with-copy"><code class="sourceCode javascriptreact"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">// TaskForm.jsx</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> handleSubmit <span class="op">=</span> <span class="kw">async</span> (e) <span class="kw">=&gt;</span> {</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  e<span class="op">.</span><span class="fu">preventDefault</span>()<span class="op">;</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">await</span> <span class="fu">createTask</span>({ title<span class="op">,</span> description<span class="op">,</span> dueDate })<span class="op">;</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">await</span> <span class="fu">createTask</span>({ title<span class="op">,</span> description<span class="op">,</span> priority })<span class="op">;</span></span>
 <span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>2. Custom hook calls API:</strong></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">// useTasks.js</span></span>

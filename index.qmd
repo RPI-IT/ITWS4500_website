@@ -62,7 +62,7 @@ Complete course information, policies, and learning outcomes.
 
 ::: {.g-col-4}
 ### [Schedule](schedule.qmd)
-Week-by-week topics, assignments, and due dates.
+Week-by-week topics and assignments.
 :::
 
 ::: {.g-col-4}

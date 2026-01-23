@@ -851,7 +851,7 @@ flowchart LR
 
 ## Looking Ahead
 
-### Lab 4 Due: Tuesday, February 17
+### Lab 4
 
 - Implement backend patterns
 - Design MongoDB schemas

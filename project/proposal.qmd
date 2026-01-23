@@ -5,7 +5,6 @@ subtitle: "Defining Your Vision and Architecture"
 
 ::: {.callout-important}
 ## Proposal Information
-**Due Date:** Friday, January 30, 2026
 **Presentation:** In-class presentations during Week 3
 **Weight:** 15% of total project grade (9% of course grade)
 :::

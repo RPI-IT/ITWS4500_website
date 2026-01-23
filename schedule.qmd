@@ -7,7 +7,7 @@ subtitle: "Spring 2026 - Infrastructure as Code First Approach"
 ## Schedule Notes
 - **Class times:** Tuesday/Friday, 12:00-1:50 PM (01) or 2:00-3:50 PM (02)
 - **Location:** Lally 102
-- Labs are typically assigned on lecture days and due the following week
+- Labs are typically assigned on lecture days
 - Schedule is subject to adjustment based on class progress
 :::
 
@@ -48,7 +48,6 @@ gantt
 - Form project groups (3-4 members)
 - Install Docker Desktop
 - Set up development environment
-- **Lab 1 Due:** January 23, 2026
 :::
 
 ---
@@ -63,9 +62,6 @@ gantt
 | Tue 1/20 | Lecture | Lab 1 Review; Architectural Theory: Patterns, System Decomposition, and Project Scoping | [Lab 1 Slides](slides/week02/03a-lab1-docker-compose.qmd), [Theory Slides](slides/week02/03b-architectural-theory.qmd) |
 | Fri 1/23 | Lecture + Lab | **Lab 2:** Layered Client-Server Architecture (MERN as Reference) | [Slides](slides/week02/04-lab2-layered-architecture.qmd), [Lab 2](labs/lab02-layered-architecture.qmd) |
 
-::: {.callout-note}
-**Lab 2 Due:** January 27, 2026
-:::
 
 ---
 
@@ -80,8 +76,7 @@ gantt
 | Fri 1/30 | Lecture + Presentations | Frontend Architecture Patterns; **Project Proposal Presentations** | [Slides](slides/week03/05-frontend-architecture.qmd) |
 
 ::: {.callout-warning}
-**Project Proposals Due:** January 30, 2026
-**Lab 3 Due:** February 3, 2026
+**Project Proposals:** Presented in class
 :::
 
 ---
@@ -96,9 +91,6 @@ gantt
 | Tue 2/3 | Lab | **Lab 4:** Backend Architecture Patterns (Node.js & Express) | [Lab 4](labs/lab04-backend-patterns.qmd) |
 | Fri 2/6 | Lecture | Backend Architecture Patterns: Services, APIs, and Data Flow | [Slides](slides/week04/06-backend-architecture.qmd) |
 
-::: {.callout-note}
-**Lab 4 Due:** February 10, 2026
-:::
 
 ---
 
@@ -112,9 +104,6 @@ gantt
 | Tue 2/10 | Lab | **Lab 5:** Polyglot Persistence (MongoDB & PostgreSQL) | [Lab 5](labs/lab05-polyglot-persistence.qmd) |
 | Fri 2/13 | Lecture | Data Architecture Patterns: Polyglot Persistence - Document vs Relational Trade-offs | [Slides](slides/week05/07-data-architecture.qmd) |
 
-::: {.callout-note}
-**Lab 5 Due:** February 17, 2026
-:::
 
 ---
 
@@ -267,7 +256,7 @@ Comprehensive assessment covering all course material, with emphasis on Weeks 8-
 |-------|------|
 | Classes Begin | January 13, 2026 |
 | Project Groups Formed | January 16, 2026 |
-| Project Proposals Due | January 30, 2026 |
+| Project Proposal Presentations | January 30, 2026 |
 | Quiz 1 | February 20, 2026 |
 | Midterm Presentations | February 24, 2026 |
 | Spring Break | March 2-6, 2026 |
@@ -276,17 +265,17 @@ Comprehensive assessment covering all course material, with emphasis on Weeks 8-
 
 ## Lab Assignment Schedule
 
-| Lab | Topic | Assigned | Due |
-|-----|-------|----------|-----|
-| Lab 1 | Infrastructure as Code with Docker Compose | 1/16 | 1/23 |
-| Lab 2 | Layered Client-Server Architecture | 1/23 | 1/27 |
-| Lab 3 | Component and State Management | 1/27 | 2/3 |
-| Lab 4 | Backend Architecture Patterns | 2/3 | 2/10 |
-| Lab 5 | Polyglot Persistence | 2/10 | 2/17 |
-| Lab 6 | Authentication and Mobile | 3/13 | 3/20 |
-| Lab 7 | Agentic Workflows | 3/20 | 3/27 |
-| Lab 8 | Agent Orchestration | 3/27 | 4/3 |
-| Lab 9 | CI Pipelines | 4/3 | 4/10 |
-| Lab 10 | AI-Assisted Coding | 4/10 | 4/17 |
-| Lab 11 | Deployment | 4/17 | 4/24 |
-| Lab 12 | Capstone Extension | 4/24 | 4/28 |
+| Lab | Topic | Assigned |
+|-----|-------|----------|
+| Lab 1 | Infrastructure as Code with Docker Compose | 1/16 |
+| Lab 2 | Layered Client-Server Architecture | 1/23 |
+| Lab 3 | Component and State Management | 1/27 |
+| Lab 4 | Backend Architecture Patterns | 2/3 |
+| Lab 5 | Polyglot Persistence | 2/10 |
+| Lab 6 | Authentication and Mobile | 3/13 |
+| Lab 7 | Agentic Workflows | 3/20 |
+| Lab 8 | Agent Orchestration | 3/27 |
+| Lab 9 | CI Pipelines | 4/3 |
+| Lab 10 | AI-Assisted Coding | 4/10 |
+| Lab 11 | Deployment | 4/17 |
+| Lab 12 | Capstone Extension | 4/24 |

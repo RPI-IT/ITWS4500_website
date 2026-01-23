@@ -1089,7 +1089,7 @@ describe('Products API', () => {
 
 ## Looking Ahead
 
-### Lab 3 Due: Tuesday, February 10
+### Lab 3
 
 - Implement layered backend architecture
 - Create RESTful API endpoints

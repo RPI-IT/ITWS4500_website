@@ -6,7 +6,6 @@ subtitle: "MongoDB & PostgreSQL"
 ::: {.callout-important}
 ## Lab Information
 **Assigned:** Tuesday, February 17, 2026
-**Due:** Tuesday, February 24, 2026 (before class)
 **Points:** 100
 :::
 

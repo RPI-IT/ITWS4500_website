@@ -6,7 +6,6 @@ subtitle: "Node.js & Express"
 ::: {.callout-important}
 ## Lab Information
 **Assigned:** Tuesday, February 10, 2026
-**Due:** Tuesday, February 17, 2026 (before class)
 **Points:** 100
 :::
 

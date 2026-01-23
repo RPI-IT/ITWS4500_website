@@ -36,12 +36,12 @@ gantt
 
 ## Deliverables
 
-| Deliverable | Due Date | Weight |
-|-------------|----------|--------|
-| [Project Proposal](proposal.qmd) | January 30, 2026 | 15% |
-| [Midterm Update](midterm.qmd) | February 24, 2026 | 20% |
-| [Final Presentation](final.qmd) | April 28, 2026 | 25% |
-| **Total Project Weight** | | **60%** |
+| Deliverable | Weight |
+|-------------|--------|
+| [Project Proposal](proposal.qmd) | 15% |
+| [Midterm Update](midterm.qmd) | 20% |
+| [Final Presentation](final.qmd) | 25% |
+| **Total Project Weight** | **60%** |
 
 ## Team Requirements
 
