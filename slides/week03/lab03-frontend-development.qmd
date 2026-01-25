@@ -1,0 +1,747 @@
+---
+title: "Lab 3: Frontend Development"
+subtitle: "Building with React and Next.js"
+author: "Jason Kuruzovich"
+date: "January 30, 2026"
+format:
+  revealjs:
+    navigation-mode: linear
+    mermaid:
+        theme: default
+    theme: [default, ../../slides-theme.scss]
+    logo: ../../static/logos/RPI_Logo_Binary_1_White.png
+    footer: "ITWS-4500 | Week 3 | Lab 3"
+    slide-number: true
+    transition: slide
+    width: 1600
+    height: 900
+    code-line-numbers: true
+    highlight-style: github
+    pdf-separate-fragments: false
+---
+
+## Lab Overview
+
+::: {.callout-important}
+## Lab Information
+**Points:** 100
+**Focus:** Frontend Development with React & Next.js
+:::
+
+Build the **frontend** of a Task Management application:
+
+- Backend API is **provided** and fully functional
+- Your focus: React components, hooks, forms, Next.js features
+- Progressive learning through 6 parts
+
+---
+
+## Learning Objectives
+
+By completing this lab, you will:
+
+1. Build **reusable React components** with props and composition
+2. Manage state with **useState** and **useEffect**
+3. Create **custom hooks** for reusable logic
+4. Handle **forms with validation**
+5. Use **Next.js App Router** features
+6. Apply **React Context** for global state
+
+---
+
+# Architecture Overview
+
+---
+
+## Full Stack Architecture
+
+```{mermaid}
+flowchart TB
+    subgraph Client["Client (Next.js - Port 3001)"]
+        Browser[Browser]
+        App[App Router]
+        Components[React Components]
+        Hooks[Custom Hooks]
+        Context[Context Providers]
+    end
+
+    subgraph Server["Server (Express - Port 3000)"]
+        Routes[Routes]
+        Controllers[Controllers]
+        Models[Mongoose Models]
+    end
+
+    subgraph Database["Database (Port 27017)"]
+        MongoDB[(MongoDB)]
+    end
+
+    Browser --> App
+    App --> Components
+    Components --> Hooks
+    Hooks -->|fetch /api/*| Routes
+    Context --> Components
+    Routes --> Controllers
+    Controllers --> Models
+    Models --> MongoDB
+```
+
+---
+
+## Request/Response Flow
+
+```{mermaid}
+sequenceDiagram
+    participant U as User
+    participant C as Client (Next.js)
+    participant S as Server (Express)
+    participant D as MongoDB
+
+    U->>C: Click "Create Task"
+    C->>C: TaskForm validates input
+    C->>S: POST /api/tasks
+    S->>S: Validate with express-validator
+    S->>D: Save to database
+    D-->>S: Return saved task
+    S-->>C: JSON response
+    C->>C: Update UI state
+    C-->>U: Show success
+```
+
+---
+
+# Server Architecture
+
+---
+
+## Server Directory Structure
+
+```
+server/
+├── src/
+│   ├── index.js           # Express app entry point
+│   ├── config/
+│   │   └── database.js    # MongoDB connection
+│   ├── models/
+│   │   └── Task.js        # Mongoose schema & model
+│   ├── routes/
+│   │   └── tasks.js       # API route definitions
+│   ├── controllers/
+│   │   └── taskController.js  # Request handlers
+│   └── middleware/
+│       ├── errorHandler.js    # Error handling
+│       └── validators.js      # Input validation
+└── package.json
+```
+
+**Simple MVC-style architecture** - no complex layers!
+
+---
+
+## Server Components
+
+```{mermaid}
+flowchart LR
+    subgraph Middleware
+        Validators[validators.js]
+        ErrorHandler[errorHandler.js]
+    end
+
+    subgraph Core
+        Index[index.js] --> Routes[routes/tasks.js]
+        Routes --> Controllers[controllers/taskController.js]
+        Controllers --> Models[models/Task.js]
+    end
+
+    subgraph Config
+        Database[config/database.js]
+    end
+
+    Validators --> Routes
+    Controllers --> ErrorHandler
+    Models --> Database
+```
+
+---
+
+## API Endpoints (Provided)
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/api/tasks` | List tasks (with filters) |
+| `GET` | `/api/tasks/:id` | Get single task |
+| `POST` | `/api/tasks` | Create task |
+| `PUT` | `/api/tasks/:id` | Update task |
+| `PATCH` | `/api/tasks/:id/status` | Update status only |
+| `DELETE` | `/api/tasks/:id` | Delete task |
+| `GET` | `/api/tasks/stats` | Get statistics |
+
+---
+
+# Client Architecture
+
+---
+
+## Client Directory Structure
+
+```
+client/src/
+├── app/                 # Next.js App Router
+│   ├── layout.js       # Root layout
+│   ├── page.js         # Home (redirects)
+│   ├── loading.js      # Global loading
+│   ├── error.js        # Global error
+│   └── tasks/          # Tasks routes
+│       ├── page.js     # Task list
+│       ├── new/        # Create task
+│       └── [id]/       # Task detail/edit
+├── components/         # React components
+│   ├── ui/            # Base components
+│   ├── tasks/         # Task components
+│   └── layout/        # Layout components
+├── hooks/             # Custom React hooks
+├── lib/               # Utilities & API
+└── context/           # React Context
+```
+
+---
+
+## Next.js App Router
+
+```{mermaid}
+flowchart TB
+    subgraph AppRouter["app/ Directory"]
+        Layout[layout.js<br/>Root Layout]
+        Page[page.js<br/>Home → redirect]
+        Loading[loading.js<br/>Global Loading]
+        Error[error.js<br/>Error Boundary]
+
+        subgraph Tasks["tasks/"]
+            TasksPage[page.js<br/>Task List]
+            TasksLoading[loading.js]
+            TasksError[error.js]
+
+            subgraph New["new/"]
+                NewPage[page.js<br/>Create Form]
+            end
+
+            subgraph ID["[id]/"]
+                DetailPage[page.js<br/>Task Detail]
+                subgraph Edit["edit/"]
+                    EditPage[page.js<br/>Edit Form]
+                end
+            end
+        end
+    end
+
+    Layout --> Page
+    Layout --> Tasks
+    Tasks --> TasksPage
+    Tasks --> New
+    Tasks --> ID
+```
+
+---
+
+## Components Architecture
+
+```{mermaid}
+flowchart TB
+    subgraph UI["components/ui/ (Base)"]
+        Button[Button]
+        Input[Input]
+        Select[Select]
+        Card[Card]
+        Badge[Badge]
+        Spinner[Spinner]
+        Modal[Modal]
+    end
+
+    subgraph Tasks["components/tasks/"]
+        TaskCard[TaskCard]
+        TaskList[TaskList]
+        TaskForm[TaskForm]
+        TaskFilters[TaskFilters]
+        TaskStats[TaskStats]
+        StatusBadge[StatusBadge]
+    end
+
+    subgraph Layout["components/layout/"]
+        Header[Header]
+        Footer[Footer]
+    end
+
+    TaskCard --> Card
+    TaskCard --> Badge
+    TaskCard --> Button
+    TaskList --> TaskCard
+    TaskForm --> Input
+    TaskForm --> Select
+    StatusBadge --> Badge
+```
+
+---
+
+## Custom Hooks Architecture
+
+```{mermaid}
+flowchart LR
+    subgraph Hooks["hooks/"]
+        useTasks[useTasks<br/>Fetch list]
+        useTask[useTask<br/>Fetch single]
+        useMutations[useTaskMutations<br/>CRUD operations]
+        useLocalStorage[useLocalStorage<br/>Persist state]
+        useDebounce[useDebounce<br/>Debounce values]
+    end
+
+    subgraph API["lib/api.js"]
+        getTasks[getTasks]
+        getTask[getTask]
+        createTask[createTask]
+        updateTask[updateTask]
+        deleteTask[deleteTask]
+    end
+
+    useTasks --> getTasks
+    useTask --> getTask
+    useMutations --> createTask
+    useMutations --> updateTask
+    useMutations --> deleteTask
+```
+
+---
+
+## Data Flow Example: Create Task
+
+```{mermaid}
+sequenceDiagram
+    participant User
+    participant TaskForm
+    participant useTaskMutations
+    participant API as lib/api.js
+    participant Server
+
+    User->>TaskForm: Fill form, click Submit
+    TaskForm->>TaskForm: validateTaskForm()
+    alt Validation fails
+        TaskForm-->>User: Show errors
+    else Validation passes
+        TaskForm->>useTaskMutations: create(taskData)
+        useTaskMutations->>useTaskMutations: setLoading(true)
+        useTaskMutations->>API: createTask(taskData)
+        API->>Server: POST /api/tasks
+        Server-->>API: { success, data }
+        API-->>useTaskMutations: task object
+        useTaskMutations->>useTaskMutations: onSuccess callback
+        useTaskMutations-->>TaskForm: Navigate to /tasks
+    end
+```
+
+---
+
+# Lab Parts Overview
+
+---
+
+## Part 1: React Components (20 pts)
+
+Build reusable UI components:
+
+| Component | Description |
+|-----------|-------------|
+| `Input.jsx` | Text input with label & errors |
+| `Select.jsx` | Dropdown select |
+| `Card.jsx` | Card container with variants |
+| `Badge.jsx` | Status/priority badges |
+| `TaskCard.jsx` | Task display with actions |
+
+**Key Concepts:** Props, PropTypes, CSS Modules, Composition
+
+---
+
+## Part 1: Component Composition
+
+```jsx
+// TaskCard uses multiple smaller components
+function TaskCard({ task, onStatusChange, onDelete }) {
+  return (
+    <Card>                              {/* Container */}
+      <h3>{task.title}</h3>
+      <StatusBadge status={task.status} /> {/* Specialized */}
+      <Badge variant={task.priority}>    {/* Generic */}
+        {task.priority}
+      </Badge>
+      <Button onClick={handleDelete}>   {/* Reusable */}
+        Delete
+      </Button>
+    </Card>
+  );
+}
+```
+
+---
+
+## Part 2: State & Effects (20 pts)
+
+Manage component state:
+
+| File | Description |
+|------|-------------|
+| `TaskFilters.jsx` | Filter state management |
+| `TaskList.jsx` | List with loading/error |
+| `useLocalStorage.js` | Persist to localStorage |
+| `tasks/page.js` | Page-level state |
+
+**Key Concepts:** useState, useEffect, dependency arrays
+
+---
+
+## Part 2: useState vs useEffect
+
+```jsx
+function TasksPage() {
+  // useState: Declare reactive state
+  const [tasks, setTasks] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [filters, setFilters] = useState({});
+
+  // useEffect: Side effects (data fetching)
+  useEffect(() => {
+    async function fetchTasks() {
+      setLoading(true);
+      const data = await getTasks(filters);
+      setTasks(data);
+      setLoading(false);
+    }
+    fetchTasks();
+  }, [filters]); // Re-run when filters change
+
+  return loading ? <Spinner /> : <TaskList tasks={tasks} />;
+}
+```
+
+---
+
+## Part 3: Custom Hooks (20 pts)
+
+Encapsulate reusable logic:
+
+| Hook | Returns |
+|------|---------|
+| `useTasks(filters)` | `{ tasks, loading, error, refetch }` |
+| `useTask(id)` | `{ task, loading, error, refetch }` |
+| `useTaskMutations()` | `{ create, update, remove, loading }` |
+
+**Key Concepts:** Hook composition, async state, error handling
+
+---
+
+## Part 3: Custom Hook Pattern
+
+```jsx
+// hooks/useTasks.js
+function useTasks(filters = {}) {
+  const [tasks, setTasks] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const fetchTasks = useCallback(async () => {
+    setLoading(true);
+    try {
+      const result = await getTasks(filters);
+      setTasks(result.data);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  }, [filters.status, filters.priority]);
+
+  useEffect(() => { fetchTasks(); }, [fetchTasks]);
+
+  return { tasks, loading, error, refetch: fetchTasks };
+}
+```
+
+---
+
+## Part 4: Forms & Validation (20 pts)
+
+Build validated forms:
+
+| File | Description |
+|------|-------------|
+| `validators.js` | Validation functions |
+| `TaskForm.jsx` | Create/edit form |
+| `new/page.js` | Create task page |
+| `[id]/edit/page.js` | Edit task page |
+
+**Key Concepts:** Controlled components, validation, error display
+
+---
+
+## Part 4: Controlled Components
+
+```jsx
+function TaskForm({ onSubmit }) {
+  const [formData, setFormData] = useState({
+    title: '',
+    description: '',
+    priority: 'medium'
+  });
+  const [errors, setErrors] = useState({});
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const { isValid, errors } = validateTaskForm(formData);
+    if (!isValid) { setErrors(errors); return; }
+    onSubmit(formData);
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <Input name="title" value={formData.title}
+             onChange={handleChange} error={errors.title} />
+    </form>
+  );
+}
+```
+
+---
+
+## Part 5: Next.js Features (10 pts)
+
+App Router conventions:
+
+| File | Purpose |
+|------|---------|
+| `loading.js` | Loading UI during navigation |
+| `error.js` | Error boundary for route |
+
+```jsx
+// app/tasks/loading.js - Automatic loading state
+export default function TasksLoading() {
+  return (
+    <div className="loading-container">
+      <Spinner size="large" />
+      <p>Loading tasks...</p>
+    </div>
+  );
+}
+```
+
+---
+
+## Part 5: Error Boundaries
+
+```jsx
+// app/tasks/error.js - Must be 'use client'
+'use client';
+
+export default function TasksError({ error, reset }) {
+  useEffect(() => {
+    console.error('Tasks error:', error);
+  }, [error]);
+
+  return (
+    <div className="error-state">
+      <h2>Failed to load tasks</h2>
+      <p>{error.message}</p>
+      <Button onClick={reset}>Try again</Button>
+    </div>
+  );
+}
+```
+
+---
+
+## Part 6: Advanced Patterns (10 pts)
+
+Global state and patterns:
+
+| File | Description |
+|------|-------------|
+| `ThemeContext.jsx` | Theme provider |
+| `TaskContext.jsx` | Global task state |
+| `Modal.jsx` | Modal dialog |
+
+**Key Concepts:** Context API, useReducer, keyboard handling
+
+---
+
+## Part 6: React Context
+
+```jsx
+// context/ThemeContext.jsx
+const ThemeContext = createContext(null);
+
+export function ThemeProvider({ children }) {
+  const [theme, setTheme] = useState('light');
+
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'light' ? 'dark' : 'light');
+  };
+
+  useEffect(() => {
+    document.body.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  return (
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+}
+
+export const useTheme = () => useContext(ThemeContext);
+```
+
+---
+
+# Putting It All Together
+
+---
+
+## Complete Data Flow
+
+```{mermaid}
+flowchart TB
+    subgraph Browser
+        User((User))
+    end
+
+    subgraph Client["Next.js Client"]
+        Pages["App Router<br/>pages"]
+        Components["Components<br/>TaskCard, TaskForm"]
+        Hooks["Custom Hooks<br/>useTasks, useTask"]
+        Context["Context<br/>Theme, Tasks"]
+        API["API Client<br/>lib/api.js"]
+    end
+
+    subgraph Server["Express Server"]
+        Routes["Routes"]
+        Controllers["Controllers"]
+        Models["Models"]
+    end
+
+    subgraph DB["MongoDB"]
+        Tasks[(tasks)]
+    end
+
+    User --> Pages
+    Pages --> Components
+    Components --> Hooks
+    Components --> Context
+    Hooks --> API
+    API -->|HTTP| Routes
+    Routes --> Controllers
+    Controllers --> Models
+    Models --> Tasks
+```
+
+---
+
+## File Dependencies
+
+```{mermaid}
+flowchart TB
+    subgraph Page["app/tasks/page.js"]
+        TasksPage[TasksPage Component]
+    end
+
+    subgraph Components
+        TaskList[TaskList]
+        TaskFilters[TaskFilters]
+        TaskCard[TaskCard]
+    end
+
+    subgraph Hooks
+        useTasks[useTasks]
+        useTaskMutations[useTaskMutations]
+    end
+
+    subgraph Lib
+        api[api.js]
+        constants[constants.js]
+    end
+
+    TasksPage --> TaskList
+    TasksPage --> TaskFilters
+    TasksPage --> useTasks
+    TasksPage --> useTaskMutations
+    TaskList --> TaskCard
+    TaskFilters --> constants
+    useTasks --> api
+    useTaskMutations --> api
+```
+
+---
+
+## Getting Started
+
+```bash
+# Install dependencies
+npm run install:all
+
+# Start with Docker
+npm run docker:up
+
+# Or run locally (2 terminals)
+npm run dev:server   # Terminal 1
+npm run dev:client   # Terminal 2
+```
+
+**URLs:**
+
+- Frontend: `http://localhost:3001`
+- API: `http://localhost:3000/api`
+- MongoDB UI: `http://localhost:8081`
+
+---
+
+## Grading Breakdown
+
+| Part | Points | Focus |
+|------|--------|-------|
+| Part 1 | 20 | React Components |
+| Part 2 | 20 | State & Effects |
+| Part 3 | 20 | Custom Hooks |
+| Part 4 | 20 | Forms & Validation |
+| Part 5 | 10 | Next.js Features |
+| Part 6 | 10 | Advanced Patterns |
+| **Total** | **100** | |
+
+---
+
+## Tips for Success
+
+1. **Read the TODO comments** - They have hints!
+2. **Start with Part 1** - Components are used everywhere
+3. **Check the PROVIDED files** - `Button.jsx` and `useDebounce.js` are examples
+4. **Test incrementally** - Don't wait until the end
+5. **Use React DevTools** - Inspect component state
+
+---
+
+## Resources
+
+- [React Documentation](https://react.dev/)
+- [Next.js App Router](https://nextjs.org/docs/app)
+- [React Hooks Reference](https://react.dev/reference/react/hooks)
+- [CSS Modules](https://github.com/css-modules/css-modules)
+
+---
+
+## Questions?
+
+::: {.callout-tip}
+## Getting Help
+- **Office Hours:** Check LMS for schedule
+- **Piazza:** Post questions with `lab3` tag
+- **TA Sessions:** Available for debugging help
+:::
