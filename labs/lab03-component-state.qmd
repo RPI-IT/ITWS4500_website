@@ -5,7 +5,6 @@ subtitle: "React/Angular Architecture Patterns"
 
 ::: {.callout-important}
 ## Lab Information
-**Assigned:** Tuesday, February 3, 2026
 **Points:** 100
 :::
 
@@ -25,6 +24,8 @@ By completing this lab, you will:
 ## Getting Started
 
 Click the button below to accept the assignment and create your repository:
+
+[Accept Lab 3 Assignment](https://classroom.github.com/a/CeedBigU){.btn .btn-primary}
 
 
 ## Prerequisites

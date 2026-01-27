@@ -18,14 +18,14 @@
     "href": "schedule.html#weekly-schedule",
     "title": "Course Schedule",
     "section": "Weekly Schedule",
-    "text": "Weekly Schedule\n\nWeek 1: Course Foundation\nJanuary 13-16, 2026\nBackground Readings: Week 1 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 1/13\nLecture\nCourse Introduction: Web Applications as Architectural Patterns; Group Formation\nSlides\n\n\nFri 1/16\nLecture + Lab\nInfrastructure as Code: Containers, Docker, and Docker Compose; Lab 1 Assigned\nSlides, Lab 1\n\n\n\n\n\n\n\n\n\nTipGetting Started\n\n\n\n\nForm project groups (3-4 members)\nInstall Docker Desktop\nSet up development environment\n\n\n\n\n\n\nWeek 2: Architecture Foundations\nJanuary 20-23, 2026\nBackground Readings: Week 2 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 1/20\nLecture\nLab 1 Review; Architectural Theory: Patterns, System Decomposition, and Project Scoping\nLab 1 Slides, Theory Slides\n\n\nFri 1/23\nLecture + Lab\nLab 2: Layered Client-Server Architecture (MERN as Reference)\nSlides, Lab 2\n\n\n\n\n\n\nWeek 3: Component Architecture\nJanuary 27-30, 2026\nBackground Readings: Week 3 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 1/27\nLab\nLab 3: Component and State Management Architecture (Angular/React)\nLab 3\n\n\nFri 1/30\nLecture + Presentations\nFrontend Architecture Patterns; Project Proposal Presentations\nSlides\n\n\n\n\n\n\n\n\n\nWarning\n\n\n\nProject Proposals: Presented in class\n\n\n\n\n\nWeek 4: Backend Architecture\nFebruary 3-6, 2026\nBackground Readings: Week 4 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 2/3\nLab\nLab 4: Backend Architecture Patterns (Node.js & Express)\nLab 4\n\n\nFri 2/6\nLecture\nBackend Architecture Patterns: Services, APIs, and Data Flow\nSlides\n\n\n\n\n\n\nWeek 5: Data Architecture\nFebruary 10-13, 2026\nBackground Readings: Week 5 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 2/10\nLab\nLab 5: Polyglot Persistence (MongoDB & PostgreSQL)\nLab 5\n\n\nFri 2/13\nLecture\nData Architecture Patterns: Polyglot Persistence - Document vs Relational Trade-offs\nSlides\n\n\n\n\n\n\nWeek 6: Quiz 1\nFebruary 17-20, 2026\nBackground Readings: Week 6 Readings\n\n\n\n\n\n\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 2/17\nNo Class\nPresidents’ Day Week - No Tuesday Class\n-\n\n\nFri 2/20\nQuiz\nQuiz 1: Architectural Foundations and System Design\nStudy Guide\n\n\n\n\n\n\n\n\n\nImportantQuiz 1\n\n\n\nCovers Weeks 1-5: Infrastructure as Code, Architectural Patterns, Frontend/Backend/Data Architecture\n\n\n\n\n\nWeek 7: Midterm Project Review\nFebruary 24-27, 2026\nBackground Readings: Week 7 Readings\n\n\n\n\n\n\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 2/24\nPresentations\nMidterm Project Presentations: Architectural Decisions and Trade-offs\nGuidelines\n\n\nFri 2/27\nWorkshop\nProject Work Day: Refactoring and Architectural Improvement\n-\n\n\n\n\n\n\nSpring Break\nMarch 2-6, 2026 - No Classes\n\n\n\nWeek 8: Authentication & Mobile\nMarch 10-13, 2026\nBackground Readings: Week 8 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 3/10\nLecture\nIdentity, Authentication, and Mobile Architecture Patterns\nSlides TBD\n\n\nFri 3/13\nLab\nLab 6: Authentication and Mobile Application Architecture\nLab 6\n\n\n\n\n\n\nWeek 9: Agentic AI I\nMarch 17-20, 2026\nBackground Readings: Week 9 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 3/17\nLecture\nAgentic Architecture Patterns I: Agents as Workflow Systems\nSlides TBD\n\n\nFri 3/20\nLab\nLab 7: Agentic Workflows\nLab 7\n\n\n\n\n\n\nWeek 10: Agentic AI II\nMarch 24-27, 2026\nBackground Readings: Week 10 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 3/24\nLecture\nAgentic Architecture Patterns II: Orchestration, Memory, and Governance\nSlides TBD\n\n\nFri 3/27\nLab\nLab 8: Agent Orchestration and Tooling Patterns\nLab 8\n\n\n\n\n\n\nWeek 11: Continuous Integration\nMarch 31 - April 3, 2026\nBackground Readings: Week 11 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 3/31\nLecture\nContinuous Integration and Testing as Architecture\nSlides TBD\n\n\nFri 4/3\nLab\nLab 9: CI Pipelines and Automated Testing\nLab 9\n\n\n\n\n\n\nWeek 12: AI-Assisted Development\nApril 7-10, 2026\nBackground Readings: Week 12 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 4/7\nLecture\nAI-Assisted Development: Human-AI Collaboration Patterns\nSlides TBD\n\n\nFri 4/10\nLab\nLab 10: AI-Assisted Coding and Testing\nLab 10\n\n\n\n\n\n\nWeek 13: Deployment Architecture\nApril 14-17, 2026\nBackground Readings: Week 13 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 4/14\nLecture\nDeployment & Runtime Architecture: Cloud Patterns, Caching, Scaling, and Cost\nSlides TBD\n\n\nFri 4/17\nLab\nLab 11: Containerized Deployment, Caching, Scaling, and Reliability\nLab 11\n\n\n\n\n\n\nWeek 14: Quiz 2 & Capstone\nApril 21-24, 2026\nBackground Readings: Week 14 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 4/21\nQuiz\nQuiz 2: Comprehensive Architectural and Systems Reasoning\nStudy Guide\n\n\nFri 4/24\nLab\nLab 12: Capstone Extension - Architectural Experimentation / Project Hardening\nLab 12\n\n\n\n\n\n\n\n\n\nImportantQuiz 2\n\n\n\nComprehensive assessment covering all course material, with emphasis on Weeks 8-13\n\n\n\n\n\nWeek 15: Final Presentations\nApril 28, 2026\nBackground Readings: Week 15 Readings\n\n\n\n\n\n\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 4/28\nPresentations\nFinal Project Presentations: Evaluation, Feedback, and Reflection\nGuidelines\n\n\n\n\n\n\n\n\n\nNoteFinal Project Deliverables\n\n\n\n\nWorking deployed application\nTechnical documentation\nArchitecture decision records\nIndividual contribution summary\nPeer evaluations"
+    "text": "Weekly Schedule\n\nWeek 1: Course Foundation\nJanuary 13-16, 2026\nBackground Readings: Week 1 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 1/13\nLecture\nCourse Introduction: Web Applications as Architectural Patterns; Group Formation\nSlides\n\n\nFri 1/16\nLecture + Lab\nInfrastructure as Code: Containers, Docker, and Docker Compose; Lab 1 Assigned\nSlides, Lab 1\n\n\n\n\n\n\n\n\n\nTipGetting Started\n\n\n\n\nForm project groups (3-4 members)\nInstall Docker Desktop\nSet up development environment\n\n\n\n\n\n\nWeek 2: Architecture Foundations\nJanuary 20-23, 2026\nBackground Readings: Week 2 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 1/20\nLecture\nLab 1 Review; Architectural Theory: Patterns, System Decomposition, and Project Scoping\nLab 1 Slides, Theory Slides\n\n\nFri 1/23\nLecture + Lab\nLab 2: Layered Client-Server Architecture (MERN as Reference)\nSlides, Lab 2\n\n\n\n\n\n\nWeek 3: Component Architecture\nJanuary 27-30, 2026\nBackground Readings: Week 3 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 1/27\nLab\nLab 3: Component and State Management Architecture (Angular/React)\nLab 3 Lab 3 Slides\n\n\nFri 1/30\nLecture + Presentations\nFrontend Architecture Patterns; Project Proposal Presentations\nSlides\n\n\n\n\n\n\n\n\n\nWarning\n\n\n\nProject Proposals: Presented in class\n\n\n\n\n\nWeek 4: Backend Architecture\nFebruary 3-6, 2026\nBackground Readings: Week 4 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 2/3\nLab\nLab 4: Backend Architecture Patterns (Node.js & Express)\nLab 4\n\n\nFri 2/6\nLecture\nBackend Architecture Patterns: Services, APIs, and Data Flow\nSlides\n\n\n\n\n\n\nWeek 5: Data Architecture\nFebruary 10-13, 2026\nBackground Readings: Week 5 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 2/10\nLab\nLab 5: Polyglot Persistence (MongoDB & PostgreSQL)\nLab 5\n\n\nFri 2/13\nLecture\nData Architecture Patterns: Polyglot Persistence - Document vs Relational Trade-offs\nSlides\n\n\n\n\n\n\nWeek 6: Quiz 1\nFebruary 17-20, 2026\nBackground Readings: Week 6 Readings\n\n\n\n\n\n\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 2/17\nNo Class\nPresidents’ Day Week - No Tuesday Class\n-\n\n\nFri 2/20\nQuiz\nQuiz 1: Architectural Foundations and System Design\nStudy Guide\n\n\n\n\n\n\n\n\n\nImportantQuiz 1\n\n\n\nCovers Weeks 1-5: Infrastructure as Code, Architectural Patterns, Frontend/Backend/Data Architecture\n\n\n\n\n\nWeek 7: Midterm Project Review\nFebruary 24-27, 2026\nBackground Readings: Week 7 Readings\n\n\n\n\n\n\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 2/24\nPresentations\nMidterm Project Presentations: Architectural Decisions and Trade-offs\nGuidelines\n\n\nFri 2/27\nWorkshop\nProject Work Day: Refactoring and Architectural Improvement\n-\n\n\n\n\n\n\nSpring Break\nMarch 2-6, 2026 - No Classes\n\n\n\nWeek 8: Authentication & Mobile\nMarch 10-13, 2026\nBackground Readings: Week 8 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 3/10\nLecture\nIdentity, Authentication, and Mobile Architecture Patterns\nSlides TBD\n\n\nFri 3/13\nLab\nLab 6: Authentication and Mobile Application Architecture\nLab 6\n\n\n\n\n\n\nWeek 9: Agentic AI I\nMarch 17-20, 2026\nBackground Readings: Week 9 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 3/17\nLecture\nAgentic Architecture Patterns I: Agents as Workflow Systems\nSlides TBD\n\n\nFri 3/20\nLab\nLab 7: Agentic Workflows\nLab 7\n\n\n\n\n\n\nWeek 10: Agentic AI II\nMarch 24-27, 2026\nBackground Readings: Week 10 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 3/24\nLecture\nAgentic Architecture Patterns II: Orchestration, Memory, and Governance\nSlides TBD\n\n\nFri 3/27\nLab\nLab 8: Agent Orchestration and Tooling Patterns\nLab 8\n\n\n\n\n\n\nWeek 11: Continuous Integration\nMarch 31 - April 3, 2026\nBackground Readings: Week 11 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 3/31\nLecture\nContinuous Integration and Testing as Architecture\nSlides TBD\n\n\nFri 4/3\nLab\nLab 9: CI Pipelines and Automated Testing\nLab 9\n\n\n\n\n\n\nWeek 12: AI-Assisted Development\nApril 7-10, 2026\nBackground Readings: Week 12 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 4/7\nLecture\nAI-Assisted Development: Human-AI Collaboration Patterns\nSlides TBD\n\n\nFri 4/10\nLab\nLab 10: AI-Assisted Coding and Testing\nLab 10\n\n\n\n\n\n\nWeek 13: Deployment Architecture\nApril 14-17, 2026\nBackground Readings: Week 13 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 4/14\nLecture\nDeployment & Runtime Architecture: Cloud Patterns, Caching, Scaling, and Cost\nSlides TBD\n\n\nFri 4/17\nLab\nLab 11: Containerized Deployment, Caching, Scaling, and Reliability\nLab 11\n\n\n\n\n\n\nWeek 14: Quiz 2 & Capstone\nApril 21-24, 2026\nBackground Readings: Week 14 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 4/21\nQuiz\nQuiz 2: Comprehensive Architectural and Systems Reasoning\nStudy Guide\n\n\nFri 4/24\nLab\nLab 12: Capstone Extension - Architectural Experimentation / Project Hardening\nLab 12\n\n\n\n\n\n\n\n\n\nImportantQuiz 2\n\n\n\nComprehensive assessment covering all course material, with emphasis on Weeks 8-13\n\n\n\n\n\nWeek 15: Final Presentations\nApril 28, 2026\nBackground Readings: Week 15 Readings\n\n\n\n\n\n\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 4/28\nPresentations\nFinal Project Presentations: Evaluation, Feedback, and Reflection\nGuidelines\n\n\n\n\n\n\n\n\n\nNoteFinal Project Deliverables\n\n\n\n\nWorking deployed application\nTechnical documentation\nArchitecture decision records\nIndividual contribution summary\nPeer evaluations"
   },
   {
     "objectID": "schedule.html#key-dates-summary",
     "href": "schedule.html#key-dates-summary",
     "title": "Course Schedule",
     "section": "Key Dates Summary",
-    "text": "Key Dates Summary\n\n\n\nEvent\nDate\n\n\n\n\nClasses Begin\nJanuary 13, 2026\n\n\nProject Groups Formed\nJanuary 16, 2026\n\n\nProject Proposals Due\nJanuary 30, 2026\n\n\nQuiz 1\nFebruary 20, 2026\n\n\nMidterm Presentations\nFebruary 24, 2026\n\n\nSpring Break\nMarch 2-6, 2026\n\n\nQuiz 2\nApril 21, 2026\n\n\nFinal Presentations\nApril 28, 2026"
+    "text": "Key Dates Summary\n\n\n\nEvent\nDate\n\n\n\n\nClasses Begin\nJanuary 13, 2026\n\n\nProject Groups Formed\nJanuary 16, 2026\n\n\nProject Proposal Presentations\nJanuary 30, 2026\n\n\nQuiz 1\nFebruary 20, 2026\n\n\nMidterm Presentations\nFebruary 24, 2026\n\n\nSpring Break\nMarch 2-6, 2026\n\n\nQuiz 2\nApril 21, 2026\n\n\nFinal Presentations\nApril 28, 2026"
   },
   {
     "objectID": "schedule.html#lab-assignment-schedule",
@@ -1404,7 +1404,7 @@
     "href": "labs/lab03-component-state.html",
     "title": "Lab 3: Component and State Management",
     "section": "",
-    "text": "ImportantLab Information\n\n\n\nAssigned: Tuesday, February 3, 2026 Points: 100"
+    "text": "ImportantLab Information\n\n\n\nPoints: 100"
   },
   {
     "objectID": "labs/lab03-component-state.html#overview",
@@ -1425,7 +1425,7 @@
     "href": "labs/lab03-component-state.html#getting-started",
     "title": "Lab 3: Component and State Management",
     "section": "Getting Started",
-    "text": "Getting Started\nClick the button below to accept the assignment and create your repository:"
+    "text": "Getting Started\nClick the button below to accept the assignment and create your repository:\nAccept Lab 3 Assignment"
   },
   {
     "objectID": "labs/lab03-component-state.html#prerequisites",
@@ -1894,7 +1894,7 @@
     "href": "index.html#quick-links",
     "title": "ITWS-4500: Advanced Web & Agentic AI Development",
     "section": "Quick Links",
-    "text": "Quick Links\n\n\nSyllabus\nComplete course information, policies, and learning outcomes.\n\n\nSchedule\nWeek-by-week topics, assignments, and due dates.\n\n\nLMS\nSubmit assignments and access course materials."
+    "text": "Quick Links\n\n\nSyllabus\nComplete course information, policies, and learning outcomes.\n\n\nSchedule\nWeek-by-week topics and assignments.\n\n\nLMS\nSubmit assignments and access course materials."
   },
   {
     "objectID": "index.html#this-week",
@@ -4337,7 +4337,7 @@
     "href": "project/index.html#project-management-requirements",
     "title": "Semester Project",
     "section": "Project Management Requirements",
-    "text": "Project Management Requirements\n\n\n\n\n\n\nWarningRequired: Integrated Project Management\n\n\n\nYour project must use a structured project management approach with visible progress tracking.\n\n\n\nOption 1: GitHub Projects (Recommended)\nUse GitHub’s built-in project management features:\n\nGitHub Projects: Kanban boards integrated with your repository\nIssues: Track features, bugs, and tasks\nMilestones: Group issues into sprints or phases\nPull Requests: Link PRs to issues for traceability\n\nSetup Requirements:\nRepository Structure:\n├── .github/\n│   ├── ISSUE_TEMPLATE/\n│   │   ├── feature.md\n│   │   ├── bug.md\n│   │   └── task.md\n│   └── PULL_REQUEST_TEMPLATE.md\n├── docs/\n│   └── architecture/\n├── src/\n└── README.md\n\n\nOption 2: External Tools (Jira, Linear, Notion)\nIf you prefer external tools, they must be:\n\nPublicly viewable or instructor access granted\nLinked from your repository README\nActively maintained with regular updates\nIntegrated with GitHub (e.g., Jira-GitHub integration)"
+    "text": "Project Management Requirements\n\n\n\n\n\n\nWarningRequired: Integrated Project Management\n\n\n\nYour project must use a structured project management approach with visible progress tracking.\n\n\n\nOption 1: GitHub Projects (Recommended)\nUse GitHub’s built-in project management features:\n\nGitHub Projects: Kanban boards integrated with your repository\nIssues: Track features, bugs, and tasks\nMilestones: Group issues into sprints or phases\nPull Requests: Link PRs to issues for traceability\n\nSetup Requirements:\nRepository Structure:\n├── .github/\n│   ├── ISSUE_TEMPLATE/\n│   │   ├── feature.md\n│   │   ├── bug.md\n│   │   └── task.md\n│   └── PULL_REQUEST_TEMPLATE.md\n├── docs/\n│   └── architecture/\n├── src/\n└── README.md\nFor the group repo below ONE person from each group should accept assignment and then create team name. It should cover both your group number and something descriptive. For example “1A: Transfer Students”.\nAccept Github Assignment\n\n\nOption 2: External Tools (Jira, Linear, Notion)\nIf you prefer external tools, they must be:\n\nPublicly viewable or instructor access granted\nLinked from your repository README\nActively maintained with regular updates\nIntegrated with GitHub (e.g., Jira-GitHub integration)"
   },
   {
     "objectID": "project/index.html#technical-requirements",
@@ -6690,5 +6690,229 @@
     "title": "Lab 3: Frontend Development",
     "section": "Questions?",
     "text": "Questions?\n\n\n\n\n\n\nGetting Help\n\n\n\nOffice Hours: Check LMS for schedule\nPiazza: Post questions with lab3 tag\nTA Sessions: Available for debugging help"
+  },
+  {
+    "objectID": "slides/week09/agentic-ready.html#ai-is-already-here",
+    "href": "slides/week09/agentic-ready.html#ai-is-already-here",
+    "title": "Agentic Ready",
+    "section": "AI Is Already Here",
+    "text": "AI Is Already Here\nYou’ve probably already used AI today:\n\nSearched for something online\nGot a recommendation on Netflix or Spotify\nUsed autocomplete in email\nAsked ChatGPT a question\n\n\n\nThe question isn’t whether AI will affect your career. It’s how you’ll learn to work with it."
+  },
+  {
+    "objectID": "slides/week09/agentic-ready.html#generative-ai-the-content-creator",
+    "href": "slides/week09/agentic-ready.html#generative-ai-the-content-creator",
+    "title": "Agentic Ready",
+    "section": "Generative AI: The Content Creator",
+    "text": "Generative AI: The Content Creator\nWhat it does: Creates new content based on patterns it learned\n\n\nExamples:\n\nChatGPT writing an email\nDALL-E creating an image\nCopilot suggesting code\nClaude summarizing a document\n\n\nKey characteristic:\nYou ask → It answers\nOne input, one output\nYou remain in control of every step"
+  },
+  {
+    "objectID": "slides/week09/agentic-ready.html#agentic-ai-the-autonomous-worker",
+    "href": "slides/week09/agentic-ready.html#agentic-ai-the-autonomous-worker",
+    "title": "Agentic Ready",
+    "section": "Agentic AI: The Autonomous Worker",
+    "text": "Agentic AI: The Autonomous Worker\nWhat it does: Plans, decides, takes actions, and adapts\n\n\nExamples:\n\nAI that researches competitors and writes a report\nAI that books your travel across multiple sites\nAI that monitors inventory and reorders supplies\nAI that debugs code and fixes it autonomously\n\n\nKey characteristic:\nYou set a goal → It figures out how\nMultiple steps, decisions along the way\nWorks semi-autonomously"
+  },
+  {
+    "objectID": "slides/week09/agentic-ready.html#the-key-difference",
+    "href": "slides/week09/agentic-ready.html#the-key-difference",
+    "title": "Agentic Ready",
+    "section": "The Key Difference",
+    "text": "The Key Difference\n\n\n\n\n\nflowchart LR\n    subgraph Generative[\"Generative AI\"]\n        A[\"Human Request\"] --&gt; B[\"AI Response\"]\n    end\n\n    subgraph Agentic[\"Agentic AI\"]\n        C[\"Human Goal\"] --&gt; D[\"AI Plans\"]\n        D --&gt; E[\"AI Acts\"]\n        E --&gt; F[\"AI Evaluates\"]\n        F --&gt; G[\"AI Adapts\"]\n        G --&gt; E\n    end\n\n\n\n\n\n\n\nGenerative AI is a tool. Agentic AI is a collaborator."
+  },
+  {
+    "objectID": "slides/week09/agentic-ready.html#the-productivity-multiplier",
+    "href": "slides/week09/agentic-ready.html#the-productivity-multiplier",
+    "title": "Agentic Ready",
+    "section": "The Productivity Multiplier",
+    "text": "The Productivity Multiplier\nTraditional workflow:\n\n\n\n\n\nflowchart LR\n    A[\"Analyst\"] --&gt; B[\"Manager Reviews\"]\n    B --&gt; C[\"Revisions\"]\n    C --&gt; D[\"More Reviews\"]\n    D --&gt; E[\"Final Output\"]\n\n\n\n\n\n\n\nAI-augmented workflow:\n\n\n\n\n\nflowchart LR\n    A[\"Human + AI Agent\"] --&gt; B[\"Draft + Analysis\"]\n    B --&gt; C[\"Human Judgment\"]\n    C --&gt; D[\"Final Output\"]"
+  },
+  {
+    "objectID": "slides/week09/agentic-ready.html#real-examples-today",
+    "href": "slides/week09/agentic-ready.html#real-examples-today",
+    "title": "Agentic Ready",
+    "section": "Real Examples Today",
+    "text": "Real Examples Today\n\n\n\n\n\n\n\n\nFunction\nTraditional\nWith Agentic AI\n\n\n\n\nMarket Research\nWeeks of analyst work\nHours with human oversight\n\n\nCode Development\nWrite every line\nDescribe what you want, review output\n\n\nCustomer Service\nHuman answers each query\nAI handles routine, humans handle complex\n\n\nFinancial Analysis\nBuild models manually\nAI builds, human validates"
+  },
+  {
+    "objectID": "slides/week09/agentic-ready.html#the-10x-effect",
+    "href": "slides/week09/agentic-ready.html#the-10x-effect",
+    "title": "Agentic Ready",
+    "section": "The “10x” Effect",
+    "text": "The “10x” Effect\nStudies are showing dramatic productivity gains:\n\nConsultants: 25-40% faster on complex tasks with AI assistance\nProgrammers: 55% faster code completion with AI tools\nCustomer service: 14% more issues resolved per hour\nWriting tasks: 40% improvement in quality for average performers\n\n\n\n\n\n\n\n\nNote\n\n\nThe key insight: AI doesn’t replace thinking. It amplifies it."
+  },
+  {
+    "objectID": "slides/week09/agentic-ready.html#what-is-an-empowered-consultant",
+    "href": "slides/week09/agentic-ready.html#what-is-an-empowered-consultant",
+    "title": "Agentic Ready",
+    "section": "What Is an Empowered Consultant?",
+    "text": "What Is an Empowered Consultant?\nSomeone who can:\n\nUnderstand business problems deeply\nDirect AI systems to gather information and create outputs\nEvaluate and refine AI-generated work\nMake judgment calls that require human insight\n\n\n\nYou don’t need to code everything yourself. You need to manage AI that can code for you."
+  },
+  {
+    "objectID": "slides/week09/agentic-ready.html#the-rise-of-vibe-coding",
+    "href": "slides/week09/agentic-ready.html#the-rise-of-vibe-coding",
+    "title": "Agentic Ready",
+    "section": "The Rise of “Vibe Coding”",
+    "text": "The Rise of “Vibe Coding”\nVibe coding: Describing what you want in plain language and having AI build it\n\n\nBefore:\n“I need to learn React, CSS, database design, API development, deployment…”\nMonths of learning before building anything\n\nNow:\n“Build me a dashboard that shows sales by region with filters for date range and product category”\nWorking prototype in hours\n\n\nThe catch: You still need to know enough to evaluate whether it’s good."
+  },
+  {
+    "objectID": "slides/week09/agentic-ready.html#what-managing-ai-looks-like",
+    "href": "slides/week09/agentic-ready.html#what-managing-ai-looks-like",
+    "title": "Agentic Ready",
+    "section": "What “Managing AI” Looks Like",
+    "text": "What “Managing AI” Looks Like\n\nFraming the problem — AI can’t solve problems you can’t articulate\nBreaking down complex tasks — Knowing what steps are needed\nProviding context — AI works better with good information\nQuality control — Catching errors, biases, and gaps\nIterating — Refining outputs through feedback\n\n\n\n\n\n\n\n\nImportant\n\n\nThe person who can do this well is extremely productive."
+  },
+  {
+    "objectID": "slides/week09/agentic-ready.html#operations-supply-chain",
+    "href": "slides/week09/agentic-ready.html#operations-supply-chain",
+    "title": "Agentic Ready",
+    "section": "Operations & Supply Chain",
+    "text": "Operations & Supply Chain\n\nDemand forecasting with continuous learning\nInventory optimization that acts autonomously\nLogistics coordination across partners\nQuality control with computer vision\n\n\nExample: AI agents monitoring supplier performance and automatically adjusting orders"
+  },
+  {
+    "objectID": "slides/week09/agentic-ready.html#finance-accounting",
+    "href": "slides/week09/agentic-ready.html#finance-accounting",
+    "title": "Agentic Ready",
+    "section": "Finance & Accounting",
+    "text": "Finance & Accounting\n\nAnomaly detection in transactions\nReport generation from raw data\nCompliance monitoring in real-time\nFinancial modeling with scenario analysis\n\n\nExample: AI agents that prepare monthly close materials and flag issues"
+  },
+  {
+    "objectID": "slides/week09/agentic-ready.html#marketing-sales",
+    "href": "slides/week09/agentic-ready.html#marketing-sales",
+    "title": "Agentic Ready",
+    "section": "Marketing & Sales",
+    "text": "Marketing & Sales\n\nPersonalization at individual customer level\nContent generation across channels\nLead scoring and prioritization\nCompetitive intelligence gathering\n\n\nExample: AI agents that research prospects before sales calls"
+  },
+  {
+    "objectID": "slides/week09/agentic-ready.html#product-development",
+    "href": "slides/week09/agentic-ready.html#product-development",
+    "title": "Agentic Ready",
+    "section": "Product Development",
+    "text": "Product Development\n\nCode generation and debugging\nTesting automation\nDocumentation creation\nDesign iteration based on user feedback\n\n\nExample: AI agents that can build functional prototypes from descriptions"
+  },
+  {
+    "objectID": "slides/week09/agentic-ready.html#technical-fluency-not-expertise",
+    "href": "slides/week09/agentic-ready.html#technical-fluency-not-expertise",
+    "title": "Agentic Ready",
+    "section": "Technical Fluency (Not Expertise)",
+    "text": "Technical Fluency (Not Expertise)\nYou don’t need to be a computer scientist. You need to:\n\nUnderstand what AI can and cannot do\nKnow how to prompt effectively\nRecognize good vs. bad AI output\nUnderstand basic data concepts\n\n\n\nThink: “Fluent tourist” not “native speaker”"
+  },
+  {
+    "objectID": "slides/week09/agentic-ready.html#strategic-thinking",
+    "href": "slides/week09/agentic-ready.html#strategic-thinking",
+    "title": "Agentic Ready",
+    "section": "Strategic Thinking",
+    "text": "Strategic Thinking\nAI handles execution. Humans handle:\n\nProblem definition — What are we actually trying to solve?\nTrade-off analysis — What are we optimizing for?\nEthical judgment — Should we do this?\nStakeholder management — Who is affected?"
+  },
+  {
+    "objectID": "slides/week09/agentic-ready.html#domain-expertise",
+    "href": "slides/week09/agentic-ready.html#domain-expertise",
+    "title": "Agentic Ready",
+    "section": "Domain Expertise",
+    "text": "Domain Expertise\nAI is general. Value comes from specificity:\n\nDeep knowledge of an industry\nUnderstanding of customer needs\nRegulatory and compliance awareness\nOrganizational context\n\n\n\n\n\n\n\n\nNote\n\n\nThe formula: Domain Expertise + AI Fluency = Competitive Advantage"
+  },
+  {
+    "objectID": "slides/week09/agentic-ready.html#the-skills-that-are-hard-to-automate",
+    "href": "slides/week09/agentic-ready.html#the-skills-that-are-hard-to-automate",
+    "title": "Agentic Ready",
+    "section": "The Skills That Are Hard to Automate",
+    "text": "The Skills That Are Hard to Automate\n\n\nHuman advantages:\n\nBuilding trust and relationships\nNavigating ambiguity\nCreative problem framing\nEthical reasoning\nCross-functional collaboration\n\n\nAI advantages:\n\nProcessing large amounts of information\nConsistency at scale\nPattern recognition\nSpeed of execution\nNever getting tired"
+  },
+  {
+    "objectID": "slides/week09/agentic-ready.html#the-career-landscape-is-shifting",
+    "href": "slides/week09/agentic-ready.html#the-career-landscape-is-shifting",
+    "title": "Agentic Ready",
+    "section": "The Career Landscape Is Shifting",
+    "text": "The Career Landscape Is Shifting\nJobs are not disappearing. They are transforming.\n\n\n\nDeclining value:\n\nRoutine information gathering\nBasic content creation\nSimple data analysis\nRepetitive coordination\n\n\nIncreasing value:\n\nComplex problem solving\nHuman judgment and ethics\nAI system management\nCross-functional integration"
+  },
+  {
+    "objectID": "slides/week09/agentic-ready.html#why-business-education-matters-more",
+    "href": "slides/week09/agentic-ready.html#why-business-education-matters-more",
+    "title": "Agentic Ready",
+    "section": "Why Business Education Matters More",
+    "text": "Why Business Education Matters More\nIn an AI world, you need:\n\nBroad understanding of how organizations work\nCommunication skills to translate between technical and business\nStrategic frameworks for making decisions\nLeadership capabilities to guide human-AI teams\n\n\n\nTechnical skills get you started. Business skills make you valuable."
+  },
+  {
+    "objectID": "slides/week09/agentic-ready.html#the-rpi-advantage",
+    "href": "slides/week09/agentic-ready.html#the-rpi-advantage",
+    "title": "Agentic Ready",
+    "section": "The RPI Advantage",
+    "text": "The RPI Advantage\n\n\nSkip the middle:\n\nFocus on foundations + impact\nBuild real things from day one\nAI-accelerated development\nActual stakeholders, not toy projects\n\n\nBusiness + Technical integration:\n\nStrategy and systems thinking\nData literacy and analytics\nInnovation and entrepreneurship\nEthics and leadership\n\n\n\nThe combination: Graduate having built real products with real impact"
+  },
+  {
+    "objectID": "slides/week09/agentic-ready.html#start-now",
+    "href": "slides/week09/agentic-ready.html#start-now",
+    "title": "Agentic Ready",
+    "section": "Start Now",
+    "text": "Start Now\nThings you can do today:\n\nUse AI tools regularly — ChatGPT, Claude, Copilot\nTry building something — Use AI to create a simple app or analysis\nRead critically — Follow AI developments, but question the hype\nPractice prompting — Learn to communicate with AI effectively"
+  },
+  {
+    "objectID": "slides/week09/agentic-ready.html#questions-to-ask-yourself",
+    "href": "slides/week09/agentic-ready.html#questions-to-ask-yourself",
+    "title": "Agentic Ready",
+    "section": "Questions to Ask Yourself",
+    "text": "Questions to Ask Yourself\n\nWhat problems do I find interesting?\nWhat industries fascinate me?\nHow do I learn best — building, analyzing, leading?\nWhere do I want to create value?\n\n\nAI amplifies what you bring to the table."
+  },
+  {
+    "objectID": "slides/week09/agentic-ready.html#remember-this",
+    "href": "slides/week09/agentic-ready.html#remember-this",
+    "title": "Agentic Ready",
+    "section": "Remember This",
+    "text": "Remember This\n\nAgentic AI is shifting from tool to collaborator\nProductivity gains are real and significant\nEmpowered consultants who manage AI well are extremely valuable\nSkip the middle — focus on foundations and impact, let AI handle routine work\nBuild real things — the best way to learn is to create value for real people"
+  },
+  {
+    "objectID": "slides/week09/agentic-ready.html#the-future-needs-you",
+    "href": "slides/week09/agentic-ready.html#the-future-needs-you",
+    "title": "Agentic Ready",
+    "section": "The Future Needs You",
+    "text": "The Future Needs You\nAI is powerful, but it needs:\n\nPeople who understand what problems to solve\nPeople who can judge quality and ethics\nPeople who can lead and inspire others\nPeople who can bridge technology and business\n\n\n\nThe question isn’t whether AI will change business. It’s whether you’ll be ready to shape how."
+  },
+  {
+    "objectID": "slides/week09/agentic-ready.html#the-old-model-build-up-slowly",
+    "href": "slides/week09/agentic-ready.html#the-old-model-build-up-slowly",
+    "title": "Agentic Ready",
+    "section": "The Old Model: Build Up Slowly",
+    "text": "The Old Model: Build Up Slowly\nTraditional approach:\n\n\n\n\n\nflowchart LR\n    A[\"Foundations\"] --&gt; B[\"Intermediate Skills\"]\n    B --&gt; C[\"Advanced Techniques\"]\n    C --&gt; D[\"Real Projects\"]\n    D --&gt; E[\"Impact\"]\n\n\n\n\n\n\n\nProblem: Years of “building blocks” before doing anything meaningful"
+  },
+  {
+    "objectID": "slides/week09/agentic-ready.html#the-new-model-skip-the-middle",
+    "href": "slides/week09/agentic-ready.html#the-new-model-skip-the-middle",
+    "title": "Agentic Ready",
+    "section": "The New Model: Skip the Middle",
+    "text": "The New Model: Skip the Middle\n\n\n\n\n\nflowchart LR\n    A[\"Foundations\"] --&gt; B[\"AI Handles the Middle\"]\n    B --&gt; C[\"Real Impact\"]\n\n    style B fill:#d6001c,color:#fff\n\n\n\n\n\n\n\nAI lets students focus on:\n\nFoundations — Understanding why and what, not just how\nHigh-impact contexts — Real projects, real stakeholders, real decisions"
+  },
+  {
+    "objectID": "slides/week09/agentic-ready.html#what-we-mean-by-skip-the-middle",
+    "href": "slides/week09/agentic-ready.html#what-we-mean-by-skip-the-middle",
+    "title": "Agentic Ready",
+    "section": "What We Mean by “Skip the Middle”",
+    "text": "What We Mean by “Skip the Middle”\n\n\nThe Middle (AI can help):\n\nBoilerplate code\nSyntax memorization\nRoutine debugging\nStandard implementations\nDocumentation formatting\n\n\nThe Ends (humans must own):\n\nProblem understanding\nArchitectural decisions\nUser needs\nQuality judgment\nEthical considerations\n\n\n\n\nStudents spend time on thinking, not typing."
+  },
+  {
+    "objectID": "slides/week09/agentic-ready.html#case-study-itws-4500",
+    "href": "slides/week09/agentic-ready.html#case-study-itws-4500",
+    "title": "Agentic Ready",
+    "section": "Case Study: ITWS-4500",
+    "text": "Case Study: ITWS-4500\nIn our Advanced Web & Agentic AI course, students:\n\n\nWeek 1:\n\nForm teams\nIdentify a real problem\nFind an actual stakeholder\n\n\nBy Midterm:\n\nWorking prototype deployed\nReal users testing it\nIterating based on feedback\n\n\n\nHow? AI accelerates the implementation so students focus on impact."
+  },
+  {
+    "objectID": "slides/week09/agentic-ready.html#student-projects-real-problems-real-impact",
+    "href": "slides/week09/agentic-ready.html#student-projects-real-problems-real-impact",
+    "title": "Agentic Ready",
+    "section": "Student Projects: Real Problems, Real Impact",
+    "text": "Student Projects: Real Problems, Real Impact\nStudents build for actual stakeholders:\n\nStartup ideas they could launch\nExternal organizations — clubs, nonprofits, local businesses\nSocial impact — addressing real community challenges\n\n\nExamples of what students build:\n\nInventory systems for campus organizations\nScheduling tools for community groups\nAnalytics dashboards for local nonprofits\nPrototype products for their own ventures"
+  },
+  {
+    "objectID": "slides/week09/agentic-ready.html#what-this-looks-like-in-practice",
+    "href": "slides/week09/agentic-ready.html#what-this-looks-like-in-practice",
+    "title": "Agentic Ready",
+    "section": "What This Looks Like in Practice",
+    "text": "What This Looks Like in Practice\nA student team building an app for a local nonprofit:\n\n\n\n\n\n\n\n\nTask\nTraditional\nWith AI\n\n\n\n\nDatabase schema\nDays learning SQL\nDescribe needs, review generated schema\n\n\nAPI endpoints\nWeek of coding\nDescribe functionality, refine output\n\n\nFrontend UI\nAnother week\nDescribe layout, iterate quickly\n\n\nFocus shifts to:\nSyntax, debugging\nUser research, stakeholder feedback, real impact\n\n\n\n\nResult: Students deliver more value in less time"
+  },
+  {
+    "objectID": "slides/week09/agentic-ready.html#the-educational-advantage",
+    "href": "slides/week09/agentic-ready.html#the-educational-advantage",
+    "title": "Agentic Ready",
+    "section": "The Educational Advantage",
+    "text": "The Educational Advantage\n\n\nStudents learn:\n\nHow to direct AI effectively\nWhen to trust vs. verify output\nArchitectural thinking\nReal stakeholder management\nShipping actual products\n\n\nStudents avoid:\n\nMonths of prerequisites before building\nFrustration with syntax errors\nLosing sight of the goal\nBuilding toys instead of tools\n\n\n\n\nThey graduate having built real things for real people."
   }
 ]

@@ -72,7 +72,7 @@ gantt
 
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
-| Tue 1/27 | Lab | **Lab 3:** Component and State Management Architecture (Angular/React) | [Lab 3](labs/lab03-component-state.qmd) |
+| Tue 1/27 | Lab | **Lab 3:** Component and State Management Architecture (Angular/React) | [Lab 3](labs/lab03-component-state.qmd) [Lab 3 Slides](slides/week03/lab03-frontend-development.qmd)|
 | Fri 1/30 | Lecture + Presentations | Frontend Architecture Patterns; **Project Proposal Presentations** | [Slides](slides/week03/05-frontend-architecture.qmd) |
 
 ::: {.callout-warning}

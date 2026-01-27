@@ -1,0 +1,657 @@
+---
+title: "Agentic Ready"
+subtitle: "How Generative AI Is Changing Business and Careers"
+author: "Jason Kuruzovich"
+date: "March 17, 2026"
+format:
+  revealjs:
+    navigation-mode: linear
+    mermaid:
+        theme: default
+    theme: [default, ../../slides-theme.scss]
+    logo: ../../static/logos/RPI_Logo_Binary_1_White.png
+    footer: "RPI Lally School of Management | Agentic AI Webinar"
+    slide-number: true
+    transition: slide
+    width: 1600
+    height: 900
+    code-line-numbers: true
+    highlight-style: github
+    pdf-separate-fragments: false
+---
+
+# The AI Moment {.section-slide background-color="#d6001c"}
+
+We are not just using AI. We are beginning to **work with** AI.
+
+# Today's Agenda
+
+::: {.learning-objectives}
+#### What We'll Cover
+
+1. From Generative AI to Agentic AI — what's actually different
+2. The "Empowered Consultant" — how AI is reshaping work
+3. Where companies are experimenting today
+4. Skills that matter in an AI-driven economy
+5. What this means for your career
+
+:::
+
+# About Me
+
+:::: {.columns}
+
+::: {.column width="30%"}
+**Jason Kuruzovich**
+
+Associate Professor
+Lally School of Management
+:::
+
+::: {.column width="70%"}
+- Research: AI/ML applications, digital platforms, entrepreneurship
+- Industry: Enterprise software, startups, consulting
+- Teaching: Web systems, data science, analytics
+
+**Contact:**
+
+- Email: kuruzj@rpi.edu
+- Office: Pitt 2206
+:::
+
+::::
+
+# A Quick Reality Check {.section-slide background-color="#d6001c"}
+
+## AI Is Already Here
+
+You've probably already used AI today:
+
+- Searched for something online
+- Got a recommendation on Netflix or Spotify
+- Used autocomplete in email
+- Asked ChatGPT a question
+
+. . .
+
+> The question isn't whether AI will affect your career.
+> It's **how you'll learn to work with it**.
+
+# Two Types of AI {.section-slide background-color="#d6001c"}
+
+Understanding the difference matters for your career
+
+## Generative AI: The Content Creator
+
+**What it does:** Creates new content based on patterns it learned
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Examples:**
+
+- ChatGPT writing an email
+- DALL-E creating an image
+- Copilot suggesting code
+- Claude summarizing a document
+:::
+
+::: {.column width="50%"}
+**Key characteristic:**
+
+You ask → It answers
+
+One input, one output
+
+You remain in control of every step
+:::
+
+::::
+
+## Agentic AI: The Autonomous Worker
+
+**What it does:** Plans, decides, takes actions, and adapts
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Examples:**
+
+- AI that researches competitors and writes a report
+- AI that books your travel across multiple sites
+- AI that monitors inventory and reorders supplies
+- AI that debugs code and fixes it autonomously
+:::
+
+::: {.column width="50%"}
+**Key characteristic:**
+
+You set a goal → It figures out how
+
+Multiple steps, decisions along the way
+
+Works semi-autonomously
+:::
+
+::::
+
+## The Key Difference
+
+```{mermaid}
+flowchart LR
+    subgraph Generative["Generative AI"]
+        A["Human Request"] --> B["AI Response"]
+    end
+
+    subgraph Agentic["Agentic AI"]
+        C["Human Goal"] --> D["AI Plans"]
+        D --> E["AI Acts"]
+        E --> F["AI Evaluates"]
+        F --> G["AI Adapts"]
+        G --> E
+    end
+```
+
+. . .
+
+Generative AI is a **tool**.
+Agentic AI is a **collaborator**.
+
+# Why This Matters for Business {.section-slide background-color="#d6001c"}
+
+## The Productivity Multiplier
+
+Traditional workflow:
+```{mermaid}
+flowchart LR
+    A["Analyst"] --> B["Manager Reviews"]
+    B --> C["Revisions"]
+    C --> D["More Reviews"]
+    D --> E["Final Output"]
+```
+
+. . .
+
+AI-augmented workflow:
+```{mermaid}
+flowchart LR
+    A["Human + AI Agent"] --> B["Draft + Analysis"]
+    B --> C["Human Judgment"]
+    C --> D["Final Output"]
+```
+
+## Real Examples Today
+
+| Function | Traditional | With Agentic AI |
+|----------|-------------|-----------------|
+| Market Research | Weeks of analyst work | Hours with human oversight |
+| Code Development | Write every line | Describe what you want, review output |
+| Customer Service | Human answers each query | AI handles routine, humans handle complex |
+| Financial Analysis | Build models manually | AI builds, human validates |
+
+## The "10x" Effect
+
+Studies are showing dramatic productivity gains:
+
+- **Consultants:** 25-40% faster on complex tasks with AI assistance
+- **Programmers:** 55% faster code completion with AI tools
+- **Customer service:** 14% more issues resolved per hour
+- **Writing tasks:** 40% improvement in quality for average performers
+
+. . .
+
+::: {.callout-note}
+**The key insight:** AI doesn't replace thinking. It amplifies it.
+:::
+
+# The Empowered Consultant {.section-slide background-color="#d6001c"}
+
+A new model for knowledge work
+
+## What Is an Empowered Consultant?
+
+Someone who can:
+
+- **Understand business problems** deeply
+- **Direct AI systems** to gather information and create outputs
+- **Evaluate and refine** AI-generated work
+- **Make judgment calls** that require human insight
+
+. . .
+
+> You don't need to code everything yourself.
+> You need to **manage AI that can code for you**.
+
+## The Rise of "Vibe Coding"
+
+**Vibe coding:** Describing what you want in plain language and having AI build it
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Before:**
+
+"I need to learn React, CSS, database design, API development, deployment..."
+
+*Months of learning before building anything*
+:::
+
+::: {.column width="50%"}
+**Now:**
+
+"Build me a dashboard that shows sales by region with filters for date range and product category"
+
+*Working prototype in hours*
+:::
+
+::::
+
+. . .
+
+**The catch:** You still need to know enough to evaluate whether it's good.
+
+## What "Managing AI" Looks Like
+
+1. **Framing the problem** — AI can't solve problems you can't articulate
+2. **Breaking down complex tasks** — Knowing what steps are needed
+3. **Providing context** — AI works better with good information
+4. **Quality control** — Catching errors, biases, and gaps
+5. **Iterating** — Refining outputs through feedback
+
+. . .
+
+::: {.callout-important}
+The person who can do this well is **extremely productive**.
+:::
+
+# Where Companies Are Experimenting {.section-slide background-color="#d6001c"}
+
+## Operations & Supply Chain
+
+- **Demand forecasting** with continuous learning
+- **Inventory optimization** that acts autonomously
+- **Logistics coordination** across partners
+- **Quality control** with computer vision
+
+. . .
+
+**Example:** AI agents monitoring supplier performance and automatically adjusting orders
+
+## Finance & Accounting
+
+- **Anomaly detection** in transactions
+- **Report generation** from raw data
+- **Compliance monitoring** in real-time
+- **Financial modeling** with scenario analysis
+
+. . .
+
+**Example:** AI agents that prepare monthly close materials and flag issues
+
+## Marketing & Sales
+
+- **Personalization** at individual customer level
+- **Content generation** across channels
+- **Lead scoring** and prioritization
+- **Competitive intelligence** gathering
+
+. . .
+
+**Example:** AI agents that research prospects before sales calls
+
+## Product Development
+
+- **Code generation** and debugging
+- **Testing automation**
+- **Documentation** creation
+- **Design iteration** based on user feedback
+
+. . .
+
+**Example:** AI agents that can build functional prototypes from descriptions
+
+# Rethinking Education {.section-slide background-color="#d6001c"}
+
+How we're preparing students differently
+
+## The Old Model: Build Up Slowly
+
+Traditional approach:
+
+```{mermaid}
+flowchart LR
+    A["Foundations"] --> B["Intermediate Skills"]
+    B --> C["Advanced Techniques"]
+    C --> D["Real Projects"]
+    D --> E["Impact"]
+```
+
+. . .
+
+**Problem:** Years of "building blocks" before doing anything meaningful
+
+## The New Model: Skip the Middle
+
+```{mermaid}
+flowchart LR
+    A["Foundations"] --> B["AI Handles the Middle"]
+    B --> C["Real Impact"]
+
+    style B fill:#d6001c,color:#fff
+```
+
+. . .
+
+**AI lets students focus on:**
+
+- **Foundations** — Understanding *why* and *what*, not just *how*
+- **High-impact contexts** — Real projects, real stakeholders, real decisions
+
+## What We Mean by "Skip the Middle"
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**The Middle (AI can help):**
+
+- Boilerplate code
+- Syntax memorization
+- Routine debugging
+- Standard implementations
+- Documentation formatting
+:::
+
+::: {.column width="50%"}
+**The Ends (humans must own):**
+
+- Problem understanding
+- Architectural decisions
+- User needs
+- Quality judgment
+- Ethical considerations
+:::
+
+::::
+
+. . .
+
+> Students spend time on **thinking**, not **typing**.
+
+## Case Study: ITWS-4500
+
+In our Advanced Web & Agentic AI course, students:
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Week 1:**
+
+- Form teams
+- Identify a real problem
+- Find an actual stakeholder
+:::
+
+::: {.column width="50%"}
+**By Midterm:**
+
+- Working prototype deployed
+- Real users testing it
+- Iterating based on feedback
+:::
+
+::::
+
+. . .
+
+**How?** AI accelerates the implementation so students focus on impact.
+
+## Student Projects: Real Problems, Real Impact
+
+Students build for **actual stakeholders**:
+
+- **Startup ideas** they could launch
+- **External organizations** — clubs, nonprofits, local businesses
+- **Social impact** — addressing real community challenges
+
+. . .
+
+Examples of what students build:
+
+- Inventory systems for campus organizations
+- Scheduling tools for community groups
+- Analytics dashboards for local nonprofits
+- Prototype products for their own ventures
+
+## What This Looks Like in Practice
+
+A student team building an app for a local nonprofit:
+
+| Task | Traditional | With AI |
+|------|-------------|---------|
+| Database schema | Days learning SQL | Describe needs, review generated schema |
+| API endpoints | Week of coding | Describe functionality, refine output |
+| Frontend UI | Another week | Describe layout, iterate quickly |
+| **Focus shifts to:** | Syntax, debugging | User research, stakeholder feedback, real impact |
+
+. . .
+
+**Result:** Students deliver more value in less time
+
+## The Educational Advantage
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Students learn:**
+
+- How to direct AI effectively
+- When to trust vs. verify output
+- Architectural thinking
+- Real stakeholder management
+- Shipping actual products
+:::
+
+::: {.column width="50%"}
+**Students avoid:**
+
+- Months of prerequisites before building
+- Frustration with syntax errors
+- Losing sight of the goal
+- Building toys instead of tools
+:::
+
+::::
+
+. . .
+
+> They graduate having **built real things** for **real people**.
+
+# Skills for the AI Economy {.section-slide background-color="#d6001c"}
+
+## Technical Fluency (Not Expertise)
+
+You don't need to be a computer scientist. You need to:
+
+- Understand what AI **can and cannot** do
+- Know how to **prompt** effectively
+- Recognize **good vs. bad** AI output
+- Understand basic **data concepts**
+
+. . .
+
+> Think: "Fluent tourist" not "native speaker"
+
+## Strategic Thinking
+
+AI handles execution. Humans handle:
+
+- **Problem definition** — What are we actually trying to solve?
+- **Trade-off analysis** — What are we optimizing for?
+- **Ethical judgment** — Should we do this?
+- **Stakeholder management** — Who is affected?
+
+## Domain Expertise
+
+AI is general. Value comes from **specificity**:
+
+- Deep knowledge of an industry
+- Understanding of customer needs
+- Regulatory and compliance awareness
+- Organizational context
+
+. . .
+
+::: {.callout-note}
+**The formula:** Domain Expertise + AI Fluency = Competitive Advantage
+:::
+
+## The Skills That Are Hard to Automate
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Human advantages:**
+
+- Building trust and relationships
+- Navigating ambiguity
+- Creative problem framing
+- Ethical reasoning
+- Cross-functional collaboration
+:::
+
+::: {.column width="50%"}
+**AI advantages:**
+
+- Processing large amounts of information
+- Consistency at scale
+- Pattern recognition
+- Speed of execution
+- Never getting tired
+:::
+
+::::
+
+# What This Means for You {.section-slide background-color="#d6001c"}
+
+## The Career Landscape Is Shifting
+
+Jobs are not disappearing. They are **transforming**.
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Declining value:**
+
+- Routine information gathering
+- Basic content creation
+- Simple data analysis
+- Repetitive coordination
+:::
+
+::: {.column width="50%"}
+**Increasing value:**
+
+- Complex problem solving
+- Human judgment and ethics
+- AI system management
+- Cross-functional integration
+:::
+
+::::
+
+## Why Business Education Matters More
+
+In an AI world, you need:
+
+- **Broad understanding** of how organizations work
+- **Communication skills** to translate between technical and business
+- **Strategic frameworks** for making decisions
+- **Leadership capabilities** to guide human-AI teams
+
+. . .
+
+> Technical skills get you started.
+> Business skills make you valuable.
+
+## The RPI Advantage
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Skip the middle:**
+
+- Focus on foundations + impact
+- Build real things from day one
+- AI-accelerated development
+- Actual stakeholders, not toy projects
+:::
+
+::: {.column width="50%"}
+**Business + Technical integration:**
+
+- Strategy and systems thinking
+- Data literacy and analytics
+- Innovation and entrepreneurship
+- Ethics and leadership
+:::
+
+::::
+
+. . .
+
+**The combination:** Graduate having built real products with real impact
+
+# Taking Action {.section-slide background-color="#d6001c"}
+
+## Start Now
+
+Things you can do today:
+
+1. **Use AI tools regularly** — ChatGPT, Claude, Copilot
+2. **Try building something** — Use AI to create a simple app or analysis
+3. **Read critically** — Follow AI developments, but question the hype
+4. **Practice prompting** — Learn to communicate with AI effectively
+
+## Questions to Ask Yourself
+
+- What problems do I find interesting?
+- What industries fascinate me?
+- How do I learn best — building, analyzing, leading?
+- Where do I want to create value?
+
+. . .
+
+**AI amplifies what you bring to the table.**
+
+# Key Takeaways {.section-slide background-color="#d6001c"}
+
+## Remember This
+
+1. **Agentic AI** is shifting from tool to collaborator
+2. **Productivity gains** are real and significant
+3. **Empowered consultants** who manage AI well are extremely valuable
+4. **Skip the middle** — focus on foundations and impact, let AI handle routine work
+5. **Build real things** — the best way to learn is to create value for real people
+
+## The Future Needs You
+
+AI is powerful, but it needs:
+
+- People who understand **what problems to solve**
+- People who can **judge quality and ethics**
+- People who can **lead and inspire** others
+- People who can **bridge** technology and business
+
+. . .
+
+> The question isn't whether AI will change business.
+> It's whether you'll be ready to shape how.
+
+# Questions? {.section-slide background-color="#d6001c"}
+
+**Jason Kuruzovich**
+kuruzj@rpi.edu
+
+Learn more about RPI's programs at [lallyschool.rpi.edu](https://lallyschool.rpi.edu)

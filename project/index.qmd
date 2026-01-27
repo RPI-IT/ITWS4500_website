@@ -87,6 +87,13 @@ Repository Structure:
 └── README.md
 ```
 
+For the group repo below ONE person from each group should accept assignment and then create team name. It should cover both your group number and something descriptive.  For example "1A: Transfer Students".
+
+[Accept Github Assignment](https://classroom.github.com/a/mZtsNkcA){.btn .btn-primary}
+
+
+
+
 ### Option 2: External Tools (Jira, Linear, Notion)
 
 If you prefer external tools, they must be:
