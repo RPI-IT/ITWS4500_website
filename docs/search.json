@@ -1402,42 +1402,42 @@
   {
     "objectID": "labs/lab03-component-state.html",
     "href": "labs/lab03-component-state.html",
-    "title": "Lab 3: Component and State Management",
+    "title": "Lab 3: React Basics",
     "section": "",
     "text": "ImportantLab Information\n\n\n\nPoints: 100"
   },
   {
     "objectID": "labs/lab03-component-state.html#overview",
     "href": "labs/lab03-component-state.html#overview",
-    "title": "Lab 3: Component and State Management",
+    "title": "Lab 3: React Basics",
     "section": "Overview",
-    "text": "Overview\nThis lab focuses on frontend architecture patterns, including component design and state management strategies."
+    "text": "Overview\nThis lab introduces the fundamentals of React. React is a JavaScript library for building user interfaces. Understanding React is essential because Next.js is built on top of it."
   },
   {
     "objectID": "labs/lab03-component-state.html#learning-objectives",
     "href": "labs/lab03-component-state.html#learning-objectives",
-    "title": "Lab 3: Component and State Management",
+    "title": "Lab 3: React Basics",
     "section": "Learning Objectives",
-    "text": "Learning Objectives\nBy completing this lab, you will:\n\nDesign reusable component hierarchies\nImplement state management (Context API, Redux, etc.)\nApply React/Angular best practices\nHandle complex UI state"
+    "text": "Learning Objectives\nBy completing this lab, you will:\n\nUnderstand what React components are and how they work\nManage state with useState\nHandle user events (clicks, form inputs)\nPass data between components with props\nRender lists of items\nApply the “lifting state up” pattern"
   },
   {
     "objectID": "labs/lab03-component-state.html#getting-started",
     "href": "labs/lab03-component-state.html#getting-started",
-    "title": "Lab 3: Component and State Management",
+    "title": "Lab 3: React Basics",
     "section": "Getting Started",
     "text": "Getting Started\nClick the button below to accept the assignment and create your repository:\nAccept Lab 3 Assignment"
   },
   {
     "objectID": "labs/lab03-component-state.html#prerequisites",
     "href": "labs/lab03-component-state.html#prerequisites",
-    "title": "Lab 3: Component and State Management",
+    "title": "Lab 3: React Basics",
     "section": "Prerequisites",
     "text": "Prerequisites\n\nCompleted Lab 2\nUnderstanding of component-based architecture"
   },
   {
     "objectID": "labs/lab03-component-state.html#getting-help",
     "href": "labs/lab03-component-state.html#getting-help",
-    "title": "Lab 3: Component and State Management",
+    "title": "Lab 3: React Basics",
     "section": "Getting Help",
     "text": "Getting Help\n\nOffice Hours: Tuesday 9-11 AM, Pitt 2206\nPiazza: Post questions with lab3 tag\nTA Sessions: Check LMS for schedule"
   },
@@ -6914,5 +6914,131 @@
     "title": "Agentic Ready",
     "section": "The Educational Advantage",
     "text": "The Educational Advantage\n\n\nStudents learn:\n\nHow to direct AI effectively\nWhen to trust vs. verify output\nArchitectural thinking\nReal stakeholder management\nShipping actual products\n\n\nStudents avoid:\n\nMonths of prerequisites before building\nFrustration with syntax errors\nLosing sight of the goal\nBuilding toys instead of tools\n\n\n\n\nThey graduate having built real things for real people."
+  },
+  {
+    "objectID": "temp/README_Lab3_React_Basics.html",
+    "href": "temp/README_Lab3_React_Basics.html",
+    "title": "Lab 3: React Basics",
+    "section": "",
+    "text": "Before writing code, it’s important to understand what a React component really is. This mental model will make everything else in this lab—and later in Next.js—much easier to understand.\n\n\nAt its core:\n\nA React component is just a JavaScript function that returns UI.\n\nExample:\nfunction Greeting() {\n  return &lt;h2&gt;Welcome to React Basics!&lt;/h2&gt;\n}\nThis is not a template or special syntax. It is a normal JavaScript function.\nWhen React sees &lt;Greeting /&gt; in your code, it: 1. Calls the Greeting() function 2. Takes the JSX it returns 3. Displays that JSX on the screen\nYou can think of this as:\nGreeting()\nproducing UI.\n\n\n\n\nA critical mental model in React is this:\n\nReact re-runs your component function every time state changes.\n\nFor example:\nfunction App() {\n  const [count, setCount] = useState(0)\n  return &lt;p&gt;Count: {count}&lt;/p&gt;\n}\nWhen setCount() is called: 1. React stores the new state 2. React re-runs App() 3. React compares the old UI to the new UI 4. Only the changed parts of the DOM are updated\nThis is why: - You never manually update the DOM - UI is always a function of state\n\n\n\n\nReact uses capitalization to distinguish components from HTML.\n&lt;Greeting /&gt;   // React component → calls Greeting()\n&lt;greeting /&gt;   // HTML element → looks for &lt;greeting&gt; tag\nRule: - Capital letter → React component\n- Lowercase → HTML element\n\n\n\n\n\n\n\nConcept\nDescription\n\n\n\n\nProps\nData passed into a component\n\n\nState\nData managed inside a component\n\n\nProps\nRead-only\n\n\nState\nCan change over time\n\n\n\n\n\n\n\n\nData flows down, events flow up\n\nParents pass data to children via props.\nChildren notify parents of events via callback functions.\nParents update state.\nReact re-renders the UI.\n\n\n\n\n\nThis lab introduces the fundamentals of React. React is a JavaScript library for building user interfaces. Understanding React is essential because Next.js is built on top of it.\n\n\n\n\nWhat React components are\nHow to manage state with useState\nHow to handle user events (clicks, form inputs)\nHow to pass data between components with props\nHow to render lists of items\n\n\n\n\n\n\n\nVite is a build tool that creates a development environment for modern JavaScript projects. It provides: - Fast hot module replacement (changes appear instantly) - A development server - Optimized production builds\n\n\n\nnpx create-vite react"
+  },
+  {
+    "objectID": "temp/README_Lab3_React_Basics.html#how-to-think-about-react-components-read-this-first",
+    "href": "temp/README_Lab3_React_Basics.html#how-to-think-about-react-components-read-this-first",
+    "title": "Lab 3: React Basics",
+    "section": "",
+    "text": "Before writing code, it’s important to understand what a React component really is. This mental model will make everything else in this lab—and later in Next.js—much easier to understand.\n\n\nAt its core:\n\nA React component is just a JavaScript function that returns UI.\n\nExample:\nfunction Greeting() {\n  return &lt;h2&gt;Welcome to React Basics!&lt;/h2&gt;\n}\nThis is not a template or special syntax. It is a normal JavaScript function.\nWhen React sees &lt;Greeting /&gt; in your code, it: 1. Calls the Greeting() function 2. Takes the JSX it returns 3. Displays that JSX on the screen\nYou can think of this as:\nGreeting()\nproducing UI.\n\n\n\n\nA critical mental model in React is this:\n\nReact re-runs your component function every time state changes.\n\nFor example:\nfunction App() {\n  const [count, setCount] = useState(0)\n  return &lt;p&gt;Count: {count}&lt;/p&gt;\n}\nWhen setCount() is called: 1. React stores the new state 2. React re-runs App() 3. React compares the old UI to the new UI 4. Only the changed parts of the DOM are updated\nThis is why: - You never manually update the DOM - UI is always a function of state\n\n\n\n\nReact uses capitalization to distinguish components from HTML.\n&lt;Greeting /&gt;   // React component → calls Greeting()\n&lt;greeting /&gt;   // HTML element → looks for &lt;greeting&gt; tag\nRule: - Capital letter → React component\n- Lowercase → HTML element\n\n\n\n\n\n\n\nConcept\nDescription\n\n\n\n\nProps\nData passed into a component\n\n\nState\nData managed inside a component\n\n\nProps\nRead-only\n\n\nState\nCan change over time\n\n\n\n\n\n\n\n\nData flows down, events flow up\n\nParents pass data to children via props.\nChildren notify parents of events via callback functions.\nParents update state.\nReact re-renders the UI."
+  },
+  {
+    "objectID": "temp/README_Lab3_React_Basics.html#overview",
+    "href": "temp/README_Lab3_React_Basics.html#overview",
+    "title": "Lab 3: React Basics",
+    "section": "",
+    "text": "This lab introduces the fundamentals of React. React is a JavaScript library for building user interfaces. Understanding React is essential because Next.js is built on top of it."
+  },
+  {
+    "objectID": "temp/README_Lab3_React_Basics.html#what-youll-learn",
+    "href": "temp/README_Lab3_React_Basics.html#what-youll-learn",
+    "title": "Lab 3: React Basics",
+    "section": "",
+    "text": "What React components are\nHow to manage state with useState\nHow to handle user events (clicks, form inputs)\nHow to pass data between components with props\nHow to render lists of items"
+  },
+  {
+    "objectID": "temp/README_Lab3_React_Basics.html#part-1-setting-up",
+    "href": "temp/README_Lab3_React_Basics.html#part-1-setting-up",
+    "title": "Lab 3: React Basics",
+    "section": "",
+    "text": "Vite is a build tool that creates a development environment for modern JavaScript projects. It provides: - Fast hot module replacement (changes appear instantly) - A development server - Optimized production builds\n\n\n\nnpx create-vite react"
+  },
+  {
+    "objectID": "labs/lab03-component-state.html#preview-how-to-think-about-react-components",
+    "href": "labs/lab03-component-state.html#preview-how-to-think-about-react-components",
+    "title": "Lab 3: Component and State Management",
+    "section": "Preview: How to Think About React Components",
+    "text": "Preview: How to Think About React Components\n\n\n\n\n\n\nTipRead This First\n\n\n\nBefore writing code, it’s important to understand what a React component really is. This mental model will make everything else in this lab—and later in Next.js—much easier to understand.\n\n\n\nWhat Is a React Component?\nAt its core:\n\nA React component is just a JavaScript function that returns UI.\n\nExample:\nfunction Greeting() {\n  return &lt;h2&gt;Welcome to React Basics!&lt;/h2&gt;\n}\nThis is not a template or special syntax. It is a normal JavaScript function.\nWhen React sees &lt;Greeting /&gt; in your code, it:\n\nCalls the Greeting() function\nTakes the JSX it returns\nDisplays that JSX on the screen\n\nYou can think of this as:\nGreeting()\nproducing UI.\n\n\nComponents Are Re-Executed on Every Render\nA critical mental model in React is this:\n\nReact re-runs your component function every time state changes.\n\nFor example:\nfunction App() {\n  const [count, setCount] = useState(0)\n  return &lt;p&gt;Count: {count}&lt;/p&gt;\n}\nWhen setCount() is called:\n\nReact stores the new state\nReact re-runs App()\nReact compares the old UI to the new UI\nOnly the changed parts of the DOM are updated\n\nThis is why:\n\nYou never manually update the DOM\nUI is always a function of state\n\n\n\nWhy Component Names Must Be Capitalized\nReact uses capitalization to distinguish components from HTML.\n&lt;Greeting /&gt;   // React component → calls Greeting()\n&lt;greeting /&gt;   // HTML element → looks for &lt;greeting&gt; tag\nRule:\n\nCapital letter → React component\nLowercase → HTML element\n\n\n\nProps vs State\n\n\n\nConcept\nDescription\n\n\n\n\nProps\nData passed into a component\n\n\nState\nData managed inside a component\n\n\nProps\nRead-only\n\n\nState\nCan change over time\n\n\n\n\n\nData Flow in React\n\nData flows down, events flow up\n\nParents pass data to children via props. Children notify parents of events via callback functions. Parents update state. React re-renders the UI."
+  },
+  {
+    "objectID": "labs/lab03-component-state.html#overview-1",
+    "href": "labs/lab03-component-state.html#overview-1",
+    "title": "Lab 3: Component and State Management",
+    "section": "Overview",
+    "text": "Overview\nThis lab introduces the fundamentals of React. React is a JavaScript library for building user interfaces. Understanding React is essential because Next.js is built on top of it."
+  },
+  {
+    "objectID": "labs/lab03-component-state.html#what-youll-learn",
+    "href": "labs/lab03-component-state.html#what-youll-learn",
+    "title": "Lab 3: Component and State Management",
+    "section": "What You’ll Learn",
+    "text": "What You’ll Learn\n\nWhat React components are\nHow to manage state with useState\nHow to handle user events (clicks, form inputs)\nHow to pass data between components with props\nHow to render lists of items"
+  },
+  {
+    "objectID": "labs/lab03-component-state.html#part-1-setting-up",
+    "href": "labs/lab03-component-state.html#part-1-setting-up",
+    "title": "Lab 3: React Basics",
+    "section": "Part 1: Setting Up",
+    "text": "Part 1: Setting Up\n\nWhat is Vite?\nVite is a build tool that creates a development environment for modern JavaScript projects. It provides:\n\nFast hot module replacement (changes appear instantly)\nA development server\nOptimized production builds\n\n\n\nStep 1: Create a New React Project\nOpen your terminal and run:\nnpx create-vite react\nYou’ll see prompts:\n? Select a framework: › React\n? Select a variant: › JavaScript\n\n\nStep 2: Install and Run\ncd react\nnpm install\nnpm run dev\n\n\nStep 3: Open in Browser\nGo to http://localhost:5173/\nYou should see the default Vite + React welcome page with a counter.\n\n\nStep 4: Open in Your Code Editor\nOpen the react folder in VS Code (or your preferred editor). The key files are:\nreact/\n├── src/\n│   ├── App.jsx      ← Main component (we'll edit this)\n│   ├── App.css      ← Styles\n│   └── main.jsx     ← Entry point (renders App)\n├── index.html       ← HTML template\n└── package.json     ← Dependencies"
+  },
+  {
+    "objectID": "labs/lab03-component-state.html#part-2-your-first-component",
+    "href": "labs/lab03-component-state.html#part-2-your-first-component",
+    "title": "Lab 3: React Basics",
+    "section": "Part 2: Your First Component",
+    "text": "Part 2: Your First Component\n\nWhat is a Component?\nA React component is a JavaScript function that returns JSX (HTML-like syntax). Components are the building blocks of React apps.\n\n\nStep 5: Simplify App.jsx\nOpen react/src/App.jsx and replace everything with:\nimport { useState } from 'react'\nimport './App.css'\n\nfunction App() {\n  const [count, setCount] = useState(0)\n\n  return (\n    &lt;div className=\"App\"&gt;\n      &lt;button onClick={() =&gt; setCount(count + 1)}&gt;\n        Click\n      &lt;/button&gt;\n      &lt;p&gt;Count: {count}&lt;/p&gt;\n    &lt;/div&gt;\n  )\n}\n\nexport default App\nSave the file. Your browser will automatically update.\n\n\nWhat’s Happening?\n\n\n\n\n\n\n\nCode\nExplanation\n\n\n\n\nimport { useState } from 'react'\nImport the useState hook from React\n\n\nconst [count, setCount] = useState(0)\nCreate a state variable count starting at 0\n\n\nonClick={() =&gt; setCount(count + 1)}\nWhen clicked, update count to count + 1\n\n\n{count}\nDisplay the current value of count\n\n\n\nKey concept: When you call setCount(), React re-renders the component with the new value."
+  },
+  {
+    "objectID": "labs/lab03-component-state.html#part-3-adding-another-component",
+    "href": "labs/lab03-component-state.html#part-3-adding-another-component",
+    "title": "Lab 3: React Basics",
+    "section": "Part 3: Adding Another Component",
+    "text": "Part 3: Adding Another Component\n\nStep 6: Create a Greeting Component\nComponents can be combined together. Add a Greeting component above App:\nimport { useState } from 'react'\nimport './App.css'\n\n// This is a simple component\nfunction Greeting() {\n  return &lt;h2&gt;Welcome to React Basics!&lt;/h2&gt;\n}\n\nfunction App() {\n  const [count, setCount] = useState(0)\n\n  return (\n    &lt;div className=\"App\"&gt;\n      &lt;Greeting /&gt;\n      &lt;button onClick={() =&gt; setCount(count + 1)}&gt;\n        Click\n      &lt;/button&gt;\n      &lt;p&gt;Count: {count}&lt;/p&gt;\n    &lt;/div&gt;\n  )\n}\n\nexport default App\n\n\nWhat’s Happening?\n\nGreeting is a component (a function returning JSX)\n&lt;Greeting /&gt; includes it like an HTML tag\nComponents must start with a capital letter"
+  },
+  {
+    "objectID": "labs/lab03-component-state.html#part-4-components-in-separate-files",
+    "href": "labs/lab03-component-state.html#part-4-components-in-separate-files",
+    "title": "Lab 3: React Basics",
+    "section": "Part 4: Components in Separate Files",
+    "text": "Part 4: Components in Separate Files\nReal apps put components in separate files. Let’s create a reusable TaskItem component.\n\nStep 7: Create the Components Folder\nCreate a new folder: react/src/components/\n\n\nStep 8: Create TaskItem.jsx\nCreate the file react/src/components/TaskItem.jsx:\nfunction TaskItem({ title, completed, onToggle }) {\n  return (\n    &lt;div style={{\n      padding: '10px',\n      margin: '5px 0',\n      border: '1px solid #ccc',\n      borderRadius: '4px',\n      backgroundColor: completed ? '#e8f5e9' : '#fff'\n    }}&gt;\n      &lt;input\n        type=\"checkbox\"\n        checked={completed}\n        onChange={onToggle}\n      /&gt;\n      &lt;span style={{\n        marginLeft: '10px',\n        textDecoration: completed ? 'line-through' : 'none'\n      }}&gt;\n        {title}\n      &lt;/span&gt;\n    &lt;/div&gt;\n  )\n}\n\nexport default TaskItem\n\n\nWhat’s Happening?\n\n\n\n\n\n\n\nCode\nExplanation\n\n\n\n\n{ title, completed, onToggle }\nThese are props - data passed from the parent\n\n\ncompleted ? '#e8f5e9' : '#fff'\nConditional: green background if completed, white if not\n\n\nonChange={onToggle}\nWhen checkbox changes, call the parent’s function\n\n\nexport default TaskItem\nMakes the component available to import elsewhere"
+  },
+  {
+    "objectID": "labs/lab03-component-state.html#part-5-putting-it-all-together",
+    "href": "labs/lab03-component-state.html#part-5-putting-it-all-together",
+    "title": "Lab 3: React Basics",
+    "section": "Part 5: Putting It All Together",
+    "text": "Part 5: Putting It All Together\n\nStep 9: Update App.jsx with Task List\nReplace App.jsx with:\nimport { useState } from 'react'\nimport './App.css'\nimport TaskItem from './components/TaskItem'\n\nfunction Greeting() {\n  return &lt;h2&gt;Welcome to React Basics!&lt;/h2&gt;\n}\n\nfunction App() {\n  const [count, setCount] = useState(0)\n\n  // State: an array of task objects\n  const [tasks, setTasks] = useState([\n    { id: 1, title: 'Learn React basics', completed: false },\n    { id: 2, title: 'Understand useState', completed: true },\n    { id: 3, title: 'Create components', completed: false },\n  ])\n\n  // Function to toggle a task\n  const toggleTask = (taskId) =&gt; {\n    setTasks(tasks.map(task =&gt;\n      task.id === taskId\n        ? { ...task, completed: !task.completed }\n        : task\n    ))\n  }\n\n  return (\n    &lt;div className=\"App\"&gt;\n      &lt;Greeting /&gt;\n\n      &lt;div style={{ marginBottom: '30px' }}&gt;\n        &lt;h3&gt;Counter Example&lt;/h3&gt;\n        &lt;button onClick={() =&gt; setCount(count + 1)}&gt;\n          Click\n        &lt;/button&gt;\n        &lt;p&gt;Count: {count}&lt;/p&gt;\n      &lt;/div&gt;\n\n      &lt;div&gt;\n        &lt;h3&gt;Task List Example&lt;/h3&gt;\n        {tasks.map(task =&gt; (\n          &lt;TaskItem\n            key={task.id}\n            title={task.title}\n            completed={task.completed}\n            onToggle={() =&gt; toggleTask(task.id)}\n          /&gt;\n        ))}\n      &lt;/div&gt;\n    &lt;/div&gt;\n  )\n}\n\nexport default App\n\n\nWhat’s Happening?\nRendering a list with .map():\n{tasks.map(task =&gt; (\n  &lt;TaskItem key={task.id} ... /&gt;\n))}\n\n.map() loops through the array\nReturns a TaskItem for each task\nkey={task.id} helps React track items efficiently\n\nUpdating state immutably:\nsetTasks(tasks.map(task =&gt;\n  task.id === taskId\n    ? { ...task, completed: !task.completed }\n    : task\n))\n\nCreates a new array (don’t modify the original)\n{ ...task, completed: !task.completed } copies the task and flips completed\nThis is called an immutable update\n\n\n\nWhy is toggleTask in App, not TaskItem?\nThis is a key React pattern called “lifting state up”.\n┌─────────────────────────────────────┐\n│  App (Parent)                       │\n│  ┌─────────────────────────────┐    │\n│  │ tasks = [...]               │    │  ← State lives here\n│  │ toggleTask = (id) =&gt; {...}  │    │  ← Function lives here\n│  └─────────────────────────────┘    │\n│                                     │\n│    ┌──────────┐  ┌──────────┐       │\n│    │ TaskItem │  │ TaskItem │       │  ← Children receive\n│    │ (props)  │  │ (props)  │       │    data via props\n│    └──────────┘  └──────────┘       │\n└─────────────────────────────────────┘\nWhy this pattern?\n\nSingle source of truth: The tasks array lives in one place (App). If TaskItem could modify its own state, we’d have copies of data in multiple places that could get out of sync.\nTaskItem is “dumb”: It only knows how to display a task and call a function when clicked. It doesn’t know about other tasks or how to update the array.\nReusability: TaskItem can be used anywhere. It just needs title, completed, and onToggle props.\nData flows down, events flow up:\n\nApp passes data DOWN to TaskItem via props\nTaskItem sends events UP by calling onToggle\nApp handles the event and updates state\nReact re-renders with new data\n\n\nThe alternative (and why it’s bad):\n// DON'T DO THIS - TaskItem managing its own state\nfunction TaskItem({ title, initialCompleted }) {\n  const [completed, setCompleted] = useState(initialCompleted)\n  // Now TaskItem has its own copy of completed\n  // This gets out of sync with the parent's data!\n}"
+  },
+  {
+    "objectID": "labs/lab03-component-state.html#part-6-adding-new-tasks",
+    "href": "labs/lab03-component-state.html#part-6-adding-new-tasks",
+    "title": "Lab 3: React Basics",
+    "section": "Part 6: Adding New Tasks",
+    "text": "Part 6: Adding New Tasks\nNow let’s add the ability to create new tasks. This demonstrates handling form input.\n\nStep 10: Update App.jsx with Add Task Form\nReplace App.jsx with:\nimport { useState } from 'react'\nimport './App.css'\nimport TaskItem from './components/TaskItem'\n\nfunction Greeting() {\n  return &lt;h2&gt;Welcome to React Basics!&lt;/h2&gt;\n}\n\nfunction App() {\n  const [count, setCount] = useState(0)\n\n  // State for the task list\n  const [tasks, setTasks] = useState([\n    { id: 1, title: 'Learn React basics', completed: false },\n    { id: 2, title: 'Understand useState', completed: true },\n    { id: 3, title: 'Create components', completed: false },\n  ])\n\n  // State for the new task input field\n  const [newTaskTitle, setNewTaskTitle] = useState('')\n\n  // Function to toggle a task\n  const toggleTask = (taskId) =&gt; {\n    setTasks(tasks.map(task =&gt;\n      task.id === taskId\n        ? { ...task, completed: !task.completed }\n        : task\n    ))\n  }\n\n  // Function to add a new task\n  const addTask = () =&gt; {\n    // Don't add empty tasks\n    if (newTaskTitle.trim() === '') return\n\n    const newTask = {\n      id: Date.now(),  // Simple way to generate unique IDs\n      title: newTaskTitle,\n      completed: false\n    }\n\n    setTasks([...tasks, newTask])  // Add to end of array\n    setNewTaskTitle('')             // Clear the input\n  }\n\n  return (\n    &lt;div className=\"App\"&gt;\n      &lt;Greeting /&gt;\n\n      &lt;div style={{ marginBottom: '30px' }}&gt;\n        &lt;h3&gt;Counter Example&lt;/h3&gt;\n        &lt;button onClick={() =&gt; setCount(count + 1)}&gt;\n          Click\n        &lt;/button&gt;\n        &lt;p&gt;Count: {count}&lt;/p&gt;\n      &lt;/div&gt;\n\n      &lt;div&gt;\n        &lt;h3&gt;Task List Example&lt;/h3&gt;\n\n        {/* Add Task Form */}\n        &lt;div style={{ marginBottom: '20px' }}&gt;\n          &lt;input\n            type=\"text\"\n            value={newTaskTitle}\n            onChange={(e) =&gt; setNewTaskTitle(e.target.value)}\n            placeholder=\"Enter a new task...\"\n            style={{ padding: '8px', marginRight: '10px', width: '200px' }}\n          /&gt;\n          &lt;button onClick={addTask}&gt;\n            Add Task\n          &lt;/button&gt;\n        &lt;/div&gt;\n\n        {/* Task List */}\n        {tasks.map(task =&gt; (\n          &lt;TaskItem\n            key={task.id}\n            title={task.title}\n            completed={task.completed}\n            onToggle={() =&gt; toggleTask(task.id)}\n          /&gt;\n        ))}\n      &lt;/div&gt;\n    &lt;/div&gt;\n  )\n}\n\nexport default App\n\n\nWhat’s New?\nControlled input:\nconst [newTaskTitle, setNewTaskTitle] = useState('')\n\n&lt;input\n  value={newTaskTitle}\n  onChange={(e) =&gt; setNewTaskTitle(e.target.value)}\n/&gt;\n\n\n\nConcept\nExplanation\n\n\n\n\nvalue={newTaskTitle}\nThe input displays whatever is in state\n\n\nonChange={(e) =&gt; ...}\nWhen user types, update the state\n\n\ne.target.value\nThe current text in the input field\n\n\n\nThis is called a controlled component - React state controls what the input shows.\nAdding to an array:\nsetTasks([...tasks, newTask])\n\n...tasks spreads all existing tasks\nnewTask is added at the end\nCreates a new array (immutable update)\n\nGenerating unique IDs:\nid: Date.now()\n\nDate.now() returns milliseconds since 1970\nGood enough for simple apps (in real apps, use UUID or database IDs)"
+  },
+  {
+    "objectID": "labs/lab03-component-state.html#summary",
+    "href": "labs/lab03-component-state.html#summary",
+    "title": "Lab 3: React Basics",
+    "section": "Summary",
+    "text": "Summary\n\n\n\n\n\n\n\n\nConcept\nWhat It Does\nExample\n\n\n\n\nComponent\nReusable UI piece\nfunction Greeting() { return &lt;h2&gt;Hi&lt;/h2&gt; }\n\n\nJSX\nHTML-like syntax in JavaScript\n&lt;div className=\"App\"&gt;\n\n\nState\nData that can change\nconst [count, setCount] = useState(0)\n\n\nProps\nData passed to child components\n&lt;TaskItem title=\"Learn React\" /&gt;\n\n\nEvents\nResponding to user actions\nonClick={() =&gt; setCount(count + 1)}\n\n\nLists\nRendering arrays\n{items.map(item =&gt; &lt;Item key={item.id} /&gt;)}"
+  },
+  {
+    "objectID": "labs/lab03-component-state.html#exercises",
+    "href": "labs/lab03-component-state.html#exercises",
+    "title": "Lab 3: React Basics",
+    "section": "Exercises",
+    "text": "Exercises\nTry extending the app:\n\nDelete a task: Add a delete button to TaskItem that removes the task from the list\nShow count: Display “3 tasks, 1 completed” above the task list\nFilter tasks: Add buttons to show All / Active / Completed tasks\nEdit a task: Double-click a task title to edit it inline"
+  },
+  {
+    "objectID": "labs/lab03-component-state.html#connection-to-next.js",
+    "href": "labs/lab03-component-state.html#connection-to-next.js",
+    "title": "Lab 3: React Basics",
+    "section": "Connection to Next.js",
+    "text": "Connection to Next.js\nEverything you learned here works exactly the same in Next.js:\n\nComponents are identical\nuseState works the same\nProps work the same\n\nNext.js adds: file-based routing, server-side rendering, and API routes. But the React fundamentals you learned here are the foundation."
+  },
+  {
+    "objectID": "labs/lab03-component-state.html#conceptual-foundation-how-react-components-work",
+    "href": "labs/lab03-component-state.html#conceptual-foundation-how-react-components-work",
+    "title": "Lab 3: React Basics",
+    "section": "Conceptual Foundation: How React Components Work",
+    "text": "Conceptual Foundation: How React Components Work\n\n\n\n\n\n\nTipRead This First\n\n\n\nBefore writing code, it’s important to understand what a React component really is. This mental model will make everything else in this lab—and later in Next.js—much easier to understand.\n\n\n\nWhat Is a React Component?\nAt its core:\n\nA React component is just a JavaScript function that returns UI.\n\nExample:\nfunction Greeting() {\n  return &lt;h2&gt;Welcome to React Basics!&lt;/h2&gt;\n}\nThis is not a template or special syntax. It is a normal JavaScript function.\nWhen React sees &lt;Greeting /&gt; in your code, it:\n\nCalls the Greeting() function\nTakes the JSX it returns\nDisplays that JSX on the screen\n\nYou can think of this as:\nGreeting()\nproducing UI.\n\n\nComponents Are Re-Executed on Every Render\nA critical mental model in React is this:\n\nReact re-runs your component function every time state changes.\n\nFor example:\nfunction App() {\n  const [count, setCount] = useState(0)\n  return &lt;p&gt;Count: {count}&lt;/p&gt;\n}\nWhen setCount() is called:\n\nReact stores the new state\nReact re-runs App()\nReact compares the old UI to the new UI\nOnly the changed parts of the DOM are updated\n\nThis is why:\n\nYou never manually update the DOM\nUI is always a function of state\n\n\n\nWhy Component Names Must Be Capitalized\nReact uses capitalization to distinguish components from HTML.\n&lt;Greeting /&gt;   // React component → calls Greeting()\n&lt;greeting /&gt;   // HTML element → looks for &lt;greeting&gt; tag\nRule:\n\nCapital letter → React component\nLowercase → HTML element\n\n\n\nProps vs State\n\n\n\nConcept\nDescription\n\n\n\n\nProps\nData passed into a component\n\n\nState\nData managed inside a component\n\n\nProps\nRead-only\n\n\nState\nCan change over time\n\n\n\n\n\nData Flow in React\n\nData flows down, events flow up\n\nParents pass data to children via props. Children notify parents of events via callback functions. Parents update state. React re-renders the UI."
   }
 ]

@@ -1,6 +1,6 @@
 ---
-title: "Lab 3: Component and State Management"
-subtitle: "React/Angular Architecture Patterns"
+title: "Lab 3: React Basics"
+subtitle: "Components, State, and Props"
 ---
 
 ::: {.callout-important}
@@ -10,16 +10,23 @@ subtitle: "React/Angular Architecture Patterns"
 
 ## Overview
 
-This lab focuses on frontend architecture patterns, including component design and state management strategies.
+This lab introduces the fundamentals of React. React is a JavaScript library for building user interfaces. Understanding React is essential because Next.js is built on top of it.
 
 ## Learning Objectives
 
 By completing this lab, you will:
 
-1. Design **reusable component hierarchies**
-2. Implement **state management** (Context API, Redux, etc.)
-3. Apply **React/Angular best practices**
-4. Handle **complex UI state**
+- Understand what React components are and how they work
+- Manage state with `useState`
+- Handle user events (clicks, form inputs)
+- Pass data between components with props
+- Render lists of items
+- Apply the "lifting state up" pattern
+
+## Prerequisites
+
+- Completed Lab 2
+- Understanding of component-based architecture
 
 ## Getting Started
 
@@ -27,11 +34,601 @@ Click the button below to accept the assignment and create your repository:
 
 [Accept Lab 3 Assignment](https://classroom.github.com/a/CeedBigU){.btn .btn-primary}
 
+---
 
-## Prerequisites
+## Conceptual Foundation: How React Components Work
 
-- Completed Lab 2
-- Understanding of component-based architecture
+::: {.callout-tip}
+## Read This First
+Before writing code, it's important to understand what a **React component really is**. This mental model will make everything else in this lab—and later in Next.js—much easier to understand.
+:::
+
+### What Is a React Component?
+
+At its core:
+
+> **A React component is just a JavaScript function that returns UI.**
+
+Example:
+
+```jsx
+function Greeting() {
+  return <h2>Welcome to React Basics!</h2>
+}
+```
+
+This is not a template or special syntax. It is a normal JavaScript function.
+
+When React sees `<Greeting />` in your code, it:
+
+1. Calls the `Greeting()` function
+2. Takes the JSX it returns
+3. Displays that JSX on the screen
+
+You can think of this as:
+
+```js
+Greeting()
+```
+
+producing UI.
+
+### Components Are Re-Executed on Every Render
+
+A critical mental model in React is this:
+
+> **React re-runs your component function every time state changes.**
+
+For example:
+
+```jsx
+function App() {
+  const [count, setCount] = useState(0)
+  return <p>Count: {count}</p>
+}
+```
+
+When `setCount()` is called:
+
+1. React stores the new state
+2. React re-runs `App()`
+3. React compares the old UI to the new UI
+4. Only the changed parts of the DOM are updated
+
+This is why:
+
+- You never manually update the DOM
+- UI is always a function of state
+
+### Why Component Names Must Be Capitalized
+
+React uses capitalization to distinguish components from HTML.
+
+```jsx
+<Greeting />   // React component → calls Greeting()
+<greeting />   // HTML element → looks for <greeting> tag
+```
+
+**Rule:**
+
+- Capital letter → React component
+- Lowercase → HTML element
+
+### Props vs State
+
+| Concept | Description |
+|------|-------------|
+| **Props** | Data passed *into* a component |
+| **State** | Data managed *inside* a component |
+| **Props** | Read-only |
+| **State** | Can change over time |
+
+### Data Flow in React
+
+> **Data flows down, events flow up**
+
+Parents pass data to children via props.
+Children notify parents of events via callback functions.
+Parents update state.
+React re-renders the UI.
+
+---
+
+## Part 1: Setting Up
+
+### What is Vite?
+
+Vite is a build tool that creates a development environment for modern JavaScript projects. It provides:
+
+- Fast hot module replacement (changes appear instantly)
+- A development server
+- Optimized production builds
+
+### Step 1: Create a New React Project
+
+Open your terminal and run:
+
+```bash
+npx create-vite react
+```
+
+You'll see prompts:
+```
+? Select a framework: › React
+? Select a variant: › JavaScript
+```
+
+### Step 2: Install and Run
+
+```bash
+cd react
+npm install
+npm run dev
+```
+
+### Step 3: Open in Browser
+
+Go to http://localhost:5173/
+
+You should see the default Vite + React welcome page with a counter.
+
+### Step 4: Open in Your Code Editor
+
+Open the `react` folder in VS Code (or your preferred editor). The key files are:
+
+```
+react/
+├── src/
+│   ├── App.jsx      ← Main component (we'll edit this)
+│   ├── App.css      ← Styles
+│   └── main.jsx     ← Entry point (renders App)
+├── index.html       ← HTML template
+└── package.json     ← Dependencies
+```
+
+---
+
+## Part 2: Your First Component
+
+### What is a Component?
+
+A React component is a JavaScript function that returns JSX (HTML-like syntax). Components are the building blocks of React apps.
+
+### Step 5: Simplify App.jsx
+
+Open `react/src/App.jsx` and **replace everything** with:
+
+```jsx
+import { useState } from 'react'
+import './App.css'
+
+function App() {
+  const [count, setCount] = useState(0)
+
+  return (
+    <div className="App">
+      <button onClick={() => setCount(count + 1)}>
+        Click
+      </button>
+      <p>Count: {count}</p>
+    </div>
+  )
+}
+
+export default App
+```
+
+Save the file. Your browser will automatically update.
+
+### What's Happening?
+
+| Code | Explanation |
+|------|-------------|
+| `import { useState } from 'react'` | Import the useState hook from React |
+| `const [count, setCount] = useState(0)` | Create a state variable `count` starting at 0 |
+| `onClick={() => setCount(count + 1)}` | When clicked, update count to count + 1 |
+| `{count}` | Display the current value of count |
+
+**Key concept**: When you call `setCount()`, React re-renders the component with the new value.
+
+---
+
+## Part 3: Adding Another Component
+
+### Step 6: Create a Greeting Component
+
+Components can be combined together. Add a `Greeting` component above `App`:
+
+```jsx
+import { useState } from 'react'
+import './App.css'
+
+// This is a simple component
+function Greeting() {
+  return <h2>Welcome to React Basics!</h2>
+}
+
+function App() {
+  const [count, setCount] = useState(0)
+
+  return (
+    <div className="App">
+      <Greeting />
+      <button onClick={() => setCount(count + 1)}>
+        Click
+      </button>
+      <p>Count: {count}</p>
+    </div>
+  )
+}
+
+export default App
+```
+
+### What's Happening?
+
+- `Greeting` is a component (a function returning JSX)
+- `<Greeting />` includes it like an HTML tag
+- Components must start with a capital letter
+
+---
+
+## Part 4: Components in Separate Files
+
+Real apps put components in separate files. Let's create a reusable `TaskItem` component.
+
+### Step 7: Create the Components Folder
+
+Create a new folder: `react/src/components/`
+
+### Step 8: Create TaskItem.jsx
+
+Create the file `react/src/components/TaskItem.jsx`:
+
+```jsx
+function TaskItem({ title, completed, onToggle }) {
+  return (
+    <div style={{
+      padding: '10px',
+      margin: '5px 0',
+      border: '1px solid #ccc',
+      borderRadius: '4px',
+      backgroundColor: completed ? '#e8f5e9' : '#fff'
+    }}>
+      <input
+        type="checkbox"
+        checked={completed}
+        onChange={onToggle}
+      />
+      <span style={{
+        marginLeft: '10px',
+        textDecoration: completed ? 'line-through' : 'none'
+      }}>
+        {title}
+      </span>
+    </div>
+  )
+}
+
+export default TaskItem
+```
+
+### What's Happening?
+
+| Code | Explanation |
+|------|-------------|
+| `{ title, completed, onToggle }` | These are **props** - data passed from the parent |
+| `completed ? '#e8f5e9' : '#fff'` | Conditional: green background if completed, white if not |
+| `onChange={onToggle}` | When checkbox changes, call the parent's function |
+| `export default TaskItem` | Makes the component available to import elsewhere |
+
+---
+
+## Part 5: Putting It All Together
+
+### Step 9: Update App.jsx with Task List
+
+Replace `App.jsx` with:
+
+```jsx
+import { useState } from 'react'
+import './App.css'
+import TaskItem from './components/TaskItem'
+
+function Greeting() {
+  return <h2>Welcome to React Basics!</h2>
+}
+
+function App() {
+  const [count, setCount] = useState(0)
+
+  // State: an array of task objects
+  const [tasks, setTasks] = useState([
+    { id: 1, title: 'Learn React basics', completed: false },
+    { id: 2, title: 'Understand useState', completed: true },
+    { id: 3, title: 'Create components', completed: false },
+  ])
+
+  // Function to toggle a task
+  const toggleTask = (taskId) => {
+    setTasks(tasks.map(task =>
+      task.id === taskId
+        ? { ...task, completed: !task.completed }
+        : task
+    ))
+  }
+
+  return (
+    <div className="App">
+      <Greeting />
+
+      <div style={{ marginBottom: '30px' }}>
+        <h3>Counter Example</h3>
+        <button onClick={() => setCount(count + 1)}>
+          Click
+        </button>
+        <p>Count: {count}</p>
+      </div>
+
+      <div>
+        <h3>Task List Example</h3>
+        {tasks.map(task => (
+          <TaskItem
+            key={task.id}
+            title={task.title}
+            completed={task.completed}
+            onToggle={() => toggleTask(task.id)}
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
+
+export default App
+```
+
+### What's Happening?
+
+**Rendering a list with `.map()`:**
+```jsx
+{tasks.map(task => (
+  <TaskItem key={task.id} ... />
+))}
+```
+- `.map()` loops through the array
+- Returns a `TaskItem` for each task
+- `key={task.id}` helps React track items efficiently
+
+**Updating state immutably:**
+```jsx
+setTasks(tasks.map(task =>
+  task.id === taskId
+    ? { ...task, completed: !task.completed }
+    : task
+))
+```
+- Creates a **new array** (don't modify the original)
+- `{ ...task, completed: !task.completed }` copies the task and flips completed
+- This is called an **immutable update**
+
+### Why is toggleTask in App, not TaskItem?
+
+This is a key React pattern called **"lifting state up"**.
+
+```
+┌─────────────────────────────────────┐
+│  App (Parent)                       │
+│  ┌─────────────────────────────┐    │
+│  │ tasks = [...]               │    │  ← State lives here
+│  │ toggleTask = (id) => {...}  │    │  ← Function lives here
+│  └─────────────────────────────┘    │
+│                                     │
+│    ┌──────────┐  ┌──────────┐       │
+│    │ TaskItem │  │ TaskItem │       │  ← Children receive
+│    │ (props)  │  │ (props)  │       │    data via props
+│    └──────────┘  └──────────┘       │
+└─────────────────────────────────────┘
+```
+
+**Why this pattern?**
+
+1. **Single source of truth**: The `tasks` array lives in one place (App). If TaskItem could modify its own state, we'd have copies of data in multiple places that could get out of sync.
+
+2. **TaskItem is "dumb"**: It only knows how to display a task and call a function when clicked. It doesn't know about other tasks or how to update the array.
+
+3. **Reusability**: TaskItem can be used anywhere. It just needs `title`, `completed`, and `onToggle` props.
+
+4. **Data flows down, events flow up**:
+   - App passes data DOWN to TaskItem via props
+   - TaskItem sends events UP by calling `onToggle`
+   - App handles the event and updates state
+   - React re-renders with new data
+
+**The alternative (and why it's bad):**
+```jsx
+// DON'T DO THIS - TaskItem managing its own state
+function TaskItem({ title, initialCompleted }) {
+  const [completed, setCompleted] = useState(initialCompleted)
+  // Now TaskItem has its own copy of completed
+  // This gets out of sync with the parent's data!
+}
+```
+
+---
+
+## Part 6: Adding New Tasks
+
+Now let's add the ability to create new tasks. This demonstrates handling form input.
+
+### Step 10: Update App.jsx with Add Task Form
+
+Replace `App.jsx` with:
+
+```jsx
+import { useState } from 'react'
+import './App.css'
+import TaskItem from './components/TaskItem'
+
+function Greeting() {
+  return <h2>Welcome to React Basics!</h2>
+}
+
+function App() {
+  const [count, setCount] = useState(0)
+
+  // State for the task list
+  const [tasks, setTasks] = useState([
+    { id: 1, title: 'Learn React basics', completed: false },
+    { id: 2, title: 'Understand useState', completed: true },
+    { id: 3, title: 'Create components', completed: false },
+  ])
+
+  // State for the new task input field
+  const [newTaskTitle, setNewTaskTitle] = useState('')
+
+  // Function to toggle a task
+  const toggleTask = (taskId) => {
+    setTasks(tasks.map(task =>
+      task.id === taskId
+        ? { ...task, completed: !task.completed }
+        : task
+    ))
+  }
+
+  // Function to add a new task
+  const addTask = () => {
+    // Don't add empty tasks
+    if (newTaskTitle.trim() === '') return
+
+    const newTask = {
+      id: Date.now(),  // Simple way to generate unique IDs
+      title: newTaskTitle,
+      completed: false
+    }
+
+    setTasks([...tasks, newTask])  // Add to end of array
+    setNewTaskTitle('')             // Clear the input
+  }
+
+  return (
+    <div className="App">
+      <Greeting />
+
+      <div style={{ marginBottom: '30px' }}>
+        <h3>Counter Example</h3>
+        <button onClick={() => setCount(count + 1)}>
+          Click
+        </button>
+        <p>Count: {count}</p>
+      </div>
+
+      <div>
+        <h3>Task List Example</h3>
+
+        {/* Add Task Form */}
+        <div style={{ marginBottom: '20px' }}>
+          <input
+            type="text"
+            value={newTaskTitle}
+            onChange={(e) => setNewTaskTitle(e.target.value)}
+            placeholder="Enter a new task..."
+            style={{ padding: '8px', marginRight: '10px', width: '200px' }}
+          />
+          <button onClick={addTask}>
+            Add Task
+          </button>
+        </div>
+
+        {/* Task List */}
+        {tasks.map(task => (
+          <TaskItem
+            key={task.id}
+            title={task.title}
+            completed={task.completed}
+            onToggle={() => toggleTask(task.id)}
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
+
+export default App
+```
+
+### What's New?
+
+**Controlled input:**
+```jsx
+const [newTaskTitle, setNewTaskTitle] = useState('')
+
+<input
+  value={newTaskTitle}
+  onChange={(e) => setNewTaskTitle(e.target.value)}
+/>
+```
+
+| Concept | Explanation |
+|---------|-------------|
+| `value={newTaskTitle}` | The input displays whatever is in state |
+| `onChange={(e) => ...}` | When user types, update the state |
+| `e.target.value` | The current text in the input field |
+
+This is called a **controlled component** - React state controls what the input shows.
+
+**Adding to an array:**
+```jsx
+setTasks([...tasks, newTask])
+```
+- `...tasks` spreads all existing tasks
+- `newTask` is added at the end
+- Creates a new array (immutable update)
+
+**Generating unique IDs:**
+```jsx
+id: Date.now()
+```
+- `Date.now()` returns milliseconds since 1970
+- Good enough for simple apps (in real apps, use UUID or database IDs)
+
+---
+
+## Summary
+
+| Concept | What It Does | Example |
+|---------|--------------|---------|
+| **Component** | Reusable UI piece | `function Greeting() { return <h2>Hi</h2> }` |
+| **JSX** | HTML-like syntax in JavaScript | `<div className="App">` |
+| **State** | Data that can change | `const [count, setCount] = useState(0)` |
+| **Props** | Data passed to child components | `<TaskItem title="Learn React" />` |
+| **Events** | Responding to user actions | `onClick={() => setCount(count + 1)}` |
+| **Lists** | Rendering arrays | `{items.map(item => <Item key={item.id} />)}` |
+
+---
+
+## Exercises
+
+Try extending the app:
+
+1. **Delete a task**: Add a delete button to TaskItem that removes the task from the list
+2. **Show count**: Display "3 tasks, 1 completed" above the task list
+3. **Filter tasks**: Add buttons to show All / Active / Completed tasks
+4. **Edit a task**: Double-click a task title to edit it inline
+
+---
+
+## Connection to Next.js
+
+Everything you learned here works exactly the same in Next.js:
+
+- Components are identical
+- useState works the same
+- Props work the same
+
+Next.js adds: file-based routing, server-side rendering, and API routes. But the React fundamentals you learned here are the foundation.
+
+---
 
 ## Getting Help
 

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Lab 3: Component and State Management – ITWS-4500: Advanced Web &amp; Agentic AI Development</title>
+<title>Lab 3: React Basics – ITWS-4500: Advanced Web &amp; Agentic AI Development</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -282,8 +317,55 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
-  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting Started</a></li>
   <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites">Prerequisites</a></li>
+  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting Started</a></li>
+  <li><a href="#conceptual-foundation-how-react-components-work" id="toc-conceptual-foundation-how-react-components-work" class="nav-link" data-scroll-target="#conceptual-foundation-how-react-components-work">Conceptual Foundation: How React Components Work</a>
+  <ul class="collapse">
+  <li><a href="#what-is-a-react-component" id="toc-what-is-a-react-component" class="nav-link" data-scroll-target="#what-is-a-react-component">What Is a React Component?</a></li>
+  <li><a href="#components-are-re-executed-on-every-render" id="toc-components-are-re-executed-on-every-render" class="nav-link" data-scroll-target="#components-are-re-executed-on-every-render">Components Are Re-Executed on Every Render</a></li>
+  <li><a href="#why-component-names-must-be-capitalized" id="toc-why-component-names-must-be-capitalized" class="nav-link" data-scroll-target="#why-component-names-must-be-capitalized">Why Component Names Must Be Capitalized</a></li>
+  <li><a href="#props-vs-state" id="toc-props-vs-state" class="nav-link" data-scroll-target="#props-vs-state">Props vs State</a></li>
+  <li><a href="#data-flow-in-react" id="toc-data-flow-in-react" class="nav-link" data-scroll-target="#data-flow-in-react">Data Flow in React</a></li>
+  </ul></li>
+  <li><a href="#part-1-setting-up" id="toc-part-1-setting-up" class="nav-link" data-scroll-target="#part-1-setting-up">Part 1: Setting Up</a>
+  <ul class="collapse">
+  <li><a href="#what-is-vite" id="toc-what-is-vite" class="nav-link" data-scroll-target="#what-is-vite">What is Vite?</a></li>
+  <li><a href="#step-1-create-a-new-react-project" id="toc-step-1-create-a-new-react-project" class="nav-link" data-scroll-target="#step-1-create-a-new-react-project">Step 1: Create a New React Project</a></li>
+  <li><a href="#step-2-install-and-run" id="toc-step-2-install-and-run" class="nav-link" data-scroll-target="#step-2-install-and-run">Step 2: Install and Run</a></li>
+  <li><a href="#step-3-open-in-browser" id="toc-step-3-open-in-browser" class="nav-link" data-scroll-target="#step-3-open-in-browser">Step 3: Open in Browser</a></li>
+  <li><a href="#step-4-open-in-your-code-editor" id="toc-step-4-open-in-your-code-editor" class="nav-link" data-scroll-target="#step-4-open-in-your-code-editor">Step 4: Open in Your Code Editor</a></li>
+  </ul></li>
+  <li><a href="#part-2-your-first-component" id="toc-part-2-your-first-component" class="nav-link" data-scroll-target="#part-2-your-first-component">Part 2: Your First Component</a>
+  <ul class="collapse">
+  <li><a href="#what-is-a-component" id="toc-what-is-a-component" class="nav-link" data-scroll-target="#what-is-a-component">What is a Component?</a></li>
+  <li><a href="#step-5-simplify-app.jsx" id="toc-step-5-simplify-app.jsx" class="nav-link" data-scroll-target="#step-5-simplify-app.jsx">Step 5: Simplify App.jsx</a></li>
+  <li><a href="#whats-happening" id="toc-whats-happening" class="nav-link" data-scroll-target="#whats-happening">What’s Happening?</a></li>
+  </ul></li>
+  <li><a href="#part-3-adding-another-component" id="toc-part-3-adding-another-component" class="nav-link" data-scroll-target="#part-3-adding-another-component">Part 3: Adding Another Component</a>
+  <ul class="collapse">
+  <li><a href="#step-6-create-a-greeting-component" id="toc-step-6-create-a-greeting-component" class="nav-link" data-scroll-target="#step-6-create-a-greeting-component">Step 6: Create a Greeting Component</a></li>
+  <li><a href="#whats-happening-1" id="toc-whats-happening-1" class="nav-link" data-scroll-target="#whats-happening-1">What’s Happening?</a></li>
+  </ul></li>
+  <li><a href="#part-4-components-in-separate-files" id="toc-part-4-components-in-separate-files" class="nav-link" data-scroll-target="#part-4-components-in-separate-files">Part 4: Components in Separate Files</a>
+  <ul class="collapse">
+  <li><a href="#step-7-create-the-components-folder" id="toc-step-7-create-the-components-folder" class="nav-link" data-scroll-target="#step-7-create-the-components-folder">Step 7: Create the Components Folder</a></li>
+  <li><a href="#step-8-create-taskitem.jsx" id="toc-step-8-create-taskitem.jsx" class="nav-link" data-scroll-target="#step-8-create-taskitem.jsx">Step 8: Create TaskItem.jsx</a></li>
+  <li><a href="#whats-happening-2" id="toc-whats-happening-2" class="nav-link" data-scroll-target="#whats-happening-2">What’s Happening?</a></li>
+  </ul></li>
+  <li><a href="#part-5-putting-it-all-together" id="toc-part-5-putting-it-all-together" class="nav-link" data-scroll-target="#part-5-putting-it-all-together">Part 5: Putting It All Together</a>
+  <ul class="collapse">
+  <li><a href="#step-9-update-app.jsx-with-task-list" id="toc-step-9-update-app.jsx-with-task-list" class="nav-link" data-scroll-target="#step-9-update-app.jsx-with-task-list">Step 9: Update App.jsx with Task List</a></li>
+  <li><a href="#whats-happening-3" id="toc-whats-happening-3" class="nav-link" data-scroll-target="#whats-happening-3">What’s Happening?</a></li>
+  <li><a href="#why-is-toggletask-in-app-not-taskitem" id="toc-why-is-toggletask-in-app-not-taskitem" class="nav-link" data-scroll-target="#why-is-toggletask-in-app-not-taskitem">Why is toggleTask in App, not TaskItem?</a></li>
+  </ul></li>
+  <li><a href="#part-6-adding-new-tasks" id="toc-part-6-adding-new-tasks" class="nav-link" data-scroll-target="#part-6-adding-new-tasks">Part 6: Adding New Tasks</a>
+  <ul class="collapse">
+  <li><a href="#step-10-update-app.jsx-with-add-task-form" id="toc-step-10-update-app.jsx-with-add-task-form" class="nav-link" data-scroll-target="#step-10-update-app.jsx-with-add-task-form">Step 10: Update App.jsx with Add Task Form</a></li>
+  <li><a href="#whats-new" id="toc-whats-new" class="nav-link" data-scroll-target="#whats-new">What’s New?</a></li>
+  </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
+  <li><a href="#connection-to-next.js" id="toc-connection-to-next.js" class="nav-link" data-scroll-target="#connection-to-next.js">Connection to Next.js</a></li>
   <li><a href="#getting-help" id="toc-getting-help" class="nav-link" data-scroll-target="#getting-help">Getting Help</a></li>
   </ul>
 </nav>
@@ -293,8 +375,8 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lab 3: Component and State Management</h1>
-<p class="subtitle lead">React/Angular Architecture Patterns</p>
+<h1 class="title">Lab 3: React Basics</h1>
+<p class="subtitle lead">Components, State, and Props</p>
 </div>
 
 
@@ -326,22 +408,19 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>This lab focuses on frontend architecture patterns, including component design and state management strategies.</p>
+<p>This lab introduces the fundamentals of React. React is a JavaScript library for building user interfaces. Understanding React is essential because Next.js is built on top of it.</p>
 </section>
 <section id="learning-objectives" class="level2">
 <h2 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
 <p>By completing this lab, you will:</p>
-<ol type="1">
-<li>Design <strong>reusable component hierarchies</strong></li>
-<li>Implement <strong>state management</strong> (Context API, Redux, etc.)</li>
-<li>Apply <strong>React/Angular best practices</strong></li>
-<li>Handle <strong>complex UI state</strong></li>
-</ol>
-</section>
-<section id="getting-started" class="level2">
-<h2 class="anchored" data-anchor-id="getting-started">Getting Started</h2>
-<p>Click the button below to accept the assignment and create your repository:</p>
-<p><a href="https://classroom.github.com/a/CeedBigU" class="btn btn-primary">Accept Lab 3 Assignment</a></p>
+<ul>
+<li>Understand what React components are and how they work</li>
+<li>Manage state with <code>useState</code></li>
+<li>Handle user events (clicks, form inputs)</li>
+<li>Pass data between components with props</li>
+<li>Render lists of items</li>
+<li>Apply the “lifting state up” pattern</li>
+</ul>
 </section>
 <section id="prerequisites" class="level2">
 <h2 class="anchored" data-anchor-id="prerequisites">Prerequisites</h2>
@@ -349,6 +428,676 @@ ul.task-list li input[type="checkbox"] {
 <li>Completed Lab 2</li>
 <li>Understanding of component-based architecture</li>
 </ul>
+</section>
+<section id="getting-started" class="level2">
+<h2 class="anchored" data-anchor-id="getting-started">Getting Started</h2>
+<p>Click the button below to accept the assignment and create your repository:</p>
+<p><a href="https://classroom.github.com/a/CeedBigU" class="btn btn-primary">Accept Lab 3 Assignment</a></p>
+<hr>
+</section>
+<section id="conceptual-foundation-how-react-components-work" class="level2">
+<h2 class="anchored" data-anchor-id="conceptual-foundation-how-react-components-work">Conceptual Foundation: How React Components Work</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Read This First
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Before writing code, it’s important to understand what a <strong>React component really is</strong>. This mental model will make everything else in this lab—and later in Next.js—much easier to understand.</p>
+</div>
+</div>
+<section id="what-is-a-react-component" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-a-react-component">What Is a React Component?</h3>
+<p>At its core:</p>
+<blockquote class="blockquote">
+<p><strong>A React component is just a JavaScript function that returns UI.</strong></p>
+</blockquote>
+<p>Example:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode jsx code-with-copy"><code class="sourceCode javascriptreact"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">Greeting</span>() {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return </span><span class="kw">&lt;h2&gt;</span>Welcome to React Basics!<span class="kw">&lt;/h2&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This is not a template or special syntax. It is a normal JavaScript function.</p>
+<p>When React sees <code>&lt;Greeting /&gt;</code> in your code, it:</p>
+<ol type="1">
+<li>Calls the <code>Greeting()</code> function</li>
+<li>Takes the JSX it returns</li>
+<li>Displays that JSX on the screen</li>
+</ol>
+<p>You can think of this as:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Greeting</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>producing UI.</p>
+</section>
+<section id="components-are-re-executed-on-every-render" class="level3">
+<h3 class="anchored" data-anchor-id="components-are-re-executed-on-every-render">Components Are Re-Executed on Every Render</h3>
+<p>A critical mental model in React is this:</p>
+<blockquote class="blockquote">
+<p><strong>React re-runs your component function every time state changes.</strong></p>
+</blockquote>
+<p>For example:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode jsx code-with-copy"><code class="sourceCode javascriptreact"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">App</span>() {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> [count<span class="op">,</span> setCount] <span class="op">=</span> <span class="fu">useState</span>(<span class="dv">0</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return </span><span class="kw">&lt;p&gt;</span>Count: <span class="va">{</span>count<span class="va">}</span><span class="kw">&lt;/p&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>When <code>setCount()</code> is called:</p>
+<ol type="1">
+<li>React stores the new state</li>
+<li>React re-runs <code>App()</code></li>
+<li>React compares the old UI to the new UI</li>
+<li>Only the changed parts of the DOM are updated</li>
+</ol>
+<p>This is why:</p>
+<ul>
+<li>You never manually update the DOM</li>
+<li>UI is always a function of state</li>
+</ul>
+</section>
+<section id="why-component-names-must-be-capitalized" class="level3">
+<h3 class="anchored" data-anchor-id="why-component-names-must-be-capitalized">Why Component Names Must Be Capitalized</h3>
+<p>React uses capitalization to distinguish components from HTML.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode jsx code-with-copy"><code class="sourceCode javascriptreact"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;Greeting</span> <span class="fu">/&gt;</span>   <span class="co">// React component → calls Greeting()</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;greeting</span> <span class="kw">/&gt;</span>   <span class="co">// HTML element → looks for &lt;greeting&gt; tag</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Rule:</strong></p>
+<ul>
+<li>Capital letter → React component</li>
+<li>Lowercase → HTML element</li>
+</ul>
+</section>
+<section id="props-vs-state" class="level3">
+<h3 class="anchored" data-anchor-id="props-vs-state">Props vs State</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Concept</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Props</strong></td>
+<td>Data passed <em>into</em> a component</td>
+</tr>
+<tr class="even">
+<td><strong>State</strong></td>
+<td>Data managed <em>inside</em> a component</td>
+</tr>
+<tr class="odd">
+<td><strong>Props</strong></td>
+<td>Read-only</td>
+</tr>
+<tr class="even">
+<td><strong>State</strong></td>
+<td>Can change over time</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="data-flow-in-react" class="level3">
+<h3 class="anchored" data-anchor-id="data-flow-in-react">Data Flow in React</h3>
+<blockquote class="blockquote">
+<p><strong>Data flows down, events flow up</strong></p>
+</blockquote>
+<p>Parents pass data to children via props. Children notify parents of events via callback functions. Parents update state. React re-renders the UI.</p>
+<hr>
+</section>
+</section>
+<section id="part-1-setting-up" class="level2">
+<h2 class="anchored" data-anchor-id="part-1-setting-up">Part 1: Setting Up</h2>
+<section id="what-is-vite" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-vite">What is Vite?</h3>
+<p>Vite is a build tool that creates a development environment for modern JavaScript projects. It provides:</p>
+<ul>
+<li>Fast hot module replacement (changes appear instantly)</li>
+<li>A development server</li>
+<li>Optimized production builds</li>
+</ul>
+</section>
+<section id="step-1-create-a-new-react-project" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-create-a-new-react-project">Step 1: Create a New React Project</h3>
+<p>Open your terminal and run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">npx</span> create-vite react</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>You’ll see prompts:</p>
+<pre><code>? Select a framework: › React
+? Select a variant: › JavaScript</code></pre>
+</section>
+<section id="step-2-install-and-run" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-install-and-run">Step 2: Install and Run</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> react</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> install</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> run dev</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="step-3-open-in-browser" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-open-in-browser">Step 3: Open in Browser</h3>
+<p>Go to http://localhost:5173/</p>
+<p>You should see the default Vite + React welcome page with a counter.</p>
+</section>
+<section id="step-4-open-in-your-code-editor" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-open-in-your-code-editor">Step 4: Open in Your Code Editor</h3>
+<p>Open the <code>react</code> folder in VS Code (or your preferred editor). The key files are:</p>
+<pre><code>react/
+├── src/
+│   ├── App.jsx      ← Main component (we'll edit this)
+│   ├── App.css      ← Styles
+│   └── main.jsx     ← Entry point (renders App)
+├── index.html       ← HTML template
+└── package.json     ← Dependencies</code></pre>
+<hr>
+</section>
+</section>
+<section id="part-2-your-first-component" class="level2">
+<h2 class="anchored" data-anchor-id="part-2-your-first-component">Part 2: Your First Component</h2>
+<section id="what-is-a-component" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-a-component">What is a Component?</h3>
+<p>A React component is a JavaScript function that returns JSX (HTML-like syntax). Components are the building blocks of React apps.</p>
+</section>
+<section id="step-5-simplify-app.jsx" class="level3">
+<h3 class="anchored" data-anchor-id="step-5-simplify-app.jsx">Step 5: Simplify App.jsx</h3>
+<p>Open <code>react/src/App.jsx</code> and <strong>replace everything</strong> with:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode jsx code-with-copy"><code class="sourceCode javascriptreact"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { useState } <span class="im">from</span> <span class="st">'react'</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> <span class="st">'./App.css'</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">App</span>() {</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> [count<span class="op">,</span> setCount] <span class="op">=</span> <span class="fu">useState</span>(<span class="dv">0</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;div</span> <span class="ot">className</span><span class="op">=</span><span class="st">"App"</span><span class="kw">&gt;</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;button</span> <span class="ot">onClick</span><span class="op">=</span><span class="va">{</span>() <span class="kw">=&gt;</span> <span class="fu">setCount</span>(count <span class="op">+</span> <span class="dv">1</span>)<span class="va">}</span><span class="kw">&gt;</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>        Click</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;/button&gt;</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;p&gt;</span>Count: <span class="va">{</span>count<span class="va">}</span><span class="kw">&lt;/p&gt;</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="im">default</span> App</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Save the file. Your browser will automatically update.</p>
+</section>
+<section id="whats-happening" class="level3">
+<h3 class="anchored" data-anchor-id="whats-happening">What’s Happening?</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 31%">
+<col style="width: 68%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Code</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>import { useState } from 'react'</code></td>
+<td>Import the useState hook from React</td>
+</tr>
+<tr class="even">
+<td><code>const [count, setCount] = useState(0)</code></td>
+<td>Create a state variable <code>count</code> starting at 0</td>
+</tr>
+<tr class="odd">
+<td><code>onClick={() =&gt; setCount(count + 1)}</code></td>
+<td>When clicked, update count to count + 1</td>
+</tr>
+<tr class="even">
+<td><code>{count}</code></td>
+<td>Display the current value of count</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key concept</strong>: When you call <code>setCount()</code>, React re-renders the component with the new value.</p>
+<hr>
+</section>
+</section>
+<section id="part-3-adding-another-component" class="level2">
+<h2 class="anchored" data-anchor-id="part-3-adding-another-component">Part 3: Adding Another Component</h2>
+<section id="step-6-create-a-greeting-component" class="level3">
+<h3 class="anchored" data-anchor-id="step-6-create-a-greeting-component">Step 6: Create a Greeting Component</h3>
+<p>Components can be combined together. Add a <code>Greeting</code> component above <code>App</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode jsx code-with-copy"><code class="sourceCode javascriptreact"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { useState } <span class="im">from</span> <span class="st">'react'</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> <span class="st">'./App.css'</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">// This is a simple component</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">Greeting</span>() {</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return </span><span class="kw">&lt;h2&gt;</span>Welcome to React Basics!<span class="kw">&lt;/h2&gt;</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">App</span>() {</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> [count<span class="op">,</span> setCount] <span class="op">=</span> <span class="fu">useState</span>(<span class="dv">0</span>)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;div</span> <span class="ot">className</span><span class="op">=</span><span class="st">"App"</span><span class="kw">&gt;</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>      <span class="fu">&lt;Greeting</span> <span class="fu">/&gt;</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;button</span> <span class="ot">onClick</span><span class="op">=</span><span class="va">{</span>() <span class="kw">=&gt;</span> <span class="fu">setCount</span>(count <span class="op">+</span> <span class="dv">1</span>)<span class="va">}</span><span class="kw">&gt;</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>        Click</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;/button&gt;</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;p&gt;</span>Count: <span class="va">{</span>count<span class="va">}</span><span class="kw">&lt;/p&gt;</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="im">default</span> App</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="whats-happening-1" class="level3">
+<h3 class="anchored" data-anchor-id="whats-happening-1">What’s Happening?</h3>
+<ul>
+<li><code>Greeting</code> is a component (a function returning JSX)</li>
+<li><code>&lt;Greeting /&gt;</code> includes it like an HTML tag</li>
+<li>Components must start with a capital letter</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="part-4-components-in-separate-files" class="level2">
+<h2 class="anchored" data-anchor-id="part-4-components-in-separate-files">Part 4: Components in Separate Files</h2>
+<p>Real apps put components in separate files. Let’s create a reusable <code>TaskItem</code> component.</p>
+<section id="step-7-create-the-components-folder" class="level3">
+<h3 class="anchored" data-anchor-id="step-7-create-the-components-folder">Step 7: Create the Components Folder</h3>
+<p>Create a new folder: <code>react/src/components/</code></p>
+</section>
+<section id="step-8-create-taskitem.jsx" class="level3">
+<h3 class="anchored" data-anchor-id="step-8-create-taskitem.jsx">Step 8: Create TaskItem.jsx</h3>
+<p>Create the file <code>react/src/components/TaskItem.jsx</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode jsx code-with-copy"><code class="sourceCode javascriptreact"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">TaskItem</span>({ title<span class="op">,</span> completed<span class="op">,</span> onToggle }) {</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;div</span> <span class="ot">style</span><span class="op">=</span><span class="va">{</span>{</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>      <span class="dt">padding</span><span class="op">:</span> <span class="st">'10px'</span><span class="op">,</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>      <span class="dt">margin</span><span class="op">:</span> <span class="st">'5px 0'</span><span class="op">,</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>      <span class="dt">border</span><span class="op">:</span> <span class="st">'1px solid #ccc'</span><span class="op">,</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>      <span class="dt">borderRadius</span><span class="op">:</span> <span class="st">'4px'</span><span class="op">,</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>      <span class="dt">backgroundColor</span><span class="op">:</span> completed <span class="op">?</span> <span class="st">'#e8f5e9'</span> <span class="op">:</span> <span class="st">'#fff'</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    }<span class="va">}</span><span class="kw">&gt;</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;input</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>        <span class="ot">type</span><span class="op">=</span><span class="st">"checkbox"</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>        <span class="ot">checked</span><span class="op">=</span><span class="va">{</span>completed<span class="va">}</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>        <span class="ot">onChange</span><span class="op">=</span><span class="va">{</span>onToggle<span class="va">}</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>      <span class="kw">/&gt;</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;span</span> <span class="ot">style</span><span class="op">=</span><span class="va">{</span>{</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>        <span class="dt">marginLeft</span><span class="op">:</span> <span class="st">'10px'</span><span class="op">,</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>        <span class="dt">textDecoration</span><span class="op">:</span> completed <span class="op">?</span> <span class="st">'line-through'</span> <span class="op">:</span> <span class="st">'none'</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>      }<span class="va">}</span><span class="kw">&gt;</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>        <span class="va">{</span>title<span class="va">}</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;/span&gt;</span></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="im">default</span> TaskItem</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="whats-happening-2" class="level3">
+<h3 class="anchored" data-anchor-id="whats-happening-2">What’s Happening?</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 31%">
+<col style="width: 68%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Code</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>{ title, completed, onToggle }</code></td>
+<td>These are <strong>props</strong> - data passed from the parent</td>
+</tr>
+<tr class="even">
+<td><code>completed ? '#e8f5e9' : '#fff'</code></td>
+<td>Conditional: green background if completed, white if not</td>
+</tr>
+<tr class="odd">
+<td><code>onChange={onToggle}</code></td>
+<td>When checkbox changes, call the parent’s function</td>
+</tr>
+<tr class="even">
+<td><code>export default TaskItem</code></td>
+<td>Makes the component available to import elsewhere</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="part-5-putting-it-all-together" class="level2">
+<h2 class="anchored" data-anchor-id="part-5-putting-it-all-together">Part 5: Putting It All Together</h2>
+<section id="step-9-update-app.jsx-with-task-list" class="level3">
+<h3 class="anchored" data-anchor-id="step-9-update-app.jsx-with-task-list">Step 9: Update App.jsx with Task List</h3>
+<p>Replace <code>App.jsx</code> with:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode jsx code-with-copy"><code class="sourceCode javascriptreact"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { useState } <span class="im">from</span> <span class="st">'react'</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> <span class="st">'./App.css'</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> TaskItem <span class="im">from</span> <span class="st">'./components/TaskItem'</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">Greeting</span>() {</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return </span><span class="kw">&lt;h2&gt;</span>Welcome to React Basics!<span class="kw">&lt;/h2&gt;</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">App</span>() {</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> [count<span class="op">,</span> setCount] <span class="op">=</span> <span class="fu">useState</span>(<span class="dv">0</span>)</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  <span class="co">// State: an array of task objects</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> [tasks<span class="op">,</span> setTasks] <span class="op">=</span> <span class="fu">useState</span>([</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    { <span class="dt">id</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">title</span><span class="op">:</span> <span class="st">'Learn React basics'</span><span class="op">,</span> <span class="dt">completed</span><span class="op">:</span> <span class="kw">false</span> }<span class="op">,</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>    { <span class="dt">id</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">title</span><span class="op">:</span> <span class="st">'Understand useState'</span><span class="op">,</span> <span class="dt">completed</span><span class="op">:</span> <span class="kw">true</span> }<span class="op">,</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    { <span class="dt">id</span><span class="op">:</span> <span class="dv">3</span><span class="op">,</span> <span class="dt">title</span><span class="op">:</span> <span class="st">'Create components'</span><span class="op">,</span> <span class="dt">completed</span><span class="op">:</span> <span class="kw">false</span> }<span class="op">,</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>  ])</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Function to toggle a task</span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> toggleTask <span class="op">=</span> (taskId) <span class="kw">=&gt;</span> {</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">setTasks</span>(tasks<span class="op">.</span><span class="fu">map</span>(task <span class="kw">=&gt;</span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>      task<span class="op">.</span><span class="at">id</span> <span class="op">===</span> taskId</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>        <span class="op">?</span> { <span class="op">...</span>task<span class="op">,</span> <span class="dt">completed</span><span class="op">:</span> <span class="op">!</span>task<span class="op">.</span><span class="at">completed</span> }</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>        <span class="op">:</span> task</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>    ))</span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;div</span> <span class="ot">className</span><span class="op">=</span><span class="st">"App"</span><span class="kw">&gt;</span></span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>      <span class="fu">&lt;Greeting</span> <span class="fu">/&gt;</span></span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;div</span> <span class="ot">style</span><span class="op">=</span><span class="va">{</span>{ <span class="dt">marginBottom</span><span class="op">:</span> <span class="st">'30px'</span> }<span class="va">}</span><span class="kw">&gt;</span></span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;h3&gt;</span>Counter Example<span class="kw">&lt;/h3&gt;</span></span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;button</span> <span class="ot">onClick</span><span class="op">=</span><span class="va">{</span>() <span class="kw">=&gt;</span> <span class="fu">setCount</span>(count <span class="op">+</span> <span class="dv">1</span>)<span class="va">}</span><span class="kw">&gt;</span></span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>          Click</span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;/button&gt;</span></span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;p&gt;</span>Count: <span class="va">{</span>count<span class="va">}</span><span class="kw">&lt;/p&gt;</span></span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;div&gt;</span></span>
+<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;h3&gt;</span>Task List Example<span class="kw">&lt;/h3&gt;</span></span>
+<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a>        <span class="va">{</span>tasks<span class="op">.</span><span class="fu">map</span>(task <span class="kw">=&gt;</span> (</span>
+<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a>          <span class="fu">&lt;TaskItem</span></span>
+<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a>            <span class="ot">key</span><span class="op">=</span><span class="va">{</span>task<span class="op">.</span><span class="at">id</span><span class="va">}</span></span>
+<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a>            <span class="ot">title</span><span class="op">=</span><span class="va">{</span>task<span class="op">.</span><span class="at">title</span><span class="va">}</span></span>
+<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a>            <span class="ot">completed</span><span class="op">=</span><span class="va">{</span>task<span class="op">.</span><span class="at">completed</span><span class="va">}</span></span>
+<span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a>            <span class="ot">onToggle</span><span class="op">=</span><span class="va">{</span>() <span class="kw">=&gt;</span> <span class="fu">toggleTask</span>(task<span class="op">.</span><span class="at">id</span>)<span class="va">}</span></span>
+<span id="cb12-48"><a href="#cb12-48" aria-hidden="true" tabindex="-1"></a>          <span class="fu">/&gt;</span></span>
+<span id="cb12-49"><a href="#cb12-49" aria-hidden="true" tabindex="-1"></a>        ))<span class="va">}</span></span>
+<span id="cb12-50"><a href="#cb12-50" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb12-51"><a href="#cb12-51" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb12-52"><a href="#cb12-52" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb12-53"><a href="#cb12-53" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-54"><a href="#cb12-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-55"><a href="#cb12-55" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="im">default</span> App</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="whats-happening-3" class="level3">
+<h3 class="anchored" data-anchor-id="whats-happening-3">What’s Happening?</h3>
+<p><strong>Rendering a list with <code>.map()</code>:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode jsx code-with-copy"><code class="sourceCode javascriptreact"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>{tasks<span class="op">.</span><span class="fu">map</span>(task <span class="kw">=&gt;</span> (</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">&lt;TaskItem</span> <span class="ot">key</span><span class="op">=</span><span class="va">{</span>task<span class="op">.</span><span class="at">id</span><span class="va">}</span> <span class="er">...</span> <span class="fu">/&gt;</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>))}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><code>.map()</code> loops through the array</li>
+<li>Returns a <code>TaskItem</code> for each task</li>
+<li><code>key={task.id}</code> helps React track items efficiently</li>
+</ul>
+<p><strong>Updating state immutably:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode jsx code-with-copy"><code class="sourceCode javascriptreact"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setTasks</span>(tasks<span class="op">.</span><span class="fu">map</span>(task <span class="kw">=&gt;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  task<span class="op">.</span><span class="at">id</span> <span class="op">===</span> taskId</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">?</span> { <span class="op">...</span>task<span class="op">,</span> <span class="dt">completed</span><span class="op">:</span> <span class="op">!</span>task<span class="op">.</span><span class="at">completed</span> }</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">:</span> task</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Creates a <strong>new array</strong> (don’t modify the original)</li>
+<li><code>{ ...task, completed: !task.completed }</code> copies the task and flips completed</li>
+<li>This is called an <strong>immutable update</strong></li>
+</ul>
+</section>
+<section id="why-is-toggletask-in-app-not-taskitem" class="level3">
+<h3 class="anchored" data-anchor-id="why-is-toggletask-in-app-not-taskitem">Why is toggleTask in App, not TaskItem?</h3>
+<p>This is a key React pattern called <strong>“lifting state up”</strong>.</p>
+<pre><code>┌─────────────────────────────────────┐
+│  App (Parent)                       │
+│  ┌─────────────────────────────┐    │
+│  │ tasks = [...]               │    │  ← State lives here
+│  │ toggleTask = (id) =&gt; {...}  │    │  ← Function lives here
+│  └─────────────────────────────┘    │
+│                                     │
+│    ┌──────────┐  ┌──────────┐       │
+│    │ TaskItem │  │ TaskItem │       │  ← Children receive
+│    │ (props)  │  │ (props)  │       │    data via props
+│    └──────────┘  └──────────┘       │
+└─────────────────────────────────────┘</code></pre>
+<p><strong>Why this pattern?</strong></p>
+<ol type="1">
+<li><p><strong>Single source of truth</strong>: The <code>tasks</code> array lives in one place (App). If TaskItem could modify its own state, we’d have copies of data in multiple places that could get out of sync.</p></li>
+<li><p><strong>TaskItem is “dumb”</strong>: It only knows how to display a task and call a function when clicked. It doesn’t know about other tasks or how to update the array.</p></li>
+<li><p><strong>Reusability</strong>: TaskItem can be used anywhere. It just needs <code>title</code>, <code>completed</code>, and <code>onToggle</code> props.</p></li>
+<li><p><strong>Data flows down, events flow up</strong>:</p>
+<ul>
+<li>App passes data DOWN to TaskItem via props</li>
+<li>TaskItem sends events UP by calling <code>onToggle</code></li>
+<li>App handles the event and updates state</li>
+<li>React re-renders with new data</li>
+</ul></li>
+</ol>
+<p><strong>The alternative (and why it’s bad):</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode jsx code-with-copy"><code class="sourceCode javascriptreact"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">// DON'T DO THIS - TaskItem managing its own state</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">TaskItem</span>({ title<span class="op">,</span> initialCompleted }) {</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> [completed<span class="op">,</span> setCompleted] <span class="op">=</span> <span class="fu">useState</span>(initialCompleted)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Now TaskItem has its own copy of completed</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">// This gets out of sync with the parent's data!</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+<section id="part-6-adding-new-tasks" class="level2">
+<h2 class="anchored" data-anchor-id="part-6-adding-new-tasks">Part 6: Adding New Tasks</h2>
+<p>Now let’s add the ability to create new tasks. This demonstrates handling form input.</p>
+<section id="step-10-update-app.jsx-with-add-task-form" class="level3">
+<h3 class="anchored" data-anchor-id="step-10-update-app.jsx-with-add-task-form">Step 10: Update App.jsx with Add Task Form</h3>
+<p>Replace <code>App.jsx</code> with:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode jsx code-with-copy"><code class="sourceCode javascriptreact"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { useState } <span class="im">from</span> <span class="st">'react'</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> <span class="st">'./App.css'</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> TaskItem <span class="im">from</span> <span class="st">'./components/TaskItem'</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">Greeting</span>() {</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return </span><span class="kw">&lt;h2&gt;</span>Welcome to React Basics!<span class="kw">&lt;/h2&gt;</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">App</span>() {</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> [count<span class="op">,</span> setCount] <span class="op">=</span> <span class="fu">useState</span>(<span class="dv">0</span>)</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  <span class="co">// State for the task list</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> [tasks<span class="op">,</span> setTasks] <span class="op">=</span> <span class="fu">useState</span>([</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>    { <span class="dt">id</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">title</span><span class="op">:</span> <span class="st">'Learn React basics'</span><span class="op">,</span> <span class="dt">completed</span><span class="op">:</span> <span class="kw">false</span> }<span class="op">,</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>    { <span class="dt">id</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">title</span><span class="op">:</span> <span class="st">'Understand useState'</span><span class="op">,</span> <span class="dt">completed</span><span class="op">:</span> <span class="kw">true</span> }<span class="op">,</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>    { <span class="dt">id</span><span class="op">:</span> <span class="dv">3</span><span class="op">,</span> <span class="dt">title</span><span class="op">:</span> <span class="st">'Create components'</span><span class="op">,</span> <span class="dt">completed</span><span class="op">:</span> <span class="kw">false</span> }<span class="op">,</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>  ])</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>  <span class="co">// State for the new task input field</span></span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> [newTaskTitle<span class="op">,</span> setNewTaskTitle] <span class="op">=</span> <span class="fu">useState</span>(<span class="st">''</span>)</span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Function to toggle a task</span></span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> toggleTask <span class="op">=</span> (taskId) <span class="kw">=&gt;</span> {</span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">setTasks</span>(tasks<span class="op">.</span><span class="fu">map</span>(task <span class="kw">=&gt;</span></span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a>      task<span class="op">.</span><span class="at">id</span> <span class="op">===</span> taskId</span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>        <span class="op">?</span> { <span class="op">...</span>task<span class="op">,</span> <span class="dt">completed</span><span class="op">:</span> <span class="op">!</span>task<span class="op">.</span><span class="at">completed</span> }</span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>        <span class="op">:</span> task</span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>    ))</span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Function to add a new task</span></span>
+<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> addTask <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Don't add empty tasks</span></span>
+<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (newTaskTitle<span class="op">.</span><span class="fu">trim</span>() <span class="op">===</span> <span class="st">''</span>) <span class="cf">return</span></span>
+<span id="cb17-35"><a href="#cb17-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-36"><a href="#cb17-36" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> newTask <span class="op">=</span> {</span>
+<span id="cb17-37"><a href="#cb17-37" aria-hidden="true" tabindex="-1"></a>      <span class="dt">id</span><span class="op">:</span> <span class="bu">Date</span><span class="op">.</span><span class="fu">now</span>()<span class="op">,</span>  <span class="co">// Simple way to generate unique IDs</span></span>
+<span id="cb17-38"><a href="#cb17-38" aria-hidden="true" tabindex="-1"></a>      <span class="dt">title</span><span class="op">:</span> newTaskTitle<span class="op">,</span></span>
+<span id="cb17-39"><a href="#cb17-39" aria-hidden="true" tabindex="-1"></a>      <span class="dt">completed</span><span class="op">:</span> <span class="kw">false</span></span>
+<span id="cb17-40"><a href="#cb17-40" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb17-41"><a href="#cb17-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-42"><a href="#cb17-42" aria-hidden="true" tabindex="-1"></a>    <span class="fu">setTasks</span>([<span class="op">...</span>tasks<span class="op">,</span> newTask])  <span class="co">// Add to end of array</span></span>
+<span id="cb17-43"><a href="#cb17-43" aria-hidden="true" tabindex="-1"></a>    <span class="fu">setNewTaskTitle</span>(<span class="st">''</span>)             <span class="co">// Clear the input</span></span>
+<span id="cb17-44"><a href="#cb17-44" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb17-45"><a href="#cb17-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-46"><a href="#cb17-46" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb17-47"><a href="#cb17-47" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;div</span> <span class="ot">className</span><span class="op">=</span><span class="st">"App"</span><span class="kw">&gt;</span></span>
+<span id="cb17-48"><a href="#cb17-48" aria-hidden="true" tabindex="-1"></a>      <span class="fu">&lt;Greeting</span> <span class="fu">/&gt;</span></span>
+<span id="cb17-49"><a href="#cb17-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-50"><a href="#cb17-50" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;div</span> <span class="ot">style</span><span class="op">=</span><span class="va">{</span>{ <span class="dt">marginBottom</span><span class="op">:</span> <span class="st">'30px'</span> }<span class="va">}</span><span class="kw">&gt;</span></span>
+<span id="cb17-51"><a href="#cb17-51" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;h3&gt;</span>Counter Example<span class="kw">&lt;/h3&gt;</span></span>
+<span id="cb17-52"><a href="#cb17-52" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;button</span> <span class="ot">onClick</span><span class="op">=</span><span class="va">{</span>() <span class="kw">=&gt;</span> <span class="fu">setCount</span>(count <span class="op">+</span> <span class="dv">1</span>)<span class="va">}</span><span class="kw">&gt;</span></span>
+<span id="cb17-53"><a href="#cb17-53" aria-hidden="true" tabindex="-1"></a>          Click</span>
+<span id="cb17-54"><a href="#cb17-54" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;/button&gt;</span></span>
+<span id="cb17-55"><a href="#cb17-55" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;p&gt;</span>Count: <span class="va">{</span>count<span class="va">}</span><span class="kw">&lt;/p&gt;</span></span>
+<span id="cb17-56"><a href="#cb17-56" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb17-57"><a href="#cb17-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-58"><a href="#cb17-58" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;div&gt;</span></span>
+<span id="cb17-59"><a href="#cb17-59" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;h3&gt;</span>Task List Example<span class="kw">&lt;/h3&gt;</span></span>
+<span id="cb17-60"><a href="#cb17-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-61"><a href="#cb17-61" aria-hidden="true" tabindex="-1"></a>        <span class="va">{</span><span class="co">/* Add Task Form */</span><span class="va">}</span></span>
+<span id="cb17-62"><a href="#cb17-62" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;div</span> <span class="ot">style</span><span class="op">=</span><span class="va">{</span>{ <span class="dt">marginBottom</span><span class="op">:</span> <span class="st">'20px'</span> }<span class="va">}</span><span class="kw">&gt;</span></span>
+<span id="cb17-63"><a href="#cb17-63" aria-hidden="true" tabindex="-1"></a>          <span class="kw">&lt;input</span></span>
+<span id="cb17-64"><a href="#cb17-64" aria-hidden="true" tabindex="-1"></a>            <span class="ot">type</span><span class="op">=</span><span class="st">"text"</span></span>
+<span id="cb17-65"><a href="#cb17-65" aria-hidden="true" tabindex="-1"></a>            <span class="ot">value</span><span class="op">=</span><span class="va">{</span>newTaskTitle<span class="va">}</span></span>
+<span id="cb17-66"><a href="#cb17-66" aria-hidden="true" tabindex="-1"></a>            <span class="ot">onChange</span><span class="op">=</span><span class="va">{</span>(e) <span class="kw">=&gt;</span> <span class="fu">setNewTaskTitle</span>(e<span class="op">.</span><span class="at">target</span><span class="op">.</span><span class="at">value</span>)<span class="va">}</span></span>
+<span id="cb17-67"><a href="#cb17-67" aria-hidden="true" tabindex="-1"></a>            <span class="ot">placeholder</span><span class="op">=</span><span class="st">"Enter a new task..."</span></span>
+<span id="cb17-68"><a href="#cb17-68" aria-hidden="true" tabindex="-1"></a>            <span class="ot">style</span><span class="op">=</span><span class="va">{</span>{ <span class="dt">padding</span><span class="op">:</span> <span class="st">'8px'</span><span class="op">,</span> <span class="dt">marginRight</span><span class="op">:</span> <span class="st">'10px'</span><span class="op">,</span> <span class="dt">width</span><span class="op">:</span> <span class="st">'200px'</span> }<span class="va">}</span></span>
+<span id="cb17-69"><a href="#cb17-69" aria-hidden="true" tabindex="-1"></a>          <span class="kw">/&gt;</span></span>
+<span id="cb17-70"><a href="#cb17-70" aria-hidden="true" tabindex="-1"></a>          <span class="kw">&lt;button</span> <span class="ot">onClick</span><span class="op">=</span><span class="va">{</span>addTask<span class="va">}</span><span class="kw">&gt;</span></span>
+<span id="cb17-71"><a href="#cb17-71" aria-hidden="true" tabindex="-1"></a>            Add Task</span>
+<span id="cb17-72"><a href="#cb17-72" aria-hidden="true" tabindex="-1"></a>          <span class="kw">&lt;/button&gt;</span></span>
+<span id="cb17-73"><a href="#cb17-73" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb17-74"><a href="#cb17-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-75"><a href="#cb17-75" aria-hidden="true" tabindex="-1"></a>        <span class="va">{</span><span class="co">/* Task List */</span><span class="va">}</span></span>
+<span id="cb17-76"><a href="#cb17-76" aria-hidden="true" tabindex="-1"></a>        <span class="va">{</span>tasks<span class="op">.</span><span class="fu">map</span>(task <span class="kw">=&gt;</span> (</span>
+<span id="cb17-77"><a href="#cb17-77" aria-hidden="true" tabindex="-1"></a>          <span class="fu">&lt;TaskItem</span></span>
+<span id="cb17-78"><a href="#cb17-78" aria-hidden="true" tabindex="-1"></a>            <span class="ot">key</span><span class="op">=</span><span class="va">{</span>task<span class="op">.</span><span class="at">id</span><span class="va">}</span></span>
+<span id="cb17-79"><a href="#cb17-79" aria-hidden="true" tabindex="-1"></a>            <span class="ot">title</span><span class="op">=</span><span class="va">{</span>task<span class="op">.</span><span class="at">title</span><span class="va">}</span></span>
+<span id="cb17-80"><a href="#cb17-80" aria-hidden="true" tabindex="-1"></a>            <span class="ot">completed</span><span class="op">=</span><span class="va">{</span>task<span class="op">.</span><span class="at">completed</span><span class="va">}</span></span>
+<span id="cb17-81"><a href="#cb17-81" aria-hidden="true" tabindex="-1"></a>            <span class="ot">onToggle</span><span class="op">=</span><span class="va">{</span>() <span class="kw">=&gt;</span> <span class="fu">toggleTask</span>(task<span class="op">.</span><span class="at">id</span>)<span class="va">}</span></span>
+<span id="cb17-82"><a href="#cb17-82" aria-hidden="true" tabindex="-1"></a>          <span class="fu">/&gt;</span></span>
+<span id="cb17-83"><a href="#cb17-83" aria-hidden="true" tabindex="-1"></a>        ))<span class="va">}</span></span>
+<span id="cb17-84"><a href="#cb17-84" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb17-85"><a href="#cb17-85" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb17-86"><a href="#cb17-86" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb17-87"><a href="#cb17-87" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb17-88"><a href="#cb17-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-89"><a href="#cb17-89" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="im">default</span> App</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="whats-new" class="level3">
+<h3 class="anchored" data-anchor-id="whats-new">What’s New?</h3>
+<p><strong>Controlled input:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode jsx code-with-copy"><code class="sourceCode javascriptreact"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> [newTaskTitle<span class="op">,</span> setNewTaskTitle] <span class="op">=</span> <span class="fu">useState</span>(<span class="st">''</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;input</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="ot">value</span><span class="op">=</span><span class="va">{</span>newTaskTitle<span class="va">}</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="ot">onChange</span><span class="op">=</span><span class="va">{</span>(e) <span class="kw">=&gt;</span> <span class="fu">setNewTaskTitle</span>(e<span class="op">.</span><span class="at">target</span><span class="op">.</span><span class="at">value</span>)<span class="va">}</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="kw">/&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Concept</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>value={newTaskTitle}</code></td>
+<td>The input displays whatever is in state</td>
+</tr>
+<tr class="even">
+<td><code>onChange={(e) =&gt; ...}</code></td>
+<td>When user types, update the state</td>
+</tr>
+<tr class="odd">
+<td><code>e.target.value</code></td>
+<td>The current text in the input field</td>
+</tr>
+</tbody>
+</table>
+<p>This is called a <strong>controlled component</strong> - React state controls what the input shows.</p>
+<p><strong>Adding to an array:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode jsx code-with-copy"><code class="sourceCode javascriptreact"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setTasks</span>([<span class="op">...</span>tasks<span class="op">,</span> newTask])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><code>...tasks</code> spreads all existing tasks</li>
+<li><code>newTask</code> is added at the end</li>
+<li>Creates a new array (immutable update)</li>
+</ul>
+<p><strong>Generating unique IDs:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode jsx code-with-copy"><code class="sourceCode javascriptreact"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>id<span class="op">:</span> <span class="bu">Date</span><span class="op">.</span><span class="fu">now</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><code>Date.now()</code> returns milliseconds since 1970</li>
+<li>Good enough for simple apps (in real apps, use UUID or database IDs)</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 28%">
+<col style="width: 43%">
+<col style="width: 28%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Concept</th>
+<th>What It Does</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Component</strong></td>
+<td>Reusable UI piece</td>
+<td><code>function Greeting() { return &lt;h2&gt;Hi&lt;/h2&gt; }</code></td>
+</tr>
+<tr class="even">
+<td><strong>JSX</strong></td>
+<td>HTML-like syntax in JavaScript</td>
+<td><code>&lt;div className="App"&gt;</code></td>
+</tr>
+<tr class="odd">
+<td><strong>State</strong></td>
+<td>Data that can change</td>
+<td><code>const [count, setCount] = useState(0)</code></td>
+</tr>
+<tr class="even">
+<td><strong>Props</strong></td>
+<td>Data passed to child components</td>
+<td><code>&lt;TaskItem title="Learn React" /&gt;</code></td>
+</tr>
+<tr class="odd">
+<td><strong>Events</strong></td>
+<td>Responding to user actions</td>
+<td><code>onClick={() =&gt; setCount(count + 1)}</code></td>
+</tr>
+<tr class="even">
+<td><strong>Lists</strong></td>
+<td>Rendering arrays</td>
+<td><code>{items.map(item =&gt; &lt;Item key={item.id} /&gt;)}</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="exercises" class="level2">
+<h2 class="anchored" data-anchor-id="exercises">Exercises</h2>
+<p>Try extending the app:</p>
+<ol type="1">
+<li><strong>Delete a task</strong>: Add a delete button to TaskItem that removes the task from the list</li>
+<li><strong>Show count</strong>: Display “3 tasks, 1 completed” above the task list</li>
+<li><strong>Filter tasks</strong>: Add buttons to show All / Active / Completed tasks</li>
+<li><strong>Edit a task</strong>: Double-click a task title to edit it inline</li>
+</ol>
+<hr>
+</section>
+<section id="connection-to-next.js" class="level2">
+<h2 class="anchored" data-anchor-id="connection-to-next.js">Connection to Next.js</h2>
+<p>Everything you learned here works exactly the same in Next.js:</p>
+<ul>
+<li>Components are identical</li>
+<li>useState works the same</li>
+<li>Props work the same</li>
+</ul>
+<p>Next.js adds: file-based routing, server-side rendering, and API routes. But the React fundamentals you learned here are the foundation.</p>
+<hr>
 </section>
 <section id="getting-help" class="level2">
 <h2 class="anchored" data-anchor-id="getting-help">Getting Help</h2>
