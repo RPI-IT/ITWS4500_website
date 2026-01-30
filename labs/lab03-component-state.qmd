@@ -630,8 +630,4 @@ Next.js adds: file-based routing, server-side rendering, and API routes. But the
 
 ---
 
-## Getting Help
 
-- **Office Hours:** Tuesday 9-11 AM, Pitt 2206
-- **Piazza:** Post questions with `lab3` tag
-- **TA Sessions:** Check LMS for schedule
