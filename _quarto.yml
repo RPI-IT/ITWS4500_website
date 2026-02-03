@@ -70,7 +70,7 @@ website:
             href: labs/lab02-layered-architecture.qmd
           - text: "Lab 3: Component & State"
             href: labs/lab03-component-state.qmd
-          - text: "Lab 4: Backend Patterns"
+          - text: "Lab 4: Full-Stack Project Management"
             href: labs/lab04-backend-patterns.qmd
           - text: "Lab 5: Polyglot Persistence"
             href: labs/lab05-polyglot-persistence.qmd

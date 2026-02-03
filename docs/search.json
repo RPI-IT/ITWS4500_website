@@ -1570,42 +1570,42 @@
   {
     "objectID": "labs/lab04-backend-patterns.html",
     "href": "labs/lab04-backend-patterns.html",
-    "title": "Lab 4: Backend Architecture Patterns",
+    "title": "Lab 4: Full-Stack Project Management App",
     "section": "",
-    "text": "ImportantLab Information\n\n\n\nAssigned: Tuesday, February 10, 2026 Points: 100"
+    "text": "ImportantLab Information\n\n\n\nAssigned: Tuesday, February 10, 2026 Points: 100 (+ up to 20 bonus presentation points) Team Size: 3-4 members"
   },
   {
     "objectID": "labs/lab04-backend-patterns.html#overview",
     "href": "labs/lab04-backend-patterns.html#overview",
-    "title": "Lab 4: Backend Architecture Patterns",
+    "title": "Lab 4: Full-Stack Project Management App",
     "section": "Overview",
-    "text": "Overview\nThis lab covers backend architectural patterns including service layers, middleware, and API design."
+    "text": "Overview\nIn this lab, your team will build a Project Management application from scratch. Unlike previous labs where you filled in pre-written functions, you will design and implement the entire application: frontend, backend, and database schema.\nThe application manages Projects and Tasks, where tasks belong to projects. You’ll implement full CRUD (Create, Read, Update, Delete) operations for both entities."
   },
   {
     "objectID": "labs/lab04-backend-patterns.html#learning-objectives",
     "href": "labs/lab04-backend-patterns.html#learning-objectives",
-    "title": "Lab 4: Backend Architecture Patterns",
+    "title": "Lab 4: Full-Stack Project Management App",
     "section": "Learning Objectives",
-    "text": "Learning Objectives\nBy completing this lab, you will:\n\nImplement service layer patterns\nDesign RESTful APIs\nCreate middleware pipelines\nHandle errors consistently"
+    "text": "Learning Objectives\nBy completing this lab, you will:\n\nBuild a Next.js frontend from scratch - Create React components, pages, and API integration\nBuild an Express API from scratch - Design routes, controllers, and middleware\nDesign a MongoDB schema - Model relationships between Projects and Tasks\nPractice collaborative git workflows - Use feature branches, pull requests, and code review\nPresent technical solutions - Explain your implementation decisions to peers"
   },
   {
     "objectID": "labs/lab04-backend-patterns.html#getting-started",
     "href": "labs/lab04-backend-patterns.html#getting-started",
-    "title": "Lab 4: Backend Architecture Patterns",
+    "title": "Lab 4: Full-Stack Project Management App",
     "section": "Getting Started",
-    "text": "Getting Started\nClick the button below to accept the assignment and create your repository:"
+    "text": "Getting Started\nClick the button below to accept the assignment and create your repository:\nAccept Lab 4 Assignment"
   },
   {
     "objectID": "labs/lab04-backend-patterns.html#prerequisites",
     "href": "labs/lab04-backend-patterns.html#prerequisites",
-    "title": "Lab 4: Backend Architecture Patterns",
+    "title": "Lab 4: Full-Stack Project Management App",
     "section": "Prerequisites",
-    "text": "Prerequisites\n\nCompleted Lab 3\nUnderstanding of backend architecture patterns"
+    "text": "Prerequisites\n\nCompleted Labs 1-3\nNode.js v18+ and npm installed\nDocker and Docker Compose running\nGit and GitHub account\nUnderstanding of React, Express, and MongoDB fundamentals"
   },
   {
     "objectID": "labs/lab04-backend-patterns.html#getting-help",
     "href": "labs/lab04-backend-patterns.html#getting-help",
-    "title": "Lab 4: Backend Architecture Patterns",
+    "title": "Lab 4: Full-Stack Project Management App",
     "section": "Getting Help",
     "text": "Getting Help\n\nOffice Hours: Tuesday 9-11 AM, Pitt 2206\nPiazza: Post questions with lab4 tag\nTA Sessions: Check LMS for schedule"
   },
@@ -7040,5 +7040,271 @@
     "title": "Lab 3: React Basics",
     "section": "Conceptual Foundation: How React Components Work",
     "text": "Conceptual Foundation: How React Components Work\n\n\n\n\n\n\nTipRead This First\n\n\n\nBefore writing code, it’s important to understand what a React component really is. This mental model will make everything else in this lab—and later in Next.js—much easier to understand.\n\n\n\nWhat Is a React Component?\nAt its core:\n\nA React component is just a JavaScript function that returns UI.\n\nExample:\nfunction Greeting() {\n  return &lt;h2&gt;Welcome to React Basics!&lt;/h2&gt;\n}\nThis is not a template or special syntax. It is a normal JavaScript function.\nWhen React sees &lt;Greeting /&gt; in your code, it:\n\nCalls the Greeting() function\nTakes the JSX it returns\nDisplays that JSX on the screen\n\nYou can think of this as:\nGreeting()\nproducing UI.\n\n\nComponents Are Re-Executed on Every Render\nA critical mental model in React is this:\n\nReact re-runs your component function every time state changes.\n\nFor example:\nfunction App() {\n  const [count, setCount] = useState(0)\n  return &lt;p&gt;Count: {count}&lt;/p&gt;\n}\nWhen setCount() is called:\n\nReact stores the new state\nReact re-runs App()\nReact compares the old UI to the new UI\nOnly the changed parts of the DOM are updated\n\nThis is why:\n\nYou never manually update the DOM\nUI is always a function of state\n\n\n\nWhy Component Names Must Be Capitalized\nReact uses capitalization to distinguish components from HTML.\n&lt;Greeting /&gt;   // React component → calls Greeting()\n&lt;greeting /&gt;   // HTML element → looks for &lt;greeting&gt; tag\nRule:\n\nCapital letter → React component\nLowercase → HTML element\n\n\n\nProps vs State\n\n\n\nConcept\nDescription\n\n\n\n\nProps\nData passed into a component\n\n\nState\nData managed inside a component\n\n\nProps\nRead-only\n\n\nState\nCan change over time\n\n\n\n\n\nData Flow in React\n\nData flows down, events flow up\n\nParents pass data to children via props. Children notify parents of events via callback functions. Parents update state. React re-renders the UI."
+  },
+  {
+    "objectID": "temp/lab4.html",
+    "href": "temp/lab4.html",
+    "title": "Lab 4: Full-Stack Project Management App",
+    "section": "",
+    "text": "ITWS 4500 - Modern Application Development Rensselaer Polytechnic Institute\n\n\nIn this lab, your team will build a Project Management application from scratch. Unlike previous labs where you filled in pre-written functions, you will design and implement the entire application: frontend, backend, and database schema.\nThe application manages Projects and Tasks, where tasks belong to projects. You’ll implement full CRUD (Create, Read, Update, Delete) operations for both entities.\nTotal Points: 100\n\n\n\n\nBy completing this lab, you will:\n\nBuild a Next.js frontend from scratch - Create React components, pages, and API integration\nBuild an Express API from scratch - Design routes, controllers, and middleware\nDesign a MongoDB schema - Model relationships between Projects and Tasks\nPractice collaborative git workflows - Use feature branches, pull requests, and code review\nPresent technical solutions - Explain your implementation decisions to peers\n\n\n\n\n\nThis lab uses a flipped classroom approach. Teams work independently, and individuals present key solutions during class sessions.\n\n\n\n\n\n\n\n\n\n\n\nSession\nTopic\nPresenter Selection\nPoints\n\n\n\n\nSession 1\nDatabase Schema Design\n1 student per team presents their Mongoose models\n5\n\n\nSession 2\nAPI Architecture\n1 student per team explains their route/controller structure\n5\n\n\nSession 3\nFrontend State Management\n1 student per team shows how they handle data fetching and state\n5\n\n\nSession 4\nIntegration Demo\nFull team demos working application\n5\n\n\n\n\n\n\nEach presentation should be 3-5 minutes and cover: - What you built - Key design decisions and tradeoffs - One challenge you faced and how you solved it - Live demo or code walkthrough\nNote: Different team members must present each session. All members present at least once.\n\n\n\n\n\n\nCompleted Labs 1-3\nNode.js v18+ and npm installed\nDocker and Docker Compose running\nGit and GitHub account\nUnderstanding of React, Express, and MongoDB fundamentals\n\n\n\n\n\nEach team (3-4 members) works independently on their own application. Within your team:\n\nDivide work across feature branches\nAll code changes must go through Pull Requests\nAt least one teammate must review and approve each PR\nThe main branch is protected - no direct pushes\n\n\n\n\n\n\n\nProject\n├── _id: ObjectId\n├── name: String (required)\n├── description: String\n├── createdAt: Date\n└── updatedAt: Date\n\nTask\n├── _id: ObjectId\n├── projectId: ObjectId (required, references Project)\n├── title: String (required)\n├── description: String\n├── status: String (enum: \"todo\", \"in-progress\", \"done\")\n├── createdAt: Date\n└── updatedAt: Date\n\n\n\n\n\n\nView list of all projects\nCreate a new project\nView single project with its tasks\nUpdate project details\nDelete project (and associated tasks)\n\n\n\n\n\nView tasks within a project\nCreate a new task in a project\nUpdate task details and status\nDelete a task\n\n\n\n\n\n\n\n├── client/                     # Next.js Frontend\n│   ├── src/\n│   │   ├── app/               # Next.js App Router pages\n│   │   ├── components/        # React components\n│   │   └── lib/               # Utilities, API client\n│   ├── package.json\n│   └── Dockerfile\n│\n├── server/                     # Express Backend\n│   ├── src/\n│   │   ├── index.js           # Server entry point\n│   │   ├── config/            # Database configuration\n│   │   ├── models/            # Mongoose models\n│   │   ├── routes/            # API route definitions\n│   │   ├── controllers/       # Request handlers\n│   │   └── middleware/        # Error handling, validation\n│   ├── package.json\n│   └── Dockerfile\n│\n├── .github/\n│   └── workflows/\n│       └── ci.yml             # GitHub Actions CI\n│\n├── docker-compose.yml          # Container orchestration\n├── API.md                      # API contract specification\n├── answers.yml                 # Your responses\n└── README.md                   # This file\n\n\n\n\n\n\nYour repository must use the following branch structure:\nmain (protected)\n├── feature/projects-backend    # Projects API endpoints\n├── feature/projects-frontend   # Projects UI components\n├── feature/tasks-backend       # Tasks API endpoints\n├── feature/tasks-frontend      # Tasks UI components\n└── feature/integration         # Final integration work\n\n\n\n\nNo direct commits to main - All changes via PR\nMinimum 1 approval required - Teammate must review\nDescriptive PR titles - e.g., “Add project creation endpoint”\nLink related issues - If using GitHub Issues\n\n\n\n\nWe will evaluate: - Meaningful commit messages - Logical branch organization - PR descriptions and review comments - All team members contributing via PRs\n\n\n\n\n\nPresentation Topic: Session 1 - Schema Design\n\n\n\nSet up the repository structure\nConfigure docker-compose.yml with MongoDB\nVerify database connectivity\n\n\n\n\n\nImplement Project model with validation\nImplement Task model with project reference\nAdd timestamps to both models\n\nDeliverables: - Working docker-compose up command - server/src/models/Project.js - server/src/models/Task.js\nPresentation Focus: Explain your schema design choices. Why did you structure the relationship this way? What validations did you add and why?\n\n\n\n\n\nPresentation Topic: Session 2 - API Architecture\nImplement the REST API according to the specification in API.md.\n\n\n\n\n\nEndpoint\nMethod\nDescription\nPoints\n\n\n\n\n/api/projects\nGET\nList all projects\n3\n\n\n/api/projects\nPOST\nCreate project\n3\n\n\n/api/projects/:id\nGET\nGet single project\n3\n\n\n/api/projects/:id\nPUT\nUpdate project\n3\n\n\n/api/projects/:id\nDELETE\nDelete project\n3\n\n\n\n\n\n\n\n\n\nEndpoint\nMethod\nDescription\nPoints\n\n\n\n\n/api/projects/:projectId/tasks\nGET\nList tasks in project\n3\n\n\n/api/projects/:projectId/tasks\nPOST\nCreate task\n3\n\n\n/api/tasks/:id\nGET\nGet single task\n3\n\n\n/api/tasks/:id\nPUT\nUpdate task\n3\n\n\n/api/tasks/:id\nDELETE\nDelete task\n3\n\n\n\nRequirements: - Proper HTTP status codes (200, 201, 400, 404, 500) - JSON request/response bodies - Error handling middleware - Input validation\nPresentation Focus: Walk through your route organization and controller pattern. How do you handle errors? Show a request/response cycle.\n\n\n\n\n\nPresentation Topic: Session 3 - State Management\nBuild the Projects UI using Next.js App Router.\n\n\n\nDisplay all projects in a list or grid\nLink to individual project pages\n“Create Project” button\n\n\n\n\n\nShow project name and description\nDisplay tasks belonging to project (from Part 4)\nEdit and Delete buttons\n\n\n\n\n\nCreate project form with validation\nEdit project form (pre-populated)\nHandle form submission and errors\n\nRoutes: - /projects - Projects list - /projects/new - Create project - /projects/[id] - Project detail - /projects/[id]/edit - Edit project\nPresentation Focus: Explain how you fetch and manage data. Do you use hooks? How do you handle loading and error states?\n\n\n\n\n\nBuild the Tasks UI within project context.\n\n\n\nDisplay tasks within project detail page\nShow task status with visual indicator\n“Add Task” button\n\n\n\n\n\nCreate task form with project association\nEdit task form with status dropdown\nForm validation and error handling\n\n\n\n\n\nUpdate task status (todo/in-progress/done)\nDelete task with confirmation\nInline editing or modal (your choice)\n\n\n\n\n\n\nPresentation Topic: Session 4 - Integration Demo\n\n\n\nConsistent header/navigation\nLoading states while fetching data\nError boundaries for failures\n\n\n\n\n\nClient Dockerfile works\nServer Dockerfile works\nFull stack runs with docker-compose up\n\n\n\n\n\nConsistent code formatting\nNo console errors/warnings\nREADME updated with setup instructions\n\nPresentation Focus: Live demo of full application. Show the complete user flow from creating a project to managing tasks.\n\n\n\n\n\nAnswer these questions in answers.yml:\nQ1: Schema Design (1 point) Why did you choose to store projectId in the Task model rather than storing an array of task IDs in the Project model? What are the tradeoffs?\nQ2: API Design (1 point) Explain your choice of nested routes (/projects/:id/tasks) vs flat routes (/tasks?projectId=xxx). What are the advantages of your approach?\nQ3: State Management (1 point) How did you manage state in your Next.js frontend? Did you use any global state management, or rely on component-level state and data fetching?\nQ4: Git Collaboration (2 points) Describe a merge conflict your team encountered and how you resolved it. If you had no conflicts, explain what practices helped you avoid them.\n\n\n\n\n\n\n# Clone your team's repository\ngit clone &lt;your-repo-url&gt;\ncd &lt;repo-name&gt;\n\n# Install dependencies\nnpm run install:all\n\n\n\n# Start all services (MongoDB, server, client)\ndocker-compose up\n\n# Or run locally:\n# Terminal 1: Start MongoDB\ndocker-compose up mongo\n\n# Terminal 2: Start server\ncd server && npm run dev\n\n# Terminal 3: Start client\ncd client && npm run dev\n\n\n\n\nMongoDB: mongodb://localhost:27017\nServer API: http://localhost:3000\nClient: http://localhost:3001\nMongo Express (DB UI): http://localhost:8081\n\n\n\n\ngit checkout -b feature/projects-backend\n# Make changes, commit, push\ngit push -u origin feature/projects-backend\n# Create PR on GitHub\n\n\n\n\n\n\n\n\nPart\nPoints\nDescription\n\n\n\n\nPart 1: Setup & Database\n15\nDocker, models, connectivity\n\n\nPart 2: Backend API\n30\nProjects + Tasks CRUD endpoints\n\n\nPart 3: Frontend Projects\n20\nList, detail, forms\n\n\nPart 4: Frontend Tasks\n20\nList, forms, actions\n\n\nPart 5: Integration\n10\nNavigation, Docker, quality\n\n\nPart 6: Questions\n5\nConceptual answers\n\n\nSubtotal\n100\n\n\n\n\n\n\n\n\n\nPresentation\nPoints\n\n\n\n\nSession 1: Schema Design\n+5\n\n\nSession 2: API Architecture\n+5\n\n\nSession 3: State Management\n+5\n\n\nSession 4: Integration Demo\n+5\n\n\nMax Presentation Bonus\n+20\n\n\n\n\n\n\n\n+5 points: Excellent PR history with meaningful reviews\n-10 points: Direct commits to main (bypassing PRs)\n-5 points: Single team member did &gt;80% of commits\n\n\n\n\n\n\n\n\n\nanswers.yml - Completed with all responses\nserver/ - Working Express API\nclient/ - Working Next.js frontend\ndocker-compose.yml - Full stack runs\nPR History - Visible branch/merge workflow\n\n\n\n\n\nAll CRUD operations work for Projects\nAll CRUD operations work for Tasks\ndocker-compose up starts entire application\nAt least 4 merged PRs from different branches\nAll team members have commits\nanswers.yml completed\nNo secrets committed (.env in .gitignore)\nEach team member presented at least once\n\n\n\n\n\n\n\n\n# Check if MongoDB container is running\ndocker ps\n\n# View MongoDB logs\ndocker-compose logs mongo\n\n# Restart containers\ndocker-compose down && docker-compose up\n\n\n\n# Find process using port\nlsof -i :3000\nlsof -i :3001\n\n# Kill process\nkill -9 &lt;PID&gt;\n\n\n\ncd client\nrm -rf .next\nnpm run dev\n\n\n\nMake sure you’re creating PRs, not pushing directly to main. Check repository Settings &gt; Branches for protection rules.\n\n\n\n\n\n\nNext.js Documentation\nExpress.js Guide\nMongoose Documentation\nGitHub Pull Requests\nREST API Design\n\n\n\n\n\nThis is a team assignment. You may: - Collaborate fully within your team - Use documentation and official resources - Ask clarifying questions on Piazza\nYou may not: - Share code between teams - Copy code from other teams or online solutions - Use AI to generate entire solutions without understanding\nAll team members must contribute meaningfully. We review git history."
+  },
+  {
+    "objectID": "temp/lab4.html#overview",
+    "href": "temp/lab4.html#overview",
+    "title": "Lab 4: Full-Stack Project Management App",
+    "section": "",
+    "text": "In this lab, your team will build a Project Management application from scratch. Unlike previous labs where you filled in pre-written functions, you will design and implement the entire application: frontend, backend, and database schema.\nThe application manages Projects and Tasks, where tasks belong to projects. You’ll implement full CRUD (Create, Read, Update, Delete) operations for both entities.\nTotal Points: 100"
+  },
+  {
+    "objectID": "temp/lab4.html#learning-objectives",
+    "href": "temp/lab4.html#learning-objectives",
+    "title": "Lab 4: Full-Stack Project Management App",
+    "section": "",
+    "text": "By completing this lab, you will:\n\nBuild a Next.js frontend from scratch - Create React components, pages, and API integration\nBuild an Express API from scratch - Design routes, controllers, and middleware\nDesign a MongoDB schema - Model relationships between Projects and Tasks\nPractice collaborative git workflows - Use feature branches, pull requests, and code review\nPresent technical solutions - Explain your implementation decisions to peers"
+  },
+  {
+    "objectID": "temp/lab4.html#flipped-classroom-structure",
+    "href": "temp/lab4.html#flipped-classroom-structure",
+    "title": "Lab 4: Full-Stack Project Management App",
+    "section": "",
+    "text": "This lab uses a flipped classroom approach. Teams work independently, and individuals present key solutions during class sessions.\n\n\n\n\n\n\n\n\n\n\n\nSession\nTopic\nPresenter Selection\nPoints\n\n\n\n\nSession 1\nDatabase Schema Design\n1 student per team presents their Mongoose models\n5\n\n\nSession 2\nAPI Architecture\n1 student per team explains their route/controller structure\n5\n\n\nSession 3\nFrontend State Management\n1 student per team shows how they handle data fetching and state\n5\n\n\nSession 4\nIntegration Demo\nFull team demos working application\n5\n\n\n\n\n\n\nEach presentation should be 3-5 minutes and cover: - What you built - Key design decisions and tradeoffs - One challenge you faced and how you solved it - Live demo or code walkthrough\nNote: Different team members must present each session. All members present at least once."
+  },
+  {
+    "objectID": "temp/lab4.html#prerequisites",
+    "href": "temp/lab4.html#prerequisites",
+    "title": "Lab 4: Full-Stack Project Management App",
+    "section": "",
+    "text": "Completed Labs 1-3\nNode.js v18+ and npm installed\nDocker and Docker Compose running\nGit and GitHub account\nUnderstanding of React, Express, and MongoDB fundamentals"
+  },
+  {
+    "objectID": "temp/lab4.html#team-structure",
+    "href": "temp/lab4.html#team-structure",
+    "title": "Lab 4: Full-Stack Project Management App",
+    "section": "",
+    "text": "Each team (3-4 members) works independently on their own application. Within your team:\n\nDivide work across feature branches\nAll code changes must go through Pull Requests\nAt least one teammate must review and approve each PR\nThe main branch is protected - no direct pushes"
+  },
+  {
+    "objectID": "temp/lab4.html#application-requirements",
+    "href": "temp/lab4.html#application-requirements",
+    "title": "Lab 4: Full-Stack Project Management App",
+    "section": "",
+    "text": "Project\n├── _id: ObjectId\n├── name: String (required)\n├── description: String\n├── createdAt: Date\n└── updatedAt: Date\n\nTask\n├── _id: ObjectId\n├── projectId: ObjectId (required, references Project)\n├── title: String (required)\n├── description: String\n├── status: String (enum: \"todo\", \"in-progress\", \"done\")\n├── createdAt: Date\n└── updatedAt: Date\n\n\n\n\n\n\nView list of all projects\nCreate a new project\nView single project with its tasks\nUpdate project details\nDelete project (and associated tasks)\n\n\n\n\n\nView tasks within a project\nCreate a new task in a project\nUpdate task details and status\nDelete a task"
+  },
+  {
+    "objectID": "temp/lab4.html#project-structure",
+    "href": "temp/lab4.html#project-structure",
+    "title": "Lab 4: Full-Stack Project Management App",
+    "section": "",
+    "text": "├── client/                     # Next.js Frontend\n│   ├── src/\n│   │   ├── app/               # Next.js App Router pages\n│   │   ├── components/        # React components\n│   │   └── lib/               # Utilities, API client\n│   ├── package.json\n│   └── Dockerfile\n│\n├── server/                     # Express Backend\n│   ├── src/\n│   │   ├── index.js           # Server entry point\n│   │   ├── config/            # Database configuration\n│   │   ├── models/            # Mongoose models\n│   │   ├── routes/            # API route definitions\n│   │   ├── controllers/       # Request handlers\n│   │   └── middleware/        # Error handling, validation\n│   ├── package.json\n│   └── Dockerfile\n│\n├── .github/\n│   └── workflows/\n│       └── ci.yml             # GitHub Actions CI\n│\n├── docker-compose.yml          # Container orchestration\n├── API.md                      # API contract specification\n├── answers.yml                 # Your responses\n└── README.md                   # This file"
+  },
+  {
+    "objectID": "temp/lab4.html#git-workflow-requirements",
+    "href": "temp/lab4.html#git-workflow-requirements",
+    "title": "Lab 4: Full-Stack Project Management App",
+    "section": "",
+    "text": "Your repository must use the following branch structure:\nmain (protected)\n├── feature/projects-backend    # Projects API endpoints\n├── feature/projects-frontend   # Projects UI components\n├── feature/tasks-backend       # Tasks API endpoints\n├── feature/tasks-frontend      # Tasks UI components\n└── feature/integration         # Final integration work\n\n\n\n\nNo direct commits to main - All changes via PR\nMinimum 1 approval required - Teammate must review\nDescriptive PR titles - e.g., “Add project creation endpoint”\nLink related issues - If using GitHub Issues\n\n\n\n\nWe will evaluate: - Meaningful commit messages - Logical branch organization - PR descriptions and review comments - All team members contributing via PRs"
+  },
+  {
+    "objectID": "temp/lab4.html#part-1-project-setup-database-15-points",
+    "href": "temp/lab4.html#part-1-project-setup-database-15-points",
+    "title": "Lab 4: Full-Stack Project Management App",
+    "section": "",
+    "text": "Presentation Topic: Session 1 - Schema Design\n\n\n\nSet up the repository structure\nConfigure docker-compose.yml with MongoDB\nVerify database connectivity\n\n\n\n\n\nImplement Project model with validation\nImplement Task model with project reference\nAdd timestamps to both models\n\nDeliverables: - Working docker-compose up command - server/src/models/Project.js - server/src/models/Task.js\nPresentation Focus: Explain your schema design choices. Why did you structure the relationship this way? What validations did you add and why?"
+  },
+  {
+    "objectID": "temp/lab4.html#part-2-backend-api-30-points",
+    "href": "temp/lab4.html#part-2-backend-api-30-points",
+    "title": "Lab 4: Full-Stack Project Management App",
+    "section": "",
+    "text": "Presentation Topic: Session 2 - API Architecture\nImplement the REST API according to the specification in API.md.\n\n\n\n\n\nEndpoint\nMethod\nDescription\nPoints\n\n\n\n\n/api/projects\nGET\nList all projects\n3\n\n\n/api/projects\nPOST\nCreate project\n3\n\n\n/api/projects/:id\nGET\nGet single project\n3\n\n\n/api/projects/:id\nPUT\nUpdate project\n3\n\n\n/api/projects/:id\nDELETE\nDelete project\n3\n\n\n\n\n\n\n\n\n\nEndpoint\nMethod\nDescription\nPoints\n\n\n\n\n/api/projects/:projectId/tasks\nGET\nList tasks in project\n3\n\n\n/api/projects/:projectId/tasks\nPOST\nCreate task\n3\n\n\n/api/tasks/:id\nGET\nGet single task\n3\n\n\n/api/tasks/:id\nPUT\nUpdate task\n3\n\n\n/api/tasks/:id\nDELETE\nDelete task\n3\n\n\n\nRequirements: - Proper HTTP status codes (200, 201, 400, 404, 500) - JSON request/response bodies - Error handling middleware - Input validation\nPresentation Focus: Walk through your route organization and controller pattern. How do you handle errors? Show a request/response cycle."
+  },
+  {
+    "objectID": "temp/lab4.html#part-3-frontend---projects-20-points",
+    "href": "temp/lab4.html#part-3-frontend---projects-20-points",
+    "title": "Lab 4: Full-Stack Project Management App",
+    "section": "",
+    "text": "Presentation Topic: Session 3 - State Management\nBuild the Projects UI using Next.js App Router.\n\n\n\nDisplay all projects in a list or grid\nLink to individual project pages\n“Create Project” button\n\n\n\n\n\nShow project name and description\nDisplay tasks belonging to project (from Part 4)\nEdit and Delete buttons\n\n\n\n\n\nCreate project form with validation\nEdit project form (pre-populated)\nHandle form submission and errors\n\nRoutes: - /projects - Projects list - /projects/new - Create project - /projects/[id] - Project detail - /projects/[id]/edit - Edit project\nPresentation Focus: Explain how you fetch and manage data. Do you use hooks? How do you handle loading and error states?"
+  },
+  {
+    "objectID": "temp/lab4.html#part-4-frontend---tasks-20-points",
+    "href": "temp/lab4.html#part-4-frontend---tasks-20-points",
+    "title": "Lab 4: Full-Stack Project Management App",
+    "section": "",
+    "text": "Build the Tasks UI within project context.\n\n\n\nDisplay tasks within project detail page\nShow task status with visual indicator\n“Add Task” button\n\n\n\n\n\nCreate task form with project association\nEdit task form with status dropdown\nForm validation and error handling\n\n\n\n\n\nUpdate task status (todo/in-progress/done)\nDelete task with confirmation\nInline editing or modal (your choice)"
+  },
+  {
+    "objectID": "temp/lab4.html#part-5-integration-polish-10-points",
+    "href": "temp/lab4.html#part-5-integration-polish-10-points",
+    "title": "Lab 4: Full-Stack Project Management App",
+    "section": "",
+    "text": "Presentation Topic: Session 4 - Integration Demo\n\n\n\nConsistent header/navigation\nLoading states while fetching data\nError boundaries for failures\n\n\n\n\n\nClient Dockerfile works\nServer Dockerfile works\nFull stack runs with docker-compose up\n\n\n\n\n\nConsistent code formatting\nNo console errors/warnings\nREADME updated with setup instructions\n\nPresentation Focus: Live demo of full application. Show the complete user flow from creating a project to managing tasks."
+  },
+  {
+    "objectID": "temp/lab4.html#part-6-conceptual-questions-5-points",
+    "href": "temp/lab4.html#part-6-conceptual-questions-5-points",
+    "title": "Lab 4: Full-Stack Project Management App",
+    "section": "",
+    "text": "Answer these questions in answers.yml:\nQ1: Schema Design (1 point) Why did you choose to store projectId in the Task model rather than storing an array of task IDs in the Project model? What are the tradeoffs?\nQ2: API Design (1 point) Explain your choice of nested routes (/projects/:id/tasks) vs flat routes (/tasks?projectId=xxx). What are the advantages of your approach?\nQ3: State Management (1 point) How did you manage state in your Next.js frontend? Did you use any global state management, or rely on component-level state and data fetching?\nQ4: Git Collaboration (2 points) Describe a merge conflict your team encountered and how you resolved it. If you had no conflicts, explain what practices helped you avoid them."
+  },
+  {
+    "objectID": "temp/lab4.html#getting-started",
+    "href": "temp/lab4.html#getting-started",
+    "title": "Lab 4: Full-Stack Project Management App",
+    "section": "",
+    "text": "# Clone your team's repository\ngit clone &lt;your-repo-url&gt;\ncd &lt;repo-name&gt;\n\n# Install dependencies\nnpm run install:all\n\n\n\n# Start all services (MongoDB, server, client)\ndocker-compose up\n\n# Or run locally:\n# Terminal 1: Start MongoDB\ndocker-compose up mongo\n\n# Terminal 2: Start server\ncd server && npm run dev\n\n# Terminal 3: Start client\ncd client && npm run dev\n\n\n\n\nMongoDB: mongodb://localhost:27017\nServer API: http://localhost:3000\nClient: http://localhost:3001\nMongo Express (DB UI): http://localhost:8081\n\n\n\n\ngit checkout -b feature/projects-backend\n# Make changes, commit, push\ngit push -u origin feature/projects-backend\n# Create PR on GitHub"
+  },
+  {
+    "objectID": "temp/lab4.html#grading-rubric",
+    "href": "temp/lab4.html#grading-rubric",
+    "title": "Lab 4: Full-Stack Project Management App",
+    "section": "",
+    "text": "Part\nPoints\nDescription\n\n\n\n\nPart 1: Setup & Database\n15\nDocker, models, connectivity\n\n\nPart 2: Backend API\n30\nProjects + Tasks CRUD endpoints\n\n\nPart 3: Frontend Projects\n20\nList, detail, forms\n\n\nPart 4: Frontend Tasks\n20\nList, forms, actions\n\n\nPart 5: Integration\n10\nNavigation, Docker, quality\n\n\nPart 6: Questions\n5\nConceptual answers\n\n\nSubtotal\n100\n\n\n\n\n\n\n\n\n\nPresentation\nPoints\n\n\n\n\nSession 1: Schema Design\n+5\n\n\nSession 2: API Architecture\n+5\n\n\nSession 3: State Management\n+5\n\n\nSession 4: Integration Demo\n+5\n\n\nMax Presentation Bonus\n+20\n\n\n\n\n\n\n\n+5 points: Excellent PR history with meaningful reviews\n-10 points: Direct commits to main (bypassing PRs)\n-5 points: Single team member did &gt;80% of commits"
+  },
+  {
+    "objectID": "temp/lab4.html#submission-requirements",
+    "href": "temp/lab4.html#submission-requirements",
+    "title": "Lab 4: Full-Stack Project Management App",
+    "section": "",
+    "text": "answers.yml - Completed with all responses\nserver/ - Working Express API\nclient/ - Working Next.js frontend\ndocker-compose.yml - Full stack runs\nPR History - Visible branch/merge workflow\n\n\n\n\n\nAll CRUD operations work for Projects\nAll CRUD operations work for Tasks\ndocker-compose up starts entire application\nAt least 4 merged PRs from different branches\nAll team members have commits\nanswers.yml completed\nNo secrets committed (.env in .gitignore)\nEach team member presented at least once"
+  },
+  {
+    "objectID": "temp/lab4.html#troubleshooting",
+    "href": "temp/lab4.html#troubleshooting",
+    "title": "Lab 4: Full-Stack Project Management App",
+    "section": "",
+    "text": "# Check if MongoDB container is running\ndocker ps\n\n# View MongoDB logs\ndocker-compose logs mongo\n\n# Restart containers\ndocker-compose down && docker-compose up\n\n\n\n# Find process using port\nlsof -i :3000\nlsof -i :3001\n\n# Kill process\nkill -9 &lt;PID&gt;\n\n\n\ncd client\nrm -rf .next\nnpm run dev\n\n\n\nMake sure you’re creating PRs, not pushing directly to main. Check repository Settings &gt; Branches for protection rules."
+  },
+  {
+    "objectID": "temp/lab4.html#resources",
+    "href": "temp/lab4.html#resources",
+    "title": "Lab 4: Full-Stack Project Management App",
+    "section": "",
+    "text": "Next.js Documentation\nExpress.js Guide\nMongoose Documentation\nGitHub Pull Requests\nREST API Design"
+  },
+  {
+    "objectID": "temp/lab4.html#academic-integrity",
+    "href": "temp/lab4.html#academic-integrity",
+    "title": "Lab 4: Full-Stack Project Management App",
+    "section": "",
+    "text": "This is a team assignment. You may: - Collaborate fully within your team - Use documentation and official resources - Ask clarifying questions on Piazza\nYou may not: - Share code between teams - Copy code from other teams or online solutions - Use AI to generate entire solutions without understanding\nAll team members must contribute meaningfully. We review git history."
+  },
+  {
+    "objectID": "labs/lab04-backend-patterns.html#flipped-classroom-structure",
+    "href": "labs/lab04-backend-patterns.html#flipped-classroom-structure",
+    "title": "Lab 4: Full-Stack Project Management App",
+    "section": "Flipped Classroom Structure",
+    "text": "Flipped Classroom Structure\nThis lab uses a flipped classroom approach. Teams work independently, and individuals present key solutions during class sessions.\n\nPresentation Schedule\n\n\n\n\n\n\n\n\n\nSession\nTopic\nPresenter Selection\nPoints\n\n\n\n\nSession 1\nDatabase Schema Design\n1 student per team presents their Mongoose models\n5\n\n\nSession 2\nAPI Architecture\n1 student per team explains their route/controller structure\n5\n\n\nSession 3\nFrontend State Management\n1 student per team shows how they handle data fetching and state\n5\n\n\nSession 4\nIntegration Demo\nFull team demos working application\n5\n\n\n\n\n\nPresentation Requirements\nEach presentation should be 3-5 minutes and cover:\n\nWhat you built\nKey design decisions and tradeoffs\nOne challenge you faced and how you solved it\nLive demo or code walkthrough\n\n\n\n\n\n\n\nNote\n\n\n\nDifferent team members must present each session. All members present at least once."
+  },
+  {
+    "objectID": "labs/lab04-backend-patterns.html#team-structure",
+    "href": "labs/lab04-backend-patterns.html#team-structure",
+    "title": "Lab 4: Full-Stack Project Management App",
+    "section": "Team Structure",
+    "text": "Team Structure\nEach team (3-4 members) works independently on their own application. Within your team:\n\nDivide work across feature branches\nAll code changes must go through Pull Requests\nAt least one teammate must review and approve each PR\nThe main branch is protected - no direct pushes"
+  },
+  {
+    "objectID": "labs/lab04-backend-patterns.html#application-requirements",
+    "href": "labs/lab04-backend-patterns.html#application-requirements",
+    "title": "Lab 4: Full-Stack Project Management App",
+    "section": "Application Requirements",
+    "text": "Application Requirements\n\nData Model\nProject\n├── _id: ObjectId\n├── name: String (required)\n├── description: String\n├── createdAt: Date\n└── updatedAt: Date\n\nTask\n├── _id: ObjectId\n├── projectId: ObjectId (required, references Project)\n├── title: String (required)\n├── description: String\n├── status: String (enum: \"todo\", \"in-progress\", \"done\")\n├── createdAt: Date\n└── updatedAt: Date\n\n\nRequired Features\n\nProjects\n\nView list of all projects\nCreate a new project\nView single project with its tasks\nUpdate project details\nDelete project (and associated tasks)\n\n\n\nTasks\n\nView tasks within a project\nCreate a new task in a project\nUpdate task details and status\nDelete a task"
+  },
+  {
+    "objectID": "labs/lab04-backend-patterns.html#project-structure",
+    "href": "labs/lab04-backend-patterns.html#project-structure",
+    "title": "Lab 4: Full-Stack Project Management App",
+    "section": "Project Structure",
+    "text": "Project Structure\n├── client/                     # Next.js Frontend\n│   ├── src/\n│   │   ├── app/               # Next.js App Router pages\n│   │   ├── components/        # React components\n│   │   └── lib/               # Utilities, API client\n│   ├── package.json\n│   └── Dockerfile\n│\n├── server/                     # Express Backend\n│   ├── src/\n│   │   ├── index.js           # Server entry point\n│   │   ├── config/            # Database configuration\n│   │   ├── models/            # Mongoose models\n│   │   ├── routes/            # API route definitions\n│   │   ├── controllers/       # Request handlers\n│   │   └── middleware/        # Error handling, validation\n│   ├── package.json\n│   └── Dockerfile\n│\n├── .github/\n│   └── workflows/\n│       └── ci.yml             # GitHub Actions CI\n│\n├── docker-compose.yml          # Container orchestration\n├── API.md                      # API contract specification\n├── answers.yml                 # Your responses\n└── README.md                   # This file"
+  },
+  {
+    "objectID": "labs/lab04-backend-patterns.html#git-workflow-requirements",
+    "href": "labs/lab04-backend-patterns.html#git-workflow-requirements",
+    "title": "Lab 4: Full-Stack Project Management App",
+    "section": "Git Workflow Requirements",
+    "text": "Git Workflow Requirements\n\nBranch Structure\nYour repository must use the following branch structure:\nmain (protected)\n├── feature/projects-backend    # Projects API endpoints\n├── feature/projects-frontend   # Projects UI components\n├── feature/tasks-backend       # Tasks API endpoints\n├── feature/tasks-frontend      # Tasks UI components\n└── feature/integration         # Final integration work\n\n\nPull Request Rules\n\nNo direct commits to main - All changes via PR\nMinimum 1 approval required - Teammate must review\nDescriptive PR titles - e.g., “Add project creation endpoint”\nLink related issues - If using GitHub Issues\n\n\n\nGraded Git Practices\nWe will evaluate:\n\nMeaningful commit messages\nLogical branch organization\nPR descriptions and review comments\nAll team members contributing via PRs"
+  },
+  {
+    "objectID": "labs/lab04-backend-patterns.html#part-1-project-setup-database-15-points",
+    "href": "labs/lab04-backend-patterns.html#part-1-project-setup-database-15-points",
+    "title": "Lab 4: Full-Stack Project Management App",
+    "section": "Part 1: Project Setup & Database (15 points)",
+    "text": "Part 1: Project Setup & Database (15 points)\nPresentation Topic: Session 1 - Schema Design\n\n1.1 Initialize the Project (5 points)\n\nSet up the repository structure\nConfigure docker-compose.yml with MongoDB\nVerify database connectivity\n\n\n\n1.2 Create Mongoose Models (10 points)\n\nImplement Project model with validation\nImplement Task model with project reference\nAdd timestamps to both models\n\nDeliverables:\n\nWorking docker-compose up command\nserver/src/models/Project.js\nserver/src/models/Task.js\n\n\n\n\n\n\n\nTip\n\n\n\nPresentation Focus: Explain your schema design choices. Why did you structure the relationship this way? What validations did you add and why?"
+  },
+  {
+    "objectID": "labs/lab04-backend-patterns.html#part-2-backend-api-30-points",
+    "href": "labs/lab04-backend-patterns.html#part-2-backend-api-30-points",
+    "title": "Lab 4: Full-Stack Project Management App",
+    "section": "Part 2: Backend API (30 points)",
+    "text": "Part 2: Backend API (30 points)\nPresentation Topic: Session 2 - API Architecture\nImplement the REST API according to the specification in API.md.\n\n2.1 Projects API (15 points)\n\n\n\nEndpoint\nMethod\nDescription\nPoints\n\n\n\n\n/api/projects\nGET\nList all projects\n3\n\n\n/api/projects\nPOST\nCreate project\n3\n\n\n/api/projects/:id\nGET\nGet single project\n3\n\n\n/api/projects/:id\nPUT\nUpdate project\n3\n\n\n/api/projects/:id\nDELETE\nDelete project\n3\n\n\n\n\n\n2.2 Tasks API (15 points)\n\n\n\nEndpoint\nMethod\nDescription\nPoints\n\n\n\n\n/api/projects/:projectId/tasks\nGET\nList tasks in project\n3\n\n\n/api/projects/:projectId/tasks\nPOST\nCreate task\n3\n\n\n/api/tasks/:id\nGET\nGet single task\n3\n\n\n/api/tasks/:id\nPUT\nUpdate task\n3\n\n\n/api/tasks/:id\nDELETE\nDelete task\n3\n\n\n\nRequirements:\n\nProper HTTP status codes (200, 201, 400, 404, 500)\nJSON request/response bodies\nError handling middleware\nInput validation\n\n\n\n\n\n\n\nTip\n\n\n\nPresentation Focus: Walk through your route organization and controller pattern. How do you handle errors? Show a request/response cycle."
+  },
+  {
+    "objectID": "labs/lab04-backend-patterns.html#part-3-frontend---projects-20-points",
+    "href": "labs/lab04-backend-patterns.html#part-3-frontend---projects-20-points",
+    "title": "Lab 4: Full-Stack Project Management App",
+    "section": "Part 3: Frontend - Projects (20 points)",
+    "text": "Part 3: Frontend - Projects (20 points)\nPresentation Topic: Session 3 - State Management\nBuild the Projects UI using Next.js App Router.\n\n3.1 Projects List Page (8 points)\n\nDisplay all projects in a list or grid\nLink to individual project pages\n“Create Project” button\n\n\n\n3.2 Project Detail Page (6 points)\n\nShow project name and description\nDisplay tasks belonging to project (from Part 4)\nEdit and Delete buttons\n\n\n\n3.3 Project Forms (6 points)\n\nCreate project form with validation\nEdit project form (pre-populated)\nHandle form submission and errors\n\nRoutes:\n\n/projects - Projects list\n/projects/new - Create project\n/projects/[id] - Project detail\n/projects/[id]/edit - Edit project\n\n\n\n\n\n\n\nTip\n\n\n\nPresentation Focus: Explain how you fetch and manage data. Do you use hooks? How do you handle loading and error states?"
+  },
+  {
+    "objectID": "labs/lab04-backend-patterns.html#part-4-frontend---tasks-20-points",
+    "href": "labs/lab04-backend-patterns.html#part-4-frontend---tasks-20-points",
+    "title": "Lab 4: Full-Stack Project Management App",
+    "section": "Part 4: Frontend - Tasks (20 points)",
+    "text": "Part 4: Frontend - Tasks (20 points)\nBuild the Tasks UI within project context.\n\n4.1 Tasks List (8 points)\n\nDisplay tasks within project detail page\nShow task status with visual indicator\n“Add Task” button\n\n\n\n4.2 Task Forms (6 points)\n\nCreate task form with project association\nEdit task form with status dropdown\nForm validation and error handling\n\n\n\n4.3 Task Actions (6 points)\n\nUpdate task status (todo/in-progress/done)\nDelete task with confirmation\nInline editing or modal (your choice)"
+  },
+  {
+    "objectID": "labs/lab04-backend-patterns.html#part-5-integration-polish-10-points",
+    "href": "labs/lab04-backend-patterns.html#part-5-integration-polish-10-points",
+    "title": "Lab 4: Full-Stack Project Management App",
+    "section": "Part 5: Integration & Polish (10 points)",
+    "text": "Part 5: Integration & Polish (10 points)\nPresentation Topic: Session 4 - Integration Demo\n\n5.1 Navigation & Layout (4 points)\n\nConsistent header/navigation\nLoading states while fetching data\nError boundaries for failures\n\n\n\n5.2 Docker Integration (3 points)\n\nClient Dockerfile works\nServer Dockerfile works\nFull stack runs with docker-compose up\n\n\n\n5.3 Code Quality (3 points)\n\nConsistent code formatting\nNo console errors/warnings\nREADME updated with setup instructions\n\n\n\n\n\n\n\nTip\n\n\n\nPresentation Focus: Live demo of full application. Show the complete user flow from creating a project to managing tasks."
+  },
+  {
+    "objectID": "labs/lab04-backend-patterns.html#part-6-conceptual-questions-5-points",
+    "href": "labs/lab04-backend-patterns.html#part-6-conceptual-questions-5-points",
+    "title": "Lab 4: Full-Stack Project Management App",
+    "section": "Part 6: Conceptual Questions (5 points)",
+    "text": "Part 6: Conceptual Questions (5 points)\nAnswer these questions in answers.yml:\nQ1: Schema Design (1 point) Why did you choose to store projectId in the Task model rather than storing an array of task IDs in the Project model? What are the tradeoffs?\nQ2: API Design (1 point) Explain your choice of nested routes (/projects/:id/tasks) vs flat routes (/tasks?projectId=xxx). What are the advantages of your approach?\nQ3: State Management (1 point) How did you manage state in your Next.js frontend? Did you use any global state management, or rely on component-level state and data fetching?\nQ4: Git Collaboration (2 points) Describe a merge conflict your team encountered and how you resolved it. If you had no conflicts, explain what practices helped you avoid them."
+  },
+  {
+    "objectID": "labs/lab04-backend-patterns.html#getting-started-steps",
+    "href": "labs/lab04-backend-patterns.html#getting-started-steps",
+    "title": "Lab 4: Full-Stack Project Management App",
+    "section": "Getting Started Steps",
+    "text": "Getting Started Steps\n\n1. Clone and Setup\n# Clone your team's repository\ngit clone &lt;your-repo-url&gt;\ncd &lt;repo-name&gt;\n\n# Install dependencies\nnpm run install:all\n\n\n2. Start Development Environment\n# Start all services (MongoDB, server, client)\ndocker-compose up\n\n# Or run locally:\n# Terminal 1: Start MongoDB\ndocker-compose up mongo\n\n# Terminal 2: Start server\ncd server && npm run dev\n\n# Terminal 3: Start client\ncd client && npm run dev\n\n\n3. Verify Setup\n\nMongoDB: mongodb://localhost:27017\nServer API: http://localhost:3000\nClient: http://localhost:3001\nMongo Express (DB UI): http://localhost:8081\n\n\n\n4. Create Your First Branch\ngit checkout -b feature/projects-backend\n# Make changes, commit, push\ngit push -u origin feature/projects-backend\n# Create PR on GitHub"
+  },
+  {
+    "objectID": "labs/lab04-backend-patterns.html#grading-rubric",
+    "href": "labs/lab04-backend-patterns.html#grading-rubric",
+    "title": "Lab 4: Full-Stack Project Management App",
+    "section": "Grading Rubric",
+    "text": "Grading Rubric\n\n\n\nPart\nPoints\nDescription\n\n\n\n\nPart 1: Setup & Database\n15\nDocker, models, connectivity\n\n\nPart 2: Backend API\n30\nProjects + Tasks CRUD endpoints\n\n\nPart 3: Frontend Projects\n20\nList, detail, forms\n\n\nPart 4: Frontend Tasks\n20\nList, forms, actions\n\n\nPart 5: Integration\n10\nNavigation, Docker, quality\n\n\nPart 6: Questions\n5\nConceptual answers\n\n\nSubtotal\n100\n\n\n\n\n\nPresentation Points (Bonus)\n\n\n\nPresentation\nPoints\n\n\n\n\nSession 1: Schema Design\n+5\n\n\nSession 2: API Architecture\n+5\n\n\nSession 3: State Management\n+5\n\n\nSession 4: Integration Demo\n+5\n\n\nMax Presentation Bonus\n+20\n\n\n\n\n\nGit Workflow Adjustments\n\n+5 points: Excellent PR history with meaningful reviews\n-10 points: Direct commits to main (bypassing PRs)\n-5 points: Single team member did &gt;80% of commits"
+  },
+  {
+    "objectID": "labs/lab04-backend-patterns.html#submission-requirements",
+    "href": "labs/lab04-backend-patterns.html#submission-requirements",
+    "title": "Lab 4: Full-Stack Project Management App",
+    "section": "Submission Requirements",
+    "text": "Submission Requirements\n\nRequired in Repository\n\nanswers.yml - Completed with all responses\nserver/ - Working Express API\nclient/ - Working Next.js frontend\ndocker-compose.yml - Full stack runs\nPR History - Visible branch/merge workflow\n\n\n\nSubmission Checklist\n\nAll CRUD operations work for Projects\nAll CRUD operations work for Tasks\ndocker-compose up starts entire application\nAt least 4 merged PRs from different branches\nAll team members have commits\nanswers.yml completed\nNo secrets committed (.env in .gitignore)\nEach team member presented at least once"
+  },
+  {
+    "objectID": "labs/lab04-backend-patterns.html#troubleshooting",
+    "href": "labs/lab04-backend-patterns.html#troubleshooting",
+    "title": "Lab 4: Full-Stack Project Management App",
+    "section": "Troubleshooting",
+    "text": "Troubleshooting\n\nMongoDB Connection Failed\n# Check if MongoDB container is running\ndocker ps\n\n# View MongoDB logs\ndocker-compose logs mongo\n\n# Restart containers\ndocker-compose down && docker-compose up\n\n\nPort Already in Use\n# Find process using port\nlsof -i :3000\nlsof -i :3001\n\n# Kill process\nkill -9 &lt;PID&gt;\n\n\nNext.js Cache Issues\ncd client\nrm -rf .next\nnpm run dev\n\n\nBranch Protection Issues\nMake sure you’re creating PRs, not pushing directly to main. Check repository Settings &gt; Branches for protection rules."
+  },
+  {
+    "objectID": "labs/lab04-backend-patterns.html#resources",
+    "href": "labs/lab04-backend-patterns.html#resources",
+    "title": "Lab 4: Full-Stack Project Management App",
+    "section": "Resources",
+    "text": "Resources\n\nNext.js Documentation\nExpress.js Guide\nMongoose Documentation\nGitHub Pull Requests\nREST API Design"
+  },
+  {
+    "objectID": "labs/lab04-backend-patterns.html#academic-integrity",
+    "href": "labs/lab04-backend-patterns.html#academic-integrity",
+    "title": "Lab 4: Full-Stack Project Management App",
+    "section": "Academic Integrity",
+    "text": "Academic Integrity\nThis is a team assignment. You may:\n\nCollaborate fully within your team\nUse documentation and official resources\nAsk clarifying questions on Piazza\n\nYou may not:\n\nShare code between teams\nCopy code from other teams or online solutions\nUse AI to generate entire solutions without understanding\n\nAll team members must contribute meaningfully. We review git history."
   }
 ]

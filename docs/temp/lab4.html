@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Lab 4: Full-Stack Project Management App – ITWS-4500: Advanced Web &amp; Agentic AI Development</title>
+<title>lab4 – ITWS-4500: Advanced Web &amp; Agentic AI Development</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -315,15 +315,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#lab-4-full-stack-project-management-app" id="toc-lab-4-full-stack-project-management-app" class="nav-link active" data-scroll-target="#lab-4-full-stack-project-management-app">Lab 4: Full-Stack Project Management App</a>
+  <ul class="collapse">
+  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a></li>
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
-  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting Started</a></li>
-  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites">Prerequisites</a></li>
   <li><a href="#flipped-classroom-structure" id="toc-flipped-classroom-structure" class="nav-link" data-scroll-target="#flipped-classroom-structure">Flipped Classroom Structure</a>
   <ul class="collapse">
   <li><a href="#presentation-schedule" id="toc-presentation-schedule" class="nav-link" data-scroll-target="#presentation-schedule">Presentation Schedule</a></li>
   <li><a href="#presentation-requirements" id="toc-presentation-requirements" class="nav-link" data-scroll-target="#presentation-requirements">Presentation Requirements</a></li>
   </ul></li>
+  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites">Prerequisites</a></li>
   <li><a href="#team-structure" id="toc-team-structure" class="nav-link" data-scroll-target="#team-structure">Team Structure</a></li>
   <li><a href="#application-requirements" id="toc-application-requirements" class="nav-link" data-scroll-target="#application-requirements">Application Requirements</a>
   <ul class="collapse">
@@ -366,7 +367,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#code-quality-3-points" id="toc-code-quality-3-points" class="nav-link" data-scroll-target="#code-quality-3-points">5.3 Code Quality (3 points)</a></li>
   </ul></li>
   <li><a href="#part-6-conceptual-questions-5-points" id="toc-part-6-conceptual-questions-5-points" class="nav-link" data-scroll-target="#part-6-conceptual-questions-5-points">Part 6: Conceptual Questions (5 points)</a></li>
-  <li><a href="#getting-started-steps" id="toc-getting-started-steps" class="nav-link" data-scroll-target="#getting-started-steps">Getting Started Steps</a>
+  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting Started</a>
   <ul class="collapse">
   <li><a href="#clone-and-setup" id="toc-clone-and-setup" class="nav-link" data-scroll-target="#clone-and-setup">1. Clone and Setup</a></li>
   <li><a href="#start-development-environment" id="toc-start-development-environment" class="nav-link" data-scroll-target="#start-development-environment">2. Start Development Environment</a></li>
@@ -392,50 +393,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
   <li><a href="#academic-integrity" id="toc-academic-integrity" class="nav-link" data-scroll-target="#academic-integrity">Academic Integrity</a></li>
-  <li><a href="#getting-help" id="toc-getting-help" class="nav-link" data-scroll-target="#getting-help">Getting Help</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Lab 4: Full-Stack Project Management App</h1>
-<p class="subtitle lead">Integrating Frontend, Backend, and Database</p>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
-<div class="quarto-title-meta">
 
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Lab Information
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Assigned:</strong> Tuesday, February 10, 2026 <strong>Points:</strong> 100 (+ up to 20 bonus presentation points) <strong>Team Size:</strong> 3-4 members</p>
-</div>
-</div>
+<section id="lab-4-full-stack-project-management-app" class="level1">
+<h1>Lab 4: Full-Stack Project Management App</h1>
+<p><strong>ITWS 4500 - Modern Application Development</strong> <strong>Rensselaer Polytechnic Institute</strong></p>
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
 <p>In this lab, your team will build a <strong>Project Management application from scratch</strong>. Unlike previous labs where you filled in pre-written functions, you will design and implement the entire application: frontend, backend, and database schema.</p>
 <p>The application manages <strong>Projects</strong> and <strong>Tasks</strong>, where tasks belong to projects. You’ll implement full CRUD (Create, Read, Update, Delete) operations for both entities.</p>
+<p><strong>Total Points: 100</strong></p>
+<hr>
 </section>
 <section id="learning-objectives" class="level2">
 <h2 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
@@ -447,21 +423,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Practice collaborative git workflows</strong> - Use feature branches, pull requests, and code review</li>
 <li><strong>Present technical solutions</strong> - Explain your implementation decisions to peers</li>
 </ol>
-</section>
-<section id="getting-started" class="level2">
-<h2 class="anchored" data-anchor-id="getting-started">Getting Started</h2>
-<p>Click the button below to accept the assignment and create your repository:</p>
-<p><a href="https://classroom.github.com/a/9Si6WP04" class="btn btn-primary">Accept Lab 4 Assignment</a></p>
-</section>
-<section id="prerequisites" class="level2">
-<h2 class="anchored" data-anchor-id="prerequisites">Prerequisites</h2>
-<ul>
-<li>Completed Labs 1-3</li>
-<li>Node.js v18+ and npm installed</li>
-<li>Docker and Docker Compose running</li>
-<li>Git and GitHub account</li>
-<li>Understanding of React, Express, and MongoDB fundamentals</li>
-</ul>
 <hr>
 </section>
 <section id="flipped-classroom-structure" class="level2">
@@ -514,28 +475,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="presentation-requirements" class="level3">
 <h3 class="anchored" data-anchor-id="presentation-requirements">Presentation Requirements</h3>
-<p>Each presentation should be <strong>3-5 minutes</strong> and cover:</p>
-<ul>
-<li>What you built</li>
-<li>Key design decisions and tradeoffs</li>
-<li>One challenge you faced and how you solved it</li>
-<li>Live demo or code walkthrough</li>
-</ul>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Different team members must present each session. All members present at least once.</p>
-</div>
-</div>
+<p>Each presentation should be <strong>3-5 minutes</strong> and cover: - What you built - Key design decisions and tradeoffs - One challenge you faced and how you solved it - Live demo or code walkthrough</p>
+<p><strong>Note:</strong> Different team members must present each session. All members present at least once.</p>
 <hr>
 </section>
+</section>
+<section id="prerequisites" class="level2">
+<h2 class="anchored" data-anchor-id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Completed Labs 1-3</li>
+<li>Node.js v18+ and npm installed</li>
+<li>Docker and Docker Compose running</li>
+<li>Git and GitHub account</li>
+<li>Understanding of React, Express, and MongoDB fundamentals</li>
+</ul>
+<hr>
 </section>
 <section id="team-structure" class="level2">
 <h2 class="anchored" data-anchor-id="team-structure">Team Structure</h2>
@@ -646,13 +600,7 @@ Task
 </section>
 <section id="graded-git-practices" class="level3">
 <h3 class="anchored" data-anchor-id="graded-git-practices">Graded Git Practices</h3>
-<p>We will evaluate:</p>
-<ul>
-<li>Meaningful commit messages</li>
-<li>Logical branch organization</li>
-<li>PR descriptions and review comments</li>
-<li>All team members contributing via PRs</li>
-</ul>
+<p>We will evaluate: - Meaningful commit messages - Logical branch organization - PR descriptions and review comments - All team members contributing via PRs</p>
 <hr>
 </section>
 </section>
@@ -674,25 +622,8 @@ Task
 <li>Implement <code>Task</code> model with project reference</li>
 <li>Add timestamps to both models</li>
 </ul>
-<p><strong>Deliverables:</strong></p>
-<ul>
-<li>Working <code>docker-compose up</code> command</li>
-<li><code>server/src/models/Project.js</code></li>
-<li><code>server/src/models/Task.js</code></li>
-</ul>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<p><strong>Deliverables:</strong> - Working <code>docker-compose up</code> command - <code>server/src/models/Project.js</code> - <code>server/src/models/Task.js</code></p>
 <p><strong>Presentation Focus:</strong> Explain your schema design choices. Why did you structure the relationship this way? What validations did you add and why?</p>
-</div>
-</div>
 <hr>
 </section>
 </section>
@@ -789,26 +720,8 @@ Tip
 </tr>
 </tbody>
 </table>
-<p><strong>Requirements:</strong></p>
-<ul>
-<li>Proper HTTP status codes (200, 201, 400, 404, 500)</li>
-<li>JSON request/response bodies</li>
-<li>Error handling middleware</li>
-<li>Input validation</li>
-</ul>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<p><strong>Requirements:</strong> - Proper HTTP status codes (200, 201, 400, 404, 500) - JSON request/response bodies - Error handling middleware - Input validation</p>
 <p><strong>Presentation Focus:</strong> Walk through your route organization and controller pattern. How do you handle errors? Show a request/response cycle.</p>
-</div>
-</div>
 <hr>
 </section>
 </section>
@@ -839,26 +752,8 @@ Tip
 <li>Edit project form (pre-populated)</li>
 <li>Handle form submission and errors</li>
 </ul>
-<p><strong>Routes:</strong></p>
-<ul>
-<li><code>/projects</code> - Projects list</li>
-<li><code>/projects/new</code> - Create project</li>
-<li><code>/projects/[id]</code> - Project detail</li>
-<li><code>/projects/[id]/edit</code> - Edit project</li>
-</ul>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<p><strong>Routes:</strong> - <code>/projects</code> - Projects list - <code>/projects/new</code> - Create project - <code>/projects/[id]</code> - Project detail - <code>/projects/[id]/edit</code> - Edit project</p>
 <p><strong>Presentation Focus:</strong> Explain how you fetch and manage data. Do you use hooks? How do you handle loading and error states?</p>
-</div>
-</div>
 <hr>
 </section>
 </section>
@@ -917,19 +812,7 @@ Tip
 <li>No console errors/warnings</li>
 <li>README updated with setup instructions</li>
 </ul>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
 <p><strong>Presentation Focus:</strong> Live demo of full application. Show the complete user flow from creating a project to managing tasks.</p>
-</div>
-</div>
 <hr>
 </section>
 </section>
@@ -942,8 +825,8 @@ Tip
 <p><strong>Q4: Git Collaboration (2 points)</strong> Describe a merge conflict your team encountered and how you resolved it. If you had no conflicts, explain what practices helped you avoid them.</p>
 <hr>
 </section>
-<section id="getting-started-steps" class="level2">
-<h2 class="anchored" data-anchor-id="getting-started-steps">Getting Started Steps</h2>
+<section id="getting-started" class="level2">
+<h2 class="anchored" data-anchor-id="getting-started">Getting Started</h2>
 <section id="clone-and-setup" class="level3">
 <h3 class="anchored" data-anchor-id="clone-and-setup">1. Clone and Setup</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Clone your team's repository</span></span>
@@ -1151,29 +1034,12 @@ Tip
 </section>
 <section id="academic-integrity" class="level2">
 <h2 class="anchored" data-anchor-id="academic-integrity">Academic Integrity</h2>
-<p>This is a team assignment. You may:</p>
-<ul>
-<li>Collaborate fully within your team</li>
-<li>Use documentation and official resources</li>
-<li>Ask clarifying questions on Piazza</li>
-</ul>
-<p>You may not:</p>
-<ul>
-<li>Share code between teams</li>
-<li>Copy code from other teams or online solutions</li>
-<li>Use AI to generate entire solutions without understanding</li>
-</ul>
+<p>This is a team assignment. You may: - Collaborate fully within your team - Use documentation and official resources - Ask clarifying questions on Piazza</p>
+<p>You may not: - Share code between teams - Copy code from other teams or online solutions - Use AI to generate entire solutions without understanding</p>
 <p>All team members must contribute meaningfully. We review git history.</p>
+
+
 </section>
-<section id="getting-help" class="level2">
-<h2 class="anchored" data-anchor-id="getting-help">Getting Help</h2>
-<ul>
-<li><strong>Office Hours:</strong> Tuesday 9-11 AM, Pitt 2206</li>
-<li><strong>Piazza:</strong> Post questions with <code>lab4</code> tag</li>
-<li><strong>TA Sessions:</strong> Check LMS for schedule</li>
-</ul>
-
-
 </section>
 
 </main> <!-- /main -->
