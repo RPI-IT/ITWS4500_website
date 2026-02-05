@@ -67,9 +67,9 @@ Submit a written proposal (3-5 pages) covering the following sections:
 - Key deliverables for each milestone
 - Dependencies and critical path
 
-### 2. GitHub Repository Setup
+### 2. GitHub Repository Setup (Not Graded)
 
-Your repository must be initialized with:
+Your repository should be initialized with the following structure. While not graded as part of the proposal, this setup will be expected for later project milestones:
 
 ```
 project-name/
@@ -115,20 +115,10 @@ Present your proposal to the class covering:
 | **Project Management** | Detailed plan with clear roles, tools, and milestones | Good plan with most elements | Basic plan present | Incomplete planning | No plan |
 | **Writing Quality** | Professional, clear, well-organized | Good writing with minor issues | Adequate but could be clearer | Difficult to follow | Unacceptable |
 
-### Repository Setup (25 points)
+### Presentation (50 points)
 
-| Criterion | Excellent (5) | Good (4) | Satisfactory (3) | Needs Work (2) | Missing (0) |
-|-----------|---------------|----------|------------------|----------------|-------------|
-| **README Quality** | Comprehensive with setup instructions, contributing guide | Good README with most elements | Basic README present | Incomplete README | No README |
-| **Documentation Structure** | Well-organized docs folder with proposal and ADR templates | Good structure with some gaps | Basic structure | Poorly organized | No structure |
-| **Issue Templates** | Custom templates for features, bugs, tasks | Some templates present | Default templates only | Incomplete templates | No templates |
-| **Project Board** | Fully configured with milestones, labels, assignments | Good setup with some gaps | Basic board present | Minimal setup | No board |
-| **Initial Backlog** | 10+ well-written issues with acceptance criteria | Good issues, some lacking detail | Basic issues present | Few/poor issues | No backlog |
-
-### Presentation (25 points)
-
-| Criterion | Excellent (5) | Good (4) | Satisfactory (3) | Needs Work (2) | Missing (0) |
-|-----------|---------------|----------|------------------|----------------|-------------|
+| Criterion | Excellent (10) | Good (8) | Satisfactory (6) | Needs Work (4) | Missing (0) |
+|-----------|----------------|----------|------------------|----------------|-------------|
 | **Problem & Hook** | Compelling opening; clear problem articulation | Good opening; clear problem | Adequate opening | Weak opening | No clear problem |
 | **Solution Clarity** | Clear, concise explanation; obvious value | Good explanation | Adequate but confusing | Unclear solution | No solution presented |
 | **Technical Depth** | Demonstrates understanding of architecture decisions | Good technical content | Some technical content | Lacks depth | No technical content |
