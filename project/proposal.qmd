@@ -67,34 +67,11 @@ Submit a written proposal (3-5 pages) covering the following sections:
 - Key deliverables for each milestone
 - Dependencies and critical path
 
-### 2. GitHub Repository Setup (Not Graded)
+### 2. GitHub Repository
 
-Your repository should be initialized with the following structure. While not graded as part of the proposal, this setup will be expected for later project milestones:
+Your project repository will be created via GitHub Classroom. Details will be provided separately.
 
-```
-project-name/
-├── README.md                 # Project overview, setup instructions
-├── docs/
-│   ├── proposal.md          # Your proposal document
-│   └── architecture/
-│       └── decisions/       # Architecture Decision Records (ADRs)
-├── .github/
-│   ├── ISSUE_TEMPLATE/
-│   └── PULL_REQUEST_TEMPLATE.md
-├── docker-compose.yml       # Initial compose file (can be placeholder)
-└── .gitignore
-```
-
-### 3. Project Board Initialization
-
-Set up your project management with:
-
-- At least 3 milestones defined (Proposal, Midterm, Final)
-- Initial backlog of 10+ issues/tasks
-- Labels for categorization (feature, bug, documentation, etc.)
-- Team member assignments
-
-### 4. In-Class Presentation (5-7 minutes)
+### 3. In-Class Presentation (5-7 minutes)
 
 Present your proposal to the class covering:
 
