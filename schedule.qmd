@@ -116,7 +116,7 @@ Work through these tutorials this week to build a solid foundation:
 
 ---
 
-### Week 6: Quiz 1 {#week-6}
+### Week 6: Review & Summary {#week-6}
 **February 17-20, 2026**
 
 **Background Readings:** [Week 6 Readings](readings/week06-data-architecture.qmd)
@@ -124,24 +124,29 @@ Work through these tutorials this week to build a solid foundation:
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
 | Tue 2/17 | *No Class* | Presidents' Day Week - No Tuesday Class | - |
-| Fri 2/20 | **Quiz** | **Quiz 1:** Architectural Foundations and System Design | Study Guide |
+| Fri 2/20 | Lecture | Review & Summary: Weeks 1-5 Architectural Foundations | - |
 
-::: {.callout-important}
-## Quiz 1
-Covers Weeks 1-5: Infrastructure as Code, Architectural Patterns, Frontend/Backend/Data Architecture
+::: {.callout-note}
+## Quiz 1 Prep
+Use this session to review material from Weeks 1-5. Quiz 1 will be on Tuesday 2/24.
 :::
 
 ---
 
-### Week 7: Midterm Project Review {#week-7}
+### Week 7: Quiz 1 {#week-7}
 **February 24-27, 2026**
 
 **Background Readings:** [Week 7 Readings](readings/week07-midterm-review.qmd)
 
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
-| Tue 2/24 | **Presentations** | **Midterm Project Presentations:** Architectural Decisions and Trade-offs | Guidelines |
+| Tue 2/24 | **Quiz** | **Quiz 1:** Architectural Foundations and System Design | Study Guide |
 | Fri 2/27 | Workshop | Project Work Day: Refactoring and Architectural Improvement | - |
+
+::: {.callout-important}
+## Quiz 1
+Covers Weeks 1-5: Infrastructure as Code, Architectural Patterns, Frontend/Backend/Data Architecture
+:::
 
 ---
 
@@ -169,7 +174,7 @@ Covers Weeks 1-5: Infrastructure as Code, Architectural Patterns, Frontend/Backe
 
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
-| Tue 3/17 | Lecture | Agentic Architecture Patterns I: Agents as Workflow Systems | Slides TBD |
+| Tue 3/17 | **Presentations** | **Midterm Project Presentations:** Architectural Decisions and Trade-offs | Guidelines |
 | Fri 3/20 | Lab | **Lab 7:** Agentic Workflows | [Lab 7](labs/lab07-agentic-workflows.qmd) |
 
 ---
@@ -266,8 +271,9 @@ Comprehensive assessment covering all course material, with emphasis on Weeks 8-
 | Classes Begin | January 13, 2026 |
 | Project Groups Formed | January 16, 2026 |
 | Project Proposal Presentations | January 30, 2026 |
-| Quiz 1 | February 20, 2026 |
-| Midterm Presentations | February 24, 2026 |
+| Review & Summary | February 20, 2026 |
+| Quiz 1 | February 24, 2026 |
+| Midterm Presentations | March 17, 2026 |
 | Spring Break | March 2-6, 2026 |
 | Quiz 2 | April 21, 2026 |
 | Final Presentations | April 28, 2026 |
