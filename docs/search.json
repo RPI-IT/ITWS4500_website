@@ -18,7 +18,7 @@
     "href": "schedule.html#weekly-schedule",
     "title": "Course Schedule",
     "section": "Weekly Schedule",
-    "text": "Weekly Schedule\n\nWeek 1: Course Foundation\nJanuary 13-16, 2026\nBackground Readings: Week 1 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 1/13\nLecture\nCourse Introduction: Web Applications as Architectural Patterns; Group Formation\nSlides\n\n\nFri 1/16\nLecture + Lab\nInfrastructure as Code: Containers, Docker, and Docker Compose; Lab 1 Assigned\nSlides, Lab 1\n\n\n\n\n\n\n\n\n\nTipGetting Started\n\n\n\n\nForm project groups (3-4 members)\nInstall Docker Desktop\nSet up development environment\n\n\n\n\n\n\nWeek 2: Architecture Foundations\nJanuary 20-23, 2026\nBackground Readings: Week 2 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 1/20\nLecture\nLab 1 Review; Architectural Theory: Patterns, System Decomposition, and Project Scoping\nLab 1 Slides, Theory Slides\n\n\nFri 1/23\nLecture + Lab\nLab 2: Layered Client-Server Architecture (MERN as Reference)\nSlides, Lab 2\n\n\n\n\n\n\nWeek 3: Component Architecture\nJanuary 27-30, 2026\nBackground Readings: Week 3 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 1/27\nLab\nLab 3: Component and State Management Architecture (Angular/React)\nLab 3 Lab 3 Slides\n\n\nFri 1/30\nLecture + Presentations\nFrontend Architecture Patterns; Project Proposal Presentations\nSlides\n\n\n\n\n\n\n\n\n\nWarning\n\n\n\nProject Proposals: Presented in class\n\n\n\n\n\nWeek 4: Backend Architecture\nFebruary 3-6, 2026\nBackground Readings: Week 4 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 2/3\nLab\nLab 4: Backend Architecture Patterns (Node.js & Express)\nLab 4\n\n\nFri 2/6\nLecture\nBackend Architecture Patterns: Services, APIs, and Data Flow\nSlides\n\n\n\n\n\n\nWeek 5: Data Architecture\nFebruary 10-13, 2026\nBackground Readings: Week 5 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 2/10\nLab\nLab 5: Polyglot Persistence (MongoDB & PostgreSQL)\nLab 5\n\n\nFri 2/13\nLecture\nData Architecture Patterns: Polyglot Persistence - Document vs Relational Trade-offs\nSlides\n\n\n\n\n\n\nWeek 6: Quiz 1\nFebruary 17-20, 2026\nBackground Readings: Week 6 Readings\n\n\n\n\n\n\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 2/17\nNo Class\nPresidents’ Day Week - No Tuesday Class\n-\n\n\nFri 2/20\nQuiz\nQuiz 1: Architectural Foundations and System Design\nStudy Guide\n\n\n\n\n\n\n\n\n\nImportantQuiz 1\n\n\n\nCovers Weeks 1-5: Infrastructure as Code, Architectural Patterns, Frontend/Backend/Data Architecture\n\n\n\n\n\nWeek 7: Midterm Project Review\nFebruary 24-27, 2026\nBackground Readings: Week 7 Readings\n\n\n\n\n\n\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 2/24\nPresentations\nMidterm Project Presentations: Architectural Decisions and Trade-offs\nGuidelines\n\n\nFri 2/27\nWorkshop\nProject Work Day: Refactoring and Architectural Improvement\n-\n\n\n\n\n\n\nSpring Break\nMarch 2-6, 2026 - No Classes\n\n\n\nWeek 8: Authentication & Mobile\nMarch 10-13, 2026\nBackground Readings: Week 8 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 3/10\nLecture\nIdentity, Authentication, and Mobile Architecture Patterns\nSlides TBD\n\n\nFri 3/13\nLab\nLab 6: Authentication and Mobile Application Architecture\nLab 6\n\n\n\n\n\n\nWeek 9: Agentic AI I\nMarch 17-20, 2026\nBackground Readings: Week 9 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 3/17\nLecture\nAgentic Architecture Patterns I: Agents as Workflow Systems\nSlides TBD\n\n\nFri 3/20\nLab\nLab 7: Agentic Workflows\nLab 7\n\n\n\n\n\n\nWeek 10: Agentic AI II\nMarch 24-27, 2026\nBackground Readings: Week 10 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 3/24\nLecture\nAgentic Architecture Patterns II: Orchestration, Memory, and Governance\nSlides TBD\n\n\nFri 3/27\nLab\nLab 8: Agent Orchestration and Tooling Patterns\nLab 8\n\n\n\n\n\n\nWeek 11: Continuous Integration\nMarch 31 - April 3, 2026\nBackground Readings: Week 11 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 3/31\nLecture\nContinuous Integration and Testing as Architecture\nSlides TBD\n\n\nFri 4/3\nLab\nLab 9: CI Pipelines and Automated Testing\nLab 9\n\n\n\n\n\n\nWeek 12: AI-Assisted Development\nApril 7-10, 2026\nBackground Readings: Week 12 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 4/7\nLecture\nAI-Assisted Development: Human-AI Collaboration Patterns\nSlides TBD\n\n\nFri 4/10\nLab\nLab 10: AI-Assisted Coding and Testing\nLab 10\n\n\n\n\n\n\nWeek 13: Deployment Architecture\nApril 14-17, 2026\nBackground Readings: Week 13 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 4/14\nLecture\nDeployment & Runtime Architecture: Cloud Patterns, Caching, Scaling, and Cost\nSlides TBD\n\n\nFri 4/17\nLab\nLab 11: Containerized Deployment, Caching, Scaling, and Reliability\nLab 11\n\n\n\n\n\n\nWeek 14: Quiz 2 & Capstone\nApril 21-24, 2026\nBackground Readings: Week 14 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 4/21\nQuiz\nQuiz 2: Comprehensive Architectural and Systems Reasoning\nStudy Guide\n\n\nFri 4/24\nLab\nLab 12: Capstone Extension - Architectural Experimentation / Project Hardening\nLab 12\n\n\n\n\n\n\n\n\n\nImportantQuiz 2\n\n\n\nComprehensive assessment covering all course material, with emphasis on Weeks 8-13\n\n\n\n\n\nWeek 15: Final Presentations\nApril 28, 2026\nBackground Readings: Week 15 Readings\n\n\n\n\n\n\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 4/28\nPresentations\nFinal Project Presentations: Evaluation, Feedback, and Reflection\nGuidelines\n\n\n\n\n\n\n\n\n\nNoteFinal Project Deliverables\n\n\n\n\nWorking deployed application\nTechnical documentation\nArchitecture decision records\nIndividual contribution summary\nPeer evaluations"
+    "text": "Weekly Schedule\n\nWeek 1: Course Foundation\nJanuary 13-16, 2026\nBackground Readings: Week 1 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 1/13\nLecture\nCourse Introduction: Web Applications as Architectural Patterns; Group Formation\nSlides\n\n\nFri 1/16\nLecture + Lab\nInfrastructure as Code: Containers, Docker, and Docker Compose; Lab 1 Assigned\nSlides, Lab 1\n\n\n\n\n\n\n\n\n\nTipGetting Started\n\n\n\n\nForm project groups (3-4 members)\nInstall Docker Desktop\nSet up development environment\n\n\n\n\n\n\nWeek 2: Architecture Foundations\nJanuary 20-23, 2026\nBackground Readings: Week 2 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 1/20\nLecture\nLab 1 Review; Architectural Theory: Patterns, System Decomposition, and Project Scoping\nLab 1 Slides, Theory Slides\n\n\nFri 1/23\nLecture + Lab\nLab 2: Layered Client-Server Architecture (MERN as Reference)\nSlides, Lab 2\n\n\n\n\n\n\nWeek 3: Component Architecture\nJanuary 27-30, 2026\nBackground Readings: Week 3 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 1/27\nLab\nLab 3: Component and State Management Architecture (Angular/React)\nLab 3 Lab 3 Slides\n\n\nFri 1/30\nLecture + Presentations\nFrontend Architecture Patterns; Project Proposal Presentations\nSlides\n\n\n\n\n\n\n\n\n\nWarning\n\n\n\nProject Proposals: Presented in class\n\n\n\n\n\nWeek 4: Backend Architecture\nFebruary 3-6, 2026\nBackground Readings: Week 4 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 2/3\nLab\nLab 4: Backend Architecture Patterns (Node.js & Express)\nLab 4\n\n\nFri 2/6\nLecture\nBackend Architecture Patterns: Services, APIs, and Data Flow\nSlides\n\n\n\n\n\n\nWeek 5: React & Next.js Foundations\nFebruary 10-13, 2026\nBackground Readings: Week 5 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 2/10\nLecture\nLab 4 Solution Deep Dive: Comparing React, Next.js, Express & MongoDB Architectures\nSlides, Lab 4 Solution\n\n\nFri 2/13\nLecture\nCore React Concepts & Next.js Foundations\nSlides\n\n\n\n\n\n\n\n\n\nTipReact & Next.js Tutorials\n\n\n\nWork through these tutorials this week to build a solid foundation:\n\nReact Quick Start\nReact Foundations Course\nNext.js Dashboard App\n\n\n\n\n\n\nWeek 6: Quiz 1\nFebruary 17-20, 2026\nBackground Readings: Week 6 Readings\n\n\n\n\n\n\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 2/17\nNo Class\nPresidents’ Day Week - No Tuesday Class\n-\n\n\nFri 2/20\nQuiz\nQuiz 1: Architectural Foundations and System Design\nStudy Guide\n\n\n\n\n\n\n\n\n\nImportantQuiz 1\n\n\n\nCovers Weeks 1-5: Infrastructure as Code, Architectural Patterns, Frontend/Backend/Data Architecture\n\n\n\n\n\nWeek 7: Midterm Project Review\nFebruary 24-27, 2026\nBackground Readings: Week 7 Readings\n\n\n\n\n\n\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 2/24\nPresentations\nMidterm Project Presentations: Architectural Decisions and Trade-offs\nGuidelines\n\n\nFri 2/27\nWorkshop\nProject Work Day: Refactoring and Architectural Improvement\n-\n\n\n\n\n\n\nSpring Break\nMarch 2-6, 2026 - No Classes\n\n\n\nWeek 8: Authentication & Mobile\nMarch 10-13, 2026\nBackground Readings: Week 8 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 3/10\nLecture\nIdentity, Authentication, and Mobile Architecture Patterns\nSlides TBD\n\n\nFri 3/13\nLab\nLab 6: Authentication and Mobile Application Architecture\nLab 6\n\n\n\n\n\n\nWeek 9: Agentic AI I\nMarch 17-20, 2026\nBackground Readings: Week 9 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 3/17\nLecture\nAgentic Architecture Patterns I: Agents as Workflow Systems\nSlides TBD\n\n\nFri 3/20\nLab\nLab 7: Agentic Workflows\nLab 7\n\n\n\n\n\n\nWeek 10: Agentic AI II\nMarch 24-27, 2026\nBackground Readings: Week 10 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 3/24\nLecture\nAgentic Architecture Patterns II: Orchestration, Memory, and Governance\nSlides TBD\n\n\nFri 3/27\nLab\nLab 8: Agent Orchestration and Tooling Patterns\nLab 8\n\n\n\n\n\n\nWeek 11: Continuous Integration\nMarch 31 - April 3, 2026\nBackground Readings: Week 11 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 3/31\nLecture\nContinuous Integration and Testing as Architecture\nSlides TBD\n\n\nFri 4/3\nLab\nLab 9: CI Pipelines and Automated Testing\nLab 9\n\n\n\n\n\n\nWeek 12: AI-Assisted Development\nApril 7-10, 2026\nBackground Readings: Week 12 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 4/7\nLecture\nAI-Assisted Development: Human-AI Collaboration Patterns\nSlides TBD\n\n\nFri 4/10\nLab\nLab 10: AI-Assisted Coding and Testing\nLab 10\n\n\n\n\n\n\nWeek 13: Deployment Architecture\nApril 14-17, 2026\nBackground Readings: Week 13 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 4/14\nLecture\nDeployment & Runtime Architecture: Cloud Patterns, Caching, Scaling, and Cost\nSlides TBD\n\n\nFri 4/17\nLab\nLab 11: Containerized Deployment, Caching, Scaling, and Reliability\nLab 11\n\n\n\n\n\n\nWeek 14: Quiz 2 & Capstone\nApril 21-24, 2026\nBackground Readings: Week 14 Readings\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 4/21\nQuiz\nQuiz 2: Comprehensive Architectural and Systems Reasoning\nStudy Guide\n\n\nFri 4/24\nLab\nLab 12: Capstone Extension - Architectural Experimentation / Project Hardening\nLab 12\n\n\n\n\n\n\n\n\n\nImportantQuiz 2\n\n\n\nComprehensive assessment covering all course material, with emphasis on Weeks 8-13\n\n\n\n\n\nWeek 15: Final Presentations\nApril 28, 2026\nBackground Readings: Week 15 Readings\n\n\n\n\n\n\n\n\n\nDate\nType\nTopic\nMaterials\n\n\n\n\nTue 4/28\nPresentations\nFinal Project Presentations: Evaluation, Feedback, and Reflection\nGuidelines\n\n\n\n\n\n\n\n\n\nNoteFinal Project Deliverables\n\n\n\n\nWorking deployed application\nTechnical documentation\nArchitecture decision records\nIndividual contribution summary\nPeer evaluations"
   },
   {
     "objectID": "schedule.html#key-dates-summary",
@@ -226,16 +226,16 @@
   {
     "objectID": "readings/week05-backend-data.html",
     "href": "readings/week05-backend-data.html",
-    "title": "Week 5: Backend & Data Patterns",
+    "title": "Week 5: React & Next.js Foundations",
     "section": "",
-    "text": "NoteReading Assignment\n\n\n\nComplete this reading before Week 6. Estimated time: 55-70 minutes."
+    "text": "NoteReading & Tutorial Assignment\n\n\n\nComplete these tutorials before Week 6. This is a hands-on week — work through the tutorials at your own pace, but aim to complete all three."
   },
   {
     "objectID": "readings/week05-backend-data.html#introduction",
     "href": "readings/week05-backend-data.html#introduction",
-    "title": "Week 5: Backend & Data Patterns",
+    "title": "Week 5: React & Next.js Foundations",
     "section": "Introduction",
-    "text": "Introduction\nThe previous weeks covered application architecture and frontend patterns. This week, we focus on the backend and data layers—the foundation that powers your applications. We’ll explore RESTful API design in depth, middleware patterns for cross-cutting concerns, and data architecture strategies including the concept of polyglot persistence.\nUnderstanding these patterns is crucial because the backend is where business logic lives, where data is persisted, and where security is enforced. Poor backend design leads to applications that are slow, insecure, and difficult to maintain."
+    "text": "Introduction\nThis week we shift focus from backend architecture to building a solid foundation in React and Next.js. Many of you have been generating code with AI tools — which is great for productivity — but to debug, modify, and make architectural decisions, you need to understand what that code is doing.\nThe Lab 4 solution demonstrates four implementations of the same application using different combinations of React, Next.js, Express, and MongoDB. This week’s tutorials will help you understand the core concepts behind those implementations."
   },
   {
     "objectID": "readings/week05-backend-data.html#restful-api-design",
@@ -275,16 +275,16 @@
   {
     "objectID": "readings/week05-backend-data.html#key-terms",
     "href": "readings/week05-backend-data.html#key-terms",
-    "title": "Week 5: Backend & Data Patterns",
+    "title": "Week 5: React & Next.js Foundations",
     "section": "Key Terms",
-    "text": "Key Terms\n\nREST: Representational State Transfer - architectural style for APIs\nResource: A noun that your API manages (users, tasks, projects)\nMiddleware: Functions that process requests in a pipeline\nIdempotent: Operation that produces same result regardless of how many times executed\nDocument Database: Database storing data as flexible documents (MongoDB)\nIndex: Data structure that improves query performance\nPolyglot Persistence: Using multiple database technologies in one application"
+    "text": "Key Terms\n\nComponent — A reusable piece of UI, defined as a JavaScript function returning JSX\nJSX — A syntax extension that lets you write HTML-like markup in JavaScript\nProps — Read-only data passed from parent to child components\nState — Data managed within a component that can change over time\nHook — A special function (useState, useEffect) that lets components use React features\nSide Effect — An operation that affects something outside the component (data fetching, DOM manipulation)\nServer Component — A Next.js component that renders on the server (default)\nClient Component — A Next.js component marked with 'use client' that renders in the browser\nFile-based Routing — Next.js convention where the file system structure defines URL routes\nAPI Route Handler — A Next.js file (route.js) that handles HTTP requests like a backend endpoint"
   },
   {
     "objectID": "readings/week05-backend-data.html#further-reading",
     "href": "readings/week05-backend-data.html#further-reading",
-    "title": "Week 5: Backend & Data Patterns",
+    "title": "Week 5: React & Next.js Foundations",
     "section": "Further Reading",
-    "text": "Further Reading\n\nREST API Design Best Practices\nHTTP Status Codes\nMongoDB Schema Design Patterns\nExpress.js Error Handling\nRedis Documentation\nMartin Fowler: Polyglot Persistence"
+    "text": "Further Reading\n\nReact Documentation — Learn\nReact Foundations Course\nNext.js Dashboard App Tutorial\nNext.js Documentation\nMDN: JavaScript Modules\nMDN: Using Fetch API"
   },
   {
     "objectID": "readings/week14-capstone.html",
@@ -1397,7 +1397,7 @@
     "href": "labs/lab11-deployment.html#getting-help",
     "title": "Lab 11: Deployment",
     "section": "Getting Help",
-    "text": "Getting Help\n\nOffice Hours: Tuesday 9-11 AM, Pitt 2206\nPiazza: Post questions with lab11 tag\nTA Sessions: Check LMS for schedule"
+    "text": "Getting Help\n\nOffice Hours: Tuesday 9-11 AM, Pitt 2206\nWebex: Post questions with lab11 tag\nTA Sessions: Check LMS for schedule"
   },
   {
     "objectID": "labs/lab03-component-state.html",
@@ -1481,7 +1481,7 @@
     "href": "labs/lab10-ai-assisted-coding.html#getting-help",
     "title": "Lab 10: AI-Assisted Coding",
     "section": "Getting Help",
-    "text": "Getting Help\n\nOffice Hours: Tuesday 9-11 AM, Pitt 2206\nPiazza: Post questions with lab10 tag\nTA Sessions: Check LMS for schedule"
+    "text": "Getting Help\n\nOffice Hours: Tuesday 9-11 AM, Pitt 2206\nWebex: Post questions with lab10 tag\nTA Sessions: Check LMS for schedule"
   },
   {
     "objectID": "labs/lab05-polyglot-persistence.html",
@@ -1523,7 +1523,7 @@
     "href": "labs/lab05-polyglot-persistence.html#getting-help",
     "title": "Lab 5: Polyglot Persistence",
     "section": "Getting Help",
-    "text": "Getting Help\n\nOffice Hours: Tuesday 9-11 AM, Pitt 2206\nPiazza: Post questions with lab5 tag\nTA Sessions: Check LMS for schedule"
+    "text": "Getting Help\n\nOffice Hours: Tuesday 9-11 AM, Pitt 2206\nWebex: Post questions with lab5 tag\nTA Sessions: Check LMS for schedule"
   },
   {
     "objectID": "labs/lab09-ci-pipelines.html",
@@ -1565,14 +1565,14 @@
     "href": "labs/lab09-ci-pipelines.html#getting-help",
     "title": "Lab 9: CI Pipelines",
     "section": "Getting Help",
-    "text": "Getting Help\n\nOffice Hours: Tuesday 9-11 AM, Pitt 2206\nPiazza: Post questions with lab9 tag\nTA Sessions: Check LMS for schedule"
+    "text": "Getting Help\n\nOffice Hours: Tuesday 9-11 AM, Pitt 2206\nWebex: Post questions with lab9 tag\nTA Sessions: Check LMS for schedule"
   },
   {
     "objectID": "labs/lab04-backend-patterns.html",
     "href": "labs/lab04-backend-patterns.html",
     "title": "Lab 4: Full-Stack Project Management App",
     "section": "",
-    "text": "ImportantLab Information\n\n\n\nAssigned: Tuesday, February 10, 2026 Points: 100 (+ up to 20 bonus presentation points) Team Size: 3-4 members"
+    "text": "ImportantLab Information\n\n\n\nAssigned: Tuesday, February 10, 2026 Points: 100 Team Size: 3-4 members"
   },
   {
     "objectID": "labs/lab04-backend-patterns.html#overview",
@@ -1586,7 +1586,7 @@
     "href": "labs/lab04-backend-patterns.html#learning-objectives",
     "title": "Lab 4: Full-Stack Project Management App",
     "section": "Learning Objectives",
-    "text": "Learning Objectives\nBy completing this lab, you will:\n\nBuild a Next.js frontend from scratch - Create React components, pages, and API integration\nBuild an Express API from scratch - Design routes, controllers, and middleware\nDesign a MongoDB schema - Model relationships between Projects and Tasks\nPractice collaborative git workflows - Use feature branches, pull requests, and code review\nPresent technical solutions - Explain your implementation decisions to peers"
+    "text": "Learning Objectives\nBy completing this lab, you will:\n\nBuild a Next.js frontend from scratch - Create React components, pages, and API integration\nBuild an Express API from scratch - Design routes, controllers, and middleware\nDesign a MongoDB schema - Model relationships between Projects and Tasks\nPractice collaborative git workflows - Use feature branches, pull requests, and code review ## Getting Started\n\nClick the button below to accept the assignment and create your repository:\nAccept Lab 4 Assignment"
   },
   {
     "objectID": "labs/lab04-backend-patterns.html#getting-started",
@@ -1691,7 +1691,7 @@
     "href": "labs/lab01-infrastructure-as-code.html#getting-help",
     "title": "Lab 1: Infrastructure as Code",
     "section": "Getting Help",
-    "text": "Getting Help\n\nOffice Hours: Tuesday 9-11 AM, Pitt 2206\nPiazza: Post questions with lab1 tag\nTA Sessions: Check LMS for schedule"
+    "text": "Getting Help\n\nOffice Hours: Tuesday 9-11 AM, Pitt 2206\nWebex: Post questions with lab1 tag\nTA Sessions: Check LMS for schedule"
   },
   {
     "objectID": "labs/lab08-agent-orchestration.html",
@@ -1733,7 +1733,7 @@
     "href": "labs/lab08-agent-orchestration.html#getting-help",
     "title": "Lab 8: Agent Orchestration",
     "section": "Getting Help",
-    "text": "Getting Help\n\nOffice Hours: Tuesday 9-11 AM, Pitt 2206\nPiazza: Post questions with lab8 tag\nTA Sessions: Check LMS for schedule"
+    "text": "Getting Help\n\nOffice Hours: Tuesday 9-11 AM, Pitt 2206\nWebex: Post questions with lab8 tag\nTA Sessions: Check LMS for schedule"
   },
   {
     "objectID": "labs/lab02-layered-architecture.html",
@@ -1775,7 +1775,7 @@
     "href": "labs/lab02-layered-architecture.html#getting-help",
     "title": "Lab 2: Layered Client-Server Architecture",
     "section": "Getting Help",
-    "text": "Getting Help\n\nOffice Hours: Tuesday 9-11 AM, Pitt 2206\nPiazza: Post questions with lab2 tag\nTA Sessions: Check LMS for schedule"
+    "text": "Getting Help\n\nOffice Hours: Tuesday 9-11 AM, Pitt 2206\nWebex: Post questions with lab2 tag\nTA Sessions: Check LMS for schedule"
   },
   {
     "objectID": "labs/lab07-agentic-workflows.html",
@@ -1859,7 +1859,7 @@
     "href": "labs/lab12-capstone-extension.html#getting-help",
     "title": "Lab 12: Capstone Extension",
     "section": "Getting Help",
-    "text": "Getting Help\n\nOffice Hours: Tuesday 9-11 AM, Pitt 2206\nPiazza: Post questions with lab12 tag\nTA Sessions: Check LMS for schedule"
+    "text": "Getting Help\n\nOffice Hours: Tuesday 9-11 AM, Pitt 2206\nWebex: Post questions with lab12 tag\nTA Sessions: Check LMS for schedule"
   },
   {
     "objectID": "index.html",
@@ -4295,7 +4295,7 @@
     "href": "project/proposal.html#questions",
     "title": "Project Proposal",
     "section": "Questions?",
-    "text": "Questions?\n\nOffice Hours: Tuesday 9-11 AM, Pitt 2206\nPiazza: Use the project-proposal tag\nEmail: kuruzj@rpi.edu"
+    "text": "Questions?\n\nOffice Hours: Tuesday 9-11 AM, Pitt 2206\nWebex: Use the project-proposal tag\nEmail: kuruzj@rpi.edu"
   },
   {
     "objectID": "project/index.html",
@@ -4365,7 +4365,7 @@
     "href": "project/index.html#getting-help",
     "title": "Semester Project",
     "section": "Getting Help",
-    "text": "Getting Help\n\nOffice Hours: Tuesday 9-11 AM, Pitt 2206\nPiazza: Use the project tag for questions\nTA Sessions: Check LMS for schedule\nTeam Meetings: Schedule time with the instructor for project guidance"
+    "text": "Getting Help\n\nOffice Hours: Tuesday 9-11 AM, Pitt 2206\nWebex: Use the project tag for questions\nTA Sessions: Check LMS for schedule\nTeam Meetings: Schedule time with the instructor for project guidance"
   },
   {
     "objectID": "project/final.html",
@@ -4435,7 +4435,7 @@
     "href": "project/final.html#questions",
     "title": "Final Project Presentation",
     "section": "Questions?",
-    "text": "Questions?\n\nOffice Hours: Tuesday 9-11 AM, Pitt 2206\nPiazza: Use the project-final tag\nEmail: kuruzj@rpi.edu\n\n\nGood luck with your final presentations! This is your moment to shine."
+    "text": "Questions?\n\nOffice Hours: Tuesday 9-11 AM, Pitt 2206\nWebex: Use the project-final tag\nEmail: kuruzj@rpi.edu\n\n\nGood luck with your final presentations! This is your moment to shine."
   },
   {
     "objectID": "project/midterm.html",
@@ -4505,7 +4505,7 @@
     "href": "project/midterm.html#questions",
     "title": "Midterm Project Update",
     "section": "Questions?",
-    "text": "Questions?\n\nOffice Hours: Tuesday 9-11 AM, Pitt 2206\nPiazza: Use the project-midterm tag\nEmail: kuruzj@rpi.edu"
+    "text": "Questions?\n\nOffice Hours: Tuesday 9-11 AM, Pitt 2206\nWebex: Use the project-midterm tag\nEmail: kuruzj@rpi.edu"
   },
   {
     "objectID": "slides/week02/index.html#lab-2-due",
@@ -6465,7 +6465,7 @@
     "href": "slides/week02/03a-lab1-docker-compose.html#questions",
     "title": "Lab 1: Infrastructure as Code",
     "section": "Questions?",
-    "text": "Questions?\n\nLab Help: - Office Hours: Tuesday 9-11 AM - Piazza for Q&A - TA sessions (see LMS)"
+    "text": "Questions?\n\nLab Help: - Office Hours: Tuesday 9-11 AM - Webex for Q&A - TA sessions (see LMS)"
   },
   {
     "objectID": "slides/week02/04-lab2-layered-architecture.html#entity-methods-ishighpriority",
@@ -6689,7 +6689,7 @@
     "href": "slides/week03/lab03-frontend-development.html#questions",
     "title": "Lab 3: Frontend Development",
     "section": "Questions?",
-    "text": "Questions?\n\n\n\n\n\n\nGetting Help\n\n\n\nOffice Hours: Check LMS for schedule\nPiazza: Post questions with lab3 tag\nTA Sessions: Available for debugging help"
+    "text": "Questions?\n\n\n\n\n\n\nGetting Help\n\n\n\nOffice Hours: Check LMS for schedule\nWebex: Post questions with lab3 tag\nTA Sessions: Available for debugging help"
   },
   {
     "objectID": "slides/week09/agentic-ready.html#ai-is-already-here",
@@ -7228,21 +7228,21 @@
     "href": "labs/lab04-backend-patterns.html#part-1-project-setup-database-15-points",
     "title": "Lab 4: Full-Stack Project Management App",
     "section": "Part 1: Project Setup & Database (15 points)",
-    "text": "Part 1: Project Setup & Database (15 points)\nPresentation Topic: Session 1 - Schema Design\n\n1.1 Initialize the Project (5 points)\n\nSet up the repository structure\nConfigure docker-compose.yml with MongoDB\nVerify database connectivity\n\n\n\n1.2 Create Mongoose Models (10 points)\n\nImplement Project model with validation\nImplement Task model with project reference\nAdd timestamps to both models\n\nDeliverables:\n\nWorking docker-compose up command\nserver/src/models/Project.js\nserver/src/models/Task.js\n\n\n\n\n\n\n\nTip\n\n\n\nPresentation Focus: Explain your schema design choices. Why did you structure the relationship this way? What validations did you add and why?"
+    "text": "Part 1: Project Setup & Database (15 points)\n\n1.1 Initialize the Project (5 points)\n\nSet up the repository structure\nConfigure docker-compose.yml with MongoDB\nVerify database connectivity\n\n\n\n1.2 Create Mongoose Models (10 points)\n\nImplement Project model with validation\nImplement Task model with project reference\nAdd timestamps to both models\n\nDeliverables:\n\nWorking docker-compose up command\nserver/src/models/Project.js\nserver/src/models/Task.js"
   },
   {
     "objectID": "labs/lab04-backend-patterns.html#part-2-backend-api-30-points",
     "href": "labs/lab04-backend-patterns.html#part-2-backend-api-30-points",
     "title": "Lab 4: Full-Stack Project Management App",
     "section": "Part 2: Backend API (30 points)",
-    "text": "Part 2: Backend API (30 points)\nPresentation Topic: Session 2 - API Architecture\nImplement the REST API according to the specification in API.md.\n\n2.1 Projects API (15 points)\n\n\n\nEndpoint\nMethod\nDescription\nPoints\n\n\n\n\n/api/projects\nGET\nList all projects\n3\n\n\n/api/projects\nPOST\nCreate project\n3\n\n\n/api/projects/:id\nGET\nGet single project\n3\n\n\n/api/projects/:id\nPUT\nUpdate project\n3\n\n\n/api/projects/:id\nDELETE\nDelete project\n3\n\n\n\n\n\n2.2 Tasks API (15 points)\n\n\n\nEndpoint\nMethod\nDescription\nPoints\n\n\n\n\n/api/projects/:projectId/tasks\nGET\nList tasks in project\n3\n\n\n/api/projects/:projectId/tasks\nPOST\nCreate task\n3\n\n\n/api/tasks/:id\nGET\nGet single task\n3\n\n\n/api/tasks/:id\nPUT\nUpdate task\n3\n\n\n/api/tasks/:id\nDELETE\nDelete task\n3\n\n\n\nRequirements:\n\nProper HTTP status codes (200, 201, 400, 404, 500)\nJSON request/response bodies\nError handling middleware\nInput validation\n\n\n\n\n\n\n\nTip\n\n\n\nPresentation Focus: Walk through your route organization and controller pattern. How do you handle errors? Show a request/response cycle."
+    "text": "Part 2: Backend API (30 points)\nImplement the REST API according to the specification in API.md.\n\n2.1 Projects API (15 points)\n\n\n\nEndpoint\nMethod\nDescription\nPoints\n\n\n\n\n/api/projects\nGET\nList all projects\n3\n\n\n/api/projects\nPOST\nCreate project\n3\n\n\n/api/projects/:id\nGET\nGet single project\n3\n\n\n/api/projects/:id\nPUT\nUpdate project\n3\n\n\n/api/projects/:id\nDELETE\nDelete project\n3\n\n\n\n\n\n2.2 Tasks API (15 points)\n\n\n\nEndpoint\nMethod\nDescription\nPoints\n\n\n\n\n/api/projects/:projectId/tasks\nGET\nList tasks in project\n3\n\n\n/api/projects/:projectId/tasks\nPOST\nCreate task\n3\n\n\n/api/tasks/:id\nGET\nGet single task\n3\n\n\n/api/tasks/:id\nPUT\nUpdate task\n3\n\n\n/api/tasks/:id\nDELETE\nDelete task\n3\n\n\n\nRequirements:\n\nProper HTTP status codes (200, 201, 400, 404, 500)\nJSON request/response bodies\nError handling middleware\nInput validation"
   },
   {
     "objectID": "labs/lab04-backend-patterns.html#part-3-frontend---projects-20-points",
     "href": "labs/lab04-backend-patterns.html#part-3-frontend---projects-20-points",
     "title": "Lab 4: Full-Stack Project Management App",
     "section": "Part 3: Frontend - Projects (20 points)",
-    "text": "Part 3: Frontend - Projects (20 points)\nPresentation Topic: Session 3 - State Management\nBuild the Projects UI using Next.js App Router.\n\n3.1 Projects List Page (8 points)\n\nDisplay all projects in a list or grid\nLink to individual project pages\n“Create Project” button\n\n\n\n3.2 Project Detail Page (6 points)\n\nShow project name and description\nDisplay tasks belonging to project (from Part 4)\nEdit and Delete buttons\n\n\n\n3.3 Project Forms (6 points)\n\nCreate project form with validation\nEdit project form (pre-populated)\nHandle form submission and errors\n\nRoutes:\n\n/projects - Projects list\n/projects/new - Create project\n/projects/[id] - Project detail\n/projects/[id]/edit - Edit project\n\n\n\n\n\n\n\nTip\n\n\n\nPresentation Focus: Explain how you fetch and manage data. Do you use hooks? How do you handle loading and error states?"
+    "text": "Part 3: Frontend - Projects (20 points)\nBuild the Projects UI using Next.js App Router.\n\n3.1 Projects List Page (8 points)\n\nDisplay all projects in a list or grid\nLink to individual project pages\n“Create Project” button\n\n\n\n3.2 Project Detail Page (6 points)\n\nShow project name and description\nDisplay tasks belonging to project (from Part 4)\nEdit and Delete buttons\n\n\n\n3.3 Project Forms (6 points)\n\nCreate project form with validation\nEdit project form (pre-populated)\nHandle form submission and errors\n\nRoutes:\n\n/projects - Projects list\n/projects/new - Create project\n/projects/[id] - Project detail\n/projects/[id]/edit - Edit project"
   },
   {
     "objectID": "labs/lab04-backend-patterns.html#part-4-frontend---tasks-20-points",
@@ -7256,7 +7256,7 @@
     "href": "labs/lab04-backend-patterns.html#part-5-integration-polish-10-points",
     "title": "Lab 4: Full-Stack Project Management App",
     "section": "Part 5: Integration & Polish (10 points)",
-    "text": "Part 5: Integration & Polish (10 points)\nPresentation Topic: Session 4 - Integration Demo\n\n5.1 Navigation & Layout (4 points)\n\nConsistent header/navigation\nLoading states while fetching data\nError boundaries for failures\n\n\n\n5.2 Docker Integration (3 points)\n\nClient Dockerfile works\nServer Dockerfile works\nFull stack runs with docker-compose up\n\n\n\n5.3 Code Quality (3 points)\n\nConsistent code formatting\nNo console errors/warnings\nREADME updated with setup instructions\n\n\n\n\n\n\n\nTip\n\n\n\nPresentation Focus: Live demo of full application. Show the complete user flow from creating a project to managing tasks."
+    "text": "Part 5: Integration & Polish (10 points)\n\n5.1 Navigation & Layout (4 points)\n\nConsistent header/navigation\nLoading states while fetching data\nError boundaries for failures\n\n\n\n5.2 Docker Integration (3 points)\n\nClient Dockerfile works\nServer Dockerfile works\nFull stack runs with docker-compose up\n\n\n\n5.3 Code Quality (3 points)\n\nConsistent code formatting\nNo console errors/warnings\nREADME updated with setup instructions"
   },
   {
     "objectID": "labs/lab04-backend-patterns.html#part-6-conceptual-questions-5-points",
@@ -7277,14 +7277,14 @@
     "href": "labs/lab04-backend-patterns.html#grading-rubric",
     "title": "Lab 4: Full-Stack Project Management App",
     "section": "Grading Rubric",
-    "text": "Grading Rubric\n\n\n\nPart\nPoints\nDescription\n\n\n\n\nPart 1: Setup & Database\n15\nDocker, models, connectivity\n\n\nPart 2: Backend API\n30\nProjects + Tasks CRUD endpoints\n\n\nPart 3: Frontend Projects\n20\nList, detail, forms\n\n\nPart 4: Frontend Tasks\n20\nList, forms, actions\n\n\nPart 5: Integration\n10\nNavigation, Docker, quality\n\n\nPart 6: Questions\n5\nConceptual answers\n\n\nSubtotal\n100\n\n\n\n\n\nPresentation Points (Bonus)\n\n\n\nPresentation\nPoints\n\n\n\n\nSession 1: Schema Design\n+5\n\n\nSession 2: API Architecture\n+5\n\n\nSession 3: State Management\n+5\n\n\nSession 4: Integration Demo\n+5\n\n\nMax Presentation Bonus\n+20\n\n\n\n\n\nGit Workflow Adjustments\n\n+5 points: Excellent PR history with meaningful reviews\n-10 points: Direct commits to main (bypassing PRs)\n-5 points: Single team member did &gt;80% of commits"
+    "text": "Grading Rubric\n\n\n\nPart\nPoints\nDescription\n\n\n\n\nPart 1: Setup & Database\n15\nDocker, models, connectivity\n\n\nPart 2: Backend API\n30\nProjects + Tasks CRUD endpoints\n\n\nPart 3: Frontend Projects\n20\nList, detail, forms\n\n\nPart 4: Frontend Tasks\n20\nList, forms, actions\n\n\nPart 5: Integration\n10\nNavigation, Docker, quality\n\n\nPart 6: Questions\n5\nConceptual answers\n\n\nSubtotal\n100\n\n\n\n\n\nGit Workflow Adjustments\n\n+5 points: Excellent PR history with meaningful reviews\n-10 points: Direct commits to main (bypassing PRs)\n-5 points: Single team member did &gt;80% of commits"
   },
   {
     "objectID": "labs/lab04-backend-patterns.html#submission-requirements",
     "href": "labs/lab04-backend-patterns.html#submission-requirements",
     "title": "Lab 4: Full-Stack Project Management App",
     "section": "Submission Requirements",
-    "text": "Submission Requirements\n\nRequired in Repository\n\nanswers.yml - Completed with all responses\nserver/ - Working Express API\nclient/ - Working Next.js frontend\ndocker-compose.yml - Full stack runs\nPR History - Visible branch/merge workflow\n\n\n\nSubmission Checklist\n\nAll CRUD operations work for Projects\nAll CRUD operations work for Tasks\ndocker-compose up starts entire application\nAt least 4 merged PRs from different branches\nAll team members have commits\nanswers.yml completed\nNo secrets committed (.env in .gitignore)\nEach team member presented at least once"
+    "text": "Submission Requirements\n\nRequired in Repository\n\nanswers.yml - Completed with all responses\nserver/ - Working Express API\nclient/ - Working Next.js frontend\ndocker-compose.yml - Full stack runs\nPR History - Visible branch/merge workflow\n\n\n\nSubmission Checklist\n\nAll CRUD operations work for Projects\nAll CRUD operations work for Tasks\ndocker-compose up starts entire application\nAt least 4 merged PRs from different branches\nAll team members have commits\nanswers.yml completed\nNo secrets committed (.env in .gitignore)"
   },
   {
     "objectID": "labs/lab04-backend-patterns.html#troubleshooting",
@@ -7305,6 +7305,433 @@
     "href": "labs/lab04-backend-patterns.html#academic-integrity",
     "title": "Lab 4: Full-Stack Project Management App",
     "section": "Academic Integrity",
-    "text": "Academic Integrity\nThis is a team assignment. You may:\n\nCollaborate fully within your team\nUse documentation and official resources\nAsk clarifying questions on Piazza\n\nYou may not:\n\nShare code between teams\nCopy code from other teams or online solutions\nUse AI to generate entire solutions without understanding\n\nAll team members must contribute meaningfully. We review git history."
+    "text": "Academic Integrity\nThis is a team assignment. You may:\n\nCollaborate fully within your team\nUse documentation and official resources\nAsk clarifying questions in Webex\n\nYou may not:\n\nShare code between teams\nCopy code from other teams or online solutions\nUse AI to generate entire solutions without understanding\n\nAll team members must contribute meaningfully. We review git history."
+  },
+  {
+    "objectID": "slides/week05/07a-lab4-solution-walkthrough.html#todays-agenda",
+    "href": "slides/week05/07a-lab4-solution-walkthrough.html#todays-agenda",
+    "title": "Lab 4 Solution Deep Dive",
+    "section": "Today’s Agenda",
+    "text": "Today’s Agenda\n\nLearning Objectives\n\nUnderstand what React, Next.js, Express, and MongoDB each contribute\nCompare four architectures for the same application\nTrace a request end-to-end through each stack\nUnderstand data layer abstraction and why it matters\nKnow when to choose which architecture"
+  },
+  {
+    "objectID": "slides/week05/07a-lab4-solution-walkthrough.html#the-lab-4-solution-repository",
+    "href": "slides/week05/07a-lab4-solution-walkthrough.html#the-lab-4-solution-repository",
+    "title": "Lab 4 Solution Deep Dive",
+    "section": "The Lab 4 Solution Repository",
+    "text": "The Lab 4 Solution Repository\n\n\n\n\n\n\nNote\n\n\nSolution Code: github.com/RPI-WS-spring-2026/RPI-WS-LAB4-Solution\n\n\n\nFour implementations of the same Project Management application — identical UX, different technology underneath."
+  },
+  {
+    "objectID": "slides/week05/07a-lab4-solution-walkthrough.html#the-four-variants",
+    "href": "slides/week05/07a-lab4-solution-walkthrough.html#the-four-variants",
+    "title": "Lab 4 Solution Deep Dive",
+    "section": "The Four Variants",
+    "text": "The Four Variants\n\n\n\n\n\n\n\n\n\n\nVariant\nFrontend\nBackend\nDatabase\nPort\n\n\n\n\nreact-only\nVite + React + React Router\nNone\nlocalStorage\n3004\n\n\nreact-express-mongo\nVite + React + React Router\nExpress (port 3000)\nMongoDB\n3002\n\n\nreact-nextjs-mongo\nNext.js App Router\nNext.js API Routes\nMongoDB\n3003\n\n\nreact-next-express-mongo\nNext.js App Router\nExpress (port 3000)\nMongoDB\n3001"
+  },
+  {
+    "objectID": "slides/week05/07a-lab4-solution-walkthrough.html#what-each-layer-does",
+    "href": "slides/week05/07a-lab4-solution-walkthrough.html#what-each-layer-does",
+    "title": "Lab 4 Solution Deep Dive",
+    "section": "What Each Layer Does",
+    "text": "What Each Layer Does\n\n\n\n\n\n\n\n\nLayer\nTechnology\nResponsibility\n\n\n\n\nUI Components\nReact\nRenders HTML, handles interaction, manages component state\n\n\nClient-Side Routing\nReact Router or Next.js\nMaps URLs to pages without full-page reloads\n\n\nAPI Server\nExpress or Next.js Route Handlers\nReceives HTTP requests, validates data, talks to DB\n\n\nDatabase\nMongoDB (Mongoose) or localStorage\nPersists data beyond a single browser session"
+  },
+  {
+    "objectID": "slides/week05/07a-lab4-solution-walkthrough.html#react-only-architecture",
+    "href": "slides/week05/07a-lab4-solution-walkthrough.html#react-only-architecture",
+    "title": "Lab 4 Solution Deep Dive",
+    "section": "react-only Architecture",
+    "text": "react-only Architecture\n┌─────────────────────────────────────────┐\n│              Browser                     │\n│                                          │\n│  ┌──────────┐  ┌────────┐  ┌─────────┐ │\n│  │  React   │→ │ React  │→ │localStorage│\n│  │Components│  │ Router │  │ (storage)│ │\n│  └──────────┘  └────────┘  └─────────┘ │\n│                                          │\n│  Everything runs in the browser          │\n└─────────────────────────────────────────┘\n\nNo server, no database\nData stored in browser’s localStorage\nWorks offline, zero operational complexity\nData is siloed per browser/device"
+  },
+  {
+    "objectID": "slides/week05/07a-lab4-solution-walkthrough.html#react-express-mongo-architecture",
+    "href": "slides/week05/07a-lab4-solution-walkthrough.html#react-express-mongo-architecture",
+    "title": "Lab 4 Solution Deep Dive",
+    "section": "react-express-mongo Architecture",
+    "text": "react-express-mongo Architecture\n┌──────────────────────┐     ┌──────────────────────┐\n│   Browser (3002)      │     │   Server (3000)       │\n│                       │     │                       │\n│  ┌──────┐ ┌────────┐ │     │  ┌───────┐ ┌───────┐ │\n│  │React │ │ React  │ │────→│  │Express│→│MongoDB│ │\n│  │ UI   │ │ Router │ │     │  │  API  │ │       │ │\n│  └──────┘ └────────┘ │     │  └───────┘ └───────┘ │\n│                       │     │                       │\n│  Vite Dev Server      │     │  Separate process     │\n└──────────────────────┘     └──────────────────────┘\n\nCross-origin: Browser on 3002, API on 3000 (needs CORS)\nThree separate services: Vite, Express, MongoDB\nAPI can serve multiple frontends"
+  },
+  {
+    "objectID": "slides/week05/07a-lab4-solution-walkthrough.html#react-nextjs-mongo-architecture",
+    "href": "slides/week05/07a-lab4-solution-walkthrough.html#react-nextjs-mongo-architecture",
+    "title": "Lab 4 Solution Deep Dive",
+    "section": "react-nextjs-mongo Architecture",
+    "text": "react-nextjs-mongo Architecture\n┌──────────────────────────────────────────┐\n│         Next.js Server (3003)             │\n│                                           │\n│  ┌──────────┐  ┌─────────┐  ┌─────────┐ │\n│  │  React   │  │  API    │  │         │ │\n│  │Components│  │ Routes  │→ │ MongoDB │ │\n│  │ + Pages  │  │(route.js)│  │         │ │\n│  └──────────┘  └─────────┘  └─────────┘ │\n│                                           │\n│  Same-origin: pages + API on one server   │\n└──────────────────────────────────────────┘\n\nSame-origin: No CORS needed, simpler config\nTwo services: Next.js + MongoDB\nFile-based routing replaces React Router"
+  },
+  {
+    "objectID": "slides/week05/07a-lab4-solution-walkthrough.html#react-next-express-mongo-architecture",
+    "href": "slides/week05/07a-lab4-solution-walkthrough.html#react-next-express-mongo-architecture",
+    "title": "Lab 4 Solution Deep Dive",
+    "section": "react-next-express-mongo Architecture",
+    "text": "react-next-express-mongo Architecture\n┌─────────────────────┐     ┌──────────────────────┐\n│  Next.js (3001)      │     │   Express (3000)      │\n│                      │     │                       │\n│  ┌──────┐ ┌───────┐ │     │  ┌───────┐ ┌───────┐ │\n│  │React │ │ Next  │ │────→│  │Express│→│MongoDB│ │\n│  │ UI   │ │Router │ │     │  │  API  │ │       │ │\n│  └──────┘ └───────┘ │     │  └───────┘ └───────┘ │\n│                      │     │                       │\n│  Pages only          │     │  API + DB             │\n└─────────────────────┘     └──────────────────────┘\n\nNext.js for frontend only (pages, routing, SSR)\nExpress as a standalone API (shared with other variants)\nThree services, cross-origin like React+Express"
+  },
+  {
+    "objectID": "slides/week05/07a-lab4-solution-walkthrough.html#react-is-data-source-agnostic",
+    "href": "slides/week05/07a-lab4-solution-walkthrough.html#react-is-data-source-agnostic",
+    "title": "Lab 4 Solution Deep Dive",
+    "section": "React Is Data-Source Agnostic",
+    "text": "React Is Data-Source Agnostic\nCompare ProjectList in both React Router variants — the only difference is one import:\n// react-only\nimport { getProjects } from '../lib/storage';\n\n// react-express-mongo\nimport { getProjects } from '../lib/api';\nEverything else is identical: useState, useEffect, conditional rendering, JSX mapping."
+  },
+  {
+    "objectID": "slides/week05/07a-lab4-solution-walkthrough.html#reacts-responsibilities",
+    "href": "slides/week05/07a-lab4-solution-walkthrough.html#reacts-responsibilities",
+    "title": "Lab 4 Solution Deep Dive",
+    "section": "React’s Responsibilities",
+    "text": "React’s Responsibilities\nReact does four things — nothing more:\n\nManage component state with hooks (useState, useEffect)\nTrigger side effects like data fetching (useEffect)\nRender UI based on current state (JSX)\nHandle user interaction via event handlers (onClick, onChange)\n\nReact does NOT handle:\n\nRouting (that’s React Router or Next.js)\nData fetching (that’s your data layer / fetch)\nBackend logic (that’s Express or Next.js API routes)"
+  },
+  {
+    "objectID": "slides/week05/07a-lab4-solution-walkthrough.html#the-abstraction-principle",
+    "href": "slides/week05/07a-lab4-solution-walkthrough.html#the-abstraction-principle",
+    "title": "Lab 4 Solution Deep Dive",
+    "section": "The Abstraction Principle",
+    "text": "The Abstraction Principle\nBoth data layers expose the same interface:\n// api.js (calls Express server)\nexport async function createProject(data) {\n  const res = await fetch(`${API_URL}/api/projects`, {\n    method: 'POST',\n    headers: { 'Content-Type': 'application/json' },\n    body: JSON.stringify(data)\n  });\n  return res.json();\n}\n\n// storage.js (uses localStorage)\nexport async function createProject(data) {\n  const project = { _id: generateId(), ...data, createdAt: new Date() };\n  const projects = getAll('projects');\n  projects.push(project);\n  saveAll('projects', projects);\n  return project;\n}\nReact calls await createProject(formData) — same code, either implementation."
+  },
+  {
+    "objectID": "slides/week05/07a-lab4-solution-walkthrough.html#tracing-a-delete-operation",
+    "href": "slides/week05/07a-lab4-solution-walkthrough.html#tracing-a-delete-operation",
+    "title": "Lab 4 Solution Deep Dive",
+    "section": "Tracing a Delete Operation",
+    "text": "Tracing a Delete Operation\n\n\n\n\n\nsequenceDiagram\n    participant User\n    participant React as React Component\n    participant Data as Data Layer\n    participant Router as React Router\n\n    User-&gt;&gt;React: Clicks \"Delete\" button\n    React-&gt;&gt;React: confirm() dialog\n    React-&gt;&gt;Data: await deleteProject(id)\n    Data-&gt;&gt;Data: Remove from storage/API\n    Data--&gt;&gt;React: Promise resolves\n    React-&gt;&gt;Router: navigate('/projects')\n    Router-&gt;&gt;React: Render ProjectList\n    React-&gt;&gt;Data: getProjects()\n    Data--&gt;&gt;React: Updated list (without deleted)\n    React-&gt;&gt;User: Re-render without deleted project"
+  },
+  {
+    "objectID": "slides/week05/07a-lab4-solution-walkthrough.html#tracing-a-create-request",
+    "href": "slides/week05/07a-lab4-solution-walkthrough.html#tracing-a-create-request",
+    "title": "Lab 4 Solution Deep Dive",
+    "section": "Tracing a Create Request",
+    "text": "Tracing a Create Request\n\n\n\n\n\nsequenceDiagram\n    participant Browser\n    participant CORS as cors()\n    participant Logger as morgan()\n    participant Parser as express.json()\n    participant Route as Router\n    participant Controller\n    participant MongoDB\n\n    Browser-&gt;&gt;CORS: POST /api/projects\n    CORS-&gt;&gt;Logger: Add CORS headers\n    Logger-&gt;&gt;Parser: Log request\n    Parser-&gt;&gt;Route: Parse JSON body\n    Route-&gt;&gt;Controller: Match POST /\n    Controller-&gt;&gt;Controller: Validate name exists\n    Controller-&gt;&gt;MongoDB: Project.create({...})\n    MongoDB--&gt;&gt;Controller: Document saved\n    Controller--&gt;&gt;Browser: 201 Created + JSON"
+  },
+  {
+    "objectID": "slides/week05/07a-lab4-solution-walkthrough.html#middleware-pipeline",
+    "href": "slides/week05/07a-lab4-solution-walkthrough.html#middleware-pipeline",
+    "title": "Lab 4 Solution Deep Dive",
+    "section": "Middleware Pipeline",
+    "text": "Middleware Pipeline\nExpress processes requests through a pipeline of middleware:\n// server/src/index.js\napp.use(cors());              // 1. Allow cross-origin requests\napp.use(morgan('dev'));        // 2. Log requests\napp.use(express.json());      // 3. Parse JSON bodies\n\napp.use('/api/projects', projectRoutes);  // 4. Route matching\napp.use('/api/tasks', taskRoutes);\n\napp.use(errorHandler);        // 5. Catch errors (MUST be last)\nOrder matters! Each middleware calls next() to pass to the next one."
+  },
+  {
+    "objectID": "slides/week05/07a-lab4-solution-walkthrough.html#cascade-deletes",
+    "href": "slides/week05/07a-lab4-solution-walkthrough.html#cascade-deletes",
+    "title": "Lab 4 Solution Deep Dive",
+    "section": "Cascade Deletes",
+    "text": "Cascade Deletes\nWhen deleting a project, Express handles data integrity:\n// projectController.js\nconst deleteProject = async (req, res, next) =&gt; {\n  const project = await Project.findById(req.params.id);\n\n  // Delete all tasks belonging to this project FIRST\n  await Task.deleteMany({ projectId: project._id });\n\n  // Then delete the project itself\n  await project.deleteOne();\n\n  res.json({ message: 'Project and associated tasks deleted' });\n};\nWithout cascade deletes, tasks become orphans — referencing a project that no longer exists."
+  },
+  {
+    "objectID": "slides/week05/07a-lab4-solution-walkthrough.html#centralized-error-handling",
+    "href": "slides/week05/07a-lab4-solution-walkthrough.html#centralized-error-handling",
+    "title": "Lab 4 Solution Deep Dive",
+    "section": "Centralized Error Handling",
+    "text": "Centralized Error Handling\n// middleware/errorHandler.js\nfunction errorHandler(err, req, res, next) {\n  console.error(err.stack);\n\n  res.status(err.status || 500).json({\n    error: err.message || 'Server Error',\n    message: err.message\n  });\n}\n\nMust be registered last (after all routes)\nExpress identifies it by the 4-parameter signature (err, req, res, next)\nControllers call next(error) to skip to this handler\nProvides consistent error formatting across all routes"
+  },
+  {
+    "objectID": "slides/week05/07a-lab4-solution-walkthrough.html#file-based-routing-vs.-explicit-routes",
+    "href": "slides/week05/07a-lab4-solution-walkthrough.html#file-based-routing-vs.-explicit-routes",
+    "title": "Lab 4 Solution Deep Dive",
+    "section": "File-Based Routing vs. Explicit Routes",
+    "text": "File-Based Routing vs. Explicit Routes\n\n\nReact Router (App.jsx)\n&lt;Route element={&lt;Layout /&gt;}&gt;\n  &lt;Route path=\"/\"\n    element={&lt;Home /&gt;} /&gt;\n  &lt;Route path=\"/projects\"\n    element={&lt;ProjectList /&gt;} /&gt;\n  &lt;Route path=\"/projects/new\"\n    element={&lt;ProjectForm /&gt;} /&gt;\n  &lt;Route path=\"/projects/:id\"\n    element={&lt;ProjectDetail /&gt;} /&gt;\n&lt;/Route&gt;\nAll routes in one file.\n\nNext.js (file system)\nsrc/app/\n  page.js            → /\n  layout.js          → Wraps all pages\n  projects/\n    page.js          → /projects\n    new/\n      page.js        → /projects/new\n    [id]/\n      page.js        → /projects/:id\n      edit/\n        page.js      → /projects/:id/edit\nRoutes defined by folder structure."
+  },
+  {
+    "objectID": "slides/week05/07a-lab4-solution-walkthrough.html#server-components-vs.-client-components",
+    "href": "slides/week05/07a-lab4-solution-walkthrough.html#server-components-vs.-client-components",
+    "title": "Lab 4 Solution Deep Dive",
+    "section": "Server Components vs. Client Components",
+    "text": "Server Components vs. Client Components\n// Home page - NO 'use client' needed\n// Renders on the server, sent as HTML\nexport default function Home() {\n  return (\n    &lt;div&gt;\n      &lt;h1&gt;Welcome to Project Manager&lt;/h1&gt;\n      &lt;Link href=\"/projects\"&gt;View Projects&lt;/Link&gt;\n    &lt;/div&gt;\n  );\n}\n// Projects list - NEEDS 'use client'\n// Uses useState and useEffect (browser-only hooks)\n'use client';\nimport { useState, useEffect } from 'react';\n\nexport default function ProjectList() {\n  const [projects, setProjects] = useState([]);\n  // ... hooks require client-side rendering\n}\n'use client' is a Next.js concept, not React. In Vite, everything is client-side."
+  },
+  {
+    "objectID": "slides/week05/07a-lab4-solution-walkthrough.html#same-origin-vs.-cross-origin-api",
+    "href": "slides/week05/07a-lab4-solution-walkthrough.html#same-origin-vs.-cross-origin-api",
+    "title": "Lab 4 Solution Deep Dive",
+    "section": "Same-Origin vs. Cross-Origin API",
+    "text": "Same-Origin vs. Cross-Origin API\n\n\nNext.js (same-origin)\n// No hostname needed — same server!\nconst res = await fetch('/api/projects');\n\nAPI routes served by same Next.js server\nNo CORS configuration needed\nSimpler setup\n\n\nReact + Express (cross-origin)\n// Full URL required — different server!\nconst API_URL = 'http://localhost:3000';\nconst res = await fetch(\n  `${API_URL}/api/projects`\n);\n\nDifferent ports = different origins\nExpress must use cors() middleware\nMore configuration"
+  },
+  {
+    "objectID": "slides/week05/07a-lab4-solution-walkthrough.html#next.js-api-routes-vs.-express",
+    "href": "slides/week05/07a-lab4-solution-walkthrough.html#next.js-api-routes-vs.-express",
+    "title": "Lab 4 Solution Deep Dive",
+    "section": "Next.js API Routes vs. Express",
+    "text": "Next.js API Routes vs. Express\n\n\nExpress Controller\n// Centralized error handling\nconst getProject = async (req, res, next) =&gt; {\n  try {\n    const project = await Project\n      .findById(req.params.id);\n    if (!project) {\n      const error = new Error('Not found');\n      error.status = 404;\n      return next(error);  // → errorHandler\n    }\n    res.json(project);\n  } catch (err) {\n    next(err);\n  }\n};\n\nNext.js Route Handler\n// Self-contained error handling\nexport async function GET(request, { params }) {\n  try {\n    await connectDB();\n    const project = await Project\n      .findById(params.id);\n    if (!project) {\n      return NextResponse.json(\n        { message: 'Not found' },\n        { status: 404 }\n      );\n    }\n    return NextResponse.json(project);\n  } catch (error) {\n    return NextResponse.json(\n      { message: 'Server error' },\n      { status: 500 }\n    );\n  }\n}"
+  },
+  {
+    "objectID": "slides/week05/07a-lab4-solution-walkthrough.html#the-mongoose-singleton-problem",
+    "href": "slides/week05/07a-lab4-solution-walkthrough.html#the-mongoose-singleton-problem",
+    "title": "Lab 4 Solution Deep Dive",
+    "section": "The Mongoose Singleton Problem",
+    "text": "The Mongoose Singleton Problem\nExpress: Connects to MongoDB once at startup — long-running process, connection stays open.\nNext.js: Hot Module Replacement (HMR) re-imports modules on file changes. Without a cache, each reload opens a new connection.\n// Next.js solution: cache on global object\nif (!global.mongoose) {\n  global.mongoose = { conn: null, promise: null };\n}\n\nexport async function connectDB() {\n  if (global.mongoose.conn) return global.mongoose.conn;\n\n  global.mongoose.promise = mongoose.connect(MONGODB_URI);\n  global.mongoose.conn = await global.mongoose.promise;\n  return global.mongoose.conn;\n}\nglobal survives hot reloads because Node.js preserves the global scope."
+  },
+  {
+    "objectID": "slides/week05/07a-lab4-solution-walkthrough.html#decision-framework",
+    "href": "slides/week05/07a-lab4-solution-walkthrough.html#decision-framework",
+    "title": "Lab 4 Solution Deep Dive",
+    "section": "Decision Framework",
+    "text": "Decision Framework\n\n\n\n\n\n\n\n\nScenario\nBest Choice\nWhy\n\n\n\n\nPersonal tool, one user\nreact-only\nNo server needed, works offline\n\n\nTeam app, web only\nreact-nextjs-mongo\nSimplest full-stack (one service)\n\n\nWeb + mobile + 3rd party API\nreact-express-mongo\nStandalone API serves all clients\n\n\nNext.js frontend + shared API\nreact-next-express-mongo\nBest of both worlds"
+  },
+  {
+    "objectID": "slides/week05/07a-lab4-solution-walkthrough.html#common-misconceptions",
+    "href": "slides/week05/07a-lab4-solution-walkthrough.html#common-misconceptions",
+    "title": "Lab 4 Solution Deep Dive",
+    "section": "Common Misconceptions",
+    "text": "Common Misconceptions\n“Next.js replaces Express”\nOversimplification. Next.js API routes work great for web-only CRUD apps. But a separate Express server is better when:\n\nMultiple clients share one API (web, mobile, third-party)\nBackend needs a different language (Python, Go)\nAPI needs independent scaling/deployment\n\n“React and Next.js are the same thing”\nThey are not. React is a UI library (components, state, rendering). Next.js is a framework that adds routing, server rendering, API endpoints, and build tooling on top of React."
+  },
+  {
+    "objectID": "slides/week05/07a-lab4-solution-walkthrough.html#what-react-provides-all-variants",
+    "href": "slides/week05/07a-lab4-solution-walkthrough.html#what-react-provides-all-variants",
+    "title": "Lab 4 Solution Deep Dive",
+    "section": "What React Provides (All Variants)",
+    "text": "What React Provides (All Variants)\n\nComponent model (function components + JSX)\nState management (useState, useEffect)\nEvent handling (onClick, onChange, onSubmit)\nConditional and list rendering\nComponent composition and props"
+  },
+  {
+    "objectID": "slides/week05/07a-lab4-solution-walkthrough.html#what-next.js-adds",
+    "href": "slides/week05/07a-lab4-solution-walkthrough.html#what-next.js-adds",
+    "title": "Lab 4 Solution Deep Dive",
+    "section": "What Next.js Adds",
+    "text": "What Next.js Adds\n\nFile-based routing (no React Router needed)\nServer Components (render on server, send HTML)\n'use client' directive (opt-in client rendering)\nAPI Route Handlers (replace Express for simple cases)\nMetadata exports (SEO-friendly page titles)\nAutomatic layout nesting (layout.js + {children})"
+  },
+  {
+    "objectID": "slides/week05/07a-lab4-solution-walkthrough.html#summary",
+    "href": "slides/week05/07a-lab4-solution-walkthrough.html#summary",
+    "title": "Lab 4 Solution Deep Dive",
+    "section": "Summary",
+    "text": "Summary\n\nReact handles UI — state, rendering, events. It’s data-source agnostic.\nExpress is a standalone API server — middleware pipeline, centralized errors.\nNext.js is a framework on top of React — routing, SSR, API routes.\nData abstraction lets you swap backends without changing React code.\nArchitecture should match the problem — don’t over-engineer."
+  },
+  {
+    "objectID": "slides/week05/07a-lab4-solution-walkthrough.html#looking-ahead",
+    "href": "slides/week05/07a-lab4-solution-walkthrough.html#looking-ahead",
+    "title": "Lab 4 Solution Deep Dive",
+    "section": "Looking Ahead",
+    "text": "Looking Ahead\nFriday 2/13: React & Next.js Foundations\n\nCore React concepts from react.dev/learn\nReact Foundations at nextjs.org/learn/react-foundations\nNext.js Dashboard App at nextjs.org/learn/dashboard-app\n\nContinue Working on Lab 4\n\nApply these patterns in your own implementation\nUnderstand which variant best fits your project"
+  },
+  {
+    "objectID": "slides/week05/07a-lab4-solution-walkthrough.html#questions",
+    "href": "slides/week05/07a-lab4-solution-walkthrough.html#questions",
+    "title": "Lab 4 Solution Deep Dive",
+    "section": "Questions?",
+    "text": "Questions?\n\nOffice Hours: Tuesday 9-11 AM, Pitt 2206\nEmail: kuruzj@rpi.edu\nAppointments: bit.ly/jason-rpi"
+  },
+  {
+    "objectID": "slides/week05/07b-react-nextjs-foundations.html#todays-agenda",
+    "href": "slides/week05/07b-react-nextjs-foundations.html#todays-agenda",
+    "title": "React & Next.js Foundations",
+    "section": "Today’s Agenda",
+    "text": "Today’s Agenda\n\nLearning Objectives\n\nMaster core React concepts: components, JSX, props, state\nUnderstand React hooks and the rendering cycle\nLearn how Next.js builds on React with file-based routing and server components\nConnect these concepts to the Lab 4 variants we explored Tuesday\nChart a path through the official tutorials for deeper learning"
+  },
+  {
+    "objectID": "slides/week05/07b-react-nextjs-foundations.html#why-were-doing-this",
+    "href": "slides/week05/07b-react-nextjs-foundations.html#why-were-doing-this",
+    "title": "React & Next.js Foundations",
+    "section": "Why We’re Doing This",
+    "text": "Why We’re Doing This\n\n\n\n\n\n\nImportant\n\n\nMany of you have been using AI tools to generate React/Next.js code. That’s fine for productivity — but you need to understand what the code does to debug it, modify it, and make architectural decisions.\nToday we build that foundation."
+  },
+  {
+    "objectID": "slides/week05/07b-react-nextjs-foundations.html#components-the-building-blocks",
+    "href": "slides/week05/07b-react-nextjs-foundations.html#components-the-building-blocks",
+    "title": "React & Next.js Foundations",
+    "section": "Components: The Building Blocks",
+    "text": "Components: The Building Blocks\nReact apps are built from components — reusable pieces of UI.\n// A component is just a function that returns JSX\nfunction ProjectCard({ project }) {\n  return (\n    &lt;div className=\"card\"&gt;\n      &lt;h3&gt;{project.name}&lt;/h3&gt;\n      &lt;p&gt;{project.description}&lt;/p&gt;\n    &lt;/div&gt;\n  );\n}\n\n// Components compose together\nfunction ProjectList({ projects }) {\n  return (\n    &lt;div&gt;\n      {projects.map(p =&gt; (\n        &lt;ProjectCard key={p._id} project={p} /&gt;\n      ))}\n    &lt;/div&gt;\n  );\n}\nEvery piece of UI you see is a component, or components nested inside other components."
+  },
+  {
+    "objectID": "slides/week05/07b-react-nextjs-foundations.html#jsx-html-like-syntax-in-javascript",
+    "href": "slides/week05/07b-react-nextjs-foundations.html#jsx-html-like-syntax-in-javascript",
+    "title": "React & Next.js Foundations",
+    "section": "JSX: HTML-like Syntax in JavaScript",
+    "text": "JSX: HTML-like Syntax in JavaScript\nJSX lets you write markup inside JavaScript:\n// JSX is NOT HTML — it compiles to JavaScript\nfunction Welcome({ user }) {\n  return (\n    &lt;div className=\"welcome\"&gt;         {/* className, not class */}\n      &lt;h1&gt;Hello, {user.name}!&lt;/h1&gt;    {/* {} for JS expressions */}\n      &lt;img\n        src={user.avatar}\n        alt={`Avatar of ${user.name}`}\n        style={{ borderRadius: '50%' }} {/* Double braces for objects */}\n      /&gt;\n    &lt;/div&gt;\n  );\n}\nKey differences from HTML:\n\nclassName instead of class\n{} to embed JavaScript expressions\nSelf-closing tags required: &lt;img /&gt;, &lt;br /&gt;\nstyle takes an object, not a string"
+  },
+  {
+    "objectID": "slides/week05/07b-react-nextjs-foundations.html#props-passing-data-to-components",
+    "href": "slides/week05/07b-react-nextjs-foundations.html#props-passing-data-to-components",
+    "title": "React & Next.js Foundations",
+    "section": "Props: Passing Data to Components",
+    "text": "Props: Passing Data to Components\nProps flow down from parent to child — like function arguments:\n// Parent passes data via props\nfunction App() {\n  return &lt;ProjectCard name=\"My Project\" status=\"active\" /&gt;;\n}\n\n// Child receives props as an object\nfunction ProjectCard({ name, status }) {\n  return (\n    &lt;div&gt;\n      &lt;h3&gt;{name}&lt;/h3&gt;\n      &lt;span className={`badge badge-${status}`}&gt;{status}&lt;/span&gt;\n    &lt;/div&gt;\n  );\n}\n\n\n\n\n\n\nNote\n\n\nProps are read-only. A component cannot modify its own props. If you need data that changes, you need state."
+  },
+  {
+    "objectID": "slides/week05/07b-react-nextjs-foundations.html#state-data-that-changes",
+    "href": "slides/week05/07b-react-nextjs-foundations.html#state-data-that-changes",
+    "title": "React & Next.js Foundations",
+    "section": "State: Data That Changes",
+    "text": "State: Data That Changes\nuseState lets components remember and update information:\nfunction TaskToggle({ task }) {\n  const [isComplete, setIsComplete] = useState(task.status === 'done');\n\n  function handleToggle() {\n    setIsComplete(!isComplete);  // Triggers re-render\n  }\n\n  return (\n    &lt;div&gt;\n      &lt;span style={{\n        textDecoration: isComplete ? 'line-through' : 'none'\n      }}&gt;\n        {task.title}\n      &lt;/span&gt;\n      &lt;button onClick={handleToggle}&gt;\n        {isComplete ? 'Undo' : 'Complete'}\n      &lt;/button&gt;\n    &lt;/div&gt;\n  );\n}\nWhen state changes, React re-renders the component with the new values."
+  },
+  {
+    "objectID": "slides/week05/07b-react-nextjs-foundations.html#the-usestate-pattern",
+    "href": "slides/week05/07b-react-nextjs-foundations.html#the-usestate-pattern",
+    "title": "React & Next.js Foundations",
+    "section": "The useState Pattern",
+    "text": "The useState Pattern\n// Declaration: [currentValue, setterFunction] = useState(initialValue)\nconst [count, setCount] = useState(0);\nconst [name, setName] = useState('');\nconst [projects, setProjects] = useState([]);\nconst [loading, setLoading] = useState(true);\nconst [formData, setFormData] = useState({ name: '', description: '' });\nRules:\n\nAlways call at the top level of your component (not inside loops or conditions)\nThe setter function triggers a re-render\nState is local to each component instance\n\n// Updating objects — spread to create a new object\nsetFormData({ ...formData, name: 'New Name' });\n\n// Updating arrays — create new arrays, don't mutate\nsetProjects([...projects, newProject]);           // Add\nsetProjects(projects.filter(p =&gt; p._id !== id));  // Remove"
+  },
+  {
+    "objectID": "slides/week05/07b-react-nextjs-foundations.html#conditional-rendering",
+    "href": "slides/week05/07b-react-nextjs-foundations.html#conditional-rendering",
+    "title": "React & Next.js Foundations",
+    "section": "Conditional Rendering",
+    "text": "Conditional Rendering\nReact uses JavaScript expressions to render conditionally:\nfunction ProjectDetail({ project, loading, error }) {\n  // Early return pattern\n  if (loading) return &lt;div&gt;Loading...&lt;/div&gt;;\n  if (error) return &lt;div className=\"error\"&gt;{error}&lt;/div&gt;;\n  if (!project) return &lt;div&gt;Project not found&lt;/div&gt;;\n\n  return (\n    &lt;div&gt;\n      &lt;h1&gt;{project.name}&lt;/h1&gt;\n\n      {/* Logical AND — render only if truthy */}\n      {project.description && &lt;p&gt;{project.description}&lt;/p&gt;}\n\n      {/* Ternary — choose between two options */}\n      {project.tasks.length &gt; 0\n        ? &lt;TaskList tasks={project.tasks} /&gt;\n        : &lt;p&gt;No tasks yet. Create one!&lt;/p&gt;\n      }\n    &lt;/div&gt;\n  );\n}"
+  },
+  {
+    "objectID": "slides/week05/07b-react-nextjs-foundations.html#rendering-lists",
+    "href": "slides/week05/07b-react-nextjs-foundations.html#rendering-lists",
+    "title": "React & Next.js Foundations",
+    "section": "Rendering Lists",
+    "text": "Rendering Lists\nUse .map() to transform arrays into elements. Always provide a key:\nfunction TaskList({ tasks }) {\n  return (\n    &lt;ul&gt;\n      {tasks.map(task =&gt; (\n        &lt;li key={task._id}&gt;           {/* key must be unique & stable */}\n          &lt;span&gt;{task.title}&lt;/span&gt;\n          &lt;span className={`status-${task.status}`}&gt;\n            {task.status}\n          &lt;/span&gt;\n        &lt;/li&gt;\n      ))}\n    &lt;/ul&gt;\n  );\n}\n\n\n\n\n\n\nWarning\n\n\nKeys help React track which items changed, were added, or removed. Never use array index as key if items can be reordered or deleted."
+  },
+  {
+    "objectID": "slides/week05/07b-react-nextjs-foundations.html#event-handling",
+    "href": "slides/week05/07b-react-nextjs-foundations.html#event-handling",
+    "title": "React & Next.js Foundations",
+    "section": "Event Handling",
+    "text": "Event Handling\nReact handles events with camelCase attributes and function references:\nfunction ProjectForm() {\n  const [name, setName] = useState('');\n\n  // Event handler — receives the event object\n  function handleSubmit(e) {\n    e.preventDefault();         // Prevent page reload\n    console.log('Submitting:', name);\n  }\n\n  return (\n    &lt;form onSubmit={handleSubmit}&gt;\n      &lt;input\n        value={name}\n        onChange={(e) =&gt; setName(e.target.value)}  // Controlled input\n        placeholder=\"Project name\"\n      /&gt;\n      &lt;button type=\"submit\"&gt;Create&lt;/button&gt;\n    &lt;/form&gt;\n  );\n}\nControlled components: React state is the “single source of truth” for input values."
+  },
+  {
+    "objectID": "slides/week05/07b-react-nextjs-foundations.html#useeffect-side-effects",
+    "href": "slides/week05/07b-react-nextjs-foundations.html#useeffect-side-effects",
+    "title": "React & Next.js Foundations",
+    "section": "useEffect: Side Effects",
+    "text": "useEffect: Side Effects\nuseEffect runs code after React renders. Used for data fetching, subscriptions, DOM manipulation:\nfunction ProjectList() {\n  const [projects, setProjects] = useState([]);\n  const [loading, setLoading] = useState(true);\n\n  useEffect(() =&gt; {\n    // This runs after the component mounts\n    async function fetchData() {\n      try {\n        const data = await getProjects();\n        setProjects(data);\n      } catch (err) {\n        console.error(err);\n      } finally {\n        setLoading(false);\n      }\n    }\n    fetchData();\n  }, []);  // Empty array = run once on mount\n\n  // ...\n}"
+  },
+  {
+    "objectID": "slides/week05/07b-react-nextjs-foundations.html#useeffect-dependency-array",
+    "href": "slides/week05/07b-react-nextjs-foundations.html#useeffect-dependency-array",
+    "title": "React & Next.js Foundations",
+    "section": "useEffect Dependency Array",
+    "text": "useEffect Dependency Array\nThe second argument controls when the effect re-runs:\n// Runs after EVERY render (rarely what you want)\nuseEffect(() =&gt; { ... });\n\n// Runs ONCE after initial render (mount)\nuseEffect(() =&gt; { ... }, []);\n\n// Runs when `projectId` changes\nuseEffect(() =&gt; {\n  fetchProject(projectId);\n}, [projectId]);\n\n// Cleanup function — runs before re-run and on unmount\nuseEffect(() =&gt; {\n  const timer = setInterval(() =&gt; tick(), 1000);\n  return () =&gt; clearInterval(timer);  // Cleanup!\n}, []);"
+  },
+  {
+    "objectID": "slides/week05/07b-react-nextjs-foundations.html#the-react-rendering-cycle",
+    "href": "slides/week05/07b-react-nextjs-foundations.html#the-react-rendering-cycle",
+    "title": "React & Next.js Foundations",
+    "section": "The React Rendering Cycle",
+    "text": "The React Rendering Cycle\n\n\n\n\n\nflowchart LR\n    A[Component Mounts] --&gt; B[Initial Render]\n    B --&gt; C[useEffect Runs]\n    C --&gt; D[Fetch Data]\n    D --&gt; E[setState Called]\n    E --&gt; F[Re-render with New Data]\n    F --&gt; G{State Changes?}\n    G --&gt;|Yes| E\n    G --&gt;|No| H[Idle - Waiting for Events]\n    H --&gt;|User Action| I[Event Handler]\n    I --&gt; E\n\n\n\n\n\n\n\nComponent renders with initial state\nuseEffect fires after render (fetches data)\nsetState triggers a re-render with new data\nUser interactions trigger event handlers which update state"
+  },
+  {
+    "objectID": "slides/week05/07b-react-nextjs-foundations.html#hooks-rules",
+    "href": "slides/week05/07b-react-nextjs-foundations.html#hooks-rules",
+    "title": "React & Next.js Foundations",
+    "section": "Hooks Rules",
+    "text": "Hooks Rules\n\n\n\n\n\n\nImportant\n\n\nRules of Hooks — breaking these causes bugs:\n\nOnly call hooks at the top level — not inside loops, conditions, or nested functions\nOnly call hooks from React functions — components or custom hooks\n\n\n\n\n// WRONG - hook inside a condition\nfunction BadComponent({ shouldFetch }) {\n  if (shouldFetch) {\n    const [data, setData] = useState(null);  // ERROR!\n  }\n}\n\n// RIGHT - condition inside the hook\nfunction GoodComponent({ shouldFetch }) {\n  const [data, setData] = useState(null);\n\n  useEffect(() =&gt; {\n    if (shouldFetch) { fetchData(); }\n  }, [shouldFetch]);\n}"
+  },
+  {
+    "objectID": "slides/week05/07b-react-nextjs-foundations.html#the-data-layer-pattern-from-lab-4",
+    "href": "slides/week05/07b-react-nextjs-foundations.html#the-data-layer-pattern-from-lab-4",
+    "title": "React & Next.js Foundations",
+    "section": "The Data Layer Pattern (from Lab 4)",
+    "text": "The Data Layer Pattern (from Lab 4)\n\n\n\n\n\nflowchart TB\n    subgraph React[\"React Components (Identical)\"]\n        PL[ProjectList]\n        PD[ProjectDetail]\n        PF[ProjectForm]\n    end\n\n    subgraph Interface[\"Data Layer Interface\"]\n        GP[getProjects]\n        CP[createProject]\n        DP[deleteProject]\n    end\n\n    subgraph Implementations[\"Swap Without Changing React\"]\n        LS[storage.js → localStorage]\n        API[api.js → fetch → Express]\n        NX[api.js → fetch → Next.js API]\n    end\n\n    React --&gt; Interface\n    Interface --&gt; LS\n    Interface --&gt; API\n    Interface --&gt; NX"
+  },
+  {
+    "objectID": "slides/week05/07b-react-nextjs-foundations.html#building-a-data-fetching-pattern",
+    "href": "slides/week05/07b-react-nextjs-foundations.html#building-a-data-fetching-pattern",
+    "title": "React & Next.js Foundations",
+    "section": "Building a Data Fetching Pattern",
+    "text": "Building a Data Fetching Pattern\nA reusable pattern you’ll see across all Lab 4 variants:\nfunction useProjects() {\n  const [projects, setProjects] = useState([]);\n  const [loading, setLoading] = useState(true);\n  const [error, setError] = useState(null);\n\n  useEffect(() =&gt; {\n    getProjects()\n      .then(data =&gt; setProjects(data))\n      .catch(err =&gt; setError(err.message))\n      .finally(() =&gt; setLoading(false));\n  }, []);\n\n  return { projects, loading, error };\n}\n\n// Usage in component\nfunction ProjectList() {\n  const { projects, loading, error } = useProjects();\n  if (loading) return &lt;Spinner /&gt;;\n  if (error) return &lt;ErrorMessage message={error} /&gt;;\n  return projects.map(p =&gt; &lt;ProjectCard key={p._id} project={p} /&gt;);\n}"
+  },
+  {
+    "objectID": "slides/week05/07b-react-nextjs-foundations.html#what-next.js-adds",
+    "href": "slides/week05/07b-react-nextjs-foundations.html#what-next.js-adds",
+    "title": "React & Next.js Foundations",
+    "section": "What Next.js Adds",
+    "text": "What Next.js Adds\n\n\n\nFeature\nReact Alone\nWith Next.js\n\n\n\n\nRouting\nNeed React Router\nFile-based (automatic)\n\n\nServer Rendering\nClient-only\nServer + Client Components\n\n\nAPI Endpoints\nNeed Express\nAPI Route Handlers\n\n\nCode Splitting\nManual setup\nAutomatic\n\n\nMetadata/SEO\nManual &lt;head&gt;\nmetadata export\n\n\nLayouts\nManual with &lt;Outlet&gt;\nAutomatic layout.js\n\n\nImage Optimization\nManual\n&lt;Image&gt; component"
+  },
+  {
+    "objectID": "slides/week05/07b-react-nextjs-foundations.html#next.js-app-router-structure",
+    "href": "slides/week05/07b-react-nextjs-foundations.html#next.js-app-router-structure",
+    "title": "React & Next.js Foundations",
+    "section": "Next.js App Router Structure",
+    "text": "Next.js App Router Structure\nsrc/app/\n├── layout.js          ← Root layout (wraps everything)\n├── page.js            ← Home page (/)\n├── globals.css        ← Global styles\n└── projects/\n    ├── page.js        ← /projects\n    ├── new/\n    │   └── page.js    ← /projects/new\n    └── [id]/\n        ├── page.js    ← /projects/:id (dynamic route)\n        ├── edit/\n        │   └── page.js ← /projects/:id/edit\n        └── route.js   ← API: /api/projects/:id (optional)\nEach page.js automatically becomes a route. [id] is a dynamic segment."
+  },
+  {
+    "objectID": "slides/week05/07b-react-nextjs-foundations.html#server-components-default",
+    "href": "slides/week05/07b-react-nextjs-foundations.html#server-components-default",
+    "title": "React & Next.js Foundations",
+    "section": "Server Components (Default)",
+    "text": "Server Components (Default)\nBy default, Next.js components run on the server:\n// This component renders on the server\n// It can directly access databases, file systems, etc.\nexport default async function ProjectPage({ params }) {\n  // This code runs on the server, not in the browser\n  const project = await db.projects.findById(params.id);\n\n  return (\n    &lt;div&gt;\n      &lt;h1&gt;{project.name}&lt;/h1&gt;\n      &lt;p&gt;{project.description}&lt;/p&gt;\n      {/* This Client Component handles interactivity */}\n      &lt;TaskList projectId={params.id} /&gt;\n    &lt;/div&gt;\n  );\n}\nBenefits: Smaller JavaScript bundle, direct data access, better SEO."
+  },
+  {
+    "objectID": "slides/week05/07b-react-nextjs-foundations.html#client-components",
+    "href": "slides/week05/07b-react-nextjs-foundations.html#client-components",
+    "title": "React & Next.js Foundations",
+    "section": "Client Components",
+    "text": "Client Components\nAdd 'use client' when you need interactivity:\n'use client';  // This component runs in the browser\n\nimport { useState } from 'react';\n\nexport default function TaskForm({ projectId }) {\n  const [title, setTitle] = useState('');\n\n  async function handleSubmit(e) {\n    e.preventDefault();\n    await createTask({ title, projectId });\n    setTitle('');\n  }\n\n  return (\n    &lt;form onSubmit={handleSubmit}&gt;\n      &lt;input value={title} onChange={e =&gt; setTitle(e.target.value)} /&gt;\n      &lt;button type=\"submit\"&gt;Add Task&lt;/button&gt;\n    &lt;/form&gt;\n  );\n}\nYou need 'use client' for: useState, useEffect, onClick, browser APIs."
+  },
+  {
+    "objectID": "slides/week05/07b-react-nextjs-foundations.html#server-vs.-client-decision-guide",
+    "href": "slides/week05/07b-react-nextjs-foundations.html#server-vs.-client-decision-guide",
+    "title": "React & Next.js Foundations",
+    "section": "Server vs. Client: Decision Guide",
+    "text": "Server vs. Client: Decision Guide\n┌─────────────────────────────────────────────────────────────┐\n│  Does the component need...                                  │\n│                                                              │\n│  useState / useEffect / useContext?  → Client Component      │\n│  onClick / onChange / onSubmit?      → Client Component      │\n│  Browser APIs (window, localStorage)?→ Client Component      │\n│                                                              │\n│  None of the above?                  → Server Component      │\n│  (static content, data display only)   (default, no directive)│\n│                                                              │\n│  ┌──────────────────────────────────────────────────────┐    │\n│  │ TIP: Keep Server Components as the default.          │    │\n│  │ Only add 'use client' when you need interactivity.   │    │\n│  └──────────────────────────────────────────────────────┘    │\n└─────────────────────────────────────────────────────────────┘"
+  },
+  {
+    "objectID": "slides/week05/07b-react-nextjs-foundations.html#layouts-in-next.js",
+    "href": "slides/week05/07b-react-nextjs-foundations.html#layouts-in-next.js",
+    "title": "React & Next.js Foundations",
+    "section": "Layouts in Next.js",
+    "text": "Layouts in Next.js\nlayout.js wraps all pages in its directory and below:\n// src/app/layout.js — Root layout\nexport const metadata = {\n  title: 'Project Manager',\n  description: 'Manage your projects and tasks',\n};\n\nexport default function RootLayout({ children }) {\n  return (\n    &lt;html lang=\"en\"&gt;\n      &lt;body&gt;\n        &lt;nav&gt;\n          &lt;Link href=\"/\"&gt;Home&lt;/Link&gt;\n          &lt;Link href=\"/projects\"&gt;Projects&lt;/Link&gt;\n        &lt;/nav&gt;\n        &lt;main&gt;{children}&lt;/main&gt;       {/* Matched page renders here */}\n        &lt;footer&gt;Project Manager 2026&lt;/footer&gt;\n      &lt;/body&gt;\n    &lt;/html&gt;\n  );\n}\nCompare to React Router: &lt;Outlet /&gt; serves the same purpose as {children}."
+  },
+  {
+    "objectID": "slides/week05/07b-react-nextjs-foundations.html#your-learning-path",
+    "href": "slides/week05/07b-react-nextjs-foundations.html#your-learning-path",
+    "title": "React & Next.js Foundations",
+    "section": "Your Learning Path",
+    "text": "Your Learning Path\n1. React Quick Start (Start Here)\nreact.dev/learn\n\nComponents, JSX, props, state\nConditional rendering, lists, events\nThinking in React\n\n2. React Foundations Course\nnextjs.org/learn/react-foundations\n\nFrom JavaScript to React\nBuilding UI with components\nServer and Client Components introduction\n\n3. Next.js Dashboard App\nnextjs.org/learn/dashboard-app\n\nFull Next.js app from scratch\nRouting, data fetching, authentication\nDatabase integration, deployment"
+  },
+  {
+    "objectID": "slides/week05/07b-react-nextjs-foundations.html#how-the-tutorials-connect-to-lab-4",
+    "href": "slides/week05/07b-react-nextjs-foundations.html#how-the-tutorials-connect-to-lab-4",
+    "title": "React & Next.js Foundations",
+    "section": "How the Tutorials Connect to Lab 4",
+    "text": "How the Tutorials Connect to Lab 4\n\n\n\n\n\n\n\nTutorial Section\nLab 4 Connection\n\n\n\n\nReact: Components & Props\nProjectCard, TaskList components\n\n\nReact: State & Effects\nuseState + useEffect data fetching\n\n\nReact: Event Handling\nForm submissions, delete confirmations\n\n\nReact Foundations: Server/Client\n'use client' in Next.js variants\n\n\nNext.js: Routing\nFile-based routing vs React Router\n\n\nNext.js: Data Fetching\nAPI routes, server-side data access\n\n\nNext.js: Layouts\nlayout.js vs &lt;Outlet /&gt; pattern\n\n\n\n\n\n\n\n\n\nTip\n\n\nAs you work through the tutorials, refer back to the Lab 4 solution code to see each concept in a real application context."
+  },
+  {
+    "objectID": "slides/week05/07b-react-nextjs-foundations.html#key-takeaways",
+    "href": "slides/week05/07b-react-nextjs-foundations.html#key-takeaways",
+    "title": "React & Next.js Foundations",
+    "section": "Key Takeaways",
+    "text": "Key Takeaways\n\nReact components are functions that return JSX — composable, reusable UI\nProps pass data down; state manages data that changes\nuseEffect handles side effects (data fetching) after render\nNext.js adds routing, server rendering, and API routes on top of React\nServer Components (default) run on the server; Client Components need 'use client'\nThe data layer pattern from Lab 4 demonstrates clean architecture"
+  },
+  {
+    "objectID": "slides/week05/07b-react-nextjs-foundations.html#action-items",
+    "href": "slides/week05/07b-react-nextjs-foundations.html#action-items",
+    "title": "React & Next.js Foundations",
+    "section": "Action Items",
+    "text": "Action Items\n\n\n\n\n\n\nBefore Next Week\n\n\n\nComplete the React Quick Start tutorial\nWork through React Foundations course\nStart the Next.js Dashboard App tutorial\nContinue working on Lab 4 — apply what you learn from the tutorials"
+  },
+  {
+    "objectID": "slides/week05/07b-react-nextjs-foundations.html#resources",
+    "href": "slides/week05/07b-react-nextjs-foundations.html#resources",
+    "title": "React & Next.js Foundations",
+    "section": "Resources",
+    "text": "Resources\n\nReact Documentation — Learn\nReact Foundations Course\nNext.js Dashboard App Tutorial\nLab 4 Solution Repository\nNext.js Documentation"
+  },
+  {
+    "objectID": "slides/week05/07b-react-nextjs-foundations.html#questions",
+    "href": "slides/week05/07b-react-nextjs-foundations.html#questions",
+    "title": "React & Next.js Foundations",
+    "section": "Questions?",
+    "text": "Questions?\n\nOffice Hours: Tuesday 9-11 AM, Pitt 2206\nEmail: kuruzj@rpi.edu\nAppointments: bit.ly/jason-rpi"
+  },
+  {
+    "objectID": "readings/week05-backend-data.html#tutorial-1-react-quick-start",
+    "href": "readings/week05-backend-data.html#tutorial-1-react-quick-start",
+    "title": "Week 5: React & Next.js Foundations",
+    "section": "Tutorial 1: React Quick Start",
+    "text": "Tutorial 1: React Quick Start\nSource: react.dev/learn\nEstimated time: 60-90 minutes\nThis is the official React tutorial and the best place to start. It covers:\n\nCreating and nesting components — React apps are built from components, which are JavaScript functions that return markup\nWriting markup with JSX — the HTML-like syntax used inside React components\nAdding styles — how CSS works with React components\nDisplaying data — using curly braces {} to embed JavaScript in JSX\nConditional rendering — showing different content based on conditions\nRendering lists — using .map() to transform arrays into elements\nResponding to events — handling clicks, form submissions, and other user interactions\nUpdating the screen — using useState to manage data that changes\nUsing hooks — built-in functions like useState and useEffect\nSharing data between components — lifting state up to parent components\n\n\nHow This Connects to Lab 4\nAs you work through the React tutorial, notice how every concept appears in the Lab 4 solution:\n\n\n\n\n\n\n\nReact Concept\nLab 4 Example\n\n\n\n\nComponents\nProjectCard, ProjectList, TaskList, ProjectForm\n\n\nProps\n&lt;ProjectCard project={p} /&gt;\n\n\nState (useState)\nconst [projects, setProjects] = useState([])\n\n\nEffects (useEffect)\nData fetching on component mount\n\n\nEvent handling\nForm submissions, delete confirmations\n\n\nConditional rendering\nLoading spinners, error messages, empty states\n\n\nList rendering\nprojects.map(p =&gt; &lt;ProjectCard key={p._id} ... /&gt;)"
+  },
+  {
+    "objectID": "readings/week05-backend-data.html#tutorial-2-react-foundations-course",
+    "href": "readings/week05-backend-data.html#tutorial-2-react-foundations-course",
+    "title": "Week 5: React & Next.js Foundations",
+    "section": "Tutorial 2: React Foundations Course",
+    "text": "Tutorial 2: React Foundations Course\nSource: nextjs.org/learn/react-foundations\nEstimated time: 45-60 minutes\nThis Next.js-authored course bridges the gap between vanilla JavaScript, React, and Next.js. It covers:\n\nFrom JavaScript to React — why React exists and what problems it solves\nBuilding UI with components — the component mental model\nDisplaying data with props — passing information between components\nAdding interactivity with state — making components dynamic\nFrom React to Next.js — what a framework adds on top of a library\nServer and Client Components — the key Next.js concept\n\n\nKey Concept: Server vs. Client Components\nThis tutorial introduces a critical distinction:\n\nServer Components (default in Next.js) — render on the server, send HTML to the browser. Better performance, smaller bundles, can access databases directly.\nClient Components ('use client') — render in the browser. Required for interactivity: useState, useEffect, onClick, browser APIs.\n\nIn the Lab 4 solution: - react-only and react-express-mongo — everything is client-side (no server rendering) - react-nextjs-mongo and react-next-express-mongo — uses both Server and Client Components"
+  },
+  {
+    "objectID": "readings/week05-backend-data.html#tutorial-3-next.js-dashboard-app",
+    "href": "readings/week05-backend-data.html#tutorial-3-next.js-dashboard-app",
+    "title": "Week 5: React & Next.js Foundations",
+    "section": "Tutorial 3: Next.js Dashboard App",
+    "text": "Tutorial 3: Next.js Dashboard App\nSource: nextjs.org/learn/dashboard-app\nEstimated time: 3-5 hours (can be done over multiple sessions)\nThis is the comprehensive Next.js tutorial that builds a full dashboard application. It covers:\n\nGetting started — project setup and structure\nCSS styling — different styling approaches in Next.js\nOptimizing fonts and images — Next.js built-in optimizations\nCreating layouts and pages — file-based routing and nested layouts\nNavigating between pages — the &lt;Link&gt; component and client-side navigation\nSetting up your database — connecting to a database\nFetching data — server-side data fetching patterns\nStatic and dynamic rendering — when content is generated\nStreaming — progressive loading with Suspense\nPartial prerendering — combining static and dynamic content\nAdding search and pagination — URL-based state with search params\nMutating data — Server Actions for data modifications\nHandling errors — error boundaries and error handling\nImproving accessibility — form validation and accessibility\nAdding authentication — NextAuth.js integration\nAdding metadata — SEO optimization\n\n\nHow This Connects to Lab 4\n\n\n\n\n\n\n\nDashboard Tutorial Chapter\nLab 4 Equivalent\n\n\n\n\nLayouts and Pages\nlayout.js and page.js in Next.js variants\n\n\nNavigating Between Pages\n&lt;Link&gt; component usage\n\n\nFetching Data\nuseEffect + fetch in client components, API routes\n\n\nMutating Data\nForm submissions to create/update/delete projects\n\n\nHandling Errors\nError states in components, try/catch in API calls\n\n\nAdding Authentication\n(Preview of Lab 6)"
+  },
+  {
+    "objectID": "readings/week05-backend-data.html#understanding-the-four-architectures",
+    "href": "readings/week05-backend-data.html#understanding-the-four-architectures",
+    "title": "Week 5: React & Next.js Foundations",
+    "section": "Understanding the Four Architectures",
+    "text": "Understanding the Four Architectures\nAs you work through the tutorials, keep the Lab 4 solution architectures in mind:\n\nArchitecture 1: React Only (No Server)\nBrowser → React Components → localStorage\n\nAll tutorials from react.dev apply directly\nNo server concepts (no Server Components, no API routes)\n\n\n\nArchitecture 2: React + Express + MongoDB\nBrowser → React Components → fetch() → Express API → MongoDB\n\nReact tutorials apply to the frontend\nExpress handles the backend (separate from React)\nCross-origin requests require CORS\n\n\n\nArchitecture 3: Next.js + MongoDB\nBrowser → Next.js (React + Routing + API Routes) → MongoDB\n\nAll three tutorials apply\nServer and Client Components from React Foundations\nAPI routes and data fetching from Dashboard App\n\n\n\nArchitecture 4: Next.js + Express + MongoDB\nBrowser → Next.js (React + Routing) → Express API → MongoDB\n\nNext.js handles frontend only\nExpress handles backend (like Architecture 2)\nCombines Next.js routing with standalone API"
+  },
+  {
+    "objectID": "readings/week05-backend-data.html#lab-4-solution-reference",
+    "href": "readings/week05-backend-data.html#lab-4-solution-reference",
+    "title": "Week 5: React & Next.js Foundations",
+    "section": "Lab 4 Solution Reference",
+    "text": "Lab 4 Solution Reference\n\n\n\n\n\n\nTipSolution Repository\n\n\n\nThe Lab 4 solution with all four variants is available at:\ngithub.com/RPI-WS-spring-2026/RPI-WS-LAB4-Solution\nUse this as a reference while working through the tutorials. When a tutorial introduces a concept, find the corresponding code in the solution to see it in a real application."
   }
 ]

@@ -211,5 +211,5 @@ Teams that honestly assess their situation and create realistic plans are viewed
 ## Questions?
 
 - **Office Hours**: Tuesday 9-11 AM, Pitt 2206
-- **Piazza**: Use the `project-midterm` tag
+- **Webex**: Use the `project-midterm` tag
 - **Email**: kuruzj@rpi.edu

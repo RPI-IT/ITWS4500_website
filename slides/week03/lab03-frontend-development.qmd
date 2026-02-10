@@ -742,6 +742,6 @@ npm run dev:client   # Terminal 2
 ::: {.callout-tip}
 ## Getting Help
 - **Office Hours:** Check LMS for schedule
-- **Piazza:** Post questions with `lab3` tag
+- **Webex:** Post questions with `lab3` tag
 - **TA Sessions:** Available for debugging help
 :::

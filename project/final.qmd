@@ -256,7 +256,7 @@ Exceptional projects may be considered for:
 ## Questions?
 
 - **Office Hours**: Tuesday 9-11 AM, Pitt 2206
-- **Piazza**: Use the `project-final` tag
+- **Webex**: Use the `project-final` tag
 - **Email**: kuruzj@rpi.edu
 
 ---

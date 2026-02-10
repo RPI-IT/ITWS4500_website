@@ -94,15 +94,24 @@ gantt
 
 ---
 
-### Week 5: Data Architecture {#week-5}
+### Week 5: React & Next.js Foundations {#week-5}
 **February 10-13, 2026**
 
 **Background Readings:** [Week 5 Readings](readings/week05-backend-data.qmd)
 
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
-| Tue 2/10 | Lab | **Lab 5:** Polyglot Persistence (MongoDB & PostgreSQL) | [Lab 5](labs/lab05-polyglot-persistence.qmd) |
-| Fri 2/13 | Lecture | Data Architecture Patterns: Polyglot Persistence - Document vs Relational Trade-offs | [Slides](slides/week05/07-data-architecture.qmd) |
+| Tue 2/10 | Lecture | Lab 4 Solution Deep Dive: Comparing React, Next.js, Express & MongoDB Architectures | [Slides](slides/week05/07a-lab4-solution-walkthrough.qmd), [Lab 4 Solution](https://github.com/RPI-WS-spring-2026/RPI-WS-LAB4-Solution) |
+| Fri 2/13 | Lecture | Core React Concepts & Next.js Foundations | [Slides](slides/week05/07b-react-nextjs-foundations.qmd) |
+
+::: {.callout-tip}
+## React & Next.js Tutorials
+Work through these tutorials this week to build a solid foundation:
+
+- [React Quick Start](https://react.dev/learn)
+- [React Foundations Course](https://nextjs.org/learn/react-foundations)
+- [Next.js Dashboard App](https://nextjs.org/learn/dashboard-app)
+:::
 
 
 ---

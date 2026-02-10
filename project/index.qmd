@@ -154,6 +154,6 @@ A well-executed simple project will score higher than a poorly-executed ambitiou
 ## Getting Help
 
 - **Office Hours**: Tuesday 9-11 AM, Pitt 2206
-- **Piazza**: Use the `project` tag for questions
+- **Webex**: Use the `project` tag for questions
 - **TA Sessions**: Check LMS for schedule
 - **Team Meetings**: Schedule time with the instructor for project guidance

@@ -1,1288 +1,178 @@
 ---
-title: "Week 5: Backend & Data Patterns"
-subtitle: "APIs and Data Architecture"
+title: "Week 5: React & Next.js Foundations"
+subtitle: "Core Concepts and Framework Understanding"
 ---
 
 ::: {.callout-note}
-## Reading Assignment
-Complete this reading before Week 6. Estimated time: 55-70 minutes.
+## Reading & Tutorial Assignment
+Complete these tutorials before Week 6. This is a hands-on week — work through the tutorials at your own pace, but aim to complete all three.
 :::
 
 ## Introduction
 
-The previous weeks covered application architecture and frontend patterns. This week, we focus on the **backend and data layers**—the foundation that powers your applications. We'll explore RESTful API design in depth, middleware patterns for cross-cutting concerns, and data architecture strategies including the concept of polyglot persistence.
+This week we shift focus from backend architecture to building a **solid foundation in React and Next.js**. Many of you have been generating code with AI tools — which is great for productivity — but to debug, modify, and make architectural decisions, you need to understand what that code is doing.
 
-Understanding these patterns is crucial because the backend is where business logic lives, where data is persisted, and where security is enforced. Poor backend design leads to applications that are slow, insecure, and difficult to maintain.
+The Lab 4 solution demonstrates four implementations of the same application using different combinations of React, Next.js, Express, and MongoDB. This week's tutorials will help you understand the core concepts behind those implementations.
 
-## RESTful API Design
+## Tutorial 1: React Quick Start
 
-### What is REST?
+**Source:** [react.dev/learn](https://react.dev/learn)
 
-**REST (Representational State Transfer)** is an architectural style for designing networked applications. RESTful APIs use HTTP as the communication protocol and organize operations around *resources*—the nouns of your domain.
+**Estimated time:** 60-90 minutes
 
-Key REST principles:
+This is the official React tutorial and the best place to start. It covers:
 
-1. **Client-Server Separation** - Client and server evolve independently
-2. **Statelessness** - Each request contains all information needed to process it
-3. **Uniform Interface** - Consistent conventions for interacting with resources
-4. **Layered System** - Clients can't tell if they're connected directly to the server
-5. **Cacheability** - Responses indicate whether they can be cached
+- **Creating and nesting components** — React apps are built from components, which are JavaScript functions that return markup
+- **Writing markup with JSX** — the HTML-like syntax used inside React components
+- **Adding styles** — how CSS works with React components
+- **Displaying data** — using curly braces `{}` to embed JavaScript in JSX
+- **Conditional rendering** — showing different content based on conditions
+- **Rendering lists** — using `.map()` to transform arrays into elements
+- **Responding to events** — handling clicks, form submissions, and other user interactions
+- **Updating the screen** — using `useState` to manage data that changes
+- **Using hooks** — built-in functions like `useState` and `useEffect`
+- **Sharing data between components** — lifting state up to parent components
 
-### Resource-Oriented Design
+### How This Connects to Lab 4
 
-Resources are the core concept in REST. Every URL represents a resource:
+As you work through the React tutorial, notice how every concept appears in the Lab 4 solution:
 
+| React Concept | Lab 4 Example |
+|--------------|---------------|
+| Components | `ProjectCard`, `ProjectList`, `TaskList`, `ProjectForm` |
+| Props | `<ProjectCard project={p} />` |
+| State (`useState`) | `const [projects, setProjects] = useState([])` |
+| Effects (`useEffect`) | Data fetching on component mount |
+| Event handling | Form submissions, delete confirmations |
+| Conditional rendering | Loading spinners, error messages, empty states |
+| List rendering | `projects.map(p => <ProjectCard key={p._id} ... />)` |
+
+## Tutorial 2: React Foundations Course
+
+**Source:** [nextjs.org/learn/react-foundations](https://nextjs.org/learn/react-foundations)
+
+**Estimated time:** 45-60 minutes
+
+This Next.js-authored course bridges the gap between vanilla JavaScript, React, and Next.js. It covers:
+
+- **From JavaScript to React** — why React exists and what problems it solves
+- **Building UI with components** — the component mental model
+- **Displaying data with props** — passing information between components
+- **Adding interactivity with state** — making components dynamic
+- **From React to Next.js** — what a framework adds on top of a library
+- **Server and Client Components** — the key Next.js concept
+
+### Key Concept: Server vs. Client Components
+
+This tutorial introduces a critical distinction:
+
+- **Server Components** (default in Next.js) — render on the server, send HTML to the browser. Better performance, smaller bundles, can access databases directly.
+- **Client Components** (`'use client'`) — render in the browser. Required for interactivity: `useState`, `useEffect`, `onClick`, browser APIs.
+
+In the Lab 4 solution:
+- `react-only` and `react-express-mongo` — everything is client-side (no server rendering)
+- `react-nextjs-mongo` and `react-next-express-mongo` — uses both Server and Client Components
+
+## Tutorial 3: Next.js Dashboard App
+
+**Source:** [nextjs.org/learn/dashboard-app](https://nextjs.org/learn/dashboard-app)
+
+**Estimated time:** 3-5 hours (can be done over multiple sessions)
+
+This is the comprehensive Next.js tutorial that builds a full dashboard application. It covers:
+
+1. **Getting started** — project setup and structure
+2. **CSS styling** — different styling approaches in Next.js
+3. **Optimizing fonts and images** — Next.js built-in optimizations
+4. **Creating layouts and pages** — file-based routing and nested layouts
+5. **Navigating between pages** — the `<Link>` component and client-side navigation
+6. **Setting up your database** — connecting to a database
+7. **Fetching data** — server-side data fetching patterns
+8. **Static and dynamic rendering** — when content is generated
+9. **Streaming** — progressive loading with Suspense
+10. **Partial prerendering** — combining static and dynamic content
+11. **Adding search and pagination** — URL-based state with search params
+12. **Mutating data** — Server Actions for data modifications
+13. **Handling errors** — error boundaries and error handling
+14. **Improving accessibility** — form validation and accessibility
+15. **Adding authentication** — NextAuth.js integration
+16. **Adding metadata** — SEO optimization
+
+### How This Connects to Lab 4
+
+| Dashboard Tutorial Chapter | Lab 4 Equivalent |
+|---------------------------|-------------------|
+| Layouts and Pages | `layout.js` and `page.js` in Next.js variants |
+| Navigating Between Pages | `<Link>` component usage |
+| Fetching Data | `useEffect` + `fetch` in client components, API routes |
+| Mutating Data | Form submissions to create/update/delete projects |
+| Handling Errors | Error states in components, try/catch in API calls |
+| Adding Authentication | (Preview of Lab 6) |
+
+## Understanding the Four Architectures
+
+As you work through the tutorials, keep the Lab 4 solution architectures in mind:
+
+### Architecture 1: React Only (No Server)
 ```
-/api/users              → Collection of users
-/api/users/123          → Specific user
-/api/users/123/tasks    → Tasks belonging to user 123
-/api/tasks/456          → Specific task
+Browser → React Components → localStorage
 ```
+- All tutorials from react.dev apply directly
+- No server concepts (no Server Components, no API routes)
 
-**Guidelines for Resource URLs:**
-
-| Guideline | Good | Avoid |
-|-----------|------|-------|
-| Use nouns, not verbs | `/api/tasks` | `/api/getTasks` |
-| Use plural nouns | `/api/users` | `/api/user` |
-| Use lowercase | `/api/tasks` | `/api/Tasks` |
-| Use hyphens for readability | `/api/task-categories` | `/api/taskCategories` |
-| Nest for relationships | `/api/projects/123/tasks` | `/api/projectTasks?projectId=123` |
-
-### HTTP Methods and CRUD Operations
-
-HTTP methods map to CRUD operations:
-
-| Method | Operation | Endpoint | Purpose |
-|--------|-----------|----------|---------|
-| **GET** | Read | `/api/tasks` | List all tasks |
-| **GET** | Read | `/api/tasks/123` | Get task 123 |
-| **POST** | Create | `/api/tasks` | Create new task |
-| **PUT** | Replace | `/api/tasks/123` | Replace task 123 entirely |
-| **PATCH** | Update | `/api/tasks/123` | Update specific fields of task 123 |
-| **DELETE** | Delete | `/api/tasks/123` | Delete task 123 |
-
-**Method Properties:**
-
-| Method | Idempotent | Safe | Request Body |
-|--------|------------|------|--------------|
-| GET | Yes | Yes | No |
-| POST | No | No | Yes |
-| PUT | Yes | No | Yes |
-| PATCH | No | No | Yes |
-| DELETE | Yes | No | Optional |
-
-- **Idempotent**: Multiple identical requests produce the same result
-- **Safe**: Request doesn't modify server state
-
-### HTTP Status Codes
-
-Status codes communicate the result of a request:
-
-**2xx - Success**
+### Architecture 2: React + Express + MongoDB
 ```
-200 OK              - Request succeeded
-201 Created         - Resource created (include Location header)
-204 No Content      - Success with no response body (DELETE)
+Browser → React Components → fetch() → Express API → MongoDB
 ```
+- React tutorials apply to the frontend
+- Express handles the backend (separate from React)
+- Cross-origin requests require CORS
 
-**3xx - Redirection**
+### Architecture 3: Next.js + MongoDB
 ```
-301 Moved Permanently - Resource has new URL
-304 Not Modified      - Cached version is still valid
+Browser → Next.js (React + Routing + API Routes) → MongoDB
 ```
+- All three tutorials apply
+- Server and Client Components from React Foundations
+- API routes and data fetching from Dashboard App
 
-**4xx - Client Errors**
+### Architecture 4: Next.js + Express + MongoDB
 ```
-400 Bad Request     - Invalid request syntax/data
-401 Unauthorized    - Authentication required
-403 Forbidden       - Authenticated but not authorized
-404 Not Found       - Resource doesn't exist
-409 Conflict        - Request conflicts with current state
-422 Unprocessable   - Valid syntax but semantic errors
+Browser → Next.js (React + Routing) → Express API → MongoDB
 ```
-
-**5xx - Server Errors**
-```
-500 Internal Error  - Generic server error
-502 Bad Gateway     - Upstream server error
-503 Service Unavailable - Server temporarily unavailable
-```
-
-### Request and Response Design
-
-**Consistent Response Structure:**
-
-```javascript
-// Success response
-{
-  "data": {
-    "id": "123",
-    "title": "Complete API design",
-    "status": "pending"
-  },
-  "meta": {
-    "timestamp": "2026-01-20T10:00:00Z"
-  }
-}
-
-// Collection response with pagination
-{
-  "data": [
-    { "id": "1", "title": "Task 1" },
-    { "id": "2", "title": "Task 2" }
-  ],
-  "meta": {
-    "total": 150,
-    "page": 1,
-    "perPage": 20,
-    "totalPages": 8
-  },
-  "links": {
-    "self": "/api/tasks?page=1",
-    "next": "/api/tasks?page=2",
-    "last": "/api/tasks?page=8"
-  }
-}
-
-// Error response
-{
-  "error": {
-    "code": "VALIDATION_ERROR",
-    "message": "Request validation failed",
-    "details": [
-      { "field": "title", "message": "Title is required" },
-      { "field": "priority", "message": "Priority must be low, medium, or high" }
-    ]
-  }
-}
-```
-
-### Query Parameters
-
-Use query parameters for filtering, sorting, and pagination:
-
-```
-# Filtering
-GET /api/tasks?status=pending
-GET /api/tasks?status=pending&priority=high
-GET /api/tasks?assignee=user123
-
-# Sorting
-GET /api/tasks?sort=createdAt        # Ascending
-GET /api/tasks?sort=-createdAt       # Descending
-GET /api/tasks?sort=-priority,createdAt  # Multiple fields
-
-# Pagination
-GET /api/tasks?page=2&limit=20
-GET /api/tasks?offset=20&limit=20
-
-# Field selection (sparse fieldsets)
-GET /api/tasks?fields=id,title,status
-
-# Search
-GET /api/tasks?q=meeting
-GET /api/tasks?search=urgent+deadline
-
-# Date ranges
-GET /api/tasks?createdAfter=2026-01-01&createdBefore=2026-01-31
-```
-
-### Implementing REST in Express
-
-```javascript
-const express = require('express');
-const router = express.Router();
-
-// GET /api/tasks - List tasks
-router.get('/', async (req, res, next) => {
-  try {
-    const {
-      status,
-      assignee,
-      sort = '-createdAt',
-      page = 1,
-      limit = 20
-    } = req.query;
-
-    // Build query
-    const query = {};
-    if (status) query.status = status;
-    if (assignee) query.assigneeId = assignee;
-
-    // Parse sort
-    const sortOptions = {};
-    sort.split(',').forEach(field => {
-      if (field.startsWith('-')) {
-        sortOptions[field.slice(1)] = -1;
-      } else {
-        sortOptions[field] = 1;
-      }
-    });
-
-    // Execute with pagination
-    const skip = (parseInt(page) - 1) * parseInt(limit);
-    const [tasks, total] = await Promise.all([
-      Task.find(query)
-        .sort(sortOptions)
-        .skip(skip)
-        .limit(parseInt(limit)),
-      Task.countDocuments(query)
-    ]);
-
-    res.json({
-      data: tasks,
-      meta: {
-        total,
-        page: parseInt(page),
-        perPage: parseInt(limit),
-        totalPages: Math.ceil(total / parseInt(limit))
-      }
-    });
-  } catch (error) {
-    next(error);
-  }
-});
-
-// GET /api/tasks/:id - Get single task
-router.get('/:id', async (req, res, next) => {
-  try {
-    const task = await Task.findById(req.params.id);
-    if (!task) {
-      return res.status(404).json({
-        error: { code: 'NOT_FOUND', message: 'Task not found' }
-      });
-    }
-    res.json({ data: task });
-  } catch (error) {
-    next(error);
-  }
-});
-
-// POST /api/tasks - Create task
-router.post('/', async (req, res, next) => {
-  try {
-    const task = new Task({
-      ...req.body,
-      createdBy: req.user.id
-    });
-    await task.save();
-
-    res.status(201)
-      .location(`/api/tasks/${task.id}`)
-      .json({ data: task });
-  } catch (error) {
-    next(error);
-  }
-});
-
-// PUT /api/tasks/:id - Replace task
-router.put('/:id', async (req, res, next) => {
-  try {
-    const task = await Task.findByIdAndUpdate(
-      req.params.id,
-      { ...req.body, updatedAt: new Date() },
-      { new: true, runValidators: true, overwrite: true }
-    );
-
-    if (!task) {
-      return res.status(404).json({
-        error: { code: 'NOT_FOUND', message: 'Task not found' }
-      });
-    }
-
-    res.json({ data: task });
-  } catch (error) {
-    next(error);
-  }
-});
-
-// PATCH /api/tasks/:id - Partial update
-router.patch('/:id', async (req, res, next) => {
-  try {
-    const task = await Task.findByIdAndUpdate(
-      req.params.id,
-      { $set: { ...req.body, updatedAt: new Date() } },
-      { new: true, runValidators: true }
-    );
-
-    if (!task) {
-      return res.status(404).json({
-        error: { code: 'NOT_FOUND', message: 'Task not found' }
-      });
-    }
-
-    res.json({ data: task });
-  } catch (error) {
-    next(error);
-  }
-});
-
-// DELETE /api/tasks/:id - Delete task
-router.delete('/:id', async (req, res, next) => {
-  try {
-    const task = await Task.findByIdAndDelete(req.params.id);
-
-    if (!task) {
-      return res.status(404).json({
-        error: { code: 'NOT_FOUND', message: 'Task not found' }
-      });
-    }
-
-    res.status(204).end();
-  } catch (error) {
-    next(error);
-  }
-});
-```
-
-## Middleware Patterns
-
-### What is Middleware?
-
-Middleware functions sit between the incoming request and your route handlers. They can:
-
-- Execute code
-- Modify the request or response
-- End the request-response cycle
-- Call the next middleware in the stack
-
-```
-Request → [Middleware 1] → [Middleware 2] → [Route Handler] → Response
-              │                 │                  │
-              ▼                 ▼                  ▼
-          Logging         Authentication      Business Logic
-```
-
-### Common Middleware Patterns
-
-#### Authentication Middleware
-
-```javascript
-// middleware/authenticate.js
-const jwt = require('jsonwebtoken');
-
-async function authenticate(req, res, next) {
-  try {
-    // Extract token from header
-    const authHeader = req.headers.authorization;
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
-      return res.status(401).json({
-        error: { code: 'UNAUTHORIZED', message: 'No token provided' }
-      });
-    }
-
-    const token = authHeader.substring(7);
-
-    // Verify token
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-
-    // Attach user to request
-    const user = await User.findById(decoded.userId);
-    if (!user) {
-      return res.status(401).json({
-        error: { code: 'UNAUTHORIZED', message: 'User not found' }
-      });
-    }
-
-    req.user = user;
-    next();
-  } catch (error) {
-    if (error instanceof jwt.TokenExpiredError) {
-      return res.status(401).json({
-        error: { code: 'TOKEN_EXPIRED', message: 'Token has expired' }
-      });
-    }
-    res.status(401).json({
-      error: { code: 'INVALID_TOKEN', message: 'Invalid token' }
-    });
-  }
-}
-
-// Optional authentication - doesn't fail if no token
-function optionalAuth(req, res, next) {
-  const authHeader = req.headers.authorization;
-  if (!authHeader) {
-    return next();  // Continue without user
-  }
-
-  // If token exists, validate it
-  return authenticate(req, res, next);
-}
-```
-
-#### Authorization Middleware
-
-```javascript
-// middleware/authorize.js
-function requireRole(...roles) {
-  return (req, res, next) => {
-    if (!req.user) {
-      return res.status(401).json({
-        error: { code: 'UNAUTHORIZED', message: 'Authentication required' }
-      });
-    }
-
-    if (!roles.includes(req.user.role)) {
-      return res.status(403).json({
-        error: {
-          code: 'FORBIDDEN',
-          message: `Requires one of roles: ${roles.join(', ')}`
-        }
-      });
-    }
-
-    next();
-  };
-}
-
-// Check ownership of resource
-function requireOwnership(resourceFetcher) {
-  return async (req, res, next) => {
-    try {
-      const resource = await resourceFetcher(req);
-      if (!resource) {
-        return res.status(404).json({
-          error: { code: 'NOT_FOUND', message: 'Resource not found' }
-        });
-      }
-
-      const ownerId = resource.userId || resource.createdBy || resource.owner;
-      if (ownerId.toString() !== req.user.id.toString()) {
-        return res.status(403).json({
-          error: { code: 'FORBIDDEN', message: 'Not authorized to access this resource' }
-        });
-      }
-
-      req.resource = resource;
-      next();
-    } catch (error) {
-      next(error);
-    }
-  };
-}
-
-// Usage
-router.delete('/:id',
-  authenticate,
-  requireOwnership(req => Task.findById(req.params.id)),
-  taskController.delete
-);
-
-router.get('/admin/users',
-  authenticate,
-  requireRole('admin'),
-  userController.list
-);
-```
-
-#### Validation Middleware
-
-```javascript
-// middleware/validate.js
-const Joi = require('joi');
-
-function validate(schema, property = 'body') {
-  return (req, res, next) => {
-    const { error, value } = schema.validate(req[property], {
-      abortEarly: false,      // Return all errors
-      stripUnknown: true,     // Remove unknown fields
-      convert: true           // Type coercion
-    });
-
-    if (error) {
-      const details = error.details.map(d => ({
-        field: d.path.join('.'),
-        message: d.message,
-        type: d.type
-      }));
-
-      return res.status(400).json({
-        error: {
-          code: 'VALIDATION_ERROR',
-          message: 'Request validation failed',
-          details
-        }
-      });
-    }
-
-    // Replace with validated/sanitized value
-    req[property] = value;
-    next();
-  };
-}
-
-// Schemas
-const schemas = {
-  createTask: Joi.object({
-    title: Joi.string().min(1).max(200).required(),
-    description: Joi.string().max(2000),
-    priority: Joi.string().valid('low', 'medium', 'high').default('medium'),
-    assigneeId: Joi.string().hex().length(24)
-  }),
-
-  updateTask: Joi.object({
-    title: Joi.string().min(1).max(200),
-    description: Joi.string().max(2000).allow(''),
-    priority: Joi.string().valid('low', 'medium', 'high'),
-    status: Joi.string().valid('pending', 'in_progress', 'completed')
-  }).min(1),
-
-  queryParams: Joi.object({
-    page: Joi.number().integer().min(1).default(1),
-    limit: Joi.number().integer().min(1).max(100).default(20),
-    status: Joi.string().valid('pending', 'in_progress', 'completed'),
-    sort: Joi.string()
-  })
-};
-
-// Usage
-router.post('/',
-  authenticate,
-  validate(schemas.createTask),
-  taskController.create
-);
-
-router.get('/',
-  validate(schemas.queryParams, 'query'),
-  taskController.list
-);
-```
-
-#### Error Handling Middleware
-
-```javascript
-// middleware/errorHandler.js
-
-// Custom error classes
-class AppError extends Error {
-  constructor(message, statusCode, code) {
-    super(message);
-    this.statusCode = statusCode;
-    this.code = code;
-    this.isOperational = true;
-  }
-}
-
-class NotFoundError extends AppError {
-  constructor(resource = 'Resource') {
-    super(`${resource} not found`, 404, 'NOT_FOUND');
-  }
-}
-
-class ValidationError extends AppError {
-  constructor(message, details = []) {
-    super(message, 400, 'VALIDATION_ERROR');
-    this.details = details;
-  }
-}
-
-class UnauthorizedError extends AppError {
-  constructor(message = 'Authentication required') {
-    super(message, 401, 'UNAUTHORIZED');
-  }
-}
-
-class ForbiddenError extends AppError {
-  constructor(message = 'Access denied') {
-    super(message, 403, 'FORBIDDEN');
-  }
-}
-
-// Error handling middleware
-function errorHandler(err, req, res, next) {
-  // Log error
-  console.error('Error:', {
-    message: err.message,
-    stack: err.stack,
-    url: req.url,
-    method: req.method,
-    userId: req.user?.id
-  });
-
-  // Handle known errors
-  if (err.isOperational) {
-    return res.status(err.statusCode).json({
-      error: {
-        code: err.code,
-        message: err.message,
-        details: err.details
-      }
-    });
-  }
-
-  // Handle Mongoose validation errors
-  if (err.name === 'ValidationError') {
-    const details = Object.values(err.errors).map(e => ({
-      field: e.path,
-      message: e.message
-    }));
-    return res.status(400).json({
-      error: {
-        code: 'VALIDATION_ERROR',
-        message: 'Validation failed',
-        details
-      }
-    });
-  }
-
-  // Handle Mongoose cast errors (invalid ObjectId)
-  if (err.name === 'CastError') {
-    return res.status(400).json({
-      error: {
-        code: 'INVALID_ID',
-        message: `Invalid ${err.path}: ${err.value}`
-      }
-    });
-  }
-
-  // Handle duplicate key errors
-  if (err.code === 11000) {
-    const field = Object.keys(err.keyValue)[0];
-    return res.status(409).json({
-      error: {
-        code: 'DUPLICATE_KEY',
-        message: `${field} already exists`
-      }
-    });
-  }
-
-  // Unknown errors - don't leak details in production
-  const message = process.env.NODE_ENV === 'production'
-    ? 'An unexpected error occurred'
-    : err.message;
-
-  res.status(500).json({
-    error: {
-      code: 'INTERNAL_ERROR',
-      message
-    }
-  });
-}
-
-// 404 handler for unknown routes
-function notFoundHandler(req, res) {
-  res.status(404).json({
-    error: {
-      code: 'ENDPOINT_NOT_FOUND',
-      message: `Cannot ${req.method} ${req.url}`
-    }
-  });
-}
-```
-
-#### Logging Middleware
-
-```javascript
-// middleware/logger.js
-const morgan = require('morgan');
-
-// Custom token for user ID
-morgan.token('user-id', (req) => req.user?.id || 'anonymous');
-
-// Custom token for response time in a readable format
-morgan.token('response-time-ms', (req, res) => {
-  const time = morgan['response-time'](req, res);
-  return time ? `${time}ms` : '-';
-});
-
-// Development logging
-const developmentLogger = morgan('dev');
-
-// Production logging (JSON format)
-const productionLogger = morgan((tokens, req, res) => {
-  return JSON.stringify({
-    method: tokens.method(req, res),
-    url: tokens.url(req, res),
-    status: parseInt(tokens.status(req, res)),
-    responseTime: parseFloat(tokens['response-time'](req, res)),
-    contentLength: tokens.res(req, res, 'content-length'),
-    userId: tokens['user-id'](req, res),
-    userAgent: tokens['user-agent'](req, res),
-    timestamp: new Date().toISOString()
-  });
-});
-
-const logger = process.env.NODE_ENV === 'production'
-  ? productionLogger
-  : developmentLogger;
-
-module.exports = logger;
-```
-
-#### Rate Limiting Middleware
-
-```javascript
-// middleware/rateLimit.js
-const rateLimit = require('express-rate-limit');
-const RedisStore = require('rate-limit-redis');
-
-// Basic rate limiter
-const apiLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000,  // 15 minutes
-  max: 100,                   // 100 requests per window
-  message: {
-    error: {
-      code: 'RATE_LIMIT_EXCEEDED',
-      message: 'Too many requests, please try again later'
-    }
-  },
-  standardHeaders: true,      // Return rate limit info in headers
-  legacyHeaders: false
-});
-
-// Stricter limiter for authentication routes
-const authLimiter = rateLimit({
-  windowMs: 60 * 60 * 1000,   // 1 hour
-  max: 5,                      // 5 attempts
-  message: {
-    error: {
-      code: 'TOO_MANY_ATTEMPTS',
-      message: 'Too many login attempts, please try again later'
-    }
-  }
-});
-
-// Usage
-app.use('/api', apiLimiter);
-app.use('/api/auth/login', authLimiter);
-```
-
-### Middleware Order
-
-Middleware order matters. A typical Express app might order middleware like this:
-
-```javascript
-const express = require('express');
-const app = express();
-
-// 1. Security headers (first)
-app.use(helmet());
-
-// 2. CORS
-app.use(cors(corsOptions));
-
-// 3. Request parsing
-app.use(express.json({ limit: '10mb' }));
-app.use(express.urlencoded({ extended: true }));
-
-// 4. Logging
-app.use(logger);
-
-// 5. Rate limiting
-app.use('/api', apiLimiter);
-
-// 6. Authentication (before protected routes)
-app.use('/api', optionalAuth);
-
-// 7. Routes
-app.use('/api/auth', authRoutes);
-app.use('/api/tasks', authenticate, taskRoutes);
-app.use('/api/users', authenticate, userRoutes);
-
-// 8. 404 handler (after routes)
-app.use(notFoundHandler);
-
-// 9. Error handler (last)
-app.use(errorHandler);
-```
-
-## Data Architecture
-
-### Data Modeling Fundamentals
-
-Effective data modeling is crucial for application performance and maintainability.
-
-#### MongoDB Document Design
-
-MongoDB is a document database. Documents are BSON objects (like JSON):
-
-```javascript
-// Task document
-{
-  _id: ObjectId("64a..."),
-  title: "Complete API design",
-  description: "Design RESTful endpoints for task management",
-  status: "in_progress",
-  priority: "high",
-  createdAt: ISODate("2026-01-15"),
-  updatedAt: ISODate("2026-01-20"),
-  createdBy: ObjectId("64b..."),  // Reference to user
-  assignee: {                      // Embedded document
-    _id: ObjectId("64c..."),
-    name: "John Doe",
-    email: "john@example.com"
-  },
-  tags: ["api", "design"],         // Array
-  comments: [                      // Array of embedded documents
-    {
-      _id: ObjectId("64d..."),
-      text: "Looking good!",
-      author: ObjectId("64e..."),
-      createdAt: ISODate("2026-01-18")
-    }
-  ]
-}
-```
-
-#### Embedding vs. Referencing
-
-| Approach | When to Use | Example |
-|----------|-------------|---------|
-| **Embedding** | Data accessed together, one-to-few relationships | Comments in a task |
-| **Referencing** | Data accessed independently, one-to-many/many-to-many | Users and tasks |
-
-**Embedding Example:**
-```javascript
-// Embedded comments - always fetched with task
-const taskSchema = new mongoose.Schema({
-  title: String,
-  comments: [{
-    text: String,
-    authorId: mongoose.Schema.Types.ObjectId,
-    authorName: String,  // Denormalized for display
-    createdAt: { type: Date, default: Date.now }
-  }]
-});
-
-// Adding a comment
-await Task.findByIdAndUpdate(taskId, {
-  $push: {
-    comments: {
-      text: "New comment",
-      authorId: user._id,
-      authorName: user.name
-    }
-  }
-});
-```
-
-**Referencing Example:**
-```javascript
-// Referenced assignee - fetched separately when needed
-const taskSchema = new mongoose.Schema({
-  title: String,
-  assigneeId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
-  }
-});
-
-// Populate when needed
-const task = await Task.findById(taskId)
-  .populate('assigneeId', 'name email');
-```
-
-### Mongoose Schema Design
-
-```javascript
-// models/Task.js
-const mongoose = require('mongoose');
-
-const taskSchema = new mongoose.Schema({
-  title: {
-    type: String,
-    required: [true, 'Title is required'],
-    trim: true,
-    maxlength: [200, 'Title cannot exceed 200 characters']
-  },
-  description: {
-    type: String,
-    trim: true,
-    maxlength: [2000, 'Description cannot exceed 2000 characters']
-  },
-  status: {
-    type: String,
-    enum: ['pending', 'in_progress', 'completed'],
-    default: 'pending'
-  },
-  priority: {
-    type: String,
-    enum: ['low', 'medium', 'high'],
-    default: 'medium'
-  },
-  completedAt: Date,
-  createdBy: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: true
-  },
-  assigneeId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
-  },
-  projectId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Project'
-  },
-  tags: [String],
-  metadata: {
-    type: Map,
-    of: String
-  }
-}, {
-  timestamps: true,  // Adds createdAt and updatedAt
-  toJSON: { virtuals: true },
-  toObject: { virtuals: true }
-});
-
-// Indexes for common queries
-taskSchema.index({ status: 1, priority: 1 });
-taskSchema.index({ assigneeId: 1, status: 1 });
-taskSchema.index({ projectId: 1, createdAt: -1 });
-taskSchema.index({ createdBy: 1 });
-taskSchema.index({ tags: 1 });
-
-// Text index for search
-taskSchema.index({ title: 'text', description: 'text' });
-
-// Virtual property
-taskSchema.virtual('isHighPriority').get(function() {
-  return this.priority === 'high' && this.status !== 'completed';
-});
-
-// Instance method
-taskSchema.methods.complete = function() {
-  if (this.status === 'completed') {
-    throw new Error('Task is already completed');
-  }
-  this.status = 'completed';
-  this.completedAt = new Date();
-  return this.save();
-};
-
-// Static method
-taskSchema.statics.findByAssignee = function(userId, options = {}) {
-  const query = this.find({ assigneeId: userId });
-
-  if (options.status) {
-    query.where('status').equals(options.status);
-  }
-
-  return query.sort({ priority: -1, createdAt: -1 });
-};
-
-// Pre-save hook
-taskSchema.pre('save', function(next) {
-  if (this.isModified('status') && this.status === 'completed') {
-    this.completedAt = new Date();
-  }
-  next();
-});
-
-const Task = mongoose.model('Task', taskSchema);
-module.exports = Task;
-```
-
-### Query Optimization
-
-#### Using Indexes
-
-Indexes dramatically improve query performance:
-
-```javascript
-// Without index: Collection scan (slow)
-db.tasks.find({ assigneeId: ObjectId("...") })
-
-// With index: Index scan (fast)
-taskSchema.index({ assigneeId: 1 });
-```
-
-**Index Types:**
-
-```javascript
-// Single field index
-taskSchema.index({ status: 1 });
-
-// Compound index (order matters!)
-taskSchema.index({ projectId: 1, createdAt: -1 });
-
-// Text index for full-text search
-taskSchema.index({ title: 'text', description: 'text' });
-
-// Unique index
-userSchema.index({ email: 1 }, { unique: true });
-
-// Sparse index (only index documents with the field)
-taskSchema.index({ assigneeId: 1 }, { sparse: true });
-
-// TTL index (auto-delete documents)
-sessionSchema.index({ createdAt: 1 }, { expireAfterSeconds: 3600 });
-```
-
-#### Query Patterns
-
-```javascript
-// Efficient: Uses index
-const tasks = await Task
-  .find({ projectId, status: 'pending' })
-  .sort({ priority: -1, createdAt: -1 })
-  .limit(20)
-  .select('title status priority');  // Only fetch needed fields
-
-// Inefficient: Can't use index effectively
-const tasks = await Task
-  .find({ $or: [{ status: 'pending' }, { priority: 'high' }] })
-  .sort({ randomField: 1 });
-
-// Pagination with cursor (better for large datasets)
-const tasks = await Task
-  .find({ _id: { $gt: lastSeenId } })
-  .sort({ _id: 1 })
-  .limit(20);
-
-// Aggregation pipeline for complex queries
-const tasksByStatus = await Task.aggregate([
-  { $match: { projectId: mongoose.Types.ObjectId(projectId) } },
-  { $group: {
-      _id: '$status',
-      count: { $sum: 1 },
-      avgPriority: { $avg: { $cond: [
-        { $eq: ['$priority', 'high'] }, 3,
-        { $cond: [{ $eq: ['$priority', 'medium'] }, 2, 1] }
-      ]}}
-    }
-  },
-  { $sort: { count: -1 } }
-]);
-```
-
-### Transactions
-
-For operations that must succeed or fail together:
-
-```javascript
-const session = await mongoose.startSession();
-session.startTransaction();
-
-try {
-  // Create task
-  const task = await Task.create([{
-    title: 'New Task',
-    projectId: project._id,
-    createdBy: user._id
-  }], { session });
-
-  // Update project task count
-  await Project.findByIdAndUpdate(
-    project._id,
-    { $inc: { taskCount: 1 } },
-    { session }
-  );
-
-  await session.commitTransaction();
-  return task[0];
-} catch (error) {
-  await session.abortTransaction();
-  throw error;
-} finally {
-  session.endSession();
-}
-```
-
-## Polyglot Persistence
-
-### What is Polyglot Persistence?
-
-**Polyglot persistence** is the practice of using different data storage technologies for different data storage needs within a single application. Instead of forcing all data into one database type, you choose the best tool for each job.
-
-### When Different Databases Excel
-
-| Data Type | Best Fit | Examples |
-|-----------|----------|----------|
-| **Structured, relational** | PostgreSQL, MySQL | Users, orders, financial data |
-| **Document/flexible schema** | MongoDB | Content, user profiles, product catalogs |
-| **Key-value/caching** | Redis | Sessions, cache, real-time counters |
-| **Full-text search** | Elasticsearch | Search, logging, analytics |
-| **Graph relationships** | Neo4j | Social networks, recommendations |
-| **Time series** | InfluxDB, TimescaleDB | Metrics, IoT, monitoring |
-
-### Example: Multi-Database Architecture
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                        Application                               │
-├─────────────────────────────────────────────────────────────────┤
-│                                                                  │
-│   ┌──────────────┐  ┌──────────────┐  ┌──────────────┐         │
-│   │   MongoDB    │  │    Redis     │  │ Elasticsearch│         │
-│   │              │  │              │  │              │         │
-│   │  - Tasks     │  │  - Sessions  │  │  - Search    │         │
-│   │  - Projects  │  │  - Cache     │  │  - Logs      │         │
-│   │  - Users     │  │  - Rate limit│  │  - Analytics │         │
-│   │              │  │  - Pub/Sub   │  │              │         │
-│   └──────────────┘  └──────────────┘  └──────────────┘         │
-│                                                                  │
-└─────────────────────────────────────────────────────────────────┘
-```
-
-### Implementing Polyglot Persistence
-
-**MongoDB for primary data:**
-```javascript
-// Primary data storage
-const task = await Task.create({
-  title: 'New Task',
-  description: 'Task description',
-  status: 'pending'
-});
-```
-
-**Redis for caching:**
-```javascript
-const Redis = require('ioredis');
-const redis = new Redis(process.env.REDIS_URL);
-
-// Cache user data
-async function getUser(userId) {
-  // Check cache first
-  const cached = await redis.get(`user:${userId}`);
-  if (cached) {
-    return JSON.parse(cached);
-  }
-
-  // Fetch from database
-  const user = await User.findById(userId);
-
-  // Cache for 5 minutes
-  await redis.setex(`user:${userId}`, 300, JSON.stringify(user));
-
-  return user;
-}
-
-// Invalidate cache on update
-async function updateUser(userId, data) {
-  const user = await User.findByIdAndUpdate(userId, data, { new: true });
-  await redis.del(`user:${userId}`);
-  return user;
-}
-```
-
-**Redis for sessions:**
-```javascript
-const session = require('express-session');
-const RedisStore = require('connect-redis').default;
-
-app.use(session({
-  store: new RedisStore({ client: redis }),
-  secret: process.env.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    secure: process.env.NODE_ENV === 'production',
-    httpOnly: true,
-    maxAge: 24 * 60 * 60 * 1000  // 24 hours
-  }
-}));
-```
-
-**Elasticsearch for search:**
-```javascript
-const { Client } = require('@elastic/elasticsearch');
-const elastic = new Client({ node: process.env.ELASTICSEARCH_URL });
-
-// Index task for search
-async function indexTask(task) {
-  await elastic.index({
-    index: 'tasks',
-    id: task._id.toString(),
-    body: {
-      title: task.title,
-      description: task.description,
-      status: task.status,
-      tags: task.tags,
-      createdAt: task.createdAt
-    }
-  });
-}
-
-// Search tasks
-async function searchTasks(query, filters = {}) {
-  const result = await elastic.search({
-    index: 'tasks',
-    body: {
-      query: {
-        bool: {
-          must: [
-            {
-              multi_match: {
-                query,
-                fields: ['title^2', 'description', 'tags'],
-                fuzziness: 'AUTO'
-              }
-            }
-          ],
-          filter: filters.status ? [
-            { term: { status: filters.status } }
-          ] : []
-        }
-      },
-      highlight: {
-        fields: {
-          title: {},
-          description: {}
-        }
-      }
-    }
-  });
-
-  return result.hits.hits.map(hit => ({
-    id: hit._id,
-    ...hit._source,
-    highlights: hit.highlight
-  }));
-}
-
-// Keep Elasticsearch in sync with MongoDB
-taskSchema.post('save', function(task) {
-  indexTask(task).catch(console.error);
-});
-
-taskSchema.post('remove', function(task) {
-  elastic.delete({
-    index: 'tasks',
-    id: task._id.toString()
-  }).catch(console.error);
-});
-```
-
-### Challenges of Polyglot Persistence
-
-| Challenge | Mitigation |
-|-----------|------------|
-| **Data consistency** | Event-driven sync, eventual consistency acceptance |
-| **Operational complexity** | DevOps automation, monitoring |
-| **Query complexity** | Clear service boundaries |
-| **Team knowledge** | Training, documentation |
-
-## Summary
-
-This week covered backend and data patterns essential for building robust APIs:
-
-1. **RESTful API design** uses resources, HTTP methods, and status codes for predictable interfaces
-2. **Middleware patterns** handle cross-cutting concerns like authentication, validation, and error handling
-3. **MongoDB document design** balances embedding and referencing based on access patterns
-4. **Indexes and query optimization** are critical for performance
-5. **Transactions** ensure data consistency for multi-document operations
-6. **Polyglot persistence** uses the right database for each data type
-
-These patterns form the foundation for Lab 4, where you'll implement a complete backend with proper validation, error handling, and data access patterns.
+- Next.js handles frontend only
+- Express handles backend (like Architecture 2)
+- Combines Next.js routing with standalone API
 
 ## Key Terms
 
-- **REST**: Representational State Transfer - architectural style for APIs
-- **Resource**: A noun that your API manages (users, tasks, projects)
-- **Middleware**: Functions that process requests in a pipeline
-- **Idempotent**: Operation that produces same result regardless of how many times executed
-- **Document Database**: Database storing data as flexible documents (MongoDB)
-- **Index**: Data structure that improves query performance
-- **Polyglot Persistence**: Using multiple database technologies in one application
+- **Component** — A reusable piece of UI, defined as a JavaScript function returning JSX
+- **JSX** — A syntax extension that lets you write HTML-like markup in JavaScript
+- **Props** — Read-only data passed from parent to child components
+- **State** — Data managed within a component that can change over time
+- **Hook** — A special function (`useState`, `useEffect`) that lets components use React features
+- **Side Effect** — An operation that affects something outside the component (data fetching, DOM manipulation)
+- **Server Component** — A Next.js component that renders on the server (default)
+- **Client Component** — A Next.js component marked with `'use client'` that renders in the browser
+- **File-based Routing** — Next.js convention where the file system structure defines URL routes
+- **API Route Handler** — A Next.js file (`route.js`) that handles HTTP requests like a backend endpoint
+
+## Lab 4 Solution Reference
+
+::: {.callout-tip}
+## Solution Repository
+The Lab 4 solution with all four variants is available at:
+
+[github.com/RPI-WS-spring-2026/RPI-WS-LAB4-Solution](https://github.com/RPI-WS-spring-2026/RPI-WS-LAB4-Solution)
+
+Use this as a reference while working through the tutorials. When a tutorial introduces a concept, find the corresponding code in the solution to see it in a real application.
+:::
 
 ## Further Reading
 
-- [REST API Design Best Practices](https://restfulapi.net/)
-- [HTTP Status Codes](https://httpstatuses.com/)
-- [MongoDB Schema Design Patterns](https://www.mongodb.com/blog/post/building-with-patterns-a-summary)
-- [Express.js Error Handling](https://expressjs.com/en/guide/error-handling.html)
-- [Redis Documentation](https://redis.io/documentation)
-- [Martin Fowler: Polyglot Persistence](https://martinfowler.com/bliki/PolyglotPersistence.html)
+- [React Documentation — Learn](https://react.dev/learn)
+- [React Foundations Course](https://nextjs.org/learn/react-foundations)
+- [Next.js Dashboard App Tutorial](https://nextjs.org/learn/dashboard-app)
+- [Next.js Documentation](https://nextjs.org/docs)
+- [MDN: JavaScript Modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)
+- [MDN: Using Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)

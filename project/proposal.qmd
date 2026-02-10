@@ -135,5 +135,5 @@ Present your proposal to the class covering:
 ## Questions?
 
 - **Office Hours**: Tuesday 9-11 AM, Pitt 2206
-- **Piazza**: Use the `project-proposal` tag
+- **Webex**: Use the `project-proposal` tag
 - **Email**: kuruzj@rpi.edu

@@ -1,0 +1,648 @@
+---
+title: "React & Next.js Foundations"
+subtitle: "Core Concepts and Framework Integration"
+author: "Jason Kuruzovich"
+date: "February 13, 2026"
+format:
+  revealjs:
+    navigation-mode: linear
+    mermaid:
+        theme: default
+    theme: [default, ../../slides-theme.scss]
+    logo: ../../static/logos/RPI_Logo_Binary_1_White.png
+    footer: "ITWS-4500 | Week 5, Day 2"
+    slide-number: true
+    transition: slide
+    width: 1600
+    height: 900
+    code-line-numbers: true
+    highlight-style: github
+    pdf-separate-fragments: false
+---
+
+# React & Next.js Foundations {.section-slide background-color="#d6001c"}
+
+Building a Solid Understanding of Modern Web Development
+
+## Today's Agenda
+
+::: {.learning-objectives}
+**Learning Objectives**
+
+1. Master **core React concepts**: components, JSX, props, state
+2. Understand **React hooks** and the rendering cycle
+3. Learn how **Next.js builds on React** with file-based routing and server components
+4. Connect these concepts to the **Lab 4 variants** we explored Tuesday
+5. Chart a path through the **official tutorials** for deeper learning
+:::
+
+## Why We're Doing This
+
+::: {.callout-important}
+Many of you have been using AI tools to generate React/Next.js code. That's fine for productivity — but you need to **understand what the code does** to debug it, modify it, and make architectural decisions.
+
+Today we build that foundation.
+:::
+
+# React Core Concepts {.section-slide background-color="#d6001c"}
+
+From [react.dev/learn](https://react.dev/learn)
+
+## Components: The Building Blocks
+
+React apps are built from **components** — reusable pieces of UI.
+
+```jsx
+// A component is just a function that returns JSX
+function ProjectCard({ project }) {
+  return (
+    <div className="card">
+      <h3>{project.name}</h3>
+      <p>{project.description}</p>
+    </div>
+  );
+}
+
+// Components compose together
+function ProjectList({ projects }) {
+  return (
+    <div>
+      {projects.map(p => (
+        <ProjectCard key={p._id} project={p} />
+      ))}
+    </div>
+  );
+}
+```
+
+Every piece of UI you see is a component, or components nested inside other components.
+
+## JSX: HTML-like Syntax in JavaScript
+
+JSX lets you write markup inside JavaScript:
+
+```jsx
+// JSX is NOT HTML — it compiles to JavaScript
+function Welcome({ user }) {
+  return (
+    <div className="welcome">         {/* className, not class */}
+      <h1>Hello, {user.name}!</h1>    {/* {} for JS expressions */}
+      <img
+        src={user.avatar}
+        alt={`Avatar of ${user.name}`}
+        style={{ borderRadius: '50%' }} {/* Double braces for objects */}
+      />
+    </div>
+  );
+}
+```
+
+Key differences from HTML:
+
+- `className` instead of `class`
+- `{}` to embed JavaScript expressions
+- Self-closing tags required: `<img />`, `<br />`
+- `style` takes an object, not a string
+
+## Props: Passing Data to Components
+
+Props flow **down** from parent to child — like function arguments:
+
+```jsx
+// Parent passes data via props
+function App() {
+  return <ProjectCard name="My Project" status="active" />;
+}
+
+// Child receives props as an object
+function ProjectCard({ name, status }) {
+  return (
+    <div>
+      <h3>{name}</h3>
+      <span className={`badge badge-${status}`}>{status}</span>
+    </div>
+  );
+}
+```
+
+::: {.callout-note}
+Props are **read-only**. A component cannot modify its own props. If you need data that changes, you need **state**.
+:::
+
+## State: Data That Changes
+
+`useState` lets components **remember** and **update** information:
+
+```jsx
+function TaskToggle({ task }) {
+  const [isComplete, setIsComplete] = useState(task.status === 'done');
+
+  function handleToggle() {
+    setIsComplete(!isComplete);  // Triggers re-render
+  }
+
+  return (
+    <div>
+      <span style={{
+        textDecoration: isComplete ? 'line-through' : 'none'
+      }}>
+        {task.title}
+      </span>
+      <button onClick={handleToggle}>
+        {isComplete ? 'Undo' : 'Complete'}
+      </button>
+    </div>
+  );
+}
+```
+
+When state changes, React **re-renders** the component with the new values.
+
+## The useState Pattern
+
+```jsx
+// Declaration: [currentValue, setterFunction] = useState(initialValue)
+const [count, setCount] = useState(0);
+const [name, setName] = useState('');
+const [projects, setProjects] = useState([]);
+const [loading, setLoading] = useState(true);
+const [formData, setFormData] = useState({ name: '', description: '' });
+```
+
+Rules:
+
+1. Always call at the **top level** of your component (not inside loops or conditions)
+2. The setter function triggers a **re-render**
+3. State is **local** to each component instance
+
+```jsx
+// Updating objects — spread to create a new object
+setFormData({ ...formData, name: 'New Name' });
+
+// Updating arrays — create new arrays, don't mutate
+setProjects([...projects, newProject]);           // Add
+setProjects(projects.filter(p => p._id !== id));  // Remove
+```
+
+## Conditional Rendering
+
+React uses JavaScript expressions to render conditionally:
+
+```jsx
+function ProjectDetail({ project, loading, error }) {
+  // Early return pattern
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div className="error">{error}</div>;
+  if (!project) return <div>Project not found</div>;
+
+  return (
+    <div>
+      <h1>{project.name}</h1>
+
+      {/* Logical AND — render only if truthy */}
+      {project.description && <p>{project.description}</p>}
+
+      {/* Ternary — choose between two options */}
+      {project.tasks.length > 0
+        ? <TaskList tasks={project.tasks} />
+        : <p>No tasks yet. Create one!</p>
+      }
+    </div>
+  );
+}
+```
+
+## Rendering Lists
+
+Use `.map()` to transform arrays into elements. Always provide a `key`:
+
+```jsx
+function TaskList({ tasks }) {
+  return (
+    <ul>
+      {tasks.map(task => (
+        <li key={task._id}>           {/* key must be unique & stable */}
+          <span>{task.title}</span>
+          <span className={`status-${task.status}`}>
+            {task.status}
+          </span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+```
+
+::: {.callout-warning}
+**Keys** help React track which items changed, were added, or removed. Never use array index as key if items can be reordered or deleted.
+:::
+
+## Event Handling
+
+React handles events with camelCase attributes and function references:
+
+```jsx
+function ProjectForm() {
+  const [name, setName] = useState('');
+
+  // Event handler — receives the event object
+  function handleSubmit(e) {
+    e.preventDefault();         // Prevent page reload
+    console.log('Submitting:', name);
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        value={name}
+        onChange={(e) => setName(e.target.value)}  // Controlled input
+        placeholder="Project name"
+      />
+      <button type="submit">Create</button>
+    </form>
+  );
+}
+```
+
+**Controlled components**: React state is the "single source of truth" for input values.
+
+# React Hooks {.section-slide background-color="#d6001c"}
+
+## useEffect: Side Effects
+
+`useEffect` runs code **after** React renders. Used for data fetching, subscriptions, DOM manipulation:
+
+```jsx
+function ProjectList() {
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // This runs after the component mounts
+    async function fetchData() {
+      try {
+        const data = await getProjects();
+        setProjects(data);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchData();
+  }, []);  // Empty array = run once on mount
+
+  // ...
+}
+```
+
+## useEffect Dependency Array
+
+The second argument controls **when** the effect re-runs:
+
+```jsx
+// Runs after EVERY render (rarely what you want)
+useEffect(() => { ... });
+
+// Runs ONCE after initial render (mount)
+useEffect(() => { ... }, []);
+
+// Runs when `projectId` changes
+useEffect(() => {
+  fetchProject(projectId);
+}, [projectId]);
+
+// Cleanup function — runs before re-run and on unmount
+useEffect(() => {
+  const timer = setInterval(() => tick(), 1000);
+  return () => clearInterval(timer);  // Cleanup!
+}, []);
+```
+
+## The React Rendering Cycle
+
+```{mermaid}
+%%| fig-width: 14
+flowchart LR
+    A[Component Mounts] --> B[Initial Render]
+    B --> C[useEffect Runs]
+    C --> D[Fetch Data]
+    D --> E[setState Called]
+    E --> F[Re-render with New Data]
+    F --> G{State Changes?}
+    G -->|Yes| E
+    G -->|No| H[Idle - Waiting for Events]
+    H -->|User Action| I[Event Handler]
+    I --> E
+```
+
+1. Component renders with initial state
+2. `useEffect` fires after render (fetches data)
+3. `setState` triggers a re-render with new data
+4. User interactions trigger event handlers which update state
+
+## Hooks Rules
+
+::: {.callout-important}
+**Rules of Hooks** — breaking these causes bugs:
+
+1. **Only call hooks at the top level** — not inside loops, conditions, or nested functions
+2. **Only call hooks from React functions** — components or custom hooks
+:::
+
+```jsx
+// WRONG - hook inside a condition
+function BadComponent({ shouldFetch }) {
+  if (shouldFetch) {
+    const [data, setData] = useState(null);  // ERROR!
+  }
+}
+
+// RIGHT - condition inside the hook
+function GoodComponent({ shouldFetch }) {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    if (shouldFetch) { fetchData(); }
+  }, [shouldFetch]);
+}
+```
+
+# Connecting React to Data {.section-slide background-color="#d6001c"}
+
+## The Data Layer Pattern (from Lab 4)
+
+```{mermaid}
+%%| fig-width: 14
+flowchart TB
+    subgraph React["React Components (Identical)"]
+        PL[ProjectList]
+        PD[ProjectDetail]
+        PF[ProjectForm]
+    end
+
+    subgraph Interface["Data Layer Interface"]
+        GP[getProjects]
+        CP[createProject]
+        DP[deleteProject]
+    end
+
+    subgraph Implementations["Swap Without Changing React"]
+        LS[storage.js → localStorage]
+        API[api.js → fetch → Express]
+        NX[api.js → fetch → Next.js API]
+    end
+
+    React --> Interface
+    Interface --> LS
+    Interface --> API
+    Interface --> NX
+```
+
+## Building a Data Fetching Pattern
+
+A reusable pattern you'll see across all Lab 4 variants:
+
+```jsx
+function useProjects() {
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    getProjects()
+      .then(data => setProjects(data))
+      .catch(err => setError(err.message))
+      .finally(() => setLoading(false));
+  }, []);
+
+  return { projects, loading, error };
+}
+
+// Usage in component
+function ProjectList() {
+  const { projects, loading, error } = useProjects();
+  if (loading) return <Spinner />;
+  if (error) return <ErrorMessage message={error} />;
+  return projects.map(p => <ProjectCard key={p._id} project={p} />);
+}
+```
+
+# Next.js: Framework on Top of React {.section-slide background-color="#d6001c"}
+
+From [nextjs.org/learn/react-foundations](https://nextjs.org/learn/react-foundations)
+
+## What Next.js Adds
+
+| Feature | React Alone | With Next.js |
+|---------|------------|--------------|
+| **Routing** | Need React Router | File-based (automatic) |
+| **Server Rendering** | Client-only | Server + Client Components |
+| **API Endpoints** | Need Express | API Route Handlers |
+| **Code Splitting** | Manual setup | Automatic |
+| **Metadata/SEO** | Manual `<head>` | `metadata` export |
+| **Layouts** | Manual with `<Outlet>` | Automatic `layout.js` |
+| **Image Optimization** | Manual | `<Image>` component |
+
+## Next.js App Router Structure
+
+```
+src/app/
+├── layout.js          ← Root layout (wraps everything)
+├── page.js            ← Home page (/)
+├── globals.css        ← Global styles
+└── projects/
+    ├── page.js        ← /projects
+    ├── new/
+    │   └── page.js    ← /projects/new
+    └── [id]/
+        ├── page.js    ← /projects/:id (dynamic route)
+        ├── edit/
+        │   └── page.js ← /projects/:id/edit
+        └── route.js   ← API: /api/projects/:id (optional)
+```
+
+Each `page.js` automatically becomes a route. `[id]` is a dynamic segment.
+
+## Server Components (Default)
+
+By default, Next.js components run on the **server**:
+
+```jsx
+// This component renders on the server
+// It can directly access databases, file systems, etc.
+export default async function ProjectPage({ params }) {
+  // This code runs on the server, not in the browser
+  const project = await db.projects.findById(params.id);
+
+  return (
+    <div>
+      <h1>{project.name}</h1>
+      <p>{project.description}</p>
+      {/* This Client Component handles interactivity */}
+      <TaskList projectId={params.id} />
+    </div>
+  );
+}
+```
+
+Benefits: Smaller JavaScript bundle, direct data access, better SEO.
+
+## Client Components
+
+Add `'use client'` when you need **interactivity**:
+
+```jsx
+'use client';  // This component runs in the browser
+
+import { useState } from 'react';
+
+export default function TaskForm({ projectId }) {
+  const [title, setTitle] = useState('');
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    await createTask({ title, projectId });
+    setTitle('');
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input value={title} onChange={e => setTitle(e.target.value)} />
+      <button type="submit">Add Task</button>
+    </form>
+  );
+}
+```
+
+You need `'use client'` for: `useState`, `useEffect`, `onClick`, browser APIs.
+
+## Server vs. Client: Decision Guide
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│  Does the component need...                                  │
+│                                                              │
+│  useState / useEffect / useContext?  → Client Component      │
+│  onClick / onChange / onSubmit?      → Client Component      │
+│  Browser APIs (window, localStorage)?→ Client Component      │
+│                                                              │
+│  None of the above?                  → Server Component      │
+│  (static content, data display only)   (default, no directive)│
+│                                                              │
+│  ┌──────────────────────────────────────────────────────┐    │
+│  │ TIP: Keep Server Components as the default.          │    │
+│  │ Only add 'use client' when you need interactivity.   │    │
+│  └──────────────────────────────────────────────────────┘    │
+└─────────────────────────────────────────────────────────────┘
+```
+
+## Layouts in Next.js
+
+`layout.js` wraps all pages in its directory and below:
+
+```jsx
+// src/app/layout.js — Root layout
+export const metadata = {
+  title: 'Project Manager',
+  description: 'Manage your projects and tasks',
+};
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body>
+        <nav>
+          <Link href="/">Home</Link>
+          <Link href="/projects">Projects</Link>
+        </nav>
+        <main>{children}</main>       {/* Matched page renders here */}
+        <footer>Project Manager 2026</footer>
+      </body>
+    </html>
+  );
+}
+```
+
+Compare to React Router: `<Outlet />` serves the same purpose as `{children}`.
+
+# Tutorial Roadmap {.section-slide background-color="#d6001c"}
+
+## Your Learning Path
+
+### 1. React Quick Start (Start Here)
+[react.dev/learn](https://react.dev/learn)
+
+- Components, JSX, props, state
+- Conditional rendering, lists, events
+- Thinking in React
+
+### 2. React Foundations Course
+[nextjs.org/learn/react-foundations](https://nextjs.org/learn/react-foundations)
+
+- From JavaScript to React
+- Building UI with components
+- Server and Client Components introduction
+
+### 3. Next.js Dashboard App
+[nextjs.org/learn/dashboard-app](https://nextjs.org/learn/dashboard-app)
+
+- Full Next.js app from scratch
+- Routing, data fetching, authentication
+- Database integration, deployment
+
+## How the Tutorials Connect to Lab 4
+
+| Tutorial Section | Lab 4 Connection |
+|-----------------|------------------|
+| React: Components & Props | `ProjectCard`, `TaskList` components |
+| React: State & Effects | `useState` + `useEffect` data fetching |
+| React: Event Handling | Form submissions, delete confirmations |
+| React Foundations: Server/Client | `'use client'` in Next.js variants |
+| Next.js: Routing | File-based routing vs React Router |
+| Next.js: Data Fetching | API routes, server-side data access |
+| Next.js: Layouts | `layout.js` vs `<Outlet />` pattern |
+
+::: {.callout-tip}
+As you work through the tutorials, **refer back to the Lab 4 solution code** to see each concept in a real application context.
+:::
+
+# Summary {.section-slide background-color="#d6001c"}
+
+## Key Takeaways
+
+1. **React components** are functions that return JSX — composable, reusable UI
+2. **Props** pass data down; **state** manages data that changes
+3. **useEffect** handles side effects (data fetching) after render
+4. **Next.js** adds routing, server rendering, and API routes on top of React
+5. **Server Components** (default) run on the server; **Client Components** need `'use client'`
+6. The **data layer pattern** from Lab 4 demonstrates clean architecture
+
+## Action Items
+
+::: {.callout-important}
+### Before Next Week
+
+1. Complete the [React Quick Start](https://react.dev/learn) tutorial
+2. Work through [React Foundations](https://nextjs.org/learn/react-foundations) course
+3. Start the [Next.js Dashboard App](https://nextjs.org/learn/dashboard-app) tutorial
+4. Continue working on **Lab 4** — apply what you learn from the tutorials
+:::
+
+## Resources
+
+- [React Documentation — Learn](https://react.dev/learn)
+- [React Foundations Course](https://nextjs.org/learn/react-foundations)
+- [Next.js Dashboard App Tutorial](https://nextjs.org/learn/dashboard-app)
+- [Lab 4 Solution Repository](https://github.com/RPI-WS-spring-2026/RPI-WS-LAB4-Solution)
+- [Next.js Documentation](https://nextjs.org/docs)
+
+## Questions?
+
+::: {.callout-box}
+**Office Hours:** Tuesday 9-11 AM, Pitt 2206
+
+**Email:** kuruzj@rpi.edu
+
+**Appointments:** [bit.ly/jason-rpi](https://bit.ly/jason-rpi)
+:::

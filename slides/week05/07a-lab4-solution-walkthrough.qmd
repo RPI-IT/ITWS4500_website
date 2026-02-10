@@ -1,0 +1,577 @@
+---
+title: "Lab 4 Solution Deep Dive"
+subtitle: "Understanding React, Next.js, Express & MongoDB Through Comparison"
+author: "Jason Kuruzovich"
+date: "February 10, 2026"
+format:
+  revealjs:
+    navigation-mode: linear
+    mermaid:
+        theme: default
+    theme: [default, ../../slides-theme.scss]
+    logo: ../../static/logos/RPI_Logo_Binary_1_White.png
+    footer: "ITWS-4500 | Week 5, Day 1"
+    slide-number: true
+    transition: slide
+    width: 1600
+    height: 900
+    code-line-numbers: true
+    highlight-style: github
+    pdf-separate-fragments: false
+---
+
+# Lab 4 Solution Deep Dive {.section-slide background-color="#d6001c"}
+
+Four Implementations, One Application
+
+## Today's Agenda
+
+::: {.learning-objectives}
+**Learning Objectives**
+
+1. Understand what **React**, **Next.js**, **Express**, and **MongoDB** each contribute
+2. Compare **four architectures** for the same application
+3. Trace a request **end-to-end** through each stack
+4. Understand **data layer abstraction** and why it matters
+5. Know when to choose **which architecture**
+:::
+
+## The Lab 4 Solution Repository
+
+::: {.callout-note}
+**Solution Code:** [github.com/RPI-WS-spring-2026/RPI-WS-LAB4-Solution](https://github.com/RPI-WS-spring-2026/RPI-WS-LAB4-Solution)
+:::
+
+Four implementations of the **same Project Management application** — identical UX, different technology underneath.
+
+## The Four Variants
+
+| Variant | Frontend | Backend | Database | Port |
+|---------|----------|---------|----------|------|
+| **react-only** | Vite + React + React Router | None | localStorage | 3004 |
+| **react-express-mongo** | Vite + React + React Router | Express (port 3000) | MongoDB | 3002 |
+| **react-nextjs-mongo** | Next.js App Router | Next.js API Routes | MongoDB | 3003 |
+| **react-next-express-mongo** | Next.js App Router | Express (port 3000) | MongoDB | 3001 |
+
+## What Each Layer Does
+
+| Layer | Technology | Responsibility |
+|-------|-----------|----------------|
+| **UI Components** | React | Renders HTML, handles interaction, manages component state |
+| **Client-Side Routing** | React Router *or* Next.js | Maps URLs to pages without full-page reloads |
+| **API Server** | Express *or* Next.js Route Handlers | Receives HTTP requests, validates data, talks to DB |
+| **Database** | MongoDB (Mongoose) *or* localStorage | Persists data beyond a single browser session |
+
+# Architecture Comparison {.section-slide background-color="#d6001c"}
+
+## react-only Architecture
+
+```
+┌─────────────────────────────────────────┐
+│              Browser                     │
+│                                          │
+│  ┌──────────┐  ┌────────┐  ┌─────────┐ │
+│  │  React   │→ │ React  │→ │localStorage│
+│  │Components│  │ Router │  │ (storage)│ │
+│  └──────────┘  └────────┘  └─────────┘ │
+│                                          │
+│  Everything runs in the browser          │
+└─────────────────────────────────────────┘
+```
+
+- No server, no database
+- Data stored in browser's localStorage
+- Works offline, zero operational complexity
+- Data is **siloed** per browser/device
+
+## react-express-mongo Architecture
+
+```
+┌──────────────────────┐     ┌──────────────────────┐
+│   Browser (3002)      │     │   Server (3000)       │
+│                       │     │                       │
+│  ┌──────┐ ┌────────┐ │     │  ┌───────┐ ┌───────┐ │
+│  │React │ │ React  │ │────→│  │Express│→│MongoDB│ │
+│  │ UI   │ │ Router │ │     │  │  API  │ │       │ │
+│  └──────┘ └────────┘ │     │  └───────┘ └───────┘ │
+│                       │     │                       │
+│  Vite Dev Server      │     │  Separate process     │
+└──────────────────────┘     └──────────────────────┘
+```
+
+- **Cross-origin**: Browser on 3002, API on 3000 (needs CORS)
+- Three separate services: Vite, Express, MongoDB
+- API can serve multiple frontends
+
+## react-nextjs-mongo Architecture
+
+```
+┌──────────────────────────────────────────┐
+│         Next.js Server (3003)             │
+│                                           │
+│  ┌──────────┐  ┌─────────┐  ┌─────────┐ │
+│  │  React   │  │  API    │  │         │ │
+│  │Components│  │ Routes  │→ │ MongoDB │ │
+│  │ + Pages  │  │(route.js)│  │         │ │
+│  └──────────┘  └─────────┘  └─────────┘ │
+│                                           │
+│  Same-origin: pages + API on one server   │
+└──────────────────────────────────────────┘
+```
+
+- **Same-origin**: No CORS needed, simpler config
+- Two services: Next.js + MongoDB
+- File-based routing replaces React Router
+
+## react-next-express-mongo Architecture
+
+```
+┌─────────────────────┐     ┌──────────────────────┐
+│  Next.js (3001)      │     │   Express (3000)      │
+│                      │     │                       │
+│  ┌──────┐ ┌───────┐ │     │  ┌───────┐ ┌───────┐ │
+│  │React │ │ Next  │ │────→│  │Express│→│MongoDB│ │
+│  │ UI   │ │Router │ │     │  │  API  │ │       │ │
+│  └──────┘ └───────┘ │     │  └───────┘ └───────┘ │
+│                      │     │                       │
+│  Pages only          │     │  API + DB             │
+└─────────────────────┘     └──────────────────────┘
+```
+
+- Next.js for **frontend only** (pages, routing, SSR)
+- Express as a **standalone API** (shared with other variants)
+- Three services, cross-origin like React+Express
+
+# React Deep Dive {.section-slide background-color="#d6001c"}
+
+What Does React Actually Do?
+
+## React Is Data-Source Agnostic
+
+Compare `ProjectList` in both React Router variants — the **only difference** is one import:
+
+```js
+// react-only
+import { getProjects } from '../lib/storage';
+
+// react-express-mongo
+import { getProjects } from '../lib/api';
+```
+
+Everything else is **identical**: `useState`, `useEffect`, conditional rendering, JSX mapping.
+
+## React's Responsibilities
+
+React does **four things** — nothing more:
+
+1. **Manage component state** with hooks (`useState`, `useEffect`)
+2. **Trigger side effects** like data fetching (`useEffect`)
+3. **Render UI** based on current state (JSX)
+4. **Handle user interaction** via event handlers (`onClick`, `onChange`)
+
+React does NOT handle:
+
+- Routing (that's React Router or Next.js)
+- Data fetching (that's your data layer / `fetch`)
+- Backend logic (that's Express or Next.js API routes)
+
+## The Abstraction Principle
+
+Both data layers expose the **same interface**:
+
+```js
+// api.js (calls Express server)
+export async function createProject(data) {
+  const res = await fetch(`${API_URL}/api/projects`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  });
+  return res.json();
+}
+
+// storage.js (uses localStorage)
+export async function createProject(data) {
+  const project = { _id: generateId(), ...data, createdAt: new Date() };
+  const projects = getAll('projects');
+  projects.push(project);
+  saveAll('projects', projects);
+  return project;
+}
+```
+
+React calls `await createProject(formData)` — **same code, either implementation**.
+
+## Tracing a Delete Operation
+
+```{mermaid}
+%%| fig-width: 14
+sequenceDiagram
+    participant User
+    participant React as React Component
+    participant Data as Data Layer
+    participant Router as React Router
+
+    User->>React: Clicks "Delete" button
+    React->>React: confirm() dialog
+    React->>Data: await deleteProject(id)
+    Data->>Data: Remove from storage/API
+    Data-->>React: Promise resolves
+    React->>Router: navigate('/projects')
+    Router->>React: Render ProjectList
+    React->>Data: getProjects()
+    Data-->>React: Updated list (without deleted)
+    React->>User: Re-render without deleted project
+```
+
+# Express Deep Dive {.section-slide background-color="#d6001c"}
+
+What Does a Backend Server Do?
+
+## Tracing a Create Request
+
+```{mermaid}
+%%| fig-width: 14
+sequenceDiagram
+    participant Browser
+    participant CORS as cors()
+    participant Logger as morgan()
+    participant Parser as express.json()
+    participant Route as Router
+    participant Controller
+    participant MongoDB
+
+    Browser->>CORS: POST /api/projects
+    CORS->>Logger: Add CORS headers
+    Logger->>Parser: Log request
+    Parser->>Route: Parse JSON body
+    Route->>Controller: Match POST /
+    Controller->>Controller: Validate name exists
+    Controller->>MongoDB: Project.create({...})
+    MongoDB-->>Controller: Document saved
+    Controller-->>Browser: 201 Created + JSON
+```
+
+## Middleware Pipeline
+
+Express processes requests through a **pipeline** of middleware:
+
+```javascript
+// server/src/index.js
+app.use(cors());              // 1. Allow cross-origin requests
+app.use(morgan('dev'));        // 2. Log requests
+app.use(express.json());      // 3. Parse JSON bodies
+
+app.use('/api/projects', projectRoutes);  // 4. Route matching
+app.use('/api/tasks', taskRoutes);
+
+app.use(errorHandler);        // 5. Catch errors (MUST be last)
+```
+
+Order matters! Each middleware calls `next()` to pass to the next one.
+
+## Cascade Deletes
+
+When deleting a project, Express handles **data integrity**:
+
+```javascript
+// projectController.js
+const deleteProject = async (req, res, next) => {
+  const project = await Project.findById(req.params.id);
+
+  // Delete all tasks belonging to this project FIRST
+  await Task.deleteMany({ projectId: project._id });
+
+  // Then delete the project itself
+  await project.deleteOne();
+
+  res.json({ message: 'Project and associated tasks deleted' });
+};
+```
+
+Without cascade deletes, tasks become **orphans** — referencing a project that no longer exists.
+
+## Centralized Error Handling
+
+```javascript
+// middleware/errorHandler.js
+function errorHandler(err, req, res, next) {
+  console.error(err.stack);
+
+  res.status(err.status || 500).json({
+    error: err.message || 'Server Error',
+    message: err.message
+  });
+}
+```
+
+- Must be registered **last** (after all routes)
+- Express identifies it by the **4-parameter signature** `(err, req, res, next)`
+- Controllers call `next(error)` to skip to this handler
+- Provides **consistent** error formatting across all routes
+
+# Next.js Deep Dive {.section-slide background-color="#d6001c"}
+
+What Does Next.js Add to React?
+
+## File-Based Routing vs. Explicit Routes
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### React Router (App.jsx)
+
+```jsx
+<Route element={<Layout />}>
+  <Route path="/"
+    element={<Home />} />
+  <Route path="/projects"
+    element={<ProjectList />} />
+  <Route path="/projects/new"
+    element={<ProjectForm />} />
+  <Route path="/projects/:id"
+    element={<ProjectDetail />} />
+</Route>
+```
+
+All routes in **one file**.
+:::
+
+::: {.column width="50%"}
+### Next.js (file system)
+
+```
+src/app/
+  page.js            → /
+  layout.js          → Wraps all pages
+  projects/
+    page.js          → /projects
+    new/
+      page.js        → /projects/new
+    [id]/
+      page.js        → /projects/:id
+      edit/
+        page.js      → /projects/:id/edit
+```
+
+Routes defined by **folder structure**.
+:::
+
+::::
+
+## Server Components vs. Client Components
+
+```javascript
+// Home page - NO 'use client' needed
+// Renders on the server, sent as HTML
+export default function Home() {
+  return (
+    <div>
+      <h1>Welcome to Project Manager</h1>
+      <Link href="/projects">View Projects</Link>
+    </div>
+  );
+}
+```
+
+```javascript
+// Projects list - NEEDS 'use client'
+// Uses useState and useEffect (browser-only hooks)
+'use client';
+import { useState, useEffect } from 'react';
+
+export default function ProjectList() {
+  const [projects, setProjects] = useState([]);
+  // ... hooks require client-side rendering
+}
+```
+
+`'use client'` is a **Next.js concept**, not React. In Vite, everything is client-side.
+
+## Same-Origin vs. Cross-Origin API
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Next.js (same-origin)
+
+```javascript
+// No hostname needed — same server!
+const res = await fetch('/api/projects');
+```
+
+- API routes served by same Next.js server
+- No CORS configuration needed
+- Simpler setup
+:::
+
+::: {.column width="50%"}
+### React + Express (cross-origin)
+
+```javascript
+// Full URL required — different server!
+const API_URL = 'http://localhost:3000';
+const res = await fetch(
+  `${API_URL}/api/projects`
+);
+```
+
+- Different ports = different origins
+- Express must use `cors()` middleware
+- More configuration
+:::
+
+::::
+
+## Next.js API Routes vs. Express
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Express Controller
+
+```javascript
+// Centralized error handling
+const getProject = async (req, res, next) => {
+  try {
+    const project = await Project
+      .findById(req.params.id);
+    if (!project) {
+      const error = new Error('Not found');
+      error.status = 404;
+      return next(error);  // → errorHandler
+    }
+    res.json(project);
+  } catch (err) {
+    next(err);
+  }
+};
+```
+:::
+
+::: {.column width="50%"}
+### Next.js Route Handler
+
+```javascript
+// Self-contained error handling
+export async function GET(request, { params }) {
+  try {
+    await connectDB();
+    const project = await Project
+      .findById(params.id);
+    if (!project) {
+      return NextResponse.json(
+        { message: 'Not found' },
+        { status: 404 }
+      );
+    }
+    return NextResponse.json(project);
+  } catch (error) {
+    return NextResponse.json(
+      { message: 'Server error' },
+      { status: 500 }
+    );
+  }
+}
+```
+:::
+
+::::
+
+## The Mongoose Singleton Problem
+
+**Express:** Connects to MongoDB **once** at startup — long-running process, connection stays open.
+
+**Next.js:** Hot Module Replacement (HMR) re-imports modules on file changes. Without a cache, each reload opens a **new** connection.
+
+```javascript
+// Next.js solution: cache on global object
+if (!global.mongoose) {
+  global.mongoose = { conn: null, promise: null };
+}
+
+export async function connectDB() {
+  if (global.mongoose.conn) return global.mongoose.conn;
+
+  global.mongoose.promise = mongoose.connect(MONGODB_URI);
+  global.mongoose.conn = await global.mongoose.promise;
+  return global.mongoose.conn;
+}
+```
+
+`global` survives hot reloads because Node.js preserves the global scope.
+
+# Choosing the Right Architecture {.section-slide background-color="#d6001c"}
+
+## Decision Framework
+
+| Scenario | Best Choice | Why |
+|----------|-------------|-----|
+| Personal tool, one user | react-only | No server needed, works offline |
+| Team app, web only | react-nextjs-mongo | Simplest full-stack (one service) |
+| Web + mobile + 3rd party API | react-express-mongo | Standalone API serves all clients |
+| Next.js frontend + shared API | react-next-express-mongo | Best of both worlds |
+
+## Common Misconceptions
+
+### "Next.js replaces Express"
+
+**Oversimplification.** Next.js API routes work great for web-only CRUD apps. But a separate Express server is better when:
+
+- Multiple clients share one API (web, mobile, third-party)
+- Backend needs a different language (Python, Go)
+- API needs independent scaling/deployment
+
+### "React and Next.js are the same thing"
+
+**They are not.** React is a **UI library** (components, state, rendering). Next.js is a **framework** that adds routing, server rendering, API endpoints, and build tooling **on top of** React.
+
+## What React Provides (All Variants)
+
+- Component model (function components + JSX)
+- State management (`useState`, `useEffect`)
+- Event handling (`onClick`, `onChange`, `onSubmit`)
+- Conditional and list rendering
+- Component composition and props
+
+## What Next.js Adds
+
+- File-based routing (no React Router needed)
+- Server Components (render on server, send HTML)
+- `'use client'` directive (opt-in client rendering)
+- API Route Handlers (replace Express for simple cases)
+- Metadata exports (SEO-friendly page titles)
+- Automatic layout nesting (`layout.js` + `{children}`)
+
+# Key Takeaways {.section-slide background-color="#d6001c"}
+
+## Summary
+
+1. **React** handles UI — state, rendering, events. It's data-source agnostic.
+2. **Express** is a standalone API server — middleware pipeline, centralized errors.
+3. **Next.js** is a framework on top of React — routing, SSR, API routes.
+4. **Data abstraction** lets you swap backends without changing React code.
+5. **Architecture should match the problem** — don't over-engineer.
+
+## Looking Ahead
+
+### Friday 2/13: React & Next.js Foundations
+
+- Core React concepts from [react.dev/learn](https://react.dev/learn)
+- React Foundations at [nextjs.org/learn/react-foundations](https://nextjs.org/learn/react-foundations)
+- Next.js Dashboard App at [nextjs.org/learn/dashboard-app](https://nextjs.org/learn/dashboard-app)
+
+### Continue Working on Lab 4
+
+- Apply these patterns in your own implementation
+- Understand which variant best fits your project
+
+## Questions?
+
+::: {.callout-box}
+**Office Hours:** Tuesday 9-11 AM, Pitt 2206
+
+**Email:** kuruzj@rpi.edu
+
+**Appointments:** [bit.ly/jason-rpi](https://bit.ly/jason-rpi)
+:::

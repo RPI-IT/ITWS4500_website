@@ -41,5 +41,5 @@ Before starting, ensure you have:
 ## Getting Help
 
 - **Office Hours:** Tuesday 9-11 AM, Pitt 2206
-- **Piazza:** Post questions with `lab1` tag
+- **Webex:** Post questions with `lab1` tag
 - **TA Sessions:** Check LMS for schedule

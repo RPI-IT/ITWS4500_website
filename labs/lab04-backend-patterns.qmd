@@ -6,7 +6,7 @@ subtitle: "Integrating Frontend, Backend, and Database"
 ::: {.callout-important}
 ## Lab Information
 **Assigned:** Tuesday, February 10, 2026
-**Points:** 100 (+ up to 20 bonus presentation points)
+**Points:** 100
 **Team Size:** 3-4 members
 :::
 
@@ -24,8 +24,6 @@ By completing this lab, you will:
 2. **Build an Express API from scratch** - Design routes, controllers, and middleware
 3. **Design a MongoDB schema** - Model relationships between Projects and Tasks
 4. **Practice collaborative git workflows** - Use feature branches, pull requests, and code review
-5. **Present technical solutions** - Explain your implementation decisions to peers
-
 ## Getting Started
 
 Click the button below to accept the assignment and create your repository:
@@ -39,34 +37,6 @@ Click the button below to accept the assignment and create your repository:
 - Docker and Docker Compose running
 - Git and GitHub account
 - Understanding of React, Express, and MongoDB fundamentals
-
----
-
-## Flipped Classroom Structure
-
-This lab uses a **flipped classroom** approach. Teams work independently, and individuals present key solutions during class sessions.
-
-### Presentation Schedule
-
-| Session | Topic | Presenter Selection | Points |
-|---------|-------|---------------------|--------|
-| **Session 1** | Database Schema Design | 1 student per team presents their Mongoose models | 5 |
-| **Session 2** | API Architecture | 1 student per team explains their route/controller structure | 5 |
-| **Session 3** | Frontend State Management | 1 student per team shows how they handle data fetching and state | 5 |
-| **Session 4** | Integration Demo | Full team demos working application | 5 |
-
-### Presentation Requirements
-
-Each presentation should be **3-5 minutes** and cover:
-
-- What you built
-- Key design decisions and tradeoffs
-- One challenge you faced and how you solved it
-- Live demo or code walkthrough
-
-::: {.callout-note}
-Different team members must present each session. All members present at least once.
-:::
 
 ---
 
@@ -189,8 +159,6 @@ We will evaluate:
 
 ## Part 1: Project Setup & Database (15 points)
 
-**Presentation Topic: Session 1 - Schema Design**
-
 ### 1.1 Initialize the Project (5 points)
 - Set up the repository structure
 - Configure `docker-compose.yml` with MongoDB
@@ -207,15 +175,9 @@ We will evaluate:
 - `server/src/models/Project.js`
 - `server/src/models/Task.js`
 
-::: {.callout-tip}
-**Presentation Focus:** Explain your schema design choices. Why did you structure the relationship this way? What validations did you add and why?
-:::
-
 ---
 
 ## Part 2: Backend API (30 points)
-
-**Presentation Topic: Session 2 - API Architecture**
 
 Implement the REST API according to the specification in `API.md`.
 
@@ -246,15 +208,9 @@ Implement the REST API according to the specification in `API.md`.
 - Error handling middleware
 - Input validation
 
-::: {.callout-tip}
-**Presentation Focus:** Walk through your route organization and controller pattern. How do you handle errors? Show a request/response cycle.
-:::
-
 ---
 
 ## Part 3: Frontend - Projects (20 points)
-
-**Presentation Topic: Session 3 - State Management**
 
 Build the Projects UI using Next.js App Router.
 
@@ -279,10 +235,6 @@ Build the Projects UI using Next.js App Router.
 - `/projects/new` - Create project
 - `/projects/[id]` - Project detail
 - `/projects/[id]/edit` - Edit project
-
-::: {.callout-tip}
-**Presentation Focus:** Explain how you fetch and manage data. Do you use hooks? How do you handle loading and error states?
-:::
 
 ---
 
@@ -309,8 +261,6 @@ Build the Tasks UI within project context.
 
 ## Part 5: Integration & Polish (10 points)
 
-**Presentation Topic: Session 4 - Integration Demo**
-
 ### 5.1 Navigation & Layout (4 points)
 - Consistent header/navigation
 - Loading states while fetching data
@@ -325,10 +275,6 @@ Build the Tasks UI within project context.
 - Consistent code formatting
 - No console errors/warnings
 - README updated with setup instructions
-
-::: {.callout-tip}
-**Presentation Focus:** Live demo of full application. Show the complete user flow from creating a project to managing tasks.
-:::
 
 ---
 
@@ -410,16 +356,6 @@ git push -u origin feature/projects-backend
 | Part 6: Questions | 5 | Conceptual answers |
 | **Subtotal** | **100** | |
 
-### Presentation Points (Bonus)
-
-| Presentation | Points |
-|--------------|--------|
-| Session 1: Schema Design | +5 |
-| Session 2: API Architecture | +5 |
-| Session 3: State Management | +5 |
-| Session 4: Integration Demo | +5 |
-| **Max Presentation Bonus** | **+20** |
-
 ### Git Workflow Adjustments
 
 - **+5 points:** Excellent PR history with meaningful reviews
@@ -447,7 +383,6 @@ git push -u origin feature/projects-backend
 - [ ] All team members have commits
 - [ ] `answers.yml` completed
 - [ ] No secrets committed (.env in .gitignore)
-- [ ] Each team member presented at least once
 
 ---
 
@@ -503,7 +438,7 @@ This is a team assignment. You may:
 
 - Collaborate fully within your team
 - Use documentation and official resources
-- Ask clarifying questions on Piazza
+- Ask clarifying questions in Webex
 
 You may not:
 
@@ -516,5 +451,4 @@ All team members must contribute meaningfully. We review git history.
 ## Getting Help
 
 - **Office Hours:** Tuesday 9-11 AM, Pitt 2206
-- **Piazza:** Post questions with `lab4` tag
 - **TA Sessions:** Check LMS for schedule

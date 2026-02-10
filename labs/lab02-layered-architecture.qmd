@@ -36,5 +36,5 @@ Click the button below to accept the assignment and create your repository:
 ## Getting Help
 
 - **Office Hours:** Tuesday 9-11 AM, Pitt 2206
-- **Piazza:** Post questions with `lab2` tag
+- **Webex:** Post questions with `lab2` tag
 - **TA Sessions:** Check LMS for schedule

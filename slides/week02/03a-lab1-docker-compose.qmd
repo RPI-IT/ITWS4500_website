@@ -1145,7 +1145,7 @@ The TAs can see your commits and will clone your repository to grade it.
 ::: {.callout-box}
 **Lab Help:**
 - Office Hours: Tuesday 9-11 AM
-- Piazza for Q&A
+- Webex for Q&A
 - TA sessions (see LMS)
 :::
 
