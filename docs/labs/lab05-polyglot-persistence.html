@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Lab 5: Polyglot Persistence – ITWS-4500: Advanced Web &amp; Agentic AI Development</title>
+<title>Lab 5: React Deep Dive – ITWS-4500: Advanced Web &amp; Agentic AI Development</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -281,7 +281,7 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li><a href="#the-stages" id="toc-the-stages" class="nav-link" data-scroll-target="#the-stages">The Stages</a></li>
   <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting Started</a></li>
   <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites">Prerequisites</a></li>
   <li><a href="#getting-help" id="toc-getting-help" class="nav-link" data-scroll-target="#getting-help">Getting Help</a></li>
@@ -293,8 +293,8 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lab 5: Polyglot Persistence</h1>
-<p class="subtitle lead">MongoDB &amp; PostgreSQL</p>
+<h1 class="title">Lab 5: React Deep Dive</h1>
+<p class="subtitle lead">Group Enhancement Exercise</p>
 </div>
 
 
@@ -321,32 +321,73 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Assigned:</strong> Tuesday, February 17, 2026 <strong>Points:</strong> 100</p>
+<p><strong>Assigned:</strong> Friday, February 13, 2026 <strong>Points:</strong> 100</p>
 </div>
 </div>
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>This lab explores using multiple databases for different use cases within the same application.</p>
+<p>In this exercise, your group will progressively enhance the <code>react-express-mongo</code> variant of the Project Manager application through a series of stages. Each stage builds on the previous one, introducing new React concepts and increasing in complexity. You will work in the <code>react-express-mongo/client/</code> directory using Vite + React + React Router on the frontend, talking to a shared Express API server backed by MongoDB.</p>
 </section>
-<section id="learning-objectives" class="level2">
-<h2 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
-<p>By completing this lab, you will:</p>
-<ol type="1">
-<li>Choose <strong>appropriate databases</strong> for different data types</li>
-<li>Implement <strong>MongoDB</strong> for document storage</li>
-<li>Implement <strong>PostgreSQL</strong> for relational data</li>
-<li>Handle <strong>data consistency</strong> across stores</li>
-</ol>
+<section id="the-stages" class="level2">
+<h2 class="anchored" data-anchor-id="the-stages">The Stages</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 28%">
+<col style="width: 56%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Stage</th>
+<th>What You Do</th>
+<th>React Concepts Introduced</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1. Read &amp; Trace</td>
+<td>Read code, answer architecture questions</td>
+<td>Hooks, state, effects, routing, data flow</td>
+</tr>
+<tr class="even">
+<td>2. Extract</td>
+<td>Pull TaskCard out of ProjectDetail</td>
+<td>Props, callback props, component extraction</td>
+</tr>
+<tr class="odd">
+<td>3. Compose</td>
+<td>Build a Kanban board using TaskCard</td>
+<td>Component composition, conditional rendering, derived state</td>
+</tr>
+<tr class="even">
+<td>4. Filter</td>
+<td>Add search and status filters to the task list</td>
+<td>Controlled components, computed/derived state, useMemo</td>
+</tr>
+<tr class="odd">
+<td>5. Dashboard</td>
+<td>Build a dashboard page with aggregated data</td>
+<td>Multiple API calls, Promise.all, reusable components</td>
+</tr>
+<tr class="even">
+<td>6. Present</td>
+<td>Demo your enhanced app and explain the React concepts</td>
+<td>Communication, reflection</td>
+</tr>
+</tbody>
+</table>
+<p>Each stage must be completed before moving to the next.</p>
 </section>
 <section id="getting-started" class="level2">
 <h2 class="anchored" data-anchor-id="getting-started">Getting Started</h2>
 <p>Click the button below to accept the assignment and create your repository:</p>
+<p><a href="https://classroom.github.com/a/fBGL5tkU" class="btn btn-primary">Accept Lab 5 Assignment</a></p>
 </section>
 <section id="prerequisites" class="level2">
 <h2 class="anchored" data-anchor-id="prerequisites">Prerequisites</h2>
 <ul>
 <li>Completed Lab 4</li>
-<li>Understanding of database design principles</li>
+<li>Full stack running via <code>docker compose up</code> from the root directory</li>
 </ul>
 </section>
 <section id="getting-help" class="level2">

@@ -1,36 +1,41 @@
 ---
-title: "Lab 5: Polyglot Persistence"
-subtitle: "MongoDB & PostgreSQL"
+title: "Lab 5: React Deep Dive"
+subtitle: "Group Enhancement Exercise"
 ---
 
 ::: {.callout-important}
 ## Lab Information
-**Assigned:** Tuesday, February 17, 2026
+**Assigned:** Friday, February 13, 2026
 **Points:** 100
 :::
 
 ## Overview
 
-This lab explores using multiple databases for different use cases within the same application.
+In this exercise, your group will progressively enhance the `react-express-mongo` variant of the Project Manager application through a series of stages. Each stage builds on the previous one, introducing new React concepts and increasing in complexity. You will work in the `react-express-mongo/client/` directory using Vite + React + React Router on the frontend, talking to a shared Express API server backed by MongoDB.
 
-## Learning Objectives
+## The Stages
 
-By completing this lab, you will:
+| Stage | What You Do | React Concepts Introduced |
+|-------|-------------|--------------------------|
+| 1. Read & Trace | Read code, answer architecture questions | Hooks, state, effects, routing, data flow |
+| 2. Extract | Pull TaskCard out of ProjectDetail | Props, callback props, component extraction |
+| 3. Compose | Build a Kanban board using TaskCard | Component composition, conditional rendering, derived state |
+| 4. Filter | Add search and status filters to the task list | Controlled components, computed/derived state, useMemo |
+| 5. Dashboard | Build a dashboard page with aggregated data | Multiple API calls, Promise.all, reusable components |
+| 6. Present | Demo your enhanced app and explain the React concepts | Communication, reflection |
 
-1. Choose **appropriate databases** for different data types
-2. Implement **MongoDB** for document storage
-3. Implement **PostgreSQL** for relational data
-4. Handle **data consistency** across stores
+Each stage must be completed before moving to the next.
 
 ## Getting Started
 
 Click the button below to accept the assignment and create your repository:
 
+[Accept Lab 5 Assignment](https://classroom.github.com/a/fBGL5tkU){.btn .btn-primary}
 
 ## Prerequisites
 
 - Completed Lab 4
-- Understanding of database design principles
+- Full stack running via `docker compose up` from the root directory
 
 ## Getting Help
 
