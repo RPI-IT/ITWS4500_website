@@ -48,6 +48,80 @@ Weeks 1–5: Architectural Foundations
 - **Coverage:** Weeks 1–5 concepts
 :::
 
+## Session Timeline
+
+```{mermaid}
+%%| fig-width: 14
+gantt
+    title Review Session Timeline
+    dateFormat HH:mm
+    axisFormat %H:%M
+
+    section Group Presentations
+    Prepare presentations & find resources :prep, 00:00, 20m
+    Group presentations (5-7 min each)     :pres, after prep, 40m
+
+    section 2nd Half
+    Review walkthrough & hands-on exercise :exercise, after pres, 30m
+
+    section Wrap-Up
+    Quiz prep & crib sheet planning        :wrap, after exercise, 10m
+```
+
+# Group Review Presentations {.section-slide background-color="#d6001c"}
+
+First Half of Class
+
+## Your Task
+
+Each group picks **one week** of course material (or is assigned one).
+
+Prepare a **short presentation** (5–7 min) covering:
+
+1. **The 3 most important concepts** from your week and why they matter
+2. **2 additional readings or resources** (articles, videos, tutorials, docs) that help explain gaps or deepen understanding
+3. **1 exam-style question per person** you would ask about your week's material
+4. **Suggestions for the 2nd half of class** — what would be most helpful? (e.g., review walkthrough, Lab 5 work time, crib sheet workshop, live Q&A on specific topics)
+
+::: {.callout-important}
+## Deliverables
+
+- **Post a link to your presentation on Webex** so the whole class has access
+- Each person contributes at least **one exam question** with its answer
+:::
+
+## Why This Matters
+
+::: {.callout-tip}
+Think about what confused you initially, what clicked only after the lab, and what you wish had been explained differently. Your outside resources should fill those gaps.
+:::
+
+- The resources shared today become **study materials for the whole class**
+- Use today's presentations to help build your **1-page crib sheet** for Quiz 1
+- If you can teach it, you understand it
+
+## Preparation Phase (20 min)
+
+In your groups:
+
+1. **Pick your 3 key concepts** — what would you absolutely need on a crib sheet for this week?
+2. **Find 2 outside resources** — articles, videos, tutorials, or docs that explain things better or go deeper than our materials
+3. **Each person writes 1 exam question** — something that tests *understanding*, not memorization. Include the answer.
+
+## Presentation Phase (5–7 min per group)
+
+**Structure:**
+
+1. **"Here's what matters most"** — your 3 key concepts (~3 min)
+2. **"Here's what helped us"** — your 2 outside resources and why (~2 min)
+3. **"Test yourself"** — your exam questions, let the class try them (~2 min)
+
+Format is up to you — slides, whiteboard, live demo. Post your link on **Webex** before you present.
+
+# Review Walkthrough {.section-slide background-color="#d6001c"}
+
+Second Half of Class
+
 ## What We've Covered
 
 ```{mermaid}
@@ -640,71 +714,6 @@ You're building an app that needs a web frontend AND a React Native mobile app. 
                               └───────────────────────┘
 ```
 
-# In-Class Exercise {.section-slide background-color="#d6001c"}
-
-## Session Timeline
-
-```{mermaid}
-%%| fig-width: 14
-gantt
-    title Review Session Timeline
-    dateFormat HH:mm
-    axisFormat %H:%M
-
-    section Group Presentations
-    Prepare review & find resources   :prep, 00:00, 20m
-    Group presentations (5-7 min each) :pres, after prep, 40m
-
-    section Hands-On Exercise
-    Architecture trace & component exercise :exercise, after pres, 30m
-
-    section Wrap-Up
-    Discussion & quiz prep            :wrap, after exercise, 10m
-```
-
-# Group Review Presentations {.section-slide background-color="#d6001c"}
-
-## Your Task
-
-Each group picks **one week** of course material (or is assigned one). Prepare a **short presentation** (5–7 min) covering:
-
-1. **The 3 most important concepts** from your week and why they matter
-2. **2 additional readings or resources** (articles, videos, tutorials, docs) that help explain gaps or deepen understanding
-3. **1 exam-style question** you would ask about your week's material
-
-::: {.callout-important}
-## Deliverable
-**Post a link to your presentation on Webex** so the whole class has access to your resources.
-:::
-
-## Why This Matters
-
-::: {.callout-tip}
-Think about what confused you initially, what clicked only after the lab, and what you wish had been explained differently. Your outside resources should fill those gaps.
-:::
-
-- The resources shared today become **study materials for the whole class**
-- Use today's presentations to help build your **1-page crib sheet** for Quiz 1
-- If you can teach it, you understand it
-
-## Preparation Phase (20 min)
-
-In your groups:
-
-1. **Pick your 3 key concepts** — what would you absolutely need on a crib sheet?
-2. **Find 2 outside resources** — articles, videos, docs that explain things better or go deeper
-3. **Write 1 exam question** — something that tests *understanding*, not memorization
-
-## Presentation Phase (5–7 min per group)
-
-**Structure:**
-
-1. **"Here's what matters most"** — your 3 key concepts (~3 min)
-2. **"Here's what helped us"** — your 2 outside resources and why (~2 min)
-3. **"Test yourself"** — your exam question, let the class try it (~1 min)
-
-Format is up to you — slides, whiteboard, live demo. Post your link on **Webex** before you present.
-
 # Hands-On Exercise {.section-slide background-color="#d6001c"}
 
 Applying Lab 5 Concepts
@@ -790,60 +799,7 @@ c) Should `filteredTasks` be stored in `useState` or computed inline? Justify yo
 
 d) **Bonus:** How would `useMemo` help if the task list were very large?
 
-## Wrap-Up Discussion
-
-::: {.callout-warning}
-**Discuss as a class:**
-
-- Which concepts came up across multiple group presentations?
-- What patterns connect the weeks together?
-- What are you most uncertain about heading into Quiz 1?
-:::
-
-The outside resources shared today become **study materials for the whole class** — check Webex for all the links.
-
-# Quiz 1 Preparation {.section-slide background-color="#d6001c"}
-
-## What to Study
-
-### Conceptual Understanding (not memorization)
-
-:::: {.columns}
-::: {.column width="50%"}
-**Infrastructure (Week 1)**
-
-- Docker images vs. containers
-- Volumes and persistence
-- Docker Compose networking
-- Port mapping (host:container)
-- Dockerfile layer caching
-
-**Architecture (Week 2)**
-
-- Layered architecture & the dependency rule
-- Quality attributes (-ilities) and trade-offs
-- Bounded contexts
-- System decomposition strategies
-:::
-
-::: {.column width="50%"}
-**Frontend (Weeks 3 & 5)**
-
-- Components, props, state
-- useState and useEffect (with dependency arrays)
-- Presentational vs. container components
-- Controlled components
-- Derived/computed state
-- Component extraction and composition
-
-**Backend & Full-Stack (Weeks 4 & 5)**
-
-- Express request flow & middleware
-- REST API design (methods + routes + status codes)
-- Comparing the 4 Lab 4 architectures
-- Trade-offs: simplicity vs. flexibility
-:::
-::::
+# Sample Exam Questions {.section-slide background-color="#d6001c"}
 
 ## Sample Exam Question 1
 
@@ -889,19 +845,19 @@ A student puts all business logic directly in Express route handlers. What archi
 2. **Not reusable** — if a mobile app or CLI needs the same logic, it must be duplicated
 3. **Violates separation of concerns** — route handlers should only handle HTTP, services should handle business logic
 
-# Resources & Next Steps {.section-slide background-color="#d6001c"}
+# Wrap-Up & Quiz Prep {.section-slide background-color="#d6001c"}
 
-## Study Resources
+## Wrap-Up Discussion
 
-- **Course slides:** All lecture slides from Weeks 1–5
-- **Lab assignments:** Re-read Labs 1–5 and your solutions
-- **React docs:** [react.dev/learn](https://react.dev/learn)
-- **Lab 4 Solution:** Compare the four variants side-by-side
-- **Lab 5:** Use the exercise stages as study practice
+::: {.callout-warning}
+**Discuss as a class:**
 
-::: {.callout-tip}
-**Best study strategy:** Don't just re-read — **explain concepts to your group members**. If you can teach it, you understand it.
+- Which concepts came up across multiple group presentations?
+- What patterns connect the weeks together?
+- What are you most uncertain about heading into Quiz 1?
 :::
+
+Check Webex for all the presentation links and resources shared today.
 
 ## Crib Sheet
 
@@ -916,6 +872,18 @@ You may bring a **1-page, 1-sided** crib sheet to Quiz 1 (handwritten or printed
 - Reference the **resources shared today** by your classmates
 - Don't try to cram everything — pick what you find hardest to remember
 
+## Study Resources
+
+- **Course slides:** All lecture slides from Weeks 1–5
+- **Lab assignments:** Re-read Labs 1–5 and your solutions
+- **React docs:** [react.dev/learn](https://react.dev/learn)
+- **Lab 4 Solution:** Compare the four variants side-by-side
+- **Lab 5:** Use the exercise stages as study practice
+
+::: {.callout-tip}
+**Best study strategy:** Don't just re-read — **explain concepts to your group members**. If you can teach it, you understand it.
+:::
+
 ## Action Items
 
 1. Complete **Lab 5** stages (due date on LMS)
@@ -923,14 +891,6 @@ You may bring a **1-page, 1-sided** crib sheet to Quiz 1 (handwritten or printed
 3. **Build your crib sheet** — use today's presentations and the study guide
 4. Practice **tracing data flows** through different architectures
 5. Be ready for **Quiz 1** on Tuesday 2/24
-
-## Final Tips
-
-1. **Understand concepts**, not just definitions
-2. **Know the trade-offs** for each architectural decision
-3. **Practice drawing diagrams** — they may be on the quiz
-4. **Focus on the "why"** not just the "what"
-5. **Use your crib sheet wisely** — it's a safety net, not a substitute for understanding
 
 ## Questions?
 

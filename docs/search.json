@@ -8243,7 +8243,7 @@
     "href": "slides/week06/08-review-session.html#session-timeline",
     "title": "Quiz 1 Review & In-Class Exercise",
     "section": "Session Timeline",
-    "text": "Session Timeline\n\n\n\n\n\ngantt\n    title Review Session Timeline\n    dateFormat HH:mm\n    axisFormat %H:%M\n\n    section Group Presentations\n    Prepare review & find resources   :prep, 00:00, 20m\n    Group presentations (5-7 min each) :pres, after prep, 40m\n\n    section Hands-On Exercise\n    Architecture trace & component exercise :exercise, after pres, 30m\n\n    section Wrap-Up\n    Discussion & quiz prep            :wrap, after exercise, 10m"
+    "text": "Session Timeline\n\n\n\n\n\ngantt\n    title Review Session Timeline\n    dateFormat HH:mm\n    axisFormat %H:%M\n\n    section Group Presentations\n    Prepare presentations & find resources :prep, 00:00, 20m\n    Group presentations (5-7 min each)     :pres, after prep, 40m\n\n    section 2nd Half\n    Review walkthrough & hands-on exercise :exercise, after pres, 30m\n\n    section Wrap-Up\n    Quiz prep & crib sheet planning        :wrap, after exercise, 10m"
   },
   {
     "objectID": "slides/week06/08-review-session.html#group-assignments",
@@ -8264,7 +8264,7 @@
     "href": "slides/week06/08-review-session.html#presentation-phase-57-min-per-group",
     "title": "Quiz 1 Review & In-Class Exercise",
     "section": "Presentation Phase (5–7 min per group)",
-    "text": "Presentation Phase (5–7 min per group)\nStructure:\n\n“Here’s what matters most” — your 3 key concepts (~3 min)\n“Here’s what helped us” — your 2 outside resources and why (~2 min)\n“Test yourself” — your exam question, let the class try it (~1 min)\n\nFormat is up to you — slides, whiteboard, live demo. Post your link on Webex before you present."
+    "text": "Presentation Phase (5–7 min per group)\nStructure:\n\n“Here’s what matters most” — your 3 key concepts (~3 min)\n“Here’s what helped us” — your 2 outside resources and why (~2 min)\n“Test yourself” — your exam questions, let the class try them (~2 min)\n\nFormat is up to you — slides, whiteboard, live demo. Post your link on Webex before you present."
   },
   {
     "objectID": "slides/week06/08-review-session.html#after-all-presentations",
@@ -8306,14 +8306,14 @@
     "href": "slides/week06/08-review-session.html#wrap-up-discussion",
     "title": "Quiz 1 Review & In-Class Exercise",
     "section": "Wrap-Up Discussion",
-    "text": "Wrap-Up Discussion\n\n\n\n\n\n\nWarning\n\n\nDiscuss as a class:\n\nWhich concepts came up across multiple group presentations?\nWhat patterns connect the weeks together?\nWhat are you most uncertain about heading into Quiz 1?\n\n\n\n\nThe outside resources shared today become study materials for the whole class — check Webex for all the links."
+    "text": "Wrap-Up Discussion\n\n\n\n\n\n\nWarning\n\n\nDiscuss as a class:\n\nWhich concepts came up across multiple group presentations?\nWhat patterns connect the weeks together?\nWhat are you most uncertain about heading into Quiz 1?\n\n\n\n\nCheck Webex for all the presentation links and resources shared today."
   },
   {
     "objectID": "slides/week06/08-review-session.html#your-task",
     "href": "slides/week06/08-review-session.html#your-task",
     "title": "Quiz 1 Review & In-Class Exercise",
     "section": "Your Task",
-    "text": "Your Task\nEach group picks one week of course material (or is assigned one). Prepare a short presentation (5–7 min) covering:\n\nThe 3 most important concepts from your week and why they matter\n2 additional readings or resources (articles, videos, tutorials, docs) that help explain gaps or deepen understanding\n1 exam-style question you would ask about your week’s material\n\n\n\n\n\n\n\nDeliverable\n\n\nPost a link to your presentation on Webex so the whole class has access to your resources."
+    "text": "Your Task\nEach group picks one week of course material (or is assigned one).\nPrepare a short presentation (5–7 min) covering:\n\nThe 3 most important concepts from your week and why they matter\n2 additional readings or resources (articles, videos, tutorials, docs) that help explain gaps or deepen understanding\n1 exam-style question per person you would ask about your week’s material\nSuggestions for the 2nd half of class — what would be most helpful? (e.g., review walkthrough, Lab 5 work time, crib sheet workshop, live Q&A on specific topics)\n\n\n\n\n\n\n\nDeliverables\n\n\n\nPost a link to your presentation on Webex so the whole class has access\nEach person contributes at least one exam question with its answer"
   },
   {
     "objectID": "slides/week06/08-review-session.html#why-this-matters",
@@ -8327,7 +8327,7 @@
     "href": "slides/week06/08-review-session.html#preparation-phase-20-min",
     "title": "Quiz 1 Review & In-Class Exercise",
     "section": "Preparation Phase (20 min)",
-    "text": "Preparation Phase (20 min)\nIn your groups:\n\nPick your 3 key concepts — what would you absolutely need on a crib sheet?\nFind 2 outside resources — articles, videos, docs that explain things better or go deeper\nWrite 1 exam question — something that tests understanding, not memorization"
+    "text": "Preparation Phase (20 min)\nIn your groups:\n\nPick your 3 key concepts — what would you absolutely need on a crib sheet for this week?\nFind 2 outside resources — articles, videos, tutorials, or docs that explain things better or go deeper than our materials\nEach person writes 1 exam question — something that tests understanding, not memorization. Include the answer."
   },
   {
     "objectID": "slides/week06/08-review-session.html#architecture-trace-component-design",
