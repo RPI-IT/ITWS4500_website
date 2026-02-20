@@ -1,0 +1,947 @@
+---
+title: "Quiz 1 Review & In-Class Exercise"
+subtitle: "Architectural Foundations and System Design"
+author: "Jason Kuruzovich"
+date: "February 20, 2026"
+format:
+  revealjs:
+    navigation-mode: linear
+    mermaid:
+        theme: default
+    theme: [default, ../../slides-theme.scss]
+    logo: ../../static/logos/RPI_Logo_Binary_1_White.png
+    footer: "ITWS-4500 | Week 6, Day 2"
+    slide-number: true
+    transition: slide
+    width: 1600
+    height: 900
+    #chalkboard: true
+    code-line-numbers: true
+    highlight-style: github
+    pdf-separate-fragments: false
+---
+
+# Quiz 1 Review {.section-slide background-color="#d6001c"}
+
+Weeks 1–5: Architectural Foundations
+
+## Today's Plan
+
+::: {.learning-objectives}
+**Session Goals**
+
+1. **Group presentations** — teach your assigned week back to the class
+2. Review the **key architectural concepts** from Weeks 1–5
+3. **Hands-on exercise** applying Lab 5 concepts
+4. Prepare for **Quiz 1** on Tuesday 2/24
+:::
+
+## Quiz Format
+
+::: {.callout-note}
+### Quiz Details
+
+- **Date:** Tuesday, February 24, 2026
+- **Duration:** Full class period
+- **Format:** Multiple choice + short answer + diagrams
+- **Materials:** You may bring a **1-page, 1-sided handwritten or printed crib sheet**
+- **Coverage:** Weeks 1–5 concepts
+:::
+
+## What We've Covered
+
+```{mermaid}
+%%| fig-width: 14
+timeline
+    title Weeks 1–5 Journey
+    Week 1 : Docker
+           : Containers
+           : Infrastructure as Code
+    Week 2 : Architectural Patterns
+           : Layered Architecture
+           : System Decomposition
+    Week 3 : Component Architecture
+           : React Basics
+           : State & Props
+    Week 4 : Backend Patterns
+           : Express & APIs
+           : Middleware
+    Week 5 : Full-Stack Comparison
+           : 4 Architectures
+           : React Deep Dive
+```
+
+# Week 1: Infrastructure as Code {.section-slide background-color="#d6001c"}
+
+## Containers vs Virtual Machines
+
+```
+     Virtual Machines                      Containers
+┌─────────────────────────┐     ┌─────────────────────────┐
+│ App A │ App B │ App C   │     │ App A │ App B │ App C   │
+├───────┼───────┼─────────┤     ├───────┼───────┼─────────┤
+│Guest OS│Guest OS│Guest OS│     │  Bins │  Bins │  Bins   │
+├───────┴───────┴─────────┤     │  Libs │  Libs │  Libs   │
+│       Hypervisor        │     ├─────────────────────────┤
+├─────────────────────────┤     │    Container Engine     │
+│      Host OS            │     ├─────────────────────────┤
+├─────────────────────────┤     │      Host OS            │
+│      Hardware           │     ├─────────────────────────┤
+└─────────────────────────┘     │      Hardware           │
+    GBs, minutes                └─────────────────────────┘
+                                    MBs, seconds
+```
+
+**Containers share the host OS kernel** → lightweight, fast, portable
+
+## Key Container Concepts
+
+| Concept | Definition |
+|---------|------------|
+| **Image** | Read-only template (blueprint) to create a container |
+| **Container** | Running instance of an image |
+| **Dockerfile** | Text file with instructions to build an image |
+| **Layer** | Each Dockerfile instruction creates a cached layer |
+| **Volume** | Persistent storage outside the container lifecycle |
+| **Registry** | Repository for storing and distributing images (Docker Hub) |
+
+**Core Problem Solved:** "Works on my machine" → "Works everywhere"
+
+## Dockerfile Best Practices
+
+```dockerfile
+# 1. Use specific tags (not :latest)
+FROM node:20-alpine
+
+# 2. Set working directory
+WORKDIR /app
+
+# 3. Copy dependency files first (caching!)
+COPY package*.json ./
+
+# 4. Install dependencies
+RUN npm ci --only=production
+
+# 5. Copy source code last (changes most often)
+COPY . .
+
+# 6. Don't run as root
+USER node
+
+# 7. Document exposed ports
+EXPOSE 3000
+
+CMD ["node", "server.js"]
+```
+
+**Key insight:** Order instructions from least to most frequently changed → better layer caching
+
+## Docker Compose: Multi-Service Orchestration
+
+```yaml
+services:
+  client:                    # Frontend
+    build: ./client
+    ports: ["3002:5173"]     # Host:Container
+    volumes:
+      - ./client/src:/app/src  # Bind mount → hot reload
+    depends_on: [api]
+
+  api:                       # Backend
+    build: ./server
+    ports: ["3000:3000"]
+    environment:
+      - MONGODB_URI=mongodb://mongo:27017/projectdb
+
+  mongo:                     # Database
+    image: mongo:7
+    volumes:
+      - mongo-data:/data/db  # Named volume → persistent data
+
+volumes:
+  mongo-data:                # Named volume declaration
+```
+
+**Quiz-worthy:** Service names = hostnames on the internal Docker network
+
+## Review Question: Docker
+
+::: {.callout-warning}
+**Think About It**
+
+Why does the `api` service connect to `mongodb://mongo:27017` instead of `mongodb://localhost:27017`?
+:::
+
+. . .
+
+**Answer:** Each container has its own `localhost`. The service name `mongo` is resolved by Docker's internal DNS to the correct container's IP address on the shared Compose network.
+
+## Week 1 Review Questions
+
+1. What problem do containers solve?
+2. Why do we order Dockerfile instructions from least to most frequently changed?
+3. What's the difference between a **named volume** and a **bind mount**?
+4. How do containers in Docker Compose communicate with each other?
+5. What does `depends_on` do? Does it wait for the service to be *ready*?
+
+# Week 2: Architectural Patterns {.section-slide background-color="#d6001c"}
+
+## Architectural Patterns Overview
+
+```{mermaid}
+%%| fig-width: 14
+mindmap
+  root((Patterns))
+    Structural
+      Layered
+      Client-Server
+      Microservices
+      Monolithic
+    Behavioral
+      Event-Driven
+      CQRS
+      Pub-Sub
+    Data
+      Repository
+      Unit of Work
+```
+
+## The Layered Architecture
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    Presentation Layer                        │
+│      React Components / Express Routes & Controllers        │
+├─────────────────────────────────────────────────────────────┤
+│                    Application Layer                         │
+│           Services, Use Cases, Orchestration                 │
+├─────────────────────────────────────────────────────────────┤
+│                      Domain Layer                            │
+│      Entities, Business Rules, Validation                    │
+├─────────────────────────────────────────────────────────────┤
+│                   Infrastructure Layer                       │
+│       Repositories, Database, External Services              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+**The Dependency Rule:** Dependencies point **downward** only (upper layers depend on lower, never the reverse)
+
+## Layer Responsibilities
+
+| Layer | Contains | Depends On |
+|-------|----------|------------|
+| **Presentation** | UI components, Controllers | Application |
+| **Application** | Services, DTOs, Use Cases | Domain |
+| **Domain** | Entities, Business Rules | Nothing |
+| **Infrastructure** | Repositories, DB Access | Domain (interfaces) |
+
+## Separation of Concerns & Bounded Contexts
+
+**Separation of Concerns:** Each module has **one responsibility** → independent development, testing, maintenance
+
+**Bounded Context:** A boundary where a particular domain model applies consistently
+
+```
+Sales Context          Shipping Context
+┌──────────────┐      ┌──────────────┐
+│  Customer    │      │  Recipient   │
+│  Order       │      │  Shipment    │
+│  Product     │      │  Address     │
+└──────────────┘      └──────────────┘
+       │                     │
+       └────── CustomerID ───┘
+```
+
+Same entity (customer) can mean different things in different contexts
+
+## Quality Attributes
+
+| Attribute | Description | Trade-off With |
+|-----------|-------------|----------------|
+| **Performance** | Response time, throughput | Complexity |
+| **Scalability** | Handle growth | Simplicity, Cost |
+| **Availability** | Uptime, reliability | Consistency |
+| **Security** | Protection | Usability |
+| **Maintainability** | Ease of change | Performance |
+
+::: {.callout-note}
+Every architectural decision involves trade-offs. You can't optimize for everything simultaneously.
+:::
+
+## Week 2 Review Questions
+
+1. What is separation of concerns and why is it important?
+2. Name three architectural patterns and when to use each.
+3. What is a bounded context?
+4. Why can't you optimize for all quality attributes simultaneously?
+5. What should an Architecture Decision Record (ADR) contain?
+
+# Week 3: Frontend Architecture {.section-slide background-color="#d6001c"}
+
+## Component Mental Model
+
+```
+         Props (Input)
+              │
+              ▼
+    ┌─────────────────┐
+    │                 │
+    │    Component    │──── State (Memory)
+    │                 │
+    └────────┬────────┘
+             │
+             ▼
+         UI (Output)
+             │
+             ▼
+    User Events / Callbacks
+             │
+             └──→ State updates → Re-render
+```
+
+## React Core Concepts
+
+| Concept | What It Does | Example |
+|---------|-------------|---------|
+| **Component** | Reusable piece of UI (a function returning JSX) | `function TaskCard({ task }) { ... }` |
+| **Props** | Read-only data from parent to child | `<TaskCard task={myTask} />` |
+| **State** | Mutable data that triggers re-render | `const [count, setCount] = useState(0)` |
+| **useEffect** | Side effects (API calls, subscriptions) | `useEffect(() => { fetch(...) }, [id])` |
+| **key** | Helps React track list items efficiently | `tasks.map(t => <Task key={t._id} ... />)` |
+
+## Component Categories
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Presentational
+- Receives data via **props**
+- No state, no side effects
+- Highly reusable and testable
+- Example: `TaskCard`, `ProjectCard`
+
+```jsx
+function TaskCard({ task }) {
+  return (
+    <div className="task-card">
+      <h3>{task.title}</h3>
+      <span>{task.status}</span>
+    </div>
+  );
+}
+```
+:::
+
+::: {.column width="50%"}
+### Container
+- Manages **state**
+- Fetches data (API calls)
+- Coordinates child components
+- Example: `ProjectDetail`, `Dashboard`
+
+```jsx
+function ProjectDetail({ id }) {
+  const [project, setProject] =
+    useState(null);
+  useEffect(() => {
+    fetch(`/api/projects/${id}`)
+      .then(r => r.json())
+      .then(setProject);
+  }, [id]);
+  return <ProjectCard project={project} />;
+}
+```
+:::
+
+::::
+
+## State Management Decision Tree
+
+```
+Is state used by multiple components?
+    │
+    ├─ No → useState (local)
+    │
+    └─ Yes → Are they nearby in tree?
+             │
+             ├─ Yes → Lift state up / props
+             │
+             └─ No → Is it complex with many updates?
+                     │
+                     ├─ No → Context API
+                     │
+                     └─ Yes → External store (Zustand, Redux)
+```
+
+## Context API Pattern
+
+```javascript
+// 1. Create context
+const AuthContext = createContext();
+
+// 2. Create provider
+function AuthProvider({ children }) {
+  const [user, setUser] = useState(null);
+  const login = async (credentials) => { /* ... */ };
+  const logout = () => { /* ... */ };
+
+  return (
+    <AuthContext.Provider value={{ user, login, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
+}
+
+// 3. Create custom hook
+const useAuth = () => useContext(AuthContext);
+
+// 4. Use in components — no prop drilling!
+function Profile() {
+  const { user, logout } = useAuth();
+  return <button onClick={logout}>Logout {user.name}</button>;
+}
+```
+
+## Review Question: React
+
+::: {.callout-warning}
+**Think About It**
+
+```jsx
+const filteredTasks = tasks.filter(t => t.status === filter);
+```
+
+Why is `filteredTasks` computed inline during render instead of stored in its own `useState`?
+:::
+
+. . .
+
+**Answer:** It's a **derived value** — it can be deterministically computed from `tasks` and `filter`, both already in state. Storing it separately would create redundant state that must be manually kept in sync (violating "single source of truth").
+
+## Week 3 Review Questions
+
+1. What's the difference between presentational and container components?
+2. When should you use Context vs. an external state store?
+3. What problem does lifting state up solve?
+4. When would you use useReducer instead of useState?
+5. How do components communicate (parent→child, child→parent)?
+
+# Week 4: Backend Architecture {.section-slide background-color="#d6001c"}
+
+## Express Request Flow
+
+```{mermaid}
+%%| fig-width: 14
+sequenceDiagram
+    participant Browser
+    participant Router
+    participant Middleware
+    participant Controller
+    participant Service
+    participant Database
+
+    Browser->>Router: POST /api/projects
+    Router->>Middleware: Auth, Validation
+    Middleware->>Controller: Validated Request
+    Controller->>Service: createProject(data)
+    Service->>Database: Project.create(data)
+    Database-->>Service: Saved Document
+    Service-->>Controller: Project Object
+    Controller-->>Browser: 201 JSON Response
+```
+
+## REST API Design
+
+| Method | Route | Action | Response |
+|--------|-------|--------|----------|
+| GET | `/api/projects` | List all projects | 200 + array |
+| GET | `/api/projects/:id` | Get one project | 200 + object |
+| POST | `/api/projects` | Create a project | 201 + created object |
+| PUT | `/api/projects/:id` | Update a project | 200 + updated object |
+| DELETE | `/api/projects/:id` | Delete a project | 200 or 204 |
+
+::: {.callout-note}
+**RESTful resources are nouns** (projects, tasks), **HTTP methods are verbs** (GET, POST, PUT, DELETE).
+:::
+
+## HTTP Status Codes to Know
+
+| Code | Meaning | Use Case |
+|------|---------|----------|
+| 200 | OK | Successful GET, PUT |
+| 201 | Created | Successful POST |
+| 204 | No Content | Successful DELETE |
+| 400 | Bad Request | Invalid input |
+| 401 | Unauthorized | Authentication required |
+| 403 | Forbidden | No permission |
+| 404 | Not Found | Resource doesn't exist |
+| 500 | Server Error | Unexpected failure |
+
+## Middleware: Cross-Cutting Concerns
+
+```javascript
+// Middleware runs BEFORE route handlers — pipeline pattern
+app.use(cors());           // Allow cross-origin requests
+app.use(express.json());   // Parse JSON request bodies
+app.use(authMiddleware);   // Verify authentication
+
+// Each middleware calls next() to pass to the next one
+function authMiddleware(req, res, next) {
+  if (isAuthenticated(req)) {
+    next();                // Continue to next middleware/route
+  } else {
+    res.status(401).json({ error: 'Unauthorized' });
+  }
+}
+
+// Error handling middleware (4 params — Express recognizes this signature)
+function errorHandler(err, req, res, next) {
+  res.status(err.statusCode || 500).json({
+    success: false,
+    error: { message: err.message }
+  });
+}
+```
+
+## Dependency Inversion in Practice
+
+```javascript
+// Domain layer defines interface
+interface UserRepository {
+  findById(id: string): Promise<User>;
+  save(user: User): Promise<void>;
+}
+
+// Infrastructure layer implements it
+class MongoUserRepository implements UserRepository {
+  async findById(id) {
+    const doc = await UserModel.findById(id);
+    return User.fromDocument(doc);
+  }
+}
+
+// Application layer uses interface, not implementation
+class UserService {
+  constructor(private userRepo: UserRepository) {}
+  async getUser(id) {
+    return this.userRepo.findById(id);
+  }
+}
+```
+
+**Benefit:** Can swap MongoDB for PostgreSQL without changing the service layer
+
+## Week 4 Review Questions
+
+1. What makes an API RESTful?
+2. When should you use 201 vs 200 status code?
+3. What does the `next()` function do in Express middleware?
+4. Why should business logic be in services, not controllers?
+5. What's the difference between authentication and authorization?
+
+# Week 5: Four Architectures Compared {.section-slide background-color="#d6001c"}
+
+## The Four Lab 4 Variants
+
+```
+react-only               react-express-mongo
+┌──────────┐             ┌──────┐    ┌──────┐
+│ React +  │             │React │───→│Express│
+│localStorage│           │:3002 │    │:3000 │
+│ :3004    │             └──────┘    └──┬───┘
+└──────────┘                           │
+                                    ┌──▼───┐
+                                    │Mongo │
+react-nextjs-mongo                  └──────┘
+┌──────────────┐
+│  Next.js     │         react-next-express-mongo
+│  React +     │         ┌──────┐    ┌──────┐
+│  API Routes  │         │Next.js│──→│Express│
+│  + Mongo     │         │:3001 │    │:3000 │
+│  :3003       │         └──────┘    └──┬───┘
+└──────────────┘                       │
+                                    ┌──▼───┐
+                                    │Mongo │
+                                    └──────┘
+```
+
+## Architecture Decision Matrix
+
+| Factor | react-only | react-express-mongo | react-nextjs-mongo | react-next-express |
+|--------|:----------:|:-------------------:|:------------------:|:------------------:|
+| Services to run | 1 | 3 | 2 | 3 |
+| Setup complexity | Low | Medium | Medium | High |
+| Data shared across devices | No | Yes | Yes | Yes |
+| CORS needed | No | Yes | No | Yes |
+| Multiple frontend support | N/A | Yes | Limited | Yes |
+| SSR/SEO | No | No | Yes | Yes |
+| Best for | Prototypes | Multi-client APIs | Full-stack apps | Large teams |
+
+## Review Question: Architecture
+
+::: {.callout-warning}
+**Think About It**
+
+You're building an app that needs a web frontend AND a React Native mobile app. Which architecture would you choose and why?
+:::
+
+. . .
+
+**Answer:** `react-express-mongo` — the **separate Express API** can serve both the web frontend and the mobile app independently. The API is not coupled to any specific frontend framework.
+
+# Quick Reference {.section-slide background-color="#d6001c"}
+
+## Key Definitions
+
+| Term | Definition |
+|------|------------|
+| **Container** | Isolated process with packaged dependencies |
+| **Layer** | Horizontal slice of functionality with defined dependencies |
+| **Component** | Reusable, self-contained piece of UI |
+| **Service** | Business logic coordinator in the application layer |
+| **Repository** | Data access abstraction |
+| **Middleware** | Request/response interceptor in the pipeline |
+| **ADR** | Document capturing an architectural decision and its rationale |
+| **Bounded Context** | Boundary where a particular domain model applies |
+
+## Common Patterns Summary
+
+| Pattern | Purpose | Where We Used It |
+|---------|---------|------------------|
+| **Layered Architecture** | Separate concerns vertically | Labs 2, 4 |
+| **Repository** | Abstract data persistence | Labs 4, 5 |
+| **Middleware Pipeline** | Cross-cutting concerns (auth, logging) | Lab 4 |
+| **Container/Presenter** | Separate state from display | Labs 3, 5 |
+| **Context Provider** | Share state without prop drilling | Conceptual |
+| **Client-Server** | Decouple frontend from backend | Labs 2, 4 |
+
+## Full Architecture Diagram
+
+```
+┌─────────────────────────────────────────────────────┐
+│                     Client                           │
+│  ┌─────────────┐  ┌─────────────┐                  │
+│  │ Components  │  │   State     │                  │
+│  │ (Presenter) │◄─┤ (Context/   │                  │
+│  │             │  │  Store)     │                  │
+│  └─────────────┘  └──────┬──────┘                  │
+└────────────────────────────┼────────────────────────┘
+                             │ HTTP/REST
+┌────────────────────────────▼────────────────────────┐
+│                     Server                           │
+│  Routes → Middleware → Controllers → Services       │
+│                                         │           │
+│                                    Repositories     │
+│                                         │           │
+└─────────────────────────────────────────┼───────────┘
+                                          │
+                              ┌───────────▼───────────┐
+                              │      Database         │
+                              └───────────────────────┘
+```
+
+# In-Class Exercise {.section-slide background-color="#d6001c"}
+
+## Session Timeline
+
+```{mermaid}
+%%| fig-width: 14
+gantt
+    title Review Session Timeline
+    dateFormat HH:mm
+    axisFormat %H:%M
+
+    section Group Presentations
+    Prepare review & find resources   :prep, 00:00, 20m
+    Group presentations (5-7 min each) :pres, after prep, 40m
+
+    section Hands-On Exercise
+    Architecture trace & component exercise :exercise, after pres, 30m
+
+    section Wrap-Up
+    Discussion & quiz prep            :wrap, after exercise, 10m
+```
+
+# Group Review Presentations {.section-slide background-color="#d6001c"}
+
+## Your Task
+
+Each group picks **one week** of course material (or is assigned one). Prepare a **short presentation** (5–7 min) covering:
+
+1. **The 3 most important concepts** from your week and why they matter
+2. **2 additional readings or resources** (articles, videos, tutorials, docs) that help explain gaps or deepen understanding
+3. **1 exam-style question** you would ask about your week's material
+
+::: {.callout-important}
+## Deliverable
+**Post a link to your presentation on Webex** so the whole class has access to your resources.
+:::
+
+## Why This Matters
+
+::: {.callout-tip}
+Think about what confused you initially, what clicked only after the lab, and what you wish had been explained differently. Your outside resources should fill those gaps.
+:::
+
+- The resources shared today become **study materials for the whole class**
+- Use today's presentations to help build your **1-page crib sheet** for Quiz 1
+- If you can teach it, you understand it
+
+## Preparation Phase (20 min)
+
+In your groups:
+
+1. **Pick your 3 key concepts** — what would you absolutely need on a crib sheet?
+2. **Find 2 outside resources** — articles, videos, docs that explain things better or go deeper
+3. **Write 1 exam question** — something that tests *understanding*, not memorization
+
+## Presentation Phase (5–7 min per group)
+
+**Structure:**
+
+1. **"Here's what matters most"** — your 3 key concepts (~3 min)
+2. **"Here's what helped us"** — your 2 outside resources and why (~2 min)
+3. **"Test yourself"** — your exam question, let the class try it (~1 min)
+
+Format is up to you — slides, whiteboard, live demo. Post your link on **Webex** before you present.
+
+# Hands-On Exercise {.section-slide background-color="#d6001c"}
+
+Applying Lab 5 Concepts
+
+## Architecture Trace & Component Design
+
+Working in your groups, complete the following exercises.
+
+## Part 1: Trace the Data Flow (10 min)
+
+Starting from the `react-express-mongo` Project Manager app:
+
+1. A user navigates to `/projects/abc123` in the browser
+2. Trace the **complete data flow** from URL change to rendered page
+
+**Document every step:**
+
+- Which React component renders?
+- What hooks fire? In what order?
+- What API call is made? To what URL?
+- What does Express do with the request?
+- What does MongoDB return?
+- How does the component update?
+
+## Part 2: Component Extraction (10 min)
+
+Look at this simplified `ProjectDetail` component from the Lab 5 codebase:
+
+```jsx
+function ProjectDetail() {
+  const { id } = useParams();
+  const [project, setProject] = useState(null);
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    fetch(`/api/projects/${id}`).then(r => r.json()).then(setProject);
+    fetch(`/api/projects/${id}/tasks`).then(r => r.json()).then(setTasks);
+  }, [id]);
+
+  return (
+    <div>
+      <h1>{project?.name}</h1>
+      <p>{project?.description}</p>
+      <h2>Tasks ({tasks.length})</h2>
+      {tasks.map(task => (
+        <div key={task._id} className={`task task-${task.status}`}>
+          <h3>{task.title}</h3>
+          <p>{task.description}</p>
+          <span className="badge">{task.status}</span>
+          <span className="badge">{task.priority}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+```
+
+**Your tasks:**
+
+a) Extract a `TaskCard` presentational component. What props does it need?
+
+b) Extract a `ProjectHeader` component. What props does it need?
+
+c) Draw the component tree showing parent-child relationships and data flow.
+
+## Part 3: Add Filtering (10 min)
+
+Extend the component from Part 2 to add a status filter dropdown.
+
+**Requirements:**
+
+- Filter dropdown with options: All, To Do, In Progress, Done
+- Show the count of filtered tasks (e.g., "Showing 3 of 8 tasks")
+- The filter should be a **controlled component**
+
+**Questions to answer:**
+
+a) Where does the filter state live? Why?
+
+b) Write the `filteredTasks` derived value.
+
+c) Should `filteredTasks` be stored in `useState` or computed inline? Justify your answer.
+
+d) **Bonus:** How would `useMemo` help if the task list were very large?
+
+## Wrap-Up Discussion
+
+::: {.callout-warning}
+**Discuss as a class:**
+
+- Which concepts came up across multiple group presentations?
+- What patterns connect the weeks together?
+- What are you most uncertain about heading into Quiz 1?
+:::
+
+The outside resources shared today become **study materials for the whole class** — check Webex for all the links.
+
+# Quiz 1 Preparation {.section-slide background-color="#d6001c"}
+
+## What to Study
+
+### Conceptual Understanding (not memorization)
+
+:::: {.columns}
+::: {.column width="50%"}
+**Infrastructure (Week 1)**
+
+- Docker images vs. containers
+- Volumes and persistence
+- Docker Compose networking
+- Port mapping (host:container)
+- Dockerfile layer caching
+
+**Architecture (Week 2)**
+
+- Layered architecture & the dependency rule
+- Quality attributes (-ilities) and trade-offs
+- Bounded contexts
+- System decomposition strategies
+:::
+
+::: {.column width="50%"}
+**Frontend (Weeks 3 & 5)**
+
+- Components, props, state
+- useState and useEffect (with dependency arrays)
+- Presentational vs. container components
+- Controlled components
+- Derived/computed state
+- Component extraction and composition
+
+**Backend & Full-Stack (Weeks 4 & 5)**
+
+- Express request flow & middleware
+- REST API design (methods + routes + status codes)
+- Comparing the 4 Lab 4 architectures
+- Trade-offs: simplicity vs. flexibility
+:::
+::::
+
+## Sample Exam Question 1
+
+::: {.callout-warning}
+**Practice Question**
+
+A React component fetches data in `useEffect` with an empty dependency array `[]`. The component receives a `userId` prop that changes when the user navigates.
+
+**What is the bug?** How would you fix it?
+:::
+
+. . .
+
+**Bug:** The effect only runs on mount because of `[]`. When `userId` changes, the data is NOT re-fetched — stale data is shown.
+
+**Fix:** Add `userId` to the dependency array: `useEffect(() => { ... }, [userId])`
+
+## Sample Exam Question 2
+
+::: {.callout-warning}
+**Practice Question**
+
+You store `filteredTasks` in its own `useState` alongside `tasks` and `filter`. What problem does this create?
+:::
+
+. . .
+
+**Problem:** Redundant state that must be manually synchronized. If you update `tasks` but forget to recompute `filteredTasks`, the UI shows stale data. This violates the "single source of truth" principle. Derived values should be computed during render, not stored separately.
+
+## Sample Exam Question 3
+
+::: {.callout-warning}
+**Practice Question**
+
+A student puts all business logic directly in Express route handlers. What architectural problems does this create?
+:::
+
+. . .
+
+**Problems:**
+
+1. **Not testable** — you can't test business logic without making HTTP requests
+2. **Not reusable** — if a mobile app or CLI needs the same logic, it must be duplicated
+3. **Violates separation of concerns** — route handlers should only handle HTTP, services should handle business logic
+
+# Resources & Next Steps {.section-slide background-color="#d6001c"}
+
+## Study Resources
+
+- **Course slides:** All lecture slides from Weeks 1–5
+- **Lab assignments:** Re-read Labs 1–5 and your solutions
+- **React docs:** [react.dev/learn](https://react.dev/learn)
+- **Lab 4 Solution:** Compare the four variants side-by-side
+- **Lab 5:** Use the exercise stages as study practice
+
+::: {.callout-tip}
+**Best study strategy:** Don't just re-read — **explain concepts to your group members**. If you can teach it, you understand it.
+:::
+
+## Crib Sheet
+
+::: {.callout-important}
+You may bring a **1-page, 1-sided** crib sheet to Quiz 1 (handwritten or printed).
+:::
+
+**Tips for a good crib sheet:**
+
+- Focus on **connections between concepts**, not definitions you can reason through
+- Include key **diagrams** — layered architecture, request flow, component trees
+- Reference the **resources shared today** by your classmates
+- Don't try to cram everything — pick what you find hardest to remember
+
+## Action Items
+
+1. Complete **Lab 5** stages (due date on LMS)
+2. Review all **lecture slides** from Weeks 1–5
+3. **Build your crib sheet** — use today's presentations and the study guide
+4. Practice **tracing data flows** through different architectures
+5. Be ready for **Quiz 1** on Tuesday 2/24
+
+## Final Tips
+
+1. **Understand concepts**, not just definitions
+2. **Know the trade-offs** for each architectural decision
+3. **Practice drawing diagrams** — they may be on the quiz
+4. **Focus on the "why"** not just the "what"
+5. **Use your crib sheet wisely** — it's a safety net, not a substitute for understanding
+
+## Questions?
+
+::: {.callout-box}
+**Office Hours:** Tuesday 9-11 AM, Pitt 2206
+
+**Email:** kuruzj@rpi.edu
+
+**Appointments:** [bit.ly/jason-rpi](https://bit.ly/jason-rpi)
+:::
+
+---
+
+Good luck on Quiz 1!

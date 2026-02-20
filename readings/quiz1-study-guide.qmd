@@ -1,0 +1,255 @@
+---
+title: "Quiz 1 Study Guide"
+subtitle: "Architectural Foundations and System Design (Weeks 1–5)"
+---
+
+::: {.callout-important}
+## Quiz 1 Details
+
+- **Date:** Tuesday, February 24, 2026
+- **Duration:** Full class period
+- **Format:** Multiple choice + short answer + diagrams
+- **Materials:** You may bring a **1-page, 1-sided handwritten or printed crib sheet**
+- **Coverage:** Weeks 1–5
+:::
+
+## How to Use This Guide
+
+This study guide covers the key concepts from Weeks 1–5. For each topic area, we list the concepts you should understand, sample questions to test yourself, and where to find the material in the course slides and labs.
+
+**Study strategy:** Don't just re-read — **explain concepts out loud** to a study partner. If you can teach it, you understand it.
+
+---
+
+## Week 1: Infrastructure as Code
+
+**Source Material:** [Slides](../slides/week01/02-infrastructure-as-code.qmd), [Lab 1](../labs/lab01-infrastructure-as-code.qmd)
+
+### Concepts to Know
+
+| Concept | What You Should Be Able to Explain |
+|---------|-----------------------------------|
+| **Containers** | What they are, how they differ from VMs, what problem they solve |
+| **Images vs. Containers** | An image is a read-only template; a container is a running instance |
+| **Dockerfile** | How instructions build layers, why ordering matters for caching |
+| **Volumes** | Named volumes vs. bind mounts, why stateful services need volumes |
+| **Docker Compose** | Multi-service orchestration, service networking, port mapping |
+| **Port mapping** | `host:container` syntax, what each number represents |
+
+### Key Ideas
+
+- **"Works on my machine" problem:** Containers package identical environments so applications run the same everywhere.
+- **Layer caching:** Dockerfile instructions that change less frequently should come first (e.g., `COPY package*.json` before `COPY . .`).
+- **Container networking:** In Docker Compose, services communicate using service names as hostnames (e.g., `mongodb://mongo:27017`), NOT `localhost`.
+- **Volumes for persistence:** Container filesystems are ephemeral. Without volumes, data is lost when a container is removed.
+
+### Practice Questions
+
+1. Why does an Express container connect to `mongodb://mongo:27017` instead of `mongodb://localhost:27017`?
+2. What would happen to your database if you removed the volume definition from `docker-compose.yml`?
+3. Explain the purpose of `depends_on`. Does it guarantee the dependent service is *ready*?
+4. What is the difference between a bind mount (`./src:/app/src`) and a named volume (`mongo-data:/data/db`)?
+
+---
+
+## Week 2: Architectural Patterns & System Decomposition
+
+**Source Material:** [Theory Slides](../slides/week02/03b-architectural-theory.qmd), [Lab 2](../labs/lab02-layered-architecture.qmd)
+
+### Concepts to Know
+
+| Concept | What You Should Be Able to Explain |
+|---------|-----------------------------------|
+| **Layered architecture** | Four layers, the dependency rule (downward only) |
+| **Separation of concerns** | Each module has one responsibility |
+| **Bounded contexts** | A boundary where a domain model applies consistently |
+| **Quality attributes** | Scalability, maintainability, testability, security, etc. |
+| **Architectural trade-offs** | Why you can't optimize for everything simultaneously |
+| **Pattern categories** | Structural (layered, client-server), behavioral (event-driven), data (repository) |
+
+### Key Ideas
+
+- **The Dependency Rule:** In layered architecture, dependencies point downward only. Presentation depends on Application, Application depends on Domain, but never the reverse.
+- **Quality attributes are trade-offs:** Improving scalability may reduce simplicity. Improving security may reduce usability. Every design decision involves trade-offs.
+- **System decomposition strategies:** By business capability, by subdomain (DDD), or by technical function.
+
+### Practice Questions
+
+1. Name the four layers of a layered architecture and their responsibilities.
+2. What is separation of concerns and why does it matter?
+3. Give an example of a quality attribute trade-off (e.g., choosing between two attributes).
+4. What is a bounded context? Give an example where the same concept means different things in different contexts.
+
+---
+
+## Week 3: Frontend & Component Architecture
+
+**Source Material:** [Frontend Slides](../slides/week03/05-frontend-architecture.qmd), [Lab 3](../labs/lab03-component-state.qmd)
+
+### Concepts to Know
+
+| Concept | What You Should Be Able to Explain |
+|---------|-----------------------------------|
+| **Components** | Self-contained, reusable pieces of UI; functions returning JSX |
+| **Props** | Read-only data passed from parent to child |
+| **State (useState)** | Mutable data within a component that triggers re-renders |
+| **useEffect** | Side effects after render; dependency arrays control when it runs |
+| **Dependency arrays** | `[dep]` = run on mount + when dep changes; `[]` = mount only; none = every render |
+| **Presentational vs. Container** | Display-only components vs. state-managing components |
+| **Lifting state up** | Moving shared state to the nearest common ancestor |
+| **Controlled components** | Form elements whose values are driven by React state |
+| **Derived/computed values** | Values computed from existing state, not stored separately |
+| **key prop** | Unique identifier that helps React track list items efficiently |
+
+### Key Ideas
+
+- **Data flows down, events flow up:** Props pass data from parent to child. Callbacks (like `onStatusChange`) pass events from child to parent.
+- **useState triggers re-renders:** Regular variables reset on every render and don't cause re-renders. State persists across renders and triggers re-renders when updated via the setter function.
+- **useEffect dependency arrays matter:**
+  - `[projectId]` → runs on mount AND when `projectId` changes (correct for data fetching)
+  - `[]` → runs only on mount (stale data bug if props change)
+  - No array → runs after every render (potential infinite loop with state setters)
+- **Derived values should be computed, not stored:** If a value can be deterministically computed from existing state (e.g., `filteredTasks` from `tasks` + `filter`), compute it during render instead of storing it in separate state. Redundant state creates synchronization bugs.
+
+### Practice Questions
+
+1. What is the difference between props and state?
+2. A component fetches data in `useEffect(() => { ... }, [])` but receives a changing `userId` prop. What's the bug?
+3. Why shouldn't you store `filteredTasks` in its own `useState` when `tasks` and `filter` are already in state?
+4. Explain "lifting state up" with a concrete example.
+5. What makes a component "presentational" vs. "container"?
+
+---
+
+## Week 4: Backend Architecture Patterns
+
+**Source Material:** [Backend Slides](../slides/week04/06-backend-architecture.qmd), [Lab 4](../labs/lab04-backend-patterns.qmd)
+
+### Concepts to Know
+
+| Concept | What You Should Be Able to Explain |
+|---------|-----------------------------------|
+| **Express request flow** | Request → Router → Middleware → Controller → Service → Repository → Database |
+| **REST API design** | Resources as nouns, HTTP methods as verbs, standard routes |
+| **HTTP methods** | GET (read), POST (create), PUT/PATCH (update), DELETE (remove) |
+| **HTTP status codes** | 200, 201, 204, 400, 401, 403, 404, 500 |
+| **Middleware** | Pipeline pattern; cross-cutting concerns like auth, validation, CORS |
+| **next()** | Passes control to the next middleware in the chain |
+| **Service layer** | Where business logic lives; separate from HTTP concerns |
+| **Dependency inversion** | Depend on abstractions (interfaces), not implementations |
+
+### Key Ideas
+
+- **Controllers handle HTTP; Services handle business logic.** Controllers parse requests and format responses. Services contain the actual rules and orchestration. This separation makes business logic testable and reusable.
+- **Middleware is a pipeline:** Each middleware function receives `(req, res, next)` and either responds or calls `next()` to pass control along. Error middleware has four params: `(err, req, res, next)`.
+- **REST is resource-oriented:** Routes should be nouns (`/api/projects`), not verbs (`/api/getProjects`). The HTTP method expresses the action.
+
+### Practice Questions
+
+1. Trace a POST request from the browser through all backend layers to the database and back.
+2. What is the difference between a 401 and 403 status code?
+3. Why should business logic be in services, not controllers?
+4. What does `next()` do in Express middleware? What happens if you don't call it?
+5. A student puts a database query directly in a route handler. What architectural problems does this create?
+
+---
+
+## Week 5: Full-Stack Architecture Comparison
+
+**Source Material:** [Lab 4 Walkthrough](../slides/week05/07a-lab4-solution-walkthrough.qmd), [React Foundations](../slides/week05/07b-react-nextjs-foundations.qmd), [Lab 5](../labs/lab05-polyglot-persistence.qmd)
+
+### Concepts to Know
+
+| Concept | What You Should Be Able to Explain |
+|---------|-----------------------------------|
+| **react-only** | Client-side only; localStorage; 1 service; no API |
+| **react-express-mongo** | Separate frontend + API; 3 services; CORS required |
+| **react-nextjs-mongo** | Same-origin; 2 services; no CORS; file-based routing |
+| **react-next-express-mongo** | Next.js frontend + separate Express API; 3 services |
+| **CORS** | Why cross-origin requests are blocked and when you need to configure it |
+| **Same-origin vs. cross-origin** | Same port/host = same origin (no CORS); different = cross-origin (CORS needed) |
+| **React is data-source agnostic** | Same components can talk to localStorage, Express, or Next.js API routes |
+
+### Architecture Decision Matrix
+
+| Factor | react-only | react-express-mongo | react-nextjs-mongo | react-next-express |
+|--------|:----------:|:-------------------:|:------------------:|:------------------:|
+| Services to run | 1 | 3 | 2 | 3 |
+| Data shared across devices | No | Yes | Yes | Yes |
+| CORS needed | No | Yes | No | Yes |
+| Multiple frontend support | N/A | Yes | Limited | Yes |
+| SSR/SEO support | No | No | Yes | Yes |
+| Best for | Prototypes | Multi-client APIs | Full-stack apps | Large teams |
+
+### Key Ideas
+
+- **Choosing an architecture depends on requirements:** Need multiple frontends (web + mobile)? Use a separate API. Need simplicity? Use Next.js with API routes. Just prototyping? localStorage is fine.
+- **CORS is needed when frontend and API are on different origins.** The `react-express-mongo` variant (port 3002 → 3000) needs CORS. The `react-nextjs-mongo` variant (everything on port 3003) does not.
+- **Separation of concerns trade-off:** More separation (separate Express API) gives flexibility and independent scaling but adds operational complexity. Less separation (Next.js with API routes) is simpler but more coupled.
+
+### Practice Questions
+
+1. You need a web frontend and a React Native mobile app. Which architecture do you choose and why?
+2. Why does `react-express-mongo` require CORS but `react-nextjs-mongo` does not?
+3. What is the main limitation of storing data in `localStorage`?
+4. What does "React is data-source agnostic" mean in the context of the four Lab 4 variants?
+5. Compare the trade-offs of `react-nextjs-mongo` vs. `react-express-mongo` in terms of separation of concerns.
+
+---
+
+## Cross-Cutting Themes
+
+These themes appear across multiple weeks. Make sure you can connect them:
+
+### 1. Layered Architecture (appears everywhere)
+- Docker layers in Dockerfiles (Week 1)
+- Four-layer backend: Presentation → Application → Domain → Infrastructure (Weeks 2, 4)
+- Component hierarchy: Container → Presentational (Week 3)
+- Full-stack layers: Client → API → Database (Week 5)
+
+### 2. Separation of Concerns (appears everywhere)
+- Container isolation (Week 1)
+- Bounded contexts and system decomposition (Week 2)
+- Presentational vs. container components (Week 3)
+- Controllers vs. services vs. repositories (Week 4)
+- Frontend vs. API vs. database (Week 5)
+
+### 3. Trade-offs (appears everywhere)
+- VMs vs. containers (Week 1)
+- Quality attributes competing with each other (Week 2)
+- Local state vs. lifted state vs. context (Week 3)
+- Monolith vs. microservices (Week 4)
+- Same-origin vs. cross-origin architectures (Week 5)
+
+---
+
+## Key Definitions Quick Reference
+
+| Term | Definition |
+|------|------------|
+| **Container** | Isolated process with packaged dependencies, sharing the host OS kernel |
+| **Image** | Read-only template used to create containers |
+| **Volume** | Persistent storage that outlives container lifecycle |
+| **Layer (architecture)** | Horizontal slice of functionality with defined dependencies |
+| **Component** | Reusable, self-contained piece of UI |
+| **Props** | Read-only data passed from parent component to child |
+| **State** | Mutable data managed within a component that triggers re-renders |
+| **Service** | Business logic coordinator in the application layer |
+| **Repository** | Data access abstraction |
+| **Middleware** | Request/response interceptor in the Express pipeline |
+| **CORS** | Browser mechanism that restricts cross-origin HTTP requests |
+| **REST** | Architectural style using resources (nouns) + HTTP methods (verbs) |
+| **Bounded Context** | Boundary where a particular domain model applies consistently |
+| **ADR** | Document capturing an architectural decision and its rationale |
+
+---
+
+::: {.callout-tip}
+## Final Tips
+
+1. **Understand concepts**, not just definitions — be ready to explain *why*
+2. **Know the trade-offs** for each architectural decision
+3. **Practice drawing diagrams** — data flow, component trees, architecture diagrams
+4. **Trace requests end-to-end** through different architectures
+5. **Review your lab solutions** — the quiz is grounded in what you've built
+:::

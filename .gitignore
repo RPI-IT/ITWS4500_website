@@ -2,3 +2,5 @@
 **/*.quarto_ipynb
 labs_reference/
 docs/.DS_Store
+temp/exam/
+temp/exam/

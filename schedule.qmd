@@ -124,7 +124,7 @@ Work through these tutorials this week to build a solid foundation:
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
 | Tue 2/17 | *No Class* | Presidents' Day Week - No Tuesday Class | - |
-| Fri 2/20 | Lecture | Review & Summary: Weeks 1-5 Architectural Foundations | - |
+| Fri 2/20 | Lecture | Review & Summary: Weeks 1-5 Architectural Foundations | [Slides](slides/week06/08-review-session.qmd), [Study Guide](readings/quiz1-study-guide.qmd) |
 
 ::: {.callout-note}
 ## Quiz 1 Prep
@@ -140,7 +140,7 @@ Use this session to review material from Weeks 1-5. Quiz 1 will be on Tuesday 2/
 
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
-| Tue 2/24 | **Quiz** | **Quiz 1:** Architectural Foundations and System Design | Study Guide |
+| Tue 2/24 | **Quiz** | **Quiz 1:** Architectural Foundations and System Design | - |
 | Fri 2/27 | Workshop | Project Work Day: Refactoring and Architectural Improvement | - |
 
 ::: {.callout-important}

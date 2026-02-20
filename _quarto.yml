@@ -33,6 +33,8 @@ website:
             href: readings/week05-backend-data.qmd
           - text: "Week 6: Data Architecture"
             href: readings/week06-data-architecture.qmd
+          - text: "Quiz 1 Study Guide"
+            href: readings/quiz1-study-guide.qmd
           - text: "Week 7: Midterm Review"
             href: readings/week07-midterm-review.qmd
           - text: "Week 8: Auth & Mobile"
