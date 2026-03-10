@@ -3,4 +3,5 @@
 labs_reference/
 docs/.DS_Store
 temp/exam/
-temp/exam/
+temp/exam
+.DS_Store
