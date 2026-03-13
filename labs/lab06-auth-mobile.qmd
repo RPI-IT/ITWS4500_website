@@ -26,6 +26,7 @@ By completing this lab, you will:
 
 Click the button below to accept the assignment and create your repository:
 
+[**Accept Lab 6 Assignment**](https://classroom.github.com/a/NHeSsv_i){.btn .btn-primary}
 
 ## Prerequisites
 
