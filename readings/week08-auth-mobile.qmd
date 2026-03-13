@@ -21,4 +21,9 @@ Complete this reading before Week 9.
 
 ## Further Reading
 
-*Resources coming soon.*
+### Industry Standards & Best Practice Guides
+
+1. [OWASP Authentication Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html) — Comprehensive guidance on implementing robust authentication, error handling, and access control.
+2. [WorkOS — OAuth and JWT: How To Use Together + Best Practices](https://workos.com/blog/oauth-and-jwt-how-to-use-and-best-practices) — Practical guide covering JWT validation, token rotation, signing algorithms, and combining OAuth with JWTs.
+3. [Google Developers — OAuth 2.0 Best Practices](https://developers.google.com/identity/protocols/oauth2/resources/best-practices) — Google's recommendations on credential management, scope minimization, and secure token storage.
+4. [Supabase Authentication](https://supabase.com/docs/guides/auth) — Full-featured auth platform built on JWTs with social logins, password-based auth, MFA, and OAuth 2.1 server capabilities.

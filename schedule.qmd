@@ -163,7 +163,7 @@ Covers Weeks 1-5: Infrastructure as Code, Architectural Patterns, Frontend/Backe
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
 | Tue 3/10 | Lecture | Identity, Authentication, and Mobile Architecture Patterns | [Slides (pptx)](slides/week08/authentication.pptx), [Slides (pdf)](slides/week08/authentication.pdf), [In-Class Assignment](https://classroom.github.com/a/CBBrwmIL) |
-| Fri 3/13 | Lab | **Lab 6:** Authentication and Mobile Application Architecture | [Lab 6](labs/lab06-auth-mobile.qmd) |
+| Fri 3/13 | Lab | **Lab 6:** Authentication and Mobile Application Architecture | [Lab 6](labs/lab06-auth-mobile.qmd), [Lab 6 GitHub Classroom](https://classroom.github.com/a/NHeSsv_i), [Argon2 Guide](slides/week08/README_ARGON.md), [React JWT Frontend Guide](slides/week08/README_REACT.md) |
 
 ---
 
