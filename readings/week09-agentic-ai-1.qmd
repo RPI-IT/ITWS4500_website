@@ -21,4 +21,10 @@ Complete this reading before Week 10.
 
 ## Further Reading
 
-*Resources coming soon.*
+### Testing Web Applications
+- [Web Application Testing for QA Teams: A Step-by-Step Guide](https://www.virtuosoqa.com/post/testing-web-applications)
+- [Jest Documentation](https://jestjs.io/docs/getting-started)
+- [Supertest Documentation](https://github.com/ladjs/supertest)
+- [Playwright Testing Documentation](https://playwright.dev/docs/intro)
+- [Testing Pyramid (Martin Fowler)](https://martinfowler.com/articles/practical-test-pyramid.html)
+- [Google Testing Blog](https://testing.googleblog.com/)

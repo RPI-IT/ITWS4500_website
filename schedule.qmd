@@ -174,7 +174,7 @@ Covers Weeks 1-5: Infrastructure as Code, Architectural Patterns, Frontend/Backe
 
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
-| Tue 3/17 | **Presentations** | **Midterm Project Presentations:** Architectural Decisions and Trade-offs | Guidelines |
+| Tue 3/17 | **Presentations** | **Midterm Project Presentations:** Architectural Decisions and Trade-offs; Testing | [Slides (pptx)](slides/week09/testing-enhanced.pptx), [Slides (pdf)](slides/week09/testing-enhanced.pdf), [In-Class Demo](https://github.com/RPI-WS-spring-2026/testing_demo) |
 | Fri 3/20 | Lab | **Lab 7:** Agentic Workflows | [Lab 7](labs/lab07-agentic-workflows.qmd) |
 
 ---
