@@ -167,7 +167,7 @@ Covers Weeks 1-5: Infrastructure as Code, Architectural Patterns, Frontend/Backe
 
 ---
 
-### Week 9: Agentic AI I {#week-9}
+### Week 9: Testing {#week-9}
 **March 17-20, 2026**
 
 **Background Readings:** [Week 9 Readings](readings/week09-agentic-ai-1.qmd)
