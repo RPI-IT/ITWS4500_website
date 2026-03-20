@@ -1,6 +1,6 @@
 ---
-title: "Lab 8: Agent Orchestration"
-subtitle: "Multi-Agent Systems and Tooling"
+title: "Lab 8: LLM"
+subtitle: "Introduction to Using LLMs"
 ---
 
 ::: {.callout-important}

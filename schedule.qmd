@@ -175,7 +175,7 @@ Covers Weeks 1-5: Infrastructure as Code, Architectural Patterns, Frontend/Backe
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
 | Tue 3/17 | **Presentations** | **Midterm Project Presentations:** Architectural Decisions and Trade-offs; Testing | [Slides (pptx)](slides/week09/testing-enhanced.pptx), [Slides (pdf)](slides/week09/testing-enhanced.pdf) |
-| Fri 3/20 | Lab | **Lab 7:** Testing | [Lab 7](labs/lab07-testing.qmd), [Lab 7 GitHub Classroom](https://classroom.github.com/a/9ARMjjcJ) |
+| Fri 3/20 | Lab | **Lab 7:** Testing | [Lab 7](labs/lab07-testing.qmd)|
 
 ---
 

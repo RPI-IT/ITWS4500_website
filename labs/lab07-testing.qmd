@@ -26,7 +26,7 @@ By completing this lab, you will:
 
 Click the button below to accept the assignment and create your repository:
 
-[Accept Lab 7 Assignment](https://classroom.github.com/a/9ARMjjcJ){.btn .btn-primary}
+[Accept Lab 7 Assignment](https://classroom.github.com/a/muN768ZW){.btn .btn-primary}
 
 ## Prerequisites
 
