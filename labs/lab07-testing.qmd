@@ -1,0 +1,40 @@
+---
+title: "Lab 7: Testing"
+subtitle: "Web Application Testing Patterns"
+---
+
+::: {.callout-important}
+## Lab Information
+**Assigned:** Friday, March 20, 2026
+**Points:** 100
+:::
+
+## Overview
+
+This lab introduces testing patterns and strategies for web applications.
+
+## Learning Objectives
+
+By completing this lab, you will:
+
+1. Design **test strategies** for web applications
+2. Implement **unit and integration tests**
+3. Integrate **testing frameworks** (Jest, Cypress, etc.)
+4. Handle **test-driven development workflows**
+
+## Getting Started
+
+Click the button below to accept the assignment and create your repository:
+
+[Accept Lab 7 Assignment](https://classroom.github.com/a/9ARMjjcJ){.btn .btn-primary}
+
+## Prerequisites
+
+- Completed Lab 6
+- Understanding of web application architecture
+
+## Getting Help
+
+- **Office Hours:** Tuesday 9-11 AM, Pitt 2206
+- **Webex:** Post questions with `lab7` tag
+- **TA Sessions:** Check LMS for schedule

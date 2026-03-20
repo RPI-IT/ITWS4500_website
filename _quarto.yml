@@ -39,7 +39,7 @@ website:
             href: readings/week07-midterm-review.qmd
           - text: "Week 8: Auth & Mobile"
             href: readings/week08-auth-mobile.qmd
-          - text: "Week 9: Agentic AI I"
+          - text: "Week 9: Testing"
             href: readings/week09-agentic-ai-1.qmd
           - text: "Week 10: Agentic AI II"
             href: readings/week10-agentic-ai-2.qmd
@@ -78,9 +78,9 @@ website:
             href: labs/lab05-polyglot-persistence.qmd
           - text: "Lab 6: Auth & Mobile"
             href: labs/lab06-auth-mobile.qmd
-          - text: "Lab 7: Agentic Workflows"
-            href: labs/lab07-agentic-workflows.qmd
-          - text: "Lab 8: Agent Orchestration"
+          - text: "Lab 7: Testing"
+            href: labs/lab07-testing.qmd
+          - text: "Lab 8: LLMs"
             href: labs/lab08-agent-orchestration.qmd
           - text: "Lab 9: CI Pipelines"
             href: labs/lab09-ci-pipelines.qmd

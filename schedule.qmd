@@ -174,8 +174,8 @@ Covers Weeks 1-5: Infrastructure as Code, Architectural Patterns, Frontend/Backe
 
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
-| Tue 3/17 | **Presentations** | **Midterm Project Presentations:** Architectural Decisions and Trade-offs; Testing | [Slides (pptx)](slides/week09/testing-enhanced.pptx), [Slides (pdf)](slides/week09/testing-enhanced.pdf), [In-Class Demo](https://github.com/RPI-WS-spring-2026/testing_demo) |
-| Fri 3/20 | Lab | **Lab 7:** Agentic Workflows | [Lab 7](labs/lab07-agentic-workflows.qmd) |
+| Tue 3/17 | **Presentations** | **Midterm Project Presentations:** Architectural Decisions and Trade-offs; Testing | [Slides (pptx)](slides/week09/testing-enhanced.pptx), [Slides (pdf)](slides/week09/testing-enhanced.pdf) |
+| Fri 3/20 | Lab | **Lab 7:** Testing | [Lab 7](labs/lab07-testing.qmd), [Lab 7 GitHub Classroom](https://classroom.github.com/a/9ARMjjcJ) |
 
 ---
 
@@ -288,7 +288,7 @@ Comprehensive assessment covering all course material, with emphasis on Weeks 8-
 | Lab 4 | Backend Architecture Patterns | 2/3 |
 | Lab 5 | React Deep Dive: Group Enhancement | 2/13 |
 | Lab 6 | Authentication and Mobile | 3/13 |
-| Lab 7 | Agentic Workflows | 3/20 |
+| Lab 7 | Testing | 3/20 |
 | Lab 8 | Agent Orchestration | 3/27 |
 | Lab 9 | CI Pipelines | 4/3 |
 | Lab 10 | AI-Assisted Coding | 4/10 |
