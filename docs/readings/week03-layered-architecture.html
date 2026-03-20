@@ -172,6 +172,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Week 6: Data Architecture</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../readings/quiz1-study-guide.html">
+ <span class="dropdown-text">Quiz 1 Study Guide</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../readings/week07-midterm-review.html">
  <span class="dropdown-text">Week 7: Midterm Review</span></a>
   </li>  
@@ -181,7 +185,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
         <li>
     <a class="dropdown-item" href="../readings/week09-agentic-ai-1.html">
- <span class="dropdown-text">Week 9: Agentic AI I</span></a>
+ <span class="dropdown-text">Week 9: Testing</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../readings/week10-agentic-ai-2.html">
@@ -252,7 +256,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
         <li>
     <a class="dropdown-item" href="../labs/lab04-backend-patterns.html">
- <span class="dropdown-text">Lab 4: Backend Patterns</span></a>
+ <span class="dropdown-text">Lab 4: Full-Stack Project Management</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../labs/lab05-polyglot-persistence.html">
@@ -263,12 +267,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Lab 6: Auth &amp; Mobile</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../labs/lab07-agentic-workflows.html">
- <span class="dropdown-text">Lab 7: Agentic Workflows</span></a>
+    <a class="dropdown-item" href="../labs/lab07-testing.html">
+ <span class="dropdown-text">Lab 7: Testing</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../labs/lab08-agent-orchestration.html">
- <span class="dropdown-text">Lab 8: Agent Orchestration</span></a>
+ <span class="dropdown-text">Lab 8: LLMs</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../labs/lab09-ci-pipelines.html">
@@ -570,7 +574,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>      <span class="dt">description</span><span class="op">:</span> doc<span class="op">.</span><span class="at">description</span><span class="op">,</span></span>
 <span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>      <span class="dt">status</span><span class="op">:</span> doc<span class="op">.</span><span class="at">status</span><span class="op">,</span></span>
 <span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>      <span class="dt">assigneeId</span><span class="op">:</span> doc<span class="op">.</span><span class="at">assigneeId</span><span class="op">,</span></span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>      <span class="dt">dueDate</span><span class="op">:</span> doc<span class="op">.</span><span class="at">dueDate</span><span class="op">,</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>      <span class="dt">priority</span><span class="op">:</span> doc<span class="op">.</span><span class="at">priority</span><span class="op">,</span></span>
 <span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>      <span class="dt">completedAt</span><span class="op">:</span> doc<span class="op">.</span><span class="at">completedAt</span></span>
 <span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
 <span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>  }</span>
@@ -581,7 +585,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>      <span class="dt">description</span><span class="op">:</span> task<span class="op">.</span><span class="at">description</span><span class="op">,</span></span>
 <span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>      <span class="dt">status</span><span class="op">:</span> task<span class="op">.</span><span class="at">status</span><span class="op">,</span></span>
 <span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>      <span class="dt">assigneeId</span><span class="op">:</span> task<span class="op">.</span><span class="at">assigneeId</span><span class="op">,</span></span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>      <span class="dt">dueDate</span><span class="op">:</span> task<span class="op">.</span><span class="at">dueDate</span><span class="op">,</span></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>      <span class="dt">priority</span><span class="op">:</span> task<span class="op">.</span><span class="at">priority</span><span class="op">,</span></span>
 <span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>      <span class="dt">completedAt</span><span class="op">:</span> task<span class="op">.</span><span class="at">completedAt</span></span>
 <span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>    }<span class="op">;</span></span>
 <span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>  }</span>
@@ -783,9 +787,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;div</span> <span class="ot">className</span><span class="op">=</span><span class="va">{</span><span class="vs">`task-card </span><span class="sc">${</span>task<span class="op">.</span><span class="at">completed</span> <span class="op">?</span> <span class="st">'completed'</span> <span class="op">:</span> <span class="st">''</span><span class="sc">}</span><span class="vs">`</span><span class="va">}</span><span class="kw">&gt;</span></span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;h3&gt;</span><span class="va">{</span>task<span class="op">.</span><span class="at">title</span><span class="va">}</span><span class="kw">&lt;/h3&gt;</span></span>
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;p&gt;</span><span class="va">{</span>task<span class="op">.</span><span class="at">description</span><span class="va">}</span><span class="kw">&lt;/p&gt;</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>      <span class="va">{</span>task<span class="op">.</span><span class="at">dueDate</span> <span class="op">&amp;&amp;</span> (</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;span</span> <span class="ot">className</span><span class="op">=</span><span class="st">"due-date"</span><span class="kw">&gt;</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>          Due: <span class="va">{</span><span class="fu">formatDate</span>(task<span class="op">.</span><span class="at">dueDate</span>)<span class="va">}</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>      <span class="va">{</span>task<span class="op">.</span><span class="at">priority</span> <span class="op">&amp;&amp;</span> (</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;span</span> <span class="ot">className</span><span class="op">=</span><span class="va">{</span><span class="vs">`priority priority-</span><span class="sc">${</span>task<span class="op">.</span><span class="at">priority</span><span class="sc">}</span><span class="vs">`</span><span class="va">}</span><span class="kw">&gt;</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>          Priority: <span class="va">{</span>task<span class="op">.</span><span class="at">priority</span><span class="va">}</span></span>
 <span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;/span&gt;</span></span>
 <span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>      )<span class="va">}</span></span>
 <span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;div</span> <span class="ot">className</span><span class="op">=</span><span class="st">"actions"</span><span class="kw">&gt;</span></span>
@@ -1117,20 +1121,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
 <span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
 <span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">describe</span>(<span class="st">'isOverdue()'</span><span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
-<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">it</span>(<span class="st">'should return true for past due date'</span><span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
-<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> yesterday <span class="op">=</span> <span class="kw">new</span> <span class="bu">Date</span>(<span class="bu">Date</span><span class="op">.</span><span class="fu">now</span>() <span class="op">-</span> <span class="dv">86400000</span>)<span class="op">;</span></span>
-<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> task <span class="op">=</span> <span class="kw">new</span> <span class="fu">Task</span>({</span>
-<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>        <span class="dt">id</span><span class="op">:</span> <span class="st">'1'</span><span class="op">,</span></span>
-<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>        <span class="dt">title</span><span class="op">:</span> <span class="st">'Test'</span><span class="op">,</span></span>
-<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>        <span class="dt">status</span><span class="op">:</span> <span class="st">'pending'</span><span class="op">,</span></span>
-<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>        <span class="dt">dueDate</span><span class="op">:</span> yesterday</span>
-<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a>      })<span class="op">;</span></span>
-<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a>      <span class="fu">expect</span>(task<span class="op">.</span><span class="fu">isOverdue</span>())<span class="op">.</span><span class="fu">toBe</span>(<span class="kw">true</span>)<span class="op">;</span></span>
-<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
-<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
-<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">describe</span>(<span class="st">'isHighPriority()'</span><span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">it</span>(<span class="st">'should return true for high priority pending task'</span><span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> task <span class="op">=</span> <span class="kw">new</span> <span class="fu">Task</span>({</span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>        <span class="dt">id</span><span class="op">:</span> <span class="st">'1'</span><span class="op">,</span></span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>        <span class="dt">title</span><span class="op">:</span> <span class="st">'Test'</span><span class="op">,</span></span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>        <span class="dt">status</span><span class="op">:</span> <span class="st">'pending'</span><span class="op">,</span></span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>        <span class="dt">priority</span><span class="op">:</span> <span class="st">'high'</span></span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>      })<span class="op">;</span></span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a>      <span class="fu">expect</span>(task<span class="op">.</span><span class="fu">isHighPriority</span>())<span class="op">.</span><span class="fu">toBe</span>(<span class="kw">true</span>)<span class="op">;</span></span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="application-layer-tests" class="level3">
 <h3 class="anchored" data-anchor-id="application-layer-tests">Application Layer Tests</h3>
