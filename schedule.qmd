@@ -186,7 +186,8 @@ Covers Weeks 1-5: Infrastructure as Code, Architectural Patterns, Frontend/Backe
 
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
-| Tue 3/24 | Lecture | Agentic Architecture Patterns II: Orchestration, Memory, and Governance | Slides TBD |
+| Tue 3/24 | Lecture | Agentic Architecture Patterns II: Orchestration, Memory, and Governance | [Slides (pptx)](slides/week10/agentic_extended.pptx), [Slides (pdf)](slides/week10/agentic_extended.pdf) |
+| Fri 3/27 | In-Class Exercise | **Agents Exercise** | [Agents1](https://github.com/RPI-WS-spring-2026/Agents1) |
 | Fri 3/27 | Lab | **Lab 8:** Agent Orchestration and Tooling Patterns | [Lab 8](labs/lab08-agent-orchestration.qmd) |
 
 ---
