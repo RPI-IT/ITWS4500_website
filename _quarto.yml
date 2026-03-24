@@ -41,7 +41,7 @@ website:
             href: readings/week08-auth-mobile.qmd
           - text: "Week 9: Testing"
             href: readings/week09-agentic-ai-1.qmd
-          - text: "Week 10: Agentic AI II"
+          - text: "Week 10: Agentic AI I"
             href: readings/week10-agentic-ai-2.qmd
           - text: "Week 11: CI/CD"
             href: readings/week11-ci-cd.qmd
