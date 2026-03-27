@@ -1,6 +1,6 @@
 ---
-title: "Lab 8: LLM"
-subtitle: "Introduction to Using LLMs"
+title: "Lab 8: Introduction to RAG"
+subtitle: "Retrieval-Augmented Generation"
 ---
 
 ::: {.callout-important}
@@ -11,26 +11,27 @@ subtitle: "Introduction to Using LLMs"
 
 ## Overview
 
-This lab covers advanced agent orchestration, memory systems, and tool integration.
+This lab provides an introduction to Retrieval-Augmented Generation (RAG).
 
 ## Learning Objectives
 
 By completing this lab, you will:
 
-1. **Orchestrate multiple agents**
-2. Implement **agent memory**
-3. Create **custom tools** for agents
-4. Apply **governance patterns**
+1. **Understand RAG architecture** and how retrieval enhances LLM responses
+2. Implement **document ingestion and embedding**
+3. Create **vector search** pipelines
+4. Apply **RAG patterns** to build question-answering systems
 
 ## Getting Started
 
 Click the button below to accept the assignment and create your repository:
 
+[Accept Assignment](https://classroom.github.com/a/QcSHwb4a){.btn .btn-primary target="_blank"}
 
 ## Prerequisites
 
 - Completed Lab 7
-- Understanding of multi-agent systems
+- Basic understanding of LLMs
 
 ## Getting Help
 

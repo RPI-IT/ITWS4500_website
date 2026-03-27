@@ -3117,42 +3117,42 @@
   {
     "objectID": "labs/lab08-agent-orchestration.html",
     "href": "labs/lab08-agent-orchestration.html",
-    "title": "Lab 8: LLM",
+    "title": "Lab 8: Introduction to RAG",
     "section": "",
     "text": "ImportantLab Information\n\n\n\nAssigned: Friday, March 27, 2026 Points: 100"
   },
   {
     "objectID": "labs/lab08-agent-orchestration.html#overview",
     "href": "labs/lab08-agent-orchestration.html#overview",
-    "title": "Lab 8: LLM",
+    "title": "Lab 8: Introduction to RAG",
     "section": "Overview",
-    "text": "Overview\nThis lab covers advanced agent orchestration, memory systems, and tool integration."
+    "text": "Overview\nThis lab provides an introduction to Retrieval-Augmented Generation (RAG)."
   },
   {
     "objectID": "labs/lab08-agent-orchestration.html#learning-objectives",
     "href": "labs/lab08-agent-orchestration.html#learning-objectives",
-    "title": "Lab 8: LLM",
+    "title": "Lab 8: Introduction to RAG",
     "section": "Learning Objectives",
-    "text": "Learning Objectives\nBy completing this lab, you will:\n\nOrchestrate multiple agents\nImplement agent memory\nCreate custom tools for agents\nApply governance patterns"
+    "text": "Learning Objectives\nBy completing this lab, you will:\n\nUnderstand RAG architecture and how retrieval enhances LLM responses\nImplement document ingestion and embedding\nCreate vector search pipelines\nApply RAG patterns to build question-answering systems"
   },
   {
     "objectID": "labs/lab08-agent-orchestration.html#getting-started",
     "href": "labs/lab08-agent-orchestration.html#getting-started",
-    "title": "Lab 8: LLM",
+    "title": "Lab 8: Introduction to RAG",
     "section": "Getting Started",
-    "text": "Getting Started\nClick the button below to accept the assignment and create your repository:"
+    "text": "Getting Started\nClick the button below to accept the assignment and create your repository:\nAccept Assignment"
   },
   {
     "objectID": "labs/lab08-agent-orchestration.html#prerequisites",
     "href": "labs/lab08-agent-orchestration.html#prerequisites",
-    "title": "Lab 8: LLM",
+    "title": "Lab 8: Introduction to RAG",
     "section": "Prerequisites",
-    "text": "Prerequisites\n\nCompleted Lab 7\nUnderstanding of multi-agent systems"
+    "text": "Prerequisites\n\nCompleted Lab 7\nBasic understanding of LLMs"
   },
   {
     "objectID": "labs/lab08-agent-orchestration.html#getting-help",
     "href": "labs/lab08-agent-orchestration.html#getting-help",
-    "title": "Lab 8: LLM",
+    "title": "Lab 8: Introduction to RAG",
     "section": "Getting Help",
     "text": "Getting Help\n\nOffice Hours: Tuesday 9-11 AM, Pitt 2206\nWebex: Post questions with lab8 tag\nTA Sessions: Check LMS for schedule"
   },
