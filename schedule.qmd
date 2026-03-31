@@ -199,7 +199,8 @@ Covers Weeks 1-5: Infrastructure as Code, Architectural Patterns, Frontend/Backe
 
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
-| Tue 3/31 | Lecture | Continuous Integration and Testing as Architecture | Slides TBD |
+| Tue 3/31 | Lecture | Continuous Integration and Testing as Architecture | [Slides (pptx)](slides/week11/deployment.pptx), [Slides (pdf)](slides/week11/deployment.pdf) |
+| Tue 3/31 | In-Class Exercise | **Deployments Exercise** | [Deployments](https://github.com/RPI-WS-spring-2026/deployments) |
 | Fri 4/3 | Lab | **Lab 9:** CI Pipelines and Automated Testing | [Lab 9](labs/lab09-ci-pipelines.qmd) |
 
 ---
