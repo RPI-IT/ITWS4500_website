@@ -3075,42 +3075,42 @@
   {
     "objectID": "labs/lab09-ci-pipelines.html",
     "href": "labs/lab09-ci-pipelines.html",
-    "title": "Lab 9: CI Pipelines",
+    "title": "Lab 9: CI/CD Pipelines & Cloud Deployment",
     "section": "",
     "text": "ImportantLab Information\n\n\n\nAssigned: Friday, April 3, 2026 Points: 100"
   },
   {
     "objectID": "labs/lab09-ci-pipelines.html#overview",
     "href": "labs/lab09-ci-pipelines.html#overview",
-    "title": "Lab 9: CI Pipelines",
+    "title": "Lab 9: CI/CD Pipelines & Cloud Deployment",
     "section": "Overview",
-    "text": "Overview\nThis lab focuses on building CI/CD pipelines and implementing automated testing strategies."
+    "text": "Overview\nThis lab focuses on building CI/CD pipelines, understanding cloud security and containers, and implementing automated deployment strategies."
+  },
+  {
+    "objectID": "labs/lab09-ci-pipelines.html#aws-academy",
+    "href": "labs/lab09-ci-pipelines.html#aws-academy",
+    "title": "Lab 9: CI/CD Pipelines & Cloud Deployment",
+    "section": "AWS Academy",
+    "text": "AWS Academy\nStudents should log in to AWS Academy and complete the following:\n\nReview (no lab/knowledge check required)\n\nModule 4: Securing Access to Cloud Resources — Review the lessons to understand IAM, policies, and access control.\nModule 8: Introducing Containers and Container Services — Review the lessons to understand Docker, ECS, and container orchestration concepts.\n\n\n\nComplete (full lab + knowledge check required)\n\nIntroduction — Complete the full lab and knowledge check.\nModule 13: Automating Deployment Using CI/CD Pipelines — Complete the full lab and knowledge check.\n\n\n\n\n\n\n\nTip\n\n\n\nStart with the review modules to build context before tackling the hands-on labs in the Introduction and Module 13."
   },
   {
     "objectID": "labs/lab09-ci-pipelines.html#learning-objectives",
     "href": "labs/lab09-ci-pipelines.html#learning-objectives",
-    "title": "Lab 9: CI Pipelines",
+    "title": "Lab 9: CI/CD Pipelines & Cloud Deployment",
     "section": "Learning Objectives",
-    "text": "Learning Objectives\nBy completing this lab, you will:\n\nConfigure GitHub Actions workflows\nImplement automated testing\nSet up deployment pipelines\nCreate quality gates"
-  },
-  {
-    "objectID": "labs/lab09-ci-pipelines.html#getting-started",
-    "href": "labs/lab09-ci-pipelines.html#getting-started",
-    "title": "Lab 9: CI Pipelines",
-    "section": "Getting Started",
-    "text": "Getting Started\nClick the button below to accept the assignment and create your repository:"
+    "text": "Learning Objectives\nBy completing this lab, you will:\n\nUnderstand cloud access control and IAM policies\nLearn container fundamentals and container services\nConfigure CI/CD pipelines for automated deployment\nComplete hands-on AWS deployment labs"
   },
   {
     "objectID": "labs/lab09-ci-pipelines.html#prerequisites",
     "href": "labs/lab09-ci-pipelines.html#prerequisites",
-    "title": "Lab 9: CI Pipelines",
+    "title": "Lab 9: CI/CD Pipelines & Cloud Deployment",
     "section": "Prerequisites",
-    "text": "Prerequisites\n\nCompleted Lab 8\nUnderstanding of CI/CD concepts"
+    "text": "Prerequisites\n\nCompleted Lab 8\nAWS Academy account access"
   },
   {
     "objectID": "labs/lab09-ci-pipelines.html#getting-help",
     "href": "labs/lab09-ci-pipelines.html#getting-help",
-    "title": "Lab 9: CI Pipelines",
+    "title": "Lab 9: CI/CD Pipelines & Cloud Deployment",
     "section": "Getting Help",
     "text": "Getting Help\n\nOffice Hours: Tuesday 9-11 AM, Pitt 2206\nWebex: Post questions with lab9 tag\nTA Sessions: Check LMS for schedule"
   },

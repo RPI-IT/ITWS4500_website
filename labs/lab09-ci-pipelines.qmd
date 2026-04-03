@@ -1,6 +1,6 @@
 ---
-title: "Lab 9: CI Pipelines"
-subtitle: "Continuous Integration and Automated Testing"
+title: "Lab 9: CI/CD Pipelines & Cloud Deployment"
+subtitle: "Continuous Integration, Containers, and Automated Deployment"
 ---
 
 ::: {.callout-important}
@@ -11,26 +11,39 @@ subtitle: "Continuous Integration and Automated Testing"
 
 ## Overview
 
-This lab focuses on building CI/CD pipelines and implementing automated testing strategies.
+This lab focuses on building CI/CD pipelines, understanding cloud security and containers, and implementing automated deployment strategies.
+
+## AWS Academy
+
+Students should log in to [AWS Academy](https://www.awsacademy.com/) and complete the following:
+
+### Review (no lab/knowledge check required)
+
+- **Module 4: Securing Access to Cloud Resources** — Review the lessons to understand IAM, policies, and access control.
+- **Module 8: Introducing Containers and Container Services** — Review the lessons to understand Docker, ECS, and container orchestration concepts.
+
+### Complete (full lab + knowledge check required)
+
+- **Introduction** — Complete the full lab and knowledge check.
+- **Module 13: Automating Deployment Using CI/CD Pipelines** — Complete the full lab and knowledge check.
+
+::: {.callout-tip}
+Start with the review modules to build context before tackling the hands-on labs in the Introduction and Module 13.
+:::
 
 ## Learning Objectives
 
 By completing this lab, you will:
 
-1. Configure **GitHub Actions workflows**
-2. Implement **automated testing**
-3. Set up **deployment pipelines**
-4. Create **quality gates**
-
-## Getting Started
-
-Click the button below to accept the assignment and create your repository:
-
+1. Understand **cloud access control** and IAM policies
+2. Learn **container fundamentals** and container services
+3. Configure **CI/CD pipelines** for automated deployment
+4. Complete hands-on **AWS deployment labs**
 
 ## Prerequisites
 
 - Completed Lab 8
-- Understanding of CI/CD concepts
+- AWS Academy account access
 
 ## Getting Help
 
