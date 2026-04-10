@@ -1,6 +1,6 @@
 ---
-title: "Lab 10: AI-Assisted Coding"
-subtitle: "Human-AI Collaboration in Development"
+title: "Lab 10: Scaling with ElastiCache and CloudFront"
+subtitle: "Caching Information for Scalability"
 ---
 
 ::: {.callout-important}
@@ -11,16 +11,25 @@ subtitle: "Human-AI Collaboration in Development"
 
 ## Overview
 
-This lab explores using AI assistants for coding, testing, and documentation.
+This lab focuses on caching strategies for scalability using Redis and CDNs. Students will complete the AWS Academy Module 9: Caching Information for Scalability along with its associated labs and knowledge check.
 
 ## Learning Objectives
 
 By completing this lab, you will:
 
-1. Use **AI coding assistants** effectively
-2. **Generate tests** with AI
-3. Create **documentation** with AI
-4. **Evaluate AI-generated code**
+1. Understand **caching strategies** for improving application scalability
+2. Implement **application data caching** with ElastiCache
+3. Configure **CloudFront** for caching and application security
+4. Apply caching concepts to **real-world scaling scenarios**
+
+## Required Activities
+
+Complete the following from the AWS Academy curriculum:
+
+1. **Module 9: Caching Information for Scalability** — Complete the module content
+2. **Lab 9.1: Caching Application Data with ElastiCache** — Implement application-level caching using Amazon ElastiCache
+3. **Lab 9.2: Implementing CloudFront for Caching and Application Security** — Configure CloudFront as a CDN for caching and security
+4. **Module 9 Knowledge Check** — Complete the knowledge check assessment
 
 ## Getting Started
 
@@ -30,7 +39,7 @@ Click the button below to accept the assignment and create your repository:
 ## Prerequisites
 
 - Completed Lab 9
-- Understanding of AI-assisted development tools
+- Access to AWS Academy
 
 ## Getting Help
 

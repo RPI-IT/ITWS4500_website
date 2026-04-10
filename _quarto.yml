@@ -84,11 +84,9 @@ website:
             href: labs/lab08-agent-orchestration.qmd
           - text: "Lab 9: CI Pipelines"
             href: labs/lab09-ci-pipelines.qmd
-          - text: "Lab 10: AI-Assisted Coding"
+          - text: "Lab 10: Scaling with ElastiCache and CloudFront"
             href: labs/lab10-ai-assisted-coding.qmd
-          - text: "Lab 11: Deployment"
-            href: labs/lab11-deployment.qmd
-          - text: "Lab 12: Capstone Extension"
+          - text: "Lab 11: Capstone Extension"
             href: labs/lab12-capstone-extension.qmd
     right:
       - icon: github

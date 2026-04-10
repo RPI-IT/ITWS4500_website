@@ -205,27 +205,28 @@ Covers Weeks 1-5: Infrastructure as Code, Architectural Patterns, Frontend/Backe
 
 ---
 
-### Week 12: AI-Assisted Development {#week-12}
+### Week 12: Scaling {#week-12}
 **April 7-10, 2026**
 
 **Background Readings:** [Week 12 Readings](readings/week12-ai-assisted-dev.qmd)
 
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
-| Tue 4/7 | Lecture | AI-Assisted Development: Human-AI Collaboration Patterns | Slides TBD |
-| Fri 4/10 | Lab | **Lab 10:** AI-Assisted Coding and Testing | [Lab 10](labs/lab10-ai-assisted-coding.qmd) |
+| Tue 4/7 | Guest Speaker | **Guest Speaker: Paul Maxwell** | [Slides (pptx)](slides/week12/scaling_web_apps.pptx), [Slides (pdf)](slides/week12/scaling_web_apps.pdf) |
+| Fri 4/10 | In-Class Exercise | **Caching with Redis** | [CachingWithRedis](https://github.com/RPI-WS-spring-2026/CachingWithRedis) |
+| Fri 4/10 | Lab | **Lab 10:** Scaling with ElastiCache and CloudFront | [Lab 10](labs/lab10-ai-assisted-coding.qmd) |
 
 ---
 
-### Week 13: Deployment Architecture {#week-13}
+### Week 13: Cloud Patterns and Microservices {#week-13}
 **April 14-17, 2026**
 
 **Background Readings:** [Week 13 Readings](readings/week13-deployment.qmd)
 
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
-| Tue 4/14 | Lecture | Deployment & Runtime Architecture: Cloud Patterns, Caching, Scaling, and Cost | Slides TBD |
-| Fri 4/17 | Lab | **Lab 11:** Containerized Deployment, Caching, Scaling, and Reliability | [Lab 11](labs/lab11-deployment.qmd) |
+| Tue 4/14 | Lecture | Cloud Patterns and Microservices | Slides TBD |
+| Fri 4/17 | Guest Speaker / Review | **Guest Speaker: Kris Walker** — Quiz 2 Review Session | |
 
 ---
 
@@ -237,7 +238,7 @@ Covers Weeks 1-5: Infrastructure as Code, Architectural Patterns, Frontend/Backe
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
 | Tue 4/21 | **Quiz** | **Quiz 2:** Comprehensive Architectural and Systems Reasoning | Study Guide |
-| Fri 4/24 | Lab | **Lab 12:** Capstone Extension - Architectural Experimentation / Project Hardening | [Lab 12](labs/lab12-capstone-extension.qmd) |
+| Fri 4/24 | Lab | **Lab 11:** Capstone Extension - Architectural Experimentation / Project Hardening | [Lab 11](labs/lab12-capstone-extension.qmd) |
 
 ::: {.callout-important}
 ## Quiz 2
@@ -293,6 +294,5 @@ Comprehensive assessment covering all course material, with emphasis on Weeks 8-
 | Lab 7 | Testing | 3/20 |
 | Lab 8 | Agent Orchestration | 3/27 |
 | Lab 9 | CI Pipelines | 4/3 |
-| Lab 10 | AI-Assisted Coding | 4/10 |
-| Lab 11 | Deployment | 4/17 |
-| Lab 12 | Capstone Extension | 4/24 |
+| Lab 10 | Scaling with ElastiCache and CloudFront | 4/10 |
+| Lab 11 | Capstone Extension | 4/24 |
