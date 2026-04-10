@@ -5674,6 +5674,6 @@
     "href": "labs/lab10-ai-assisted-coding.html#required-activities",
     "title": "Lab 10: Scaling with ElastiCache and CloudFront",
     "section": "Required Activities",
-    "text": "Required Activities\nComplete the following from the AWS Academy curriculum:\n\nModule 9: Caching Information for Scalability — Complete the module content\nLab 9.1: Caching Application Data with ElastiCache — Implement application-level caching using Amazon ElastiCache\nLab 9.2: Implementing CloudFront for Caching and Application Security — Configure CloudFront as a CDN for caching and security\nModule 9 Knowledge Check — Complete the knowledge check assessment"
+    "text": "Required Activities\nComplete the following from the AWS Academy curriculum:\n\nModule 9: Caching Information for Scalability — Complete the module content\nComplete one of the following labs:\n\nLab 9.1: Caching Application Data with ElastiCache — Implement application-level caching using Amazon ElastiCache\nLab 9.2: Implementing CloudFront for Caching and Application Security — Configure CloudFront as a CDN for caching and security\n\nModule 9 Knowledge Check — Complete the knowledge check assessment"
   }
 ]

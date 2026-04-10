@@ -27,9 +27,10 @@ By completing this lab, you will:
 Complete the following from the AWS Academy curriculum:
 
 1. **Module 9: Caching Information for Scalability** — Complete the module content
-2. **Lab 9.1: Caching Application Data with ElastiCache** — Implement application-level caching using Amazon ElastiCache
-3. **Lab 9.2: Implementing CloudFront for Caching and Application Security** — Configure CloudFront as a CDN for caching and security
-4. **Module 9 Knowledge Check** — Complete the knowledge check assessment
+2. **Complete one of the following labs:**
+    - **Lab 9.1: Caching Application Data with ElastiCache** — Implement application-level caching using Amazon ElastiCache
+    - **Lab 9.2: Implementing CloudFront for Caching and Application Security** — Configure CloudFront as a CDN for caching and security
+3. **Module 9 Knowledge Check** — Complete the knowledge check assessment
 
 ## Getting Started
 
