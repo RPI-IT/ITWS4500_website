@@ -225,7 +225,8 @@ Covers Weeks 1-5: Infrastructure as Code, Architectural Patterns, Frontend/Backe
 
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
-| Tue 4/14 | Lecture | Cloud Patterns and Microservices | Slides TBD |
+| Tue 4/14 | Lecture | Cloud Patterns and Microservices: Scaling Architecture | [Slides (pptx)](slides/week13/scaling_architecture.pptx), [Slides (pdf)](slides/week13/scaling_architecture.pdf) |
+| Tue 4/14 | In-Class Lab | **Lambda In-Class Lab** | [Lambda-inclass](https://github.com/RPI-WS-spring-2026/Lambda-inclass) |
 | Fri 4/17 | Guest Speaker / Review | **Guest Speaker: Kris Walker** — Quiz 2 Review Session | |
 
 ---
