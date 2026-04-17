@@ -227,7 +227,7 @@ Covers Weeks 1-5: Infrastructure as Code, Architectural Patterns, Frontend/Backe
 |------|------|-------|-----------|
 | Tue 4/14 | Lecture | Cloud Patterns and Microservices: Scaling Architecture | [Slides (pptx)](slides/week13/scaling_architecture.pptx), [Slides (pdf)](slides/week13/scaling_architecture.pdf) |
 | Tue 4/14 | In-Class Lab | **Lambda In-Class Lab** | [Lambda-inclass](https://github.com/RPI-WS-spring-2026/Lambda-inclass) |
-| Fri 4/17 | Guest Speaker / Review | **Guest Speaker: Kris Walker** — Quiz 2 Review Session | |
+| Fri 4/17 | Guest Speaker / Review | **Guest Speaker: Kris Walker** — Quiz 2 Review Session | [Quiz 2 Study Guide](readings/quiz2-study-guide.qmd) |
 
 ---
 
@@ -238,7 +238,7 @@ Covers Weeks 1-5: Infrastructure as Code, Architectural Patterns, Frontend/Backe
 
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
-| Tue 4/21 | **Quiz** | **Quiz 2:** Comprehensive Architectural and Systems Reasoning | Study Guide |
+| Tue 4/21 | **Quiz** | **Quiz 2:** Comprehensive Architectural and Systems Reasoning | |
 | Fri 4/24 | Lab | **Lab 11:** Capstone Extension - Architectural Experimentation / Project Hardening | [Lab 11](labs/lab12-capstone-extension.qmd) |
 
 ::: {.callout-important}

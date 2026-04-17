@@ -4,6 +4,15 @@ project:
   resources:
     - "static/**"
     - "CNAME"
+  render:
+    - "*.qmd"
+    - "readings/"
+    - "labs/"
+    - "slides/"
+    - "project/"
+    - "newmaterial/"
+    - "!exam/"
+    - "!labs_reference/"
 
 website:
   title: "ITWS-4500: Advanced Web & Agentic AI Development"

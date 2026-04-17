@@ -1,0 +1,400 @@
+---
+title: "Quiz 2 Study Guide"
+subtitle: "Comprehensive Architectural and Systems Reasoning (Weeks 8–13)"
+---
+
+::: {.callout-important}
+## Quiz 2 Details
+
+- **Date:** Tuesday, April 21, 2026
+- **Duration:** Full class period
+- **Format:** Multiple choice + short answer
+- **Materials:** You may bring a **1-page, 1-sided handwritten or printed crib sheet**
+- **Coverage:** Weeks 8–13, with emphasis on auth, testing, agentic AI, CI/CD, caching/scaling, and cloud deployment. Foundational material from Weeks 1–5 may appear as context.
+:::
+
+## How to Use This Guide
+
+For each week, the guide lists the concepts you should be able to *explain*, the key ideas that most often trip students up, and practice questions. Most questions ground in things you have built in labs — review your lab solutions alongside this guide.
+
+---
+
+## Week 8: Identity, Authentication, & Mobile
+
+**Source Material:** [Slides](../slides/week08/authentication.pdf), [Lab 6](../labs/lab06-auth-mobile.qmd), Argon2 Guide, JWT React Guide
+
+### Concepts to Know
+
+| Concept | What You Should Be Able to Explain |
+|---------|-----------------------------------|
+| **Authentication vs. Authorization** | *Authn* = who you are; *Authz* = what you can access |
+| **Password hashing** | Why we never store plaintext; salt; slow hashes (bcrypt, Argon2) |
+| **bcrypt cost factor** | `bcrypt.hash(pw, 10)` — cost factor 10 controls work per hash |
+| **JWT structure** | Header.Payload.Signature (base64url, dot-separated) |
+| **JWT claims** | `exp`, `iat`, custom claims like `username`, `userId` |
+| **Bearer token** | `Authorization: Bearer <token>` header |
+| **Access vs. refresh tokens** | Short-lived access (~15m) + long-lived refresh (~7d) |
+| **Token revocation** | JWTs are stateless — server-side refresh-token list enables logout |
+| **401 vs. 403** | 401 = not authenticated (no/invalid token); 403 = authenticated but forbidden |
+| **CORS in auth** | Cross-origin requests, credentials mode, preflight |
+| **Ownership filtering** | Every query filtered by `userId` to prevent horizontal privilege escalation |
+| **Token storage** | `localStorage` (XSS risk), `sessionStorage`, httpOnly cookies (CSRF concerns) |
+| **Mobile architectures** | Native, hybrid, cross-platform (React Native), PWA |
+
+### Key Ideas
+
+- **Passwords are *hashed*, not encrypted.** Bcrypt/Argon2 are intentionally slow and include a per-password salt so that rainbow tables are useless and brute force is expensive.
+- **JWTs are *signed*, not encrypted.** Anyone can decode the payload at [jwt.io](https://jwt.io); the signature only proves the server issued it.
+- **Two secrets, two lifetimes.** `JWT_SECRET` signs short-lived access tokens, `REFRESH_SECRET` signs refresh tokens. If they shared a secret, a leaked refresh secret would compromise access tokens too.
+- **Stateless trade-off:** JWTs scale horizontally (no session DB lookup) but you can't invalidate them before expiry without extra state — which is why the refresh-token allowlist exists.
+- **Authorization needs ownership checks.** A valid JWT only proves *who* the caller is. Every read and write must also filter by `userId` to stop user A from touching user B's data.
+
+### Practice Questions
+
+1. A request arrives with a syntactically valid JWT that was signed with a different secret. What status code should the server return, and why 403 instead of 401?
+2. Why do we use **two** separate signing secrets for access and refresh tokens?
+3. You store JWTs in `localStorage`. What class of attack puts the token at risk? How would `httpOnly` cookies help, and what new risk do they introduce?
+4. Why is it not sufficient for `GET /api/projects` to check that a token is valid?
+5. What specifically makes bcrypt a better password-storage choice than SHA-256?
+
+---
+
+## Week 9: Testing as Architecture
+
+**Source Material:** [Slides](../slides/week09/testing-enhanced.pdf), [Lab 7](../labs/lab07-testing.qmd)
+
+### Concepts to Know
+
+| Concept | What You Should Be Able to Explain |
+|---------|-----------------------------------|
+| **Testing pyramid** | Many unit tests, fewer integration tests, even fewer E2E tests |
+| **Unit test** | Tests a pure function / single unit in isolation (ms) |
+| **Integration test** | Tests multiple units together — e.g., route + middleware + DB (ms–s) |
+| **End-to-end test** | Tests the full system through the UI in a real browser (s) |
+| **Jest** | Unit / integration test runner for JS/TS |
+| **Supertest** | Sends HTTP requests to Express apps without running a real server |
+| **Playwright** | Headless browser for E2E tests (`toBeVisible`, `fill`, `click`) |
+| **Test isolation** | `beforeEach` / `afterEach` to reset state between tests |
+| **Mocks vs. fakes vs. real deps** | When to mock, when to run against a real DB |
+| **Arrange-Act-Assert** | Three-phase structure for readable tests |
+| **Coverage** | What it measures and what it does *not* measure (quality) |
+
+### Key Ideas
+
+- **Different layers catch different bugs.** Unit tests catch logic errors fast; integration tests catch contract mismatches between layers; E2E tests catch UX regressions and deployment issues.
+- **Integration tests over mocks when possible.** Mocking every dependency means your tests can pass while production breaks. Run against a real (test) database when feasible.
+- **Tests are architecture evidence.** If something is hard to test, your coupling is probably too high — the test pain points to a design issue.
+- **Status-code assertions are a contract.** `expect(res.status).toBe(401)` pins the authentication contract you expose to clients.
+
+### Practice Questions
+
+1. Why is an integration test run against a real database more trustworthy than one with the database mocked?
+2. Describe Arrange-Act-Assert and give a concrete example of each phase.
+3. 100% coverage does not mean bug-free. Why?
+4. Which test type (unit, integration, E2E) would catch a missing CORS header? Which would catch an off-by-one bug in a password-strength calculator?
+5. What does Supertest let you do that a plain `fetch` against a running server does not?
+
+---
+
+## Week 10: Agentic AI — Orchestration, Memory, and RAG
+
+**Source Material:** [Slides](../slides/week10/agentic_extended.pdf), [Lab 8](../labs/lab08-agent-orchestration.qmd), `agents.md`
+
+### Concepts to Know
+
+| Concept | What You Should Be Able to Explain |
+|---------|-----------------------------------|
+| **Agent** | LLM + tools + memory + planning loop |
+| **Tool use / function calling** | Model emits structured calls; host executes; result is fed back |
+| **Memory** | Short-term (context window) vs. long-term (vector store, DB) |
+| **Orchestration** | Coordinating multiple agents / steps (sequential, parallel, hierarchical) |
+| **RAG (Retrieval-Augmented Generation)** | Retrieve relevant chunks → inject as context → generate |
+| **Embedding** | Vector representation of text; similar meaning → similar vector |
+| **Vector store / FAISS** | Indexes vectors for k-nearest-neighbor similarity search |
+| **Chunking** | Splitting documents; trade-off between chunk size and precision |
+| **Chunk overlap** | Small overlap between chunks preserves context at boundaries |
+| **Top-k retrieval** | Return the `k` most similar chunks to the query |
+| **Governance** | Guardrails, logging, human-in-the-loop, eval harnesses |
+
+### Key Ideas
+
+- **RAG solves the context-window problem.** LLMs have finite context. RAG retrieves only the relevant chunks per query rather than stuffing the whole corpus into the prompt.
+- **Chunking is a trade-off.** Chunks too large → multiple topics per chunk, worse retrieval precision. Chunks too small → context is fragmented, generation quality drops. Overlap preserves meaning across boundaries.
+- **Embedding similarity ≠ keyword match.** Embeddings capture *meaning*; "car" and "automobile" land close in vector space even without shared words.
+- **Agents need guardrails.** Tool access means side effects. Governance (logging, dry-run modes, confirmation for destructive actions) matters more than for a pure chatbot.
+
+### Practice Questions
+
+1. Describe the two phases of a RAG pipeline (indexing vs. querying) and the key operation in each.
+2. A RAG system returns irrelevant chunks. Name two tuning levers you could adjust.
+3. Why is a vector store preferable to `SELECT * WHERE content LIKE '%query%'`?
+4. Distinguish short-term memory and long-term memory for an agent. Give a concrete example of each.
+5. What is tool use / function calling, and why does it require the host application (not the LLM) to execute tools?
+
+---
+
+## Week 11: Continuous Integration & Deployment
+
+**Source Material:** [Slides](../slides/week11/deployment.pdf), [Lab 9](../labs/lab09-ci-pipelines.qmd), AWS Academy M13 (CI/CD)
+
+### Concepts to Know
+
+| Concept | What You Should Be Able to Explain |
+|---------|-----------------------------------|
+| **CI (Continuous Integration)** | Frequent merges + automated build + test on every push |
+| **CD (Continuous Delivery)** | Every green build is *releasable* (manual promote) |
+| **CD (Continuous Deployment)** | Every green build is *released* automatically to prod |
+| **Pipeline stages** | Source → Build → Test → Deploy |
+| **GitHub Actions workflow** | YAML in `.github/workflows`; jobs, steps, runners |
+| **AWS CodePipeline** | Orchestrator for multi-stage AWS pipelines |
+| **AWS CodeBuild** | Managed build service; uses `buildspec.yml` |
+| **AWS CodeDeploy** | Automates application deployment; uses `appspec.yml` |
+| **CloudFormation** | IaC; declarative JSON/YAML templates; stacks as the unit of deployment |
+| **AWS SAM** | Serverless extension of CloudFormation |
+| **IAM** | Identity/policies/roles for cloud access control |
+| **Deployment strategies** | All-at-once, rolling, blue/green, canary |
+| **Artifacts** | Build outputs passed between pipeline stages |
+
+### Key Ideas
+
+- **CI ≠ CD ≠ CD.** Continuous Integration stops at building/testing. Continuous Delivery keeps every build *shippable*. Continuous Deployment ships automatically with no human gate.
+- **Pipelines are code.** `buildspec.yml`, `appspec.yml`, and `.github/workflows/*.yml` live in the repo so the pipeline is versioned alongside the app.
+- **IaC enables reproducibility.** Same CloudFormation template → identical dev, staging, and prod environments. Deleting a stack deletes every resource in it.
+- **Blue/green vs. rolling vs. canary** are three different points on the risk/cost curve — all traffic at once (cheapest, riskiest), gradual replacement (balanced), or send % of traffic to the new version first (safest).
+
+### Practice Questions
+
+1. What is the difference between continuous delivery and continuous deployment?
+2. What does a green CI build *not* guarantee about production?
+3. Describe blue/green deployment. What is its main advantage over an in-place rolling update, and what is its main cost?
+4. What does `buildspec.yml` specify? What about `appspec.yml`?
+5. Why is CloudFormation considered "Infrastructure as Code"? What happens when a stack is deleted?
+
+---
+
+## Week 12: Scaling — Caching, Redis, CDN
+
+**Source Material:** [Slides](../slides/week12/scaling_web_apps.pdf), `cache.md`, `Redis.md`, AWS Academy M09 (Caching)
+
+### Concepts to Know
+
+| Concept | What You Should Be Able to Explain |
+|---------|-----------------------------------|
+| **Cache** | Fast intermediate store that avoids recomputing/re-fetching |
+| **Cache hit / miss** | Was the key present? Miss = fetch source + populate cache |
+| **Cache-aside pattern** | Read-through on miss; app is responsible for populating |
+| **Write-through / write-back** | Cache on write; write-back defers DB update |
+| **TTL (Time-to-Live)** | Expiration; bounded staleness |
+| **Eviction** | LRU, LFU, FIFO, random — what to drop when cache is full |
+| **In-memory vs. Redis** | Per-process, lost on restart vs. shared, persistent, TTL support |
+| **Redis data types** | String, Hash, Set, List, Sorted Set |
+| **Amazon ElastiCache** | Managed Redis / Memcached on AWS |
+| **CDN / CloudFront** | Edge cache for static assets; cuts latency and origin load |
+| **Cache invalidation** | "One of the two hard things"; stale-data risk |
+
+### Key Ideas
+
+- **Cache-aside flow:** `GET key` → miss → query DB → `SET key value EX ttl` → return. Second request hits the cache and is orders of magnitude faster (~1–5ms vs. ~2000ms in the lab example).
+- **Redis beats in-memory for horizontal scaling.** Multiple app instances share a Redis cache; in-memory caches in each process produce inconsistent views of the "same" data.
+- **TTL is a staleness budget.** Lower TTL → fresher data but more misses. Higher TTL → faster reads but tolerate stale data longer. Pick based on how quickly the data changes.
+- **CDNs cache at the edge.** CloudFront serves static assets from a POP near the user; origin (S3, API) is only hit on miss or cache expiration.
+- **Invalidation is the hard part.** You can't always wait for TTL — tag-based or key-based invalidation on write is common.
+
+### Practice Questions
+
+1. Walk through cache-aside: what happens on the first request vs. the second request for the same key?
+2. Two app instances each cache the same user's profile in process memory. The user updates their name through instance A. What does instance B now see, and how does Redis fix it?
+3. You set a TTL of 30 seconds on an aggregate that is updated every 5 minutes. Is this a good TTL? What if the aggregate changes every second?
+4. What is the difference between ElastiCache and CloudFront? When would you use each?
+5. What Redis data type would you pick to store a set of currently-valid refresh tokens?
+
+---
+
+## Week 13: Cloud Patterns — Lambda, Microservices, Serverless Deployment
+
+**Source Material:** [Slides](../slides/week13/scaling_architecture.pdf), AWS Academy M07 (Lambda), M08 (Containers), `Lambda_inclass.md`, `vercel.md`, `amplify.md`
+
+### Concepts to Know
+
+| Concept | What You Should Be Able to Explain |
+|---------|-----------------------------------|
+| **Monolith vs. microservices** | Single deployable vs. many independent services |
+| **Serverless** | FaaS: no server management; pay per invocation |
+| **AWS Lambda** | Event-driven function; cold start; configurable memory + timeout |
+| **Cold start** | Latency hit on first invocation after idle (~1–2s for Node) |
+| **Provisioned concurrency** | Pre-warmed Lambdas at a cost |
+| **API Gateway** | HTTP-front for Lambda; routes events |
+| **serverless-http** | Adapter translating API Gateway events ↔ Node HTTP |
+| **Next.js `output: 'standalone'`** | Produces minimal self-contained bundle suitable for Lambda |
+| **S3 + CloudFront** | Canonical static-site hosting pattern |
+| **Containers vs. functions** | ECS/Fargate (long-running) vs. Lambda (request-scoped) |
+| **ECS / EKS / Fargate** | AWS container services (self-managed EC2 / managed K8s / serverless containers) |
+| **Vercel** | Platform for Next.js; zero-config deploys, preview URLs, edge CDN |
+| **Amplify** | AWS full-stack starter: Cognito auth, AppSync (GraphQL), DynamoDB |
+| **Vendor lock-in** | Trade-off of PaaS convenience |
+
+### Key Ideas
+
+- **Serverless ≠ no servers.** Your code still runs on servers — you just don't manage them. You pay per invocation and per GB-second of memory × duration.
+- **Cold starts come from initialization.** First request after idle has to spin up the runtime + load your code. Keep dependencies slim, cache DB connections outside the handler, and consider provisioned concurrency for latency-critical paths.
+- **Microservices trade complexity.** Independent deploys and scaling come at the cost of distributed-systems problems: network latency, partial failure, tracing, data consistency.
+- **Vercel vs. Lambda is setup-vs-control.** Vercel: ~5 min, zero config, vendor lock-in. Lambda: ~30 min, multiple config files (`serverless.yml`, `handler.js`), portable, full AWS control.
+- **Static-first is cheap and fast.** S3 + CloudFront with no Lambda at all serves pennies/month for a static site. Add Lambda only for the dynamic bits.
+
+### Practice Questions
+
+1. Your Lambda-backed API takes 2 seconds on the first request of the day but 50 ms thereafter. What is happening and what are two ways to mitigate it?
+2. Why must a MongoDB connection be cached *outside* the Lambda handler function?
+3. Compare Vercel and AWS Lambda for deploying a Next.js app along three dimensions: setup time, portability, and cost model.
+4. When would you reach for ECS/Fargate instead of Lambda?
+5. Give two concrete problems that a microservice architecture introduces that a monolith does not have.
+
+---
+
+## Cross-Cutting Themes
+
+### 1. Stateless vs. Stateful
+- JWTs are stateless (no session store) — scale easily, hard to revoke (Week 8)
+- Lambda invocations are stateless — must externalize session, connection, cache state (Week 13)
+- Redis externalizes state across instances (Week 12)
+
+### 2. Trade-offs Everywhere
+- Access token lifetime: security vs. UX (Week 8)
+- Test depth: speed vs. confidence (Week 9)
+- Chunk size: precision vs. context (Week 10)
+- Deployment strategy: risk vs. infrastructure cost (Week 11)
+- TTL: freshness vs. hit rate (Week 12)
+- Serverless vs. containers: operational cost vs. control (Week 13)
+
+### 3. "Infrastructure Is Code" Generalizes
+- Dockerfiles and docker-compose.yml (Week 1)
+- CloudFormation / SAM templates (Week 11)
+- `serverless.yml`, GitHub Actions YAML (Weeks 11, 13)
+- The same discipline: version-controlled, reviewable, reproducible
+
+### 4. Caching Appears at Every Layer
+- Browser cache + CDN (CloudFront)
+- Application cache (Redis/ElastiCache)
+- Database query cache
+- Connection pooling (DB connections cached outside Lambda handler)
+
+---
+
+## Key Definitions Quick Reference
+
+| Term | Definition |
+|------|------------|
+| **Authentication** | Verifying *who* a user is |
+| **Authorization** | Verifying *what* a user can do |
+| **JWT** | Signed, base64-url-encoded token with header.payload.signature |
+| **Bearer token** | Token passed in `Authorization: Bearer <token>` header |
+| **Bcrypt / Argon2** | Slow, salted password hash functions |
+| **Unit test** | Test of a single unit in isolation |
+| **E2E test** | Test of the full system through the UI |
+| **RAG** | Retrieval-Augmented Generation — retrieve context, then generate |
+| **Embedding** | Dense vector representation of text |
+| **CI / CD / CD** | Continuous Integration / Delivery / Deployment |
+| **CloudFormation** | AWS IaC service; JSON/YAML templates → stacks |
+| **Cache-aside** | Application-managed read-through caching pattern |
+| **TTL** | Time-to-live; cache expiration |
+| **Cold start** | Initialization latency for a just-instantiated function |
+| **CDN** | Content Delivery Network; edge cache for assets |
+| **Microservice** | Small, independently deployable service |
+| **Lambda** | AWS FaaS — event-driven, short-lived compute |
+
+---
+
+::: {.callout-tip}
+## Final Tips
+
+1. **Know the *why*, not just the *what*.** Quiz questions test trade-offs, not trivia.
+2. **Practice 401 vs. 403, CI vs. CD vs. CD, unit vs. integration vs. E2E** — these distinctions recur.
+3. **Trace a request end-to-end** through JWT auth, Redis cache, Lambda, and microservices.
+4. **Review your labs.** Labs 6–10 are the fastest way to recover concrete details.
+5. **Bring a crib sheet.** One side, one page — write down the things *you* keep forgetting.
+:::
+
+## Complete Readings & Materials List
+
+### AWS Academy Presentations (on LMS)
+*Because of copyright these cannot be posted on the website — review these pptx files through the LMS.*
+
+- **AcademyCloudDeveloping-EN-ILT-M02-dev.pptx** — Development environment setup and AWS developer tools
+- **AcademyCloudDeveloping-EN-ILT-M04-IAM.pptx** — IAM: Identity & Access Management, policies, roles
+- **AcademyCloudDeveloping-EN-ILT-M07-Lambda.pptx** — AWS Lambda (serverless compute, cold starts, event-driven architecture)
+- **AcademyCloudDeveloping-EN-ILT-M08-Containers.pptx** — Introducing Containers and Container Services (Docker, ECS, Fargate)
+- **AcademyCloudDeveloping-EN-ILT-M09-Cachings.pptx** — Caching Strategies (ElastiCache, CloudFront, caching patterns)
+- **AcademyCloudDeveloping-EN-ILT-M13-CICD.pptx** — Automating Deployment Using CI/CD Pipelines (CodePipeline, CodeBuild, CodeDeploy, CloudFormation)
+
+### Course Slides & Labs (by week)
+
+**Week 8 — Authentication & Mobile**
+
+- [Slides (pptx)](../slides/week08/authentication.pptx) | [Slides (pdf)](../slides/week08/authentication.pdf)
+- [Lab 6: Authentication and Mobile](../labs/lab06-auth-mobile.qmd)
+- [Argon2 Guide](../slides/week08/README_ARGON.md) | [React JWT Frontend Guide](../slides/week08/README_REACT.md)
+- [Week 8 Readings](week08-auth-mobile.qmd)
+- [OWASP Authorization Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html)
+- [WorkOS — OAuth and JWT Best Practices](https://workos.com/blog/oauth-and-jwt-how-to-use-and-best-practices)
+- [Google Developers — OAuth2 Best Practices](https://developers.google.com/identity/protocols/oauth2/resources/best-practices)
+- [Supabase Authentication](https://supabase.com/docs/guides/auth)
+
+**Week 9 — Testing**
+
+- [Slides (pptx)](../slides/week09/testing-enhanced.pptx) | [Slides (pdf)](../slides/week09/testing-enhanced.pdf)
+- [Lab 7: Testing](../labs/lab07-testing.qmd)
+- [Week 9 Readings](week09-agentic-ai-1.qmd)
+- [Web Application Testing for QA Teams: A Step-by-Step Guide](https://www.virtuosoqa.com/post/testing-web-applications)
+- [Jest Documentation](https://jestjs.io/docs/getting-started)
+- [Supertest Documentation](https://github.com/ladjs/supertest)
+- [Playwright Testing Documentation](https://playwright.dev/docs/intro)
+- [Testing Pyramid (Martin Fowler)](https://martinfowler.com/articles/practical-test-pyramid.html)
+- [Google Testing Blog](https://testing.googleblog.com/)
+
+**Week 10 — Agentic AI: Orchestration, Memory, RAG**
+
+- [Slides (pptx)](../slides/week10/agentic_extended.pptx) | [Slides (pdf)](../slides/week10/agentic_extended.pdf)
+- [Lab 8: Agent Orchestration](../labs/lab08-agent-orchestration.qmd)
+- [Agents In-Class Exercise](https://github.com/RPI-WS-spring-2026/Agents1)
+- [Week 10 Readings](week10-agentic-ai-2.qmd)
+- [Langchain](https://docs.langchain.com/oss/python/langchain/overview)
+- [Vercel AI SDK](https://ai-sdk.dev/docs/introduction)
+- [LLM Powered Agents](https://lilianweng.github.io/posts/2023-06-23-agent/)
+- [What is RAG](https://blogs.nvidia.com/blog/what-is-retrieval-augmented-generation/)
+
+**Week 11 — Continuous Integration & Deployment**
+
+- [Slides (pptx)](../slides/week11/deployment.pptx) | [Slides (pdf)](../slides/week11/deployment.pdf)
+- [Lab 9: CI Pipelines](../labs/lab09-ci-pipelines.qmd)
+- [Deployments In-Class Exercise](https://github.com/RPI-WS-spring-2026/deployments)
+- [Week 11 Readings](week11-ci-cd.qmd)
+- [What is CI CD?](https://www.redhat.com/en/topics/devops/what-is-ci-cd)
+- [Understanding CI CD](https://docs.aws.amazon.com/prescriptive-guidance/latest/strategy-cicd-litmus/understanding-cicd.html)
+- [Understanding Github Actions](https://docs.github.com/en/actions/get-started/understand-github-actions)
+- [AWS Codebuild](https://docs.aws.amazon.com/codebuild/latest/userguide/action-runner-overview.html)
+
+**Week 12 — Scaling: Caching, Redis, CDN**
+
+- [Slides (pptx)](../slides/week12/scaling_web_apps.pptx) | [Slides (pdf)](../slides/week12/scaling_web_apps.pdf)
+- [Lab 10: Scaling with ElastiCache and CloudFront](../labs/lab10-ai-assisted-coding.qmd)
+- [CachingWithRedis In-Class Exercise](https://github.com/RPI-WS-spring-2026/CachingWithRedis)
+- [Week 12 Readings](week12-ai-assisted-dev.qmd)
+- [ElastiCache](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/WhatIs.html)
+- [Caching with Redis](https://redis.io/solutions/caching/)
+- [Caching Patterns](https://docs.aws.amazon.com/whitepapers/latest/database-caching-strategies-using-redis/caching-patterns.html)
+- [What is a CDN](https://www.cloudflare.com/learning/cdn/what-is-a-cdn/)
+- [What is Caching](https://www.cloudflare.com/learning/cdn/what-is-caching/)
+- [Monolith vs Microservices](https://doi.org/10.1109/ACCESS.2022.3152803)
+- [Load Balancing](https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/)
+
+**Week 13 — Cloud Patterns, Lambda, Microservices**
+
+- [Slides (pptx)](../slides/week13/scaling_architecture.pptx) | [Slides (pdf)](../slides/week13/scaling_architecture.pdf)
+- [Lambda In-Class Lab](https://github.com/RPI-WS-spring-2026/Lambda-inclass)
+- [Week 13 Readings](week13-deployment.qmd)
+- [Monolith vs Microservices](https://doi.org/10.1109/ACCESS.2022.3152803)
+- [Microservices](https://aws.amazon.com/microservices/)
+- [Serverless](https://www.serverless.com/framework/docs/providers/aws/guide/intro)
+- [Vercel](https://vercel.com/docs/deployments)
+- [Lambda Developer Guide](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html)
+

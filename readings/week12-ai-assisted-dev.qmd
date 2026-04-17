@@ -21,4 +21,9 @@ Complete this reading before Week 13.
 
 ## Further Reading
 
-*Resources coming soon.*
+- [ElastiCache](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/WhatIs.html)
+- [Caching with Redis](https://redis.io/solutions/caching/)
+- [Caching Patterns](https://docs.aws.amazon.com/whitepapers/latest/database-caching-strategies-using-redis/caching-patterns.html)
+- [What is a CDN](https://www.cloudflare.com/learning/cdn/what-is-a-cdn/)
+- [What is Caching](https://www.cloudflare.com/learning/cdn/what-is-caching/)
+- [Load Balancing](https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/)

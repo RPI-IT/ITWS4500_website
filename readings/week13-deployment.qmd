@@ -21,4 +21,8 @@ Complete this reading before Week 14.
 
 ## Further Reading
 
-*Resources coming soon.*
+- [Monolith vs Microservices](https://doi.org/10.1109/ACCESS.2022.3152803)
+- [Microservices](https://aws.amazon.com/microservices/)
+- [Serverless](https://www.serverless.com/framework/docs/providers/aws/guide/intro)
+- [Vercel](https://vercel.com/docs/deployments)
+- [Lambda Developer Guide](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html)
