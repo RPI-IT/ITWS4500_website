@@ -1,24 +1,103 @@
 ---
-title: "Week 14: Capstone Preparation"
-subtitle: "Project Hardening and Final Review"
+title: "Week 14: Hardening Web Applications"
+subtitle: "Security, Performance, and Production Readiness"
 ---
 
 ::: {.callout-note}
 ## Reading Assignment
-Review this material for Quiz 2 and final project.
+Review this material before your final project presentation.
 :::
 
 ## Overview
 
-*Content coming soon.*
+This week focuses on the gap between a working application and a production-ready one. "Hardening" means systematically reducing the attack surface, improving resilience, and ensuring your application can be operated, monitored, and maintained in production.
 
 ## Key Concepts
 
-- Production hardening
-- Security review checklist
-- Performance optimization
-- Comprehensive architecture review
+- **Defense in depth** — security at every layer (network, transport, application, data)
+- **OWASP Top 10** — the most critical web application security risks
+- **Authentication hardening** — password hashing, JWT best practices, rate limiting
+- **HTTP security headers** — CSP, HSTS, X-Frame-Options via `helmet`
+- **Input validation** — server-side validation, injection prevention (SQL, NoSQL, XSS)
+- **Dependency security** — `npm audit`, lock files, automated scanning
+- **Infrastructure hardening** — HTTPS, CORS configuration, secrets management
+- **Error handling** — generic messages in production, structured logging
+- **Performance** — CDN, compression, caching, connection pooling, database indexing
+- **Monitoring & observability** — logs, metrics, traces
+
+## Hardening Checklist
+
+### Security
+
+- [ ] All secrets in environment variables (not in code or git history)
+- [ ] `.env` files in `.gitignore`
+- [ ] Passwords hashed with bcrypt (cost 12+) or Argon2id
+- [ ] JWT access tokens have short TTL (15 min), refresh tokens are revocable
+- [ ] Every API route checks ownership (filter by `userId`)
+- [ ] Input validated server-side (type, length, format)
+- [ ] `helmet()` middleware enabled for security headers
+- [ ] CORS configured with specific allowed origins (not `*`)
+- [ ] `npm audit` shows zero critical/high vulnerabilities
+- [ ] HTTPS enabled (automatic on Vercel/CloudFront)
+- [ ] Rate limiting on authentication endpoints
+
+### Reliability & Performance
+
+- [ ] Error handler returns generic messages in production
+- [ ] Timeouts on all external calls (DB, APIs, Redis)
+- [ ] Health check endpoint (`/api/health`)
+- [ ] Database connection pooling / caching (especially for Lambda)
+- [ ] Lock file committed (`package-lock.json`)
+- [ ] `npm ci` used in CI/CD (not `npm install`)
+- [ ] Compression middleware enabled
+- [ ] Static assets served via CDN
+- [ ] Structured JSON logging (no sensitive data in logs)
 
 ## Further Reading
 
-*Resources coming soon.*
+### OWASP & Security
+
+- [OWASP Top 10 (2021)](https://owasp.org/www-project-top-ten/)
+- [OWASP Cheat Sheet Series](https://cheatsheetseries.owasp.org/)
+- [OWASP Authentication Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html)
+- [OWASP Authorization Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html)
+- [OWASP Input Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html)
+
+### HTTP Security Headers
+
+- [Helmet.js Documentation](https://helmetjs.github.io/)
+- [SecurityHeaders.com](https://securityheaders.com) — scan your deployed app
+- [MDN Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)
+
+### Authentication & Secrets
+
+- [WorkOS — OAuth and JWT Best Practices](https://workos.com/blog/oauth-and-jwt-how-to-use-and-best-practices)
+- [Google OAuth 2.0 Best Practices](https://developers.google.com/identity/protocols/oauth2/resources/best-practices)
+- [NIST Password Guidelines](https://pages.nist.gov/800-63-3/sp800-63b.html)
+
+### Dependency Security
+
+- [npm audit Documentation](https://docs.npmjs.com/cli/v10/commands/npm-audit)
+- [Snyk — Open Source Security](https://snyk.io/)
+- [Socket.dev — Supply Chain Security](https://socket.dev/)
+- [GitHub Dependabot](https://docs.github.com/en/code-security/dependabot)
+
+### Rate Limiting
+
+- [Express Rate Limit](https://www.npmjs.com/package/express-rate-limit) — middleware for Express apps
+- [rate-limit-redis](https://www.npmjs.com/package/rate-limit-redis) — Redis-backed store for distributed rate limiting
+- [Understanding Rate Limiting Algorithms (Cloudflare)](https://blog.cloudflare.com/counting-things-a-lot-of-different-things/) — fixed window, sliding window, token bucket, leaky bucket
+- [AWS API Gateway Throttling](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-request-throttling.html) — platform-level rate limiting
+- [IETF RateLimit Header Fields (RFC 9110)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Retry-After) — `X-RateLimit-*` and `Retry-After` headers
+
+### Performance & Monitoring
+
+- [web.dev Performance](https://web.dev/performance/)
+- [Lighthouse Documentation](https://developer.chrome.com/docs/lighthouse/)
+- [Pino Logger](https://getpino.io/) — fast structured logging for Node.js
+- [Express Validator](https://express-validator.github.io/)
+
+### SSL/TLS
+
+- [SSL Labs Server Test](https://www.ssllabs.com/ssltest/) — test your TLS configuration
+- [Let's Encrypt](https://letsencrypt.org/) — free TLS certificates

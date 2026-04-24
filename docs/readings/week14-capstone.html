@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Week 14: Capstone Preparation – ITWS-4500: Advanced Web &amp; Agentic AI Development</title>
+<title>Week 14: Hardening Web Applications – ITWS-4500: Advanced Web &amp; Agentic AI Development</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -169,8 +169,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">Week 13: Deployment</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../readings/quiz2-study-guide.html">
+ <span class="dropdown-text">Quiz 2 Study Guide</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../readings/week14-capstone.html">
- <span class="dropdown-text">Week 14: Capstone</span></a>
+ <span class="dropdown-text">Week 14: Hardening Web Apps</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../readings/week15-final.html">
@@ -282,7 +286,21 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
   <li><a href="#key-concepts" id="toc-key-concepts" class="nav-link" data-scroll-target="#key-concepts">Key Concepts</a></li>
-  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
+  <li><a href="#hardening-checklist" id="toc-hardening-checklist" class="nav-link" data-scroll-target="#hardening-checklist">Hardening Checklist</a>
+  <ul class="collapse">
+  <li><a href="#security" id="toc-security" class="nav-link" data-scroll-target="#security">Security</a></li>
+  <li><a href="#reliability-performance" id="toc-reliability-performance" class="nav-link" data-scroll-target="#reliability-performance">Reliability &amp; Performance</a></li>
+  </ul></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a>
+  <ul class="collapse">
+  <li><a href="#owasp-security" id="toc-owasp-security" class="nav-link" data-scroll-target="#owasp-security">OWASP &amp; Security</a></li>
+  <li><a href="#http-security-headers" id="toc-http-security-headers" class="nav-link" data-scroll-target="#http-security-headers">HTTP Security Headers</a></li>
+  <li><a href="#authentication-secrets" id="toc-authentication-secrets" class="nav-link" data-scroll-target="#authentication-secrets">Authentication &amp; Secrets</a></li>
+  <li><a href="#dependency-security" id="toc-dependency-security" class="nav-link" data-scroll-target="#dependency-security">Dependency Security</a></li>
+  <li><a href="#rate-limiting" id="toc-rate-limiting" class="nav-link" data-scroll-target="#rate-limiting">Rate Limiting</a></li>
+  <li><a href="#performance-monitoring" id="toc-performance-monitoring" class="nav-link" data-scroll-target="#performance-monitoring">Performance &amp; Monitoring</a></li>
+  <li><a href="#ssltls" id="toc-ssltls" class="nav-link" data-scroll-target="#ssltls">SSL/TLS</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -291,8 +309,8 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Week 14: Capstone Preparation</h1>
-<p class="subtitle lead">Project Hardening and Final Review</p>
+<h1 class="title">Week 14: Hardening Web Applications</h1>
+<p class="subtitle lead">Security, Performance, and Production Readiness</p>
 </div>
 
 
@@ -319,27 +337,126 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Review this material for Quiz 2 and final project.</p>
+<p>Review this material before your final project presentation.</p>
 </div>
 </div>
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p><em>Content coming soon.</em></p>
+<p>This week focuses on the gap between a working application and a production-ready one. “Hardening” means systematically reducing the attack surface, improving resilience, and ensuring your application can be operated, monitored, and maintained in production.</p>
 </section>
 <section id="key-concepts" class="level2">
 <h2 class="anchored" data-anchor-id="key-concepts">Key Concepts</h2>
 <ul>
-<li>Production hardening</li>
-<li>Security review checklist</li>
-<li>Performance optimization</li>
-<li>Comprehensive architecture review</li>
+<li><strong>Defense in depth</strong> — security at every layer (network, transport, application, data)</li>
+<li><strong>OWASP Top 10</strong> — the most critical web application security risks</li>
+<li><strong>Authentication hardening</strong> — password hashing, JWT best practices, rate limiting</li>
+<li><strong>HTTP security headers</strong> — CSP, HSTS, X-Frame-Options via <code>helmet</code></li>
+<li><strong>Input validation</strong> — server-side validation, injection prevention (SQL, NoSQL, XSS)</li>
+<li><strong>Dependency security</strong> — <code>npm audit</code>, lock files, automated scanning</li>
+<li><strong>Infrastructure hardening</strong> — HTTPS, CORS configuration, secrets management</li>
+<li><strong>Error handling</strong> — generic messages in production, structured logging</li>
+<li><strong>Performance</strong> — CDN, compression, caching, connection pooling, database indexing</li>
+<li><strong>Monitoring &amp; observability</strong> — logs, metrics, traces</li>
 </ul>
+</section>
+<section id="hardening-checklist" class="level2">
+<h2 class="anchored" data-anchor-id="hardening-checklist">Hardening Checklist</h2>
+<section id="security" class="level3">
+<h3 class="anchored" data-anchor-id="security">Security</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">All secrets in environment variables (not in code or git history)</label></li>
+<li><label><input type="checkbox"><code>.env</code> files in <code>.gitignore</code></label></li>
+<li><label><input type="checkbox">Passwords hashed with bcrypt (cost 12+) or Argon2id</label></li>
+<li><label><input type="checkbox">JWT access tokens have short TTL (15 min), refresh tokens are revocable</label></li>
+<li><label><input type="checkbox">Every API route checks ownership (filter by <code>userId</code>)</label></li>
+<li><label><input type="checkbox">Input validated server-side (type, length, format)</label></li>
+<li><label><input type="checkbox"><code>helmet()</code> middleware enabled for security headers</label></li>
+<li><label><input type="checkbox">CORS configured with specific allowed origins (not <code>*</code>)</label></li>
+<li><label><input type="checkbox"><code>npm audit</code> shows zero critical/high vulnerabilities</label></li>
+<li><label><input type="checkbox">HTTPS enabled (automatic on Vercel/CloudFront)</label></li>
+<li><label><input type="checkbox">Rate limiting on authentication endpoints</label></li>
+</ul>
+</section>
+<section id="reliability-performance" class="level3">
+<h3 class="anchored" data-anchor-id="reliability-performance">Reliability &amp; Performance</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">Error handler returns generic messages in production</label></li>
+<li><label><input type="checkbox">Timeouts on all external calls (DB, APIs, Redis)</label></li>
+<li><label><input type="checkbox">Health check endpoint (<code>/api/health</code>)</label></li>
+<li><label><input type="checkbox">Database connection pooling / caching (especially for Lambda)</label></li>
+<li><label><input type="checkbox">Lock file committed (<code>package-lock.json</code>)</label></li>
+<li><label><input type="checkbox"><code>npm ci</code> used in CI/CD (not <code>npm install</code>)</label></li>
+<li><label><input type="checkbox">Compression middleware enabled</label></li>
+<li><label><input type="checkbox">Static assets served via CDN</label></li>
+<li><label><input type="checkbox">Structured JSON logging (no sensitive data in logs)</label></li>
+</ul>
+</section>
 </section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<p><em>Resources coming soon.</em></p>
+<section id="owasp-security" class="level3">
+<h3 class="anchored" data-anchor-id="owasp-security">OWASP &amp; Security</h3>
+<ul>
+<li><a href="https://owasp.org/www-project-top-ten/">OWASP Top 10 (2021)</a></li>
+<li><a href="https://cheatsheetseries.owasp.org/">OWASP Cheat Sheet Series</a></li>
+<li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html">OWASP Authentication Cheat Sheet</a></li>
+<li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html">OWASP Authorization Cheat Sheet</a></li>
+<li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html">OWASP Input Validation Cheat Sheet</a></li>
+</ul>
+</section>
+<section id="http-security-headers" class="level3">
+<h3 class="anchored" data-anchor-id="http-security-headers">HTTP Security Headers</h3>
+<ul>
+<li><a href="https://helmetjs.github.io/">Helmet.js Documentation</a></li>
+<li><a href="https://securityheaders.com">SecurityHeaders.com</a> — scan your deployed app</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">MDN Content Security Policy</a></li>
+</ul>
+</section>
+<section id="authentication-secrets" class="level3">
+<h3 class="anchored" data-anchor-id="authentication-secrets">Authentication &amp; Secrets</h3>
+<ul>
+<li><a href="https://workos.com/blog/oauth-and-jwt-how-to-use-and-best-practices">WorkOS — OAuth and JWT Best Practices</a></li>
+<li><a href="https://developers.google.com/identity/protocols/oauth2/resources/best-practices">Google OAuth 2.0 Best Practices</a></li>
+<li><a href="https://pages.nist.gov/800-63-3/sp800-63b.html">NIST Password Guidelines</a></li>
+</ul>
+</section>
+<section id="dependency-security" class="level3">
+<h3 class="anchored" data-anchor-id="dependency-security">Dependency Security</h3>
+<ul>
+<li><a href="https://docs.npmjs.com/cli/v10/commands/npm-audit">npm audit Documentation</a></li>
+<li><a href="https://snyk.io/">Snyk — Open Source Security</a></li>
+<li><a href="https://socket.dev/">Socket.dev — Supply Chain Security</a></li>
+<li><a href="https://docs.github.com/en/code-security/dependabot">GitHub Dependabot</a></li>
+</ul>
+</section>
+<section id="rate-limiting" class="level3">
+<h3 class="anchored" data-anchor-id="rate-limiting">Rate Limiting</h3>
+<ul>
+<li><a href="https://www.npmjs.com/package/express-rate-limit">Express Rate Limit</a> — middleware for Express apps</li>
+<li><a href="https://www.npmjs.com/package/rate-limit-redis">rate-limit-redis</a> — Redis-backed store for distributed rate limiting</li>
+<li><a href="https://blog.cloudflare.com/counting-things-a-lot-of-different-things/">Understanding Rate Limiting Algorithms (Cloudflare)</a> — fixed window, sliding window, token bucket, leaky bucket</li>
+<li><a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-request-throttling.html">AWS API Gateway Throttling</a> — platform-level rate limiting</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Retry-After">IETF RateLimit Header Fields (RFC 9110)</a> — <code>X-RateLimit-*</code> and <code>Retry-After</code> headers</li>
+</ul>
+</section>
+<section id="performance-monitoring" class="level3">
+<h3 class="anchored" data-anchor-id="performance-monitoring">Performance &amp; Monitoring</h3>
+<ul>
+<li><a href="https://web.dev/performance/">web.dev Performance</a></li>
+<li><a href="https://developer.chrome.com/docs/lighthouse/">Lighthouse Documentation</a></li>
+<li><a href="https://getpino.io/">Pino Logger</a> — fast structured logging for Node.js</li>
+<li><a href="https://express-validator.github.io/">Express Validator</a></li>
+</ul>
+</section>
+<section id="ssltls" class="level3">
+<h3 class="anchored" data-anchor-id="ssltls">SSL/TLS</h3>
+<ul>
+<li><a href="https://www.ssllabs.com/ssltest/">SSL Labs Server Test</a> — test your TLS configuration</li>
+<li><a href="https://letsencrypt.org/">Let’s Encrypt</a> — free TLS certificates</li>
+</ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

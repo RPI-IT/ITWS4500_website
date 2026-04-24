@@ -58,7 +58,9 @@ website:
             href: readings/week12-ai-assisted-dev.qmd
           - text: "Week 13: Deployment"
             href: readings/week13-deployment.qmd
-          - text: "Week 14: Capstone"
+          - text: "Quiz 2 Study Guide"
+            href: readings/quiz2-study-guide.qmd
+          - text: "Week 14: Hardening Web Apps"
             href: readings/week14-capstone.qmd
           - text: "Week 15: Final"
             href: readings/week15-final.qmd

