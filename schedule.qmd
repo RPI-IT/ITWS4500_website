@@ -239,7 +239,8 @@ Covers Weeks 1-5: Infrastructure as Code, Architectural Patterns, Frontend/Backe
 | Date | Type | Topic | Materials |
 |------|------|-------|-----------|
 | Tue 4/21 | **Quiz** | **Quiz 2:** Comprehensive Architectural and Systems Reasoning | |
-| Fri 4/24 | Lecture + Lab | **Hardening Web Applications;** Capstone Extension | [Slides (pptx)](slides/week14/hardening-web-apps.pptx), [Slides (html)](slides/week14/hardening-web-apps.qmd), [SecurityHardening](https://github.com/RPI-WS-spring-2026/SecurityHardening), [Lab 11](labs/lab12-capstone-extension.qmd) |
+| Fri 4/24 | Lecture | **Hardening Web Applications** | [Slides (pptx)](slides/week14/hardening-web-apps.pptx), [Slides (html)](slides/week14/hardening-web-apps.qmd) |
+| Fri 4/24 | In-Class Lab | **Security Hardening Lab** | [SecurityHardening](https://github.com/RPI-WS-spring-2026/SecurityHardening) |
 
 ::: {.callout-important}
 ## Quiz 2
@@ -296,4 +297,3 @@ Comprehensive assessment covering all course material, with emphasis on Weeks 8-
 | Lab 8 | Agent Orchestration | 3/27 |
 | Lab 9 | CI Pipelines | 4/3 |
 | Lab 10 | Scaling with ElastiCache and CloudFront | 4/10 |
-| Lab 11 | Capstone Extension | 4/24 |
