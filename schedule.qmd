@@ -240,7 +240,7 @@ Covers Weeks 1-5: Infrastructure as Code, Architectural Patterns, Frontend/Backe
 |------|------|-------|-----------|
 | Tue 4/21 | **Quiz** | **Quiz 2:** Comprehensive Architectural and Systems Reasoning | |
 | Fri 4/24 | Lecture | **Hardening Web Applications** | [Slides (pptx)](slides/week14/hardening-web-apps.pptx), [Slides (html)](slides/week14/hardening-web-apps.qmd) |
-| Fri 4/24 | In-Class Lab | **Security Hardening Lab** | SecurityHardening |
+| Fri 4/24 | In-Class Lab | **Security Hardening Lab** | [SecurityHardening](https://github.com/RPI-WS-spring-2026/SecurityHardening) |
 
 ::: {.callout-important}
 ## Quiz 2
