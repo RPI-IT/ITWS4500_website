@@ -17,34 +17,17 @@ The final presentation is your opportunity to showcase the culmination of a seme
 
 By the final presentation, your project should demonstrate:
 
-- **Deployed and accessible**: Application running on cloud infrastructure
+
 - **Feature complete**: All planned MVP features implemented
 - **Production ready**: Error handling, security considerations, documentation
 - **Well documented**: README, API docs, architecture decision records
 - **Professionally managed**: Complete project history visible in GitHub
 
-::: {.callout-note}
-## The "Ship It" Standard
-Your application should be something you'd be proud to show to a potential employer, investor, or stakeholder. It doesn't need to be perfect, but it should be complete, functional, and professionally presented.
-:::
 
 ## Deliverables
 
-### 1. Deployed Application
 
-Your application must be:
-
-- **Publicly accessible** via a URL (cloud deployment required)
-- **Functional** with all core features working
-- **Stable** enough for a live demonstration
-- **Secure** with proper authentication and data protection
-
-**Deployment Options:**
-- Railway, Render, Fly.io (recommended for ease)
-- AWS, GCP, Azure (more complex but valuable experience)
-- DigitalOcean, Linode (good middle ground)
-
-### 2. Final Technical Report (5-7 pages)
+### 1. Final Technical Report (5-7 pages)
 
 #### Executive Summary (0.5 page)
 - What you built and why
@@ -146,15 +129,6 @@ Present your completed project to the class:
 
 ## Rubric
 
-### Deployed Application (35 points)
-
-| Criterion | Excellent (7) | Good (6) | Satisfactory (5) | Needs Work (3) | Missing (0) |
-|-----------|---------------|----------|------------------|----------------|-------------|
-| **Deployment** | Fully deployed; reliable; professional URL | Deployed and working | Deployed with issues | Partially deployed | Not deployed |
-| **Core Features** | All MVP features polished and complete | Most features complete | Core features work | Partial features | Non-functional |
-| **User Experience** | Intuitive; responsive; handles errors gracefully | Good UX; minor issues | Functional UX | Poor UX | Unusable |
-| **Security** | Auth, input validation, HTTPS, no vulnerabilities | Good security | Basic security | Security gaps | Major vulnerabilities |
-| **Documentation** | Comprehensive README; API docs; setup guides | Good documentation | Basic docs | Minimal docs | No documentation |
 
 ### Technical Report (25 points)
 
